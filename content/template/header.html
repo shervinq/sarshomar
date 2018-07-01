@@ -1,58 +1,48 @@
   <header data-scroll>
    <h1 class='logo flex align-center s-justify-center'>
-    <a href='{{url.base}}' tabindex='1'>
+    <a href='{{url.kingdom}}' tabindex='1'>
           {%if site.currentlang =='fa'%}
-     <img src='{{url.static}}images/logo/logo-fa.svg' alt='{{site.title}} | {{site.desc}}'>
+     <img src='{{url.site}}/static/images/logo/logo-fa.svg' alt='{{site.title}} | {{site.desc}}'>
      {%else%}
-      <img src='{{url.static}}images/logo/logo-en.svg' alt='{{site.title}} | {{site.desc}}'>
+      <img src='{{url.site}}/static/images/logo/logo-en.svg' alt='{{site.title}} | {{site.desc}}'>
      {%endif%}
     </a>
-    <span>{%trans "Sarshomar"%}</span>
+    <span>{{site.title}}</span>
    </h1>
    <div id='header-box'>
     <div id='header-top'>
      <nav id='header-quick'>
-      <a href='{{url.base}}/$' tabindex='2'>{%trans "Sarshomar Knowledge"%}</a>
-      <a href='{{url.base}}/benefits' tabindex='3'>{%trans "Benefits"%}</a>
-      <a href='{{url.base}}/help' tabindex='4'>{%trans "Help Center"%}</a>
+      <a href='{{url.kingdom}}/$' tabindex='2'>{%trans "Sarshomar Knowledge"%}</a>
+      <a href='{{url.kingdom}}/benefits' tabindex='3'>{%trans "Benefits"%}</a>
+      <a href='{{url.kingdom}}/help' tabindex='4'>{%trans "Help Center"%}</a>
      </nav>
      <nav id='header-profile' data-xhr='header-profile' {%if login%}class='login'{%endif%}>
 {%if login%}
-{%if url.tld == 'dev' and false%}
-      <a href="javascript:void(0);" onclick="javascript:introJs(){{introOption}}.start();">ℹ️</a>
-{%endif%}
-
-      <a href='{{url.base}}/@/add' class='header-profile-link' tabindex='5' id="add-question">
+      <a href='{{url.kingdom}}/@/add' class='header-profile-link' tabindex='5' id="add-question">
        <span class="header-link-text">{%trans "Create New Poll"%}</span>
        <span class="header-link-icon icon-plus"></span>
       </a>
 
-      <a href='{{url.base}}/ask' class='header-profile-button' tabindex='6' data-direct>{%trans "Ask Me"%}</a>
+      <a href='{{url.kingdom}}/ask' class='header-profile-button' tabindex='6' data-direct>{%trans "Ask Me"%}</a>
 
       <div class="profile dropmenu">
-       <!-- <img src="{{url.static}}images/svg/general/profile.svg" alt=""> -->
+       <!-- <img src="{{url.site}}/static/images/svg/general/profile.svg" alt=""> -->
        <div class="info">
         <div class="displayname">{{displayname}}</div>
         <div class="role">{%trans "Welcome"%}</div>
        </div>
        <div class="profile-detail">
-        <a href="{{url.base}}/@" class="dashboard" tabindex='7'>{%trans "Dashboard"%}</a>
+        <a href="{{url.kingdom}}/@" class="dashboard" tabindex='7'>{%trans "Dashboard"%}</a>
         <a href="logout" class="exit" tabindex='8' data-direct>{%trans "Exit"%}</a>
        </div>
       </div>
 
 
 {%else%}
-{%if false%}
-      <a href='{{url.base}}/login' data-direct class='header-profile-link'>{%trans "Login"%}</a>
-      <a href='{{url.base}}/signup' data-direct class='header-profile-button'>{%trans "Register"%}</a>
-{%endif%}
-      <a href='{{url.base}}/enter' data-direct class='header-profile-button'>{%trans "Enter"%}</a>
-
-
+      <a href='{{url.kingdom}}/enter' data-direct class='header-profile-button'>{%trans "Enter"%}</a>
 {%endif%}
 
-      <div class="icon-globe icon-2x header-profile-link ui-language-link dropmenu">
+      <div class="sf-globe header-profile-link ui-language-link dropmenu">
        {% set lang_list = langList({'all' : true}) %}
        <nav class="langlist">
         {%for key, value in lang_list%}
@@ -73,57 +63,7 @@
      {{breadcrumb(null, true, false, true) | raw}}
 {%endblock%}
      </nav>
-   {%if login%}
-     <div id="financial-box">
 
-      <div class="cost">
-       <span class="title">{%trans "Cost"%}</span><span class="value">{{0 | number_format | fitNumber}}</span><span class="unit">{%trans "Tomans"%}</span>
-      </div>
-
-      <div class="total">
-       <a href="{{url.base}}/@/billing">
-        <span class="title">{%trans "Total cash"%}</span>
-        <span class="value" data-val="{{user_cash.total}}">{{user_cash.total | number_format | fitNumber}}</span>
-        <span class="unit">{%trans user_unit%}</span>
-       </a>
-
-       <div class="financial-detail">
-       {%if user_cash.real%}
-         <div class="row">
-           <div class="cell">{%trans "Real"%}</div>
-           <div class="cell" data-val="{{user_cash.real}}">{{user_cash.real | number_format | fitNumber}}</div>
-           <div class="cell">{%trans user_unit%}</div>
-          </div>
-        {%endif%}
-
-        {%if user_cash.gift%}
-         <div class="row">
-           <div class="cell">{%trans "Gift"%}</div>
-           <div class="cell" data-val="{{user_cash.gift}}">{{user_cash.gift | number_format | fitNumber}}</div>
-           <div class="cell">{%trans user_unit%}</div>
-          </div>
-        {%endif%}
-
-        {%if user_cash.transfer%}
-         <div class="row">
-           <div class="cell">{%trans "Transfer"%}</div>
-           <div class="cell" data-val="{{user_cash.transfer}}">{{user_cash.transfer | number_format | fitNumber}}</div>
-           <div class="cell">{%trans user_unit%}</div>
-          </div>
-        {%endif%}
-
-        {%if user_cash.prize%}
-         <div class="row">
-           <div class="cell">{%trans "Prize"%}</div>
-           <div class="cell" data-val="{{user_cash.prize}}">{{user_cash.prize | number_format | fitNumber}}</div>
-           <div class="cell">{%trans user_unit%}</div>
-          </div>
-        {%endif%}
-       </div>
-      </div>
-
-     </div>
-   {%endif%}
     </div>
    </div>
    <div id='menu-bar'><span></span></div>
