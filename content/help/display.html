@@ -1,23 +1,13 @@
 {%extends display.main%} {%block content%}
 <aside class="help-sidebar">
  <a href="{{url.base}}/tour" class="help-tour hide">
-  <img src="{{url.static}}images/svg/help/tour.svg" alt='{%trans "Two minute tour"%}'>
+  <img src="{{url.site}}/static/images/svg/help/tour.svg" alt='{%trans "Two minute tour"%}'>
   <p>{%trans "Two minute tour"%}</p>
  </a>
  <a href="{{url.base}}/contact" class="help-contact">
   <p>{%trans "Contact Us"%}</p>
-  <img src="{{url.static}}images/miniature/help-contact.png" alt='{%trans "Contact Us"%}'>
+  <img src="{{url.site}}/static/images/miniature/help-contact.png" alt='{%trans "Contact Us"%}'>
  </a>
- <div class="help-quick-access hide">
-  <h4>{%trans "Quick Access"%}</h4>
-  <nav>
-   <a href="#">{%trans "Link"%}</a>
-   <a href="#">{%trans "Link"%}</a>
-   <a href="#">{%trans "Link"%}</a>
-   <a href="#">{%trans "Link"%}</a>
-   <a href="#">{%trans "Link"%}</a>
-  </nav>
- </div>
 </aside>
 <div class="main pad help-main-page">
  <div class="box in xlarge">
@@ -33,47 +23,7 @@
   </div>
   {%endif%}
 
-  <div class="">
-   <div class="f help-category-items">
-    <a href="{{url.base}}/help/general" class="c4 s6 help-category-item">
-     <p class="title">{%trans "General"%}</p>
-     <p class="description">{%trans "General"%}</p>
-    </a>
-    <a href="{{url.base}}/help/billing" class="c4 s6 help-category-item">
-     <p class="title">{%trans "Billing"%}</p>
-     <p class="description">{%trans "Billing"%}</p>
-    </a>
-    <a href="{{url.base}}/help/question" class="c4 s6 help-category-item">
-     <p class="title">{%trans "Add a question"%}</p>
-     <p class="description">{%trans "Add a question"%}</p>
-    </a>
-    <a href="{{url.base}}/help/knowledge" class="c4 s6 help-category-item">
-     <p class="title">{%trans "Sarshomar knowledge"%}</p>
-     <p class="description">{%trans "Participation in Sarshomar knowledge"%}</p>
-    </a>
-    <a href="{{url.base}}/help/intro" class="c4 s6 help-category-item horizontal-separator">
-     <p class="title">{%trans "Intro"%}</p>
-     <p class="description">{%trans "Intro"%}</p>
-    </a>
-    <a href="{{url.base}}/help/account" class="c4 s6 help-category-item">
-     <p class="title">{%trans "Account"%}</p>
-     <p class="description">{%trans "Account"%}</p>
-    </a>
-   </div>
-  </div>
-
-  <div class="sideline-title">
-{% set mostVisited = posts(10, { 'type':'help'} ) %}
-{%if mostVisited%}
-   <h4>{%trans "Most visited questions"%}</h4>
-   <ul>
-    {% for clink in mostVisited %}
-        <li><a href="{{url.base}}/{{clink.url}}" title='{{clink.title}}'>{{clink.title}}</a></li>
-    {% endfor %}
-   </ul>
-{%endif%}
-
-  </div>
+  {%trans "Soon"%}
  </div>
 </div>
 {%endblock%}
