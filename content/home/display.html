@@ -91,14 +91,14 @@
 
 
 {%block homeTopRandomChart%}
-       <div class='column chart' data-place='div' data-vals='{{result.data | raw  }}' data-color2='auto' data-format='homepageTop' data-trans='{%trans "vote"%}'></div>
+       <div class='column chart' data-place='div' data-vals='[{"key":1,"title":"Male","value":135,"value_reliable":69,"value_unreliable":66},{"key":2,"title":"Female","value":60,"value_reliable":11,"value_unreliable":49}]' data-color2='auto' data-format='homepageTop' data-trans='{%trans "vote"%}'></div>
 {%endblock%}
 
 
 
 {%block homeTopGender%}
       {%set ageTooltip%}{formatter: '::xformater'}{%endset%}
-      <div class="chart" id="age-chart" data-format="homepageGender" data-vals='{{male_female_chart.data | raw}}' data-title='{%trans "Sarshomar Society Distributtion"%}'></div>
+      <div class="chart" id="age-chart" data-format="homepageGender" data-vals='[{"male":0.49,"female":-0.15,"key":"+\u06f6\u06f0"},{"male":2.65,"female":-0.83,"key":"\u06f4\u06f5-\u06f5\u06f9"},{"male":17.73,"female":-3.96,"key":"\u06f3\u06f1-\u06f4\u06f4"},{"male":19.51,"female":-3.94,"key":"\u06f2\u06f5-\u06f3\u06f0"},{"male":23.95,"female":-5.97,"key":"\u06f1\u06f8-\u06f2\u06f4"},{"male":13.76,"female":-3.58,"key":"\u06f1\u06f4-\u06f1\u06f7"},{"male":2.56,"female":-0.92,"key":-13}]' data-title='{%trans "Sarshomar Society Distributtion"%}'></div>
 {%endblock%}
 
 
@@ -110,7 +110,7 @@
 {%if site.currentlang == "en"%}
      {{block('homeTopSarshomar')}}
      <div class="c7 s12 m12{%if site.currentlang=='fa'%} wide{%endif%}" id='random-chart'>
-      <h3 class="unselectable"><a href='{{result.url}}'>{{result.title|trim('\"')}}</a></h3>
+      <h3 class="unselectable">What is your gender?</h3>
       {{block('homeTopRandomChart')}}
      </div>
 {%else%}
