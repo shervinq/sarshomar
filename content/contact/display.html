@@ -38,7 +38,7 @@
      <div class="contact-data">
       <h2>{%trans "How to contact Sarshomar"%}</h2>
       <div class="contact-ways">
-        <address class="vcard">
+        <address class="vcard pT10">
          <div class="row">
           <span class="sf-envelope fs16"></span>
           <span>info@sarshomar.com</span>
@@ -46,7 +46,7 @@
          <div class="row">
           <span class="sf-phone"></span>
           <span class="tel ltr">
-            <a href="tel:+982537735183">{{"(+98) 25" | fitNumber}} {{"3773 5183" | fitNumber}}</a>
+            <a href="tel:+982536505460">{{"(+98) 25" | fitNumber}} {{"3650 5460" | fitNumber}}</a>
           </span>
           <div class="author author_name hide"><span class="fn">{%trans "Sarshomar"%}</span></div>
          </div>
@@ -54,19 +54,18 @@
           <span class="sf-pin"></span>
           <span>
             <div class="adr">
-             {%if site.currentlang =='en'%}
-              <div class="extended-address">{%trans "#614, Omranieh"%}</div>
-              <div class="street-address">{%trans "Moallem Sq"%}</div>
-              <div class="locality">{%trans "Qom"%}</div>
-              <div class="country-name">{%trans "Iran"%}</div>
-              <div class="postal-code">{{"37158-39959" | fitNumber }}</div>
-             {%else%}
-              <div class="country-name">{%trans "Iran"%}</div>
-              <div class="locality">{%trans "Qom"%}</div>
-              <div class="street-address">{%trans "Moallem Sq"%}</div>
-              <div class="extended-address">{%trans "#614, Omranieh"%}</div>
-              <div class="postal-code">{{"37158-39959" | fitNumber }}</div>
-             {%endif%}
+{%if lang.current =='en'%}
+          <div class="extended-address">{%trans "Ermile, Floor2, Yas Building"%}</div>
+          <div class="street-address">{%trans "1st alley, Haft-e-tir St"%}</div>
+          <div class="locality">{%trans "Qom"%}</div>
+          <div class="country-name">{%trans "Iran"%}</div>
+{%else%}
+          <div class="country-name">{%trans "Iran"%}</div>
+          <div class="locality">{%trans "Qom"%}</div>
+          <div class="street-address">{%trans "1st alley, Haft-e-tir St"%}</div>
+          <div class="extended-address">{%trans "Floor2, Yas Building"%}</div>
+{%endif%}
+          <div class="postal-code">{{"37196-17598" | fitNumber }}</div>
             </div>
           </span>
          </div>
