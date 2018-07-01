@@ -37,22 +37,21 @@
     <div class="contact-box">
      <div class="contact-data">
       <h2>{%trans "How to contact Sarshomar"%}</h2>
-      {%include template.share%}
       <div class="contact-ways">
         <address class="vcard">
          <div class="row">
-          <span class="icon-email icon-3x"></span>
+          <span class="sf-envelope fs16"></span>
           <span>info@sarshomar.com</span>
          </div>
          <div class="row">
-          <span class="icon-phone icon-3x"></span>
+          <span class="sf-phone"></span>
           <span class="tel ltr">
             <a href="tel:+982537735183">{{"(+98) 25" | fitNumber}} {{"3773 5183" | fitNumber}}</a>
           </span>
           <div class="author author_name hide"><span class="fn">{%trans "Sarshomar"%}</span></div>
          </div>
          <div class="row">
-          <span class="icon-location icon-3x"></span>
+          <span class="sf-pin"></span>
           <span>
             <div class="adr">
              {%if site.currentlang =='en'%}
@@ -74,8 +73,8 @@
         </address>
       </div>
      </div>
-     <a href="https://goo.gl/maps/eTEyNRE7aP92" target="_blank" class="map">
-      <img src="{{url.static}}images/svg/contact/map.png">
+     <a href="https://goo.gl/maps/p953hrz38Du" target="_blank" class="map">
+      <img src="{{url.site}}/static/images/svg/contact/map.png">
      </a>
     </div>
    </div>
