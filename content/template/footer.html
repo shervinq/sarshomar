@@ -1,0 +1,82 @@
+ <footer>
+  <div class="container">
+   <nav class="f" id='footer-nav'>
+    <a class="cauto link_home" href="{{url.base}}">{%trans "Home"%}</a>
+    <a class="cauto" href="{{url.base}}/about">{%trans "About"%}</a>
+    <a class="cauto hide" href="{{url.base}}/press">{%trans "Press and Media"%}</a>
+    <a class="cauto" href="{%if site.currentlang =='fa'%}https://ermile.com/fa{%else%}https://ermile.com{%endif%}/careers" target="_blank">{%trans "Careers"%}</a>
+    <a class="cauto" href="{{url.base}}/social-responsibility">{%trans "Social Responsibility"%}</a>
+    <a class="cauto" href="{{url.base}}/help">{%trans "Help Center"%}</a>
+    <a class="cauto" href="{{url.base}}/api/v1/doc" data-direct>{%trans "API"%}</a>
+    <a class="eco hint--left hint--success" href='{{url.base}}/eco' data-hint='{%trans "Eco Friendly"%}'><img src="{{url.static}}images/svg/general/eco.svg" alt='{%trans "Eco Friendly"%}' class='flip-ltr grayscale'></a>
+   </nav>
+
+   <div class="f" id="footer-links">
+{%if site.currentlang =='fa'%}
+    <nav class="c" id="footer-enamad">
+     <a href="{{url.base}}">
+      <div></div>
+      <img src="{{url.static}}images/enamad2.png" alt='{%trans "Enamad"%}' onclick='window.open("https://trustseal.enamad.ir/Verify.aspx?id=56701&p=yncrhwmbqgwldrfsnbpd", "Popup","toolbar=no, location=no, statusbar=no, menubar=no, scrollbars=1, resizable=0, width=580, height=600, top=30")'>
+      <div></div>
+     </a>
+    </nav>
+{%endif%}
+
+    <nav class="c s12">
+     <h4>{%trans "Service"%}</h4>
+     <ul>
+      <li><a href="{{url.base}}/benefits">{%trans "Benefits"%}</a></li>
+      <li><a href="{{url.base}}/$">{%trans "Sarshomar Knowledge"%}</a></li>
+      <li><a href="{{url.base}}/ref">{%trans "Referral Program"%}</a></li>
+     </ul>
+    </nav>
+
+    <nav class="c s12">
+     <h4>{%trans "Learn More"%}</h4>
+     <ul>
+      <li><a href="{{url.base}}/terms">{%trans "Terms of Service"%}</a></li>
+      <li><a href="{{url.base}}/privacy">{%trans "Privacy Policy"%}</a></li>
+      <li><a href="{{url.base}}/changelog">{%trans "Changelog"%}</a></li>
+      <li><a href="{{url.base}}/gift">{%trans "Gifts"%}</a></li>
+     </ul>
+    </nav>
+
+    <nav class="c s12">
+     <h4>{%trans "Support"%}</h4>
+     <ul>
+      <li><a href="{{url.base}}/contact">{%trans "Contact us"%}</a></li>
+      <li><a href="{{url.base}}/help">{%trans "Help Center"%}</a></li>
+      <li><a href="{{url.base}}/logo">{%trans "Logo"%}</a></li>
+     </ul>
+    </nav>
+
+    {%if false%}
+    <section class="c s12" id='footer-news'>
+     <h4>{%trans "Latest News"%}</h4>
+     {{posts(3, {"cat":['news'], 'desc':1, 'html':true})}}
+    </section>
+    {%endif%}
+
+    <div class="c s12">
+     {%include template.social%}
+    </div>
+   </div>
+
+
+   <div class="flex justify-between" id="footer-note">
+    <div>{{langList({'html':true})}}</div>
+    <div class="counter"><span data-value='{{stat}}'>{{stat | number_format | fitNumber}}</span> {%trans "Questions answered"%}</div>
+    <div class="love"><a href="{%if site.currentlang =='fa'%}https://ermile.com/fa{%else%}https://ermile.com{%endif%}" target="_blank">{%trans "Proudly Made in IRAN"%}</a></div>
+   </div>
+
+
+  </div>
+{%if perm('cp') or perm('admin') or main_account or perm('admin:everyone_login:view')%}
+<div id="xaccess">
+{%if perm('cp') and false%}<a href="{{url.base}}/cp" data-direct>{%trans "Control Panel"%}</a>{%endif%}
+{%if perm('admin')%}<a href="{{url.base}}/admin">{%trans "Admin Panel"%}</a>{%endif%}
+{%if main_account %}<a href="{{url.base}}/enter?mobile={{main_mobile}}&referer={{url.full}}" data-direct>{%trans "Exit Session"%}</a>{%endif%}
+{%if perm('admin:everyone_login:view') %}<a href="{{url.base}}/enter" data-direct>{%trans "Another Session"%}</a>{%endif%}
+</div>
+{%endif%}
+ </footer>

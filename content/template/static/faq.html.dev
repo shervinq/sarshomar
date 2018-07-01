@@ -1,0 +1,13 @@
+{%extends display.main%}
+
+{%set pageTitle%}{%trans "Sarshomar's FAQ"%}{%endset%}
+
+{%set pageDesc%}
+{%trans "Frequently asked questions in Sarshomar"%}
+{%endset%}
+
+{%block content%}
+<div class="main">
+ <div class="box"></div>
+</div>
+{%endblock%}

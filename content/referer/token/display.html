@@ -1,0 +1,51 @@
+{%extends display.main%} {%block content%}
+<div class="main pad auth">
+	<div class="box">
+		<div class="in">
+			<div id="bd">
+				<div class="auth-box">
+					<div class="app-info">
+						<div>
+							<img alt="App Name" class="app-icon" width="95" src="{{url.static}}images/delete/wordpress-logo-notext-rgb.png" title="App Title">
+						</div>
+						<div>
+							<img alt="App Name" class="app-icon" width="95" src="{{url.static}}images/delete/avatar.gif" title="App Title">
+						</div>
+					</div>
+					<h2 class="text-center title unselectable"><strong>{% trans "Authorize this application to use your account?"%}</strong></h2>
+					<h3 class="text-center">
+						وردپرس
+					</h3>
+					<div class="auth-desc text-center">
+						<div><a href="#!">www.wordpress.com</a></div>
+						<div>
+							وردپرس نرم‌افزاری تحت وب است که می‌توانید از آن برای ساختن سرویس وبلاگدهی، وبسایت یا وبلاگی زیبا و قدرتمند استفاده کنید.
+							مایلیم با افتخار اعلام کنیم که وردپرس باارزش و مجانی است.
+						</div>
+					</div>
+				</div>
+				<div class="btn-container">
+					<a class="btn primary" id="allow-token" href="referer/token" data-ajaxify data-data='{"token": "{{token}}"}' data-method='post'>{% trans "Allow"%}</a>
+					<a class="btn primary btn-deny" id="allow-token" href="referer/token" data-ajaxify data-data='{"token": "{{token}}"}' data-method='post'>{% trans "Deny"%}</a>
+				</div>
+				<hr>
+				<div class="auth-agreement">
+					{% trans "By clicking Allow, you allow this app and Sarshomar to use your information in accordnace with their respective"%}
+					<a href="{{url.base}}/terms">{% trans " terms of service "%}</a> {% trans "and"%}
+					<a href="{{url.base}}/privacy">{% trans " privacy policies "%}</a> {% trans ". You can change this at any time."%}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{%endblock%} {%block foot_js%}
+<script type="text/javascript">
+	$("#allow-token").on('ajaxify:success', function (event, _data) {
+		try {
+			// window.close();
+		} catch (f) {
+
+		}
+	});
+</script>
+{%endblock%}

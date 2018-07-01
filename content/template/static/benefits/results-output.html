@@ -1,0 +1,28 @@
+{%extends display.main%}
+
+{%set pageTitle%}{%trans "Results Output"%} | {%trans "Sarshomar"%}{%endset%}
+
+{%set pageDesc%}
+{%trans "In case there is a need to the polls' findings, you will be able to receive a variety of outputs from the results."%}
+{%endset%}
+
+
+{%block content%}
+  <div class="main pad text-based">
+   <div class="box">
+    <h2 class="special-heading">{%trans "Results Output"%}</h2>
+    <div class="in">
+
+     <div class="content">
+      <p>{%trans "In case there is a need to the polls' findings, you will be able to receive a variety of outputs from the results."%} {%trans "The results will be given to you separately and along with details so that you will be able to use the data in computational softwares."%}</p>
+     </div>
+
+     <div class="flex justify-between s-column s-align-center features-nav">
+      <a href="{{url.base}}/benefits/knowledge-base">{%trans "Knowledge Base"%}</a>
+      <a href="{{url.base}}/benefits/graphic-results">{%trans "Observing Graphic Results according to the Statistical Population"%}</a>
+     </div>
+
+    </div>
+   </div>
+  </div>
+{%endblock%}

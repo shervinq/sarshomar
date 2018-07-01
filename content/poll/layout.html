@@ -1,0 +1,791 @@
+{%extends display.main%}
+
+
+{%block poll_title%}
+ {%if poll.title%}
+  <h2>{{poll.title|raw}}</h2>
+ {%else%}
+  <h2>{%trans "Unfortunately there is no title to show!"%}</h2>
+ {%endif%}
+{%endblock%}
+
+
+{%block poll_desc%}
+ {%if poll.description%}
+  <div class="desc">{{poll.description|raw}}</div>
+ {%else%}
+ {%endif%}
+{%endblock%}
+
+
+{%block poll_toolbox%}
+ <div class="flex justify-between align-center poll-toolbox">
+  <div class="flex align-center like-fav{%if login%}{%else%} hidden{%endif%}">
+   <input type="checkbox" name="favorite" id="favorite" {% if poll.my_fav %} checked="checked" {% endif %}>
+   <label for="favorite" class="icon-star"></label>
+   <input type="checkbox" name="heart" id="heart" {% if poll.my_like %} checked="checked" {% endif %}>
+   <label for="heart" class="icon-heart"></label>
+   {%if false%}
+   <div class="flex field">
+    <label for="report" class="icon-flag"></label>
+    <select id="report">
+     <option>{%trans "Report"%}</option>
+     <option>{%trans "Spam"%}</option>
+     <option>{%trans "Breaking The Law"%}</option>
+     <option>{%trans "Privacy Issue"%}</option>
+     <option>{%trans "Not Interested"%}</option>
+    </select>
+   </div>
+   {%endif%}
+  </div>
+  {%include template.share%}
+ </div>
+{%endblock%}
+
+
+{%block guest_alert%}
+ {%if login%}
+ {%else%}
+  <div class="msg info text-center">{%trans "Simply enter to Sarshomar and participate in the poll and register your vote."%}</div>
+ {%endif%}
+{%endblock%}
+
+{%block poll_file%}
+ {%if poll.file%}
+  <img src="{{poll.file.url}}" alt="{{poll.title|raw}}" class="poll-image" data-type={{poll.file.type}}>
+ {%endif%}
+{%endblock%}
+
+
+{%block poll_summary%}
+ {%if poll.content%}
+  <p class="poll-summary">{{poll.content}}</p>
+ {%endif%}
+{%endblock%}
+
+
+{%block poll_related%}
+ {%if article_titles%}
+  <div class="poll-related">
+   <div>{%trans "Read More"%}</div>
+   <ul>
+    {%for key, value in article_titles%}
+     <li>
+      <a href="${{key}}">{{value}}</a>
+     </li>
+    {%endfor%}
+   </ul>
+  </div>
+ {%endif%}
+{%endblock%}
+
+
+{%block poll_hint%}
+ {%if poll.options.multi%}
+  <div class="poll-hint{%if login%}{%else%} hide{%endif%}">
+   <span>{{multi_msg}}</span>
+  </div>
+ {%endif%}
+{%endblock%}
+
+
+{%block poll_options%}
+ {%if poll.answers%}
+ <ul class="poll-options{%if login%}{%if answer_lock%} locked{%endif%}{%else%} guest{%endif%}{%if (poll.options.class == 'iran-provinces') or (poll.options.class == 'col2') or (poll.options.class == 'col3')%} f{%endif%}"
+  data-answer-type="{{poll_type}}"
+  data-type="{%if poll.options.multi%}multi{%endif%}"
+  {%if min%}data-multi-min="{{min}}"{%endif%}
+  {%if max%}data-multi-max="{{max}}"{%endif%}>
+ {% set myKey = 0 %}
+  {%if poll.options.multi%}
+   {%for key, value in poll.answers%}
+    {%if value.type == 'descriptive' %}
+    <li class='{%if poll.my_answer[value.key] %}selected{%endif%}{%if (poll.options.class == "iran-provinces") or (poll.options.class == "col2")%} c6 s12{%elseif (poll.options.class == "col3")%} c4 s12{%endif%}'>
+     <label for="check_other">
+      <div class="option-number" data-number='{% set myKey = myKey + 1%}{{myKey|fitNumber}}'></div>
+      <div class="option-content">
+       <input {% if answer_lock %} disabled="disabled" {% endif %} type="text" name="descriptive" placeholder="{{value.title}}" {% if poll.my_answer[value.key] %} value="{{poll.my_answer[value.key]}}" {% endif %}>
+      </div>
+      <span class="checkbox">
+       <input {% if answer_lock %} disabled="disabled" {% endif %} type="checkbox" name="check_{{value.key}}" id="check_{{value.key}}" value="{{value.key}}" {% if poll.my_answer[value.key] %} checked="checked" {% endif %}>
+       <label for="check_{{value.key}}"></label>
+      </span>
+     </label>
+    </li>
+
+    {%else%}
+
+     <li class='{%if poll.my_answer[value.key] %}selected{%endif%}{%if (poll.options.class == "iran-provinces") or (poll.options.class == "col2")%} c6 s12{%elseif (poll.options.class == "col3")%} c4 s12{%endif%}'>
+      <label for="check_{{value.key}}">
+       <div class="option-number" data-number='{% set myKey = myKey + 1%}{{myKey|fitNumber}}'></div>
+       <div class="option-content">{{value.title}}</div>
+       <div class="checkbox">
+        <input {% if answer_lock %} disabled="disabled" {% endif %} type="checkbox" name="check_{{value.key}}" id="check_{{value.key}}" value="{{value.key}}" {% if poll.my_answer[value.key] %} checked="checked" {% endif %}>
+        <label for="check_{{value.key}}"></label>
+       </div>
+      </label>
+     </li>
+
+    {%endif%}
+   {%endfor%}
+  {%else%}{# if not muliple_choice #}
+   {%for key, value in poll.answers%}
+    {%if value.type == 'descriptive' %}
+
+     <li class='{%if poll.my_answer[value.key] %}selected{%endif%}{%if (poll.options.class == "iran-provinces") or (poll.options.class == "col2")%} c6 s12{%elseif (poll.options.class == "col3")%} c4 s12{%endif%}'>
+      <label for="radio_other">
+       <div class="option-number" data-number='{% set myKey = myKey + 1%}{{myKey|fitNumber}}'></div>
+       <div class="option-content">
+        <input {% if answer_lock %} disabled="disabled" {% endif %} type="text" name="descriptive" placeholder="{{value.title}}" data-response='radio_other' {% if poll.my_answer[value.key] %} value="{{poll.my_answer[value.key]}}" {% endif %}>
+       </div>
+       <span class="checkbox">
+        <input {% if answer_lock %} disabled="disabled" {% endif %} type="radio" name="anwserOpt" id="radio_{{value.key}}" value="{{value.key}}" {% if poll.my_answer[value.key] %} checked="checked" {% endif %}>
+        <label for="radio_{{value.key}}"></label>
+       </span>
+      </label>
+     </li>
+
+    {%else%}
+
+     <li class='{%if poll.my_answer[value.key] %}selected{%endif%}{%if (poll.options.class == "iran-provinces") or (poll.options.class == "col2")%} c6 s12{%elseif (poll.options.class == "col3")%} c4 s12{%endif%}'>
+      <label for="radio_{{value.key}}">
+       <div class="option-number" data-number='{% set myKey = myKey + 1%}{{myKey|fitNumber}}'></div>
+       <div class="option-content">{{value.title}}</div>
+       <span class="checkbox">
+        <input {% if answer_lock %} disabled="disabled" {% endif %} type="radio" name="anwserOpt" id="radio_{{value.key}}" value="{{value.key}}" {% if poll.my_answer[value.key] %} checked="checked" {% endif %}>
+        <label for="radio_{{value.key}}"></label>
+       </span>
+      </label>
+     </li>
+
+    {%endif%}
+   {%endfor%}
+  {%endif%}
+ </ul>
+ {%else%}
+ <div class="msg danger">{%trans "There is no option!"%}</div>
+ {%endif%}
+{%endblock%}
+
+
+{%block poll_skip%}
+ {%if poll.answers and 'skip' in answer_available%}
+  <div class="poll-skip{%if login%}{%if answer_lock%} hide{%endif%}{%else%} hide{%endif%}">
+   <input {% if is_skipped%}{% endif %} {% if answer_lock %} disabled="disabled" {% endif %} type="submit" id="skipAnswers" value='{%trans "Skip"%}'>
+  </div>
+ {%endif%}
+{%endblock%}
+
+
+{%block poll_actions%}
+ <div class="poll-actions{%if login%}{%else%} hide{%endif%}">
+   <a class="special-btn prev {%if not login or answer_lock %}disabled{% endif %}" href="{{url.base}}/prev?current={{url.path}}" data-direct >{%trans "Previous"%}</a>
+   <button class="special-btn base {%if not login or answer_lock %}disabled{% endif %}" id="saveAnswers" type="submit" {%if not login or answer_lock %} disabled {% endif %} >{%trans "Save Answer"%}</button>
+   <a class="special-btn next disabled" href="{{url.base}}/ask" data-direct>{%trans "Next"%}</a>
+ </div>
+{%endblock%}
+
+
+
+
+
+
+
+{%block poll_interaction2%}
+ <input type="checkbox" name="favorite" id="favorite">
+ <label for="favorite" class="icon-star"></label>
+ <input type="checkbox" name="heart" id="heart">
+ <label for="heart" class="icon-heart like"></label>
+{%endblock%}
+
+{%block poll_content2%}
+{%if poll.content%}
+ <p>{{poll.content}}</p>
+{%endif%}
+{%endblock%}
+
+
+{%block poll_read_more2%}
+{%if article_titles%}
+ <div class="read-more">
+  <span>{%trans "Read More"%}</span>
+  {%for key, value in article_titles%}
+  <a href="${{key}}">{{value}}</a>
+  {%endfor%}
+ </div>
+{%endif%}
+{%endblock%}
+
+
+{%block poll_guide2%}
+ {%if poll.options.multi%}
+  <div class="poll-guide">{%trans "You can select just two options."%}</div>
+ {%endif%}
+{%endblock%}
+
+{%block poll_options2%}
+ {%if poll.answers%}{#check post meta exist#}
+  {%if poll.options.multi%}
+   <ul>
+   {%for key, value in poll.answers%}
+
+   {%if value.type == 'descriptive' %}
+    <li>
+     <input type="checkbox" id="check_other" class="answer-link" data-key="opt_{{key}}" value="other">
+     <label for="check_other" data-number="{{key}}"><input type="text" name="{{key}}" name="opt_other"></label>
+    </li>
+    {%else%}
+    <li>
+     <input type="checkbox" name="check_{{key}}" id="check_{{key}}"  class="answer-link" data-key="{{key}}" value="{{value.title}}">
+     <label for="check_{{key}}" data-number="{{key}}">{{value.title}}</label>
+    </li>
+   {%endif%}
+
+   {%endfor%}
+   </ul>
+  {%else%}{#muliple_choice not set load the radio mod#}
+   <ul>
+   {%for key, value in poll.answers%}
+
+    {%if value.type == 'descriptive' %}
+    <li>
+     <input type="radio" name="radio" id="radio_other" class="answer-link" data-key="opt_{{key}}" value="other">
+     <label for="radio_other" data-number="{{key}}"><input type="text" name="opt_other"></label>
+    </li>
+    {%else%}
+    <li>
+     <span class="checkbox">
+      <input type="radio" name="radio" id="radio_{{key}}" class="answer-link" data-key="{{key}}"  value="{{key}}">
+      <label class="check-box" for="radio_{{key}}" data-number="{{key}}"></label>
+     </span>
+     <label for="radio_{{key}}" data-number="{{key}}">
+      {{value.title}}
+     </label>
+    </li>
+   {%endif%}
+   {%endfor%}
+   </ul>
+  {%endif%}
+  <input type="submit" name="opt_0" value='{%trans "I am not willing to answer"%}' class="skip">
+ {%endif%}
+{%endblock%}
+
+
+{%block poll_buttons2%}
+ <div class="btn-container poll">
+ {%if poll.answers%}
+  <button class="btn secondary save-answer"
+    {% if login %}{%else%} disabled="disabled" {%endif%}>{%trans "Save Answer"%}
+  </button>
+ {%else%}
+  <a class="btn save-answer" href="ask" data-direct>{%trans "Ask Me"%}</a>
+ {%endif%}
+ </div>
+{%endblock%}
+
+
+{%block poll_chart%}
+ <div class="menu">
+  <div class="menu-inside">
+   {%for key, value in chart.stacked%}
+   <input type="radio" name="chart_result" id="chart_{{key}}" value="{{key}}" {%if key=="result"%}checked{%endif%}>
+   <label for="chart_{{key}}"><span>{{value | capitalize}}</span></label>
+   {%endfor%}
+  </div>
+ </div>
+
+ {%if poll.result.summary.total == 0%}
+ <div class="in small isDataNotExist"><div class="msg info">{%trans "There is no data to draw chart!"%}</div></div>
+ {%endif%}
+ {{block('chart')}}
+{%endblock%}
+
+{%block chart%}
+ <div class="chart" data-format='pollTotal_default' data-vals='{{poll_total_stats|raw}}' data-trans='{{poll_trans}}'></div>
+
+ <div class="f opt-media-box align-center">
+{%for key, myOpt in poll.answers%}
+  <div class="c">
+{%if myOpt.file.type == 'image'%}
+{%set optfileUrl%}{% if myOpt.file.url %}{{myOpt.file.url}}{%else%}{{url.static}}/images/logo.png{%endif%}{%endset%}
+
+  <img src='{{myOpt.file.url}}' alt='{{myOpt.title}}'>
+{%endif%}
+  </div>
+{%endfor%}
+ </div>
+{%endblock%}
+
+
+{%block poll_table%}
+ <div class="myTable center">
+  <div class="f th">
+   <div class="c1">{%trans "Rank"%}</div>
+   <div class="c8">{%trans "Item"%}</div>
+   <div class="c">{%trans "Vote"%}</div>
+   <div class="c">{%trans "Ratio"%}</div>
+  </div>
+
+{%set optTotal = 0%}
+{%for key, optRow in poll_table%}
+  <div class="f">
+   <div class="c1">{{loop.index |fitNumber}}</div>
+   <div class="c8">{{optRow.title}}</div>
+   <div class="c">{{optRow.value |number_format|fitNumber}}</div>
+   <div class="c">{{ optRow.ratio |fitNumber}}%</div>
+{%set optTotal = optTotal + optRow.value%}
+  </div>
+{%endfor%}
+
+{%if false%}
+  <div class="f tf">
+   <div class="c1">{%trans "Total"%}</div>
+   <div class="c8"></div>
+   <div class="c">{{optTotal |number_format|fitNumber}} {%trans "Person"%}</div>
+   <div class="c"></div>
+  </div>
+{%endif%}
+ </div>
+{%endblock%}
+
+
+{%block poll_similar%}
+ {% set similar =  similar_post({"post_id":poll.id|shortURL('decode'),"term_type" :"sarshomar%" , "termusage_foreign": "tag", "post_status": "publish", "post_privacy": "public", "post_sarshomar" :1})%}
+
+{% if similar %}
+ <div class="title">{%trans "Similar Questions"%}</div>
+  <ul>
+   {%for key, value in similar%}
+   <li><a href="{{url.base}}/{{value.url}}">{{value.title}}</a></li>
+   {%endfor%}
+  </ul>
+{% endif %}
+
+{% if similar|length < 5%}
+    {% set last_post =  post_search({"post_type":"poll","post_status" :"publish" , "post_sarshomar" :1,  "post_privacy": "public", "order":"desc", "limit":(10-(similar|length))  }) %}
+    {% if last_post %}
+    <div class="title">{%trans "Latest Questions"%}</div>
+    <ul>
+     {%for key, value in last_post%}
+     <li><a href="{{url.base}}/{{value.post_url}}">{{value.post_title}}</a></li>
+     {%endfor%}
+    </ul>
+    {%else%}
+    <div class="title">{%trans "Similar Questions"%}</div>
+    <div class="content">{%trans "There is no similar post"%}</div>
+    {% endif %}
+  {% endif %}
+{%endblock%}
+
+
+{%block poll_info%}
+{{block('poll_status')}}
+{{block('poll_count')}}
+{%if perm('admin:admin:view')%}
+{{block('poll_skip_count')}}
+{{block('poll_privacy')}}
+{{block('poll_range')}}
+{{block('poll_author')}}
+{%endif%}
+{%endblock%}
+
+
+
+{%block poll_status%}
+ <div class="title">{%trans "Status and period of publish"%}</div>
+ <div class="content">
+  <span class="{{poll.status}}">{%set myStatus = poll.status|capitalize%}{%trans myStatus%}</span>
+ </div>
+{%endblock%}
+
+{%block poll_count%}
+ <div class="title">{%trans "People voted to this poll"%}</div>
+ <div class="content">
+  <span>{{ (poll.result.summary.total) |number_format|fitNumber}}</span>
+ </div>
+{%endblock%}
+
+{%block poll_skip_count%}
+ <div class="title">{%trans "Skip"%}</div>
+ <div class="content">
+  {{poll.count_skip|number_format|fitNumber}}
+ </div>
+ {%if poll.vote_skip%}
+
+ <div class="title">{%trans "Skip/Votes"%}</div>
+ <div class="content">
+  {{poll.vote_skip|fitNumber}}%
+ </div>
+ {%endif%}
+{%endblock%}
+
+{%block poll_privacy%}
+ <div class="title">{%trans "Privacy"%}</div>
+ <div class="content">
+  {%set myPrivacy = poll.privacy%} {%trans myPrivacy%}
+ </div>
+{%endblock%}
+
+{%block poll_author%}
+ <div class="title">{%trans "Author"%}</div>
+ <div class="content">
+  <a href='{{url.base}}/admin/logs/user={{poll.user_id|shortURL("decode")}}'>{{poll.user_id|shortURL("decode")}}</a>
+ </div>
+{%endblock%}
+
+{%block poll_range%}
+ <div class="title">{%trans "Range"%}</div>
+ <div class="content">
+  <span>{%if poll.filters.count == 1000000000%}{%trans "All society of Sarshomar"%}{%else%}{{poll.filters.count|number_format|fitNumber}}{%endif%}</span>
+ </div>
+{%endblock%}
+
+{%block poll_period%}
+ <div class="title">{%trans "Poll timespan"%}</div>
+ {%if poll.schedule.start or poll.schedule.end %}
+  <div class="content period">
+   <span class="start-time">{{poll.schedule.start}}</span><span>{%trans "to"%}</span><span class="end-time">{{poll.schedule.end}}</span>
+  </div>
+ {%else%}
+  <div class="content">{%trans "Not set"%}</div>
+ {%endif%}
+{%endblock%}
+
+{%block poll_tags%}
+ <div class="title">{%trans "Keyword"%}</div>
+ {%if poll.tags%}
+  <div class="content tags">
+  {%for key, value in poll.tags%}
+   <a href="{{value.url}}">{{value.title}}</a>
+  {%endfor%}
+  </div>
+ {%else%}
+  <div class="content">{%trans "Not set"%}</div>
+ {%endif%}
+{%endblock%}
+
+
+{%block poll_filters%}
+{{block('poll_tags')}}
+ {%if poll_have_filters%}
+  <div class="title">{%trans "Audiences of this poll"%}</div>
+ {%endif%}
+ <div class="content">
+ {%if poll.filters%}
+  {%for key, value in poll.filters%}
+   {%if key == 'count'%}
+   {%else%}
+     {% for k, v in value%}
+      {% set val = v %}
+      <span>{%trans val%}</span>
+     {%endfor%}
+   {%endif%}
+  {%endfor%}
+  </div>
+ {%else%}
+  <div class="content no-data">{%trans "Not set"%}</div>
+ {%endif%}
+
+ {%if poll.tree.url%}
+ <div class="title">{%trans "Tree"%}</div>
+ {#<div class="tree-msg">{%trans "You've answered to this poll"%}</div>#}
+ <div class="content">
+  <a class="tree-link" href="{{poll.tree.url}}">{{poll.tree.title}}</a>
+ </div>
+ {%endif%}
+{%endblock%}
+
+
+{%block poll_comments%}
+ <div class="row auto">
+  {{block('comments_overall')}}
+  {{block('comment')}}
+  {{block('comment')}}
+ </div>
+ <div class="row auto">
+  {{block('user_comment')}}
+  {{block('comment')}}
+  {{block('comment')}}
+ </div>
+{%endblock%}
+
+
+{%block comments_overall%}
+ <div class="span4">
+ {%if rate.total%}
+  <div class="overall">
+   {%if site.currentlang == "fa"%}{{rate.total | fitNumber}}{%else%}{{rate.total}}{%endif%}
+  </div>
+
+  <div class="stars total">
+   {%for i in 1..rate.total%}
+   <span class="icon-star star active"></span>
+   {%endfor%}
+   <span class="number">?</span>
+  </div>
+
+  <div class="bars">
+   <div class="bar one" style="width:width:{{rate.rate5 * 20}}%"></div>
+   <div class="bar two" style="width:{{rate.rate4 * 20}}%" ></div>
+   <div class="bar three" style="width:{{rate.rate3 * 20}}%" ></div>
+   <div class="bar four" style="width:{{rate.rate2 * 20}}%" ></div>
+   <div class="bar five" style="width:{{rate.rate1 * 20}}%" ></div>
+  </div>
+ {%else%}
+  <div>{%trans "There is nothing to display!"%}</div>
+ {%endif%}
+ </div>
+{%endblock%}
+
+
+{%block user_comment%}
+ <div class="span4 user-comment">
+  <form method="post">
+   <div class="title">{%trans "What is your opinion? Please rate this poll."%}</div>
+   <textarea></textarea>
+   <div class="row auto footer">
+    <div class="span6">
+      <div class="star-rating-wrap">
+        <input class="star-rating-input" id="star-rating-5" type="radio" name="rating" value="5">
+        <label class="star-rating-ico icon-star-o" for="star-rating-5" title="5 out of 5 stars"></label>
+        <input class="star-rating-input" id="star-rating-4" type="radio" name="rating" value="4">
+        <label class="star-rating-ico icon-star-o" for="star-rating-4" title="4 out of 5 stars"></label>
+        <input class="star-rating-input" id="star-rating-3" type="radio" name="rating" value="3">
+        <label class="star-rating-ico icon-star-o" for="star-rating-3" title="3 out of 5 stars"></label>
+        <input class="star-rating-input" id="star-rating-2" type="radio" name="rating" value="2">
+        <label class="star-rating-ico icon-star-o" for="star-rating-2" title="2 out of 5 stars"></label>
+        <input class="star-rating-input" id="star-rating-1" type="radio" name="rating" value="1">
+        <label class="star-rating-ico icon-star-o" for="star-rating-1" title="1 out of 5 stars"></label>
+      </div>
+    </div>
+    <div class="span6">
+      <button class="submit-comment">{%trans "Submit"%}</button>
+    </div>
+   </div>
+  </form>
+ </div>
+{%endblock%}
+
+
+{%block comment%}
+ <div class="span4">
+  <div class="comment">
+   <div class="comment-header">
+    <div class="author">sahelekaj</div>
+    <div class="stars">
+     <span class="icon-star star active" aria-hidden="true"></span>
+     <span class="icon-star star active" aria-hidden="true"></span>
+     <span class="icon-star star active" aria-hidden="true"></span>
+     <span class="icon-star star active" aria-hidden="true"></span>
+     <span class="icon-star star active" aria-hidden="true"></span>
+    </div>
+    <div class="date">1395/02/18</div>
+   </div>
+   <div class="comment-body">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <div class="row auto comment-footer">
+     <div class="score minus">
+      <span class="icon">-</span><span class="value">106</span>
+     </div>
+     <div class="score plus">
+      <span class="value">358</span><span class="icon">+</span>
+     </div>
+     <div class="flag"><i class="icon-flag-o"></i></div>
+     <span class="continue">{%trans "Continue"%}</span>
+    </div>
+   </div>
+  </div>
+ </div>
+{%endblock%}
+
+
+
+
+{%block poll_admin%}
+
+{%if perm('admin:admin:view')%}
+
+<div class="admin-toolbox">
+<div class="f">
+  <div class="prev">
+    <a href="#!">
+    <i class="icon-angle-left icon-5x"></i>
+    </a>
+  </div>
+  <div class="tools-content c11 f align-center">
+    <div class="toolbox-btn">
+
+      <form method="post" action="{{url.base}}/admin/knowledge">
+        <input type="hidden" name="id" value="{{poll.id}}">
+        <input type="hidden" name="type" value="homepage">
+        <input type="hidden" name="checked" value="true">
+        <button type="submit"><i class="icon-home icon-2x"></i></button>
+      </form>
+      <form method="post" action="{{url.base}}/admin/knowledge">
+        <input type="hidden" name="id" value="{{poll.id}}">
+        <input type="hidden" name="type" value="homepage">
+        <input type="hidden" name="checked" value="false">
+        <button type="submit"><i class="icon-times-circle icon-2x"></i></button>
+      </form>
+
+        <a data-method="get" href="{{url.base}}/admin" data-data='{"refresh_chart":"{{poll.id}}"}' data-ajaxify>{%trans "Refresh Chart"%}</a>
+
+
+    <div class="flex justify-around align-center check-slider">
+    <!--  <div>
+      <input type="checkbox" id="show_in_homepage" {% if show_in_homepage%} checked="checked" {%endif%} data-id="{{poll.id}}" />
+      <label for="show_in_homepage"></label>
+     </div> -->
+     <a href="{{url.base}}/@/add/{{poll.id}}">{%trans "Edit"%}</a>
+    </div>
+
+
+
+    </div>
+    <div class="toolbox-btn">
+      <form method="post" action="{{url.base}}/admin/knowledge">
+        <input type="hidden" name="id" value="{{poll.id}}">
+        <input type="number" name="vip-value" placeholder="{%trans "VIP Value"%}" value="{{poll_ranks.vip}}" autocomplete="off">
+        <button type="submit"><i class="icon-check icon-2x"></i></button>
+      </form>
+    </div>
+    <div class="toolbox-btn">
+      <form method="post" action="{{url.base}}/admin/knowledge">
+        <input type="hidden" name="id" value="{{poll.id}}">
+        <select  name="status">
+          <option value="" disabled selected>{%trans "Select"%}</option>
+          <option value="stop">{%trans "stop"%}</option>
+          <option value="pause">{%trans "pause"%}</option>
+          <option value="trash">{%trans "trash"%}</option>
+          <option value="publish">{%trans "publish"%}</option>
+          <option value="draft">{%trans "draft"%}</option>
+          <option value="enable">{%trans "enable"%}</option>
+          <option value="disable">{%trans "disable"%}</option>
+          <option value="deleted">{%trans "deleted"%}</option>
+          <option value="schedule">{%trans "schedule"%}</option>
+          <option value="expired">{%trans "expired"%}</option>
+          <option value="awaiting">{%trans "awaiting"%}</option>
+          <option value="filtered">{%trans "filtered"%}</option>
+          <option value="blocked">{%trans "blocked"%}</option>
+          <option value="spam">{%trans "spam"%}</option>
+          <option value="violence">{%trans "violence"%}</option>
+          <option value="pornography">{%trans "pornography"%}</option>
+          <option value="other">{%trans "other"%}</option>
+        </select>
+        <button type="submit"><i class="icon-check icon-2x"></i></button>
+      </form>
+    </div>
+    <div class="c2">
+      <div class="toolbox-btn f nowrap">
+        <form class="publish" method="post" action="{{url.base}}/admin/knowledge">
+          <input type="hidden" name="id" value="{{poll.id}}">
+          <input type="hidden" name="status" value="publish">
+          <input type="submit" class="" value='{%trans "publish" %}'>
+        </form>
+        <form class="draft" method="post" action="{{url.base}}/admin/knowledge">
+          <input type="hidden" name="id" value="{{poll.id}}">
+          <input type="hidden" name="status" value="draft">
+          <input type="submit" value='{%trans "draft" %}'>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="next">
+    <a href="#!">
+    <i class="icon-angle-right icon-5x"></i>
+    </a>
+  </div>
+</div>
+</div>
+
+{%endif%}
+
+{%endblock%}
+
+
+{%block poll_panel%}
+<div class='poll-panel unselectable'>
+
+ <div class='poll-answered'>
+  <a class='poll-answered-count' href='{{url.full}}#result'>{{ (poll.result.summary.total) |number_format|fitNumber}}</a>
+  <div class="poll-answered-label">
+   <span>{%trans "People Voted"%}</span>
+   <span class='poll-answered-you{%if poll.my_answer%}{%else%} hide{%endif%}'>+ {%trans "You"%}</span>
+  </div>
+ </div>
+
+ <div class='f poll-panel-item poll-status'>
+  <span class='c3 flex justify-center align-center icon-{{poll.status}}'></span>
+  <span class='c poll-panel-label'>{%set myStatus = poll.status|capitalize%}{%trans myStatus%}</span>
+ </div>
+
+ <div class='f poll-panel-item poll-who'>
+  <span class='c3 flex justify-center align-center icon-smile-o'></span>
+  {%if poll.sarshomar%}
+  <span class='c poll-panel-label'>{%trans "Sarshomar"%}</span>
+  {%else%}
+  <span class='c poll-panel-label'>{%trans "People"%}</span>
+  {%endif%}
+ </div>
+
+ {%if false%}
+ <div class='f poll-panel-item poll-lo‍ttery'>
+  <span class='c3 flex justify-center align-center icon-gift'></span>
+  <span class='c poll-panel-label'>{%trans "Lottery"%}</span>
+ </div>
+ {%endif%}
+ {%if poll.options.prize.value%}
+ <div class='f poll-panel-item poll-gift'>
+  <span class='c3 flex justify-center align-center icon-coin'></span>
+  <span class='c poll-panel-label'>
+    {%if poll.options.prize.value > 1%}
+    {{poll.options.prize.value|number_format|fitNumber}}
+    {%else%}
+    {{poll.options.prize.value|fitNumber}}
+    {%endif%}
+    {%set myUnit = poll.options.prize.unit %}
+    {%trans myUnit%}
+    </span>
+ </div>
+ {%endif%}
+
+{%if poll.user_id == login.id|shortURL("encode") or perm('admin:admin:view')%}
+ <nav class='poll-panel-nav'>
+  <a class='f{%if "publish" in  status_avalible.available%}{%else%} hide{%endif%}' data-data='{"status": "publish", "redirect_url":"{{url.full}}"}' data-method='post' href='{{url.base}}/@/add/{{poll.id}}' data-ajaxify data-direct>
+   <span class='c3 flex justify-center align-center icon-delivered'></span>
+   <span class='c'>{%trans "Publish"%}</span>
+  </a>
+
+  <a class='f{%if "trash" in  status_avalible.available%}{%else%} hide{%endif%}' data-data='{"status": "trash", "redirect_url":"{{url.full}}"}' data-method='post' href='{{url.base}}/@/add/{{poll.id}}'  data-ajaxify data-direct>
+   <span class='c3 flex justify-center align-center icon-trash-o'></span>
+   <span class='c'>{%trans "Trash"%}</span>
+  </a>
+
+  <a class='f{%if "delete" in  status_avalible.available%}{%else%} hide{%endif%}' data-data='{"status": "delete", "redirect_url":"{{url.full}}"}' data-method='post' href='{{url.base}}/@/add/{{poll.id}}'  data-ajaxify data-direct>
+   <span class='c3 flex justify-center align-center icon-times-circle'></span>
+   <span class='c'>{%trans "Delete"%}</span>
+  </a>
+
+  <a class='f{%if "stop" in  status_avalible.available%}{%else%} hide{%endif%}' data-data='{"status": "stop", "redirect_url":"{{url.full}}"}' data-method='post' href='{{url.base}}/@/add/{{poll.id}}'  data-ajaxify data-direct>
+   <span class='c3 flex justify-center align-center icon-stop2'></span>
+   <span class='c'>{%trans "Stop"%}</span>
+  </a>
+
+  <a class='f{%if "pause" in  status_avalible.available%}{%else%} hide{%endif%}' data-data='{"status": "pause", "redirect_url":"{{url.full}}"}' data-method='post' href='{{url.base}}/@/add/{{poll.id}}'  data-ajaxify data-direct>
+   <span class='c3 flex justify-center align-center icon-pause2'></span>
+   <span class='c'>{%trans "Pause"%}</span>
+  </a>
+
+  <a class='f{%if "draft" in  status_avalible.available%}{%else%} hide{%endif%}' data-data='{"status": "draft", "redirect_url":"{{url.full}}"}' data-method='post' href='{{url.base}}/@/add/{{poll.id}}'  data-ajaxify data-direct>
+   <span class='c3 flex justify-center align-center icon-pencil'></span>
+   <span class='c'>{%trans "Draft"%}</span>
+  </a>
+ </nav>
+ {%endif%}
+</div>
+{%endblock%}

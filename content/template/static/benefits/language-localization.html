@@ -1,0 +1,29 @@
+{%extends display.main%}
+
+{%set pageTitle%}{%trans "Language Localization"%} | {%trans "Sarshomar"%}{%endset%}
+
+{%set pageDesc%}
+{%trans "Sarshomar does its best to provide you with an ideal impression."%} {%trans "To that end, we are improving our service to support more and more languages so that you will be able to use our service via your own language."%}
+{%endset%}
+
+
+{%block content%}
+  <div class="main pad text-based">
+   <div class="box">
+    <h2 class="special-heading">{%trans "Language Localization"%}</h2>
+    <div class="in">
+
+     <div class="content">
+      <p>{%trans "Sarshomar does its best to provide you with an ideal impression."%} {%trans "To that end, we are improving our service to support more and more languages so that you will be able to use our service via your own language."%}</p>
+      <p>{%trans "In case you are interested to help us to localize more languages, please contact Sarshomar."%}</p>
+     </div>
+
+     <div class="flex justify-between s-column s-align-center features-nav">
+      <a href="{{url.base}}/benefits/essay-type-questions">{%trans "Receiving Answers to Essay-type Questions"%}</a>
+      <a href="{{url.base}}/benefits/social-networks">{%trans "Service Provision via Social Networks"%}</a>
+     </div>
+
+    </div>
+   </div>
+  </div>
+{%endblock%}

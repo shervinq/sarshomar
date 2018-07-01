@@ -1,0 +1,102 @@
+{%extends display.mvc%}
+
+{%block favicon%}
+ <meta name     ="msapplication-TileColor" content="#b91d47"/>
+ <meta name     ="msapplication-TileImage" content="{{url.static}}images/favicons/mstile-144x144.png?v=1"/>
+ <meta name     ="msapplication-config"    content="{{url.static}}images/favicons/browserconfig.xml?v=1"/>
+ <meta name     ="theme-color"             content="#ffffff"/>
+ <link rel="apple-touch-icon" href="{{url.static}}images/favicons/apple-touch-icon.png?v=1" sizes="180x180"/>
+ <link rel="icon"             href="{{url.static}}images/favicons/favicon-32x32.png?v=1" type="image/png" sizes="32x32"/>
+ <link rel="icon"             href="{{url.static}}images/favicons/favicon-16x16.png?v=1" type="image/png" sizes="16x16"/>
+ <link rel="manifest"         href="{{url.static}}images/favicons/manifest.json?v=1"/>
+ <link rel="mask-icon"        href="{{url.static}}images/favicons/safari-pinned-tab.svg?v=1"/>
+ <link rel="shortcut icon"    href="{{url.static}}images/favicons/favicon.ico?v=1"/>
+{%endblock%}
+
+
+{%block facebook%}
+ <meta property ="og:title"                content="{{pageTitle}}"/>
+ <meta property ="og:description"          content="{{pageDesc}}"/>
+ <meta property ="og:url"                  content="{{url.full}}"/>
+ <meta property ="og:type"                 content="website"/>
+{%if site.currentlang == 'fa'%}
+ <meta property ='og:locale'               content='fa_IR'/>
+{%endif%}
+{%if poll.file%}
+ <meta property ="og:image"                content="{{poll.file.url}}"/>
+ <meta property ="og:image:width"          content="512"/>
+ <meta property ="og:image:height"         content="512"/>
+{%else%}
+{%if site.currentlang == 'fa'%}
+ <meta property ="og:image"                content="{{url.static}}images/share/og-wide-fa.png"/>
+{%else%}
+ <meta property ="og:image"                content="{{url.static}}images/share/og-wide-en.png"/>
+{%endif%}
+ <meta property ="og:image:width"          content="525"/>
+ <meta property ="og:image:height"         content="275"/>
+ <meta property ="og:image"                content="{{url.static}}images/share/og-square.png"/>
+ <meta property ="og:image:width"          content="512"/>
+ <meta property ="og:image:height"         content="512"/>
+{%endif%}
+{%endblock%}
+
+
+{%block head_css%}
+ <link rel="stylesheet"       href="{{url.static}}{{'css/style.css' | filemtime(true)}}">
+ {%if perm('admin:admin:view')%}
+<link rel="stylesheet"       href="{{url.static}}{{'css/style-admin.css' | filemtime(true)}}">
+ {%endif%}
+<link rel="stylesheet"       href="{{url.static}}{{'css/responsive.css' | filemtime(true)}}">
+{%endblock%}
+
+{%block body%}
+ <div class="container">
+  {%include template.header%}
+
+  <div class="wrapper" data-xhr='wrapper' {%if notlogin %} data-modal='not-login' {%endif%}>
+ {%block content%}{%endblock%}
+  </div>
+
+  {% include template.inestimable %}
+ </div>
+{% include template.footer %}
+
+{%block modal%}
+ {% if not login and false%}
+  <div class='modal' id='not-login'>
+   <form class='modal-dialog' method='post' action="{{base.url}}/account/login">
+   <h3 class='modal-title'>{%trans "Login or Try"%}</h3>
+   <div class='modal-body'>
+    <div class="element no-pad ltr">
+     <label class="title small" for="mobile">{%trans "Mobile"%}</label>
+     <input class="input" type="text" name="mobile" id="mobile" placeholder='{%trans "e.g: +989120000000"%}'>
+    </div>
+    <div class="element no-pad ltr">
+     <label class="title small" for="password">{%trans "Password"%}</label>
+     <input class="input" type="password" name="password" id="password" placeholder='{%trans "Password"%}'>
+    </div>
+    <div class="row auto btn-container center">
+     <button class="btn" type="submit">{%trans "Login"%}</button>
+     <a class="btn primary" href="{{url.base}}/benefits/guest">{%trans "Try Sarshomar"%}</a>
+    </div>
+   </div>
+  </form>
+ </div>
+ {%endif%}
+{%endblock%}
+
+{%set introOption%}
+.setOptions({ 'nextLabel': '{%trans "Next →"%}', 'prevLabel': '{%trans "← Back"%}', 'skipLabel': '{%trans "Skip"%}', 'doneLabel': '{%trans "Done"%}', 'showStepNumbers': 'false', 'showProgress': 'true' })
+{%endset%}
+{%endblock%}
+
+
+{%block alexaCertify2%}
+<!-- Start Alexa Certify Javascript -->
+<script type="text/javascript">
+_atrk_opts = { atrk_acct:"ExFQo1IWx8105T", domain:"sarshomar.com",dynamic: true};
+(function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
+</script>
+<noscript><img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=ExFQo1IWx8105T" style="display:none" height="1" width="1" alt="" /></noscript>
+<!-- End Alexa Certify Javascript -->
+{%endblock%}

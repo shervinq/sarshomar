@@ -1,0 +1,30 @@
+{%extends display.main%}
+
+{%set pageTitle%}{%trans "Graphic Results"%} | {%trans "Sarshomar"%}{%endset%}
+
+{%set pageDesc%}
+{%trans "Graphs are powerful means that might not take more than a few minutes to study; however, they can provide you with a large amount of complicated information in a simple and effective way."%}
+{%endset%}
+
+
+{%block content%}
+  <div class="main pad text-based">
+   <div class="box">
+    <h2 class="special-heading">{%trans "Observing Graphic Results according to the Statistical Population"%}</h2>
+    <div class="in">
+
+     <div class="content">
+      <p>{%trans "Graphs are powerful means that might not take more than a few minutes to study; however, they can provide you with a large amount of complicated information in a simple and effective way."%}</p>
+
+      <p>{%trans "Polls' charts and tables, based on separate statistical populations of the respondents as well as their key factors, are available in Sarshomar."%} {%trans "These key factors include gender, age range, marital status, academic degree, educational status and residence."%}</p>
+     </div>
+
+     <div class="flex justify-between s-column s-align-center features-nav">
+      <a href="{{url.base}}/benefits/results-output">{%trans "Results Output"%}</a>
+      <a href="{{url.base}}/benefits/essay-type-questions">{%trans "Receiving Answers to Essay-type Questions"%}</a>
+     </div>
+
+    </div>
+   </div>
+  </div>
+{%endblock%}

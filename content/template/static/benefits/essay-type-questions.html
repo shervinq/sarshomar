@@ -1,0 +1,30 @@
+{%extends display.main%}
+
+{%set pageTitle%}{%trans "Essay-type Questions"%} | {%trans "Sarshomar"%}{%endset%}
+
+{%set pageDesc%}
+{%trans "Ask essay-type questions and receive valid and complete answers."%}
+{%endset%}
+
+
+{%block content%}
+  <div class="main pad text-based">
+   <div class="box">
+    <h2 class="special-heading">{%trans "Receiving Answers to Essay-type Questions"%}</h2>
+    <div class="text-based-container">
+
+     <div class="content">
+      <p>{%trans "Ask essay-type questions and receive valid and complete answers."%} {%trans "In addition to ordinary multiple questions, and in order to have complete relation with addressees, there is the possibility of adding essay-type questions and receiving the related answers from addressees."%}</p>
+
+      <p>{%trans "For instance, such a feature has a special usage in scientific foundations for administering examinations and in organizations and business centers for receiving opinions and suggestions."%}</p>
+     </div>
+
+     <div class="flex justify-between s-column s-align-center features-nav">
+      <a href="{{url.base}}/benefits/graphic-results">{%trans "Observing Graphic Results according to the Statistical Population"%}</a>
+      <a href="{{url.base}}/benefits/language-localization">{%trans "Language Localization"%}</a>
+     </div>
+
+    </div>
+   </div>
+  </div>
+{%endblock%}
