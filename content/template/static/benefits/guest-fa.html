@@ -28,7 +28,7 @@
       <div class="captcha-box" data-response='guest-button' data-response-hide>
        <h3>{%trans "Please enter shown numbers here"%}</h3>
        <div class="captcha-container">
-        <form method="post" action="{{url.base}}/@" class="form-container">
+        <form method="post" action="{{url.kingdom}}/@" class="form-container">
          <input type="number" name="captcha" min="0" max="9999">
          <input type="submit" class="try submit" value='{%trans "submit"%}'>
         </form>
@@ -39,8 +39,8 @@
 
       {%if login%}
       <div class="flex justify-between s-column s-align-center features-nav">
-       <a href="{{url.base}}/benefits/question-charts">{%trans "Question Charts"%}</a>
-       <a href="{{url.base}}/benefits/multimedia-questions">{%trans "Multimedia Questions"%}</a>
+       <a href="{{url.kingdom}}/benefits/question-charts">{%trans "Question Charts"%}</a>
+       <a href="{{url.kingdom}}/benefits/multimedia-questions">{%trans "Multimedia Questions"%}</a>
       </div>
       {%endif%}
      </div>

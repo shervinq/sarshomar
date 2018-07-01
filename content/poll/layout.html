@@ -179,9 +179,9 @@
 
 {%block poll_actions%}
  <div class="poll-actions{%if login%}{%else%} hide{%endif%}">
-   <a class="special-btn prev {%if not login or answer_lock %}disabled{% endif %}" href="{{url.base}}/prev?current={{url.path}}" data-direct >{%trans "Previous"%}</a>
+   <a class="special-btn prev {%if not login or answer_lock %}disabled{% endif %}" href="{{url.kingdom}}/prev?current={{url.path}}" data-direct >{%trans "Previous"%}</a>
    <button class="special-btn base {%if not login or answer_lock %}disabled{% endif %}" id="saveAnswers" type="submit" {%if not login or answer_lock %} disabled {% endif %} >{%trans "Save Answer"%}</button>
-   <a class="special-btn next disabled" href="{{url.base}}/ask" data-direct>{%trans "Next"%}</a>
+   <a class="special-btn next disabled" href="{{url.kingdom}}/ask" data-direct>{%trans "Next"%}</a>
  </div>
 {%endblock%}
 
@@ -356,7 +356,7 @@
  <div class="title">{%trans "Similar Questions"%}</div>
   <ul>
    {%for key, value in similar%}
-   <li><a href="{{url.base}}/{{value.url}}">{{value.title}}</a></li>
+   <li><a href="{{url.kingdom}}/{{value.url}}">{{value.title}}</a></li>
    {%endfor%}
   </ul>
 {% endif %}
@@ -367,7 +367,7 @@
     <div class="title">{%trans "Latest Questions"%}</div>
     <ul>
      {%for key, value in last_post%}
-     <li><a href="{{url.base}}/{{value.post_url}}">{{value.post_title}}</a></li>
+     <li><a href="{{url.kingdom}}/{{value.post_url}}">{{value.post_title}}</a></li>
      {%endfor%}
     </ul>
     {%else%}
@@ -429,7 +429,7 @@
 {%block poll_author%}
  <div class="title">{%trans "Author"%}</div>
  <div class="content">
-  <a href='{{url.base}}/admin/logs/user={{poll.user_id|shortURL("decode")}}'>{{poll.user_id|shortURL("decode")}}</a>
+  <a href='{{url.kingdom}}/admin/logs/user={{poll.user_id|shortURL("decode")}}'>{{poll.user_id|shortURL("decode")}}</a>
  </div>
 {%endblock%}
 
@@ -620,20 +620,20 @@
   <div class="tools-content c11 f align-center">
     <div class="toolbox-btn">
 
-      <form method="post" action="{{url.base}}/admin/knowledge">
+      <form method="post" action="{{url.kingdom}}/admin/knowledge">
         <input type="hidden" name="id" value="{{poll.id}}">
         <input type="hidden" name="type" value="homepage">
         <input type="hidden" name="checked" value="true">
         <button type="submit"><i class="icon-home icon-2x"></i></button>
       </form>
-      <form method="post" action="{{url.base}}/admin/knowledge">
+      <form method="post" action="{{url.kingdom}}/admin/knowledge">
         <input type="hidden" name="id" value="{{poll.id}}">
         <input type="hidden" name="type" value="homepage">
         <input type="hidden" name="checked" value="false">
         <button type="submit"><i class="icon-times-circle icon-2x"></i></button>
       </form>
 
-        <a data-method="get" href="{{url.base}}/admin" data-data='{"refresh_chart":"{{poll.id}}"}' data-ajaxify>{%trans "Refresh Chart"%}</a>
+        <a data-method="get" href="{{url.kingdom}}/admin" data-data='{"refresh_chart":"{{poll.id}}"}' data-ajaxify>{%trans "Refresh Chart"%}</a>
 
 
     <div class="flex justify-around align-center check-slider">
@@ -641,21 +641,21 @@
       <input type="checkbox" id="show_in_homepage" {% if show_in_homepage%} checked="checked" {%endif%} data-id="{{poll.id}}" />
       <label for="show_in_homepage"></label>
      </div> -->
-     <a href="{{url.base}}/@/add/{{poll.id}}">{%trans "Edit"%}</a>
+     <a href="{{url.kingdom}}/@/add/{{poll.id}}">{%trans "Edit"%}</a>
     </div>
 
 
 
     </div>
     <div class="toolbox-btn">
-      <form method="post" action="{{url.base}}/admin/knowledge">
+      <form method="post" action="{{url.kingdom}}/admin/knowledge">
         <input type="hidden" name="id" value="{{poll.id}}">
         <input type="number" name="vip-value" placeholder="{%trans "VIP Value"%}" value="{{poll_ranks.vip}}" autocomplete="off">
         <button type="submit"><i class="icon-check icon-2x"></i></button>
       </form>
     </div>
     <div class="toolbox-btn">
-      <form method="post" action="{{url.base}}/admin/knowledge">
+      <form method="post" action="{{url.kingdom}}/admin/knowledge">
         <input type="hidden" name="id" value="{{poll.id}}">
         <select  name="status">
           <option value="" disabled selected>{%trans "Select"%}</option>
@@ -682,12 +682,12 @@
     </div>
     <div class="c2">
       <div class="toolbox-btn f nowrap">
-        <form class="publish" method="post" action="{{url.base}}/admin/knowledge">
+        <form class="publish" method="post" action="{{url.kingdom}}/admin/knowledge">
           <input type="hidden" name="id" value="{{poll.id}}">
           <input type="hidden" name="status" value="publish">
           <input type="submit" class="" value='{%trans "publish" %}'>
         </form>
-        <form class="draft" method="post" action="{{url.base}}/admin/knowledge">
+        <form class="draft" method="post" action="{{url.kingdom}}/admin/knowledge">
           <input type="hidden" name="id" value="{{poll.id}}">
           <input type="hidden" name="status" value="draft">
           <input type="submit" value='{%trans "draft" %}'>
@@ -756,32 +756,32 @@
 
 {%if poll.user_id == login.id|shortURL("encode") or perm('admin:admin:view')%}
  <nav class='poll-panel-nav'>
-  <a class='f{%if "publish" in  status_avalible.available%}{%else%} hide{%endif%}' data-data='{"status": "publish", "redirect_url":"{{url.full}}"}' data-method='post' href='{{url.base}}/@/add/{{poll.id}}' data-ajaxify data-direct>
+  <a class='f{%if "publish" in  status_avalible.available%}{%else%} hide{%endif%}' data-data='{"status": "publish", "redirect_url":"{{url.full}}"}' data-method='post' href='{{url.kingdom}}/@/add/{{poll.id}}' data-ajaxify data-direct>
    <span class='c3 flex justify-center align-center icon-delivered'></span>
    <span class='c'>{%trans "Publish"%}</span>
   </a>
 
-  <a class='f{%if "trash" in  status_avalible.available%}{%else%} hide{%endif%}' data-data='{"status": "trash", "redirect_url":"{{url.full}}"}' data-method='post' href='{{url.base}}/@/add/{{poll.id}}'  data-ajaxify data-direct>
+  <a class='f{%if "trash" in  status_avalible.available%}{%else%} hide{%endif%}' data-data='{"status": "trash", "redirect_url":"{{url.full}}"}' data-method='post' href='{{url.kingdom}}/@/add/{{poll.id}}'  data-ajaxify data-direct>
    <span class='c3 flex justify-center align-center icon-trash-o'></span>
    <span class='c'>{%trans "Trash"%}</span>
   </a>
 
-  <a class='f{%if "delete" in  status_avalible.available%}{%else%} hide{%endif%}' data-data='{"status": "delete", "redirect_url":"{{url.full}}"}' data-method='post' href='{{url.base}}/@/add/{{poll.id}}'  data-ajaxify data-direct>
+  <a class='f{%if "delete" in  status_avalible.available%}{%else%} hide{%endif%}' data-data='{"status": "delete", "redirect_url":"{{url.full}}"}' data-method='post' href='{{url.kingdom}}/@/add/{{poll.id}}'  data-ajaxify data-direct>
    <span class='c3 flex justify-center align-center icon-times-circle'></span>
    <span class='c'>{%trans "Delete"%}</span>
   </a>
 
-  <a class='f{%if "stop" in  status_avalible.available%}{%else%} hide{%endif%}' data-data='{"status": "stop", "redirect_url":"{{url.full}}"}' data-method='post' href='{{url.base}}/@/add/{{poll.id}}'  data-ajaxify data-direct>
+  <a class='f{%if "stop" in  status_avalible.available%}{%else%} hide{%endif%}' data-data='{"status": "stop", "redirect_url":"{{url.full}}"}' data-method='post' href='{{url.kingdom}}/@/add/{{poll.id}}'  data-ajaxify data-direct>
    <span class='c3 flex justify-center align-center icon-stop2'></span>
    <span class='c'>{%trans "Stop"%}</span>
   </a>
 
-  <a class='f{%if "pause" in  status_avalible.available%}{%else%} hide{%endif%}' data-data='{"status": "pause", "redirect_url":"{{url.full}}"}' data-method='post' href='{{url.base}}/@/add/{{poll.id}}'  data-ajaxify data-direct>
+  <a class='f{%if "pause" in  status_avalible.available%}{%else%} hide{%endif%}' data-data='{"status": "pause", "redirect_url":"{{url.full}}"}' data-method='post' href='{{url.kingdom}}/@/add/{{poll.id}}'  data-ajaxify data-direct>
    <span class='c3 flex justify-center align-center icon-pause2'></span>
    <span class='c'>{%trans "Pause"%}</span>
   </a>
 
-  <a class='f{%if "draft" in  status_avalible.available%}{%else%} hide{%endif%}' data-data='{"status": "draft", "redirect_url":"{{url.full}}"}' data-method='post' href='{{url.base}}/@/add/{{poll.id}}'  data-ajaxify data-direct>
+  <a class='f{%if "draft" in  status_avalible.available%}{%else%} hide{%endif%}' data-data='{"status": "draft", "redirect_url":"{{url.full}}"}' data-method='post' href='{{url.kingdom}}/@/add/{{poll.id}}'  data-ajaxify data-direct>
    <span class='c3 flex justify-center align-center icon-pencil'></span>
    <span class='c'>{%trans "Draft"%}</span>
   </a>

@@ -34,7 +34,7 @@
         <div class="element no-pad ltr-element">
          <label class="title large" for="referral_link">{%trans "Short URL"%}</label>
          <div class="element-in">
-          <input class="input" type="text" id="referral_link" value='{{url.base}}?ref={{login.id | shortURL("encode")}}' readonly maxlength="50">
+          <input class="input" type="text" id="referral_link" value='{{url.kingdom}}?ref={{login.id | shortURL("encode")}}' readonly maxlength="50">
           <button class="btn" data-copy='#referral_link'><span class="icon-link"></span></button>
          </div>
         </div>
@@ -69,9 +69,9 @@
      </div>
 {%else%}
      <p class="em">{%trans "Enter to get a unique referral link."%}</a><br/>
-      <a href='{{url.base}}/logo'>{%trans "Use our logo to help spread the word."%}</a><br/><br/>
+      <a href='{{url.kingdom}}/logo'>{%trans "Use our logo to help spread the word."%}</a><br/><br/>
 
-      <a href="{{url.base}}/enter" class="special-btn" data-direct>{%trans "Enter to Sarshomar"%}</a>
+      <a href="{{url.kingdom}}/enter" class="special-btn" data-direct>{%trans "Enter to Sarshomar"%}</a>
      </p>
 {%endif%}
 
