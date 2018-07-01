@@ -7,16 +7,14 @@
 {%endif%}
 
 
-{%if xhr.wrapper%}
 <div class="wrapper" data-xhr='wrapper'>
   {%block content%}{%endblock%}
 </div>
-{%endif%}
 
 
 
 {%if xhr.register%}
-{% include template.inestimable %}
+{% include "content/template/inestimable.html" %}
 {%endif%}
 
 
