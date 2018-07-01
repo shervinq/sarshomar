@@ -1,4 +1,8 @@
 <?php
+
+require_once('social.php');
+
+
 /**
  * save logs in other database
  */
