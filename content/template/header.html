@@ -1,7 +1,7 @@
   <header data-scroll>
    <h1 class='logo flex align-center s-justify-center'>
     <a href='{{url.kingdom}}' tabindex='1'>
-          {%if site.currentlang =='fa'%}
+          {%if lang.current =='fa'%}
      <img src='{{url.site}}/static/images/logo/logo-fa.svg' alt='{{site.title}} | {{site.desc}}'>
      {%else%}
       <img src='{{url.site}}/static/images/logo/logo-en.svg' alt='{{site.title}} | {{site.desc}}'>
@@ -46,7 +46,7 @@
        {% set lang_list = langList({'all' : true}) %}
        <nav class="langlist">
         {%for key, value in lang_list%}
-         {%if site.currentlang == key%}
+         {%if lang.current == key%}
           <span class='is-active'>{{value}}</span>
          {%else%}
           <a href="/{{key}}" hreflang="{{key}}" data-direct>{{value}}</a>
