@@ -1,0 +1,494 @@
+{%extends display.dash%}
+
+
+{%block ititle %}
+<label for="title">{%trans "Title"%} <small class="fc-red">* {%trans "Require"%}</small></label>
+<div class="input">
+  <input type="text" name="title" id="title" placeholder='{%trans "Title of festival"%} *' value="{{dataRow.title}}" autofocus required maxlength='200' minlength="1" pattern=".{1,200}" title='{%trans "Enter a valid title"%}'>
+</div>
+{% endblock %}
+
+
+{%block isubtitle %}
+<label for="subtitle">{%trans "Subtitle"%}</label>
+<div class="input">
+  <input type="text" name="subtitle" id="subtitle" placeholder='{%trans "Subtitle of festival"%} *' value="{{dataRow.subtitle}}"  maxlength='200' minlength="1" pattern=".{1,200}" title='{%trans "Enter a valid subtitle"%}'>
+</div>
+{% endblock %}
+
+
+{%block islug %}
+<label for="slug">{%trans "Slug"%} <small class="fc-red">* {%trans "Require"%}</small></label>
+<div class="input">
+  <label class="ltr addon btn primary" title='{%trans "Open link"%}' for="slug"><a href="{{url.site}}/festival/{{dataRow.slug}}" target="_blank" data-direct><i class="sf-link"></i></a></label>
+  <input type="text" class="ltr" name="slug" id="slug" placeholder='{%trans "Slug of festival"%} *' value="{{dataRow.slug}}" required  maxlength='200' minlength="1" pattern=".{1,200}" title='{%trans "Enter a valid slug"%}'>
+  <label class="ltr addon" for="slug">{{url.site}}/festival/</label>
+</div>
+{% endblock %}
+
+{%block idesc%}
+<label for="desc">Description</label>
+<textarea class="txt mB10" id="desc" name="desc" placeholder='{%trans "Write description of festival"%}' rows="4">{{dataRow.desc}}</textarea>
+{%endblock%}
+
+
+{%block iintro%}
+<label for="intro">Intro</label>
+<textarea class="txt mB10" id="intro" data-editor name="intro" placeholder='{%trans "Write intro of festival"%}' rows="15">{{dataRow.intro}}</textarea>
+{%endblock%}
+
+
+{%block iabout%}
+<label for="about">About</label>
+<textarea class="txt mB10" id="about" data-editor name="about" placeholder='{%trans "Write about of festival"%}' rows="15">{{dataRow.about}}</textarea>
+{%endblock%}
+
+
+{%block itarget%}
+<label for="target">Target</label>
+<textarea class="txt mB10" id="target" data-editor name="target" placeholder='{%trans "Write target of festival"%}' rows="15">{{dataRow.target}}</textarea>
+{%endblock%}
+
+
+
+{%block iaxis%}
+<label for="axis">Axis</label>
+<textarea class="txt mB10" id="axis" data-editor name="axis" placeholder='{%trans "Write axis of festival"%}' rows="15">{{dataRow.axis}}</textarea>
+{%endblock%}
+
+
+{%block iview%}
+<label for="view">View</label>
+<textarea class="txt mB10" id="view" data-editor name="view" placeholder='{%trans "Write view of festival"%}' rows="15">{{dataRow.view}}</textarea>
+{%endblock%}
+
+
+{%block ischedule%}
+<label for="schedule">Schedule</label>
+<textarea class="txt mB10" id="schedule" data-editor name="schedule" placeholder='{%trans "Write schedule of festival"%}' rows="15">{{dataRow.schedule}}</textarea>
+{%endblock%}
+
+
+{%block iplace%}
+<label for="place">Place</label>
+<textarea class="txt mB10" id="place" data-editor name="place" placeholder='{%trans "Write place of festival"%}' rows="15">{{dataRow.place}}</textarea>
+{%endblock%}
+
+{%block iaward%}
+<label for="award">Award</label>
+<textarea class="txt mB10" id="award" data-editor name="award" placeholder='{%trans "Write award of festival"%}' rows="15">{{dataRow.award}}</textarea>
+{%endblock%}
+
+
+{%block iphone%}
+
+
+    <label for="phone1">{%trans "Phone"%} <small>{{1 | fitNumber}}</small></label>
+    <div class="input">
+      <input type="tel" name="phone1" id="phone1" placeholder='{%trans "Phone number"%}' value="{{dataRow.phone.phone1}}"  maxlength='50' minlength="1" pattern=".{1,50}" title='{%trans "Enter a valid phone number"%}'>
+    </div>
+
+
+
+    <label for="phone2">{%trans "Phone"%} <small>{{2 | fitNumber}}</small></label>
+    <div class="input">
+      <input type="tel" name="phone2" id="phone2" placeholder='{%trans "Phone number"%}' value="{{dataRow.phone.phone2}}"  maxlength='50' minlength="1" pattern=".{1,50}" title='{%trans "Enter a valid phone number"%}'>
+    </div>
+
+    <label for="phone3">{%trans "Phone"%} <small>{{2 | fitNumber}}</small></label>
+    <div class="input">
+      <input type="tel" name="phone3" id="phone3" placeholder='{%trans "Phone number"%}' value="{{dataRow.phone.phone3}}"  maxlength='50' minlength="1" pattern=".{1,50}" title='{%trans "Enter a valid phone number"%}'>
+    </div>
+
+
+{%endblock%}
+
+
+{%block iaddress%}
+<label for="address">Address</label>
+<textarea class="txt mB10" id="address"  name="address" placeholder='{%trans "Write address of festival"%}' rows="2">{{dataRow.address.address}}</textarea>
+
+<label for="address1">Address send</label>
+<textarea class="txt mB10" id="address1"  name="address1" placeholder='{%trans "Write address1 of festival"%}' rows="2">{{dataRow.address.address1}}</textarea>
+{%endblock%}
+
+{%block iemail %}
+<label for="email">{%trans "Email"%}</label>
+<div class="input">
+  <input type="email" name="email" id="email" placeholder='{%trans "email of festival"%} *' value="{{dataRow.email}}"  maxlength='200' minlength="1" pattern=".{1,200}" title='{%trans "Enter a valid email"%}'>
+  <label class="addon" for="email">Email</label>
+</div>
+{% endblock %}
+
+
+{%block isms %}
+<label for="sms">{%trans "SMS Service number"%}</label>
+<div class="input">
+  <input type="number" name="sms" id="sms" placeholder='{%trans "sms of festival"%} *' value="{{dataRow.sms}}"  maxlength='200' minlength="1" pattern=".{1,200}" title='{%trans "Enter a valid sms"%}'>
+  <label class="addon ltr" for="sms">SMS</label>
+</div>
+{% endblock %}
+
+
+{%block itelegram%}
+<label for="telegram">{%trans "telegram"%}</label>
+<div class="input">
+  <input type="text" name="telegram" class="ltr" id="telegram" placeholder='{%trans "telegram of festival"%}' value="{{dataRow.telegram}}" maxlength="200" minlength="1" title='{%trans "Enter a valid telegram"%}'>
+  <label class="addon ltr" for="telegram">https://t.me/</label>
+</div>
+{%endblock%}
+
+
+{%block ifacebook%}
+<label for="facebook">{%trans "facebook"%}</label>
+<div class="input">
+	<input type="text" name="facebook" class="ltr" id="facebook" placeholder='{%trans "facebook of festival"%}' value="{{dataRow.facebook}}" maxlength="200" minlength="1" title='{%trans "Enter a valid facebook"%}'>
+  <label class="addon ltr" for="facebook">https://fb.com/</label>
+</div>
+{%endblock%}
+
+
+{%block itwitter%}
+<label for="twitter">{%trans "twitter"%}</label>
+<div class="input">
+  <input type="text" name="twitter" class="ltr" id="twitter" placeholder='{%trans "twitter of festival"%}' value="{{dataRow.twitter}}" maxlength="200" minlength="1" title='{%trans "Enter a valid twitter"%}'>
+  <label class="addon ltr" for="twitter">https://twitter.com/</label>
+</div>
+{%endblock%}
+
+
+{%block iinstagram%}
+<label for="instagram">{%trans "instagram"%}</label>
+<div class="input">
+  <input type="text" name="instagram" class="ltr" id="instagram" placeholder='{%trans "instagram of festival"%}' value="{{dataRow.instagram}}" maxlength="200" minlength="1" title='{%trans "Enter a valid instagram"%}'>
+  <label class="addon ltr" for="instagram">https://instagram.com/</label>
+</div>
+{%endblock%}
+
+
+{%block ilinkedin%}
+<label for="linkedin">{%trans "linkedin"%}</label>
+<div class="input">
+  <input type="text" name="linkedin" class="ltr" id="linkedin" placeholder='{%trans "linkedin of festival"%}' value="{{dataRow.linkedin}}" maxlength="200" minlength="1" title='{%trans "Enter a valid linkedin"%}'>
+  <label class="addon ltr" for="linkedin">https://linkedin.com/</label>
+</div>
+{%endblock%}
+
+
+{%block iwebsite%}
+<label for="website">{%trans "website"%}</label>
+<div class="input">
+  <input type="url" name="website" id="website" placeholder='{%trans "Festival website like http://example.com"%}' value="{{dataRow.website}}" maxlength="200" minlength="1" title='{%trans "Enter a valid website"%}'>
+  <label class="addon ltr" for="website">URL</label>
+</div>
+{%endblock%}
+
+
+
+
+{%block ifreeuser%}
+<div class="switch1 mB10">
+ <input type="checkbox" name="freeuser" id="freeuser" {%if dataRow.freeuser %}checked{%endif%}>
+ <label for="freeuser"></label>
+ <label for="freeuser">{%trans "Free user"%} <small>{%trans "Every one can signup in this festival and send her project"%}</small></label>
+</div>
+{%endblock%}
+
+
+{%block imessagesms%}
+<label for="messagesms">{%trans "messagesms"%}</label>
+<div class="input">
+	<input type="text" name="messagesms" id="messagesms" placeholder='{%trans "messagesms of festival"%}' value="{{dataRow.messagesms}}" maxlength="200" minlength="1" title='{%trans "Enter a valid messagesms"%}'>
+</div>
+{%endblock%}
+
+
+{%block imessage%}
+<label for="message">{%trans "Message"%}</label>
+<textarea class="txt mB10" id="message" data-editor name="message" placeholder='{%trans "Write message of festival"%}' rows="4">{{dataRow.message}}</textarea>
+{%endblock%}
+
+
+{%block iadd%}
+<button class="btn primary block mT20">{%trans "Add"%}</button>
+{%endblock%}
+
+{%block isave%}
+<button class="btn primary block mT20">{%trans "Save"%}</button>
+{%endblock%}
+
+
+{%block istatus%}
+
+<div class="mT15">
+ <label >{%trans "Status"%}</label>
+
+ <div class="radio1 green">
+  <input type="radio" id="r-enable" name="status" value="enable" {%if dataRow.status == 'enable' or not dataRow.status %} checked{%endif%}>
+  <label for="r-enable">{%trans "Enable"%}</label>
+ </div>
+
+ <div class="radio1 black">
+  <input type="radio" id="r-draft" name="status" value="draft" {%if dataRow.status == 'draft'%} checked{%endif%} >
+  <label for="r-draft">{%trans "Draft"%}</label>
+ </div>
+
+ <div class="radio1 yellow ">
+  <input type="radio" id="r-disable" name="status" value="disable" {%if dataRow.status == 'disable'  %} checked{%endif%}>
+  <label for="r-disable">{%trans "Disable"%}</label>
+ </div>
+
+ <div class="radio1 red mB25">
+  <input type="radio" id="r-deleted" name="status" value="deleted" {%if dataRow.status == 'deleted'  %} checked{%endif%}>
+  <label for="r-deleted">{%trans "Deleted"%}</label>
+ </div>
+
+</div>
+{%endblock%}
+
+
+
+{%block pageSteps%}
+
+  <div class="f">
+
+
+   <div class="c s4">
+    <a class="dcard {%if url.child == 'general'%}active{%endif%}" href='{{url.this}}/general?id={{requestGET.id}}' data-shortkey="49ctrlshift" title='{%trans "Edit general setting of festival"%}'>
+     <div class="statistic sm">
+      <div class="value"><i class="sf-cog"></i></div>
+      <div class="label">{%trans "General"%}<br><kbd class="mT5">Ctrl+Shift+1</kbd></div>
+     </div>
+    </a>
+   </div>
+
+
+   <div class="c s4">
+    <a class="dcard {%if url.child == 'detail'%}active{%endif%}" href='{{url.this}}/detail?id={{requestGET.id}}' data-shortkey="50ctrlshift" title='{%trans "Edit sume detail of festival"%}'>
+     <div class="statistic sm">
+      <div class="value"><i class="sf-thumbnails"></i></div>
+      <div class="label">{%trans "Detail"%}<br><kbd class="mT5">Ctrl+Shift+2</kbd></div>
+     </div>
+    </a>
+   </div>
+
+
+   <div class="c s4">
+    <a class="dcard {%if url.child == 'social'%}active{%endif%}" href='{{url.this}}/social?id={{requestGET.id}}' data-shortkey="51ctrlshift" title='{%trans "Edit sume social of festival"%}'>
+     <div class="statistic sm">
+      <div class="value"><i class="sf-network"></i></div>
+      <div class="label">{%trans "Social Network"%}<br><kbd class="mT5">Ctrl+Shift+3</kbd></div>
+     </div>
+    </a>
+   </div>
+
+
+    <div class="c s4">
+    <a class="dcard {%if url.child == 'phone'%}active{%endif%}" href='{{url.this}}/phone?id={{requestGET.id}}' data-shortkey="52ctrlshift" title='{%trans "Edit sume phone of festival"%}'>
+     <div class="statistic sm">
+      <div class="value"><i class="sf-phone"></i></div>
+      <div class="label">{%trans "Phone"%}<br><kbd class="mT5">Ctrl+Shift+4</kbd></div>
+     </div>
+    </a>
+   </div>
+
+   <div class="c s4">
+    <a class="dcard {%if url.child == 'schedule'%}active{%endif%}" href='{{url.this}}/schedule?id={{requestGET.id}}' data-shortkey="53ctrlshift" title='{%trans "Edit sume schedule of festival"%}'>
+     <div class="statistic sm">
+      <div class="value"><i class="sf-calendar"></i></div>
+      <div class="label">{%trans "Schedule"%}<br><kbd class="mT5">Ctrl+Shift+5</kbd></div>
+     </div>
+    </a>
+   </div>
+
+    <div class="c s4">
+    <a class="dcard {%if url.child == 'address'%}active{%endif%}" href='{{url.this}}/address?id={{requestGET.id}}' data-shortkey="54ctrlshift" title='{%trans "Edit sume address of festival"%}'>
+     <div class="statistic sm">
+      <div class="value"><i class="sf-pin"></i></div>
+      <div class="label">{%trans "Address"%}<br><kbd class="mT5">Ctrl+Shift+6</kbd></div>
+     </div>
+    </a>
+   </div>
+
+
+
+    <div class="c s4">
+    <a class="dcard {%if url.child == 'message'%}active{%endif%}" href='{{url.this}}/message?id={{requestGET.id}}' data-shortkey="55ctrlshift" title='{%trans "Edit sume message of festival"%}'>
+     <div class="statistic sm">
+      <div class="value"><i class="sf-envelope-o"></i></div>
+      <div class="label">{%trans "Message"%}<br><kbd class="mT5">Ctrl+Shift+7</kbd></div>
+     </div>
+    </a>
+   </div>
+
+
+
+  </div>
+{%endblock%}
+
+
+{%block galleryImporter %}
+<div class="dropzone">
+  <h4>{%trans "Add to gallery"%}</h4>
+  <label for='gallery' class="btn light">{%trans "To add image gallery drop file here or"%}</label>
+  <input id="gallery" type="file" name="gallery" multiple>
+  <div class="progress shadow" data-percent='30'>
+    <div class="bar"></div>
+    <div class="detail"></div>
+  </div>
+</div>
+{% endblock %}
+
+{%block iGalleryShow%}
+
+{%if dataRow.gallery.gallery%}
+<div class="cbox">
+  <h2>{%trans "Gallery"%}</h2>
+  <div class="normal f">
+
+    {% for key, myUrl in dataRow.gallery.gallery%}
+
+      <div class="vcard mA10">
+
+        {%if myUrl ends with '.jpg' or myUrl ends with '.png' or myUrl ends with '.gif'%}
+        <img src="{{myUrl}}">
+        <div class="content"></div>
+        {%elseif myUrl ends with '.mp4' %}
+        <video>
+          <source src="{{myUrl}}" type="video/mp4">
+        </video>
+        <div class="content"><a href="{{myUrl}}" title='{%trans "Click to download"%}'>{%trans "Video"%}</a></div>
+        <div class="content"></div>
+        {%elseif myUrl ends with '.mp3' %}
+        <audio controls>
+          <source src="{{myUrl}}" type="audio/mpeg">
+        </audio>
+        <div class="content"><a href="{{myUrl}}" title='{%trans "Click to download"%}'>{%trans "MP3"%}</a></div>
+        {%elseif myUrl ends with '.pdf' %}
+          <div class="content title"><a href="{{myUrl}}" title='{%trans "Click to download"%}'>{%trans "PDF"%}</a></div>
+        {%else%}
+        <div class="content title"><a href="{{myUrl}}" title='{%trans "Click to download"%}'>{%trans "Without preview"%}</a></div>
+        {%endif%}
+        <div class="footer f">
+          <button class="btn block secondary" data-ajaxify data-data='{"type" : "remove_gallery", "id": "{{key}}"}' data-method='post'>{%trans "Remove"%}</button>
+        </div>
+      </div>
+    {%endfor%}
+  </div>
+</div>
+{%endif%}
+
+{%endblock%}
+
+
+
+{%block ilogo%}
+<div class="input preview">
+ <input type="file" accept="image/gif, image/jpeg, image/png" name="logo" id="logo1" data-preview data-max="500">
+ <label for="logo1" title="Simple Title">
+    {%if dataRow.logo%}<img src="{{dataRow.logo}}">{%endif%}
+ </label>
+</div>
+{%endblock%}
+
+
+
+{%block iposter%}
+<div class="input preview">
+ <input type="file" accept="image/gif, image/jpeg, image/png" name="poster" id="poster" data-preview data-max="500">
+ <label for="poster" title="Simple Title">
+    {%if dataRow.gallery.poster%}<img src="{{dataRow.gallery.poster}}">{%endif%}
+ </label>
+</div>
+{%endblock%}
+
+
+
+
+{%block ibaner%}
+<div class="input preview">
+ <input type="file" accept="image/gif, image/jpeg, image/png" name="baner" id="baner" data-preview data-max="500">
+ <label for="baner" title="Simple Title">
+    {%if dataRow.gallery.baner%}<img src="{{dataRow.gallery.baner}}">{%endif%}
+ </label>
+</div>
+{%endblock%}
+
+
+
+{%block ibrochure%}
+<div class="input preview">
+ <input type="file" accept="image/gif, image/jpeg, image/png" name="brochure" id="brochure" data-preview data-max="500">
+ <label for="brochure" title="Simple Title">
+    {%if dataRow.gallery.brochure%}<img src="{{dataRow.gallery.brochure}}">{%endif%}
+ </label>
+</div>
+{%endblock%}
+
+
+
+
+
+
+
+
+
+
+{%block pageStepsPic%}
+
+  <div class="f">
+
+
+   <div class="c s4">
+    <a class="dcard {%if url.child == 'poster'%}active{%endif%}" href='{{url.this}}/poster?id={{requestGET.id}}' data-shortkey="49ctrlshift" '>
+     <div class="statistic sm">
+      <div class="value"><i class="sf-file-image-o"></i></div>
+      <div class="label">{%trans "Poster"%}<br><kbd class="mT5">Ctrl+Shift+1</kbd></div>
+     </div>
+    </a>
+   </div>
+
+
+   <div class="c s4">
+    <a class="dcard {%if url.child == 'brochure'%}active{%endif%}" href='{{url.this}}/brochure?id={{requestGET.id}}' data-shortkey="50ctrlshift" >
+     <div class="statistic sm">
+      <div class="value"><i class="sf-graph"></i></div>
+      <div class="label">{%trans "Brochure"%}<br><kbd class="mT5">Ctrl+Shift+2</kbd></div>
+     </div>
+    </a>
+   </div>
+
+
+   <div class="c s4">
+    <a class="dcard {%if url.child == 'logo'%}active{%endif%}" href='{{url.this}}/logo?id={{requestGET.id}}' data-shortkey="51ctrlshift" >
+     <div class="statistic sm">
+      <div class="value"><i class="sf-medal"></i></div>
+      <div class="label">{%trans "Logo"%}<br><kbd class="mT5">Ctrl+Shift+3</kbd></div>
+     </div>
+    </a>
+   </div>
+
+
+    <div class="c s4">
+    <a class="dcard {%if url.child == 'baner'%}active{%endif%}" href='{{url.this}}/baner?id={{requestGET.id}}' data-shortkey="52ctrlshift" >
+     <div class="statistic sm">
+      <div class="value"><i class="sf-picture-o"></i></div>
+      <div class="label">{%trans "Baner"%}<br><kbd class="mT5">Ctrl+Shift+4</kbd></div>
+     </div>
+    </a>
+   </div>
+
+   <div class="c s4">
+    <a class="dcard {%if url.child == 'gallery'%}active{%endif%}" href='{{url.this}}/gallery?id={{requestGET.id}}' data-shortkey="53ctrlshift" >
+     <div class="statistic sm">
+      <div class="value"><i class="sf-film"></i></div>
+      <div class="label">{%trans "Gallery"%}<br><kbd class="mT5">Ctrl+Shift+5</kbd></div>
+     </div>
+    </a>
+   </div>
+>
+
+
+
+  </div>
+{%endblock%}

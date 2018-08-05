@@ -1,0 +1,31 @@
+{%extends display.cpMain%}
+
+{%block pageContent%}
+
+<div class='middle normal f justify-center'>
+
+  <div class="vcard mA10">
+    <img src="{{url.site}}/static/siftal/images/useful/plus1.png" alt="add new festival">
+    <div class="content"></div>
+    <div class="footer pAn">
+     <a class="btn block primary" href="{{url.this}}/add">{%trans "Add new festival"%}</a>
+    </div>
+  </div>
+{%for key, value in dataTable%}
+
+{%set cardColor%}
+{%if value.status == 'enable'%}green{%else%}black{%endif%}
+{%endset%}
+
+  <a class="vcard mA10 shadow {{cardColor}}" href='{{url.here}}/festival?id={{value.id}}'>
+    <img src="{{value.logo}}" alt="{{value.title}}" class="pA10-f">
+    <div class="content">
+      <div class="header">{{value.title}}</div>
+      <div class="meta"></div>
+      <div class="footer">{{value.subtitle}}</div>
+    </div>
+  </a>
+{%endfor%}
+
+</div>
+{%endblock%}
