@@ -31,7 +31,7 @@ class cronjob
 	public function requests()
 	{
 		$requests      = [];
-		$requests[]    = ['url' => 'https://sarshomar.com/en/cronjob?type=homepagenumber', 'header' => []];
+		// $requests[]    = ['url' => 'https://sarshomar.com/en/cronjob?type=homepagenumber', 'header' => []];
 
 		return $requests;
 	}
