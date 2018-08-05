@@ -1,0 +1,21 @@
+{%extends display.dash%}
+
+{%block sidenav%}
+{{parent()}}
+{%endblock%}
+
+{%block pageContent%}
+<div class='middle normal f justify-center'>
+
+  <div class="vcard mA10">
+    <img src="{{url.site}}/static/siftal/images/useful/plus1.png" alt="add new survay">
+    <div class="content"></div>
+    <div class="footer pAn">
+     <a class="btn block primary" href="{{url.here}}/survay/add">{%trans "Add new survay"%}</a>
+    </div>
+  </div>
+
+
+</div>
+{%endblock%}
+
