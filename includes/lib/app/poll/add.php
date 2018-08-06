@@ -38,6 +38,11 @@ trait add
 			$args['status']  = 'draft';
 		}
 
+		if(!$args['privacy'])
+		{
+			$args['privacy']  = 'public';
+		}
+
 		$poll_id = \lib\db\polls::insert($args);
 
 		if(!$poll_id)

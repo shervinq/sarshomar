@@ -45,74 +45,119 @@ class poll
 	private static function check($_id = null)
 	{
 
-		// `user_id`       int(10) UNSIGNED NOT NULL,
-		// `title`	        varchar(500) NULL,
-		// `lang`	        char(2) NULL,
-		// `password`      varchar(200) NULL,
-		// `privacy`       enum('public','private') NOT NULL DEFAULT 'public',
-		// `status`        enum('draft','publish','expire','deleted','lock','awaiting','block','filter','close', 'full') NOT NULL DEFAULT 'draft',
-		// `branding`      bit(1) NULL,
-		// `brandingtitle` text CHARACTER SET utf8mb4,
-		// `brandingdesc`  text CHARACTER SET utf8mb4,
-		// `brandingmeta`  text CHARACTER SET utf8mb4,
-		// `redirect`		varchar(2000) NULL,
-		// `progresbar`    bit(1) NULL,
-		// `trans`         mediumtext CHARACTER SET utf8mb4,
-		// `email`      	bit(1) NULL,
-		// `emailto` 		varchar(500) CHARACTER SET utf8mb4,
-		// `emailtitle` 	varchar(500) CHARACTER SET utf8mb4,
-		// `emailmsg`  	text CHARACTER SET utf8mb4,
-		// `wellcometitle`    text CHARACTER SET utf8mb4,
-		// `wellcomedesc`     text CHARACTER SET utf8mb4,
-		// `wellcomemedia`    text CHARACTER SET utf8mb4,
-		// `thankyoutitle`    text CHARACTER SET utf8mb4,
-		// `thankyoudesc`   text CHARACTER SET utf8mb4,
-		// `thankyoumedia` text CHARACTER SET utf8mb4,
-
 		$title = \dash\app::request('title');
-		$title = trim($title);
 		if(!$title)
 		{
 			\dash\notif::error(T_("Please fill the poll title"), 'title');
 			return false;
 		}
 
-		if(mb_strlen($title) > 150)
+		if(mb_strlen($title) >= 500)
 		{
-			\dash\notif::error(T_("Please fill the poll title less than 150 character"), 'title');
+			\dash\notif::error(T_("Please fill the poll title less than 500 character"), 'title');
 			return false;
 		}
 
-		if($_id)
+		$language = \dash\app::request('language');
+		if($language && mb_strlen($language) !== 2)
 		{
-			$load_old = \lib\db\polls::get(['id' => $_id, 'limit' => 1]);
+			\dash\notif::error(T_("Invalid parameter language"), 'language');
+			return false;
+		}
 
+		if($language && !\dash\language::check($language))
+		{
+			\dash\notif::error(T_("Invalid parameter language"), 'language');
+			return false;
+		}
+
+		$password = \dash\app::request('password');
+		if($password && mb_strlen($password) >= 200)
+		{
+			\dash\notif::error(T_("Please fill the poll password less than 200 character"), 'password');
+			return false;
+		}
+
+		$privacy = \dash\app::request('privacy');
+		if($privacy && !in_array($privacy, ['public', 'private']))
+		{
+			\dash\notif::error(T_("Invalid privacy of poll"), 'privacy');
+			return false;
 		}
 
 		$status = \dash\app::request('status');
-		if($status && !in_array($status, ['enable', 'disable']))
+		if($status && !in_array($status, ['draft','publish','expire','deleted','lock','awaiting','block','filter','close', 'full']))
 		{
 			\dash\notif::error(T_("Invalid status of poll"), 'status');
 			return false;
 		}
 
-		$signup = \dash\app::request('signup');
-		$signup = $signup ? 1 : null;
+		$branding      = \dash\app::request('branding') ? 1 : null;
+		$brandingtitle = \dash\app::request('brandingtitle');
+		$brandingdesc  = \dash\app::request('brandingdesc');
+		$brandingmeta  = \dash\app::request('brandingmeta');
 
-
-		$desc = \dash\app::request('desc');
-		$desc = trim($desc);
-		if($desc && mb_strlen($desc) > 500)
+		$redirect = \dash\app::request('redirect');
+		if($redirect && mb_strlen($redirect) >= 2000)
 		{
-			\dash\notif::error(T_("Description must be less than 500 character"), 'desc');
+			\dash\notif::error(T_("Please fill the poll redirect less than 2000 character"), 'redirect');
 			return false;
 		}
 
-		$args           = [];
-		$args['title']  = $title;
-		$args['status'] = $status;
-		$args['desc']   = $desc;
-		$args['signup'] = $signup;
+		$progresbar = \dash\app::request('progresbar') ? 1 : null;
+
+		$trans  = \dash\app::request('trans');
+
+		$email  = \dash\app::request('email') ? 1 : null;
+
+		$emailtitle = \dash\app::request('emailtitle');
+		if($emailtitle && mb_strlen($emailtitle) >= 500)
+		{
+			\dash\notif::error(T_("Please fill the poll emailtitle less than 500 character"), 'emailtitle');
+			return false;
+		}
+
+		$emailto = \dash\app::request('emailto');
+		if($emailto && mb_strlen($emailto) >= 500)
+		{
+			\dash\notif::error(T_("Please fill the poll emailto less than 500 character"), 'emailto');
+			return false;
+		}
+
+		$emailmsg      = \dash\app::request('emailmsg');
+
+		$wellcometitle = \dash\app::request('wellcometitle');
+		$wellcomedesc  = \dash\app::request('wellcomedesc');
+		$wellcomemedia = \dash\app::request('wellcomemedia');
+
+		$thankyoutitle = \dash\app::request('thankyoutitle');
+		$thankyoudesc  = \dash\app::request('thankyoudesc');
+		$thankyoumedia = \dash\app::request('thankyoumedia');
+
+
+		$args                  = [];
+		$args['title']         = $title;
+		$args['language']      = $language;
+		$args['password']      = $password;
+		$args['privacy']       = $privacy;
+		$args['status']        = $status;
+		$args['branding']      = $branding;
+		$args['brandingtitle'] = $brandingtitle;
+		$args['brandingdesc']  = $brandingdesc;
+		$args['brandingmeta']  = $brandingmeta;
+		$args['redirect']      = $redirect;
+		$args['progresbar']    = $progresbar;
+		$args['trans']         = $trans;
+		$args['email']         = $email;
+		$args['emailtitle']    = $emailtitle;
+		$args['emailto']       = $emailto;
+		$args['emailmsg']      = $emailmsg;
+		$args['wellcometitle'] = $wellcometitle;
+		$args['wellcomedesc']  = $wellcomedesc;
+		$args['wellcomemedia'] = $wellcomemedia;
+		$args['thankyoutitle'] = $thankyoutitle;
+		$args['thankyoudesc']  = $thankyoudesc;
+		$args['thankyoumedia'] = $thankyoumedia;
 
 		return $args;
 	}
