@@ -176,3 +176,168 @@
 {%block isave%}
 <button class="btn primary block mT20">{%trans "Save"%}</button>
 {%endblock%}
+
+
+
+{%block ibranding%}
+<div class="switch1 mB10">
+ <input type="checkbox" name="branding" id="branding" {%if dataRow.branding %}checked{%endif%}>
+ <label for="branding"></label>
+ <label for="branding">{%trans "Enable branding"%}</label>
+</div>
+{%endblock%}
+
+
+{%block ibrandingtitle %}
+<label for="brandingtitle">{%trans "Branding title"%}</label>
+<div class="input">
+  <input type="text" name="brandingtitle" id="brandingtitle" placeholder='{%trans "Branding title"%}' value="{{dataRow.brandingtitle}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
+</div>
+{% endblock %}
+
+
+{%block ibrandingdesc%}
+<label for="brandingdesc">{%trans "Description"%}</label>
+<textarea class="txt mB10" id='brandingdesc' name="brandingdesc" placeholder='{%trans "Description of branding"%}' maxlength='500' rows="5">{{dataRow.brandingdesc}}</textarea>
+{%endblock%}
+
+
+{%block ibrandingfile%}
+<label for="brandingfile" class="block txtC">{%trans "Branding Image"%}</label>
+<div class="input preview">
+ <input type="file" accept="image/gif, image/jpeg, image/png" name="thumb" id="brandingfile" data-preview data-max="1000">
+ <label for="brandingfile" title='{%trans "allowed extentions jpg, png. Max 1000Kb"%}'>
+{%if dataRow.meta.thumb%}
+  <img src="{{dataRow.meta.thumb}}" alt="{{dataRow.title}}" id="logoPreview">
+{%endif%}
+ </label>
+</div>
+{%endblock%}
+
+{%block ibrandingurl %}
+<label for="brandingurl">{%trans "Branding url"%}</label>
+<div class="input">
+  <input type="url" name="brandingurl" id="brandingurl" placeholder='{%trans "Branding url"%}' value="{{dataRow.brandingurl}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
+</div>
+{% endblock %}
+
+
+
+{%block iredirect %}
+<label for="redirect">{%trans "Redirect after complete"%}</label>
+<div class="input">
+  <input type="url" name="redirect" id="redirect" placeholder='{%trans "Branding title"%}' value="{{dataRow.redirect}}"  maxlength='2000' minlength="1" pattern=".{1,2000}" >
+</div>
+{% endblock %}
+
+
+
+{%block iprogresbar%}
+<div class="switch1 mB10">
+ <input type="checkbox" name="progresbar" id="progresbar" {%if dataRow.progresbar %}checked{%endif%}>
+ <label for="progresbar"></label>
+ <label for="progresbar">{%trans "Show progresbar"%}</label>
+</div>
+{%endblock%}
+
+
+{%block itrans%}
+<label for="trans">{%trans "Translation"%}</label>
+<textarea class="txt mB10" id='trans' name="trans" placeholder='{%trans "Description of :topic to show in website"%}' maxlength='500' rows="5">{{dataRow.trans}}</textarea>
+{%endblock%}
+
+
+
+
+
+{%block iemail%}
+<div class="switch1 mB10">
+ <input type="checkbox" name="email" id="email" {%if dataRow.email %}checked{%endif%}>
+ <label for="email"></label>
+ <label for="email">{%trans "Enable email"%}</label>
+</div>
+{%endblock%}
+
+
+{%block iemailtitle %}
+<label for="emailtitle">{%trans "Email title"%}</label>
+<div class="input">
+  <input type="text" name="emailtitle" id="emailtitle" placeholder='{%trans "Email title"%}' value="{{dataRow.emailtitle}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
+</div>
+{% endblock %}
+
+
+{%block iemailmsg%}
+<label for="emailmsg">{%trans "Description"%}</label>
+<textarea class="txt mB10" id='emailmsg' name="emailmsg" placeholder='{%trans "Description of email"%}' maxlength='500' rows="5">{{dataRow.emailmsg}}</textarea>
+{%endblock%}
+
+
+
+{%block iemailto %}
+<label for="emailto">{%trans "Email to"%}</label>
+<div class="input">
+  <input type="email" name="emailto" id="emailto" placeholder='{%trans "Email to"%}' value="{{dataRow.emailto}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+{%block iwellcomemessagetitle %}
+<label for="wellcomemessagetitle">{%trans "Branding title"%}</label>
+<div class="input">
+  <input type="text" name="wellcomemessagetitle" id="wellcomemessagetitle" placeholder='{%trans "Branding title"%}' value="{{dataRow.wellcomemessagetitle}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
+</div>
+{% endblock %}
+
+
+{%block iwellcomemessagedesc%}
+<label for="wellcomemessagedesc">{%trans "Description"%}</label>
+<textarea class="txt mB10" id='wellcomemessagedesc' name="wellcomemessagedesc" placeholder='{%trans "Description of wellcomemessage"%}' maxlength='500' rows="5">{{dataRow.wellcomemessagedesc}}</textarea>
+{%endblock%}
+
+
+{%block iwellcomemessagefile%}
+<label for="wellcomemessagefile" class="block txtC">{%trans "Branding Image"%}</label>
+<div class="input preview">
+ <input type="file" accept="image/gif, image/jpeg, image/png" name="thumb" id="wellcomemessagefile" data-preview data-max="1000">
+ <label for="wellcomemessagefile" title='{%trans "allowed extentions jpg, png. Max 1000Kb"%}'>
+{%if dataRow.meta.thumb%}
+  <img src="{{dataRow.meta.thumb}}" alt="{{dataRow.title}}" id="logoPreview">
+{%endif%}
+ </label>
+</div>
+{%endblock%}
+
+
+
+
+{%block ithankyoutitle %}
+<label for="thankyoutitle">{%trans "Branding title"%}</label>
+<div class="input">
+  <input type="text" name="thankyoutitle" id="thankyoutitle" placeholder='{%trans "Branding title"%}' value="{{dataRow.thankyoutitle}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
+</div>
+{% endblock %}
+
+
+{%block ithankyoudesc%}
+<label for="thankyoudesc">{%trans "Description"%}</label>
+<textarea class="txt mB10" id='thankyoudesc' name="thankyoudesc" placeholder='{%trans "Description of thankyou"%}' maxlength='500' rows="5">{{dataRow.thankyoudesc}}</textarea>
+{%endblock%}
+
+
+{%block ithankyoufile%}
+<label for="thankyoufile" class="block txtC">{%trans "Branding Image"%}</label>
+<div class="input preview">
+ <input type="file" accept="image/gif, image/jpeg, image/png" name="thumb" id="thankyoufile" data-preview data-max="1000">
+ <label for="thankyoufile" title='{%trans "allowed extentions jpg, png. Max 1000Kb"%}'>
+{%if dataRow.meta.thumb%}
+  <img src="{{dataRow.meta.thumb}}" alt="{{dataRow.title}}" id="logoPreview">
+{%endif%}
+ </label>
+</div>
+{%endblock%}
