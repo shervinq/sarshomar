@@ -31,7 +31,7 @@ trait edit
 		}
 
 		if(!\dash\app::isset_request('title')) 				unset($args['title']);
-		if(!\dash\app::isset_request('language')) 			unset($args['language']);
+		if(!\dash\app::isset_request('language')) 			unset($args['lang']);
 		if(!\dash\app::isset_request('password')) 			unset($args['password']);
 		if(!\dash\app::isset_request('privacy')) 			unset($args['privacy']);
 		if(!\dash\app::isset_request('status')) 			unset($args['status']);

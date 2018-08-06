@@ -137,7 +137,7 @@ class poll
 
 		$args                  = [];
 		$args['title']         = $title;
-		$args['language']      = $language;
+		$args['lang']          = $language;
 		$args['password']      = $password;
 		$args['privacy']       = $privacy;
 		$args['status']        = $status;

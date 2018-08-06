@@ -57,6 +57,8 @@ trait add
 			\dash\notif::ok(T_("Poll successfuly added"));
 		}
 
+		$return['id'] = \dash\coding::encode($poll_id);
+
 		return $return;
 	}
 
