@@ -1,5 +1,5 @@
 <?php
-namespace content_a\festival\add;
+namespace content_a\poll\add;
 
 
 class model
