@@ -1,0 +1,18 @@
+{%extends display.block%}
+
+
+{%block pageContent%}
+{{block('pageSteps')}}
+<div class="f justify-center">
+	<div class="c6">
+		<div class="cbox">
+			<form method="post" autocomplete="off">
+				{{block('iwellcomemessagetitle')}}
+				{{block('iwellcomemessagedesc')}}
+				{{block('iwellcomemessagefile')}}
+				{{block('isave')}}
+			</form>
+		</div>
+	</div>
+</div>
+{%endblock%}
