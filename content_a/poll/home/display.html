@@ -16,15 +16,14 @@
 {%set cardColor%}
 {%if value.status == 'enable'%}green{%else%}black{%endif%}
 {%endset%}
-
-  <a class="vcard mA10 shadow {{cardColor}}" href='{{url.here}}/poll/general?id={{value.id}}'>
-    <img src="{{value.logo}}" alt="{{value.title}}" class="pA10-f">
-    <div class="content">
+<div class="vcard shadow c3 green mA10 s12">
+  <a href='{{url.here}}/poll/general?id={{value.id}}'>
+    <div class="content title">
       <div class="header">{{value.title}}</div>
-      <div class="meta"></div>
-      <div class="footer">{{value.subtitle}}</div>
     </div>
+    <div class="footer txtC">{{value.status}}</div>
   </a>
+</div>
 {%endfor%}
 
 </div>
