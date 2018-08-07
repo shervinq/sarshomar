@@ -4,7 +4,7 @@
 {%block ititle %}
 <label for="title">{%trans "Title"%} <small class="fc-red">* {%trans "Require"%}</small></label>
 <div class="input">
-  <input type="text" name="title" id="title" placeholder='{%trans "Title of poll"%} *' value="{{dataRow.title}}" autofocus required maxlength='200' minlength="1" pattern=".{1,200}" title='{%trans "Enter a valid title"%}'>
+  <input type="text" name="title" id="title" placeholder='{%trans "Poll title"%} *' value="{{dataRow.title}}" autofocus required maxlength='200' minlength="1" pattern=".{1,200}" >
 </div>
 {% endblock %}
 
@@ -27,9 +27,9 @@
 
 
 {%block ipassword %}
-<label for="password">{%trans "Password"%}</label>
+<label for="password">{%trans "Poll password"%}</label>
 <div class="input">
-  <input type="text" name="password" id="password" placeholder='{%trans "Password of poll"%}' value="{{dataRow.password}}"  maxlength='200' minlength="1" pattern=".{1,200}" title='{%trans "Enter a valid password"%}'>
+  <input type="text" name="password" id="password" placeholder='{%trans "Poll password"%}' value="{{dataRow.password}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
 </div>
 {% endblock %}
 
@@ -95,7 +95,7 @@
 
 
    <div class="c s4">
-    <a class="dcard {%if url.child == 'general'%}active{%endif%}" href='{{url.this}}/general?id={{requestGET.id}}' data-shortkey="49ctrlshift" title='{%trans "Edit general setting of poll"%}'>
+    <a class="dcard {%if url.child == 'general'%}active{%endif%}" href='{{url.this}}/general?id={{requestGET.id}}' data-shortkey="49ctrlshift" >
      <div class="statistic sm">
       <div class="value"><i class="sf-cog"></i></div>
       <div class="label">{%trans "General"%}<br><kbd class="mT5">Ctrl+Shift+1</kbd></div>
@@ -105,7 +105,7 @@
 
 
    <div class="c s4">
-    <a class="dcard {%if url.child == 'privacy'%}active{%endif%}" href='{{url.this}}/privacy?id={{requestGET.id}}' data-shortkey="50ctrlshift" title='{%trans "Edit sume privacy of poll"%}'>
+    <a class="dcard {%if url.child == 'privacy'%}active{%endif%}" href='{{url.this}}/privacy?id={{requestGET.id}}' data-shortkey="50ctrlshift" >
      <div class="statistic sm">
       <div class="value"><i class="sf-lock"></i></div>
       <div class="label">{%trans "Privacy"%}<br><kbd class="mT5">Ctrl+Shift+2</kbd></div>
@@ -115,7 +115,7 @@
 
 
    <div class="c s4">
-    <a class="dcard {%if url.child == 'branding'%}active{%endif%}" href='{{url.this}}/branding?id={{requestGET.id}}' data-shortkey="51ctrlshift" title='{%trans "Edit sume branding of poll"%}'>
+    <a class="dcard {%if url.child == 'branding'%}active{%endif%}" href='{{url.this}}/branding?id={{requestGET.id}}' data-shortkey="51ctrlshift" >
      <div class="statistic sm">
       <div class="value"><i class="sf-medal"></i></div>
       <div class="label">{%trans "Branding"%}<br><kbd class="mT5">Ctrl+Shift+3</kbd></div>
@@ -125,7 +125,7 @@
 
 
     <div class="c s4">
-    <a class="dcard {%if url.child == 'trans'%}active{%endif%}" href='{{url.this}}/trans?id={{requestGET.id}}' data-shortkey="52ctrlshift" title='{%trans "Edit sume trans of poll"%}'>
+    <a class="dcard {%if url.child == 'trans'%}active{%endif%}" href='{{url.this}}/trans?id={{requestGET.id}}' data-shortkey="52ctrlshift" >
      <div class="statistic sm">
       <div class="value"><i class="sf-language"></i></div>
       <div class="label">{%trans "Translation"%}<br><kbd class="mT5">Ctrl+Shift+4</kbd></div>
@@ -134,7 +134,7 @@
    </div>
 
    <div class="c s4">
-    <a class="dcard {%if url.child == 'email'%}active{%endif%}" href='{{url.this}}/email?id={{requestGET.id}}' data-shortkey="53ctrlshift" title='{%trans "Edit sume email of poll"%}'>
+    <a class="dcard {%if url.child == 'email'%}active{%endif%}" href='{{url.this}}/email?id={{requestGET.id}}' data-shortkey="53ctrlshift" >
      <div class="statistic sm">
       <div class="value"><i class="sf-at"></i></div>
       <div class="label">{%trans "Email"%}<br><kbd class="mT5">Ctrl+Shift+5</kbd></div>
@@ -143,7 +143,7 @@
    </div>
 
     <div class="c s4">
-    <a class="dcard {%if url.child == 'wellcome'%}active{%endif%}" href='{{url.this}}/wellcome?id={{requestGET.id}}' data-shortkey="54ctrlshift" title='{%trans "Edit sume wellcome of poll"%}'>
+    <a class="dcard {%if url.child == 'wellcome'%}active{%endif%}" href='{{url.this}}/wellcome?id={{requestGET.id}}' data-shortkey="54ctrlshift" >
      <div class="statistic sm">
       <div class="value"><i class="sf-comment-o"></i></div>
       <div class="label">{%trans "Wellcome message"%}<br><kbd class="mT5">Ctrl+Shift+6</kbd></div>
@@ -154,7 +154,7 @@
 
 
     <div class="c s4">
-    <a class="dcard {%if url.child == 'thankyou'%}active{%endif%}" href='{{url.this}}/thankyou?id={{requestGET.id}}' data-shortkey="55ctrlshift" title='{%trans "Edit sume thankyou of poll"%}'>
+    <a class="dcard {%if url.child == 'thankyou'%}active{%endif%}" href='{{url.this}}/thankyou?id={{requestGET.id}}' data-shortkey="55ctrlshift" >
      <div class="statistic sm">
       <div class="value"><i class="sf-thumbs-o-up"></i></div>
       <div class="label">{%trans "Thank you message"%}<br><kbd class="mT5">Ctrl+Shift+7</kbd></div>
@@ -170,7 +170,7 @@
 
 
 {%block iadd%}
-<button class="btn primary block mT20">{%trans "Save"%}</button>
+<button class="btn primary block mT20">{%trans "Add"%}</button>
 {%endblock%}
 
 {%block isave%}
@@ -198,12 +198,12 @@
 
 {%block ibrandingdesc%}
 <label for="brandingdesc">{%trans "Description"%}</label>
-<textarea class="txt mB10" id='brandingdesc' name="brandingdesc" placeholder='{%trans "Description of branding"%}' maxlength='500' rows="5">{{dataRow.brandingdesc}}</textarea>
+<textarea class="txt mB10" id='brandingdesc' name="brandingdesc" placeholder='{%trans "Description"%}' maxlength='500' rows="5">{{dataRow.brandingdesc}}</textarea>
 {%endblock%}
 
 
 {%block ibrandingfile%}
-<label for="brandingfile" class="block txtC">{%trans "Branding Image"%}</label>
+<label for="brandingfile" class="block txtC">{%trans "Image/Video/File"%}</label>
 <div class="input preview">
  <input type="file" accept="image/gif, image/jpeg, image/png" name="thumb" id="brandingfile" data-preview data-max="1000">
  <label for="brandingfile" title='{%trans "allowed extentions jpg, png. Max 1000Kb"%}'>
@@ -226,7 +226,7 @@
 {%block iredirect %}
 <label for="redirect">{%trans "Redirect after complete"%}</label>
 <div class="input">
-  <input type="url" name="redirect" id="redirect" placeholder='{%trans "Branding title"%}' value="{{dataRow.redirect}}"  maxlength='2000' minlength="1" pattern=".{1,2000}" >
+  <input type="url" name="redirect" id="redirect" placeholder='{%trans "Like"%} http://example.com' value="{{dataRow.redirect}}"  maxlength='2000' minlength="1" pattern=".{1,2000}" >
 </div>
 {% endblock %}
 
@@ -243,7 +243,7 @@
 
 {%block itrans%}
 <label for="trans">{%trans "Translation"%}</label>
-<textarea class="txt mB10" id='trans' name="trans" placeholder='{%trans "Description of :topic to show in website"%}' maxlength='500' rows="5">{{dataRow.trans}}</textarea>
+<textarea class="txt mB10" id='trans' name="trans" placeholder='{%trans "Translation list"%}' maxlength='500' rows="5">{{dataRow.trans}}</textarea>
 {%endblock%}
 
 
@@ -269,7 +269,7 @@
 
 {%block iemailmsg%}
 <label for="emailmsg">{%trans "Description"%}</label>
-<textarea class="txt mB10" id='emailmsg' name="emailmsg" placeholder='{%trans "Description of email"%}' maxlength='500' rows="5">{{dataRow.emailmsg}}</textarea>
+<textarea class="txt mB10" id='emailmsg' name="emailmsg" placeholder='{%trans "Description"%}' maxlength='500' rows="5">{{dataRow.emailmsg}}</textarea>
 {%endblock%}
 
 
@@ -288,21 +288,21 @@
 
 
 {%block iwellcomemessagetitle %}
-<label for="wellcomemessagetitle">{%trans "Branding title"%}</label>
+<label for="wellcomemessagetitle">{%trans "Wellcome message title"%}</label>
 <div class="input">
-  <input type="text" name="wellcomemessagetitle" id="wellcomemessagetitle" placeholder='{%trans "Branding title"%}' value="{{dataRow.wellcomemessagetitle}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
+  <input type="text" name="wellcomemessagetitle" id="wellcomemessagetitle" placeholder='{%trans "Wellcome message title"%}' value="{{dataRow.wellcomemessagetitle}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
 </div>
 {% endblock %}
 
 
 {%block iwellcomemessagedesc%}
 <label for="wellcomemessagedesc">{%trans "Description"%}</label>
-<textarea class="txt mB10" id='wellcomemessagedesc' name="wellcomemessagedesc" placeholder='{%trans "Description of wellcomemessage"%}' maxlength='500' rows="5">{{dataRow.wellcomemessagedesc}}</textarea>
+<textarea class="txt mB10" id='wellcomemessagedesc' name="wellcomemessagedesc" placeholder='{%trans "Description"%}' maxlength='500' rows="5">{{dataRow.wellcomemessagedesc}}</textarea>
 {%endblock%}
 
 
 {%block iwellcomemessagefile%}
-<label for="wellcomemessagefile" class="block txtC">{%trans "Branding Image"%}</label>
+<label for="wellcomemessagefile" class="block txtC">{%trans "Wellcome Image/Video"%}</label>
 <div class="input preview">
  <input type="file" accept="image/gif, image/jpeg, image/png" name="thumb" id="wellcomemessagefile" data-preview data-max="1000">
  <label for="wellcomemessagefile" title='{%trans "allowed extentions jpg, png. Max 1000Kb"%}'>
@@ -317,21 +317,21 @@
 
 
 {%block ithankyoutitle %}
-<label for="thankyoutitle">{%trans "Branding title"%}</label>
+<label for="thankyoutitle">{%trans "Thankyou message title"%}</label>
 <div class="input">
-  <input type="text" name="thankyoutitle" id="thankyoutitle" placeholder='{%trans "Branding title"%}' value="{{dataRow.thankyoutitle}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
+  <input type="text" name="thankyoutitle" id="thankyoutitle" placeholder='{%trans "Thankyou message title"%}' value="{{dataRow.thankyoutitle}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
 </div>
 {% endblock %}
 
 
 {%block ithankyoudesc%}
 <label for="thankyoudesc">{%trans "Description"%}</label>
-<textarea class="txt mB10" id='thankyoudesc' name="thankyoudesc" placeholder='{%trans "Description of thankyou"%}' maxlength='500' rows="5">{{dataRow.thankyoudesc}}</textarea>
+<textarea class="txt mB10" id='thankyoudesc' name="thankyoudesc" placeholder='{%trans "Description"%}' maxlength='500' rows="5">{{dataRow.thankyoudesc}}</textarea>
 {%endblock%}
 
 
 {%block ithankyoufile%}
-<label for="thankyoufile" class="block txtC">{%trans "Branding Image"%}</label>
+<label for="thankyoufile" class="block txtC">{%trans "Thankyou Image/Video"%}</label>
 <div class="input preview">
  <input type="file" accept="image/gif, image/jpeg, image/png" name="thumb" id="thankyoufile" data-preview data-max="1000">
  <label for="thankyoufile" title='{%trans "allowed extentions jpg, png. Max 1000Kb"%}'>

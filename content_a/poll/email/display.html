@@ -1,0 +1,19 @@
+{%extends display.poll%}
+
+
+{%block pageContent%}
+{{block('pageSteps')}}
+<div class="f justify-center">
+	<div class="c6">
+		<div class="cbox">
+			<form method="post" autocomplete="off">
+				{{block('iemail')}}
+				{{block('iemailtitle')}}
+				{{block('iemailmsg')}}
+				{{block('iemailto')}}
+				{{block('isave')}}
+			</form>
+		</div>
+	</div>
+</div>
+{%endblock%}
