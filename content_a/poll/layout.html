@@ -123,7 +123,7 @@
     </a>
    </div>
 
-
+   {%if false%}
     <div class="c s4">
     <a class="dcard {%if url.child == 'trans'%}active{%endif%}" href='{{url.this}}/trans?id={{requestGET.id}}' data-shortkey="52ctrlshift" >
      <div class="statistic sm">
@@ -132,6 +132,7 @@
      </div>
     </a>
    </div>
+   {%endif%}
 
    <div class="c s4">
     <a class="dcard {%if url.child == 'email'%}active{%endif%}" href='{{url.this}}/email?id={{requestGET.id}}' data-shortkey="53ctrlshift" >
