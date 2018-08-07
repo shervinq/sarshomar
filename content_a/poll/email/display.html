@@ -8,9 +8,11 @@
 		<div class="cbox">
 			<form method="post" autocomplete="off">
 				{{block('iemail')}}
-				{{block('iemailtitle')}}
-				{{block('iemailmsg')}}
-				{{block('iemailto')}}
+				<div data-response='email' {%if dataRow.email%}{%else%} data-response-hide {%endif%}>
+					{{block('iemailtitle')}}
+					{{block('iemailmsg')}}
+					{{block('iemailto')}}
+				</div>
 				{{block('isave')}}
 			</form>
 		</div>

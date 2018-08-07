@@ -13,6 +13,14 @@ class poll
 	use poll\dashboard;
 
 
+	public static $raw_field =
+	[
+		'redirect',
+		'brandingmeta',
+		'wellcomemedia',
+		'thankyoumedia',
+	];
+
 	public static function get($_id)
 	{
 		$id = \dash\coding::decode($_id);
@@ -46,7 +54,7 @@ class poll
 	{
 
 		$title = \dash\app::request('title');
-		if(!$title)
+		if(\dash\app::isset_request('title') && !$title)
 		{
 			\dash\notif::error(T_("Please fill the poll title"), 'title');
 			return false;
@@ -96,6 +104,10 @@ class poll
 		$brandingtitle = \dash\app::request('brandingtitle');
 		$brandingdesc  = \dash\app::request('brandingdesc');
 		$brandingmeta  = \dash\app::request('brandingmeta');
+		if(is_array($brandingmeta))
+		{
+			$brandingmeta = json_encode($brandingmeta, JSON_UNESCAPED_UNICODE);
+		}
 
 		$redirect = \dash\app::request('redirect');
 		if($redirect && mb_strlen($redirect) >= 2000)
@@ -129,10 +141,18 @@ class poll
 		$wellcometitle = \dash\app::request('wellcometitle');
 		$wellcomedesc  = \dash\app::request('wellcomedesc');
 		$wellcomemedia = \dash\app::request('wellcomemedia');
+		if(is_array($wellcomemedia))
+		{
+			$wellcomemedia = json_encode($wellcomemedia, JSON_UNESCAPED_UNICODE);
+		}
 
 		$thankyoutitle = \dash\app::request('thankyoutitle');
 		$thankyoudesc  = \dash\app::request('thankyoudesc');
 		$thankyoumedia = \dash\app::request('thankyoumedia');
+		if(is_array($thankyoumedia))
+		{
+			$thankyoumedia = json_encode($thankyoumedia, JSON_UNESCAPED_UNICODE);
+		}
 
 
 		$args                  = [];
@@ -179,6 +199,12 @@ class poll
 				case 'id':
 				case 'user_id':
 					$result[$key] = \dash\coding::encode($value);
+					break;
+
+				case 'brandingmeta':
+				case 'wellcomemedia':
+				case 'thankyoumedia':
+					$result[$key] = json_decode($value, true);
 					break;
 
 				default:

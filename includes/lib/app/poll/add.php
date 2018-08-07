@@ -13,7 +13,7 @@ trait add
 	 */
 	public static function add($_args = [])
 	{
-		\dash\app::variable($_args);
+		\dash\app::variable($_args, ['raw_field' => self::$raw_field]);
 
 		if(!\dash\user::id())
 		{
@@ -30,6 +30,13 @@ trait add
 		}
 
 		$return = [];
+
+
+		if(!isset($args['title']))
+		{
+			\dash\notif::error(T_("Please fill the poll title"), 'title');
+			return false;
+		}
 
 		$args['user_id'] = \dash\user::id();
 

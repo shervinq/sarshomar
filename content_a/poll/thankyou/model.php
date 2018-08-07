@@ -1,28 +1,42 @@
 <?php
-namespace content_a\poll\general;
+namespace content_a\poll\thankyou;
 
 
 class model
 {
 	public static function post()
 	{
-		$post           = [];
-		$post['title']  = \dash\request::post('title');
-		$post['status'] = \dash\request::post('status');
+
+		$post                  = [];
+		$post['thankyoutitle'] = \dash\request::post('thankyoutitle');
+		$post['thankyoudesc']  = \dash\request::post('thankyoudesc');
+
+		$file = \dash\app\file::upload_quick('thankyoufile');
+
+		if($file === false)
+		{
+			return false;
+		}
+
+		if($file)
+		{
+			$post['thankyoumedia']['file']  = $file;
+		}
+		else
+		{
+			$old = \content_a\poll\view::load();
+			if(isset($old['thankyoumedia']['file']))
+			{
+				$post['thankyoumedia']['file']  = $old['thankyoumedia']['file'];
+			}
+		}
+
 
 		$result = \lib\app\poll::edit($post, \dash\request::get('id'));
 
 		if(\dash\engine\process::status())
 		{
-			if(isset($result['id']))
-			{
-				\dash\redirect::to(\dash\url::this(). '/general?id='. $result['id']);
-			}
-			else
-			{
-				\dash\redirect::to(\dash\url::this());
-			}
-
+			\dash\redirect::pwd();
 		}
 	}
 }

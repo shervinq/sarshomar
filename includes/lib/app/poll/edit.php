@@ -12,7 +12,7 @@ trait edit
 	 */
 	public static function edit($_args, $_id)
 	{
-		\dash\app::variable($_args);
+		\dash\app::variable($_args, ['raw_field' => self::$raw_field]);
 
 		$result = self::get($_id);
 

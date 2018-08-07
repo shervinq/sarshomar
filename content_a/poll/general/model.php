@@ -14,15 +14,7 @@ class model
 
 		if(\dash\engine\process::status())
 		{
-			if(isset($result['id']))
-			{
-				\dash\redirect::to(\dash\url::this(). '/general?id='. $result['id']);
-			}
-			else
-			{
-				\dash\redirect::to(\dash\url::this());
-			}
-
+			\dash\redirect::pwd();
 		}
 	}
 }

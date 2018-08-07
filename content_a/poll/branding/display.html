@@ -8,10 +8,12 @@
 		<div class="cbox">
 			<form method="post" autocomplete="off">
 				{{block('ibranding')}}
-				{{block('ibrandingtitle')}}
-				{{block('ibrandingdesc')}}
-				{{block('ibrandingfile')}}
-				{{block('ibrandingurl')}}
+				<div data-response='branding' {%if dataRow.branding%}{%else%} data-response-hide {%endif%}>
+					{{block('ibrandingtitle')}}
+					{{block('ibrandingdesc')}}
+					{{block('ibrandingfile')}}
+					{{block('ibrandingurl')}}
+				</div>
 				{{block('isave')}}
 			</form>
 		</div>

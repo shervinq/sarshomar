@@ -205,10 +205,10 @@
 {%block ibrandingfile%}
 <label for="brandingfile" class="block txtC">{%trans "Image/Video/File"%}</label>
 <div class="input preview">
- <input type="file" accept="image/gif, image/jpeg, image/png" name="thumb" id="brandingfile" data-preview data-max="1000">
+ <input type="file" accept="image/gif, image/jpeg, image/png" name="brandingfile" id="brandingfile" data-preview data-max="1000">
  <label for="brandingfile" title='{%trans "allowed extentions jpg, png. Max 1000Kb"%}'>
-{%if dataRow.meta.thumb%}
-  <img src="{{dataRow.meta.thumb}}" alt="{{dataRow.title}}" id="logoPreview">
+{%if dataRow.brandingmeta.file%}
+  <img src="{{dataRow.brandingmeta.file}}" alt="{{dataRow.title}}" id="logoPreview">
 {%endif%}
  </label>
 </div>
@@ -217,7 +217,7 @@
 {%block ibrandingurl %}
 <label for="brandingurl">{%trans "Branding url"%}</label>
 <div class="input">
-  <input type="url" name="brandingurl" id="brandingurl" placeholder='{%trans "Branding url"%}' value="{{dataRow.brandingurl}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
+  <input type="url" name="brandingurl" id="brandingurl" placeholder='{%trans "Branding url"%}' value="{{dataRow.brandingmeta.url}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
 </div>
 {% endblock %}
 
@@ -288,26 +288,26 @@
 
 
 {%block iwellcomemessagetitle %}
-<label for="wellcomemessagetitle">{%trans "Wellcome message title"%}</label>
+<label for="wellcometitle">{%trans "Wellcome message title"%}</label>
 <div class="input">
-  <input type="text" name="wellcomemessagetitle" id="wellcomemessagetitle" placeholder='{%trans "Wellcome message title"%}' value="{{dataRow.wellcomemessagetitle}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
+  <input type="text" name="wellcometitle" id="wellcometitle" placeholder='{%trans "Wellcome message title"%}' value="{{dataRow.wellcometitle}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
 </div>
 {% endblock %}
 
 
 {%block iwellcomemessagedesc%}
-<label for="wellcomemessagedesc">{%trans "Description"%}</label>
-<textarea class="txt mB10" id='wellcomemessagedesc' name="wellcomemessagedesc" placeholder='{%trans "Description"%}' maxlength='500' rows="5">{{dataRow.wellcomemessagedesc}}</textarea>
+<label for="wellcomedesc">{%trans "Description"%}</label>
+<textarea class="txt mB10" id='wellcomedesc' name="wellcomedesc" placeholder='{%trans "Description"%}' maxlength='500' rows="5">{{dataRow.wellcomedesc}}</textarea>
 {%endblock%}
 
 
 {%block iwellcomemessagefile%}
-<label for="wellcomemessagefile" class="block txtC">{%trans "Wellcome Image/Video"%}</label>
+<label for="wellcomefile" class="block txtC">{%trans "Wellcome Image/Video"%}</label>
 <div class="input preview">
- <input type="file" accept="image/gif, image/jpeg, image/png" name="thumb" id="wellcomemessagefile" data-preview data-max="1000">
- <label for="wellcomemessagefile" title='{%trans "allowed extentions jpg, png. Max 1000Kb"%}'>
-{%if dataRow.meta.thumb%}
-  <img src="{{dataRow.meta.thumb}}" alt="{{dataRow.title}}" id="logoPreview">
+ <input type="file" accept="image/gif, image/jpeg, image/png" name="wellcomefile" id="wellcomefile" data-preview data-max="1000">
+ <label for="wellcomefile" title='{%trans "allowed extentions jpg, png. Max 1000Kb"%}'>
+{%if dataRow.wellcomemedia.file%}
+  <img src="{{dataRow.wellcomemedia.file}}" alt="{{dataRow.title}}" id="logoPreview">
 {%endif%}
  </label>
 </div>
@@ -333,10 +333,10 @@
 {%block ithankyoufile%}
 <label for="thankyoufile" class="block txtC">{%trans "Thankyou Image/Video"%}</label>
 <div class="input preview">
- <input type="file" accept="image/gif, image/jpeg, image/png" name="thumb" id="thankyoufile" data-preview data-max="1000">
+ <input type="file" accept="image/gif, image/jpeg, image/png" name="thankyoufile" id="thankyoufile" data-preview data-max="1000">
  <label for="thankyoufile" title='{%trans "allowed extentions jpg, png. Max 1000Kb"%}'>
-{%if dataRow.meta.thumb%}
-  <img src="{{dataRow.meta.thumb}}" alt="{{dataRow.title}}" id="logoPreview">
+{%if dataRow.thankyoumedia.file%}
+  <img src="{{dataRow.thankyoumedia.file}}" alt="{{dataRow.title}}" id="logoPreview">
 {%endif%}
  </label>
 </div>
