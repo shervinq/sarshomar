@@ -15,6 +15,20 @@
     </div>
   </div>
 
+{%for key, value in dataTable%}
+
+{%set cardColor%}
+	{%if value.status == 'enable'%}green{%else%}black{%endif%}
+{%endset%}
+<div class="vcard shadow c3 green mA10 s12">
+  <a href='{{url.here}}/poll?id={{value.id}}'>
+    <div class="content title">
+      <div class="header">{{value.title}}</div>
+    </div>
+    <div class="footer txtC">{{value.status}}</div>
+  </a>
+</div>
+{%endfor%}
 
 </div>
 {%endblock%}
