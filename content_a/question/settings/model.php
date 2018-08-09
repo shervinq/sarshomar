@@ -7,8 +7,8 @@ class model
 	public static function post()
 	{
 		$post            = [];
-		$post['title']   = \dash\request::post('title');
-		$post['desc']    = \dash\request::post('desc');
+		$post['require'] = \dash\request::post('require');
+		$post['maxchar'] = \dash\request::post('maxchar');
 		$post['poll_id'] = \dash\request::get('id');
 
 		$result = \lib\app\question::edit($post, \dash\request::get('questionid'));

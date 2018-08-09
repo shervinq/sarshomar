@@ -134,7 +134,7 @@ class question
 		$title   = \dash\app::request('title');
 		$desc    = \dash\app::request('desc');
 		$media   = \dash\app::request('media');
-		$require = \dash\app::request('request') ? 1 : null;
+		$require = \dash\app::request('require') ? 1 : null;
 		$setting = \dash\app::request('setting');
 		$choice  = \dash\app::request('choice');
 
@@ -186,6 +186,11 @@ class question
 			return false;
 		}
 
+		if(is_array($media))
+		{
+			$media = json_encode($media, JSON_UNESCAPED_UNICODE);
+		}
+
 		$args            = [];
 		$args['poll_id'] = $poll_id;
 		$args['title']   = $title;
@@ -220,9 +225,9 @@ class question
 					$result[$key] = \dash\coding::encode($value);
 					break;
 
-				case 'brandingmeta':
-				case 'wellcomemedia':
-				case 'thankyoumedia':
+				case 'media':
+				case 'choice':
+				case 'setting':
 					$result[$key] = json_decode($value, true);
 					break;
 
