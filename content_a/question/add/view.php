@@ -6,6 +6,11 @@ class view
 {
 	public static function config()
 	{
+		if(!\dash\request::get('id'))
+		{
+			\dash\redirect::to(\dash\url::here());
+		}
+
 		\dash\data::page_pictogram('plus');
 
 		\dash\data::page_title(T_("Add new question"));

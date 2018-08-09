@@ -1,12 +1,16 @@
 {%extends display.dash%}
 
 
-{%block ititle %}
-<label for="title">{%trans "Title"%} <small class="fc-red">* {%trans "Require"%}</small></label>
-<div class="input">
-  <input type="text" name="title" id="title" placeholder='{%trans "Question title"%} *' value="{{dataRow.title}}" autofocus required maxlength='200' minlength="1" pattern=".{1,200}" >
-</div>
-{% endblock %}
+{%block ititle%}
+<label for="title">{%trans "Title"%}</label>
+<textarea class="txt mB10" id='title' name="title" placeholder='{%trans "Title"%}' maxlength='500' rows="3">{{dataRow.title}}</textarea>
+{%endblock%}
+
+{%block idesc%}
+<label for="desc">{%trans "Description"%}</label>
+<textarea class="txt mB10" id='desc' name="desc" placeholder='{%trans "Description"%}' maxlength='500' rows="5">{{dataRow.desc}}</textarea>
+{%endblock%}
+
 
 {%block itype%}
 <div class="mB10" title='{%trans "Add new question by type"%}'>
@@ -106,73 +110,53 @@
 
 
    <div class="c s4">
-    <a class="dcard {%if url.child == 'general'%}active{%endif%}" href='{{url.this}}/general?id={{requestGET.id}}' data-shortkey="49ctrlshift" >
+    <a class="dcard {%if url.child == 'type'%}active{%endif%}" href='{{url.this}}/type?id={{requestGET.id}}' data-shortkey="49ctrlshift" >
      <div class="statistic sm">
-      <div class="value"><i class="sf-cog"></i></div>
-      <div class="label">{%trans "General"%}<br><kbd class="mT5">Ctrl+Shift+1</kbd></div>
+      <div class="value"><i class="sf-exchange"></i></div>
+      <div class="label">{%trans "Type"%}<br><kbd class="mT5">Ctrl+Shift+1</kbd></div>
      </div>
     </a>
    </div>
 
 
    <div class="c s4">
-    <a class="dcard {%if url.child == 'privacy'%}active{%endif%}" href='{{url.this}}/privacy?id={{requestGET.id}}' data-shortkey="50ctrlshift" >
+    <a class="dcard {%if url.child == 'general'%}active{%endif%}" href='{{url.this}}/general?id={{requestGET.id}}' data-shortkey="50ctrlshift" >
      <div class="statistic sm">
-      <div class="value"><i class="sf-lock"></i></div>
-      <div class="label">{%trans "Privacy"%}<br><kbd class="mT5">Ctrl+Shift+2</kbd></div>
+      <div class="value"><i class="sf-lightbulb-o"></i></div>
+      <div class="label">{%trans "General"%}<br><kbd class="mT5">Ctrl+Shift+2</kbd></div>
      </div>
     </a>
    </div>
 
-
-   <div class="c s4">
-    <a class="dcard {%if url.child == 'branding'%}active{%endif%}" href='{{url.this}}/branding?id={{requestGET.id}}' data-shortkey="51ctrlshift" >
-     <div class="statistic sm">
-      <div class="value"><i class="sf-medal"></i></div>
-      <div class="label">{%trans "Branding"%}<br><kbd class="mT5">Ctrl+Shift+3</kbd></div>
-     </div>
-    </a>
-   </div>
-
-   {%if false%}
     <div class="c s4">
-    <a class="dcard {%if url.child == 'trans'%}active{%endif%}" href='{{url.this}}/trans?id={{requestGET.id}}' data-shortkey="52ctrlshift" >
+    <a class="dcard {%if url.child == 'setting'%}active{%endif%}" href='{{url.this}}/setting?id={{requestGET.id}}' data-shortkey="51ctrlshift" >
      <div class="statistic sm">
-      <div class="value"><i class="sf-language"></i></div>
-      <div class="label">{%trans "Translation"%}<br><kbd class="mT5">Ctrl+Shift+4</kbd></div>
+      <div class="value"><i class="sf-cogs"></i></div>
+      <div class="label">{%trans "Settings"%}<br><kbd class="mT5">Ctrl+Shift+3</kbd></div>
+     </div>
+    </a>
+   </div>
+
+   <div class="c s4">
+    <a class="dcard {%if url.child == 'media'%}active{%endif%}" href='{{url.this}}/media?id={{requestGET.id}}' data-shortkey="52ctrlshift" >
+     <div class="statistic sm">
+      <div class="value"><i class="sf-cloud-upload"></i></div>
+      <div class="label">{%trans "Media"%}<br><kbd class="mT5">Ctrl+Shift4</kbd></div>
+     </div>
+    </a>
+   </div>
+
+
+   {%if true%}
+   <div class="c s4">
+    <a class="dcard {%if url.child == 'choise'%}active{%endif%}" href='{{url.this}}/choise?id={{requestGET.id}}' data-shortkey="53ctrlshift" >
+     <div class="statistic sm">
+      <div class="value"><i class="sf-list-ol"></i></div>
+      <div class="label">{%trans "Choise"%}<br><kbd class="mT5">Ctrl+Shift+5</kbd></div>
      </div>
     </a>
    </div>
    {%endif%}
-
-   <div class="c s4">
-    <a class="dcard {%if url.child == 'email'%}active{%endif%}" href='{{url.this}}/email?id={{requestGET.id}}' data-shortkey="53ctrlshift" >
-     <div class="statistic sm">
-      <div class="value"><i class="sf-at"></i></div>
-      <div class="label">{%trans "Email"%}<br><kbd class="mT5">Ctrl+Shift+5</kbd></div>
-     </div>
-    </a>
-   </div>
-
-    <div class="c s4">
-    <a class="dcard {%if url.child == 'wellcome'%}active{%endif%}" href='{{url.this}}/wellcome?id={{requestGET.id}}' data-shortkey="54ctrlshift" >
-     <div class="statistic sm">
-      <div class="value"><i class="sf-comment-o"></i></div>
-      <div class="label">{%trans "Wellcome message"%}<br><kbd class="mT5">Ctrl+Shift+6</kbd></div>
-     </div>
-    </a>
-   </div>
-
-
-
-    <div class="c s4">
-    <a class="dcard {%if url.child == 'thankyou'%}active{%endif%}" href='{{url.this}}/thankyou?id={{requestGET.id}}' data-shortkey="55ctrlshift" >
-     <div class="statistic sm">
-      <div class="value"><i class="sf-thumbs-o-up"></i></div>
-      <div class="label">{%trans "Thank you message"%}<br><kbd class="mT5">Ctrl+Shift+7</kbd></div>
-     </div>
-    </a>
-   </div>
 
 
 
