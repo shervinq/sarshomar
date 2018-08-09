@@ -18,7 +18,7 @@
   <select name="type" class="ui dropdown select">
     <option value=""><i>{%trans "Please select one item"%}</i></option>
     {%for key, value in allType%}
-      <option value="{{value.key}}" {%if dataRow.type == value.key %} selected {%endif%}>{%set myTitle = value.title%}{%trans myTitle%}</option>
+      <option value="{{value.key}}" {%if dataRow.type == value.key %} selected {%endif%}>{{value.title}}</option>
     {%endfor%}
   </select>
 </div>

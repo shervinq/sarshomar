@@ -23,27 +23,101 @@ class question
 
 	public static function all_type()
 	{
-		$allType =
-		[
-			['key' => 'short_text', 'title' => 'short_text'],
-			['key' => 'long_text', 'title' => 'long_text'],
-			['key' => 'single_choise', 'title' => 'single_choise'],
-			['key' => 'mutli_choise', 'title' => 'mutli_choise'],
-			['key' => 'picture_choice', 'title' => 'picture_choice'],
-			['key' => 'yes_no', 'title' => 'yes/no'],
-			['key' => 'legal', 'title' => 'legal'],
-			['key' => 'email', 'title' => 'email'],
-			['key' => 'scale', 'title' => 'scale'],
-			['key' => 'rating', 'title' => 'rating'],
-			['key' => 'date', 'title' => 'date'],
-			['key' => 'number', 'title' => 'number'],
-			['key' => 'dropdown', 'title' => 'dropdown'],
-			['key' => 'fileid', 'title' => 'fileid'],
-			['key' => 'website', 'title' => 'website'],
+		$type = [];
 
+		$type[] =
+		[
+			'key'   => 'short_text',
+			'title' => T_("Short text"),
 		];
-		return $allType;
+
+		$type[] =
+		[
+			'key'   => 'long_text',
+			'title' => T_('Long text'),
+		];
+
+		$type[] =
+		[
+			'key'   => 'single_choise',
+			'title' => T_('Single choise'),
+		];
+
+		$type[] =
+		[
+			'key'   => 'mutli_choise',
+			'title' => T_('Multiple choise'),
+		];
+
+		$type[] =
+		[
+			'key'   => 'picture_choice',
+			'title' => T_('Picture choise'),
+		];
+
+		$type[] =
+		[
+			'key'   => 'yes_no',
+			'title' => T_('yes/no'),
+		];
+
+		$type[] =
+		[
+			'key'   => 'legal',
+			'title' => T_('Legal'),
+		];
+
+		$type[] =
+		[
+			'key'   => 'email',
+			'title' => T_('Email'),
+		];
+
+		$type[] =
+		[
+			'key'   => 'scale',
+			'title' => T_('Scale'),
+		];
+
+		$type[] =
+		[
+			'key'   => 'rating',
+			'title' => T_('Rating'),
+		];
+
+		$type[] =
+		[
+			'key'   => 'date',
+			'title' => T_('Date'),
+		];
+
+		$type[] =
+		[
+			'key'   => 'number',
+			'title' => T_('Number'),
+		];
+
+		$type[] =
+		[
+			'key'   => 'dropdown',
+			'title' => T_('Dropdown'),
+		];
+
+		$type[] =
+		[
+			'key'   => 'fileid',
+			'title' => T_('Fileid'),
+		];
+
+		$type[] =
+		[
+			'key'   => 'website',
+			'title' => T_('Website'),
+		];
+
+		return $type;
 	}
+
 
 	public static function get($_id)
 	{
