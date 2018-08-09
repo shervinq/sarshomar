@@ -20,6 +20,31 @@ class question
 		'choice',
 	];
 
+
+	public static function all_type()
+	{
+		$allType =
+		[
+			['key' => 'short_text', 'title' => 'short_text'],
+			['key' => 'long_text', 'title' => 'long_text'],
+			['key' => 'single_choise', 'title' => 'single_choise'],
+			['key' => 'mutli_choise', 'title' => 'mutli_choise'],
+			['key' => 'picture_choice', 'title' => 'picture_choice'],
+			['key' => 'yes_no', 'title' => 'yes/no'],
+			['key' => 'legal', 'title' => 'legal'],
+			['key' => 'email', 'title' => 'email'],
+			['key' => 'scale', 'title' => 'scale'],
+			['key' => 'rating', 'title' => 'rating'],
+			['key' => 'date', 'title' => 'date'],
+			['key' => 'number', 'title' => 'number'],
+			['key' => 'dropdown', 'title' => 'dropdown'],
+			['key' => 'fileid', 'title' => 'fileid'],
+			['key' => 'website', 'title' => 'website'],
+
+		];
+		return $allType;
+	}
+
 	public static function get($_id)
 	{
 		$id = \dash\coding::decode($_id);
