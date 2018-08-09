@@ -14,14 +14,12 @@ trait edit
 	{
 		\dash\app::variable($_args, ['raw_field' => self::$raw_field]);
 
-		$result = self::get($_id);
-
-		if(!$result)
+		$id = \dash\coding::decode($_id);
+		if(!$id)
 		{
+			\dash\notif::error(T_("Invalid id"));
 			return false;
 		}
-
-		$id = \dash\coding::decode($_id);
 
 		$args = self::check($id);
 

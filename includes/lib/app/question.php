@@ -96,6 +96,16 @@ class question
 			}
 		}
 
+		if($_id)
+		{
+			$load_question = \lib\db\questions::get(['id' => $_id, 'poll_id' => $poll_id, 'limit' => 1]);
+			if(!$load_question)
+			{
+				\dash\notif::error(T_("Invalid questions id"), 'poll_id');
+				return false;
+			}
+		}
+
 		$title   = \dash\app::request('title');
 		$desc    = \dash\app::request('desc');
 		$media   = \dash\app::request('media');
