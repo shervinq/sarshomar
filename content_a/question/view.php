@@ -1,16 +1,16 @@
 <?php
-namespace content_a\poll;
+namespace content_a\question;
 
 
 class view
 {
-	public static function load_poll()
+	public static function load_question()
 	{
-		$id = \dash\request::get('id');
-		$load = \lib\app\poll::get($id);
+		$id = \dash\request::get('questionid');
+		$load = \lib\app\question::get($id);
 		if(!$load)
 		{
-			\dash\header::status(404, T_("Invalid poll id"));
+			\dash\header::status(404, T_("Invalid question id"));
 		}
 
 		\dash\data::dataRow($load);

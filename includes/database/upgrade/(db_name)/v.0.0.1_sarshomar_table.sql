@@ -30,7 +30,7 @@ CONSTRAINT `polls_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE `blocks` (
+CREATE TABLE `questions` (
 `id`            bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
 `poll_id`       bigint(20) UNSIGNED NOT NULL,
 `title` 	    text CHARACTER SET utf8mb4,
@@ -46,6 +46,6 @@ CREATE TABLE `blocks` (
 `datecreated`   timestamp DEFAULT CURRENT_TIMESTAMP,
 `datemodified`  timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
 PRIMARY KEY (`id`),
-CONSTRAINT `blocks_poll_id` FOREIGN KEY (`poll_id`) REFERENCES `polls` (`id`) ON UPDATE CASCADE
+CONSTRAINT `questions_poll_id` FOREIGN KEY (`poll_id`) REFERENCES `polls` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

@@ -25,7 +25,7 @@ class view
 
 			\dash\data::page_title(\dash\data::page_title(). ' | '. \dash\data::dataRow_title());
 
-			$dataTable = \lib\app\block::block_poll($id);
+			$dataTable = \lib\app\question::block_poll($id);
 
 			if(!$dataTable)
 			{

@@ -1,11 +1,11 @@
 <?php
-namespace lib\app\block;
+namespace lib\app\question;
 
 trait add
 {
 
 	/**
-	 * add new block
+	 * add new question
 	 *
 	 * @param      array          $_args  The arguments
 	 *
@@ -37,21 +37,21 @@ trait add
 
 		$return = [];
 
-		$block_id = \lib\db\blocks::insert($args);
+		$question_id = \lib\db\questions::insert($args);
 
-		if(!$block_id)
+		if(!$question_id)
 		{
-			\dash\notif::error(T_("No way to insert block"), 'db');
+			\dash\notif::error(T_("No way to insert question"), 'db');
 			return false;
 		}
 
 		if(\dash\engine\process::status())
 		{
-			\dash\log::db('addNewPoll', ['data' => $block_id, 'datalink' => \dash\coding::encode($block_id)]);
+			\dash\log::db('addNewPoll', ['data' => $question_id, 'datalink' => \dash\coding::encode($question_id)]);
 			\dash\notif::ok(T_("Block successfuly added"));
 		}
 
-		$return['id'] = \dash\coding::encode($block_id);
+		$return['id'] = \dash\coding::encode($question_id);
 
 		return $return;
 	}

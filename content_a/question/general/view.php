@@ -9,7 +9,7 @@ class view
 		\dash\data::page_pictogram('edit');
 
 		\content_a\poll\view::load_poll();
-		// \content_a\poll`\view::load_poll();
+		\content_a\question\view::load_question();
 
 		\dash\data::page_title(T_("Edit question"). ' | '. \dash\data::dataRow_title());
 

@@ -1,5 +1,5 @@
 <?php
-namespace lib\app\block;
+namespace lib\app\question;
 
 trait datalist
 {
@@ -13,11 +13,11 @@ trait datalist
 
 
 	/**
-	 * Gets the block.
+	 * Gets the question.
 	 *
 	 * @param      <type>  $_args  The arguments
 	 *
-	 * @return     <type>  The block.
+	 * @return     <type>  The question.
 	 */
 	public static function list($_string = null, $_args = [])
 	{
@@ -45,7 +45,7 @@ trait datalist
 		}
 
 
-		$result            = \lib\db\blocks::search($_string, $_args);
+		$result            = \lib\db\questions::search($_string, $_args);
 		$temp              = [];
 
 		foreach ($result as $key => $value)

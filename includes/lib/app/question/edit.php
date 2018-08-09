@@ -1,10 +1,10 @@
 <?php
-namespace lib\app\block;
+namespace lib\app\question;
 
 trait edit
 {
 	/**
-	 * edit a block
+	 * edit a question
 	 *
 	 * @param      <type>   $_args  The arguments
 	 *
@@ -45,7 +45,7 @@ trait edit
 
 		if(!empty($args))
 		{
-			$update = \lib\db\blocks::update($args, $id);
+			$update = \lib\db\questions::update($args, $id);
 
 			if(\dash\engine\process::status())
 			{

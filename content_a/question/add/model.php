@@ -10,7 +10,7 @@ class model
 		$post['type']    = \dash\request::post('type');
 		$post['poll_id'] = \dash\request::get('id');
 
-		$result = \lib\app\block::add($post);
+		$result = \lib\app\question::add($post);
 
 		if(\dash\engine\process::status())
 		{

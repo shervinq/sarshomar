@@ -13,7 +13,7 @@ class view
 			\dash\header::status(404, T_("Invalid poll id"));
 		}
 
-		\dash\data::dataRow($load);
+		\dash\data::pollRow($load);
 
 		return $load;
 	}

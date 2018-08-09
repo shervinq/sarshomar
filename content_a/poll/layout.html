@@ -4,7 +4,7 @@
 {%block ititle %}
 <label for="title">{%trans "Title"%} <small class="fc-red">* {%trans "Require"%}</small></label>
 <div class="input">
-  <input type="text" name="title" id="title" placeholder='{%trans "Poll title"%} *' value="{{dataRow.title}}" autofocus required maxlength='200' minlength="1" pattern=".{1,200}" >
+  <input type="text" name="title" id="title" placeholder='{%trans "Poll title"%} *' value="{{pollRow.title}}" autofocus required maxlength='200' minlength="1" pattern=".{1,200}" >
 </div>
 {% endblock %}
 
@@ -18,7 +18,7 @@
     <option value=""><i>{%trans "Please select one item"%}</i></option>
     {%for key, value in lang.list%}
       {%if key | length == 2%}
-      <option value="{{key}}" {%if dataRow.language == key or (not dataRow.lang and lang.current == key)  %} selected {%endif%}>{{value}}</option>
+      <option value="{{key}}" {%if pollRow.language == key or (not pollRow.lang and lang.current == key)  %} selected {%endif%}>{{value}}</option>
       {%endif%}
     {%endfor%}
   </select>
@@ -29,7 +29,7 @@
 {%block ipassword %}
 <label for="password">{%trans "Poll password"%}</label>
 <div class="input">
-  <input type="text" name="password" id="password" placeholder='{%trans "Poll password"%}' value="{{dataRow.password}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
+  <input type="text" name="password" id="password" placeholder='{%trans "Poll password"%}' value="{{pollRow.password}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
 </div>
 {% endblock %}
 
@@ -43,22 +43,22 @@
  <label >{%trans "Status"%}</label>
 
  <div class="radio1 green">
-  <input type="radio" id="r-publish" name="status" value="publish" {%if dataRow.status == 'publish' or not dataRow.status %} checked{%endif%}>
+  <input type="radio" id="r-publish" name="status" value="publish" {%if pollRow.status == 'publish' or not pollRow.status %} checked{%endif%}>
   <label for="r-publish">{%trans "Publish"%}</label>
  </div>
 
  <div class="radio1 black">
-  <input type="radio" id="r-draft" name="status" value="draft" {%if dataRow.status == 'draft'%} checked{%endif%} >
+  <input type="radio" id="r-draft" name="status" value="draft" {%if pollRow.status == 'draft'%} checked{%endif%} >
   <label for="r-draft">{%trans "Draft"%}</label>
  </div>
 
  <div class="radio1 yellow ">
-  <input type="radio" id="r-disable" name="status" value="disable" {%if dataRow.status == 'disable'  %} checked{%endif%}>
+  <input type="radio" id="r-disable" name="status" value="disable" {%if pollRow.status == 'disable'  %} checked{%endif%}>
   <label for="r-disable">{%trans "Disable"%}</label>
  </div>
 
  <div class="radio1 red mB25">
-  <input type="radio" id="r-deleted" name="status" value="deleted" {%if dataRow.status == 'deleted'  %} checked{%endif%}>
+  <input type="radio" id="r-deleted" name="status" value="deleted" {%if pollRow.status == 'deleted'  %} checked{%endif%}>
   <label for="r-deleted">{%trans "Deleted"%}</label>
  </div>
 
@@ -74,12 +74,12 @@
  <label >{%trans "Privacy"%}</label>
 
  <div class="radio1 green">
-  <input type="radio" id="r-private" name="privacy" value="private" {%if dataRow.privacy == 'private' or not dataRow.privacy %} checked{%endif%}>
+  <input type="radio" id="r-private" name="privacy" value="private" {%if pollRow.privacy == 'private' or not pollRow.privacy %} checked{%endif%}>
   <label for="r-private">{%trans "Private"%}</label>
  </div>
 
  <div class="radio1 black">
-  <input type="radio" id="r-public" name="privacy" value="public" {%if dataRow.privacy == 'public'%} checked{%endif%} >
+  <input type="radio" id="r-public" name="privacy" value="public" {%if pollRow.privacy == 'public'%} checked{%endif%} >
   <label for="r-public">{%trans "Public"%}</label>
  </div>
 
@@ -182,7 +182,7 @@
 
 {%block ibranding%}
 <div class="switch1 mB10">
- <input type="checkbox" name="branding" id="branding" {%if dataRow.branding %}checked{%endif%}>
+ <input type="checkbox" name="branding" id="branding" {%if pollRow.branding %}checked{%endif%}>
  <label for="branding"></label>
  <label for="branding">{%trans "Enable branding"%}</label>
 </div>
@@ -192,14 +192,14 @@
 {%block ibrandingtitle %}
 <label for="brandingtitle">{%trans "Branding title"%}</label>
 <div class="input">
-  <input type="text" name="brandingtitle" id="brandingtitle" placeholder='{%trans "Branding title"%}' value="{{dataRow.brandingtitle}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
+  <input type="text" name="brandingtitle" id="brandingtitle" placeholder='{%trans "Branding title"%}' value="{{pollRow.brandingtitle}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
 </div>
 {% endblock %}
 
 
 {%block ibrandingdesc%}
 <label for="brandingdesc">{%trans "Description"%}</label>
-<textarea class="txt mB10" id='brandingdesc' name="brandingdesc" placeholder='{%trans "Description"%}' maxlength='500' rows="5">{{dataRow.brandingdesc}}</textarea>
+<textarea class="txt mB10" id='brandingdesc' name="brandingdesc" placeholder='{%trans "Description"%}' maxlength='500' rows="5">{{pollRow.brandingdesc}}</textarea>
 {%endblock%}
 
 
@@ -208,8 +208,8 @@
 <div class="input preview">
  <input type="file" accept="image/gif, image/jpeg, image/png" name="brandingfile" id="brandingfile" data-preview data-max="1000">
  <label for="brandingfile" title='{%trans "allowed extentions jpg, png. Max 1000Kb"%}'>
-{%if dataRow.brandingmeta.file%}
-  <img src="{{dataRow.brandingmeta.file}}" alt="{{dataRow.title}}" id="logoPreview">
+{%if pollRow.brandingmeta.file%}
+  <img src="{{pollRow.brandingmeta.file}}" alt="{{pollRow.title}}" id="logoPreview">
 {%endif%}
  </label>
 </div>
@@ -218,7 +218,7 @@
 {%block ibrandingurl %}
 <label for="brandingurl">{%trans "Branding url"%}</label>
 <div class="input">
-  <input type="url" name="brandingurl" id="brandingurl" placeholder='{%trans "Branding url"%}' value="{{dataRow.brandingmeta.url}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
+  <input type="url" name="brandingurl" id="brandingurl" placeholder='{%trans "Branding url"%}' value="{{pollRow.brandingmeta.url}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
 </div>
 {% endblock %}
 
@@ -227,7 +227,7 @@
 {%block iredirect %}
 <label for="redirect">{%trans "Redirect after complete"%}</label>
 <div class="input">
-  <input type="url" name="redirect" id="redirect" placeholder='{%trans "Like"%} http://example.com' value="{{dataRow.redirect}}"  maxlength='2000' minlength="1" pattern=".{1,2000}" >
+  <input type="url" name="redirect" id="redirect" placeholder='{%trans "Like"%} http://example.com' value="{{pollRow.redirect}}"  maxlength='2000' minlength="1" pattern=".{1,2000}" >
 </div>
 {% endblock %}
 
@@ -235,7 +235,7 @@
 
 {%block iprogresbar%}
 <div class="switch1 mB10">
- <input type="checkbox" name="progresbar" id="progresbar" {%if dataRow.progresbar %}checked{%endif%}>
+ <input type="checkbox" name="progresbar" id="progresbar" {%if pollRow.progresbar %}checked{%endif%}>
  <label for="progresbar"></label>
  <label for="progresbar">{%trans "Show progresbar"%}</label>
 </div>
@@ -244,7 +244,7 @@
 
 {%block itrans%}
 <label for="trans">{%trans "Translation"%}</label>
-<textarea class="txt mB10" id='trans' name="trans" placeholder='{%trans "Translation list"%}' maxlength='500' rows="5">{{dataRow.trans}}</textarea>
+<textarea class="txt mB10" id='trans' name="trans" placeholder='{%trans "Translation list"%}' maxlength='500' rows="5">{{pollRow.trans}}</textarea>
 {%endblock%}
 
 
@@ -253,7 +253,7 @@
 
 {%block iemail%}
 <div class="switch1 mB10">
- <input type="checkbox" name="email" id="email" {%if dataRow.email %}checked{%endif%}>
+ <input type="checkbox" name="email" id="email" {%if pollRow.email %}checked{%endif%}>
  <label for="email"></label>
  <label for="email">{%trans "Enable email"%}</label>
 </div>
@@ -263,14 +263,14 @@
 {%block iemailtitle %}
 <label for="emailtitle">{%trans "Email title"%}</label>
 <div class="input">
-  <input type="text" name="emailtitle" id="emailtitle" placeholder='{%trans "Email title"%}' value="{{dataRow.emailtitle}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
+  <input type="text" name="emailtitle" id="emailtitle" placeholder='{%trans "Email title"%}' value="{{pollRow.emailtitle}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
 </div>
 {% endblock %}
 
 
 {%block iemailmsg%}
 <label for="emailmsg">{%trans "Description"%}</label>
-<textarea class="txt mB10" id='emailmsg' name="emailmsg" placeholder='{%trans "Description"%}' maxlength='500' rows="5">{{dataRow.emailmsg}}</textarea>
+<textarea class="txt mB10" id='emailmsg' name="emailmsg" placeholder='{%trans "Description"%}' maxlength='500' rows="5">{{pollRow.emailmsg}}</textarea>
 {%endblock%}
 
 
@@ -278,7 +278,7 @@
 {%block iemailto %}
 <label for="emailto">{%trans "Email to"%}</label>
 <div class="input">
-  <input type="email" name="emailto" id="emailto" placeholder='{%trans "Email to"%}' value="{{dataRow.emailto}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
+  <input type="email" name="emailto" id="emailto" placeholder='{%trans "Email to"%}' value="{{pollRow.emailto}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
 </div>
 {% endblock %}
 
@@ -291,14 +291,14 @@
 {%block iwellcomemessagetitle %}
 <label for="wellcometitle">{%trans "Wellcome message title"%}</label>
 <div class="input">
-  <input type="text" name="wellcometitle" id="wellcometitle" placeholder='{%trans "Wellcome message title"%}' value="{{dataRow.wellcometitle}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
+  <input type="text" name="wellcometitle" id="wellcometitle" placeholder='{%trans "Wellcome message title"%}' value="{{pollRow.wellcometitle}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
 </div>
 {% endblock %}
 
 
 {%block iwellcomemessagedesc%}
 <label for="wellcomedesc">{%trans "Description"%}</label>
-<textarea class="txt mB10" id='wellcomedesc' name="wellcomedesc" placeholder='{%trans "Description"%}' maxlength='500' rows="5">{{dataRow.wellcomedesc}}</textarea>
+<textarea class="txt mB10" id='wellcomedesc' name="wellcomedesc" placeholder='{%trans "Description"%}' maxlength='500' rows="5">{{pollRow.wellcomedesc}}</textarea>
 {%endblock%}
 
 
@@ -307,8 +307,8 @@
 <div class="input preview">
  <input type="file" accept="image/gif, image/jpeg, image/png" name="wellcomefile" id="wellcomefile" data-preview data-max="1000">
  <label for="wellcomefile" title='{%trans "allowed extentions jpg, png. Max 1000Kb"%}'>
-{%if dataRow.wellcomemedia.file%}
-  <img src="{{dataRow.wellcomemedia.file}}" alt="{{dataRow.title}}" id="logoPreview">
+{%if pollRow.wellcomemedia.file%}
+  <img src="{{pollRow.wellcomemedia.file}}" alt="{{pollRow.title}}" id="logoPreview">
 {%endif%}
  </label>
 </div>
@@ -320,14 +320,14 @@
 {%block ithankyoutitle %}
 <label for="thankyoutitle">{%trans "Thankyou message title"%}</label>
 <div class="input">
-  <input type="text" name="thankyoutitle" id="thankyoutitle" placeholder='{%trans "Thankyou message title"%}' value="{{dataRow.thankyoutitle}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
+  <input type="text" name="thankyoutitle" id="thankyoutitle" placeholder='{%trans "Thankyou message title"%}' value="{{pollRow.thankyoutitle}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
 </div>
 {% endblock %}
 
 
 {%block ithankyoudesc%}
 <label for="thankyoudesc">{%trans "Description"%}</label>
-<textarea class="txt mB10" id='thankyoudesc' name="thankyoudesc" placeholder='{%trans "Description"%}' maxlength='500' rows="5">{{dataRow.thankyoudesc}}</textarea>
+<textarea class="txt mB10" id='thankyoudesc' name="thankyoudesc" placeholder='{%trans "Description"%}' maxlength='500' rows="5">{{pollRow.thankyoudesc}}</textarea>
 {%endblock%}
 
 
@@ -336,8 +336,8 @@
 <div class="input preview">
  <input type="file" accept="image/gif, image/jpeg, image/png" name="thankyoufile" id="thankyoufile" data-preview data-max="1000">
  <label for="thankyoufile" title='{%trans "allowed extentions jpg, png. Max 1000Kb"%}'>
-{%if dataRow.thankyoumedia.file%}
-  <img src="{{dataRow.thankyoumedia.file}}" alt="{{dataRow.title}}" id="logoPreview">
+{%if pollRow.thankyoumedia.file%}
+  <img src="{{pollRow.thankyoumedia.file}}" alt="{{pollRow.title}}" id="logoPreview">
 {%endif%}
  </label>
 </div>

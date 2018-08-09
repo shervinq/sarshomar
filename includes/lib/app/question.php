@@ -2,15 +2,15 @@
 namespace lib\app;
 
 /**
- * Class for block.
+ * Class for question.
  */
-class block
+class question
 {
 
-	use block\add;
-	use block\edit;
-	use block\datalist;
-	use block\dashboard;
+	use question\add;
+	use question\edit;
+	use question\datalist;
+	use question\dashboard;
 
 
 	public static $raw_field =
@@ -30,11 +30,11 @@ class block
 		}
 
 
-		$get = \lib\db\blocks::get(['id' => $id, 'limit' => 1]);
+		$get = \lib\db\questions::get(['id' => $id, 'limit' => 1]);
 
 		if(!$get)
 		{
-			\dash\notif::error(T_("Invalid block id"));
+			\dash\notif::error(T_("Invalid question id"));
 			return false;
 		}
 
@@ -53,7 +53,7 @@ class block
 			return false;
 		}
 
-		$result = \lib\db\blocks::get(['poll_id' => $poll_id]);
+		$result = \lib\db\questions::get(['poll_id' => $poll_id]);
 
 		if(is_array($result))
 		{
@@ -106,7 +106,7 @@ class block
 		$type = \dash\app::request('type');
 		if($type && mb_strlen($type) >= 200)
 		{
-			\dash\notif::error(T_("Please fill the block type less than 200 character"), 'type');
+			\dash\notif::error(T_("Please fill the question type less than 200 character"), 'type');
 			return false;
 		}
 
@@ -145,9 +145,9 @@ class block
 		}
 
 		$status = \dash\app::request('status');
-		if($status && !in_array($status, ['draft','publish','expire','deleted','lock','awaiting','block','filter','close', 'full']))
+		if($status && !in_array($status, ['draft','publish','expire','deleted','lock','awaiting','question','filter','close', 'full']))
 		{
-			\dash\notif::error(T_("Invalid status of block"), 'status');
+			\dash\notif::error(T_("Invalid status of question"), 'status');
 			return false;
 		}
 
@@ -168,7 +168,7 @@ class block
 
 
 	/**
-	 * ready data of block to load in api
+	 * ready data of question to load in api
 	 *
 	 * @param      <type>  $_data  The data
 	 */

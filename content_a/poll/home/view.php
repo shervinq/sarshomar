@@ -18,9 +18,9 @@ class view
 			{
 				\dash\header::status(404, T_("Invalid poll id"));
 			}
-			\dash\data::dataRow($load_poll);
+			\dash\data::pollRow($load_poll);
 
-			\dash\data::page_title(\dash\data::page_title(). ' | '. \dash\data::dataRow_title());
+			\dash\data::page_title(\dash\data::page_title(). ' | '. \dash\data::pollRow_title());
 
 			\dash\data::badge_link(\dash\url::here());
 			\dash\data::badge_text(T_('Back to poll list'));

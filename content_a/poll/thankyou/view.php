@@ -10,7 +10,7 @@ class view
 
 		\content_a\poll\view::load_poll();
 
-		\dash\data::page_title(T_("Edit poll"). ' | '. \dash\data::dataRow_title());
+		\dash\data::page_title(T_("Edit poll"). ' | '. \dash\data::pollRow_title());
 
 		\dash\data::page_desc(T_("You can edit your poll detail"));
 

@@ -94,7 +94,7 @@ class poll
 		}
 
 		$status = \dash\app::request('status');
-		if($status && !in_array($status, ['draft','publish','expire','deleted','lock','awaiting','block','filter','close', 'full']))
+		if($status && !in_array($status, ['draft','publish','expire','deleted','lock','awaiting','question','filter','close', 'full']))
 		{
 			\dash\notif::error(T_("Invalid status of poll"), 'status');
 			return false;
