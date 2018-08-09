@@ -1,5 +1,5 @@
 <?php
-namespace content_a\block\general;
+namespace content_a\poll\general;
 
 
 class model
@@ -10,7 +10,7 @@ class model
 		$post['title']  = \dash\request::post('title');
 		$post['status'] = \dash\request::post('status');
 
-		$result = \lib\app\block::edit($post, \dash\request::get('id'));
+		$result = \lib\app\poll::edit($post, \dash\request::get('id'));
 
 		if(\dash\engine\process::status())
 		{

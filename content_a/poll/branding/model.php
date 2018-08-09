@@ -29,7 +29,7 @@ class model
 			}
 			else
 			{
-				$old = \content_a\poll\view::load();
+				$old = \content_a\poll\view::load_poll();
 				if(isset($old['brandingmeta']['file']))
 				{
 					$post['brandingmeta']['file']  = $old['brandingmeta']['file'];

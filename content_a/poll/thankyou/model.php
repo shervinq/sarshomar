@@ -24,7 +24,7 @@ class model
 		}
 		else
 		{
-			$old = \content_a\poll\view::load();
+			$old = \content_a\poll\view::load_poll();
 			if(isset($old['thankyoumedia']['file']))
 			{
 				$post['thankyoumedia']['file']  = $old['thankyoumedia']['file'];

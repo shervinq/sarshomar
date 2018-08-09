@@ -8,7 +8,7 @@ class view
 	{
 		\dash\data::page_pictogram('edit');
 
-		\content_a\poll\view::load();
+		\content_a\poll\view::load_poll();
 
 		\dash\data::page_title(T_("Edit poll"). ' | '. \dash\data::dataRow_title());
 

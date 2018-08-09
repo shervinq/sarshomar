@@ -1,5 +1,5 @@
 <?php
-namespace content_a\block\branding;
+namespace content_a\poll\branding;
 
 
 class model
@@ -29,7 +29,7 @@ class model
 			}
 			else
 			{
-				$old = \content_a\block\view::load();
+				$old = \content_a\poll\view::load_poll();
 				if(isset($old['brandingmeta']['file']))
 				{
 					$post['brandingmeta']['file']  = $old['brandingmeta']['file'];
@@ -37,7 +37,7 @@ class model
 			}
 		}
 
-		$result = \lib\app\block::edit($post, \dash\request::get('id'));
+		$result = \lib\app\poll::edit($post, \dash\request::get('id'));
 
 		if(\dash\engine\process::status())
 		{

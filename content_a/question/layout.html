@@ -4,7 +4,7 @@
 {%block ititle %}
 <label for="title">{%trans "Title"%} <small class="fc-red">* {%trans "Require"%}</small></label>
 <div class="input">
-  <input type="text" name="title" id="title" placeholder='{%trans "Block title"%} *' value="{{dataRow.title}}" autofocus required maxlength='200' minlength="1" pattern=".{1,200}" >
+  <input type="text" name="title" id="title" placeholder='{%trans "Poll title"%} *' value="{{dataRow.title}}" autofocus required maxlength='200' minlength="1" pattern=".{1,200}" >
 </div>
 {% endblock %}
 
@@ -27,9 +27,9 @@
 
 
 {%block ipassword %}
-<label for="password">{%trans "Block password"%}</label>
+<label for="password">{%trans "Poll password"%}</label>
 <div class="input">
-  <input type="text" name="password" id="password" placeholder='{%trans "Block password"%}' value="{{dataRow.password}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
+  <input type="text" name="password" id="password" placeholder='{%trans "Poll password"%}' value="{{dataRow.password}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
 </div>
 {% endblock %}
 

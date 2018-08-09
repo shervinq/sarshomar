@@ -1,4 +1,4 @@
-{%extends display.block%}
+{%extends display.poll%}
 
 
 {%block pageContent%}
@@ -7,9 +7,9 @@
 	<div class="c6">
 		<div class="cbox">
 			<form method="post" autocomplete="off">
-				{{block('ithankyoutitle')}}
-				{{block('ithankyoudesc')}}
-				{{block('ithankyoufile')}}
+				{{block('ititle')}}
+				{{block('istatus')}}
+
 				{{block('isave')}}
 			</form>
 		</div>

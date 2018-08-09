@@ -1,5 +1,5 @@
 <?php
-namespace content_a\block\add;
+namespace content_a\poll\add;
 
 
 class model
@@ -9,7 +9,7 @@ class model
 		$post             = [];
 		$post['title']    = \dash\request::post('title');
 
-		$result = \lib\app\block::add($post);
+		$result = \lib\app\poll::add($post);
 
 		if(\dash\engine\process::status())
 		{
