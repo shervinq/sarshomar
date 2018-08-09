@@ -6,11 +6,9 @@
 {%block pageContent%}
 
 <div class="f">
- <div class="c s6">{{block ("stCourse")}}</div>
- <div class="c s6">{{block ("stOrganizer")}}</div>
- <div class="c s6">{{block ("stSupporter")}}</div>
- <div class="c s6">{{block ("stMediasupporter")}}</div>
- <div class="c s12">{{block ("stReferee")}}</div>
+ <div class="c4 s12">{{block ("stSetting")}}</div>
+ <div class="c4 s12">{{block ("stQuestion")}}</div>
+ <div class="c4 s12">{{block ("stSort")}}</div>
 </div>
 
 <div class="f">
@@ -18,25 +16,14 @@
     {{block ("chart_primary")}}
   </div>
   <div class="c3 s12">
-
-
-{{block ("stLogo")}}
+    {{block ("stChartDetail")}}
   </div>
 </div>
 
 
-
 <div class="f">
- <div class="c3 s12">{{block ("stLInk")}}</div>
- <div class="c3 s12">{{block ("stStatus")}}</div>
- <div class="c3 s6">{{block ("stSetting")}}</div>
- <div class="c3 s12">{{block ("prDate")}}</div>
-</div>
-
-<div class="f">
- <div class="c6 s12">{{block ("stUser")}}</div>
- <div class="c6 s12">{{block ("stTransaction")}}</div>
-
+ <div class="c6 s12">{{block ("stReport")}}</div>
+ <div class="c6 s12">{{block ("prDate")}}</div>
 </div>
 
 
@@ -44,57 +31,47 @@
 
 
 
-{%block stUser%}
-<a class="dcard" href='{{url.this}}/user?id={{requestGET.id}}'>
- <div class="statistic ">
-  <div class="value"><i class="sf-users"></i></div>
-  <div class="label">{%trans "Users"%}</div>
+{%block stSetting%}
+<a class="dcard" href='{{url.this}}/general?id={{requestGET.id}}'>
+ <div class="statistic teal">
+  <div class="value"><i class="sf-cog"></i></div>
+  <div class="label">{%trans "Setting"%}</div>
  </div>
 </a>
 {%endblock%}
 
 
 
-{%block stTransaction%}
-<a class="dcard" href='{{url.this}}/transaction?id={{requestGET.id}}'>
- <div class="statistic ">
-  <div class="value"><i class="sf-card"></i></div>
-  <div class="label">{%trans "Transactions"%}</div>
- </div>
-</a>
-{%endblock%}
-
-
-
-
-
-{%block stReferee%}
-<a class="dcard" href='{{url.this}}/referee?id={{requestGET.id}}'>
- <div class="statistic ">
-  <div class="value"><i class="sf-user-md"></i></div>
-  <div class="label">{%trans "Referee"%}</div>
- </div>
-</a>
-{%endblock%}
-
-
-{%block stStatus%}
-<a class="dcard" href='{{url.this}}/status?id={{requestGET.id}}'>
+{%block stQuestion%}
+<a class="dcard" href='{{url.this}}/question?id={{requestGET.id}}'>
  <div class="statistic pink">
-  <div class="value"><i class="sf-tachometer"></i></div>
-  <div class="label">{%trans "Status"%}</div>
+  <div class="value"><i class="sf-list-ol"></i></div>
+  <div class="label">{%trans "Questions"%}</div>
  </div>
 </a>
 {%endblock%}
 
-{%block stLInk%}
-<a class="dcard" data-direct target="_blank" href='{{url.site}}/festival/{{dataRow.slug}}'>
- <div class="statistic violet">
-  <div class="value"><i class="sf-link"></i><span class="hide">{{dashboardDetail.poster_count |number_format |fitNumber}}</span></div>
-  <div class="label">{%trans "Show festival"%}</div>
+
+{%block stSort%}
+<a class="dcard" href='{{url.this}}/sort?id={{requestGET.id}}'>
+ <div class="statistic yellow">
+  <div class="value"><i class="sf-flag-checkered"></i></div>
+  <div class="label">{%trans "Sort block"%}</div>
  </div>
 </a>
 {%endblock%}
+
+
+
+{%block stReport%}
+<a class="dcard" href='{{url.this}}/report?id={{requestGET.id}}'>
+ <div class="statistic brown">
+  <div class="value"><i class="sf-chart"></i></div>
+  <div class="label">{%trans "Report"%}</div>
+ </div>
+</a>
+{%endblock%}
+
 
 
 {%block prDate%}
@@ -120,56 +97,6 @@
 
 
 
-{%block stMediasupporter%}
-<a class="dcard" href='{{url.this}}/mediasupporter?id={{requestGET.id}}'>
- <div class="statistic orange">
-  <div class="value"><i class="sf-bullhorn"></i><span class="hide">{{dashboardDetail.mediasupporter_count |number_format |fitNumber}}</span></div>
-  <div class="label">{%trans "Media supporter"%}</div>
- </div>
-</a>
-{%endblock%}
-
-
-{%block stCourse%}
-<a class="dcard" href='{{url.this}}/course?id={{requestGET.id}}'>
- <div class="statistic olive">
-  <div class="value"><i class="sf-arrows-alt"></i><span class="hide">{{dashboardDetail.course_count |number_format |fitNumber}}</span></div>
-  <div class="label">{%trans "Topics"%}</div>
- </div>
-</a>
-{%endblock%}
-
-
-{%block stOrganizer%}
-<a class="dcard" href='{{url.this}}/organizer?id={{requestGET.id}}'>
- <div class="statistic teal">
-  <div class="value"><i class="sf-plug"></i><span class="fs08 hide">{{dashboardDetail.organizer_count |number_format |fitNumber}}</span></div>
-  <div class="label">{%trans "Organizer"%}</div>
- </div>
-</a>
-{%endblock%}
-
-
-{%block stSupporter%}
-<a class="dcard" href='{{url.this}}/supporter?id={{requestGET.id}}'>
- <div class="statistic green">
-  <div class="value"><i class="sf-crosshairs"></i><span class="hide fs08">{{dashboardDetail.supporter_count |number_format |fitNumber}}</span></div>
-  <div class="label">{%trans "Sponsers"%}</div>
- </div>
-</a>
-{%endblock%}
-
-
-{%block stSetting%}
-<a class="dcard" href='{{url.this}}/general?id={{requestGET.id}}'>
- <div class="statistic blue">
-  <div class="value"><i class="sf-cog"></i></div>
-  <div class="label">{%trans "Setting"%}</div>
- </div>
-</a>
-{%endblock%}
-
-
 {%block chart_primary%}
 {%if chartData%}
 <div class="dcard x3 pA0">
@@ -178,20 +105,19 @@
 </div>
 {%else%}
 <div class="dcard x3 pA0">
- <p class="fs18">{%trans "No user signuped to this festival yet!"%}</p>
+ <p class="fs18">{%trans "No user answer to this poll yet!"%}</p>
 </div>
 {%endif%}
 {%endblock%}
 
 
 
-{%block stLogo%}
-<a class="dcard x3" href='{{url.this}}/logo?id={{requestGET.id}}'>
+{%block stChartDetail%}
+<a class="dcard x3" >
  <div class="statistic gray">
   <div class="value">
-    <img src="{{dataRow.logo}}">
+  <div class="label">{%trans "Answer chart"%}</div>
   </div>
-  <div class="label">{%trans "Logo"%}</div>
  </div>
 </a>
 {%endblock%}

@@ -14,8 +14,8 @@ class view
 
 		\dash\data::page_desc(T_("You can edit your poll detail"));
 
-		\dash\data::badge_link(\dash\url::this());
-		\dash\data::badge_text(T_('Back to poll list'));
+		\dash\data::badge_link(\dash\url::this(). '?id='. \dash\request::get('id'));
+		\dash\data::badge_text(T_('Back to poll dashboard'));
 
 	}
 }
