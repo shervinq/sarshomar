@@ -4,10 +4,21 @@
 {%block ititle %}
 <label for="title">{%trans "Title"%} <small class="fc-red">* {%trans "Require"%}</small></label>
 <div class="input">
-  <input type="text" name="title" id="title" placeholder='{%trans "Poll title"%} *' value="{{dataRow.title}}" autofocus required maxlength='200' minlength="1" pattern=".{1,200}" >
+  <input type="text" name="title" id="title" placeholder='{%trans "Question title"%} *' value="{{dataRow.title}}" autofocus required maxlength='200' minlength="1" pattern=".{1,200}" >
 </div>
 {% endblock %}
 
+{%block itype%}
+<div class="mB10" title='{%trans "Add new question by type"%}'>
+  <label for="type">{%trans "Type"%}</label>
+  <select name="type" class="ui dropdown select">
+    <option value=""><i>{%trans "Please select one item"%}</i></option>
+    {%for key, value in allType%}
+      <option value="{{value.key}}" {%if dataRow.type == value.key %} selected {%endif%}>{%set myTitle = value.title%}{%trans myTitle%}</option>
+    {%endfor%}
+  </select>
+</div>
+{%endblock%}
 
 
 
@@ -169,6 +180,9 @@
 {%endblock%}
 
 
+{%block inext%}
+<button class="btn primary block mT20">{%trans "Next"%}</button>
+{%endblock%}
 
 {%block iadd%}
 <button class="btn primary block mT20">{%trans "Add"%}</button>

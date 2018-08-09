@@ -60,7 +60,7 @@ trait add
 
 		if(\dash\engine\process::status())
 		{
-			\dash\log::db('addNewPlll', ['data' => $poll_id, 'datalink' => \dash\coding::encode($poll_id)]);
+			\dash\log::db('addNewPoll', ['data' => $poll_id, 'datalink' => \dash\coding::encode($poll_id)]);
 			\dash\notif::ok(T_("Poll successfuly added"));
 		}
 

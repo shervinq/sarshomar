@@ -1,21 +1,22 @@
 <?php
-namespace content_a\poll\add;
+namespace content_a\question\add;
 
 
 class model
 {
 	public static function post()
 	{
-		$post             = [];
-		$post['title']    = \dash\request::post('title');
+		$post            = [];
+		$post['type']    = \dash\request::post('type');
+		$post['poll_id'] = \dash\request::get('id');
 
-		$result = \lib\app\poll::add($post);
+		$result = \lib\app\block::add($post);
 
 		if(\dash\engine\process::status())
 		{
 			if(isset($result['id']))
 			{
-				\dash\redirect::to(\dash\url::this(). '/general?id='. $result['id']);
+				\dash\redirect::to(\dash\url::this(). '/general?id='. \dash\request::get('id'). '&questionid='. $result['id']);
 			}
 			else
 			{

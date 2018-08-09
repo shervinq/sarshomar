@@ -15,10 +15,9 @@ class block
 
 	public static $raw_field =
 	[
-		'redirect',
-		'brandingmeta',
-		'wellcomemedia',
-		'thankyoumedia',
+		'media',
+		'setting',
+		'choice',
 	];
 
 	public static function get($_id)
@@ -45,6 +44,26 @@ class block
 	}
 
 
+	public static function block_poll($_poll_id)
+	{
+		$poll_id = \dash\coding::decode($_poll_id);
+		if(!$poll_id)
+		{
+			\dash\notif::error(T_("Poll id not set"));
+			return false;
+		}
+
+		$result = \lib\db\blocks::get(['poll_id' => $poll_id]);
+
+		if(is_array($result))
+		{
+			$result = array_map(['self', 'ready'], $result);
+		}
+
+		return $result;
+	}
+
+
 	/**
 	 * check args
 	 *
@@ -52,45 +71,77 @@ class block
 	 */
 	private static function check($_id = null)
 	{
-
-		$title = \dash\app::request('title');
-		if(\dash\app::isset_request('title') && !$title)
+		$poll_id = \dash\app::request('poll_id');
+		$poll_id = \dash\coding::decode($poll_id);
+		if(!$poll_id)
 		{
-			\dash\notif::error(T_("Please fill the block title"), 'title');
+			\dash\notif::error(T_("Poll id not set"), 'poll_id');
 			return false;
 		}
 
-		if(mb_strlen($title) >= 500)
+		$load_poll = \lib\db\polls::get(['id' => $poll_id, 'limit' => 1]);
+		if(!$load_poll || !isset($load_poll['user_id']))
 		{
-			\dash\notif::error(T_("Please fill the block title less than 500 character"), 'title');
+			\dash\notif::error(T_("Invalid poll id"), 'poll_id');
 			return false;
 		}
 
-		$language = \dash\app::request('language');
-		if($language && mb_strlen($language) !== 2)
+		if(intval(\dash\user::id()) !== intval($load_poll['user_id']))
 		{
-			\dash\notif::error(T_("Invalid parameter language"), 'language');
+			if(!\dash\permission::supervisor())
+			{
+				\dash\log::db('isNotYourPoll', ['data' => $poll_id]);
+				\dash\notif::error(T_("This is not your poll!"), 'poll_id');
+				return false;
+			}
+		}
+
+		$title   = \dash\app::request('title');
+		$desc    = \dash\app::request('desc');
+		$media   = \dash\app::request('media');
+		$require = \dash\app::request('request') ? 1 : null;
+		$setting = \dash\app::request('setting');
+		$choice  = \dash\app::request('choice');
+
+		$type = \dash\app::request('type');
+		if($type && mb_strlen($type) >= 200)
+		{
+			\dash\notif::error(T_("Please fill the block type less than 200 character"), 'type');
 			return false;
 		}
 
-		if($language && !\dash\language::check($language))
+		$maxchar = \dash\app::request('maxchar');
+		if($maxchar && !is_numeric($maxchar))
 		{
-			\dash\notif::error(T_("Invalid parameter language"), 'language');
+			\dash\notif::error(T_("Please fill maxchar as a number"), 'maxchar');
 			return false;
 		}
 
-		$password = \dash\app::request('password');
-		if($password && mb_strlen($password) >= 200)
+		if($maxchar)
 		{
-			\dash\notif::error(T_("Please fill the block password less than 200 character"), 'password');
+			$maxchar = abs(intval($maxchar));
+			if($maxchar > 1E+9)
+			{
+				\dash\notif::error(T_("Maxchart is out of range"), 'maxchar');
+				return false;
+			}
+		}
+
+		$sort = \dash\app::request('sort');
+		if($sort && !is_numeric($sort))
+		{
+			\dash\notif::error(T_("Please fill the sort as a number"), 'sort');
 			return false;
 		}
 
-		$privacy = \dash\app::request('privacy');
-		if($privacy && !in_array($privacy, ['public', 'private']))
+		if($sort)
 		{
-			\dash\notif::error(T_("Invalid privacy of block"), 'privacy');
-			return false;
+			$sort = abs(intval($sort));
+			if($sort > 1E+9)
+			{
+				\dash\notif::error(T_("Maxchart is out of range"), 'sort');
+				return false;
+			}
 		}
 
 		$status = \dash\app::request('status');
@@ -100,85 +151,18 @@ class block
 			return false;
 		}
 
-		$branding      = \dash\app::request('branding') ? 1 : null;
-		$brandingtitle = \dash\app::request('brandingtitle');
-		$brandingdesc  = \dash\app::request('brandingdesc');
-		$brandingmeta  = \dash\app::request('brandingmeta');
-		if(is_array($brandingmeta))
-		{
-			$brandingmeta = json_encode($brandingmeta, JSON_UNESCAPED_UNICODE);
-		}
-
-		$redirect = \dash\app::request('redirect');
-		if($redirect && mb_strlen($redirect) >= 2000)
-		{
-			\dash\notif::error(T_("Please fill the block redirect less than 2000 character"), 'redirect');
-			return false;
-		}
-
-		$progresbar = \dash\app::request('progresbar') ? 1 : null;
-
-		$trans  = \dash\app::request('trans');
-
-		$email  = \dash\app::request('email') ? 1 : null;
-
-		$emailtitle = \dash\app::request('emailtitle');
-		if($emailtitle && mb_strlen($emailtitle) >= 500)
-		{
-			\dash\notif::error(T_("Please fill the block emailtitle less than 500 character"), 'emailtitle');
-			return false;
-		}
-
-		$emailto = \dash\app::request('emailto');
-		if($emailto && mb_strlen($emailto) >= 500)
-		{
-			\dash\notif::error(T_("Please fill the block emailto less than 500 character"), 'emailto');
-			return false;
-		}
-
-		$emailmsg      = \dash\app::request('emailmsg');
-
-		$wellcometitle = \dash\app::request('wellcometitle');
-		$wellcomedesc  = \dash\app::request('wellcomedesc');
-		$wellcomemedia = \dash\app::request('wellcomemedia');
-		if(is_array($wellcomemedia))
-		{
-			$wellcomemedia = json_encode($wellcomemedia, JSON_UNESCAPED_UNICODE);
-		}
-
-		$thankyoutitle = \dash\app::request('thankyoutitle');
-		$thankyoudesc  = \dash\app::request('thankyoudesc');
-		$thankyoumedia = \dash\app::request('thankyoumedia');
-		if(is_array($thankyoumedia))
-		{
-			$thankyoumedia = json_encode($thankyoumedia, JSON_UNESCAPED_UNICODE);
-		}
-
-
-		$args                  = [];
-		$args['title']         = $title;
-		$args['lang']          = $language;
-		$args['password']      = $password;
-		$args['privacy']       = $privacy;
-		$args['status']        = $status;
-		$args['branding']      = $branding;
-		$args['brandingtitle'] = $brandingtitle;
-		$args['brandingdesc']  = $brandingdesc;
-		$args['brandingmeta']  = $brandingmeta;
-		$args['redirect']      = $redirect;
-		$args['progresbar']    = $progresbar;
-		$args['trans']         = $trans;
-		$args['email']         = $email;
-		$args['emailtitle']    = $emailtitle;
-		$args['emailto']       = $emailto;
-		$args['emailmsg']      = $emailmsg;
-		$args['wellcometitle'] = $wellcometitle;
-		$args['wellcomedesc']  = $wellcomedesc;
-		$args['wellcomemedia'] = $wellcomemedia;
-		$args['thankyoutitle'] = $thankyoutitle;
-		$args['thankyoudesc']  = $thankyoudesc;
-		$args['thankyoumedia'] = $thankyoumedia;
-
+		$args            = [];
+		$args['poll_id'] = $poll_id;
+		$args['title']   = $title;
+		$args['desc']    = $desc;
+		$args['media']   = $media;
+		$args['require'] = $require;
+		$args['setting'] = $setting;
+		$args['choice']  = $choice;
+		$args['type']    = $type;
+		$args['maxchar'] = $maxchar;
+		$args['sort']    = $sort;
+		$args['status']  = $status;
 		return $args;
 	}
 

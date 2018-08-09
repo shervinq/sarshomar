@@ -24,31 +24,18 @@ trait add
 		// check args
 		$args = self::check();
 
+
 		if($args === false || !\dash\engine\process::status())
 		{
 			return false;
 		}
-
-		$return = [];
-
-
-		if(!isset($args['title']))
-		{
-			\dash\notif::error(T_("Please fill the block title"), 'title');
-			return false;
-		}
-
-		$args['user_id'] = \dash\user::id();
 
 		if(!$args['status'])
 		{
 			$args['status']  = 'draft';
 		}
 
-		if(!$args['privacy'])
-		{
-			$args['privacy']  = 'public';
-		}
+		$return = [];
 
 		$block_id = \lib\db\blocks::insert($args);
 
@@ -60,7 +47,7 @@ trait add
 
 		if(\dash\engine\process::status())
 		{
-			\dash\log::db('addNewPlll', ['data' => $block_id, 'datalink' => \dash\coding::encode($block_id)]);
+			\dash\log::db('addNewPoll', ['data' => $block_id, 'datalink' => \dash\coding::encode($block_id)]);
 			\dash\notif::ok(T_("Block successfuly added"));
 		}
 
