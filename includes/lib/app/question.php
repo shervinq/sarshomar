@@ -22,6 +22,82 @@ class question
 	];
 
 
+	public static function sort_choise($_args)
+	{
+		\dash\app::variable($_args);
+		$sort = \dash\app::request('sort');
+		if(!$sort || !is_array($sort))
+		{
+			\dash\notif::error(T_("No valid sort method sended!"));
+			return false;
+		}
+
+
+		$poll_id = \dash\app::request('poll_id');
+		$poll_id = \dash\coding::decode($poll_id);
+		if(!$poll_id)
+		{
+			\dash\notif::error(T_("Poll id not set"), 'poll_id');
+			return false;
+		}
+
+		$load_poll = \lib\db\polls::get(['id' => $poll_id, 'limit' => 1]);
+		if(!$load_poll || !isset($load_poll['user_id']))
+		{
+			\dash\notif::error(T_("Invalid poll id"), 'poll_id');
+			return false;
+		}
+
+		if(intval(\dash\user::id()) !== intval($load_poll['user_id']))
+		{
+			if(!\dash\permission::supervisor())
+			{
+				\dash\log::db('isNotYourPoll', ['data' => $poll_id]);
+				\dash\notif::error(T_("This is not your poll!"), 'poll_id');
+				return false;
+			}
+		}
+
+		$block_poll = \lib\app\question::block_poll(\dash\app::request('poll_id'));
+
+		if(count($block_poll) !== count($sort))
+		{
+			\dash\notif::error(T_("Some question was lost!"));
+			return false;
+		}
+
+		$old_sort = array_column($block_poll, 'id');
+
+		if($old_sort !== $sort)
+		{
+			$block_poll = array_combine($old_sort, $block_poll);
+
+			$new_bloc_sort = [];
+			foreach ($sort as $key => $value)
+			{
+				if(isset($block_poll[$value]))
+				{
+					$id = $block_poll[$value]['id'];
+					$id = \dash\coding::decode($id);
+					$new_bloc_sort[$key] = $id;
+				}
+				else
+				{
+					\dash\notif::error(T_("some data is incorrect!"));
+					return false;
+				}
+			}
+
+			\lib\db\questions::save_sort($new_bloc_sort);
+
+		}
+
+		\dash\notif::ok(T_("Sort question saved"));
+		return true;
+
+	}
+
+
 	public static function get($_id)
 	{
 		$id = \dash\coding::decode($_id);
@@ -55,7 +131,7 @@ class question
 			return false;
 		}
 
-		$result = \lib\db\questions::get(['poll_id' => $poll_id]);
+		$result = \lib\db\questions::get_sort(['poll_id' => $poll_id]);
 
 		if(is_array($result))
 		{

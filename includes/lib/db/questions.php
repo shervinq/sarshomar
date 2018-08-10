@@ -4,6 +4,47 @@ namespace lib\db;
 
 class questions
 {
+	public static function save_sort($_sort)
+	{
+		$query = [];
+		foreach ($_sort as $key => $value)
+		{
+			$query[] = " UPDATE questions SET questions.sort = $key WHERE questions.id = $value LIMIT 1 ";
+		}
+
+		$query = implode(';', $query);
+
+		return \dash\db::query($query, true, ['multi_query' => true]);
+	}
+
+
+	public static function get_sort($_where)
+	{
+		$limit = null;
+		$only_one_value = false;
+		if(isset($_where['limit']))
+		{
+			if($_where['limit'] === 1)
+			{
+				$only_one_value = true;
+			}
+
+			$limit = " LIMIT $_where[limit] ";
+		}
+
+		unset($_where['limit']);
+
+		$where = \dash\db\config::make_where($_where);
+		if($where)
+		{
+			$query = "SELECT * FROM questions WHERE $where ORDER BY questions.sort ASC, questions.id ASC $limit";
+			$result = \dash\db::get($query, null, $only_one_value);
+			return $result;
+		}
+		return false;
+
+	}
+
 
 	public static function insert()
 	{

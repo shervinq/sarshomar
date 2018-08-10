@@ -5,26 +5,27 @@
 
 {%block pageContent%}
 <div class="cbox">
+  <form method="post" >
 
-  {%for key, value in dataTable%}
-  <form method="post">
+    <ul class="sortable ">
 
-    <div class="msg">#{{(key + 1) | fitNumber}}
-      <br>
-      {%if value.title%}<b>{{value.title}}</b>{%endif%}
-      {%if value.desc%}<b>{{value.desc}}</b>{%endif%}
-      {%if not value.title and not value.desc%}<i>{%trans "Untitled"%}</i>{%endif%}
-      <br>
-      {%if value.type%}<b>{{value.type}}</b>{%endif%}
+      {%for key, value in dataTable%}
+      <li>
+        <div class="msg">
+        <span class="handle">☰ </span>
 
-      <div class="floatL input w100 " >
-        <input type="number" name="sort[]" value="{{(key + 1)}}">
-      </div>
+          {%if value.title%}<b>{{value.title}}</b>{%endif%}
+          {%if value.desc%}<b>{{value.desc}}</b>{%endif%}
+          {%if not value.title and not value.desc%}<i>{%trans "Untitled"%}</i>{%endif%}
 
-    </div>
-  {%endfor%}
+          <input type="hidden" name="sort[]" value="{{value.id}}">
+        </div>
+      </li>
+      {%endfor%}
+    </ul>
       <button class="btn success block">{%trans "Save sort"%}</button>
   </form>
+
 </div>
 {%endblock%}
 
