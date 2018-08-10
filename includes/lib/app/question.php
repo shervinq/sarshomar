@@ -11,6 +11,7 @@ class question
 	use question\edit;
 	use question\datalist;
 	use question\dashboard;
+	use question\type;
 
 
 	public static $raw_field =
@@ -19,104 +20,6 @@ class question
 		'setting',
 		'choice',
 	];
-
-
-	public static function all_type()
-	{
-		$type = [];
-
-		$type[] =
-		[
-			'key'   => 'short_text',
-			'title' => T_("Short text"),
-		];
-
-		$type[] =
-		[
-			'key'   => 'long_text',
-			'title' => T_('Long text'),
-		];
-
-		$type[] =
-		[
-			'key'   => 'single_choise',
-			'title' => T_('Single choise'),
-		];
-
-		$type[] =
-		[
-			'key'   => 'mutli_choise',
-			'title' => T_('Multiple choise'),
-		];
-
-		$type[] =
-		[
-			'key'   => 'picture_choice',
-			'title' => T_('Picture choise'),
-		];
-
-		$type[] =
-		[
-			'key'   => 'yes_no',
-			'title' => T_('yes/no'),
-		];
-
-		$type[] =
-		[
-			'key'   => 'legal',
-			'title' => T_('Legal'),
-		];
-
-		$type[] =
-		[
-			'key'   => 'email',
-			'title' => T_('Email'),
-		];
-
-		$type[] =
-		[
-			'key'   => 'scale',
-			'title' => T_('Scale'),
-		];
-
-		$type[] =
-		[
-			'key'   => 'rating',
-			'title' => T_('Rating'),
-		];
-
-		$type[] =
-		[
-			'key'   => 'date',
-			'title' => T_('Date'),
-		];
-
-		$type[] =
-		[
-			'key'   => 'number',
-			'title' => T_('Number'),
-		];
-
-		$type[] =
-		[
-			'key'   => 'dropdown',
-			'title' => T_('Dropdown'),
-		];
-
-		$type[] =
-		[
-			'key'   => 'fileid',
-			'title' => T_('Fileid'),
-		];
-
-		$type[] =
-		[
-			'key'   => 'website',
-			'title' => T_('Website'),
-		];
-
-		return $type;
-	}
 
 
 	public static function get($_id)
