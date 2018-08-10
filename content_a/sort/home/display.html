@@ -1,0 +1,30 @@
+{%extends display.question%}
+
+
+
+
+{%block pageContent%}
+<div class="cbox">
+
+  {%for key, value in dataTable%}
+  <form method="post">
+
+    <div class="msg">#{{(key + 1) | fitNumber}}
+      <br>
+      {%if value.title%}<b>{{value.title}}</b>{%endif%}
+      {%if value.desc%}<b>{{value.desc}}</b>{%endif%}
+      {%if not value.title and not value.desc%}<i>{%trans "Untitled"%}</i>{%endif%}
+      <br>
+      {%if value.type%}<b>{{value.type}}</b>{%endif%}
+
+      <div class="floatL input w100 " >
+        <input type="number" name="sort[]" value="{{(key + 1)}}">
+      </div>
+
+    </div>
+  {%endfor%}
+      <button class="btn success block">{%trans "Save sort"%}</button>
+  </form>
+</div>
+{%endblock%}
+
