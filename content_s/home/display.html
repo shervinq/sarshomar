@@ -21,12 +21,116 @@
 {%endblock%}
 
 
+{%block short_answer%}
+{{block('question_title')}}
+<form method="post" class="c6">
+	<div class="input">
+		<label for="answer">{%trans "Type your answer"%}</label>
+		<input type="text" id="answer" name="answer" placeholder='{%trans "Type here ..."%}'>
+	</div>
+	{{block('nextBtn')}}
+</form>
+
+{%endblock%}
+
+
+
+{%block descriptive_answer%}
+{{block('question_title')}}
+<form method="post" class="c6">
+
+	<label for="answer">{%trans "Type your answer"%}</label>
+	<textarea class="txt" type="text" id="answer" name="answer" placeholder='{%trans "Type here ..."%}' rows="3"></textarea>
+
+	{{block('nextBtn')}}
+</form>
+{%endblock%}
+
+
+
+
+{%block confirm%}
+{{block('question_title')}}
+<form method="post" class="c6">
+
+	<input type="hidden" name="next" value="step">
+	{{block('nextBtn')}}
+</form>
+{%endblock%}
+
+
+{%block require%}
+ <small class="fc-red">* {%trans "Require"%}</small>
+{%endblock%}
+
+
+
+{%block date%}
+{{block('question_title')}}
+<form method="post" class="c6">
+	<label for="answer">{%trans "Answer"%}</label>
+	<div class="input">
+	  <input class="datepicker" type="text" name="answer" id="answer" placeholder='{{"1369/04/15" | fitNumber}} *' value="{{userdetail.answer}}" maxlength='20' data-format="YYYY/MM/DD" data-view="year">
+	</div>
+	{{block('nextBtn')}}
+</form>
+{%endblock%}
+
+
+
+{%block email%}
+{{block('question_title')}}
+<form method="post" class="c6">
+	<label for="answer">{%trans "Answer"%}</label>
+	<div class="input">
+	  <input class="" type="email" name="answer" id="answer"  placeholder='{%trans "Type here ..."%}'>
+	</div>
+	{{block('nextBtn')}}
+</form>
+{%endblock%}
+
+{%block website%}
+{{block('question_title')}}
+<form method="post" class="c6">
+	<label for="answer">{%trans "Answer"%}</label>
+	<div class="input">
+	  <input class="" type="url" name="answer" id="answer"  placeholder='{%trans "Type here ..."%}'>
+	</div>
+	{{block('nextBtn')}}
+</form>
+{%endblock%}
+
+
+
+{%block rating%}
+{{block('question_title')}}
+<form method="post" class="c6">
+	<label for="answer">{%trans "Answer"%}</label>
+	<div class="input">
+	  <input class="" type="number" name="answer" id="answer"  placeholder='{%trans "Type here ..."%}'>
+	</div>
+	{{block('nextBtn')}}
+</form>
+{%endblock%}
+
+
+{%block star%}
+{{block('question_title')}}
+<form method="post" class="c6">
+	<label for="answer">{%trans "Answer"%}</label>
+	<div class="input">
+	  <input class="" type="number" name="answer" id="answer"  placeholder='{%trans "Type here ..."%}'>
+	</div>
+	{{block('nextBtn')}}
+</form>
+{%endblock%}
 
 
 
 
 
 {%block wellcome%}
+
 <div class="msg primary2">{{surveyRow.wellcometitle}}</div>
 
 {%if surveyRow.wellcomedesc %}
@@ -74,7 +178,7 @@
 {%block single_choice%}
 {{block('question_title')}}
 
-<div class="justify-center f pA10">
+
 <form method="post" class="c6">
 	{%for key, value in question.choice%}
 	 <div class="radio1 green">
@@ -84,7 +188,7 @@
 	{%endfor%}
 	<button class="c6 btn primary mT20">{%trans "Next"%}</button>
 </form>
-	</div>
+
 
 {%endblock%}
 
@@ -96,7 +200,7 @@
 {%block multiple_choice%}
 {{block('question_title')}}
 
-<div class="justify-center f pA10">
+
 <form method="post" class="c6">
 	{%for key, value in question.choice%}
 
@@ -109,7 +213,7 @@
 	{%endfor%}
 	{{block('nextBtn')}}
 </form>
-	</div>
+
 
 {%endblock%}
 
@@ -119,7 +223,6 @@
 {%block dropdown%}
 {{block('question_title')}}
 
-<div class="justify-center f pA10">
 	<form method="post" class="c6">
 		<div class="mB10" title='{%trans "You can publish in another language"%}'>
 		  <label for="language">{%trans "Language"%}</label>
@@ -132,15 +235,15 @@
 		</div>
 		{{block('nextBtn')}}
 	</form>
-</div>
+
 {%endblock%}
 
 
 
 
-{%block number%}
+{%block numeric%}
 {{block('question_title')}}
-<div class="justify-center f pA10">
+
 	<form method="post" class="c6">
 		<div class="input">
 			<label for="answer">{%trans "Type your answer"%}</label>
@@ -148,7 +251,7 @@
 		</div>
 		{{block('nextBtn')}}
 	</form>
-</div>
+
 {%endblock%}
 
 
