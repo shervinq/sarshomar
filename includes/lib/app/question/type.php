@@ -34,17 +34,28 @@ trait type
 
 	public static function all_type()
 	{
+		// sample array
+		// $sample =
+		// [
+		// 	'key'           => 'picture_choice',
+		// 	'title'         => T_('Picture choise'),
+		// 	'choise'        => true,
+		// 	'random'        => true,
+		// 	'validation'    => null,
+		// 	'otherchoise'   => false,
+		// 	'prifile_field' => null,
+		// 	'maxchar'       => false,
+		// 	'desc'          => T_('Picture choise'),
+		// 	'logo'			=> \dash\url::site(). '/static/images/logo.png',
+		// 	'upload_choise' => true,
+		// ];
+
 		$type = [];
 
 		$type['short_text'] =
 		[
 			'key'           => 'short_text',
 			'title'         => T_("Short text"),
-			'choise'        => false,
-			'validation'    => null,
-			'profile_field' => null,
-			'random'        => false,
-			'otherchoise'   => false,
 			'maxchar'       => true,
 			'desc'          => T_("Short text"),
 			'logo'			=> \dash\url::site(). '/static/images/logo.png',
@@ -54,11 +65,6 @@ trait type
 		[
 			'key'           => 'long_text',
 			'title'         => T_('Long text'),
-			'choise'        => false,
-			'validation'    => null,
-			'profile_field' => null,
-			'random'        => false,
-			'otherchoise'   => false,
 			'maxchar'       => true,
 			'desc'          => T_('Long text'),
 			'logo'			=> \dash\url::site(). '/static/images/logo.png',
@@ -69,8 +75,6 @@ trait type
 			'key'           => 'single_choise',
 			'title'         => T_('Single choise'),
 			'choise'        => true,
-			'validation'    => null,
-			'profile_field' => null,
 			'random'        => true,
 			'otherchoise'   => true,
 			'maxchar'       => true,
@@ -83,8 +87,6 @@ trait type
 			'key'           => 'multiple_choise',
 			'title'         => T_('Multiple choise'),
 			'choise'        => true,
-			'validation'    => null,
-			'profile_field' => null,
 			'random'        => true,
 			'otherchoise'   => true,
 			'maxchar'       => true,
@@ -97,13 +99,10 @@ trait type
 			'key'           => 'picture_choice',
 			'title'         => T_('Picture choise'),
 			'choise'        => true,
-			'validation'    => null,
-			'profile_field' => null,
 			'random'        => true,
-			'otherchoise'   => false,
-			'maxchar'       => false,
 			'desc'          => T_('Picture choise'),
 			'logo'			=> \dash\url::site(). '/static/images/logo.png',
+			'upload_choise' => true,
 		];
 
 		$type['dropdown'] =
@@ -111,8 +110,6 @@ trait type
 			'key'           => 'dropdown',
 			'title'         => T_('Dropdown'),
 			'choise'        => true,
-			'validation'    => null,
-			'profile_field' => null,
 			'random'        => true,
 			'otherchoise'   => true,
 			'maxchar'       => true,
@@ -124,12 +121,7 @@ trait type
 		[
 			'key'           => 'yes_no',
 			'title'         => T_('yes/no'),
-			'choise'        => false,
-			'validation'    => null,
-			'profile_field' => null,
 			'random'        => true,
-			'otherchoise'   => false,
-			'maxchar'       => false,
 			'desc'          => T_('yes/no'),
 			'logo'			=> \dash\url::site(). '/static/images/logo.png',
 		];
@@ -138,11 +130,6 @@ trait type
 		[
 			'key'           => 'legal',
 			'title'         => T_('Legal'),
-			'choise'        => false,
-			'validation'    => null,
-			'profile_field' => null,
-			'random'        => false,
-			'otherchoise'   => false,
 			'maxchar'       => true,
 			'desc'          => T_('Legal'),
 			'logo'			=> \dash\url::site(). '/static/images/logo.png',
@@ -152,11 +139,6 @@ trait type
 		[
 			'key'           => 'email',
 			'title'         => T_('Email'),
-			'choise'        => false,
-			'validation'    => null,
-			'profile_field' => null,
-			'random'        => false,
-			'otherchoise'   => false,
 			'maxchar'       => true,
 			'desc'          => T_('Email'),
 			'logo'			=> \dash\url::site(). '/static/images/logo.png',
@@ -166,11 +148,6 @@ trait type
 		[
 			'key'           => 'scale',
 			'title'         => T_('Scale'),
-			'choise'        => false,
-			'validation'    => null,
-			'profile_field' => null,
-			'random'        => false,
-			'otherchoise'   => false,
 			'maxchar'       => true,
 			'desc'          => T_('Scale'),
 			'logo'			=> \dash\url::site(). '/static/images/logo.png',
@@ -180,11 +157,6 @@ trait type
 		[
 			'key'           => 'rating',
 			'title'         => T_('Rating'),
-			'choise'        => false,
-			'validation'    => null,
-			'profile_field' => null,
-			'random'        => false,
-			'otherchoise'   => false,
 			'maxchar'       => true,
 			'desc'          => T_('Rating'),
 			'logo'			=> \dash\url::site(). '/static/images/logo.png',
@@ -194,11 +166,7 @@ trait type
 		[
 			'key'           => 'date',
 			'title'         => T_('Date'),
-			'choise'        => false,
 			'validation'    => 'date',
-			'profile_field' => null,
-			'random'        => false,
-			'otherchoise'   => false,
 			'maxchar'       => true,
 			'desc'          => T_('Date'),
 			'logo'			=> \dash\url::site(). '/static/images/logo.png',
@@ -208,11 +176,7 @@ trait type
 		[
 			'key'           => 'number',
 			'title'         => T_('Number'),
-			'choise'        => false,
 			'validation'    => 'number',
-			'profile_field' => null,
-			'random'        => false,
-			'otherchoise'   => false,
 			'maxchar'       => true,
 			'desc'          => T_('Number'),
 			'logo'			=> \dash\url::site(). '/static/images/logo.png',
@@ -222,12 +186,6 @@ trait type
 		[
 			'key'           => 'file_upload',
 			'title'         => T_('File upload'),
-			'choise'        => false,
-			'validation'    => null,
-			'profile_field' => null,
-			'random'        => false,
-			'otherchoise'   => false,
-			'maxchar'       => false,
 			'desc'          => T_('File upload'),
 			'logo'			=> \dash\url::site(). '/static/images/logo.png',
 		];
@@ -236,11 +194,6 @@ trait type
 		[
 			'key'           => 'website',
 			'title'         => T_('Website'),
-			'choise'        => false,
-			'validation'    => null,
-			'profile_field' => null,
-			'random'        => false,
-			'otherchoise'   => false,
 			'maxchar'       => true,
 			'desc'          => T_('Website'),
 			'logo'			=> \dash\url::site(). '/static/images/logo.png',
