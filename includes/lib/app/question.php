@@ -169,6 +169,7 @@ class question
 			$media = json_encode($media, JSON_UNESCAPED_UNICODE);
 		}
 
+		$remove_choise = \dash\app::request('remove_choise');
 
 		$choisetitle  = \dash\app::request('choisetitle');
 
@@ -177,9 +178,15 @@ class question
 			$choisetitle = substr($choisetitle, 0, 10000);
 		}
 
+		if(\dash\app::isset_request('choisetitle') && $choisetitle !== '0' && !$choisetitle)
+		{
+			\dash\notif::error(T_("Please fill the choise title"), 'choisetitle');
+			return false;
+		}
+
 		$old_choise = [];
 
-		if($choisetitle)
+		if($choisetitle || $choisetitle === '0' || $remove_choise)
 		{
 			if(isset($load_question['choice']))
 			{
@@ -191,14 +198,30 @@ class question
 				$old_choise = [];
 			}
 
-			$old_choise[] = ['title' => $choisetitle];
-		}
+			if($remove_choise)
+			{
+				$choise_key = \dash\app::request('choise_key');
+				if(array_key_exists($choise_key, $old_choise))
+				{
+					unset($old_choise[$choise_key]);
+				}
+				else
+				{
+					\dash\notif::error(T_("Invalid choise key for remove"));
+					return false;
+				}
+			}
+			else
+			{
+				$old_choise[] = ['title' => $choisetitle];
+			}
 
-		if($old_choise)
-		{
 			$choice         = json_encode($old_choise, JSON_UNESCAPED_UNICODE);
 			$args['choice'] = $choice;
 		}
+
+
+
 
 
 		$args['poll_id'] = $poll_id;

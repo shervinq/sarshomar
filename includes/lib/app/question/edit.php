@@ -40,7 +40,6 @@ trait edit
 		if(!\dash\app::isset_request('sort')) 		unset($args['sort']);
 		if(!\dash\app::isset_request('status')) 	unset($args['status']);
 
-
 		if(!empty($args))
 		{
 			$update = \lib\db\questions::update($args, $id);
