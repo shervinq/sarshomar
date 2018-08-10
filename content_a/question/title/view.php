@@ -1,5 +1,5 @@
 <?php
-namespace content_a\question\general;
+namespace content_a\question\title;
 
 
 class view

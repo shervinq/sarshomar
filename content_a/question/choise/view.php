@@ -20,7 +20,7 @@ class view
 
 		if(!\dash\data::haveChoise())
 		{
-			\dash\redirect::to(\dash\url::this(). '/general?'. http_build_query(\dash\request::get()));
+			\dash\redirect::to(\dash\url::this(). '/title?'. http_build_query(\dash\request::get()));
 		}
 
 	}

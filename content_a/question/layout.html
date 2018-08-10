@@ -19,7 +19,7 @@
 
 {%for key, value in allType%}
 
-  <a class="vcard mA10 shadow  {%if dataRow.type == value.key %} green {%endif%}" href='{{url.here}}/festival?id={{value.id}}'>
+  <a class="vcard mA10 {%if dataRow.type == value.key %} green {%endif%}active " href='{{url.pwd}}' data-ajaxify data-method='post' data-data='{"type" : "{{value.key}}"}'>
     <img src="{{value.logo}}" alt="{{value.title}}" class="pA10-f">
     <div class="content">
       <div class="header">{{value.title}}</div>
@@ -109,10 +109,10 @@
 
 
    <div class="c s4">
-    <a class="dcard {%if url.child == 'general'%}active{%endif%}" href='{{url.this}}/general?id={{requestGET.id}}&questionid={{requestGET.questionid}}' data-shortkey="50ctrlshift" >
+    <a class="dcard {%if url.child == 'title'%}active{%endif%}" href='{{url.this}}/title?id={{requestGET.id}}&questionid={{requestGET.questionid}}' data-shortkey="50ctrlshift" >
      <div class="statistic sm">
       <div class="value"><i class="sf-lightbulb-o"></i></div>
-      <div class="label">{%trans "General"%}<br><kbd class="mT5">Ctrl+Shift+2</kbd></div>
+      <div class="label">{%trans "Title"%}<br><kbd class="mT5">Ctrl+Shift+2</kbd></div>
      </div>
     </a>
    </div>
@@ -126,22 +126,14 @@
     </a>
    </div>
 
-   <div class="c s4">
-    <a class="dcard {%if url.child == 'media'%}active{%endif%}" href='{{url.this}}/media?id={{requestGET.id}}&questionid={{requestGET.questionid}}' data-shortkey="52ctrlshift" >
-     <div class="statistic sm">
-      <div class="value"><i class="sf-cloud-upload"></i></div>
-      <div class="label">{%trans "Media"%}<br><kbd class="mT5">Ctrl+Shift4</kbd></div>
-     </div>
-    </a>
-   </div>
 
 
    {%if haveChoise%}
    <div class="c s4">
-    <a class="dcard {%if url.child == 'choise'%}active{%endif%}" href='{{url.this}}/choise?id={{requestGET.id}}&questionid={{requestGET.questionid}}' data-shortkey="53ctrlshift" >
+    <a class="dcard {%if url.child == 'choise'%}active{%endif%}" href='{{url.this}}/choise?id={{requestGET.id}}&questionid={{requestGET.questionid}}' data-shortkey="52ctrlshift" >
      <div class="statistic sm">
       <div class="value"><i class="sf-list-ol"></i></div>
-      <div class="label">{%trans "Choise"%}<br><kbd class="mT5">Ctrl+Shift+5</kbd></div>
+      <div class="label">{%trans "Choise"%}<br><kbd class="mT5">Ctrl+Shift+4</kbd></div>
      </div>
     </a>
    </div>

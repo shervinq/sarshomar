@@ -7,7 +7,7 @@
 <div class="cbox">
   <div class="msg success2"><a href="{{url.this}}/add?id={{requestGET.id}}">{%trans "Add new question"%}</a></div>
   {%for key, value in dataTable%}
-  <a href="{{url.this}}/general?id={{requestGET.id}}&questionid={{value.id}}">
+  <a href="{{url.this}}/title?id={{requestGET.id}}&questionid={{value.id}}">
     <div class="msg">#{{(key + 1) | fitNumber}}<br>
       {%if value.title%}<b>{{value.title}}</b>{%endif%}
       {%if value.desc%}<b>{{value.desc}}</b>{%endif%}

@@ -1,5 +1,5 @@
 <?php
-namespace content_a\question\general;
+namespace content_a\question\title;
 
 
 class model
@@ -10,6 +10,18 @@ class model
 		$post['title']   = \dash\request::post('title');
 		$post['desc']    = \dash\request::post('desc');
 		$post['poll_id'] = \dash\request::get('id');
+
+		$file = \dash\app\file::upload_quick('media');
+
+		if($file === false)
+		{
+			return false;
+		}
+
+		if($file)
+		{
+			$post['media']['file'] = $file;
+		}
 
 		$result = \lib\app\question::edit($post, \dash\request::get('questionid'));
 
