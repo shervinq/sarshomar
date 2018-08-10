@@ -6,9 +6,9 @@ class model
 {
 	public static function post()
 	{
-		$post            = [];
-		$post['type']    = \dash\request::post('type');
-		$post['poll_id'] = \dash\request::get('id');
+		$post                = [];
+		$post['poll_id']     = \dash\request::get('id');
+		$post['choisetitle'] = \dash\request::post('choisetitle');
 
 		$result = \lib\app\question::edit($post, \dash\request::get('questionid'));
 

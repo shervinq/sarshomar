@@ -28,13 +28,13 @@ trait edit
 			return false;
 		}
 
-		if(!\dash\app::isset_request('poll_id')) 	unset($args['poll_id']);
+		unset($args['poll_id']);
+
 		if(!\dash\app::isset_request('title')) 		unset($args['title']);
 		if(!\dash\app::isset_request('desc')) 		unset($args['desc']);
 		if(!\dash\app::isset_request('media')) 		unset($args['media']);
-		if(!\dash\app::isset_request('request')) 	unset($args['request']);
+		if(!\dash\app::isset_request('require')) 	unset($args['require']);
 		if(!\dash\app::isset_request('setting')) 	unset($args['setting']);
-		if(!\dash\app::isset_request('choice')) 	unset($args['choice']);
 		if(!\dash\app::isset_request('type')) 		unset($args['type']);
 		if(!\dash\app::isset_request('maxchar')) 	unset($args['maxchar']);
 		if(!\dash\app::isset_request('sort')) 		unset($args['sort']);
@@ -48,7 +48,7 @@ trait edit
 			if(\dash\engine\process::status())
 			{
 				\dash\log::db('editBlock', ['data' => $id, 'datalink' => \dash\coding::encode($id)]);
-				\dash\notif::ok(T_("Block successfully updated"));
+				\dash\notif::ok(T_("Question successfully updated"));
 			}
 		}
 	}

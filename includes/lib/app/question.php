@@ -73,6 +73,8 @@ class question
 	 */
 	private static function check($_id = null)
 	{
+		$args            = [];
+
 		$poll_id = \dash\app::request('poll_id');
 		$poll_id = \dash\coding::decode($poll_id);
 		if(!$poll_id)
@@ -113,7 +115,6 @@ class question
 		$media   = \dash\app::request('media');
 		$require = \dash\app::request('require') ? 1 : null;
 		$setting = \dash\app::request('setting');
-		$choice  = \dash\app::request('choice');
 
 		$type = \dash\app::request('type');
 		if($type && mb_strlen($type) >= 200)
@@ -168,14 +169,44 @@ class question
 			$media = json_encode($media, JSON_UNESCAPED_UNICODE);
 		}
 
-		$args            = [];
+
+		$choisetitle  = \dash\app::request('choisetitle');
+
+		if($choisetitle && mb_strlen($choisetitle) > 10000)
+		{
+			$choisetitle = substr($choisetitle, 0, 10000);
+		}
+
+		$old_choise = [];
+
+		if($choisetitle)
+		{
+			if(isset($load_question['choice']))
+			{
+				$old_choise = json_decode($load_question['choice'], true);
+			}
+
+			if(!is_array($old_choise))
+			{
+				$old_choise = [];
+			}
+
+			$old_choise[] = ['title' => $choisetitle];
+		}
+
+		if($old_choise)
+		{
+			$choice         = json_encode($old_choise, JSON_UNESCAPED_UNICODE);
+			$args['choice'] = $choice;
+		}
+
+
 		$args['poll_id'] = $poll_id;
 		$args['title']   = $title;
 		$args['desc']    = $desc;
 		$args['media']   = $media;
 		$args['require'] = $require;
 		$args['setting'] = $setting;
-		$args['choice']  = $choice;
 		$args['type']    = $type;
 		$args['maxchar'] = $maxchar;
 		$args['sort']    = $sort;
