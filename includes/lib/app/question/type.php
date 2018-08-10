@@ -5,11 +5,38 @@ namespace lib\app\question;
 trait type
 {
 
+	public static function get_type($_key, $_index = null)
+	{
+		$list = self::all_type();
+
+		if(array_key_exists($_key, $list))
+		{
+			if($_index)
+			{
+				if(array_key_exists($_index, $list[$_key]))
+				{
+					return $list[$_key][$_index];
+				}
+				else
+				{
+					return null;
+				}
+			}
+			else
+			{
+				return $list[$_key];
+			}
+		}
+
+		return null;
+	}
+
+
 	public static function all_type()
 	{
 		$type = [];
 
-		$type[] =
+		$type['short_text'] =
 		[
 			'key'           => 'short_text',
 			'title'         => T_("Short text"),
@@ -18,7 +45,7 @@ trait type
 			'profile_field' => null,
 		];
 
-		$type[] =
+		$type['long_text'] =
 		[
 			'key'           => 'long_text',
 			'title'         => T_('Long text'),
@@ -27,34 +54,34 @@ trait type
 			'profile_field' => null,
 		];
 
-		$type[] =
+		$type['single_choise'] =
 		[
 			'key'           => 'single_choise',
 			'title'         => T_('Single choise'),
-			'choise'        => false,
+			'choise'        => true,
 			'validation'    => null,
 			'profile_field' => null,
 		];
 
-		$type[] =
+		$type['multiple_choise'] =
 		[
-			'key'           => 'mutli_choise',
+			'key'           => 'multiple_choise',
 			'title'         => T_('Multiple choise'),
-			'choise'        => false,
+			'choise'        => true,
 			'validation'    => null,
 			'profile_field' => null,
 		];
 
-		$type[] =
+		$type['picture_choice'] =
 		[
 			'key'           => 'picture_choice',
 			'title'         => T_('Picture choise'),
-			'choise'        => false,
+			'choise'        => true,
 			'validation'    => null,
 			'profile_field' => null,
 		];
 
-		$type[] =
+		$type['yes_no'] =
 		[
 			'key'           => 'yes_no',
 			'title'         => T_('yes/no'),
@@ -63,7 +90,7 @@ trait type
 			'profile_field' => null,
 		];
 
-		$type[] =
+		$type['legal'] =
 		[
 			'key'           => 'legal',
 			'title'         => T_('Legal'),
@@ -72,7 +99,7 @@ trait type
 			'profile_field' => null,
 		];
 
-		$type[] =
+		$type['email'] =
 		[
 			'key'           => 'email',
 			'title'         => T_('Email'),
@@ -81,7 +108,7 @@ trait type
 			'profile_field' => null,
 		];
 
-		$type[] =
+		$type['scale'] =
 		[
 			'key'           => 'scale',
 			'title'         => T_('Scale'),
@@ -90,7 +117,7 @@ trait type
 			'profile_field' => null,
 		];
 
-		$type[] =
+		$type['rating'] =
 		[
 			'key'           => 'rating',
 			'title'         => T_('Rating'),
@@ -99,7 +126,7 @@ trait type
 			'profile_field' => null,
 		];
 
-		$type[] =
+		$type['date'] =
 		[
 			'key'           => 'date',
 			'title'         => T_('Date'),
@@ -108,7 +135,7 @@ trait type
 			'profile_field' => null,
 		];
 
-		$type[] =
+		$type['number'] =
 		[
 			'key'           => 'number',
 			'title'         => T_('Number'),
@@ -117,7 +144,7 @@ trait type
 			'profile_field' => null,
 		];
 
-		$type[] =
+		$type['dropdown'] =
 		[
 			'key'           => 'dropdown',
 			'title'         => T_('Dropdown'),
@@ -126,7 +153,7 @@ trait type
 			'profile_field' => null,
 		];
 
-		$type[] =
+		$type['fileid'] =
 		[
 			'key'           => 'fileid',
 			'title'         => T_('Fileid'),
@@ -135,7 +162,7 @@ trait type
 			'profile_field' => null,
 		];
 
-		$type[] =
+		$type['website'] =
 		[
 			'key'           => 'website',
 			'title'         => T_('Website'),
