@@ -5,6 +5,23 @@ namespace lib\db;
 class answerterms
 {
 
+	public static function get_id($_text, $_type)
+	{
+		$query = "SELECT answerterms.id AS `id` FROM answerterms WHERE answerterms.type = '$_type' AND answerterms.text = '$_type' LIMIT 1";
+		$result = \dash\db::get($query, 'id', true);
+		if(!$result)
+		{
+			$insert =
+			[
+				'type' => $_type,
+				'text' => $_text,
+			];
+			$result = self::insert($insert);
+		}
+		return $result;
+	}
+
+
 	public static function insert()
 	{
 		\dash\db\config::public_insert('answerterms', ...func_get_args());

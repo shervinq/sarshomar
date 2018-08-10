@@ -26,6 +26,7 @@ class controller
 		\dash\data::surveyRow($load);
 
 		\dash\open::get();
+		\dash\open::post();
 	}
 
 }

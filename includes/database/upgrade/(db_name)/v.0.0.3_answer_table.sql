@@ -16,7 +16,7 @@ CREATE TABLE `answers` (
 `startdate`     datetime NULL,
 `enddate`       datetime NULL,
 `lastmodified`  datetime NULL,
-`status`        enum('start','complete','skip','spam','filter','block') NULL DEFAULT NULL,
+`status`        enum('start','early','middle','late','complete','skip','spam','filter','block') NULL DEFAULT NULL,
 `step`     		bigint(20) UNSIGNED NULL,
 `ref`	        varchar(1000) NULL,
 `complete`	    bit(1) NULL,

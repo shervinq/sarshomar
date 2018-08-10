@@ -357,6 +357,10 @@ class question
 
 			switch ($key)
 			{
+				case 'status':
+					continue;
+					break;
+
 				case 'id':
 				case 'user_id':
 					$result[$key] = \dash\coding::encode($value);
