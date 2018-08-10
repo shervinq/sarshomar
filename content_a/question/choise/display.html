@@ -7,12 +7,18 @@
 	<div class="c6">
 		<div class="cbox">
 			<form method="post" autocomplete="off" class="mB20">
+				{%if haveUploadChoise%}
+					{{block('imedia')}}
+				{%endif%}
 				{{block('ichoise')}}
 				{{block('iadd')}}
 			</form>
 
 			{%for key, value in dataRow.choice%}
 				<div class="msg outline secondary">
+					{%if value.file%}
+						<img src="{{value.file}}" alt="{{value.title}}" class="w100" id="logo preview">
+					{%endif%}
 					{{value.title}}
 					<a href="{{url.pwd}}" class="badge danger floatL" data-ajaxify data-method='post' data-data='{"key" : "{{key}}", "action" : "remove"}'>{%trans "Remove"%}</a>
 				</div>

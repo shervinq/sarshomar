@@ -18,6 +18,20 @@ class model
 			$post                = [];
 			$post['poll_id']     = \dash\request::get('id');
 			$post['choisetitle'] = \dash\request::post('choisetitle');
+			$post['add_choise']  = true;
+
+			$file = \dash\app\file::upload_quick('media');
+
+			if($file === false)
+			{
+				return false;
+			}
+
+			if($file)
+			{
+				$post['choisefile'] = $file;
+			}
+
 
 			$result = \lib\app\question::edit($post, \dash\request::get('questionid'));
 		}

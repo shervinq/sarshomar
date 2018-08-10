@@ -170,6 +170,7 @@ class question
 		}
 
 		$remove_choise = \dash\app::request('remove_choise');
+		$add_choise    = \dash\app::request('add_choise');
 
 		$choisetitle  = \dash\app::request('choisetitle');
 
@@ -178,7 +179,9 @@ class question
 			$choisetitle = substr($choisetitle, 0, 10000);
 		}
 
-		if(\dash\app::isset_request('choisetitle') && $choisetitle !== '0' && !$choisetitle)
+		$choisefile          = \dash\app::request('choisefile');
+
+		if(\dash\app::isset_request('choisetitle') && $choisetitle !== '0' && !$choisetitle && !$choisefile)
 		{
 			\dash\notif::error(T_("Please fill the choise title"), 'choisetitle');
 			return false;
@@ -186,7 +189,8 @@ class question
 
 		$old_choise = [];
 
-		if($choisetitle || $choisetitle === '0' || $remove_choise)
+
+		if($add_choise || $remove_choise)
 		{
 			if(isset($load_question['choice']))
 			{
@@ -213,7 +217,15 @@ class question
 			}
 			else
 			{
-				$old_choise[] = ['title' => $choisetitle];
+				$new_choise          = [];
+				$new_choise['title'] = $choisetitle;
+
+				if($choisefile)
+				{
+					$new_choise['file'] = $choisefile;
+				}
+
+				$old_choise[] = $new_choise;
 			}
 
 			$choice         = json_encode($old_choise, JSON_UNESCAPED_UNICODE);

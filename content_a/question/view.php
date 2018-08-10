@@ -19,6 +19,7 @@ class view
 			\dash\data::haveRandom(\lib\app\question::get_type($load['type'], 'random'));
 			\dash\data::haveOtherChoise(\lib\app\question::get_type($load['type'], 'otherchoise'));
 			\dash\data::haveMaxchar(\lib\app\question::get_type($load['type'], 'maxchar'));
+			\dash\data::haveUploadChoise(\lib\app\question::get_type($load['type'], 'upload_choise'));
 		}
 
 		\dash\data::dataRow($load);
