@@ -148,15 +148,15 @@ trait type
 		[
 			'key'           => 'dropdown',
 			'title'         => T_('Dropdown'),
-			'choise'        => false,
+			'choise'        => true,
 			'validation'    => null,
 			'profile_field' => null,
 		];
 
-		$type['fileid'] =
+		$type['file_upload'] =
 		[
-			'key'           => 'fileid',
-			'title'         => T_('Fileid'),
+			'key'           => 'file_upload',
+			'title'         => T_('File upload'),
 			'choise'        => false,
 			'validation'    => null,
 			'profile_field' => null,
