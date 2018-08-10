@@ -1,5 +1,5 @@
 <?php
-namespace content_a\question\choise;
+namespace content_a\question\choice;
 
 
 class model
@@ -9,16 +9,16 @@ class model
 		if(\dash\request::post('action') === 'remove')
 		{
 			$post['survey_id']       = \dash\request::get('id');
-			$post['choise_key']    = \dash\request::post('key');
-			$post['remove_choise'] = true;
+			$post['choice_key']    = \dash\request::post('key');
+			$post['remove_choice'] = true;
 			$result = \lib\app\question::edit($post, \dash\request::get('questionid'));
 		}
 		else
 		{
 			$post                = [];
 			$post['survey_id']     = \dash\request::get('id');
-			$post['choisetitle'] = \dash\request::post('choisetitle');
-			$post['add_choise']  = true;
+			$post['choicetitle'] = \dash\request::post('choicetitle');
+			$post['add_choice']  = true;
 
 			$file = \dash\app\file::upload_quick('media');
 
@@ -29,7 +29,7 @@ class model
 
 			if($file)
 			{
-				$post['choisefile'] = $file;
+				$post['choicefile'] = $file;
 			}
 
 

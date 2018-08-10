@@ -5,8 +5,171 @@
 {%endblock%}
 
 {%block pageContent%}
-<div class='middle normal f justify-center'>
-
+<div class="cbox">
+	{{block(step)}}
 </div>
 {%endblock%}
+
+
+
+
+
+{%block start%}
+<div class="justify-center f pA100">
+	<a href="{{url.this}}?q={{nextQuestion.id}}" class="btn c3 hauto xl primary ">{%trans "Start"%}</a>
+</div>
+{%endblock%}
+
+
+
+
+
+
+
+{%block wellcome%}
+<div class="msg primary2">{{surveyRow.wellcometitle}}</div>
+
+{%if surveyRow.wellcomedesc %}
+<div class="msg">
+	<p>{{surveyRow.wellcomedesc}}</p>
+</div>
+{%endif%}
+
+{%if surveyRow.wellcomemedia.file %}
+	<img src="{{surveyRow.wellcomemedia.file}}" class="w300">
+{%endif%}
+<div class="justify-center f pA10">
+	<a href="{{url.this}}?q={{nextQuestion.id}}" class="btn c3 hauto xl primary ">{%trans "Start"%}</a>
+</div>
+
+{%endblock%}
+
+
+{%block nextBtn%}
+<button class=" c6 btn primary mT20">{%trans "Next"%}</button>
+{%endblock%}
+
+
+
+{%block question_title%}
+<div class="msg primary2">{{question.title}}</div>
+
+{%if question.desc %}
+<div class="msg">
+	<p>{{question.desc}}</p>
+</div>
+{%endif%}
+
+{%if question.media.file %}
+	<img src="{{question.media.file}}" class="w300">
+{%endif%}
+
+{%endblock%}
+
+
+
+
+
+
+{%block single_choice%}
+{{block('question_title')}}
+
+<div class="justify-center f pA10">
+<form method="post" class="c6">
+	{%for key, value in question.choice%}
+	 <div class="radio1 green">
+	  <input type="radio" id="r-{{key}}" name="answer" value="{{key}}" >
+	  <label for="r-{{key}}">{{value.title}}</label>
+	 </div>
+	{%endfor%}
+	<button class="c6 btn primary mT20">{%trans "Next"%}</button>
+</form>
+	</div>
+
+{%endblock%}
+
+
+
+
+
+
+{%block multiple_choice%}
+{{block('question_title')}}
+
+<div class="justify-center f pA10">
+<form method="post" class="c6">
+	{%for key, value in question.choice%}
+
+	 <div class="switch1 mB10">
+	 <input type="checkbox" name="{{key}}" id="{{key}}" value="{{key}}" >
+	 <label for="{{key}}"></label>
+	 <label for="{{key}}">{{value.title}}</label>
+	</div>
+
+	{%endfor%}
+	{{block('nextBtn')}}
+</form>
+	</div>
+
+{%endblock%}
+
+
+
+
+{%block dropdown%}
+{{block('question_title')}}
+
+<div class="justify-center f pA10">
+	<form method="post" class="c6">
+		<div class="mB10" title='{%trans "You can publish in another language"%}'>
+		  <label for="language">{%trans "Language"%}</label>
+		  <select name="language" class="ui dropdown select">
+		    <option value=""><i>{%trans "Please select one item"%}</i></option>
+			{%for key, value in question.choice%}
+		      <option value="{{key}}" >{{value.title}}</option>
+		    {%endfor%}
+		  </select>
+		</div>
+		{{block('nextBtn')}}
+	</form>
+</div>
+{%endblock%}
+
+
+
+
+{%block number%}
+{{block('question_title')}}
+<div class="justify-center f pA10">
+	<form method="post" class="c6">
+		<div class="input">
+			<label for="answer">{%trans "Type your answer"%}</label>
+			<input type="number" id="answer" name="answer" placeholder='{%trans "Type here ..."%}'>
+		</div>
+		{{block('nextBtn')}}
+	</form>
+</div>
+{%endblock%}
+
+
+
+
+
+
+
+
+{%block short_text%}
+{{block('question_title')}}
+<div class="justify-center f pA10">
+	<form method="post" class="c6">
+		<div class="input">
+			<label for="answer">{%trans "Type your answer"%}</label>
+			<input type="text" id="answer" name="answer" placeholder='{%trans "Type here ..."%}'>
+		</div>
+		{{block('nextBtn')}}
+	</form>
+</div>
+{%endblock%}
+
+
 

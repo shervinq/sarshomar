@@ -1,5 +1,5 @@
 <?php
-namespace content_a\question\choise;
+namespace content_a\question\choice;
 
 
 class view

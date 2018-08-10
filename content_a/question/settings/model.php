@@ -10,7 +10,7 @@ class model
 		$post['require']     = \dash\request::post('require');
 		$post['maxchar']     = \dash\request::post('maxchar');
 		$post['random']      = \dash\request::post('random');
-		$post['otherchoise'] = \dash\request::post('otherchoise');
+		$post['otherchoice'] = \dash\request::post('otherchoice');
 		$post['buttontitle'] = \dash\request::post('buttontitle');
 		$post['survey_id']     = \dash\request::get('id');
 

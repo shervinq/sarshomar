@@ -12,6 +12,7 @@ class question
 	use question\datalist;
 	use question\dashboard;
 	use question\type;
+	use question\next;
 
 
 	public static $raw_field =
@@ -22,7 +23,7 @@ class question
 	];
 
 
-	public static function sort_choise($_args)
+	public static function sort_choice($_args)
 	{
 		\dash\app::variable($_args);
 		$sort = \dash\app::request('sort');
@@ -245,74 +246,74 @@ class question
 			$media = json_encode($media, JSON_UNESCAPED_UNICODE);
 		}
 
-		$remove_choise = \dash\app::request('remove_choise');
-		$add_choise    = \dash\app::request('add_choise');
+		$remove_choice = \dash\app::request('remove_choice');
+		$add_choice    = \dash\app::request('add_choice');
 
-		$choisetitle  = \dash\app::request('choisetitle');
+		$choicetitle  = \dash\app::request('choicetitle');
 
-		if($choisetitle && mb_strlen($choisetitle) > 10000)
+		if($choicetitle && mb_strlen($choicetitle) > 10000)
 		{
-			$choisetitle = substr($choisetitle, 0, 10000);
+			$choicetitle = substr($choicetitle, 0, 10000);
 		}
 
-		$choisefile          = \dash\app::request('choisefile');
+		$choicefile          = \dash\app::request('choicefile');
 
-		if(\dash\app::isset_request('choisetitle') && $choisetitle !== '0' && !$choisetitle && !$choisefile)
+		if(\dash\app::isset_request('choicetitle') && $choicetitle !== '0' && !$choicetitle && !$choicefile)
 		{
-			\dash\notif::error(T_("Please fill the choise title"), 'choisetitle');
+			\dash\notif::error(T_("Please fill the choice title"), 'choicetitle');
 			return false;
 		}
 
-		$old_choise = [];
+		$old_choice = [];
 
 
-		if($add_choise || $remove_choise)
+		if($add_choice || $remove_choice)
 		{
 			if(isset($load_question['choice']))
 			{
-				$old_choise = json_decode($load_question['choice'], true);
+				$old_choice = json_decode($load_question['choice'], true);
 			}
 
-			if(!is_array($old_choise))
+			if(!is_array($old_choice))
 			{
-				$old_choise = [];
+				$old_choice = [];
 			}
 
-			if($remove_choise)
+			if($remove_choice)
 			{
-				$choise_key = \dash\app::request('choise_key');
-				if(array_key_exists($choise_key, $old_choise))
+				$choice_key = \dash\app::request('choice_key');
+				if(array_key_exists($choice_key, $old_choice))
 				{
-					unset($old_choise[$choise_key]);
+					unset($old_choice[$choice_key]);
 				}
 				else
 				{
-					\dash\notif::error(T_("Invalid choise key for remove"));
+					\dash\notif::error(T_("Invalid choice key for remove"));
 					return false;
 				}
 			}
 			else
 			{
-				$new_choise          = [];
-				$new_choise['title'] = $choisetitle;
+				$new_choice          = [];
+				$new_choice['title'] = $choicetitle;
 
-				if($choisefile)
+				if($choicefile)
 				{
-					$new_choise['file'] = $choisefile;
+					$new_choice['file'] = $choicefile;
 				}
 
-				$old_choise[] = $new_choise;
+				$old_choice[] = $new_choice;
 			}
 
-			$choice         = json_encode($old_choise, JSON_UNESCAPED_UNICODE);
+			$choice         = json_encode($old_choice, JSON_UNESCAPED_UNICODE);
 			$args['choice'] = $choice;
 		}
 
-		if(\dash\app::isset_request('random') || \dash\app::isset_request('otherchoise') || \dash\app::isset_request('buttontitle'))
+		if(\dash\app::isset_request('random') || \dash\app::isset_request('otherchoice') || \dash\app::isset_request('buttontitle'))
 		{
 			$setting                = [];
 			$setting['random']      = \dash\app::request('random') ? true : false;
-			$setting['otherchoise'] = \dash\app::request('otherchoise') ? true : false;
+			$setting['otherchoice'] = \dash\app::request('otherchoice') ? true : false;
 			$buttontitle            = \dash\app::request('buttontitle');
 			if($buttontitle && mb_strlen($buttontitle) > 10000)
 			{
