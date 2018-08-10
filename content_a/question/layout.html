@@ -13,15 +13,24 @@
 
 
 {%block itype%}
-<div class="mB10" title='{%trans "Add new question by type"%}'>
-  <label for="type">{%trans "Type"%}</label>
-  <select name="type" class="ui dropdown select">
-    <option value=""><i>{%trans "Please select one item"%}</i></option>
-    {%for key, value in allType%}
-      <option value="{{value.key}}" {%if dataRow.type == value.key %} selected {%endif%}>{{value.title}}</option>
-    {%endfor%}
-  </select>
+
+<div class='normal f justify-center'>
+
+
+{%for key, value in allType%}
+
+  <a class="vcard mA10 shadow  {%if dataRow.type == value.key %} green {%endif%}" href='{{url.here}}/festival?id={{value.id}}'>
+    <img src="{{value.logo}}" alt="{{value.title}}" class="pA10-f">
+    <div class="content">
+      <div class="header">{{value.title}}</div>
+      <div class="meta"></div>
+      <div class="footer">{{value.desc}}</div>
+    </div>
+  </a>
+{%endfor%}
+
 </div>
+
 {%endblock%}
 
 

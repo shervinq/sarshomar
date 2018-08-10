@@ -46,6 +46,8 @@ trait type
 			'random'        => false,
 			'otherchoise'   => false,
 			'maxchar'       => true,
+			'desc'          => T_("Short text"),
+			'logo'			=> \dash\url::site(). '/static/images/logo.png',
 		];
 
 		$type['long_text'] =
@@ -58,6 +60,8 @@ trait type
 			'random'        => false,
 			'otherchoise'   => false,
 			'maxchar'       => true,
+			'desc'          => T_('Long text'),
+			'logo'			=> \dash\url::site(). '/static/images/logo.png',
 		];
 
 		$type['single_choise'] =
@@ -70,6 +74,8 @@ trait type
 			'random'        => true,
 			'otherchoise'   => true,
 			'maxchar'       => true,
+			'desc'          => T_('Single choise'),
+			'logo'			=> \dash\url::site(). '/static/images/logo.png',
 		];
 
 		$type['multiple_choise'] =
@@ -82,6 +88,8 @@ trait type
 			'random'        => true,
 			'otherchoise'   => true,
 			'maxchar'       => true,
+			'desc'          => T_('Multiple choise'),
+			'logo'			=> \dash\url::site(). '/static/images/logo.png',
 		];
 
 		$type['picture_choice'] =
@@ -94,6 +102,8 @@ trait type
 			'random'        => true,
 			'otherchoise'   => false,
 			'maxchar'       => false,
+			'desc'          => T_('Picture choise'),
+			'logo'			=> \dash\url::site(). '/static/images/logo.png',
 		];
 
 		$type['dropdown'] =
@@ -106,6 +116,8 @@ trait type
 			'random'        => true,
 			'otherchoise'   => true,
 			'maxchar'       => true,
+			'desc'          => T_('Dropdown'),
+			'logo'			=> \dash\url::site(). '/static/images/logo.png',
 		];
 
 		$type['yes_no'] =
@@ -118,6 +130,8 @@ trait type
 			'random'        => true,
 			'otherchoise'   => false,
 			'maxchar'       => false,
+			'desc'          => T_('yes/no'),
+			'logo'			=> \dash\url::site(). '/static/images/logo.png',
 		];
 
 		$type['legal'] =
@@ -130,6 +144,8 @@ trait type
 			'random'        => false,
 			'otherchoise'   => false,
 			'maxchar'       => true,
+			'desc'          => T_('Legal'),
+			'logo'			=> \dash\url::site(). '/static/images/logo.png',
 		];
 
 		$type['email'] =
@@ -142,6 +158,8 @@ trait type
 			'random'        => false,
 			'otherchoise'   => false,
 			'maxchar'       => true,
+			'desc'          => T_('Email'),
+			'logo'			=> \dash\url::site(). '/static/images/logo.png',
 		];
 
 		$type['scale'] =
@@ -154,6 +172,8 @@ trait type
 			'random'        => false,
 			'otherchoise'   => false,
 			'maxchar'       => true,
+			'desc'          => T_('Scale'),
+			'logo'			=> \dash\url::site(). '/static/images/logo.png',
 		];
 
 		$type['rating'] =
@@ -166,6 +186,8 @@ trait type
 			'random'        => false,
 			'otherchoise'   => false,
 			'maxchar'       => true,
+			'desc'          => T_('Rating'),
+			'logo'			=> \dash\url::site(). '/static/images/logo.png',
 		];
 
 		$type['date'] =
@@ -178,6 +200,8 @@ trait type
 			'random'        => false,
 			'otherchoise'   => false,
 			'maxchar'       => true,
+			'desc'          => T_('Date'),
+			'logo'			=> \dash\url::site(). '/static/images/logo.png',
 		];
 
 		$type['number'] =
@@ -190,6 +214,8 @@ trait type
 			'random'        => false,
 			'otherchoise'   => false,
 			'maxchar'       => true,
+			'desc'          => T_('Number'),
+			'logo'			=> \dash\url::site(). '/static/images/logo.png',
 		];
 
 		$type['file_upload'] =
@@ -202,6 +228,8 @@ trait type
 			'random'        => false,
 			'otherchoise'   => false,
 			'maxchar'       => false,
+			'desc'          => T_('File upload'),
+			'logo'			=> \dash\url::site(). '/static/images/logo.png',
 		];
 
 		$type['website'] =
@@ -214,6 +242,8 @@ trait type
 			'random'        => false,
 			'otherchoise'   => false,
 			'maxchar'       => true,
+			'desc'          => T_('Website'),
+			'logo'			=> \dash\url::site(). '/static/images/logo.png',
 		];
 
 		return $type;
