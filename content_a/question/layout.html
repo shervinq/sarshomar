@@ -25,6 +25,27 @@
 {%endblock%}
 
 
+{%block irandom%}
+  {%if haveRandom%}
+    <div class="switch1 mB10">
+     <input type="checkbox" name="random" id="random" {%if dataRow.setting.random %}checked{%endif%}>
+     <label for="random"></label>
+     <label for="random">{%trans "Show random choise"%}</label>
+    </div>
+  {%endif%}
+{%endblock%}
+
+
+
+{%block iother%}
+  {%if haveOtherChoise%}
+    <div class="switch1 mB10">
+     <input type="checkbox" name="otherchoise" id="otherchoise" {%if dataRow.setting.otherchoise %}checked{%endif%}>
+     <label for="otherchoise"></label>
+     <label for="otherchoise">{%trans "Show other choise"%}</label>
+    </div>
+  {%endif%}
+{%endblock%}
 
 {%block irequire%}
 <div class="switch1 mB10">
@@ -36,10 +57,12 @@
 
 
 {%block imaxchar %}
+{%if haveMaxchar or haveOtherChoise%}
 <label for="maxchar">{%trans "Maximum char"%}</label>
 <div class="input">
   <input type="number" name="maxchar" id="maxchar" placeholder='{{"0-99999999" | fitNumber}}' value="{{dataRow.maxchar}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
 </div>
+{%endif%}
 {% endblock %}
 
 
@@ -47,6 +70,14 @@
 <label for="choisetitle">{%trans "Title"%}</label>
 <div class="input">
   <input type="text" name="choisetitle" id="choisetitle" placeholder='{%trans "Choise title"%}' autofocus required  maxlength='200' minlength="1" pattern=".{1,200}" >
+</div>
+{% endblock %}
+
+
+{%block ibuttontitle %}
+<label for="buttontitle">{%trans "Button Title"%}</label>
+<div class="input">
+  <input type="text" name="buttontitle" id="buttontitle" placeholder='{%trans "Button title"%}' autofocus required  maxlength='200' minlength="1" pattern=".{1,200}" >
 </div>
 {% endblock %}
 

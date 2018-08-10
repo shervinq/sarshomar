@@ -43,6 +43,9 @@ trait type
 			'choise'        => false,
 			'validation'    => null,
 			'profile_field' => null,
+			'random'        => false,
+			'otherchoise'   => false,
+			'maxchar'       => true,
 		];
 
 		$type['long_text'] =
@@ -52,6 +55,9 @@ trait type
 			'choise'        => false,
 			'validation'    => null,
 			'profile_field' => null,
+			'random'        => false,
+			'otherchoise'   => false,
+			'maxchar'       => true,
 		];
 
 		$type['single_choise'] =
@@ -61,6 +67,9 @@ trait type
 			'choise'        => true,
 			'validation'    => null,
 			'profile_field' => null,
+			'random'        => true,
+			'otherchoise'   => true,
+			'maxchar'       => true,
 		];
 
 		$type['multiple_choise'] =
@@ -70,6 +79,9 @@ trait type
 			'choise'        => true,
 			'validation'    => null,
 			'profile_field' => null,
+			'random'        => true,
+			'otherchoise'   => true,
+			'maxchar'       => true,
 		];
 
 		$type['picture_choice'] =
@@ -79,69 +91,9 @@ trait type
 			'choise'        => true,
 			'validation'    => null,
 			'profile_field' => null,
-		];
-
-		$type['yes_no'] =
-		[
-			'key'           => 'yes_no',
-			'title'         => T_('yes/no'),
-			'choise'        => false,
-			'validation'    => null,
-			'profile_field' => null,
-		];
-
-		$type['legal'] =
-		[
-			'key'           => 'legal',
-			'title'         => T_('Legal'),
-			'choise'        => false,
-			'validation'    => null,
-			'profile_field' => null,
-		];
-
-		$type['email'] =
-		[
-			'key'           => 'email',
-			'title'         => T_('Email'),
-			'choise'        => false,
-			'validation'    => null,
-			'profile_field' => null,
-		];
-
-		$type['scale'] =
-		[
-			'key'           => 'scale',
-			'title'         => T_('Scale'),
-			'choise'        => false,
-			'validation'    => null,
-			'profile_field' => null,
-		];
-
-		$type['rating'] =
-		[
-			'key'           => 'rating',
-			'title'         => T_('Rating'),
-			'choise'        => false,
-			'validation'    => null,
-			'profile_field' => null,
-		];
-
-		$type['date'] =
-		[
-			'key'           => 'date',
-			'title'         => T_('Date'),
-			'choise'        => false,
-			'validation'    => null,
-			'profile_field' => null,
-		];
-
-		$type['number'] =
-		[
-			'key'           => 'number',
-			'title'         => T_('Number'),
-			'choise'        => false,
-			'validation'    => null,
-			'profile_field' => null,
+			'random'        => true,
+			'otherchoise'   => false,
+			'maxchar'       => false,
 		];
 
 		$type['dropdown'] =
@@ -151,6 +103,93 @@ trait type
 			'choise'        => true,
 			'validation'    => null,
 			'profile_field' => null,
+			'random'        => true,
+			'otherchoise'   => true,
+			'maxchar'       => true,
+		];
+
+		$type['yes_no'] =
+		[
+			'key'           => 'yes_no',
+			'title'         => T_('yes/no'),
+			'choise'        => false,
+			'validation'    => null,
+			'profile_field' => null,
+			'random'        => true,
+			'otherchoise'   => false,
+			'maxchar'       => false,
+		];
+
+		$type['legal'] =
+		[
+			'key'           => 'legal',
+			'title'         => T_('Legal'),
+			'choise'        => false,
+			'validation'    => null,
+			'profile_field' => null,
+			'random'        => false,
+			'otherchoise'   => false,
+			'maxchar'       => true,
+		];
+
+		$type['email'] =
+		[
+			'key'           => 'email',
+			'title'         => T_('Email'),
+			'choise'        => false,
+			'validation'    => null,
+			'profile_field' => null,
+			'random'        => false,
+			'otherchoise'   => false,
+			'maxchar'       => true,
+		];
+
+		$type['scale'] =
+		[
+			'key'           => 'scale',
+			'title'         => T_('Scale'),
+			'choise'        => false,
+			'validation'    => null,
+			'profile_field' => null,
+			'random'        => false,
+			'otherchoise'   => false,
+			'maxchar'       => true,
+		];
+
+		$type['rating'] =
+		[
+			'key'           => 'rating',
+			'title'         => T_('Rating'),
+			'choise'        => false,
+			'validation'    => null,
+			'profile_field' => null,
+			'random'        => false,
+			'otherchoise'   => false,
+			'maxchar'       => true,
+		];
+
+		$type['date'] =
+		[
+			'key'           => 'date',
+			'title'         => T_('Date'),
+			'choise'        => false,
+			'validation'    => 'date',
+			'profile_field' => null,
+			'random'        => false,
+			'otherchoise'   => false,
+			'maxchar'       => true,
+		];
+
+		$type['number'] =
+		[
+			'key'           => 'number',
+			'title'         => T_('Number'),
+			'choise'        => false,
+			'validation'    => 'number',
+			'profile_field' => null,
+			'random'        => false,
+			'otherchoise'   => false,
+			'maxchar'       => true,
 		];
 
 		$type['file_upload'] =
@@ -160,6 +199,9 @@ trait type
 			'choise'        => false,
 			'validation'    => null,
 			'profile_field' => null,
+			'random'        => false,
+			'otherchoise'   => false,
+			'maxchar'       => false,
 		];
 
 		$type['website'] =
@@ -169,6 +211,9 @@ trait type
 			'choise'        => false,
 			'validation'    => null,
 			'profile_field' => null,
+			'random'        => false,
+			'otherchoise'   => false,
+			'maxchar'       => true,
 		];
 
 		return $type;
