@@ -284,6 +284,10 @@ class question
 				case 'user_id':
 					$result[$key] = \dash\coding::encode($value);
 					break;
+				case 'type':
+					$result[$key] = $value;
+					$result['type_detail'] = self::get_type($value);
+					break;
 
 				case 'media':
 				case 'choice':
