@@ -8,9 +8,9 @@ class view
 	{
 		\dash\data::page_pictogram('edit');
 
-		\content_a\poll\view::load_poll();
+		\content_a\survey\view::load_survey();
 
-		\dash\data::page_title(T_("Edit question"). ' | '. \dash\data::pollRow_title());
+		\dash\data::page_title(T_("Edit question"). ' | '. \dash\data::surveyRow_title());
 
 		\content_a\question\view::load_question();
 

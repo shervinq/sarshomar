@@ -33,51 +33,51 @@ class question
 		}
 
 
-		$poll_id = \dash\app::request('poll_id');
-		$poll_id = \dash\coding::decode($poll_id);
-		if(!$poll_id)
+		$survey_id = \dash\app::request('survey_id');
+		$survey_id = \dash\coding::decode($survey_id);
+		if(!$survey_id)
 		{
-			\dash\notif::error(T_("Poll id not set"), 'poll_id');
+			\dash\notif::error(T_("Survay id not set"), 'survey_id');
 			return false;
 		}
 
-		$load_poll = \lib\db\polls::get(['id' => $poll_id, 'limit' => 1]);
-		if(!$load_poll || !isset($load_poll['user_id']))
+		$load_survey = \lib\db\surveys::get(['id' => $survey_id, 'limit' => 1]);
+		if(!$load_survey || !isset($load_survey['user_id']))
 		{
-			\dash\notif::error(T_("Invalid poll id"), 'poll_id');
+			\dash\notif::error(T_("Invalid survey id"), 'survey_id');
 			return false;
 		}
 
-		if(intval(\dash\user::id()) !== intval($load_poll['user_id']))
+		if(intval(\dash\user::id()) !== intval($load_survey['user_id']))
 		{
 			if(!\dash\permission::supervisor())
 			{
-				\dash\log::db('isNotYourPoll', ['data' => $poll_id]);
-				\dash\notif::error(T_("This is not your poll!"), 'poll_id');
+				\dash\log::db('isNotYourSurvay', ['data' => $survey_id]);
+				\dash\notif::error(T_("This is not your survey!"), 'survey_id');
 				return false;
 			}
 		}
 
-		$block_poll = \lib\app\question::block_poll(\dash\app::request('poll_id'));
+		$block_survey = \lib\app\question::block_survey(\dash\app::request('survey_id'));
 
-		if(count($block_poll) !== count($sort))
+		if(count($block_survey) !== count($sort))
 		{
 			\dash\notif::error(T_("Some question was lost!"));
 			return false;
 		}
 
-		$old_sort = array_column($block_poll, 'id');
+		$old_sort = array_column($block_survey, 'id');
 
 		if($old_sort !== $sort)
 		{
-			$block_poll = array_combine($old_sort, $block_poll);
+			$block_survey = array_combine($old_sort, $block_survey);
 
 			$new_bloc_sort = [];
 			foreach ($sort as $key => $value)
 			{
-				if(isset($block_poll[$value]))
+				if(isset($block_survey[$value]))
 				{
-					$id = $block_poll[$value]['id'];
+					$id = $block_survey[$value]['id'];
 					$id = \dash\coding::decode($id);
 					$new_bloc_sort[$key] = $id;
 				}
@@ -103,7 +103,7 @@ class question
 		$id = \dash\coding::decode($_id);
 		if(!$id)
 		{
-			\dash\notif::error(T_("Poll id not set"));
+			\dash\notif::error(T_("Survay id not set"));
 			return false;
 		}
 
@@ -122,16 +122,16 @@ class question
 	}
 
 
-	public static function block_poll($_poll_id)
+	public static function block_survey($_survey_id)
 	{
-		$poll_id = \dash\coding::decode($_poll_id);
-		if(!$poll_id)
+		$survey_id = \dash\coding::decode($_survey_id);
+		if(!$survey_id)
 		{
-			\dash\notif::error(T_("Poll id not set"));
+			\dash\notif::error(T_("Survay id not set"));
 			return false;
 		}
 
-		$result = \lib\db\questions::get_sort(['poll_id' => $poll_id]);
+		$result = \lib\db\questions::get_sort(['survey_id' => $survey_id]);
 
 		if(is_array($result))
 		{
@@ -151,37 +151,37 @@ class question
 	{
 		$args            = [];
 
-		$poll_id = \dash\app::request('poll_id');
-		$poll_id = \dash\coding::decode($poll_id);
-		if(!$poll_id)
+		$survey_id = \dash\app::request('survey_id');
+		$survey_id = \dash\coding::decode($survey_id);
+		if(!$survey_id)
 		{
-			\dash\notif::error(T_("Poll id not set"), 'poll_id');
+			\dash\notif::error(T_("Survay id not set"), 'survey_id');
 			return false;
 		}
 
-		$load_poll = \lib\db\polls::get(['id' => $poll_id, 'limit' => 1]);
-		if(!$load_poll || !isset($load_poll['user_id']))
+		$load_survey = \lib\db\surveys::get(['id' => $survey_id, 'limit' => 1]);
+		if(!$load_survey || !isset($load_survey['user_id']))
 		{
-			\dash\notif::error(T_("Invalid poll id"), 'poll_id');
+			\dash\notif::error(T_("Invalid survey id"), 'survey_id');
 			return false;
 		}
 
-		if(intval(\dash\user::id()) !== intval($load_poll['user_id']))
+		if(intval(\dash\user::id()) !== intval($load_survey['user_id']))
 		{
 			if(!\dash\permission::supervisor())
 			{
-				\dash\log::db('isNotYourPoll', ['data' => $poll_id]);
-				\dash\notif::error(T_("This is not your poll!"), 'poll_id');
+				\dash\log::db('isNotYourSurvay', ['data' => $survey_id]);
+				\dash\notif::error(T_("This is not your survey!"), 'survey_id');
 				return false;
 			}
 		}
 
 		if($_id)
 		{
-			$load_question = \lib\db\questions::get(['id' => $_id, 'poll_id' => $poll_id, 'limit' => 1]);
+			$load_question = \lib\db\questions::get(['id' => $_id, 'survey_id' => $survey_id, 'limit' => 1]);
 			if(!$load_question)
 			{
-				\dash\notif::error(T_("Invalid questions id"), 'poll_id');
+				\dash\notif::error(T_("Invalid questions id"), 'survey_id');
 				return false;
 			}
 		}
@@ -329,7 +329,7 @@ class question
 			$args['setting'] = json_encode($setting, JSON_UNESCAPED_UNICODE);
 		}
 
-		$args['poll_id'] = $poll_id;
+		$args['survey_id'] = $survey_id;
 		$args['title']   = $title;
 		$args['desc']    = $desc;
 		$args['media']   = $media;

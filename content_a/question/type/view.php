@@ -8,8 +8,8 @@ class view
 	{
 		\dash\data::page_pictogram('edit');
 
-		\content_a\poll\view::load_poll();
-		\dash\data::page_title(T_("Edit question"). ' | '. \dash\data::pollRow_title());
+		\content_a\survey\view::load_survey();
+		\dash\data::page_title(T_("Edit question"). ' | '. \dash\data::surveyRow_title());
 		\content_a\question\view::load_question();
 
 		\dash\data::page_desc(T_("You can edit your question detail"));

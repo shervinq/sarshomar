@@ -12,7 +12,7 @@ class model
 		$post['random']      = \dash\request::post('random');
 		$post['otherchoise'] = \dash\request::post('otherchoise');
 		$post['buttontitle'] = \dash\request::post('buttontitle');
-		$post['poll_id']     = \dash\request::get('id');
+		$post['survey_id']     = \dash\request::get('id');
 
 		$result = \lib\app\question::edit($post, \dash\request::get('questionid'));
 

@@ -18,8 +18,8 @@ class view
 
 		if(\dash\request::get('new'))
 		{
-			\dash\data::badge_link(\dash\url::here(). '/poll?id='. \dash\request::get('id'));
-			\dash\data::badge_text(T_('Back to poll dashboard'));
+			\dash\data::badge_link(\dash\url::here(). '/survey?id='. \dash\request::get('id'));
+			\dash\data::badge_text(T_('Back to survey dashboard'));
 		}
 		else
 		{

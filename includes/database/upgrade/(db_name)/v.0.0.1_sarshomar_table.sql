@@ -1,4 +1,4 @@
-CREATE TABLE `polls` (
+CREATE TABLE `surveys` (
 `id`            bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
 `user_id`       int(10) UNSIGNED NOT NULL,
 `title`	        varchar(500) NULL,
@@ -26,13 +26,13 @@ CREATE TABLE `polls` (
 `datecreated`   timestamp DEFAULT CURRENT_TIMESTAMP,
 `datemodified`  timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
 PRIMARY KEY (`id`),
-CONSTRAINT `polls_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE
+CONSTRAINT `surveys_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE `questions` (
 `id`            bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-`poll_id`       bigint(20) UNSIGNED NOT NULL,
+`survey_id`       bigint(20) UNSIGNED NOT NULL,
 `title` 	    text CHARACTER SET utf8mb4,
 `desc` 		    text CHARACTER SET utf8mb4,
 `require`       bit(1) NULL,
@@ -46,6 +46,6 @@ CREATE TABLE `questions` (
 `datecreated`   timestamp DEFAULT CURRENT_TIMESTAMP,
 `datemodified`  timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
 PRIMARY KEY (`id`),
-CONSTRAINT `questions_poll_id` FOREIGN KEY (`poll_id`) REFERENCES `polls` (`id`) ON UPDATE CASCADE
+CONSTRAINT `questions_survey_id` FOREIGN KEY (`survey_id`) REFERENCES `surveys` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

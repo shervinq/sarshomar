@@ -8,7 +8,7 @@ class model
 	{
 		if(\dash\request::post('action') === 'remove')
 		{
-			$post['poll_id']       = \dash\request::get('id');
+			$post['survey_id']       = \dash\request::get('id');
 			$post['choise_key']    = \dash\request::post('key');
 			$post['remove_choise'] = true;
 			$result = \lib\app\question::edit($post, \dash\request::get('questionid'));
@@ -16,7 +16,7 @@ class model
 		else
 		{
 			$post                = [];
-			$post['poll_id']     = \dash\request::get('id');
+			$post['survey_id']     = \dash\request::get('id');
 			$post['choisetitle'] = \dash\request::post('choisetitle');
 			$post['add_choise']  = true;
 

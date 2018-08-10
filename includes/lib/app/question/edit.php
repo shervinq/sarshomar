@@ -28,7 +28,7 @@ trait edit
 			return false;
 		}
 
-		unset($args['poll_id']);
+		unset($args['survey_id']);
 
 		if(!\dash\app::isset_request('title')) 		unset($args['title']);
 		if(!\dash\app::isset_request('desc')) 		unset($args['desc']);

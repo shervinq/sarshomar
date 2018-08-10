@@ -1,11 +1,11 @@
 <?php
-namespace lib\app\question;
+namespace lib\app\survey;
 
 trait add
 {
 
 	/**
-	 * add new question
+	 * add new survey
 	 *
 	 * @param      array          $_args  The arguments
 	 *
@@ -24,34 +24,47 @@ trait add
 		// check args
 		$args = self::check();
 
-
 		if($args === false || !\dash\engine\process::status())
 		{
 			return false;
 		}
+
+		$return = [];
+
+
+		if(!isset($args['title']))
+		{
+			\dash\notif::error(T_("Please fill the survey title"), 'title');
+			return false;
+		}
+
+		$args['user_id'] = \dash\user::id();
 
 		if(!$args['status'])
 		{
 			$args['status']  = 'draft';
 		}
 
-		$return = [];
-
-		$question_id = \lib\db\questions::insert($args);
-
-		if(!$question_id)
+		if(!$args['privacy'])
 		{
-			\dash\notif::error(T_("No way to insert question"), 'db');
+			$args['privacy']  = 'public';
+		}
+
+		$survey_id = \lib\db\surveys::insert($args);
+
+		if(!$survey_id)
+		{
+			\dash\notif::error(T_("No way to insert survey"), 'db');
 			return false;
 		}
 
 		if(\dash\engine\process::status())
 		{
-			\dash\log::db('addNewSurvay', ['data' => $question_id, 'datalink' => \dash\coding::encode($question_id)]);
-			\dash\notif::ok(T_("Block successfuly added"));
+			\dash\log::db('addNewSurvay', ['data' => $survey_id, 'datalink' => \dash\coding::encode($survey_id)]);
+			\dash\notif::ok(T_("Survay successfuly added"));
 		}
 
-		$return['id'] = \dash\coding::encode($question_id);
+		$return['id'] = \dash\coding::encode($survey_id);
 
 		return $return;
 	}

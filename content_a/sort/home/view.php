@@ -8,24 +8,24 @@ class view
 	{
 		\dash\data::page_pictogram('dzone');
 		\dash\data::page_title(T_("Save sort question"));
-		\dash\data::page_desc(T_("Check your poll question list and sort it"));
+		\dash\data::page_desc(T_("Check your survey question list and sort it"));
 
 		if(\dash\request::get('id'))
 		{
-			\dash\data::badge_link(\dash\url::here(). '/poll?id='. \dash\request::get('id'));
-			\dash\data::badge_text(T_('Back to poll dashboard'));
+			\dash\data::badge_link(\dash\url::here(). '/survey?id='. \dash\request::get('id'));
+			\dash\data::badge_text(T_('Back to survey dashboard'));
 
 			$id        = \dash\request::get('id');
-			$load_poll = \lib\app\poll::get($id);
-			if(!$load_poll)
+			$load_survey = \lib\app\survey::get($id);
+			if(!$load_survey)
 			{
-				\dash\header::status(404, T_("Invalid poll id"));
+				\dash\header::status(404, T_("Invalid survey id"));
 			}
-			\dash\data::dataRow($load_poll);
+			\dash\data::dataRow($load_survey);
 
 			\dash\data::page_title(\dash\data::page_title(). ' | '. \dash\data::dataRow_title());
 
-			$dataTable = \lib\app\question::block_poll($id);
+			$dataTable = \lib\app\question::block_survey($id);
 
 			if(!$dataTable)
 			{

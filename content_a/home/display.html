@@ -8,10 +8,10 @@
 <div class='middle normal f justify-center'>
 
   <div class="vcard mA10">
-    <img src="{{url.site}}/static/siftal/images/useful/plus1.png" alt="add new poll">
+    <img src="{{url.site}}/static/siftal/images/useful/plus1.png" alt="add new survey">
     <div class="content"></div>
     <div class="footer pAn">
-     <a class="btn block primary" href="{{url.here}}/poll/add">{%trans "Add new poll"%}</a>
+     <a class="btn block primary" href="{{url.here}}/survey/add">{%trans "Add new survey"%}</a>
     </div>
   </div>
 
@@ -21,7 +21,7 @@
 	{%if value.status == 'enable'%}green{%else%}black{%endif%}
 {%endset%}
 <div class="vcard shadow c3 green mA10 s12">
-  <a href='{{url.here}}/poll?id={{value.id}}'>
+  <a href='{{url.here}}/survey?id={{value.id}}'>
     <div class="content title">
       <div class="header">{{value.title}}</div>
     </div>

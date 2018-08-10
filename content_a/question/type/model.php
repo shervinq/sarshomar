@@ -8,7 +8,7 @@ class model
 	{
 		$post            = [];
 		$post['type']    = \dash\request::post('type');
-		$post['poll_id'] = \dash\request::get('id');
+		$post['survey_id'] = \dash\request::get('id');
 
 		$result = \lib\app\question::edit($post, \dash\request::get('questionid'));
 
