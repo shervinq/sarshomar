@@ -114,7 +114,7 @@ class question
 		$desc    = \dash\app::request('desc');
 		$media   = \dash\app::request('media');
 		$require = \dash\app::request('require') ? 1 : null;
-		$setting = \dash\app::request('setting');
+
 
 		$type = \dash\app::request('type');
 		if($type && mb_strlen($type) >= 200)
@@ -220,20 +220,37 @@ class question
 			$args['choice'] = $choice;
 		}
 
+		if(\dash\app::isset_request('random') || \dash\app::isset_request('otherchoise') || \dash\app::isset_request('buttontitle'))
+		{
+			$setting                = [];
+			$setting['random']      = \dash\app::request('random') ? true : false;
+			$setting['otherchoise'] = \dash\app::request('otherchoise') ? true : false;
+			$buttontitle            = \dash\app::request('buttontitle');
+			if($buttontitle && mb_strlen($buttontitle) > 10000)
+			{
+				$buttontitle = substr($buttontitle, 0, 10000);
+			}
 
+			if($buttontitle)
+			{
+				$buttontitle = \dash\safe::remove_nl($buttontitle);
+			}
 
+			$setting['buttontitle'] = $buttontitle;
 
+			$args['setting'] = json_encode($setting, JSON_UNESCAPED_UNICODE);
+		}
 
 		$args['poll_id'] = $poll_id;
 		$args['title']   = $title;
 		$args['desc']    = $desc;
 		$args['media']   = $media;
 		$args['require'] = $require;
-		$args['setting'] = $setting;
 		$args['type']    = $type;
 		$args['maxchar'] = $maxchar;
 		$args['sort']    = $sort;
 		$args['status']  = $status;
+
 		return $args;
 	}
 

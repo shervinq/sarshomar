@@ -77,7 +77,7 @@
 {%block ibuttontitle %}
 <label for="buttontitle">{%trans "Button Title"%}</label>
 <div class="input">
-  <input type="text" name="buttontitle" id="buttontitle" placeholder='{%trans "Button title"%}' autofocus required  maxlength='200' minlength="1" pattern=".{1,200}" >
+  <input type="text" name="buttontitle" id="buttontitle" placeholder='{%trans "Button title"%}'  value="{{dataRow.setting.buttontitle}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
 </div>
 {% endblock %}
 

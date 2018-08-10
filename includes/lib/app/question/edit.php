@@ -34,7 +34,6 @@ trait edit
 		if(!\dash\app::isset_request('desc')) 		unset($args['desc']);
 		if(!\dash\app::isset_request('media')) 		unset($args['media']);
 		if(!\dash\app::isset_request('require')) 	unset($args['require']);
-		if(!\dash\app::isset_request('setting')) 	unset($args['setting']);
 		if(!\dash\app::isset_request('type')) 		unset($args['type']);
 		if(!\dash\app::isset_request('maxchar')) 	unset($args['maxchar']);
 		if(!\dash\app::isset_request('sort')) 		unset($args['sort']);
