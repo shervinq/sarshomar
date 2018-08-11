@@ -24,7 +24,6 @@ class question
 
 	public static function get_by_step($_survey_id, $_step)
 	{
-
 		$survey_id = \dash\coding::decode($_survey_id);
 		if(!$survey_id)
 		{
@@ -41,7 +40,8 @@ class question
 		$_step = intval($_step);
 
 		$load = \lib\db\questions::get(['survey_id' => $survey_id, 'sort' => $_step, 'limit' => 1]);
-		var_dump($load);exit();
+		return $load;
+
 	}
 
 	public static function sort_choice($_args)

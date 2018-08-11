@@ -16,7 +16,7 @@
 
 {%block start%}
 <div class="justify-center f pA100">
-	<a href="{{url.this}}?q={{nextQuestion.id}}" class="btn c3 hauto xl primary ">{%trans "Start"%}</a>
+	<a href="{{url.this}}?step={{nextQuestion}}" class="btn c3 hauto xl primary ">{%trans "Start"%}</a>
 </div>
 {%endblock%}
 
@@ -143,7 +143,7 @@
 	<img src="{{surveyRow.wellcomemedia.file}}" class="w300">
 {%endif%}
 <div class="justify-center f pA10">
-	<a href="{{url.this}}?q={{nextQuestion.id}}" class="btn c3 hauto xl primary ">{%trans "Start"%}</a>
+	<a href="{{url.this}}?step={{nextQuestion}}" class="btn c3 hauto xl primary ">{%trans "Start"%}</a>
 </div>
 
 {%endblock%}

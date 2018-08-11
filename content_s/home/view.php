@@ -27,9 +27,6 @@ class view
 		if(isset($survey['wellcometitle']) || isset($survey['wellcomedesc']) || isset($survey['wellcomemedia']['file']))
 		{
 			$step = 'wellcome';
-			$next_question = \lib\app\question::next(\dash\url::module());
-
-			\dash\data::nextQuestion($next_question);
 		}
 
 		$step_sort = \dash\request::get('step');
@@ -43,7 +40,10 @@ class view
 			}
 			\dash\data::question($question);
 			$step = $question['type'];
-
+		}
+		else
+		{
+			\dash\data::nextQuestion(1);
 		}
 
 		\dash\data::step($step);

@@ -7,7 +7,7 @@ namespace lib\app;
 class answer
 {
 
-	public static function add($_survey_id, $_question_id, $_args)
+	public static function add($_survey_id, $_step, $_args)
 	{
 		if(!\dash\user::id())
 		{
@@ -30,20 +30,24 @@ class answer
 			return false;
 		}
 
-		$question_id = \dash\coding::decode($_question_id);
-		if(!$question_id)
+
+		if(!$_step || !is_numeric($_step))
 		{
-			\dash\notif::error(T_("Question id not set"));
+			\dash\notif::error(T_("Question step not set"));
 			return false;
 		}
 
-		$question_detail = \lib\db\questions::get(['id' => $question_id, 'survey_id' => $survey_id, 'limit' => 1]);
+		$_step = intval($_step);
 
-		if(!$question_detail)
+		$question_detail = \lib\db\questions::get(['sort' => $_step, 'survey_id' => $survey_id, 'limit' => 1]);
+
+		if(!$question_detail || !isset($question_detail['id']))
 		{
 			\dash\notif::error(T_("Invalid question id"));
 			return false;
 		}
+
+		$question_id = $question_detail['id'];
 
 		$question_detail = \lib\app\question::ready($question_detail);
 
