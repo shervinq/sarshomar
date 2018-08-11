@@ -179,7 +179,7 @@
 <form method="post" class="c6">
 	{%for key, value in question.choice%}
 	 <div class="radio1 green">
-	  <input type="radio" id="r-{{key}}" name="answer" value="{{valu.title}}" {%if myAnswer == value.title%} checked {%endif%} >
+	  <input type="radio" id="r-{{key}}" name="answer" value="{{valu.title}}" {%if myAnswer.text == value.title%} checked {%endif%} >
 	  <label for="r-{{key}}">{{value.title}}</label>
 	 </div>
 	{%endfor%}
@@ -202,7 +202,7 @@
 	{%for key, value in question.choice%}
 
 	 <div class="switch1 mB10">
-	 <input type="checkbox" name="{{key}}" id="{{key}}" value="{{value.title}}" {%if myAnswer == value.title%} checked {%endif%}>
+	 <input type="checkbox" name="{{key}}" id="{{key}}" value="{{value.title}}" {%if myAnswer.text == value.title%} checked {%endif%}>
 	 <label for="{{key}}"></label>
 	 <label for="{{key}}">{{value.title}}</label>
 	</div>
@@ -226,7 +226,7 @@
 		  <select name="language" class="ui dropdown select">
 		    <option value=""><i>{%trans "Please select one item"%}</i></option>
 			{%for key, value in question.choice%}
-		      <option value="{{value.title}}"  {%if myAnswer == value.title%} checked {%endif%}>{{value.title}}</option>
+		      <option value="{{value.title}}"  {%if myAnswer.text == value.title%} checked {%endif%}>{{value.title}}</option>
 		    {%endfor%}
 		  </select>
 		</div>
