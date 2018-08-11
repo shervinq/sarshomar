@@ -5,6 +5,12 @@ namespace lib\db;
 class surveys
 {
 
+	public static function plus_field()
+	{
+		return \dash\db\config::public_plus_field('surveys', ...func_get_args());
+	}
+
+
 	public static function insert()
 	{
 		\dash\db\config::public_insert('surveys', ...func_get_args());

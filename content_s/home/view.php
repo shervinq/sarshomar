@@ -19,7 +19,6 @@ class view
 		// {
 		// 	\dash\data::page_desc($page_desc);
 		// }
-		// var_dump(\dash\data::surveyRow());exit();
 
 		$survey = \dash\data::surveyRow();
 
@@ -28,25 +27,23 @@ class view
 		if(isset($survey['wellcometitle']) || isset($survey['wellcomedesc']) || isset($survey['wellcomemedia']['file']))
 		{
 			$step = 'wellcome';
+			$next_question = \lib\app\question::next(\dash\url::module());
+
+			\dash\data::nextQuestion($next_question);
 		}
 
-		$nex_question = \lib\app\question::next(\dash\url::module());
+		$step_sort = \dash\request::get('step');
 
-		\dash\data::nextQuestion($nex_question);
-
-		$q    = \dash\request::get('q');
-
-		if($q)
+		if($step_sort)
 		{
-			$question = \lib\app\question::get($q);
+			$question = \lib\app\question::get_by_step(\dash\url::module(), $step_sort);
 			if(!$question || !isset($question['type']))
 			{
 				\dash\header::status(404, T_("Invalid question id"));
 			}
 			\dash\data::question($question);
 			$step = $question['type'];
-			// var_dump($step);
-			// exit();
+
 		}
 
 		\dash\data::step($step);

@@ -35,6 +35,9 @@ trait add
 			$args['status']  = 'draft';
 		}
 
+		$survey_id = \dash\coding::decode(\dash\app::request('survey_id'));
+		$args['sort'] = intval(\lib\db\questions::get_count(['survey_id' => $survey_id])) + 1;
+
 		$return = [];
 
 		$question_id = \lib\db\questions::insert($args);
@@ -44,6 +47,8 @@ trait add
 			\dash\notif::error(T_("No way to insert question"), 'db');
 			return false;
 		}
+
+		\lib\db\surveys::plus_field($survey_id, 'countblock');
 
 		if(\dash\engine\process::status())
 		{

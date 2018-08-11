@@ -22,6 +22,27 @@ class question
 		'choice',
 	];
 
+	public static function get_by_step($_survey_id, $_step)
+	{
+
+		$survey_id = \dash\coding::decode($_survey_id);
+		if(!$survey_id)
+		{
+			\dash\notif::error(T_("Survay id not set"), 'survey_id');
+			return false;
+		}
+
+		if(!is_numeric($_step))
+		{
+			\dash\notif::error(T_("Invalid step number"), 'step');
+			return false;
+		}
+
+		$_step = intval($_step);
+
+		$load = \lib\db\questions::get(['survey_id' => $survey_id, 'sort' => $_step, 'limit' => 1]);
+		var_dump($load);exit();
+	}
 
 	public static function sort_choice($_args)
 	{

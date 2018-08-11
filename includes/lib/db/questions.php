@@ -9,7 +9,8 @@ class questions
 		$query = [];
 		foreach ($_sort as $key => $value)
 		{
-			$query[] = " UPDATE questions SET questions.sort = $key WHERE questions.id = $value LIMIT 1 ";
+			$sort = $key + 1;
+			$query[] = " UPDATE questions SET questions.sort = $sort WHERE questions.id = $value LIMIT 1 ";
 		}
 
 		$query = implode(';', $query);

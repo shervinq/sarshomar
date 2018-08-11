@@ -25,5 +25,24 @@ trait next
 		}
 		return $first;
 	}
+
+
+	public static function next_url($_survey_id, $_question_id)
+	{
+		$survey_id = \dash\coding::decode($_survey_id);
+		if(!$survey_id)
+		{
+			return false;
+		}
+
+		$question_id = \dash\coding::decode($_question_id);
+		if(!$question_id)
+		{
+			return false;
+		}
+
+		$next = \lib\db\questions::get_next($survey_id, $question_id);
+		var_dump($next);
+	}
 }
 ?>
