@@ -6,6 +6,53 @@ namespace lib\app;
  */
 class answer
 {
+	public static function my_answer($_survey_id, $_question_id)
+	{
+		if(!\dash\user::id())
+		{
+			\dash\notif::error(T_("Please login to conitinue"));
+			return false;
+		}
+
+		$survey_id = \dash\coding::decode($_survey_id);
+		if(!$survey_id)
+		{
+			\dash\notif::error(T_("Survay id not set"));
+			return false;
+		}
+
+		$question_id = \dash\coding::decode($_question_id);
+		if(!$question_id)
+		{
+			\dash\notif::error(T_("Question id not set"));
+			return false;
+		}
+
+		$get_answer =
+		[
+			'answerdetails.question_id' => $question_id,
+			'answerdetails.survey_id'   => $survey_id,
+			'limit'                     => 1,
+		];
+
+		$option =
+		[
+			'public_show_field' => " answerdetails.*, answerterms.*, answerdetails.id AS `answerdetail_id` ",
+			'master_join'       => " INNER JOIN answerterms ON answerterms.id = answerdetails.answerterm_id ",
+		];
+
+		$old_answer_detail = \lib\db\answerdetails::get($get_answer, $option);
+
+
+		if(!$old_answer_detail)
+		{
+			return null;
+		}
+
+		return $old_answer_detail;
+
+
+	}
 
 	public static function add($_survey_id, $_step, $_args)
 	{

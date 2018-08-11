@@ -26,7 +26,7 @@
 <form method="post" class="c6">
 	<div class="input">
 		<label for="answer">{%trans "Type your answer"%}</label>
-		<input type="text" id="answer" name="answer" value="{{myAnswer}}" placeholder='{%trans "Type here ..."%}'>
+		<input type="text" id="answer" name="answer" value="{{myAnswer.text}}" placeholder='{%trans "Type here ..."%}'>
 	</div>
 	{{block('nextBtn')}}
 </form>
@@ -39,7 +39,7 @@
 {{block('question_title')}}
 <form method="post" class="c6">
 	<label for="answer">{%trans "Type your answer"%}</label>
-	<textarea class="txt" type="text" id="answer" name="answer" placeholder='{%trans "Type here ..."%}' rows="3">{{myAnswer}}</textarea>
+	<textarea class="txt" type="text" id="answer" name="answer" placeholder='{%trans "Type here ..."%}' rows="3">{{myAnswer.text}}</textarea>
 	{{block('nextBtn')}}
 </form>
 {%endblock%}
@@ -67,7 +67,7 @@
 <form method="post" class="c6">
 	<label for="answer">{%trans "Answer"%}</label>
 	<div class="input">
-	  <input class="datepicker" type="text" name="answer" id="answer" placeholder='{{"1369/04/15" | fitNumber}} *' value="{{myAnswer}}" maxlength='20' data-format="YYYY/MM/DD" data-view="year">
+	  <input class="datepicker" type="text" name="answer" id="answer" placeholder='{{"1369/04/15" | fitNumber}} *' value="{{myAnswer.text}}" maxlength='20' data-format="YYYY/MM/DD" data-view="year">
 	</div>
 	{{block('nextBtn')}}
 </form>
@@ -80,7 +80,7 @@
 <form method="post" class="c6">
 	<label for="answer">{%trans "Answer"%}</label>
 	<div class="input">
-	  <input class="" type="email" name="answer" id="answer" value="{{myAnswer}}"  placeholder='{%trans "Type here ..."%}'>
+	  <input class="" type="email" name="answer" id="answer" value="{{myAnswer.text}}"  placeholder='{%trans "Type here ..."%}'>
 	</div>
 	{{block('nextBtn')}}
 </form>
@@ -91,7 +91,7 @@
 <form method="post" class="c6">
 	<label for="answer">{%trans "Answer"%}</label>
 	<div class="input">
-	  <input class="" type="url" name="answer" id="answer" value="{{myAnswer}}"  placeholder='{%trans "Type here ..."%}'>
+	  <input class="" type="url" name="answer" id="answer" value="{{myAnswer.text}}"  placeholder='{%trans "Type here ..."%}'>
 	</div>
 	{{block('nextBtn')}}
 </form>
@@ -104,7 +104,7 @@
 <form method="post" class="c6">
 	<label for="answer">{%trans "Answer"%}</label>
 	<div class="input">
-	  <input class="" type="number" name="answer" id="answer" value="{{myAnswer}}" placeholder='{%trans "Type here ..."%}'>
+	  <input class="" type="number" name="answer" id="answer" value="{{myAnswer.text}}" placeholder='{%trans "Type here ..."%}'>
 	</div>
 	{{block('nextBtn')}}
 </form>
@@ -116,7 +116,7 @@
 <form method="post" class="c6">
 	<label for="answer">{%trans "Answer"%}</label>
 	<div class="input">
-	  <input class="" type="number" name="answer" id="answer"  value="{{myAnswer}}" placeholder='{%trans "Type here ..."%}'>
+	  <input class="" type="number" name="answer" id="answer"  value="{{myAnswer.text}}" placeholder='{%trans "Type here ..."%}'>
 	</div>
 	{{block('nextBtn')}}
 </form>
@@ -244,7 +244,7 @@
 	<form method="post" class="c6">
 		<div class="input">
 			<label for="answer">{%trans "Type your answer"%}</label>
-			<input type="number" id="answer" name="answer" value="{{myAnswer}}" placeholder='{%trans "Type here ..."%}'>
+			<input type="number" id="answer" name="answer" value="{{myAnswer.text}}" placeholder='{%trans "Type here ..."%}'>
 		</div>
 		{{block('nextBtn')}}
 	</form>
@@ -264,7 +264,7 @@
 	<form method="post" class="c6">
 		<div class="input">
 			<label for="answer">{%trans "Type your answer"%}</label>
-			<input type="text" id="answer" name="answer" value="{{myAnswer}}" placeholder='{%trans "Type here ..."%}'>
+			<input type="text" id="answer" name="answer" value="{{myAnswer.text}}" placeholder='{%trans "Type here ..."%}'>
 		</div>
 		{{block('nextBtn')}}
 	</form>

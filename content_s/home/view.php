@@ -40,6 +40,9 @@ class view
 			}
 			\dash\data::question($question);
 			$step = $question['type'];
+
+			$myAnswer = \lib\app\answer::my_answer(\dash\url::module(), $question['id']);
+			\dash\data::myAnswer($myAnswer);
 		}
 		else
 		{
