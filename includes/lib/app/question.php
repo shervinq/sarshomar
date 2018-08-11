@@ -40,6 +40,10 @@ class question
 		$_step = intval($_step);
 
 		$load = \lib\db\questions::get(['survey_id' => $survey_id, 'sort' => $_step, 'limit' => 1]);
+		if(is_array($load))
+		{
+			$load = self::ready($load);
+		}
 		return $load;
 
 	}
