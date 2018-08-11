@@ -33,11 +33,22 @@ class view
 
 		if($step_sort)
 		{
+			// if not login go to first page to signup firset
+			if(!\dash\user::id())
+			{
+				\dash\redirect::to(\dash\url::this());
+				return;
+			}
+
 			$question = \lib\app\question::get_by_step(\dash\url::module(), $step_sort);
 			if(!$question || !isset($question['type']))
 			{
 				\dash\header::status(404, T_("Invalid question id"));
 			}
+
+			$time_key = 'dateview_'. (string) \dash\coding::decode(\dash\data::surveyRow_id()). '_'. (string) $step_sort;
+			\dash\session::set($time_key, date("Y-m-d H:i:s"));
+
 			\dash\data::question($question);
 			$step = $question['type'];
 
@@ -46,9 +57,10 @@ class view
 		}
 		else
 		{
-			self::make_xkey_xvalue();
 			\dash\data::nextQuestion(1);
 		}
+
+		self::make_xkey_xvalue();
 
 		\dash\data::step($step);
 	}

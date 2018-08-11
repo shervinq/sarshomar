@@ -39,14 +39,14 @@ class model
 			return false;
 		}
 
+		if(!self::check_xkey_xvalue())
+		{
+			\dash\notif::error(T_("Dont!"));
+			return false;
+		}
+
 		if(!\dash\request::get('step'))
 		{
-			if(!self::check_xkey_xvalue())
-			{
-				\dash\notif::error(T_("Dont!"));
-				return false;
-			}
-
 			if(!\dash\user::id())
 			{
 				$user_id = \dash\db\users::signup();
@@ -65,10 +65,11 @@ class model
 			return false;
 		}
 
-		$post             = [];
-		$post['answer']   = \dash\request::post('answer');
+		$post           = [];
+		$post['answer'] = \dash\request::post('answer');
+		$post['skip']   = \dash\request::post('skip');
 
-		$result           = \lib\app\answer::add(\dash\url::module(), \dash\request::get('step'), $post);
+		$result         = \lib\app\answer::add(\dash\url::module(), \dash\request::get('step'), $post);
 
 		if(!$result)
 		{
@@ -77,6 +78,7 @@ class model
 
 		$step  = \dash\request::get('step');
 		$step  = intval($step) + 1;
+		$query = ['step' => $step];
 
 		\dash\redirect::to(\dash\url::this().'?'. http_build_query($query));
 
