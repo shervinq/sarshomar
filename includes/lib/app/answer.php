@@ -84,7 +84,6 @@ class answer
 			return false;
 		}
 
-
 		if(!$_step || !is_numeric($_step))
 		{
 			\dash\notif::error(T_("Question step not set"));
@@ -114,13 +113,6 @@ class answer
 			$answer = null;
 		}
 
-		$require = self::check_require($question_detail, $answer);
-		if(!$require)
-		{
-			\dash\notif::error(T_("Please fill this field to continue"), 'answer');
-			return false;
-		}
-
 		if(!$skip)
 		{
 			$validation = self::answer_validate($question_detail, $answer);
@@ -131,11 +123,25 @@ class answer
 			}
 		}
 
+		$require = self::check_require($question_detail, $answer);
+		if(!$require)
+		{
+			\dash\notif::error(T_("Please fill this field to continue"), 'answer');
+			return false;
+		}
+
 		$answer_term_id = null;
+
+		$multiple_choice = false;
 
 		if(!$skip)
 		{
-			if($answer || $answer === '0')
+			if(is_array($answer))
+			{
+				$multiple_choice = true;
+			}
+
+			if(($answer || $answer === '0') && !$multiple_choice)
 			{
 				$answer_term_id = \lib\db\answerterms::get_id($answer, $question_detail['type']);
 				if(!$answer_term_id)
@@ -201,45 +207,81 @@ class answer
 			\lib\db\answers::update($update_answer, $answer_id);
 		}
 
-		$old_answer_detail =
+		$old_answer_detail_args =
 		[
 			'user_id'     => \dash\user::id(),
 			'survey_id'   => $survey_id,
 			'answer_id'   => $answer_id,
 			'question_id' => $question_id,
-			'limit'       => 1,
 		];
 
-		$old_answer_detail = \lib\db\answerdetails::get($old_answer_detail);
-		if(isset($old_answer_detail['id']))
-		{
-			$update_answer_detail =
-			[
-				'answerterm_id' => $answer_term_id,
-				'skip'          => $skip ? 1 : null,
-				'dateanswer'    => self::dateNow(),
-			];
+		$time_key = 'dateview_'. (string) $survey_id. '_'. (string) $_step;
+		$dateview = \dash\session::get($time_key) && is_string(\dash\session::get($time_key)) ? \dash\session::get($time_key) : self::dateNow();
 
-			\lib\db\answerdetails::update($update_answer_detail, $old_answer_detail['id']);
+		if(!$multiple_choice || $skip)
+		{
+			$old_answer_detail_args['limit'] = 1;
+			$old_answer_detail = \lib\db\answerdetails::get($old_answer_detail_args);
+			if(isset($old_answer_detail['id']))
+			{
+				$update_answer_detail =
+				[
+					'answerterm_id' => $answer_term_id,
+					'skip'          => $skip ? 1 : null,
+					'dateanswer'    => self::dateNow(),
+				];
+
+				\lib\db\answerdetails::update($update_answer_detail, $old_answer_detail['id']);
+			}
+			else
+			{
+				// @chekc telegram have not url module!!
+
+				$insert_answer_detail =
+				[
+					'user_id'       => \dash\user::id(),
+					'survey_id'     => $survey_id,
+					'answer_id'     => $answer_id,
+					'question_id'   => $question_id,
+					'answerterm_id' => $answer_term_id,
+					'skip'          => $skip ? 1 : null,
+					'dateview'      => $dateview,
+					'dateanswer'    => self::dateNow(),
+				];
+
+				\lib\db\answerdetails::insert($insert_answer_detail);
+			}
 		}
 		else
 		{
-			// @chekc telegram have not url module!!
-			$time_key = 'dateview_'. (string) $survey_id. '_'. (string) $_step;
+			// mutli choise mode
+			$old_answer_detail = \lib\db\answerdetails::get($old_answer_detail_args);
+			if($old_answer_detail)
+			{
+				\lib\db\answerdetails::delete_where($old_answer_detail_args);
+			}
 
-			$insert_answer_detail =
-			[
-				'user_id'       => \dash\user::id(),
-				'survey_id'     => $survey_id,
-				'answer_id'     => $answer_id,
-				'question_id'   => $question_id,
-				'answerterm_id' => $answer_term_id,
-				'skip'          => $skip ? 1 : null,
-				'dateview'      => \dash\session::get($time_key) ? \dash\session::get($time_key) : self::dateNow(),
-				'dateanswer'    => self::dateNow(),
-			];
+			// insert new answer detail
+			$multi_insert = [];
+			foreach ($answer as $key => $value)
+			{
+				$answer_term_id = \lib\db\answerterms::get_id($value, $question_detail['type']);
+				$multi_insert[] =
+				[
+					'user_id'       => \dash\user::id(),
+					'survey_id'     => $survey_id,
+					'answer_id'     => $answer_id,
+					'question_id'   => $question_id,
+					'answerterm_id' => $answer_term_id,
+					'dateview'      => $dateview,
+					'dateanswer'    => self::dateNow(),
+				];
+			}
 
-			\lib\db\answerdetails::insert($insert_answer_detail);
+			if(!empty($multi_insert))
+			{
+				\lib\db\answerdetails::multi_insert($multi_insert);
+			}
 		}
 
 		\dash\notif::ok(T_("Your answer was saved"));
@@ -253,7 +295,7 @@ class answer
 		// check is require
 		if(isset($_question_detail['require']) && $_question_detail['require'])
 		{
-			if(!$_answer && $_answer !== '0')
+			if(!$_answer && $_answer !== '0' || empty($answer))
 			{
 				return false;
 			}
@@ -264,7 +306,6 @@ class answer
 
 	public static function answer_validate($_question_detail, $_answer)
 	{
-
 		$valid = true;
 		switch ($_question_detail['type'])
 		{
@@ -284,13 +325,32 @@ class answer
 				break;
 
 			case 'single_choice':
+				if(isset($_question_detail['choice']) && is_array($_question_detail['choice']))
+				{
+					$choice_title = array_column($_question_detail['choice'], 'title');
+
+					if(!in_array($_answer, $choice_title))
+					{
+						$valid = false;
+					}
+				}
 				break;
 
 			case 'multiple_choice':
+			case 'dropdown':
+				if(is_array($_answer) && isset($_question_detail['choice']) && is_array($_question_detail['choice']))
+				{
+					$choice_title = array_column($_question_detail['choice'], 'title');
+					foreach ($_answer as $key => $value)
+					{
+						if(!in_array($value, $choice_title))
+						{
+							$valid = false;
+						}
+					}
+				}
 				break;
 
-			case 'dropdown':
-				break;
 
 			case 'card_descign':
 				break;

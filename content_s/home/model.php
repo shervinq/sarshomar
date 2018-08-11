@@ -6,12 +6,12 @@ class model
 {
 	public static function check_hiden_input()
 	{
-		$survay   = \dash\request::post('survay');
-		$username = \dash\request::post('username');
-		$password = \dash\request::post('password');
-		$id       = \dash\request::post('id');
+		$survay      = \dash\request::post('survay');
+		$userprocode = \dash\request::post('userprocode');
+		$passwd      = \dash\request::post('passwd');
+		$id          = \dash\request::post('id');
 
-		if($survay || $username || $password || $id)
+		if($survay || $userprocode || $passwd || $id)
 		{
 			return false;
 		}
