@@ -5,123 +5,50 @@
 {%endblock%}
 
 {%block pageContent%}
-<div class="cbox">
-	{{block(step)}}
-</div>
+{%if step == 'wellcome' or step == 'thankyou' or step == 'start'%}
+	<div class="cbox ">
+		{{block(step)}}
+	</div>
+	{%else%}
+	<div class="f justify-center">
+		<div class="cbox c6 ">
+			<form method="post" autocomplete="off" class="">
+				{{block(step)}}
+			</form>
+		</div>
+	</div>
+{%endif%}
 {%endblock%}
 
 
+
+
+
+{%block hidden_input%}
+
+<input type="hidden" name="survay" value="" class="hide">
+
+<div class="hide">
+	<input type="text" name="username" value="">
+</div>
+
+<div class="input c auto hide">
+	<input type="password" name="password" value="">
+</div>
+
+<input type="text" name="id" value="" class="input hide">
+
+
+{%endblock%}
 
 
 
 {%block start%}
-<div class="justify-center f pA100">
-	<a href="{{url.this}}?step={{nextQuestion}}" class="btn c3 hauto xl primary ">{%trans "Start"%}</a>
+<div class="justify-center f pA10">
+<div class="msg primary2 block c12 txtC txtB">{{surveyRow.title}}</div>
+	{{block('start_btn')}}
 </div>
 {%endblock%}
-
-
-{%block short_answer%}
-{{block('question_title')}}
-<form method="post" class="c6">
-	<div class="input">
-		<label for="answer">{%trans "Type your answer"%}</label>
-		<input type="text" id="answer" name="answer" value="{{myAnswer.text}}" placeholder='{%trans "Type here ..."%}'>
-	</div>
-	{{block('nextBtn')}}
-</form>
-
-{%endblock%}
-
-
-
-{%block descriptive_answer%}
-{{block('question_title')}}
-<form method="post" class="c6">
-	<label for="answer">{%trans "Type your answer"%}</label>
-	<textarea class="txt" type="text" id="answer" name="answer" placeholder='{%trans "Type here ..."%}' rows="3">{{myAnswer.text}}</textarea>
-	{{block('nextBtn')}}
-</form>
-{%endblock%}
-
-
-
-
-{%block confirm%}
-{{block('question_title')}}
-<form method="post" class="c6">
-	<input type="hidden" name="next" value="step">
-	{{block('nextBtn')}}
-</form>
-{%endblock%}
-
-
-{%block require%}
- <small class="fc-red">* {%trans "Require"%}</small>
-{%endblock%}
-
-
-
-{%block date%}
-{{block('question_title')}}
-<form method="post" class="c6">
-	<label for="answer">{%trans "Answer"%}</label>
-	<div class="input">
-	  <input class="datepicker" type="text" name="answer" id="answer" placeholder='{{"1369/04/15" | fitNumber}} *' value="{{myAnswer.text}}" maxlength='20' data-format="YYYY/MM/DD" data-view="year">
-	</div>
-	{{block('nextBtn')}}
-</form>
-{%endblock%}
-
-
-
-{%block email%}
-{{block('question_title')}}
-<form method="post" class="c6">
-	<label for="answer">{%trans "Answer"%}</label>
-	<div class="input">
-	  <input class="" type="email" name="answer" id="answer" value="{{myAnswer.text}}"  placeholder='{%trans "Type here ..."%}'>
-	</div>
-	{{block('nextBtn')}}
-</form>
-{%endblock%}
-
-{%block website%}
-{{block('question_title')}}
-<form method="post" class="c6">
-	<label for="answer">{%trans "Answer"%}</label>
-	<div class="input">
-	  <input class="" type="url" name="answer" id="answer" value="{{myAnswer.text}}"  placeholder='{%trans "Type here ..."%}'>
-	</div>
-	{{block('nextBtn')}}
-</form>
-{%endblock%}
-
-
-
-{%block rating%}
-{{block('question_title')}}
-<form method="post" class="c6">
-	<label for="answer">{%trans "Answer"%}</label>
-	<div class="input">
-	  <input class="" type="number" name="answer" id="answer" value="{{myAnswer.text}}" placeholder='{%trans "Type here ..."%}'>
-	</div>
-	{{block('nextBtn')}}
-</form>
-{%endblock%}
-
-
-{%block star%}
-{{block('question_title')}}
-<form method="post" class="c6">
-	<label for="answer">{%trans "Answer"%}</label>
-	<div class="input">
-	  <input class="" type="number" name="answer" id="answer"  value="{{myAnswer.text}}" placeholder='{%trans "Type here ..."%}'>
-	</div>
-	{{block('nextBtn')}}
-</form>
-{%endblock%}
-
 
 
 
@@ -140,20 +67,34 @@
 	<img src="{{surveyRow.wellcomemedia.file}}" class="w300">
 {%endif%}
 <div class="justify-center f pA10">
-	<a href="{{url.this}}?step={{nextQuestion}}" class="btn c3 hauto xl primary ">{%trans "Start"%}</a>
+	{{block('start_btn')}}
 </div>
 
 {%endblock%}
 
 
+
 {%block nextBtn%}
-<button class=" c6 btn primary mT20">{%trans "Next"%}</button>
+<div class="f justify-center">
+	<button class="c9 btn success  mT20">{%trans "Save & Next"%}</button>
+	<button name="skip" value="skip" class="c2 btn block mR10 outline mT20">{%trans "Skip"%}</button>
+</div>
+{{block('next_back')}}
+{%endblock%}
+
+
+
+{%block next_back%}
+<div class="f justify-center mT5">
+	<a href="{{url.this}}?step={{(requestGET.step) - 1}}"  class="c2 btn info2 mR5 outline mT20">{%trans "Back"%}</a>
+	<a href="{{url.this}}?step={{(requestGET.step) + 1}}"  class="c2 btn info2 mR5 outline mT20">{%trans "Next"%}</a>
+</div>
 {%endblock%}
 
 
 
 {%block question_title%}
-<div class="msg primary2">{{question.title}}</div>
+<div class="msg primary2"><b>{{question.title}}</b></div>
 
 {%if question.desc %}
 <div class="msg">
@@ -169,48 +110,136 @@
 
 
 
+{%block start_btn%}
+<a href="{{url.pwd}}" data-ajaxify data-data='{"start" : "survey", "{{XKEY}}":"{{XVALUE}}" }' data-method='post' class="btn c3 hauto xl primary ">{%trans "Start"%}</a>
+{%endblock%}
 
 
 
-{%block single_choice%}
+
+{%block short_answer%}
 {{block('question_title')}}
+{{block('hidden_input')}}
+	<div class="input">
+		<label for="answer">{%trans "Type your answer"%}</label>
+		<input type="text" id="answer" name="answer" value="{{myAnswer.text}}" placeholder='{%trans "Type here ..."%}'>
+	</div>
+	{{block('nextBtn')}}
+
+{%endblock%}
 
 
-<form method="post" class="c6">
-	{%for key, value in question.choice%}
-	 <div class="radio1 green">
-	  <input type="radio" id="r-{{key}}" name="answer" value="{{value.title}}" {%if myAnswer.text == value.title%} checked {%endif%} >
-	  <label for="r-{{key}}">{{value.title}}</label>
-	 </div>
-	{%endfor%}
-	<button class="c6 btn primary mT20">{%trans "Next"%}</button>
-</form>
+
+{%block descriptive_answer%}
+{{block('hidden_input')}}
+{{block('question_title')}}
+	<label for="answer">{%trans "Type your answer"%}</label>
+	<textarea class="txt" type="text" id="answer" name="answer" placeholder='{%trans "Type here ..."%}' rows="3">{{myAnswer.text}}</textarea>
+	{{block('nextBtn')}}
+{%endblock%}
 
 
+
+
+{%block confirm%}
+{{block('question_title')}}
+{{block('hidden_input')}}
+	<input type="hidden" name="next" value="step">
+	{{block('nextBtn')}}
+{%endblock%}
+
+
+{%block require%}
+ <small class="fc-red">* {%trans "Require"%}</small>
+{%endblock%}
+
+
+
+{%block date%}
+{{block('question_title')}}
+{{block('hidden_input')}}
+	<label for="answer">{%trans "Answer"%}</label>
+	<div class="input">
+	  <input class="datepicker" type="text" name="answer" id="answer" placeholder='{{"1369/04/15" | fitNumber}} *' value="{{myAnswer.text}}" maxlength='20' data-format="YYYY/MM/DD" data-view="year">
+	</div>
+	{{block('nextBtn')}}
+{%endblock%}
+
+
+
+{%block email%}
+{{block('question_title')}}
+{{block('hidden_input')}}
+	<label for="answer">{%trans "Answer"%}</label>
+	<div class="input">
+	  <input class="" type="email" name="answer" id="answer" value="{{myAnswer.text}}"  placeholder='{%trans "Type here ..."%}'>
+	</div>
+	{{block('nextBtn')}}
+{%endblock%}
+
+{%block website%}
+{{block('question_title')}}
+{{block('hidden_input')}}
+	<label for="answer">{%trans "Answer"%}</label>
+	<div class="input">
+	  <input class="" type="url" name="answer" id="answer" value="{{myAnswer.text}}"  placeholder='{%trans "Type here ..."%}'>
+	</div>
+	{{block('nextBtn')}}
+{%endblock%}
+
+
+
+{%block rating%}
+{{block('question_title')}}
+{{block('hidden_input')}}
+	<label for="answer">{%trans "Answer"%}</label>
+	<div class="input">
+	  <input class="" type="number" name="answer" id="answer" value="{{myAnswer.text}}" placeholder='{%trans "Type here ..."%}'>
+	</div>
+	{{block('nextBtn')}}
+{%endblock%}
+
+
+{%block star%}
+{{block('question_title')}}
+{{block('hidden_input')}}
+
+	<label for="answer">{%trans "Answer"%}</label>
+	<div class="input">
+	  <input class="" type="number" name="answer" id="answer"  value="{{myAnswer.text}}" placeholder='{%trans "Type here ..."%}'>
+	</div>
+	{{block('nextBtn')}}
 {%endblock%}
 
 
 
 
 
+{%block single_choice%}
+{{block('question_title')}}
+{{block('hidden_input')}}
+	{%for key, value in question.choice%}
+	 <div class="radio1 green">
+	  <input type="radio" id="r-{{key}}" name="answer" value="{{value.title}}" {%if myAnswer.text == value.title%} checked {%endif%} >
+	  <label for="r-{{key}}">{{value.title}}</label>
+	 </div>
+	{%endfor%}
+	{{block('nextBtn')}}
+{%endblock%}
+
+
 
 {%block multiple_choice%}
 {{block('question_title')}}
-
-
-<form method="post" class="c6">
+{{block('hidden_input')}}
 	{%for key, value in question.choice%}
-
 	 <div class="switch1 mB10">
 	 <input type="checkbox" name="answer[]" id="{{key}}" value="{{value.title}}" {%if myAnswer.text == value.title%} checked {%endif%}>
 	 <label for="{{key}}"></label>
 	 <label for="{{key}}">{{value.title}}</label>
 	</div>
-
 	{%endfor%}
 	{{block('nextBtn')}}
-</form>
-
 
 {%endblock%}
 
@@ -219,20 +248,17 @@
 
 {%block dropdown%}
 {{block('question_title')}}
-
-	<form method="post" class="c6">
-		<div class="mB10" title='{%trans "You can publish in another language"%}'>
-		  <label for="language">{%trans "Language"%}</label>
-		  <select name="language" class="ui dropdown select">
-		    <option value=""><i>{%trans "Please select one item"%}</i></option>
-			{%for key, value in question.choice%}
-		      <option value="{{value.title}}"  {%if myAnswer.text == value.title%} checked {%endif%}>{{value.title}}</option>
-		    {%endfor%}
-		  </select>
-		</div>
-		{{block('nextBtn')}}
-	</form>
-
+{{block('hidden_input')}}
+	<div class="mB10" title='{%trans "You can publish in another language"%}'>
+	  <label for="language">{%trans "Language"%}</label>
+	  <select name="language" class="ui dropdown select">
+	    <option value=""><i>{%trans "Please select one item"%}</i></option>
+		{%for key, value in question.choice%}
+	      <option value="{{value.title}}"  {%if myAnswer.text == value.title%} checked {%endif%}>{{value.title}}</option>
+	    {%endfor%}
+	  </select>
+	</div>
+	{{block('nextBtn')}}
 {%endblock%}
 
 
@@ -240,18 +266,13 @@
 
 {%block numeric%}
 {{block('question_title')}}
-
-	<form method="post" class="c6">
-		<div class="input">
-			<label for="answer">{%trans "Type your answer"%}</label>
-			<input type="number" id="answer" name="answer" value="{{myAnswer.text}}" placeholder='{%trans "Type here ..."%}'>
-		</div>
-		{{block('nextBtn')}}
-	</form>
-
+{{block('hidden_input')}}
+	<div class="input">
+		<label for="answer">{%trans "Type your answer"%}</label>
+		<input type="number" id="answer" name="answer" value="{{myAnswer.text}}" placeholder='{%trans "Type here ..."%}'>
+	</div>
+	{{block('nextBtn')}}
 {%endblock%}
-
-
 
 
 
@@ -261,15 +282,10 @@
 {%block short_text%}
 {{block('question_title')}}
 <div class="justify-center f pA10">
-	<form method="post" class="c6">
-		<div class="input">
-			<label for="answer">{%trans "Type your answer"%}</label>
-			<input type="text" id="answer" name="answer" value="{{myAnswer.text}}" placeholder='{%trans "Type here ..."%}'>
-		</div>
-		{{block('nextBtn')}}
-	</form>
+	<div class="input">
+		<label for="answer">{%trans "Type your answer"%}</label>
+		<input type="text" id="answer" name="answer" value="{{myAnswer.text}}" placeholder='{%trans "Type here ..."%}'>
+	</div>
+	{{block('nextBtn')}}
 </div>
 {%endblock%}
-
-
-

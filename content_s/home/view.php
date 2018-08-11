@@ -46,10 +46,23 @@ class view
 		}
 		else
 		{
+			self::make_xkey_xvalue();
 			\dash\data::nextQuestion(1);
 		}
 
 		\dash\data::step($step);
+	}
+
+
+	public static function make_xkey_xvalue()
+	{
+		$XKEY = md5(rand());
+		\dash\session::set('XKEY_'. \dash\url::module(), $XKEY);
+		\dash\data::XKEY($XKEY);
+
+		$XVALUE = md5(rand());
+		\dash\session::set('XVALUE_'. \dash\url::module(), $XVALUE);
+		\dash\data::XVALUE($XVALUE);
 	}
 }
 ?>
