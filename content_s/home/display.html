@@ -26,7 +26,7 @@
 <form method="post" class="c6">
 	<div class="input">
 		<label for="answer">{%trans "Type your answer"%}</label>
-		<input type="text" id="answer" name="answer" placeholder='{%trans "Type here ..."%}'>
+		<input type="text" id="answer" name="answer" value="{{myAnswer}}" placeholder='{%trans "Type here ..."%}'>
 	</div>
 	{{block('nextBtn')}}
 </form>
@@ -38,10 +38,8 @@
 {%block descriptive_answer%}
 {{block('question_title')}}
 <form method="post" class="c6">
-
 	<label for="answer">{%trans "Type your answer"%}</label>
-	<textarea class="txt" type="text" id="answer" name="answer" placeholder='{%trans "Type here ..."%}' rows="3"></textarea>
-
+	<textarea class="txt" type="text" id="answer" name="answer" placeholder='{%trans "Type here ..."%}' rows="3">{{myAnswer}}</textarea>
 	{{block('nextBtn')}}
 </form>
 {%endblock%}
@@ -52,7 +50,6 @@
 {%block confirm%}
 {{block('question_title')}}
 <form method="post" class="c6">
-
 	<input type="hidden" name="next" value="step">
 	{{block('nextBtn')}}
 </form>
@@ -70,7 +67,7 @@
 <form method="post" class="c6">
 	<label for="answer">{%trans "Answer"%}</label>
 	<div class="input">
-	  <input class="datepicker" type="text" name="answer" id="answer" placeholder='{{"1369/04/15" | fitNumber}} *' value="{{userdetail.answer}}" maxlength='20' data-format="YYYY/MM/DD" data-view="year">
+	  <input class="datepicker" type="text" name="answer" id="answer" placeholder='{{"1369/04/15" | fitNumber}} *' value="{{myAnswer}}" maxlength='20' data-format="YYYY/MM/DD" data-view="year">
 	</div>
 	{{block('nextBtn')}}
 </form>
@@ -83,7 +80,7 @@
 <form method="post" class="c6">
 	<label for="answer">{%trans "Answer"%}</label>
 	<div class="input">
-	  <input class="" type="email" name="answer" id="answer"  placeholder='{%trans "Type here ..."%}'>
+	  <input class="" type="email" name="answer" id="answer" value="{{myAnswer}}"  placeholder='{%trans "Type here ..."%}'>
 	</div>
 	{{block('nextBtn')}}
 </form>
@@ -94,7 +91,7 @@
 <form method="post" class="c6">
 	<label for="answer">{%trans "Answer"%}</label>
 	<div class="input">
-	  <input class="" type="url" name="answer" id="answer"  placeholder='{%trans "Type here ..."%}'>
+	  <input class="" type="url" name="answer" id="answer" value="{{myAnswer}}"  placeholder='{%trans "Type here ..."%}'>
 	</div>
 	{{block('nextBtn')}}
 </form>
@@ -107,7 +104,7 @@
 <form method="post" class="c6">
 	<label for="answer">{%trans "Answer"%}</label>
 	<div class="input">
-	  <input class="" type="number" name="answer" id="answer"  placeholder='{%trans "Type here ..."%}'>
+	  <input class="" type="number" name="answer" id="answer" value="{{myAnswer}}" placeholder='{%trans "Type here ..."%}'>
 	</div>
 	{{block('nextBtn')}}
 </form>
@@ -119,7 +116,7 @@
 <form method="post" class="c6">
 	<label for="answer">{%trans "Answer"%}</label>
 	<div class="input">
-	  <input class="" type="number" name="answer" id="answer"  placeholder='{%trans "Type here ..."%}'>
+	  <input class="" type="number" name="answer" id="answer"  value="{{myAnswer}}" placeholder='{%trans "Type here ..."%}'>
 	</div>
 	{{block('nextBtn')}}
 </form>
@@ -182,7 +179,7 @@
 <form method="post" class="c6">
 	{%for key, value in question.choice%}
 	 <div class="radio1 green">
-	  <input type="radio" id="r-{{key}}" name="answer" value="{{key}}" >
+	  <input type="radio" id="r-{{key}}" name="answer" value="{{valu.title}}" {%if myAnswer == value.title%} checked {%endif%} >
 	  <label for="r-{{key}}">{{value.title}}</label>
 	 </div>
 	{%endfor%}
@@ -205,7 +202,7 @@
 	{%for key, value in question.choice%}
 
 	 <div class="switch1 mB10">
-	 <input type="checkbox" name="{{key}}" id="{{key}}" value="{{key}}" >
+	 <input type="checkbox" name="{{key}}" id="{{key}}" value="{{value.title}}" {%if myAnswer == value.title%} checked {%endif%}>
 	 <label for="{{key}}"></label>
 	 <label for="{{key}}">{{value.title}}</label>
 	</div>
@@ -229,7 +226,7 @@
 		  <select name="language" class="ui dropdown select">
 		    <option value=""><i>{%trans "Please select one item"%}</i></option>
 			{%for key, value in question.choice%}
-		      <option value="{{key}}" >{{value.title}}</option>
+		      <option value="{{value.title}}"  {%if myAnswer == value.title%} checked {%endif%}>{{value.title}}</option>
 		    {%endfor%}
 		  </select>
 		</div>
@@ -247,7 +244,7 @@
 	<form method="post" class="c6">
 		<div class="input">
 			<label for="answer">{%trans "Type your answer"%}</label>
-			<input type="number" id="answer" name="answer" placeholder='{%trans "Type here ..."%}'>
+			<input type="number" id="answer" name="answer" value="{{myAnswer}}" placeholder='{%trans "Type here ..."%}'>
 		</div>
 		{{block('nextBtn')}}
 	</form>
@@ -267,7 +264,7 @@
 	<form method="post" class="c6">
 		<div class="input">
 			<label for="answer">{%trans "Type your answer"%}</label>
-			<input type="text" id="answer" name="answer" placeholder='{%trans "Type here ..."%}'>
+			<input type="text" id="answer" name="answer" value="{{myAnswer}}" placeholder='{%trans "Type here ..."%}'>
 		</div>
 		{{block('nextBtn')}}
 	</form>
