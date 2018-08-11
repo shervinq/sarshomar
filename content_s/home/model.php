@@ -6,6 +6,14 @@ class model
 {
 	public static function post()
 	{
+
+		if(!\dash\user::id())
+		{
+			$user_id = \dash\db\users::signup();
+			\dash\user::init($user_id);
+			\dash\db\sessions::set($user_id);
+		}
+
 		$post             = [];
 		$post['answer']   = \dash\request::post('answer');
 		$result           = \lib\app\answer::add(\dash\url::module(), \dash\request::get('step'), $post);
