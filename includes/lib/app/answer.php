@@ -109,6 +109,10 @@ class answer
 
 		$answer = \dash\app::request('answer');
 		$skip   = \dash\app::request('skip') ? true : false;
+		if($skip)
+		{
+			$answer = null;
+		}
 
 		$require = self::check_require($question_detail, $answer);
 		if(!$require)
@@ -230,7 +234,7 @@ class answer
 				'answer_id'     => $answer_id,
 				'question_id'   => $question_id,
 				'answerterm_id' => $answer_term_id,
-				'skip'          => null,
+				'skip'          => $skip ? 1 : null,
 				'dateview'      => \dash\session::get($time_key) ? \dash\session::get($time_key) : self::dateNow(),
 				'dateanswer'    => self::dateNow(),
 			];
