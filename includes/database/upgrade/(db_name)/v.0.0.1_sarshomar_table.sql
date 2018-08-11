@@ -13,6 +13,7 @@ CREATE TABLE `surveys` (
 `redirect`		varchar(2000) NULL,
 `progresbar`    bit(1) NULL,
 `trans`         mediumtext CHARACTER SET utf8mb4,
+`countblock`    int(10) UNSIGNED NULL,
 `email`      	bit(1) NULL,
 `emailto` 		varchar(500) CHARACTER SET utf8mb4,
 `emailtitle` 	varchar(500) CHARACTER SET utf8mb4,

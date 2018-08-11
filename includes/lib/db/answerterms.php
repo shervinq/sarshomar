@@ -7,7 +7,7 @@ class answerterms
 
 	public static function get_id($_text, $_type)
 	{
-		$query = "SELECT answerterms.id AS `id` FROM answerterms WHERE answerterms.type = '$_type' AND answerterms.text = '$_type' LIMIT 1";
+		$query = "SELECT answerterms.id AS `id` FROM answerterms WHERE answerterms.type = '$_type' AND answerterms.text = '$_text' LIMIT 1";
 		$result = \dash\db::get($query, 'id', true);
 		if(!$result)
 		{

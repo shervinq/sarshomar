@@ -93,6 +93,8 @@ class answer
 				'survey_id' => $survey_id,
 				'startdate' => date("Y-m-d H:i:s"),
 				'step'      => $question_id,
+				'status'    => 'start',
+				'ref'       => null,
 				'skip'      => 0,
 				'skiptry'   => 0,
 				'answer'    => 1,
@@ -104,45 +106,64 @@ class answer
 		{
 			$answer_id       = $load_old_answer['id'];
 			$answer_count    = isset($load_old_answer['answer']) ? intval($load_old_answer['answer']) : 0;
-			$skip_count      = isset($load_old_skip['skip']) ? intval($load_old_skip['skip']) : 0;
+			$skip_count      = isset($load_old_skip['skip']) ? 	intval($load_old_skip['skip']) : 0;
 			$answertry_count = isset($load_old_answertry['answertry']) ? intval($load_old_answertry['answertry']) : 0;
 			$skiptry_count   = isset($load_old_skiptry['skiptry']) ? intval($load_old_skiptry['skiptry']) : 0;
 
-// `startdate`     datetime NULL,
-// `enddate`       datetime NULL,
-// `lastmodified`  datetime NULL,
-// `status`        enum('start','early','middle','late','complete','skip','spam','filter','block') NULL DEFAULT NULL,
-// `step`     		bigint(20) UNSIGNED NULL,
-// `ref`	        varchar(1000) NULL,
-// `complete`	    bit(1) NULL,
-// `skip`     		int(10) UNSIGNED NULL,
-// `skiptry`   	int(10) UNSIGNED NULL,
-// `answer`   		int(10) UNSIGNED NULL,
-// `answertry`   	int(10) UNSIGNED NULL,
-
-// andswer  detail
-// `user_id`       int(10) UNSIGNED NOT NULL,
-// `survey_id`     bigint(20) UNSIGNED NOT NULL,
-// `answer_id`     bigint(20) UNSIGNED NOT NULL,
-// `question_id`   bigint(20) UNSIGNED NOT NULL,
-// `answerterm_id` bigint(20) UNSIGNED NULL,
-// `skip`    		bit(1) NULL,
-// `dateview`      datetime NULL,
-// `dateanswer`    datetime NULL,
 			$update_answer =
 			[
 				'step'      => $question_id,
+				'status'    => 'early',
 				'skip'      => $skiptry_count + 1,
 				'skiptry'   => $skiptry_count + 1,
 				'answer'    => $answer_count + 1,
 				'answertry' => $answertry_count + 1,
 			];
+			\lib\db\answers::update($update_answer, $answer_id);
 		}
 
-		var_dump($answer);
-		var_dump($question_detail);
+		$old_answer_detail =
+		[
+			'user_id'     => \dash\user::id(),
+			'survey_id'   => $survey_id,
+			'answer_id'   => $answer_id,
+			'question_id' => $question_id,
+			'limit'       => 1,
+		];
 
-		var_dump($survey_detail);exit();
+		$old_answer_detail = \lib\db\answerdetails::get($old_answer_detail);
+		if(isset($old_answer_detail['id']))
+		{
+			$update_answer_detail =
+			[
+				'answerterm_id' => $answer_term_id,
+				'skip'          => null,
+				'dateanswer'    => date("Y-m-d H:i:s"),
+			];
+
+			\lib\db\answerdetails::update($update_answer_detail, $old_answer_detail['id']);
+		}
+		else
+		{
+
+			$insert_answer_detail =
+			[
+				'user_id'       => \dash\user::id(),
+				'survey_id'     => $survey_id,
+				'answer_id'     => $answer_id,
+				'question_id'   => $question_id,
+				'answerterm_id' => $answer_term_id,
+				'skip'          => null,
+				'dateview'      => date("Y-m-d H:i:s"),
+				'dateanswer'    => date("Y-m-d H:i:s"),
+			];
+
+			\lib\db\answerdetails::insert($insert_answer_detail);
+		}
+
+		\dash\notif::ok(T_("Your answer was saved"));
+		return true;
+
 	}
 
 
