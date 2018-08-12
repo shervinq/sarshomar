@@ -4,7 +4,6 @@ namespace lib\db;
 
 class answers
 {
-
 	public static function insert()
 	{
 		\dash\db\config::public_insert('answers', ...func_get_args());
