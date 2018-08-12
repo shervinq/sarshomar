@@ -52,6 +52,7 @@ class model
 				$user_id = \dash\db\users::signup();
 				\dash\user::init($user_id);
 				\dash\db\sessions::set($user_id);
+				\dash\notif::direct();
 			}
 
 			$query = ['step' => 1];

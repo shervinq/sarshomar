@@ -38,6 +38,7 @@ class answer
 		$get_answer =
 		[
 			'answerdetails.question_id' => $question_id,
+			'answerdetails.user_id'     => \dash\user::id(),
 			'answerdetails.survey_id'   => $survey_id,
 			'limit'                     => 1,
 		];
@@ -49,7 +50,6 @@ class answer
 		];
 
 		$old_answer_detail = \lib\db\answerdetails::get($get_answer, $option);
-
 
 		if(!$old_answer_detail)
 		{
