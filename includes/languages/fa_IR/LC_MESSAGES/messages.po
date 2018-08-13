@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Sarshomar - Persian\n"
-"POT-Creation-Date: 2018-08-13 15:21+0430\n"
-"PO-Revision-Date: 2018-08-13 15:54+0430\n"
+"POT-Creation-Date: 2018-08-13 17:08+0430\n"
+"PO-Revision-Date: 2018-08-13 17:09+0430\n"
 "Last-Translator: Javad <J.Evazzadeh@gmail.com>\n"
 "Language-Team: \n"
 "Language: fa_IR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-Basepath: ../../../../..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -286,7 +286,7 @@ msgstr "هم‌چنین ویرایش مورد خاصی از تماس با ما."
 #: dash/addons/content_cp/posts/home/view.php:126
 #: dash/addons/includes/languages/trans_dash.php:72
 #: sarshomar/includes/languages/trans_dash.php:95
-#: sarshomar/includes/languages/trans_project.php:603
+#: sarshomar/includes/languages/trans_project.php:604
 msgid "Status"
 msgstr "وضعیت"
 
@@ -1365,7 +1365,7 @@ msgstr "بازگشت به لیست ردپاها"
 #: dash/addons/content_su/tg/sendmessage/view.php:8
 #: sarshomar/includes/languages/trans_dash.php:626
 msgid "Send message"
-msgstr ""
+msgstr "ارسال پیام"
 
 #: dash/addons/content_su/tg/sendmessage/view.php:9
 msgid "Send simple text message to selected user"
@@ -1384,7 +1384,7 @@ msgstr ""
 #: dash/addons/content_su/tg/sendphoto/view.php:8
 #: sarshomar/includes/languages/trans_dash.php:627
 msgid "Send photo"
-msgstr ""
+msgstr "ارسال عکس"
 
 #: dash/addons/content_su/tg/sendphoto/view.php:9
 msgid "Quickly send photo to selected user"
@@ -1808,7 +1808,7 @@ msgstr "جیمیل"
 
 #: dash/addons/includes/languages/trans_dash.php:50
 #: sarshomar/includes/languages/trans_dash.php:74
-#: sarshomar/includes/languages/trans_project.php:616
+#: sarshomar/includes/languages/trans_project.php:617
 msgid "Like"
 msgstr "لایک"
 
@@ -1850,7 +1850,7 @@ msgstr "لقب"
 #: dash/addons/includes/languages/trans_dash.php:58
 #: dash/addons/includes/languages/trans_static.php:198
 #: sarshomar/includes/languages/trans_dash.php:33
-#: sarshomar/includes/languages/trans_project.php:546
+#: sarshomar/includes/languages/trans_project.php:547
 msgid "Title"
 msgstr "عنوان"
 
@@ -1861,7 +1861,7 @@ msgstr "لطفا عنوانی صحیح بین ۳ تا ۴۰ حرف وارد کن�
 
 #: dash/addons/includes/languages/trans_dash.php:60
 #: sarshomar/includes/languages/trans_dash.php:83
-#: sarshomar/includes/languages/trans_project.php:555
+#: sarshomar/includes/languages/trans_project.php:556
 msgid "Type"
 msgstr "نوع"
 
@@ -1877,7 +1877,7 @@ msgstr "تاریخ تولد"
 
 #: dash/addons/includes/languages/trans_dash.php:63
 #: sarshomar/includes/languages/trans_dash.php:86
-#: sarshomar/includes/languages/trans_project.php:597
+#: sarshomar/includes/languages/trans_project.php:598
 msgid "Require"
 msgstr "الزامی"
 
@@ -2007,13 +2007,13 @@ msgstr "برای تغییر کلمه عبور فعلی الزامی است"
 #: dash/addons/includes/languages/trans_dash.php:89
 #: dash/addons/includes/languages/trans_static.php:147
 #: sarshomar/includes/languages/trans_dash.php:112
-#: sarshomar/includes/languages/trans_project.php:557
+#: sarshomar/includes/languages/trans_project.php:558
 msgid "Add"
 msgstr "افزودن"
 
 #: dash/addons/includes/languages/trans_dash.php:90
 #: sarshomar/includes/languages/trans_dash.php:113
-#: sarshomar/includes/languages/trans_project.php:558
+#: sarshomar/includes/languages/trans_project.php:559
 msgid "Save"
 msgstr "ذخیره"
 
@@ -2069,19 +2069,19 @@ msgstr "ورود دو مرحله ای غیر فعال است"
 
 #: dash/addons/includes/languages/trans_dash.php:104
 #: sarshomar/includes/languages/trans_dash.php:205
-#: sarshomar/includes/languages/trans_project.php:572
+#: sarshomar/includes/languages/trans_project.php:573
 msgid "Clear filters"
 msgstr "پاک‌سازی فیلترها"
 
 #: dash/addons/includes/languages/trans_dash.php:105
 #: sarshomar/includes/languages/trans_dash.php:206
-#: sarshomar/includes/languages/trans_project.php:573
+#: sarshomar/includes/languages/trans_project.php:574
 msgid "Result not found!"
 msgstr "نتیجه‌ای یافت نشد!"
 
 #: dash/addons/includes/languages/trans_dash.php:106
 #: sarshomar/includes/languages/trans_dash.php:207
-#: sarshomar/includes/languages/trans_project.php:574
+#: sarshomar/includes/languages/trans_project.php:575
 msgid "Search with new keywords."
 msgstr "با کلیدواژه‌های بهتری جستجو کنید."
 
@@ -2251,7 +2251,7 @@ msgstr "پیش نویس"
 
 #: dash/addons/includes/languages/trans_dash.php:142
 #: sarshomar/includes/languages/trans_dash.php:250
-#: sarshomar/includes/languages/trans_project.php:605
+#: sarshomar/includes/languages/trans_project.php:606
 msgid "Deleted"
 msgstr "حذف شده"
 
@@ -2262,19 +2262,19 @@ msgstr "دیدگاه"
 
 #: dash/addons/includes/languages/trans_dash.php:144
 #: sarshomar/includes/languages/trans_dash.php:306
-#: sarshomar/includes/languages/trans_project.php:599
+#: sarshomar/includes/languages/trans_project.php:600
 msgid "You can publish in another language"
 msgstr "شما می‌توانید در زبان دیگری آن را منتشر کنید"
 
 #: dash/addons/includes/languages/trans_dash.php:145
 #: sarshomar/includes/languages/trans_dash.php:307
-#: sarshomar/includes/languages/trans_project.php:600
+#: sarshomar/includes/languages/trans_project.php:601
 msgid "Language"
 msgstr "زبان"
 
 #: dash/addons/includes/languages/trans_dash.php:146
 #: sarshomar/includes/languages/trans_dash.php:308
-#: sarshomar/includes/languages/trans_project.php:601
+#: sarshomar/includes/languages/trans_project.php:602
 msgid "Please select one item"
 msgstr "لطفا یک گزینه را انتخاب کنید"
 
@@ -2344,7 +2344,7 @@ msgstr "تصویر شاخص"
 
 #: dash/addons/includes/languages/trans_dash.php:159
 #: sarshomar/includes/languages/trans_dash.php:320
-#: sarshomar/includes/languages/trans_project.php:560
+#: sarshomar/includes/languages/trans_project.php:561
 msgid "allowed extentions jpg, png. Max 1000Kb"
 msgstr "پسوند مجاز JPG، PNG حداکثر ۱۰۰۰ کیلوبایت"
 
@@ -2380,7 +2380,7 @@ msgstr "بدون پیش‌نمایش"
 
 #: dash/addons/includes/languages/trans_dash.php:166
 #: sarshomar/includes/languages/trans_dash.php:174
-#: sarshomar/includes/languages/trans_project.php:539
+#: sarshomar/includes/languages/trans_project.php:540
 msgid "Remove"
 msgstr "حذف"
 
@@ -2662,7 +2662,7 @@ msgstr "ارسال سریع"
 
 #: dash/addons/includes/languages/trans_dash.php:247
 #: sarshomar/includes/languages/trans_dash.php:274
-#: sarshomar/includes/languages/trans_project.php:565
+#: sarshomar/includes/languages/trans_project.php:566
 msgid "User"
 msgstr "کاربر"
 
@@ -3652,7 +3652,7 @@ msgstr "درصد"
 
 #: dash/addons/includes/languages/trans_dash.php:515
 #: sarshomar/includes/languages/trans_dash.php:44
-#: sarshomar/includes/languages/trans_project.php:587
+#: sarshomar/includes/languages/trans_project.php:588
 msgid "Count"
 msgstr "تعداد"
 
@@ -4123,7 +4123,7 @@ msgstr "پشتیبان گیری پایگاه داده"
 
 #: dash/addons/includes/languages/trans_dash.php:648
 #: sarshomar/includes/languages/trans_dash.php:476
-#: sarshomar/includes/languages/trans_project.php:632
+#: sarshomar/includes/languages/trans_project.php:633
 msgid "Back"
 msgstr "قبلی"
 
@@ -8705,7 +8705,7 @@ msgstr "تلگراف خاموش است!"
 
 #: dash/lib/social/telegram/exec.php:27
 msgid "Method is not set!"
-msgstr ""
+msgstr "روش تنظیم نشده است!"
 
 #: dash/lib/social/telegram/exec.php:39
 msgid "Api key is not correct!"
@@ -9169,20 +9169,21 @@ msgid "Token error"
 msgstr "خطا در توکن"
 
 #: sarshomar/content/view.php:9 sarshomar/content_a/view.php:9
-#: sarshomar/content_s/view.php:9 sarshomar/content_s/view.php:20
-#: sarshomar/includes/languages/trans_project.php:21
+#: sarshomar/content_a/view.php:25 sarshomar/content_s/view.php:9
+#: sarshomar/content_s/view.php:20 sarshomar/includes/languages/trans_project.php:21
 #: sarshomar/includes/languages/trans_static.php:7
 msgid "Sarshomar"
 msgstr "سرشمار"
 
 #: sarshomar/content/view.php:10 sarshomar/content_a/view.php:10
-#: sarshomar/content_s/view.php:10 sarshomar/content_s/view.php:21
-#: sarshomar/includes/languages/trans_project.php:52
+#: sarshomar/content_a/view.php:26 sarshomar/content_s/view.php:10
+#: sarshomar/content_s/view.php:21 sarshomar/includes/languages/trans_project.php:52
 msgid "Focus on your question. Do not be too concerned about how to ask or analyze."
 msgstr "روی سوال خود تمرکز کنید؛ دغدغه چطور پرسیدن و تحلیل کردن نداشته باشید."
 
 #: sarshomar/content/view.php:11 sarshomar/content_a/view.php:11
-#: sarshomar/content_s/view.php:11 sarshomar/content_s/view.php:22
+#: sarshomar/content_a/view.php:27 sarshomar/content_s/view.php:11
+#: sarshomar/content_s/view.php:22
 #: sarshomar/includes/languages/trans_project.php:212
 msgid "Ask Anyone Anywhere"
 msgstr "از هرکسی در هرجایی بپرسید"
@@ -9195,7 +9196,7 @@ msgstr ""
 "سرشمار با زیرساختی یکپارچه، امکان پرسیدن با هر ابزاری را برای شما فراهم کرده است."
 
 #: sarshomar/content_a/home/view.php:11
-#: sarshomar/includes/languages/trans_project.php:524
+#: sarshomar/includes/languages/trans_project.php:525
 msgid "Questionnaires"
 msgstr "پرسشنامه‌ها"
 
@@ -9204,7 +9205,7 @@ msgid "Manage all of your surveys and easily add new one or manage exisiting."
 msgstr ""
 
 #: sarshomar/content_a/question/add/view.php:16
-#: sarshomar/includes/languages/trans_project.php:542
+#: sarshomar/includes/languages/trans_project.php:543
 msgid "Add new question"
 msgstr "افزودن سوال جدید"
 
@@ -9267,7 +9268,7 @@ msgstr "شناسه سوال نامعتبر است"
 
 #: sarshomar/content_a/report/answers/view.php:10
 #: sarshomar/content_a/report/user/view.php:10
-#: sarshomar/includes/languages/trans_project.php:578
+#: sarshomar/includes/languages/trans_project.php:579
 msgid "Answers"
 msgstr "پاسخ‌ها"
 
@@ -9312,7 +9313,7 @@ msgid "Back to survey list"
 msgstr "بازگشت به لیست پرسشنامه‌ها"
 
 #: sarshomar/content_a/survey/branding/view.php:12
-#: sarshomar/includes/languages/trans_project.php:609
+#: sarshomar/includes/languages/trans_project.php:610
 msgid "Branding"
 msgstr "برندینگ"
 
@@ -9364,7 +9365,7 @@ msgid "Manage your privacy."
 msgstr "مدیریت حریم خصوصی"
 
 #: sarshomar/content_a/survey/thankyou/view.php:12
-#: sarshomar/includes/languages/trans_project.php:531
+#: sarshomar/includes/languages/trans_project.php:532
 msgid "Thank you message"
 msgstr "پیام تشکر"
 
@@ -9373,7 +9374,7 @@ msgid "Say thank you to your survey participants."
 msgstr "بگویم از شرکت کنندگان در نظرسنجی تشکر می کنم."
 
 #: sarshomar/content_a/survey/welcome/view.php:12
-#: sarshomar/includes/languages/trans_project.php:530
+#: sarshomar/includes/languages/trans_project.php:531
 msgid "Welcome message"
 msgstr "پیام خوش‌آمد گویی"
 
@@ -11431,263 +11432,271 @@ msgstr "دسته بندی های فرزند"
 msgid "There are no category exist!"
 msgstr "هیچ دسته بندی وجود ندارد"
 
-#: sarshomar/includes/languages/trans_project.php:527
+#: sarshomar/includes/languages/trans_project.php:524
+msgid "Response"
+msgstr "پاسخ"
+
+#: sarshomar/includes/languages/trans_project.php:528
 msgid "Questions"
 msgstr "سوالات"
 
-#: sarshomar/includes/languages/trans_project.php:528
+#: sarshomar/includes/languages/trans_project.php:529
 msgid "Question Sorter"
 msgstr "سوالات مرتب سازی شد"
 
-#: sarshomar/includes/languages/trans_project.php:529
+#: sarshomar/includes/languages/trans_project.php:530
 msgid "Settings"
 msgstr "تنظیمات"
 
-#: sarshomar/includes/languages/trans_project.php:532
+#: sarshomar/includes/languages/trans_project.php:533
 msgid "Reports"
 msgstr "گزارش‌ها"
 
-#: sarshomar/includes/languages/trans_project.php:533
+#: sarshomar/includes/languages/trans_project.php:534
 msgid "Live"
 msgstr "زنده"
 
-#: sarshomar/includes/languages/trans_project.php:536
+#: sarshomar/includes/languages/trans_project.php:537
 msgid "Please select one type to continue"
 msgstr "لطفا برای ادامه یکی از انواع را انتخاب کنید"
 
-#: sarshomar/includes/languages/trans_project.php:543
+#: sarshomar/includes/languages/trans_project.php:544
 msgid "Untitled"
 msgstr "بدون عنوان"
 
-#: sarshomar/includes/languages/trans_project.php:547
+#: sarshomar/includes/languages/trans_project.php:548
 msgid "Show random choice"
 msgstr "نمایش گزینه‌ها به صورت تصادفی"
 
-#: sarshomar/includes/languages/trans_project.php:548
+#: sarshomar/includes/languages/trans_project.php:549
 msgid "Show other choice"
 msgstr "نمایش گزینه سایر "
 
-#: sarshomar/includes/languages/trans_project.php:549
+#: sarshomar/includes/languages/trans_project.php:550
 msgid "Is require"
 msgstr "الزامی"
 
-#: sarshomar/includes/languages/trans_project.php:550
+#: sarshomar/includes/languages/trans_project.php:551
 msgid "Maximum char"
 msgstr "حد اکثر کاراکتر"
 
-#: sarshomar/includes/languages/trans_project.php:551
+#: sarshomar/includes/languages/trans_project.php:552
 msgid "Choise title"
 msgstr "عنوان گزینه"
 
-#: sarshomar/includes/languages/trans_project.php:552
+#: sarshomar/includes/languages/trans_project.php:553
 msgid "Button Title"
 msgstr "عنوان دکمه"
 
-#: sarshomar/includes/languages/trans_project.php:553
+#: sarshomar/includes/languages/trans_project.php:554
 msgid "Button title"
 msgstr "عنوان دکمه"
 
-#: sarshomar/includes/languages/trans_project.php:554
+#: sarshomar/includes/languages/trans_project.php:555
 msgid "Add new"
 msgstr "افزودن جدید"
 
-#: sarshomar/includes/languages/trans_project.php:556
+#: sarshomar/includes/languages/trans_project.php:557
 msgid "Choise"
 msgstr "گزینه"
 
-#: sarshomar/includes/languages/trans_project.php:559
+#: sarshomar/includes/languages/trans_project.php:560
 msgid "Image/Video"
 msgstr "فایل صوتی و تصویری"
 
-#: sarshomar/includes/languages/trans_project.php:566
+#: sarshomar/includes/languages/trans_project.php:567
 msgid "Start Date"
 msgstr "تاریخ شروع"
 
-#: sarshomar/includes/languages/trans_project.php:567
+#: sarshomar/includes/languages/trans_project.php:568
 msgid "End date"
 msgstr "تاریخ پایان"
 
-#: sarshomar/includes/languages/trans_project.php:568
+#: sarshomar/includes/languages/trans_project.php:569
 msgid "Step"
 msgstr "مرحله"
 
-#: sarshomar/includes/languages/trans_project.php:569
+#: sarshomar/includes/languages/trans_project.php:570
 msgid "Complete"
 msgstr "کامل"
 
-#: sarshomar/includes/languages/trans_project.php:570
+#: sarshomar/includes/languages/trans_project.php:571
 msgid "Answered"
 msgstr "پاسخ‌داده‌شده"
 
-#: sarshomar/includes/languages/trans_project.php:571
+#: sarshomar/includes/languages/trans_project.php:572
 msgid "Skipped"
 msgstr "رد شده"
 
-#: sarshomar/includes/languages/trans_project.php:575
+#: sarshomar/includes/languages/trans_project.php:576
 msgid "No data was found!"
 msgstr "داده‌ای برای نمایش وجود ندارد!"
 
-#: sarshomar/includes/languages/trans_project.php:579
+#: sarshomar/includes/languages/trans_project.php:580
 msgid "Question"
 msgstr "سوال"
 
-#: sarshomar/includes/languages/trans_project.php:584
+#: sarshomar/includes/languages/trans_project.php:585
 msgid "Save sort"
 msgstr "ذخیره ترتیب"
 
-#: sarshomar/includes/languages/trans_project.php:588
+#: sarshomar/includes/languages/trans_project.php:589
 msgid "Price Variation"
 msgstr "پراکندگی قیمت"
 
-#: sarshomar/includes/languages/trans_project.php:591
+#: sarshomar/includes/languages/trans_project.php:592
 msgid "Show preview"
 msgstr "پیش نمایش"
 
-#: sarshomar/includes/languages/trans_project.php:592
+#: sarshomar/includes/languages/trans_project.php:593
 msgid "Setting"
 msgstr "تنظیمات"
 
-#: sarshomar/includes/languages/trans_project.php:593
+#: sarshomar/includes/languages/trans_project.php:594
 msgid "No user answer to this survey yet!"
 msgstr "هنوز هیچ کاربری به این پرسشنامه پاسخ نداده است!"
 
-#: sarshomar/includes/languages/trans_project.php:594
+#: sarshomar/includes/languages/trans_project.php:595
 msgid "Answer chart"
 msgstr "نمودار پاسخ‌ها"
 
-#: sarshomar/includes/languages/trans_project.php:598
+#: sarshomar/includes/languages/trans_project.php:599
 msgid "Survey title"
 msgstr "عنوان پرسشنامه"
 
-#: sarshomar/includes/languages/trans_project.php:602
+#: sarshomar/includes/languages/trans_project.php:603
 msgid "Survey password"
 msgstr "گذرواژه پرسشنامه"
 
-#: sarshomar/includes/languages/trans_project.php:604
+#: sarshomar/includes/languages/trans_project.php:605
 msgid "Disable"
 msgstr "غیرفعال"
 
-#: sarshomar/includes/languages/trans_project.php:606
+#: sarshomar/includes/languages/trans_project.php:607
 msgid "Private"
 msgstr "خصوصی"
 
-#: sarshomar/includes/languages/trans_project.php:607
+#: sarshomar/includes/languages/trans_project.php:608
 msgid "Public"
 msgstr "عمومی"
 
-#: sarshomar/includes/languages/trans_project.php:608
+#: sarshomar/includes/languages/trans_project.php:609
 msgid "General"
 msgstr "عمومی"
 
-#: sarshomar/includes/languages/trans_project.php:610
+#: sarshomar/includes/languages/trans_project.php:611
 msgid "Translation"
 msgstr "ترجمه"
 
-#: sarshomar/includes/languages/trans_project.php:611
+#: sarshomar/includes/languages/trans_project.php:612
 msgid "Enable branding"
 msgstr "فعال سازی برند"
 
-#: sarshomar/includes/languages/trans_project.php:612
+#: sarshomar/includes/languages/trans_project.php:613
 msgid "Branding title"
 msgstr "عنوان برند"
 
-#: sarshomar/includes/languages/trans_project.php:613
+#: sarshomar/includes/languages/trans_project.php:614
 msgid "Image/Video/File"
 msgstr "فایل تصویری،‌ صوتی یا هر فایل دیگر"
 
-#: sarshomar/includes/languages/trans_project.php:614
+#: sarshomar/includes/languages/trans_project.php:615
 msgid "Branding url"
 msgstr "آدرس برند"
 
-#: sarshomar/includes/languages/trans_project.php:615
+#: sarshomar/includes/languages/trans_project.php:616
 msgid "Redirect after complete"
 msgstr "انتقال بعد از تکمیل شدن به"
 
-#: sarshomar/includes/languages/trans_project.php:617
+#: sarshomar/includes/languages/trans_project.php:618
 msgid "Show progresbar"
 msgstr "نمایش نوار پیشرفت"
 
-#: sarshomar/includes/languages/trans_project.php:618
+#: sarshomar/includes/languages/trans_project.php:619
 msgid "Translation list"
 msgstr "لیست ترجمه‌ها"
 
-#: sarshomar/includes/languages/trans_project.php:619
+#: sarshomar/includes/languages/trans_project.php:620
 msgid "Enable email"
 msgstr "فعال سازی ارسال ایمیل"
 
-#: sarshomar/includes/languages/trans_project.php:620
+#: sarshomar/includes/languages/trans_project.php:621
 msgid "Email title"
 msgstr "عنوان ایمیل"
 
-#: sarshomar/includes/languages/trans_project.php:621
+#: sarshomar/includes/languages/trans_project.php:622
 msgid "Email to"
 msgstr "ارسال ایمیل به"
 
-#: sarshomar/includes/languages/trans_project.php:622
+#: sarshomar/includes/languages/trans_project.php:623
 msgid "Welcome message title"
 msgstr "عنوان پیام خوش‌آمد گویی"
 
-#: sarshomar/includes/languages/trans_project.php:623
+#: sarshomar/includes/languages/trans_project.php:624
 msgid "Welcome Image/Video"
 msgstr "فایل صوتی یا تصویری پیام خوش‌آمد گویی"
 
-#: sarshomar/includes/languages/trans_project.php:624
+#: sarshomar/includes/languages/trans_project.php:625
 msgid "Thankyou message title"
 msgstr "عنوان پیام تشکر"
 
-#: sarshomar/includes/languages/trans_project.php:625
+#: sarshomar/includes/languages/trans_project.php:626
 msgid "Thankyou Image/Video"
 msgstr "فایل صوتی یا تصویری پیام تشکر"
 
-#: sarshomar/includes/languages/trans_project.php:630
+#: sarshomar/includes/languages/trans_project.php:631
 msgid "Thank you"
 msgstr "سپاسگذاریم"
 
-#: sarshomar/includes/languages/trans_project.php:631
+#: sarshomar/includes/languages/trans_project.php:632
 msgid "Save & Next"
 msgstr "ذخیره و بعدی"
 
-#: sarshomar/includes/languages/trans_project.php:633
+#: sarshomar/includes/languages/trans_project.php:634
 msgid "Start"
 msgstr "شروع"
 
-#: sarshomar/includes/languages/trans_project.php:634
+#: sarshomar/includes/languages/trans_project.php:635
 msgid "Type your answer"
 msgstr "پاسخ خود را بنویسید"
 
-#: sarshomar/includes/languages/trans_project.php:635
+#: sarshomar/includes/languages/trans_project.php:636
 msgid "Type here ..."
 msgstr "اینجا بنویسید ..."
 
-#: sarshomar/includes/languages/trans_project.php:636
+#: sarshomar/includes/languages/trans_project.php:637
 msgid "Answer"
 msgstr "پاسخ"
 
-#: sarshomar/includes/languages/trans_project.php:637
+#: sarshomar/includes/languages/trans_project.php:638
 msgid "Start Time"
 msgstr "زمان شروع"
 
-#: sarshomar/includes/languages/trans_project.php:638
+#: sarshomar/includes/languages/trans_project.php:639
 msgid "Spend Time"
 msgstr "زمان سپری شده"
 
-#: sarshomar/includes/languages/trans_project.php:639
+#: sarshomar/includes/languages/trans_project.php:640
+msgid "Remain Time"
+msgstr "زمان باقی‌مانده"
+
+#: sarshomar/includes/languages/trans_project.php:641
 msgid "End Time"
 msgstr "ساعت پایان"
 
-#: sarshomar/includes/languages/trans_project.php:640
+#: sarshomar/includes/languages/trans_project.php:642
 msgid "Current question"
 msgstr "سوال فعلی"
 
-#: sarshomar/includes/languages/trans_project.php:641
+#: sarshomar/includes/languages/trans_project.php:643
 msgid "Total questions"
 msgstr "مجموع سوالات"
 
-#: sarshomar/includes/languages/trans_project.php:642
+#: sarshomar/includes/languages/trans_project.php:644
 msgid "Completed"
 msgstr "تکمیل شده"
 
-#: sarshomar/includes/languages/trans_project.php:643
+#: sarshomar/includes/languages/trans_project.php:645
 msgid "Restart"
 msgstr "شروع مجدد"
 
@@ -15500,9 +15509,6 @@ msgstr "پرسشنامه با موفقیت بروزرسانی شد"
 
 #~ msgid "Request"
 #~ msgstr "درخواست"
-
-#~ msgid "Response"
-#~ msgstr "پاسخ"
 
 #~ msgid "Variable"
 #~ msgstr "متغیر"

@@ -520,7 +520,8 @@ class twigTransTerms
 	echo T_("There are no category exist!");                                          // Line 113
 
 	//-----------------------------------------------------content_a\home\display.html
-	echo T_("Add new survey");                                                        // Line 45
+	echo T_("Add new survey");                                                        // Line 49
+	echo T_("Response");                                                              // Line 28
 	echo T_("Questionnaires");                                                        // Line 5
 
 	//------------------------------------------------------content_a\main\layout.html
@@ -636,11 +637,12 @@ class twigTransTerms
 	echo T_("Answer");                                                                // Line 241
 	echo T_("Start Time");                                                            // Line 334
 	echo T_("Spend Time");                                                            // Line 337
-	echo T_("End Time");                                                              // Line 340
-	echo T_("Current question");                                                      // Line 344
-	echo T_("Total questions");                                                       // Line 347
-	echo T_("Completed");                                                             // Line 350
-	echo T_("Restart");                                                               // Line 359
+	echo T_("Remain Time");                                                           // Line 341
+	echo T_("End Time");                                                              // Line 346
+	echo T_("Current question");                                                      // Line 351
+	echo T_("Total questions");                                                       // Line 354
+	echo T_("Completed");                                                             // Line 357
+	echo T_("Restart");                                                               // Line 366
 
 	//---------------------public_html\static\siftal\fonts\siftal\icons-reference.html
 
