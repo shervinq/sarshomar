@@ -18,7 +18,7 @@
     <option value=""><i>{%trans "Please select one item"%}</i></option>
     {%for key, value in lang.list%}
       {%if key | length == 2%}
-      <option value="{{key}}" {%if surveyRow.language == key or (not surveyRow.lang and lang.current == key)  %} selected {%endif%}>{{value}}</option>
+      <option value="{{key}}" {%if surveyRow.lang == key or (not surveyRow.lang and lang.current == key)  %} selected {%endif%}>{{value}}</option>
       {%endif%}
     {%endfor%}
   </select>
