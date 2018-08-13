@@ -22,17 +22,19 @@ class view
 
 		$survey = \dash\data::surveyRow();
 
-		$step = 'start';
+		$display_step = 'start';
 
 		if(isset($survey['wellcometitle']) || isset($survey['wellcomedesc']) || isset($survey['wellcomemedia']['file']))
 		{
 			$step = 'wellcome';
 		}
 
-		$step_sort = \dash\request::get('step');
+		$step = \dash\request::get('step');
 
-		if($step_sort)
+		if($step && is_numeric($step))
 		{
+			$step = intval($step);
+
 			// if not login go to first page to signup firset
 			if(!\dash\user::id())
 			{
@@ -40,17 +42,36 @@ class view
 				return;
 			}
 
-			$question = \lib\app\question::get_by_step(\dash\url::module(), $step_sort);
+
+			$question = \lib\app\question::get_by_step(\dash\url::module(), $step);
 			if(!$question || !isset($question['type']))
 			{
 				\dash\header::status(404, T_("Invalid question id"));
 			}
 
-			$time_key = 'dateview_'. (string) \dash\coding::decode(\dash\data::surveyRow_id()). '_'. (string) $step_sort;
+			$answer = \lib\db\answers::get(['survey_id' => \dash\coding::decode(\dash\url::module()), 'user_id' => \dash\user::id(), 'limit' => 1]);
+
+			$must_step = 1;
+
+			if(isset($answer['step']) && $answer['step'])
+			{
+				$must_step = intval($answer['step']) + 1;
+			}
+
+			if($step === $must_step || $step < $must_step)
+			{
+				// no problem
+			}
+			else
+			{
+				\dash\redirect::to(\dash\url::this(). '?step='. $must_step);
+			}
+
+			$time_key = 'dateview_'. (string) \dash\coding::decode(\dash\data::surveyRow_id()). '_'. (string) $step;
 			\dash\session::set($time_key, date("Y-m-d H:i:s"));
 
 			\dash\data::question($question);
-			$step = $question['type'];
+			$display_step = $question['type'];
 
 			$myAnswer = \lib\app\answer::my_answer(\dash\url::module(), $question['id']);
 			\dash\data::myAnswer($myAnswer);
@@ -62,7 +83,7 @@ class view
 
 		self::make_xkey_xvalue();
 
-		\dash\data::step($step);
+		\dash\data::displayStep($display_step);
 	}
 
 

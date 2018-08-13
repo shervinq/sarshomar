@@ -5,15 +5,15 @@
 {%endblock%}
 
 {%block pageContent%}
-{%if step == 'wellcome' or step == 'thankyou' or step == 'start'%}
+{%if displayStep == 'wellcome' or displayStep == 'thankyou' or displayStep == 'start'%}
 	<div class="cbox ">
-		{{block(step)}}
+		{{block(displayStep)}}
 	</div>
 	{%else%}
 	<div class="f justify-center">
 		<div class="cbox c6 ">
 			<form method="post" autocomplete="off" class="">
-				{{block(step)}}
+				{{block(displayStep)}}
 			</form>
 		</div>
 	</div>
