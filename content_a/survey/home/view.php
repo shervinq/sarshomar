@@ -6,9 +6,9 @@ class view
 {
 	public static function config()
 	{
-		\dash\data::page_pictogram('sun');
 		\dash\data::page_title(T_("Survey Dashboard"));
-		\dash\data::page_desc(T_("Check your survey detail and monitor them"));
+		\dash\data::page_desc(T_("Check your survey detail and track everything about this survey."));
+		\dash\data::page_pictogram('gauge');
 
 		if(\dash\request::get('id'))
 		{
