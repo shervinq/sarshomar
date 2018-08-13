@@ -8,10 +8,10 @@ class model
 	{
 		$survay      = \dash\request::post('survay');
 		$userprocode = \dash\request::post('userprocode');
-		$passwd      = \dash\request::post('passwd');
+		// $passwd      = \dash\request::post('passwd');
 		$id          = \dash\request::post('id');
 
-		if($survay || $userprocode || $passwd || $id)
+		if($survay || $userprocode  || $id)
 		{
 			return false;
 		}
