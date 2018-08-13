@@ -12,8 +12,8 @@ class view
 
 		if(\dash\request::get('id') && \dash\request::get('answer'))
 		{
-			\dash\data::badge_link(\dash\url::this(). '?id='. \dash\request::get('id'));
-			\dash\data::badge_text(T_('Back to report dashboard'));
+			\dash\data::badge_link(\dash\url::this(). '/answers?id='. \dash\request::get('id'));
+			\dash\data::badge_text(T_('Back to answer list'));
 
 			\content_a\survey\view::load_survey();
 
