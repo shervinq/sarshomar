@@ -17,7 +17,7 @@ class survey
 	[
 		'redirect',
 		'brandingmeta',
-		'wellcomemedia',
+		'welcomemedia',
 		'thankyoumedia',
 	];
 
@@ -138,12 +138,12 @@ class survey
 
 		$emailmsg      = \dash\app::request('emailmsg');
 
-		$wellcometitle = \dash\app::request('wellcometitle');
-		$wellcomedesc  = \dash\app::request('wellcomedesc');
-		$wellcomemedia = \dash\app::request('wellcomemedia');
-		if(is_array($wellcomemedia))
+		$welcometitle = \dash\app::request('welcometitle');
+		$welcomedesc  = \dash\app::request('welcomedesc');
+		$welcomemedia = \dash\app::request('welcomemedia');
+		if(is_array($welcomemedia))
 		{
-			$wellcomemedia = json_encode($wellcomemedia, JSON_UNESCAPED_UNICODE);
+			$welcomemedia = json_encode($welcomemedia, JSON_UNESCAPED_UNICODE);
 		}
 
 		$thankyoutitle = \dash\app::request('thankyoutitle');
@@ -172,9 +172,9 @@ class survey
 		$args['emailtitle']    = $emailtitle;
 		$args['emailto']       = $emailto;
 		$args['emailmsg']      = $emailmsg;
-		$args['wellcometitle'] = $wellcometitle;
-		$args['wellcomedesc']  = $wellcomedesc;
-		$args['wellcomemedia'] = $wellcomemedia;
+		$args['welcometitle'] = $welcometitle;
+		$args['welcomedesc']  = $welcomedesc;
+		$args['welcomemedia'] = $welcomemedia;
 		$args['thankyoutitle'] = $thankyoutitle;
 		$args['thankyoudesc']  = $thankyoudesc;
 		$args['thankyoumedia'] = $thankyoumedia;
@@ -202,7 +202,7 @@ class survey
 					break;
 
 				case 'brandingmeta':
-				case 'wellcomemedia':
+				case 'welcomemedia':
 				case 'thankyoumedia':
 					$result[$key] = json_decode($value, true);
 					break;

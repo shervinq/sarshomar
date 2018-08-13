@@ -1,5 +1,5 @@
 <?php
-namespace content_a\survey\wellcome;
+namespace content_a\survey\welcome;
 
 
 class model
@@ -7,10 +7,10 @@ class model
 	public static function post()
 	{
 		$post                  = [];
-		$post['wellcometitle'] = \dash\request::post('wellcometitle');
-		$post['wellcomedesc']  = \dash\request::post('wellcomedesc');
+		$post['welcometitle'] = \dash\request::post('welcometitle');
+		$post['welcomedesc']  = \dash\request::post('welcomedesc');
 
-		$file = \dash\app\file::upload_quick('wellcomefile');
+		$file = \dash\app\file::upload_quick('welcomefile');
 
 		if($file === false)
 		{
@@ -19,14 +19,14 @@ class model
 
 		if($file)
 		{
-			$post['wellcomemedia']['file']  = $file;
+			$post['welcomemedia']['file']  = $file;
 		}
 		else
 		{
 			$old = \content_a\survey\view::load_survey();
-			if(isset($old['wellcomemedia']['file']))
+			if(isset($old['welcomemedia']['file']))
 			{
-				$post['wellcomemedia']['file']  = $old['wellcomemedia']['file'];
+				$post['welcomemedia']['file']  = $old['welcomemedia']['file'];
 			}
 		}
 

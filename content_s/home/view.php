@@ -24,9 +24,9 @@ class view
 
 		$display_step = 'start';
 
-		if(isset($survey['wellcometitle']) || isset($survey['wellcomedesc']) || isset($survey['wellcomemedia']['file']))
+		if(isset($survey['welcometitle']) || isset($survey['welcomedesc']) || isset($survey['welcomemedia']['file']))
 		{
-			$step = 'wellcome';
+			$step = 'welcome';
 		}
 
 		$step      = \dash\request::get('step');

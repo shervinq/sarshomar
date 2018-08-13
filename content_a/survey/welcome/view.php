@@ -1,5 +1,5 @@
 <?php
-namespace content_a\survey\wellcome;
+namespace content_a\survey\welcome;
 
 
 class view

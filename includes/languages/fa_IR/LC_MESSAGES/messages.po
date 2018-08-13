@@ -9214,7 +9214,7 @@ msgstr ""
 #: sarshomar/content_a/survey/privacy/view.php:18
 #: sarshomar/content_a/survey/thankyou/view.php:18
 #: sarshomar/content_a/survey/trans/view.php:18
-#: sarshomar/content_a/survey/wellcome/view.php:18
+#: sarshomar/content_a/survey/welcome/view.php:18
 msgid "Back to survey dashboard"
 msgstr "بازگشت به داشبورد پرسشنامه"
 
@@ -9295,7 +9295,7 @@ msgstr "بازگشت به لیست پرسشنامه‌ها"
 #: sarshomar/content_a/survey/privacy/view.php:13
 #: sarshomar/content_a/survey/thankyou/view.php:13
 #: sarshomar/content_a/survey/trans/view.php:13
-#: sarshomar/content_a/survey/wellcome/view.php:13
+#: sarshomar/content_a/survey/welcome/view.php:13
 msgid "Edit survey"
 msgstr ""
 
@@ -9305,7 +9305,7 @@ msgstr ""
 #: sarshomar/content_a/survey/privacy/view.php:15
 #: sarshomar/content_a/survey/thankyou/view.php:15
 #: sarshomar/content_a/survey/trans/view.php:15
-#: sarshomar/content_a/survey/wellcome/view.php:15
+#: sarshomar/content_a/survey/welcome/view.php:15
 msgid "You can edit your survey detail"
 msgstr ""
 

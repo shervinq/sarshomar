@@ -44,9 +44,9 @@ trait edit
 		if(!\dash\app::isset_request('emailtitle')) 		unset($args['emailtitle']);
 		if(!\dash\app::isset_request('emailto')) 			unset($args['emailto']);
 		if(!\dash\app::isset_request('emailmsg')) 			unset($args['emailmsg']);
-		if(!\dash\app::isset_request('wellcometitle')) 		unset($args['wellcometitle']);
-		if(!\dash\app::isset_request('wellcomedesc')) 		unset($args['wellcomedesc']);
-		if(!\dash\app::isset_request('wellcomemedia')) 		unset($args['wellcomemedia']);
+		if(!\dash\app::isset_request('welcometitle')) 		unset($args['welcometitle']);
+		if(!\dash\app::isset_request('welcomedesc')) 		unset($args['welcomedesc']);
+		if(!\dash\app::isset_request('welcomemedia')) 		unset($args['welcomemedia']);
 		if(!\dash\app::isset_request('thankyoutitle')) 		unset($args['thankyoutitle']);
 		if(!\dash\app::isset_request('thankyoudesc')) 		unset($args['thankyoudesc']);
 		if(!\dash\app::isset_request('thankyoumedia')) 		unset($args['thankyoumedia']);
