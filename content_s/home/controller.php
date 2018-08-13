@@ -12,6 +12,18 @@ class controller
 			\dash\redirect::to(\dash\url::base());
 		}
 
+		if(\dash\url::child())
+		{
+			if(\dash\url::child() === 'restart')
+			{
+				// restart to load new request
+			}
+			else
+			{
+				\dash\header::status(404);
+			}
+		}
+
 		$load = \lib\app\survey::get(\dash\url::module());
 		if(!$load || !isset($load['status']) || !isset($load['privacy']))
 		{
