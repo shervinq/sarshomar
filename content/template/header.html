@@ -17,42 +17,15 @@
      </nav>
      <nav id='header-profile' data-xhr='header-profile' {%if login%}class='login'{%endif%}>
 {%if login%}
-      <a href='{{url.kingdom}}/@/add' class='header-profile-link' tabindex='5' id="add-question">
-       <span class="header-link-text">{%trans "Create New Poll"%}</span>
-       <span class="header-link-icon icon-plus"></span>
-      </a>
-
-      <a href='{{url.kingdom}}/a' class='header-profile-button' tabindex='6' data-direct>{%trans "Dashboard"%}</a>
-
-      <div class="profile dropmenu">
-       <!-- <img src="{{url.site}}/static/images/svg/general/profile.svg" alt=""> -->
-       <div class="info">
-        <div class="displayname">{{displayname}}</div>
-        <div class="role">{%trans "Welcome"%}</div>
-       </div>
-       <div class="profile-detail">
-        <a href="{{url.kingdom}}/@" class="dashboard" tabindex='7'>{%trans "Dashboard"%}</a>
-        <a href="logout" class="exit" tabindex='8' data-direct>{%trans "Exit"%}</a>
-       </div>
-      </div>
-
+      <a href='{{url.kingdom}}/a' class='btn primary' tabindex='6' data-direct>{%trans "Dashboard"%}</a>
 
 {%else%}
-      <a href='{{url.kingdom}}/enter' data-direct class='header-profile-button'>{%trans "Enter"%}</a>
+      <a href='{{url.kingdom}}/enter' data-direct class='btn primary'>{%trans "Enter"%}</a>
 {%endif%}
-
-      <div class="sf-globe header-profile-link ui-language-link dropmenu">
-       {% set lang_list = langList({'all' : true}) %}
-       <nav class="langlist">
-        {%for key, value in lang_list%}
-         {%if lang.current == key%}
-          <span class='is-active'>{{value}}</span>
-         {%else%}
-          <a href="/{{key}}" hreflang="{{key}}" data-direct>{{value}}</a>
-         {%endif%}
-        {%endfor%}
-       </nav>
-      </div>
+{% set lang_list = langList() %}
+{%for key, value in lang_list%}
+      <a href="/{{key}}" hreflang="{{key}}" data-direct class="btn mLa5"><span class="sf-globe mRa10"></span> {{value}}</a>
+{%endfor%}
 
      </nav>
     </div>
