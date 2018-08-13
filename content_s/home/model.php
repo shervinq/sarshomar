@@ -21,13 +21,17 @@ class model
 
 	public static function check_xkey_xvalue()
 	{
-		$XKEY   = \dash\session::get('XKEY_'. \dash\url::module());
-		$XVALUE = \dash\session::get('XVALUE_'. \dash\url::module());
-		if(\dash\request::post($XKEY) === $XVALUE)
+		if(\dash\request::post("start") === "survey")
 		{
-			return true;
+			$XKEY   = \dash\session::get('XKEY_'. \dash\url::module());
+			$XVALUE = \dash\session::get('XVALUE_'. \dash\url::module());
+			if(\dash\request::post($XKEY) === $XVALUE)
+			{
+				return true;
+			}
+			return false;
 		}
-		return false;
+		return true;
 	}
 
 

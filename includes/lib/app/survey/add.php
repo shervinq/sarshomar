@@ -45,6 +45,11 @@ trait add
 			$args['status']  = 'draft';
 		}
 
+		if(!$args['lang'])
+		{
+			$args['lang']  = \dash\language::current();
+		}
+
 		if(!$args['privacy'])
 		{
 			$args['privacy']  = 'public';
