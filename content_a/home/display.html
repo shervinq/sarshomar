@@ -2,9 +2,9 @@
 
 
 {%block pageContent%}
-<div class='middle normal f justify-center'>
+<div class='middle normal live f justify-center'>
 
-  <div class="vcard mA10">
+  <div class="vcard mA10" data-live='none'>
     <img src="{{url.site}}/static/siftal/images/useful/plus1.png" alt="add new survey">
     <div class="content"></div>
     <div class="footer pAn">
@@ -15,16 +15,24 @@
 {%for key, value in dataTable%}
 
 {%set cardColor%}
-	{%if value.status == 'enable'%}green{%else%}black{%endif%}
+	{%if value.status == 'publish'%}blue{%elseif value.status == 'draft'%}green{%elseif value.status == 'deleted'%}red{%else%}black{%endif%}
 {%endset%}
-<div class="vcard shadow c3 green mA10 s12">
-  <a href='{{url.here}}/survey?id={{value.id}}'>
+  <a href='{{url.here}}/survey?id={{value.id}}' class="vcard shadow c3 {{cardColor}} mA10 s12" data-live="{%if value.status == 'publish'%}on{%elseif value.status == 'draft'%}half{%else%}off{%endif%}" >
     <div class="content title">
       <div class="header">{{value.title}}</div>
+      <div class="meta">{{value.desc}}</div>
     </div>
-    <div class="footer txtC">{{value.status}}</div>
+    <div class="footer txtC">{%set myStatus = value.status%} {%trans myStatus%}</div>
+    <div class="footer f">
+      <div>
+        <i class="compact sf-question-circle"></i> <span>{{20 | fitNumber}} {%trans "Question"%}</span>
+      </div>
+      <div>
+        <i class="compact sf-users"></i> <span>{{5 | fitNumber}} {%trans "Response"%}</span>
+      </div>
+    </div>
+
   </a>
-</div>
 {%endfor%}
 
 </div>
