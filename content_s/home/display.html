@@ -1,8 +1,5 @@
 {%extends display.dash%}
 
-{%block sidenav%}
-{{parent()}}
-{%endblock%}
 
 {%block pageContent%}
 
@@ -10,10 +7,10 @@
 	<div class="cbox ">
 		{{block(step.display)}}
 	</div>
-	{%else%}
+{%else%}
 	<div class="f justify-center">
 		<div class="cbox c6 ">
-			<form method="post" autocomplete="off" class="">
+			<form method="post" autocomplete="off">
 				{{block(step.display)}}
 			</form>
 		</div>
@@ -324,4 +321,26 @@
 	</div>
 	{{block('nextBtn')}}
 </div>
+{%endblock%}
+
+
+
+
+
+
+{%block sidenav%}
+<li class="title">
+	<span class="fc-mute">{%trans "Current question"%}</span> <span class="floatRa mRa10 fc-mute">{{2 | fitNumber}}</span>
+</li>
+<li class="title">
+	<span class="fc-mute">{%trans "Total questions"%}</span> <span class="floatRa mRa10 fc-mute">{{5 | fitNumber}}</span>
+</li>
+<li class="title">
+	<span class="floatRa mRa10">{{40 | fitNumber}} %</span> <span>{%trans "Completed"%}</span>
+</li>
+
+<li class="title">
+<div class="progress" data-percent="{{60}}"><div class="bar"></div></div>
+</li>
+
 {%endblock%}
