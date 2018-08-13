@@ -12,7 +12,7 @@
 	</div>
 {%else%}
 	<div class="f justify-center">
-		<div class="cbox c6 ">
+		<div class="cbox c6 m12 s11">
 			<form method="post" autocomplete="off">
 				{{block(step.display)}}
 			</form>
@@ -109,8 +109,8 @@
 
 {%block nextBtn%}
 <div class="f justify-center">
-	<button class="c9 btn success  mT20">{%trans "Save & Next"%}</button>
-	<button name="skip" value="skip" class="c2 btn block mR10 outline mT20">{%trans "Skip"%}</button>
+	<button class="c9 s12 btn success  mT20">{%trans "Save & Next"%}</button>
+	<button name="skip" value="skip" class="c2 s12 btn block mR10 outline mT20">{%trans "Skip"%}</button>
 </div>
 {{block('next_back')}}
 {%endblock%}
