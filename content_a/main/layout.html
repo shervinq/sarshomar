@@ -10,7 +10,15 @@
 <li><a href="{{url.this}}?id={{surveyRow.id}}"><i class='sf-gauge'></i> <span>{% trans "Dashboard" %}</span></a></li>
 <li><a href="{{url.here}}/question?id={{surveyRow.id}}"><i class='sf-list-ul'></i> <span>{% trans "Questions" %}</span></a></li>
 <li><a href="{{url.this}}/sort?id={{surveyRow.id}}"><i class='sf-refresh'></i> <span>{% trans "Question Sorter" %}</span></a></li>
-<li><a href="{{url.this}}/general?id={{surveyRow.id}}"><i class='sf-cog'></i> <span>{% trans "Settings" %}</span></a></li>
+<li>
+  <a href="{{url.this}}/general?id={{surveyRow.id}}"><i class='sf-cog'></i> <span>{% trans "Settings" %}</span></a>
+  <ul>
+    <li><a href="{{url.here}}/survey/privacy?id={{surveyRow.id}}"><i class='floatRa mRa10 fc-mute sf-lock'></i> <span>{%trans "Privacy"%}</span></a></li>
+    <li><a href="{{url.here}}/survey/welcome?id={{surveyRow.id}}"><i class='floatRa mRa10 fc-mute sf-hourglass-start'></i> <span>{%trans "Welcome message"%}</span></a></li>
+    <li><a href="{{url.here}}/survey/thankyou?id={{surveyRow.id}}"><i class='floatRa mRa10 fc-mute sf-flag-checkered'></i> <span>{%trans "Thank you message"%}</span></a></li>
+
+  </ul>
+</li>
 <li><a href="{{url.here}}/report?id={{surveyRow.id}}"><i class='sf-analytics-chart-graph'></i> <span>{% trans "Reports" %}</span></a></li>
 <li><a href="{{url.kingdom}}/s/{{surveyRow.id}}" target="_blank" data-direct><i class='sf-heart-o'></i> <span>{% trans "Live" %}</span></a></li>
 
