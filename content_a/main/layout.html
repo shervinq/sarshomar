@@ -3,16 +3,6 @@
 
 {%block sidenav%}
 <li><a href="{{url.here}}"><i class='sf-tachometer'></i> <span>{% trans "Sarshomar Dashboard" %}</span></a></li>
-<li>
-  <ul>
-{%for key, value in dataTable%}
-    <li><a href="{{url.here}}/survey?id={{value.id}}"><i class='floatRa mRa10 fc-mute sf-question-circle'></i> <span>{{value.title}}</span></a></li>
-{%endfor%}
-
-  </ul>
-</li>
-<li><a href="{{url.here}}/survey/add"><i class='sf-plus'></i> <span>{%trans "Add new survey"%}</span></a></li>
-
 
 {%endblock%}
 
