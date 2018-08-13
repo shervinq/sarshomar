@@ -5,7 +5,8 @@
 {%endblock%}
 
 {%block pageContent%}
-{%if step.display == 'wellcome' or step.display == 'thankyou' or step.display == 'start'%}
+
+{%if step.display == 'wellcome' or step.display == 'thankyou' or step.display == 'thankyoudefault' or step.display == 'start'%}
 	<div class="cbox ">
 		{{block(step.display)}}
 	</div>
@@ -56,6 +57,33 @@
 {%endblock%}
 
 
+{%block thankyoudefault%}
+<h3>{%trans "Thank you"%}</h3>
+<div class="justify-center f pA10">
+	<a href="{{url.base}}" class="btn success c3">{%trans "Sarshomar"%}</a>
+</div>
+
+{%endblock%}
+
+
+{%block thankyou%}
+
+<div class="msg primary2">{{surveyRow.thankyoutitle}}</div>
+
+{%if surveyRow.thankyoudesc %}
+<div class="msg">
+	<p>{{surveyRow.thankyoudesc}}</p>
+</div>
+{%endif%}
+
+{%if surveyRow.thankyoumedia.file %}
+	<img src="{{surveyRow.thankyoumedia.file}}" class="w300">
+{%endif%}
+<div class="justify-center f pA10">
+
+</div>
+
+{%endblock%}
 
 
 {%block wellcome%}

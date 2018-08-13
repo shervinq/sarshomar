@@ -32,6 +32,8 @@ class view
 		$step      = \dash\request::get('step');
 		$must_step = null;
 		$end_step  = null;
+
+
 		if($step && is_numeric($step))
 		{
 			$step = intval($step);
@@ -43,17 +45,25 @@ class view
 				return;
 			}
 
+			$end_step  = \dash\data::surveyRow_countblock() ? \dash\data::surveyRow_countblock() : $must_step;
 
 			$question = \lib\app\question::get_by_step(\dash\url::module(), $step);
+
 			if(!$question || !isset($question['type']))
 			{
-				\dash\header::status(404, T_("Invalid question id"));
+				if($step >= $end_step + 1)
+				{
+					$display_step = 'thankyou';
+				}
+				else
+				{
+					\dash\header::status(404, T_("Invalid question id"));
+				}
 			}
 
 			$answer = \lib\db\answers::get(['survey_id' => \dash\coding::decode(\dash\url::module()), 'user_id' => \dash\user::id(), 'limit' => 1]);
 
 			$must_step = 1;
-			$end_step  = \dash\data::surveyRow_countblock() ? \dash\data::surveyRow_countblock() : $must_step;
 
 			if(isset($answer['step']) && $answer['step'])
 			{
@@ -69,14 +79,35 @@ class view
 				\dash\redirect::to(\dash\url::this(). '?step='. $must_step);
 			}
 
-			$time_key = 'dateview_'. (string) \dash\coding::decode(\dash\data::surveyRow_id()). '_'. (string) $step;
-			\dash\session::set($time_key, date("Y-m-d H:i:s"));
-
 			\dash\data::question($question);
-			$display_step = $question['type'];
 
-			$myAnswer = \lib\app\answer::my_answer(\dash\url::module(), $question['id']);
-			\dash\data::myAnswer($myAnswer);
+			if($display_step !== 'thankyou')
+			{
+				$display_step = $question['type'];
+			}
+
+			if(isset($question['id']))
+			{
+
+				$time_key = 'dateview_'. (string) \dash\coding::decode(\dash\data::surveyRow_id()). '_'. (string) $step;
+				\dash\session::set($time_key, date("Y-m-d H:i:s"));
+
+				$myAnswer = \lib\app\answer::my_answer(\dash\url::module(), $question['id']);
+				\dash\data::myAnswer($myAnswer);
+			}
+
+			if($display_step === 'thankyou')
+			{
+				if(isset($survey['thankyoutitle']) || isset($survey['thankyoudesc']) || isset($survey['thankyoumedia']['file']))
+				{
+					$display_step = 'thankyou';
+				}
+				else
+				{
+					$display_step = 'thankyoudefault';
+				}
+			}
+
 		}
 		else
 		{
