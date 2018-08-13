@@ -2,7 +2,21 @@
 
 
 {%block sidenav%}
-<li><a href="{{url.here}}"><i class='sf-tachometer'></i> <span>{% trans "Sarshomar Dashboard" %}</span></a></li>
+<li><a href="{{url.here}}"><i class='sf-tachometer'></i> <span>{% trans "Questionnaires" %}</span></a></li>
+
+{%if surveyRow.id%}
+<li class="title">{{surveyRow.title}}</li>
+
+<li><a href="{{url.this}}?id={{surveyRow.id}}"><i class='sf-gauge'></i> <span>{% trans "Dashboard" %}</span></a></li>
+<li><a href="{{url.here}}/question?id={{surveyRow.id}}"><i class='sf-list-ul'></i> <span>{% trans "Questions" %}</span></a></li>
+<li><a href="{{url.this}}/sort?id={{surveyRow.id}}"><i class='sf-refresh'></i> <span>{% trans "Question Sorter" %}</span></a></li>
+<li><a href="{{url.this}}/general?id={{surveyRow.id}}"><i class='sf-cog'></i> <span>{% trans "Settings" %}</span></a></li>
+<li><a href="{{url.here}}/report?id={{surveyRow.id}}"><i class='sf-analytics-chart-graph'></i> <span>{% trans "Reports" %}</span></a></li>
+<li><a href="{{url.kingdom}}/s/{{surveyRow.id}}" target="_blank" data-direct><i class='sf-heart-o'></i> <span>{% trans "Live" %}</span></a></li>
+
+
+
+{%endif%}
 
 {%endblock%}
 
