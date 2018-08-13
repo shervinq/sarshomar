@@ -1918,7 +1918,7 @@ progress.xl, meter.xl {
   margin: 0.5em 0 1.5em;
   font-size: 1.2em;
   position: relative;
-  padding: 1em 7em 1em 1.5em;
+  padding: 1em 1.5em;
   border: 1px solid transparent;
   border-radius: 0.25rem;
   line-height: 1.25;
@@ -1932,8 +1932,11 @@ progress.xl, meter.xl {
 .tbox:hover {
   border-color: #fff; }
 
-.rtl .tbox {
-  padding: 1em 1.5em 1em 7em; }
+.ltr .tbox.pictogram {
+  padding-right: 7em; }
+
+.rtl .tbox.pictogram {
+  padding-left: 7em; }
 
 .tbox p {
   color: #777;
@@ -1953,7 +1956,7 @@ progress.xl, meter.xl {
 .tbox p .badge {
   line-height: 1.3; }
 
-.tbox .pictogram {
+.tbox.pictogram > span[class^="sf-"] {
   font-size: 5em;
   transition: color 0.3s;
   position: absolute;
@@ -1963,11 +1966,11 @@ progress.xl, meter.xl {
   margin-top: -30px;
   color: #aaa; }
 
-.rtl .tbox .pictogram {
+.rtl .tbox.pictogram > span[class^="sf-"] {
   right: initial;
   left: 10px; }
 
-.tbox:hover .pictogram {
+.tbox.pictogram:hover > span[class^="sf-"] {
   color: #398cd4; }
 
 .cbox {
@@ -2552,6 +2555,26 @@ img.mini {
 .massive .vcard img {
   max-height: 400px; }
 
+.live .vcard {
+  opacity: 0.5; }
+
+.live .vcard[data-live="hidden"] {
+  opacity: 0.1;
+  display: none; }
+
+.live .vcard[data-live="deactive"] {
+  opacity: 0.2;
+  cursor: not-allowed; }
+
+.live .vcard[data-live="on"] {
+  opacity: 1; }
+
+.live .vcard[data-live="half"] {
+  opacity: 0.8; }
+
+.live .vcard[data-live="none"] {
+  opacity: 1; }
+
 .live .vcard:before {
   content: '';
   position: absolute;
@@ -2570,20 +2593,6 @@ img.mini {
   right: inherit;
   left: 0; }
 
-.live .vcard {
-  opacity: 0.5; }
-
-.live .vcard[data-live="hidden"] {
-  opacity: 0.1;
-  display: none; }
-
-.live .vcard[data-live="deactive"] {
-  opacity: 0.2;
-  cursor: not-allowed; }
-
-.live .vcard[data-live="on"] {
-  opacity: 1; }
-
 .live .vcard[data-live="on"]:before {
   background-color: #20b040;
   box-shadow: 0 0 0 0 rgba(15, 161, 166, 0.7);
@@ -2591,6 +2600,12 @@ img.mini {
 
 .live .vcard[data-live="off"]:before {
   opacity: 0.5; }
+
+.live .vcard[data-live="half"]:before {
+  background-color: #b5cc18; }
+
+.live .vcard[data-live="none"]:before {
+  display: none; }
 
 @keyframes pulseOn {
   to {
@@ -3254,7 +3269,10 @@ img.mini {
   width: auto;
   margin: 0;
   font-size: 0.8em;
-  vertical-align: top; }
+  vertical-align: middle; }
+
+.statistic > .value [class^="sf-"]:before {
+  line-height: inherit; }
 
 .statistic > .text.value, .statistics .statistic > .text.value {
   line-height: 1em;
