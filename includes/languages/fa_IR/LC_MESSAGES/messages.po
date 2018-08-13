@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Sarshomar - Persian\n"
-"POT-Creation-Date: 2018-08-13 17:08+0430\n"
-"PO-Revision-Date: 2018-08-13 17:09+0430\n"
+"POT-Creation-Date: 2018-08-13 17:09+0430\n"
+"PO-Revision-Date: 2018-08-13 17:20+0430\n"
 "Last-Translator: Javad <J.Evazzadeh@gmail.com>\n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -1338,7 +1338,7 @@ msgstr "تلگرام"
 
 #: dash/addons/content_su/tg/home/view.php:9
 msgid "Check Telegram bot api status and play with it."
-msgstr ""
+msgstr "بررسی وضعیت رابط برنامه‌نویسی ربات تلگرام و بازی با آن."
 
 #: dash/addons/content_su/tg/home/view.php:11
 msgid "Check logs"
@@ -1346,7 +1346,7 @@ msgstr "بررسی ردپاها"
 
 #: dash/addons/content_su/tg/home/view.php:14
 msgid "Back to supervisor dashboard"
-msgstr ""
+msgstr "بازگشت به داشبورد مدیر فنی سیستم"
 
 #: dash/addons/content_su/tg/log/view.php:9
 #: dash/addons/content_su/tg/logshow/view.php:9
@@ -1356,7 +1356,7 @@ msgstr "ردپای تلگرام"
 #: dash/addons/content_su/tg/log/view.php:10
 #: dash/addons/content_su/tg/logshow/view.php:10
 msgid "Check list of telegram and search or filter in them to find your telegram."
-msgstr ""
+msgstr "بررسی لیست تلگرام و جستجو و فیلتر در آنان."
 
 #: dash/addons/content_su/tg/logshow/view.php:15
 msgid "Back to log list"
@@ -1369,7 +1369,7 @@ msgstr "ارسال پیام"
 
 #: dash/addons/content_su/tg/sendmessage/view.php:9
 msgid "Send simple text message to selected user"
-msgstr ""
+msgstr "ارسال سریع پیام متنی به کاربر انتخابی"
 
 #: dash/addons/content_su/tg/sendmessage/view.php:11
 #: dash/addons/content_su/tg/sendphoto/view.php:11
@@ -1379,7 +1379,7 @@ msgstr "بازگشت به داشبورد تلگرام"
 
 #: dash/addons/content_su/tg/sendphoto/model.php:18
 msgid "Please add url or choose file"
-msgstr ""
+msgstr "لطفا آدرس را وارد کرده و یا فایلی انتخاب کنید"
 
 #: dash/addons/content_su/tg/sendphoto/view.php:8
 #: sarshomar/includes/languages/trans_dash.php:627
@@ -1388,7 +1388,7 @@ msgstr "ارسال عکس"
 
 #: dash/addons/content_su/tg/sendphoto/view.php:9
 msgid "Quickly send photo to selected user"
-msgstr ""
+msgstr "ارسال سریع تصویر به کاربر انتخابی"
 
 #: dash/addons/content_su/tg/webhook/view.php:8
 msgid "Telegram webhook"
@@ -1396,7 +1396,7 @@ msgstr "وب هوک تلگرام"
 
 #: dash/addons/content_su/tg/webhook/view.php:9
 msgid "Show telegram webhook information"
-msgstr ""
+msgstr "نمایش اطلاعات وب‌هوک تلگرام"
 
 #: dash/addons/content_su/time/view.php:9
 msgid "Date and Time"
@@ -8713,7 +8713,7 @@ msgstr "کلید رابط برنامه‌نویسی صحیح نیست!"
 
 #: dash/lib/social/telegram/exec.php:46
 msgid "Curl failed to initialize"
-msgstr ""
+msgstr "سی‌یو‌آر‌ال ناموفق در مقداردهی اولیه"
 
 #: dash/lib/social/telegram/exec.php:79
 msgid "Empty server response"
@@ -9203,6 +9203,7 @@ msgstr "پرسشنامه‌ها"
 #: sarshomar/content_a/home/view.php:12
 msgid "Manage all of your surveys and easily add new one or manage exisiting."
 msgstr ""
+"مدیریت تمام پرسشنامه‌های شما و افزودن یک نمونه جدید یا مدیریت پرسشنامه‌های موجود"
 
 #: sarshomar/content_a/question/add/view.php:16
 #: sarshomar/includes/languages/trans_project.php:543
@@ -9319,7 +9320,7 @@ msgstr "برندینگ"
 
 #: sarshomar/content_a/survey/branding/view.php:13
 msgid "Be a different and classy!"
-msgstr ""
+msgstr "متفاوت و درجه یک باشید!"
 
 #: sarshomar/content_a/survey/email/view.php:13
 #: sarshomar/content_a/survey/trans/view.php:13
@@ -9345,7 +9346,7 @@ msgstr "داشبورد پرسشنامه"
 
 #: sarshomar/content_a/survey/home/view.php:10
 msgid "Check your survey detail and track everything about this survey."
-msgstr ""
+msgstr "بررسی جزئیات پرسشنامه و رهگیری هرچیزی درباره این پرسشنامه."
 
 #: sarshomar/content_a/survey/home/view.php:19
 #: sarshomar/content_a/survey/view.php:13 sarshomar/includes/lib/app/answer.php:79
@@ -9414,7 +9415,7 @@ msgstr "کد گفتگو یا نام‌کاربری"
 msgid ""
 "Unique identifier for the target chat or username of the target channel (in the "
 "format @channelusername)"
-msgstr ""
+msgstr "شناسه منحصربه‌فرد برای ارسال پیام به شخص یا کانال در فرمت @نام_کاربری"
 
 #: sarshomar/includes/languages/trans_dash.php:635
 msgid "Message"
