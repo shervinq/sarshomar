@@ -8,8 +8,8 @@ class view
 	{
 		\dash\data::page_title(T_("Dashboard"));
 
-		\dash\data::page_title(T_("Survey list"));
-		\dash\data::page_desc(T_("check last survey and add or edit a survey"));
+		\dash\data::page_title(T_("Questionnaires"));
+		\dash\data::page_desc(T_("Manage all of your surveys and easily add new one or manage exisiting."));
 
 		$arg               = [];
 		$arg['user_id']    = \dash\user::id();

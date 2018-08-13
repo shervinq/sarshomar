@@ -12,16 +12,16 @@ class view
 		\dash\data::page_desc(\dash\data::site_desc(). ' | '. \dash\data::site_slogan());
 
 		// for pushstate of main page
-		\dash\data::template_xhr('content/main/layout-xhr.html');
+		// \dash\data::template_xhr('content/main/layout-xhr.html');
 		\dash\data::display_survey('content_a/survey/layout.html');
 		\dash\data::display_question('content_a/question/layout.html');
 
-		\dash\data::template_social('content/template/social.html');
-		\dash\data::template_share('content/template/share.html');
+		// \dash\data::template_social('content/template/social.html');
+		// \dash\data::template_share('content/template/share.html');
 		\dash\data::include_adminPanel(true);
 		\dash\data::include_css(false);
 		\dash\data::include_js(false);
-		\dash\data::bodyclass('fixed unselectable');
+		// \dash\data::bodyclass('fixed unselectable');
 	}
 }
 ?>
