@@ -360,8 +360,6 @@ pre {
   /* CSS2 */
   white-space: pre-wrap;
   /* CSS 2.1 */
-  white-space: pre-line;
-  /* CSS 3 (and 2.1 as well, actually) */
   word-wrap: break-word;
   /* IE */
   display: block;
@@ -3653,6 +3651,9 @@ body.errorPage {
   width: 100%;
   height: 100%;
   overflow: hidden; }
+
+body.errorPage.s20 {
+  background-color: #102060; }
 
 body.errorPage.s50 {
   background-color: #750700; }
@@ -12200,7 +12201,9 @@ body.enter.bg15 {
   margin: 0 auto;
   transition: 0.3s;
   overflow: hidden;
-  text-align: center; }
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 2px; }
 
 .enter #enter .logo span {
   display: none !important; }
@@ -15419,6 +15422,18 @@ body .w500 {
   width: 500px;
   max-width: 100%; }
 
+body .we50 {
+  min-width: 50px;
+  width: 50px; }
+
+body .we70 {
+  min-width: 70px;
+  width: 70px; }
+
+body .we80 {
+  min-width: 80px;
+  width: 80px; }
+
 body .we100 {
   min-width: 100px;
   width: 100px; }
@@ -16526,6 +16541,21 @@ body.siftal.loading-page #sidebar .avatar:before {
   background-color: #333;
   padding: 0.5em 1em; }
 
+.siftal #sidebar ul > li.detail {
+  background-color: #333;
+  padding: 0.7em 1em;
+  transition: 0.3s; }
+
+.siftal #sidebar ul > li.detail:hover {
+  background-color: #222; }
+
+.siftal #sidebar ul > li.detail .progress {
+  background-color: rgba(0, 0, 0, 0.3); }
+
+.siftal #sidebar ul > li.detail .btn {
+  padding: 10px 1.2em;
+  line-height: normal; }
+
 .siftal #sidebar ul > li > a {
   display: block;
   padding: 1.2em 1.5em;
@@ -16584,6 +16614,13 @@ body.siftal.loading-page #sidebar .avatar:before {
 
 .siftal.rtl #sidebar #ermileBadge {
   padding-left: 0; }
+
+.siftal #sidebar hr {
+  margin-right: auto;
+  margin-left: auto;
+  width: 80%;
+  border-top-color: #777;
+  border-top-color: rgba(255, 255, 255, 0.2); }
 
 /* footer */
 .siftal footer {
