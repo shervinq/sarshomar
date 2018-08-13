@@ -329,18 +329,24 @@
 
 
 {%block sidenav%}
-<li class="title">
+<li class="detail">
 	<span class="fc-mute">{%trans "Current question"%}</span> <span class="floatRa mRa10 fc-mute">{{2 | fitNumber}}</span>
 </li>
-<li class="title">
+<li class="detail">
 	<span class="fc-mute">{%trans "Total questions"%}</span> <span class="floatRa mRa10 fc-mute">{{5 | fitNumber}}</span>
 </li>
-<li class="title">
+<li class="detail">
 	<span class="floatRa mRa10">{{40 | fitNumber}} %</span> <span>{%trans "Completed"%}</span>
 </li>
 
-<li class="title">
-<div class="progress" data-percent="{{60}}"><div class="bar"></div></div>
+<li class="detail">
+	<div class="progress" data-percent="{{60}}"><div class="bar"></div></div>
 </li>
+
+{%if false%}
+<li class="detail">
+	<a href="{{url.this}}/restart" class="btn warn hauto outline">{%trans "Restart"%}</a>
+</li>
+{%endif%}
 
 {%endblock%}
