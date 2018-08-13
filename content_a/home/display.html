@@ -25,10 +25,10 @@
     <div class="footer txtC">{%set myStatus = value.status%} {%trans myStatus%}</div>
     <div class="footer f">
       <div>
-        <i class="compact sf-question-circle"></i> <span>{{20 | fitNumber}} {%trans "Question"%}</span>
+        <i class="compact sf-question-circle"></i> <span>{{value.countblock | fitNumber}} {%trans "Question"%}</span>
       </div>
       <div>
-        <i class="compact sf-users"></i> <span>{{5 | fitNumber}} {%trans "Response"%}</span>
+        <i class="compact sf-users"></i> <span>{{value.answer_count | fitNumber}} {%trans "Response"%}</span>
       </div>
     </div>
 

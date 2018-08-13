@@ -32,13 +32,17 @@ class surveys
 
 	public static function search($_string = null, $_option = [])
 	{
+
 		$default_option =
 		[
 			'search_field' => " (title LIKE '%__string__%' ) ",
+			'public_show_field' => " surveys.*, (SELECT COUNT(*) FROM answers WHERE answers.survey_id = surveys.id) AS `answer_count` ",
 		];
 
 		$_option = array_merge($default_option, $_option);
-		return \dash\db\config::public_search('surveys', $_string, $_option);
+		$result =  \dash\db\config::public_search('surveys', $_string, $_option);
+
+		return $result;
 	}
 
 
