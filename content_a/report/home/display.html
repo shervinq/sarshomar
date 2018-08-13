@@ -4,8 +4,10 @@
 
 
 {%block pageContent%}
-<div class="cbox">
-
+<div class="cbox f">
+  <a href="{{url.this}}/answers?id={{requestGET.id}}" class="btn c3">{%trans "Answers"%}</a>
+  <a href="{{url.this}}/question?id={{requestGET.id}}" class="btn c3">{%trans "Question"%}</a>
+  <a href="{{url.this}}/user?id={{requestGET.id}}" class="btn c3">{%trans "Question"%}</a>
 </div>
 {%endblock%}
 

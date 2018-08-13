@@ -25,6 +25,7 @@ class view
 
 			\dash\data::page_title(\dash\data::page_title(). ' | '. \dash\data::dataRow_title());
 
+
 		}
 		else
 		{

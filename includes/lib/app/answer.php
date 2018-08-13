@@ -6,6 +6,7 @@ namespace lib\app;
  */
 class answer
 {
+	use \lib\app\answer\datalist;
 
 	public static function dateNow()
 	{
@@ -379,6 +380,37 @@ class answer
 		}
 
 		return $valid;
+	}
+
+
+	/**
+	 * ready data of question to load in api
+	 *
+	 * @param      <type>  $_data  The data
+	 */
+	public static function ready($_data)
+	{
+		$result = [];
+		foreach ($_data as $key => $value)
+		{
+
+			switch ($key)
+			{
+
+
+				case 'id':
+				case 'user_id':
+					$result[$key] = \dash\coding::encode($value);
+					break;
+
+
+				default:
+					$result[$key] = $value;
+					break;
+			}
+		}
+
+		return $result;
 	}
 }
 ?>
