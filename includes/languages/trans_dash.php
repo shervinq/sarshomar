@@ -48,7 +48,7 @@ class twigTransTerms
 	echo T_("Billing");                                                               // Line 37
 
 	//----------------------------------------------addons\content_account\layout.html
-	echo T_("Dashboard");                                                             // Line 70
+	echo T_("Dashboard");                                                             // Line 69
 
 	//-------------------------------------addons\content_account\profile\display.html
 	echo T_("Name and Global Details");                                               // Line 12
@@ -311,10 +311,10 @@ class twigTransTerms
 	echo T_("Without Parent");                                                        // Line 132
 	echo T_("Choose category for posts is fix url of post relative and help people find it better.");// Line 143
 	echo T_("Choose category of post");                                               // Line 145
-	echo T_("Click on special tags to use this depending on your website design");    // Line 85
-	echo T_("Tag");                                                                   // Line 94
+	echo T_("Click on special tags to use this depending on your website design");    // Line 163
+	echo T_("Tag");                                                                   // Line 86
 	echo T_("Add tag manually to link articles togethers");                           // Line 175
-	echo T_("Tag keywords...");                                                       // Line 98
+	echo T_("Tag keywords...");                                                       // Line 90
 	echo T_("Add tag");                                                               // Line 177
 	echo T_("Featured Image");                                                        // Line 185
 	echo T_("allowed extentions jpg, png. Max 1000Kb");                               // Line 188
@@ -756,19 +756,19 @@ class twigTransTerms
 	echo T_("Close ticket");                                                          // Line 23
 	echo T_("Creator");                                                               // Line 32
 	echo T_("Save tag");                                                              // Line 49
-	echo T_("Add tag manually to link tickets togethers");                            // Line 97
+	echo T_("Add tag manually to link tickets togethers");                            // Line 89
 
 	//------------------------------------------addons\includes\html\display-dash.html
 	echo T_("Edit your profile");                                                     // Line 54
 	echo T_("Avatar of you");                                                         // Line 56
 	echo T_("Default Avatar");                                                        // Line 58
-	echo T_("Hello");                                                                 // Line 64
-	echo T_("Click to toggle sidebar status");                                        // Line 75
-	echo T_("View website");                                                          // Line 93
-	echo T_("Work in your language");                                                 // Line 97
-	echo T_("Logout");                                                                // Line 106
-	echo T_("You are entered as");                                                    // Line 106
-	echo T_("View your current location and navigate to parent of it");               // Line 116
+	echo T_("Hello");                                                                 // Line 61
+	echo T_("Click to toggle sidebar status");                                        // Line 74
+	echo T_("View website");                                                          // Line 92
+	echo T_("Work in your language");                                                 // Line 96
+	echo T_("Logout");                                                                // Line 105
+	echo T_("You are entered as");                                                    // Line 105
+	echo T_("View your current location and navigate to parent of it");               // Line 115
 
 	//----------------------------------addons\includes\html\display-enter-blocks.html
 	echo T_("Please enter valid mobile number");                                      // Line 16
