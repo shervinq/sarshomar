@@ -35,7 +35,7 @@ class view
 				$questionid = \dash\request::get('questionid');
 
 				$result = \lib\app\answer::get_result(\dash\request::get('id'), $questionid);
-				var_dump($result);exit();
+				// var_dump($result);exit();
 			}
 
 

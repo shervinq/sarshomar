@@ -52,7 +52,6 @@ trait edit
 		if(!\dash\app::isset_request('thankyoumedia')) 		unset($args['thankyoumedia']);
 		if(!\dash\app::isset_request('desc'))		 		unset($args['desc']);
 
-
 		if(!empty($args))
 		{
 			$update = \lib\db\surveys::update($args, $id);

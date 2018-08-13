@@ -30,6 +30,26 @@ class controller
 			\dash\header::status(404, T_("Survay not found"));
 		}
 
+		if(isset($load['lang']))
+		{
+			if($load['lang'] !== \dash\language::current())
+			{
+				$new_url = \dash\url::base();
+				$new_url .= '/'. $load['lang']. '/s/'. \dash\url::module();
+				if(\dash\url::child())
+				{
+					$new_url .= '/'. \dash\url::module();
+				}
+
+				if(\dash\request::get())
+				{
+					$new_url .= '?'. \dash\url::query();
+				}
+
+				\dash\redirect::to($new_url);
+			}
+		}
+
 
 		if(!\dash\permission::supervisor())
 		{
