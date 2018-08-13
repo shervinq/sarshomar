@@ -8,7 +8,7 @@ class view
 	{
 		\dash\data::page_title(T_("Dashboard"));
 
-		\dash\data::page_title(T_("Survay list"));
+		\dash\data::page_title(T_("Survey list"));
 		\dash\data::page_desc(T_("check last survey and add or edit a survey"));
 
 		$arg               = [];
