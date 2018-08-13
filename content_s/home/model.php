@@ -7,11 +7,11 @@ class model
 	public static function check_hiden_input()
 	{
 		$survay      = \dash\request::post('survay');
-		$userprocode = \dash\request::post('userprocode');
+		// $userprocode = \dash\request::post('userprocode');
 		// $passwd      = \dash\request::post('passwd');
 		$id          = \dash\request::post('id');
 
-		if($survay || $userprocode  || $id)
+		if($survay || $id)
 		{
 			return false;
 		}
