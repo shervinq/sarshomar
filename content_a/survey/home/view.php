@@ -24,6 +24,10 @@ class view
 
 			\dash\data::badge_link(\dash\url::here());
 			\dash\data::badge_text(T_('Back to survey list'));
+
+			$dashboard_detail['month_detail'] = \dash\date::month_precent();
+
+			\dash\data::dashboardDetail($dashboard_detail);
 		}
 		else
 		{
