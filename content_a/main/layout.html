@@ -13,7 +13,7 @@
 <li>
   <a href="{{url.this}}/general?id={{surveyRow.id}}"><i class='sf-cog'></i> <span>{% trans "Settings" %}</span></a>
   <ul>
-    <li><a href="{{url.here}}/survey/privacy?id={{surveyRow.id}}"><i class='floatRa mRa10 fc-mute sf-lock'></i> <span>{%trans "Privacy"%}</span></a></li>
+    {%if false%}<li><a href="{{url.here}}/survey/privacy?id={{surveyRow.id}}"><i class='floatRa mRa10 fc-mute sf-lock'></i> <span>{%trans "Privacy"%}</span></a></li>{%endif%}
     <li><a href="{{url.here}}/survey/welcome?id={{surveyRow.id}}"><i class='floatRa mRa10 fc-mute sf-hourglass-start'></i> <span>{%trans "Welcome message"%}</span></a></li>
     <li><a href="{{url.here}}/survey/thankyou?id={{surveyRow.id}}"><i class='floatRa mRa10 fc-mute sf-flag-checkered'></i> <span>{%trans "Thank you message"%}</span></a></li>
 

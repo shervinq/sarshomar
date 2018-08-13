@@ -28,6 +28,8 @@ class view
 		}
 
 		\dash\data::allType(\lib\app\question::all_type());
+
+		\content_a\survey\view::load_survey();
 	}
 }
 ?>

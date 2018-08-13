@@ -6,6 +6,8 @@ class view
 {
 	public static function load_question()
 	{
+		\content_a\survey\view::load_survey();
+
 		$id = \dash\request::get('questionid');
 		$load = \lib\app\question::get($id);
 		if(!$load)

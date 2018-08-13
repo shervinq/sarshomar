@@ -15,17 +15,11 @@ class view
 			\dash\data::badge_link(\dash\url::here(). '/survey?id='. \dash\request::get('id'));
 			\dash\data::badge_text(T_('Back to survey dashboard'));
 
-			$id        = \dash\request::get('id');
-			$load_survey = \lib\app\survey::get($id);
-			if(!$load_survey)
-			{
-				\dash\header::status(404, T_("Invalid survey id"));
-			}
-			\dash\data::dataRow($load_survey);
+			\content_a\survey\view::load_survey();
 
-			\dash\data::page_title(\dash\data::page_title(). ' | '. \dash\data::dataRow_title());
+			\dash\data::page_title(\dash\data::page_title(). ' | '. \dash\data::surveyRow_title());
 
-			$dataTable = \lib\app\question::block_survey($id);
+			$dataTable = \lib\app\question::block_survey(\dash\request::get('id'));
 
 			if(!$dataTable)
 			{
