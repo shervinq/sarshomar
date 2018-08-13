@@ -11,6 +11,29 @@ class answerdetails
 	}
 
 
+	public static function get_join($_where, $_option = [])
+	{
+		$option =
+		[
+			'public_show_field' =>
+			"
+				questions.title AS `question_title`,
+				questions.desc AS `question_desc`,
+				questions.type AS `question_type`,
+				answerdetails.*,
+				answerterms.*,
+				answerdetails.id AS `answerdetail_id`
+			",
+			'master_join'       =>
+			"
+				INNER JOIN answerterms ON answerterms.id = answerdetails.answerterm_id
+				INNER JOIN questions ON questions.id = answerdetails.question_id
+			",
+		];
+		return self::get($_where, $option);
+	}
+
+
 	public static function insert()
 	{
 		\dash\db\config::public_insert('answerdetails', ...func_get_args());

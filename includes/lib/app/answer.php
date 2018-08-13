@@ -7,6 +7,7 @@ namespace lib\app;
 class answer
 {
 	use \lib\app\answer\datalist;
+	use \lib\app\answer\get;
 
 	public static function dateNow()
 	{
@@ -44,13 +45,7 @@ class answer
 			'limit'                     => 1,
 		];
 
-		$option =
-		[
-			'public_show_field' => " answerdetails.*, answerterms.*, answerdetails.id AS `answerdetail_id` ",
-			'master_join'       => " INNER JOIN answerterms ON answerterms.id = answerdetails.answerterm_id ",
-		];
-
-		$old_answer_detail = \lib\db\answerdetails::get($get_answer, $option);
+		$old_answer_detail = \lib\db\answerdetails::get_join($get_answer);
 
 		if(!$old_answer_detail)
 		{
