@@ -15,6 +15,7 @@ class view
 		// \dash\data::template_xhr('content/main/layout-xhr.html');
 		\dash\data::display_survey('content_a/survey/layout.html');
 		\dash\data::display_question('content_a/question/layout.html');
+		\dash\data::display_admin('content_a/main/layout.html');
 
 		// \dash\data::template_social('content/template/social.html');
 		// \dash\data::template_share('content/template/share.html');
