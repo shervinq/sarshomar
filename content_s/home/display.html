@@ -109,8 +109,8 @@
 
 {%block nextBtn%}
 <div class="f justify-center">
-	<button class="c9 s12 btn success  mT20">{%trans "Save & Next"%}</button>
-	<button name="skip" value="skip" class="c2 s12 btn block mR10 outline mT20">{%trans "Skip"%}</button>
+	<button class="c9 s12 m12 btn success  mT20">{%trans "Save & Next"%}</button>
+	<button name="skip" value="skip" class="c2 s12 m12 btn block mR10 outline mT20">{%trans "Skip"%}</button>
 </div>
 {{block('next_back')}}
 {%endblock%}
@@ -120,10 +120,10 @@
 {%block next_back%}
 <div class="f justify-center mT5">
 	{%if requestGET.step > 1 %}
-		<a href="{{url.this}}?step={{(requestGET.step) - 1}}"  class="c2 btn info2 mR5 outline mT20">{%trans "Back"%}</a>
+		<a href="{{url.this}}?step={{(requestGET.step) - 1}}"  class="c2 m12 s12 btn info2 mR5 outline mT20">{%trans "Back"%}</a>
 	{%endif%}
 	{%if step.end > requestGET.step and step.must > requestGET.step%}
-		<a href="{{url.this}}?step={{(requestGET.step) + 1}}"  class="c2 btn info2 mR5 outline mT20">{%trans "Next"%}</a>
+		<a href="{{url.this}}?step={{(requestGET.step) + 1}}"  class="c2 m12 s12 btn info2 mR5 outline mT20">{%trans "Next"%}</a>
 	{%endif%}
 </div>
 {%endblock%}
