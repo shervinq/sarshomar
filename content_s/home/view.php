@@ -29,8 +29,9 @@ class view
 			$step = 'wellcome';
 		}
 
-		$step = \dash\request::get('step');
-
+		$step      = \dash\request::get('step');
+		$must_step = null;
+		$end_step  = null;
 		if($step && is_numeric($step))
 		{
 			$step = intval($step);
@@ -52,6 +53,7 @@ class view
 			$answer = \lib\db\answers::get(['survey_id' => \dash\coding::decode(\dash\url::module()), 'user_id' => \dash\user::id(), 'limit' => 1]);
 
 			$must_step = 1;
+			$end_step  = \dash\data::surveyRow_countblock() ? \dash\data::surveyRow_countblock() : $must_step;
 
 			if(isset($answer['step']) && $answer['step'])
 			{
@@ -83,7 +85,9 @@ class view
 
 		self::make_xkey_xvalue();
 
-		\dash\data::displayStep($display_step);
+		\dash\data::step_display($display_step);
+		\dash\data::step_end($end_step);
+		\dash\data::step_must($must_step);
 	}
 
 

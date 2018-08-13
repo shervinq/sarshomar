@@ -5,15 +5,15 @@
 {%endblock%}
 
 {%block pageContent%}
-{%if displayStep == 'wellcome' or displayStep == 'thankyou' or displayStep == 'start'%}
+{%if step.display == 'wellcome' or step.display == 'thankyou' or step.display == 'start'%}
 	<div class="cbox ">
-		{{block(displayStep)}}
+		{{block(step.display)}}
 	</div>
 	{%else%}
 	<div class="f justify-center">
 		<div class="cbox c6 ">
 			<form method="post" autocomplete="off" class="">
-				{{block(displayStep)}}
+				{{block(step.display)}}
 			</form>
 		</div>
 	</div>
@@ -91,8 +91,12 @@
 
 {%block next_back%}
 <div class="f justify-center mT5">
-	<a href="{{url.this}}?step={{(requestGET.step) - 1}}"  class="c2 btn info2 mR5 outline mT20">{%trans "Back"%}</a>
-	<a href="{{url.this}}?step={{(requestGET.step) + 1}}"  class="c2 btn info2 mR5 outline mT20">{%trans "Next"%}</a>
+	{%if requestGET.step > 1 %}
+		<a href="{{url.this}}?step={{(requestGET.step) - 1}}"  class="c2 btn info2 mR5 outline mT20">{%trans "Back"%}</a>
+	{%endif%}
+	{%if step.end > requestGET.step and step.must > requestGET.step%}
+		<a href="{{url.this}}?step={{(requestGET.step) + 1}}"  class="c2 btn info2 mR5 outline mT20">{%trans "Next"%}</a>
+	{%endif%}
 </div>
 {%endblock%}
 

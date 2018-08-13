@@ -165,16 +165,17 @@ class answer
 		{
 			$insert_answer =
 			[
-				'user_id'   => \dash\user::id(),
-				'survey_id' => $survey_id,
-				'startdate' => self::dateNow(),
-				'step'      => $question_id,
-				'status'    => 'start',
-				'ref'       => null,
-				'skip'      => $skip   ? 1 : null,
-				'skiptry'   => $skip   ? 1 : null,
-				'answer'    => $answer && !$skip ? 1 : null,
-				'answertry' => $answer && !$skip ? 1 : null,
+				'user_id'      => \dash\user::id(),
+				'survey_id'    => $survey_id,
+				'startdate'    => self::dateNow(),
+				'step'         => $_step,
+				'lastquestion' => $question_id,
+				'status'       => 'start',
+				'ref'          => null,
+				'skip'         => $skip   ? 1 : null,
+				'skiptry'      => $skip   ? 1 : null,
+				'answer'       => $answer && !$skip ? 1 : null,
+				'answertry'    => $answer && !$skip ? 1 : null,
 			];
 			$answer_id = \lib\db\answers::insert($insert_answer);
 		}
@@ -201,7 +202,8 @@ class answer
 				$update_answer['answertry'] = $answertry_count + 1;
 			}
 
-			$update_answer['step']         = $question_id;
+			$update_answer['step']         = $_step;
+			$update_answer['lastquestion'] = $question_id;
 			$update_answer['lastmodified'] = self::dateNow();
 
 			\lib\db\answers::update($update_answer, $answer_id);
