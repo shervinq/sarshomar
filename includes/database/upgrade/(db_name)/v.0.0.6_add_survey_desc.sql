@@ -1,0 +1,1 @@
+ALTER TABLE `surveys` ADD `desc`   text CHARACTER SET utf8mb4;

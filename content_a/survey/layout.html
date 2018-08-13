@@ -36,7 +36,6 @@
 
 
 
-
 {%block istatus%}
 
 <div class="mT15">
@@ -53,8 +52,8 @@
  </div>
 
  <div class="radio1 yellow ">
-  <input type="radio" id="r-disable" name="status" value="disable" {%if surveyRow.status == 'disable'  %} checked{%endif%}>
-  <label for="r-disable">{%trans "Disable"%}</label>
+  <input type="radio" id="r-expire" name="status" value="expire" {%if surveyRow.status == 'expire'  %} checked{%endif%}>
+  <label for="r-expire">{%trans "Expire"%}</label>
  </div>
 
  <div class="radio1 red mB25">
@@ -165,6 +164,17 @@
 
 
 
+    <div class="c s4">
+    <a class="dcard {%if url.child == 'status'%}active{%endif%}" href='{{url.this}}/status?id={{requestGET.id}}' data-shortkey="54ctrlshift" >
+     <div class="statistic sm">
+      <div class="value"><i class="sf-gauge"></i></div>
+      <div class="label">{%trans "Staus"%}<br><kbd class="mT5">Ctrl+Shift+5</kbd></div>
+     </div>
+    </a>
+   </div>
+
+
+
   </div>
 {%endblock%}
 
@@ -200,6 +210,12 @@
 {%block ibrandingdesc%}
 <label for="brandingdesc">{%trans "Description"%}</label>
 <textarea class="txt mB10" id='brandingdesc' name="brandingdesc" placeholder='{%trans "Description"%}' maxlength='500' rows="5">{{surveyRow.brandingdesc}}</textarea>
+{%endblock%}
+
+
+{%block idesc%}
+<label for="desc">{%trans "Description"%}</label>
+<textarea class="txt mB10" id='desc' name="desc" placeholder='{%trans "Description"%}' maxlength='500' rows="5">{{surveyRow.desc}}</textarea>
 {%endblock%}
 
 

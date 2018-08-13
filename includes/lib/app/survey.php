@@ -154,8 +154,10 @@ class survey
 			$thankyoumedia = json_encode($thankyoumedia, JSON_UNESCAPED_UNICODE);
 		}
 
+		$desc  = \dash\app::request('desc');
 
 		$args                  = [];
+		$args['desc']          = $desc;
 		$args['title']         = $title;
 		$args['lang']          = $language;
 		$args['password']      = $password;

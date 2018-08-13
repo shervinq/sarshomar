@@ -50,6 +50,7 @@ trait edit
 		if(!\dash\app::isset_request('thankyoutitle')) 		unset($args['thankyoutitle']);
 		if(!\dash\app::isset_request('thankyoudesc')) 		unset($args['thankyoudesc']);
 		if(!\dash\app::isset_request('thankyoumedia')) 		unset($args['thankyoumedia']);
+		if(!\dash\app::isset_request('desc'))		 		unset($args['desc']);
 
 
 		if(!empty($args))
