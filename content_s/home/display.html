@@ -2,9 +2,12 @@
 
 
 {%block pageContent%}
+{%if surveyRow.status != 'publish'%}
+<a href="{{url.kingdom}}/a/survey/status?id={{surveyRow.id}}" data-direct class="msg warn block fs14 txtC">{%trans "Survey status"%} {%set myStatus = surveyRow.status%} <b>{%trans myStatus%}</b></a>
+{%endif%}
 
 {%if step.display == 'welcome' or step.display == 'thankyou' or step.display == 'thankyoudefault' or step.display == 'start'%}
-	<div class="cbox ">
+	<div class="cbox">
 		{{block(step.display)}}
 	</div>
 {%else%}
