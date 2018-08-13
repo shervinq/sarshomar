@@ -30,9 +30,18 @@ class controller
 			\dash\header::status(404, T_("Survay not found"));
 		}
 
+
 		if(!\dash\permission::supervisor())
 		{
 			// check user id and privacy and password
+			if($load['status'] !== 'publish')
+			{
+				if(intval($load['user_id']) !== intval(\dash\user::id()))
+				{
+
+					\dash\header::status(403, T_("This survey is not publish"));
+				}
+			}
 		}
 
 		\dash\data::surveyRow($load);
