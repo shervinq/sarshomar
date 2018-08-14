@@ -25,7 +25,7 @@ class controller
 		}
 
 		$load = \lib\app\survey::get(\dash\url::module());
-		if(!$load || !isset($load['status']) || !isset($load['privacy']))
+		if(!$load || !isset($load['status']) || !isset($load['privacy']) || !isset($load['user_id']))
 		{
 			\dash\header::status(404, T_("Survay not found"));
 		}
@@ -50,13 +50,17 @@ class controller
 			}
 		}
 
+		if(intval(\dash\coding::decode($load['user_id'])) === intval(\dash\user::id()))
+		{
+			\dash\data::mySurvey(true);
+		}
 
 		if(!\dash\permission::supervisor())
 		{
 			// check user id and privacy and password
 			if($load['status'] !== 'publish')
 			{
-				if(intval(\dash\coding::decode($load['user_id'])) !== intval(\dash\user::id()))
+				if(!\dash\data::mySurvey())
 				{
 					\dash\header::status(403, T_("This survey is not publish"));
 				}
