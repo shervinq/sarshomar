@@ -65,6 +65,23 @@ class answerdetails
 		$default_option =
 		[
 			'search_field' => " (title LIKE '%__string__%' ) ",
+
+			'public_show_field' =>
+			"
+				questions.title AS `question_title`,
+				questions.desc  AS `question_desc`,
+				questions.type  AS `question_type`,
+				answerdetails.*,
+				answerterms.*,
+				answerdetails.id AS `answerdetail_id`
+			",
+			'master_join'       =>
+			"
+				INNER JOIN answerterms ON answerterms.id = answerdetails.answerterm_id
+				INNER JOIN questions   ON questions.id   = answerdetails.question_id
+				INNER JOIN surveys     ON surveys.id     = questions.survey_id
+			",
+
 		];
 
 		$_option = array_merge($default_option, $_option);

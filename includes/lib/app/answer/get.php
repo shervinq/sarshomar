@@ -3,6 +3,57 @@ namespace lib\app\answer;
 
 trait get
 {
+
+	public static function get_result_table($_survey_id , $_question_id)
+	{
+		if(!\dash\user::id())
+		{
+			return false;
+		}
+
+		$survey_id = \dash\coding::decode($_survey_id);
+		if(!$survey_id)
+		{
+			\dash\notif::error(T_("Invalid survey id"));
+			return false;
+		}
+
+		$question_id = \dash\coding::decode($_question_id);
+		if(!$question_id)
+		{
+			\dash\notif::error(T_("Invalid answer id"));
+			return false;
+		}
+
+		$chart_result = \lib\db\answers::get_result_table($survey_id, $question_id, \dash\user::id());
+
+		$new = [];
+		if(is_array($chart_result))
+		{
+			foreach ($chart_result as $key => $value)
+			{
+				if(isset($value['text']) && isset($value['count']))
+				{
+					$new[] =
+					[
+						'key'   => $value['text'],
+						'value' => $value['count'],
+					];
+				}
+			}
+		}
+
+		if(!$new)
+		{
+			$new = null;
+		}
+
+		$new = json_encode($new, JSON_UNESCAPED_UNICODE);
+		return $new;
+
+	}
+
+
 	public static function get_result($_survey_id , $_question_id)
 	{
 		if(!\dash\user::id())

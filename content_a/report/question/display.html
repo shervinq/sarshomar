@@ -5,15 +5,68 @@
 
 {%block pageContent%}
 <div class="cbox">
+{%if questionList%}
+
+  {%for key, value in questionList%}
+  <a href="{{url.this}}/question?id={{requestGET.id}}&questionid={{value.id}}">
+    <div class="msg">#{{(key + 1) | fitNumber}}<br>
+      {%if value.title%}<b>{{value.title}}</b>{%endif%}
+      {%if value.desc%}<b>{%if value.title%} | <small>{{value.desc}}</small>{%else%}{{value.desc}}{%endif%}</b>{%endif%}
+      {%if not value.title and not value.desc%}<i>{%trans "Untitled"%}</i>{%endif%}
+      <br>
+      {%if value.type%}<b>{{value.type_detail.title}}</b>{%endif%}
+    </div>
+  </a>
+  {%endfor%}
+
+{%elseif dataTable%}
+
+  {{block('htmlTable')}}
+
+
+
+{%else%}
    <div class="chart" id="chartdiv" >
    </div>
-
+{%endif%}
 </div>
+
 {%endblock%}
 
 
+
 {%block foot_js%}
+{%if showChart%}
 <script type="text/javascript">
   {%include 'content_a/report/question/chart.js'%}
 </script>
+{%endif%}
+{%endblock%}
+
+
+
+
+
+
+{%block htmlTable%}
+
+ <div class="cbox fs12">
+  <table class="tbl bordered1">
+    <thead class="primary fs09">
+      <tr>
+
+      	<th>{%trans "Answers"%}</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {%for key, value in dataTable%}
+      <tr>
+      	<td>{{value.text}}</td>
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+  {%include display.pagination%}
+ </div>
 {%endblock%}

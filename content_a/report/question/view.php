@@ -10,6 +10,8 @@ class view
 		\dash\data::page_title(T_("Question list"));
 		\dash\data::page_desc(T_("List of your survey answers by select one question"));
 
+		$dataTable = null;
+
 		if(\dash\request::get('id'))
 		{
 
@@ -24,9 +26,9 @@ class view
 			{
 				$id = \dash\request::get('id');
 
-				$dataTable = \lib\app\question::block_survey($id);
+				$questionList = \lib\app\question::block_survey($id);
 
-				\dash\data::dataTable($dataTable);
+				\dash\data::questionList($questionList);
 			}
 			else
 			{
@@ -34,8 +36,20 @@ class view
 
 				$questionid = \dash\request::get('questionid');
 
-				$result = \lib\app\answer::get_result(\dash\request::get('id'), $questionid);
-				\dash\data::chartData($result);
+				if(isset($question_detail['type_detail']['chart']))
+				{
+					$dataTable = \lib\app\answer::get_result(\dash\request::get('id'), $questionid);
+					\dash\data::showChart(true);
+				}
+				else
+				{
+					$args                              = [];
+					$args['survey.user_id']            = \dash\user::id();
+					$args['answerdetails.question_id'] = \dash\coding::decode($questionid);
+
+					$dataTable = \lib\app\answerdetail::list(null, $args);
+					\dash\data::showChart(false);
+				}
 			}
 
 			\dash\data::include_chart(true);
@@ -44,6 +58,8 @@ class view
 		{
 			\dash\redirect::to(\dash\url::here());
 		}
+
+		\dash\data::dataTable($dataTable);
 	}
 }
 ?>
