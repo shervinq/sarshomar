@@ -181,7 +181,16 @@ class view
 			$start_time = date("Y-m-d H:i:s");
 		}
 
-		$time_left = time() - strtotime($start_time);
+		if(\dash\data::answerRow_complete() && \dash\data::answerRow_enddate())
+		{
+			$end_time = \dash\data::answerRow_enddate();
+			$time_left = strtotime($end_time) - strtotime($start_time);
+		}
+		else
+		{
+			$time_left = time() - strtotime($start_time);
+		}
+
 		$min = intval($time_left / 60);
 		$sec = intval($time_left % 60);
 

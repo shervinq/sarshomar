@@ -213,6 +213,7 @@ class answer
 			if(intval($_step) === intval($countblock))
 			{
 				$update_answer['complete'] = 1;
+				$update_answer['enddate']  = self::dateNow();
 			}
 
 			\lib\db\answers::update($update_answer, $answer_id);
