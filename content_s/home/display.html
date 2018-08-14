@@ -8,31 +8,33 @@
 
 
 <div class="f justify-center">
-	<div class="c8 x6 m9 s12 mB25">
-		<div class="cbox mB10">
+ <div class="c8 x6 m9 s12 mB25">
+  <div class="cbox mB10">
 {{block("blockTitle")}}
-		</div>
-		<div class="f">
-			<a class="cauto os btn outline" href="#">{%trans "I'm not willing to answer"%}</a>
-		</div>
-	</div>
+
+{{block('start_btn')}}
+  </div>
+  <div class="f">
+   <a class="cauto os btn outline" href="#">{%trans "I'm not willing to answer"%}</a>
+  </div>
+ </div>
 </div>
 
 
 
 
 {%if step.display == 'welcome' or step.display == 'thankyou' or step.display == 'thankyoudefault' or step.display == 'start'%}
-	<div class="cbox">
-		{{block(step.display)}}
-	</div>
+ <div class="cbox">
+  {{block(step.display)}}
+ </div>
 {%else%}
-	<div class="f justify-center">
-		<div class="cbox c6 m12 s11">
-			<form method="post" autocomplete="off">
-				{{block(step.display)}}
-			</form>
-		</div>
-	</div>
+ <div class="f justify-center">
+  <div class="cbox c6 m12 s11">
+   <form method="post" autocomplete="off">
+    {{block(step.display)}}
+   </form>
+  </div>
+ </div>
 {%endif%}
 {%endblock%}
 
@@ -40,28 +42,58 @@
 
 {%block blockTitle%}
 {%if surveyRow.welcomemedia.file%}
-			<div class="imgBox mB20">
-	{%if surveyRow.welcomemedia.fileType == 'image' or 1 %}
-				<img src="{{surveyRow.welcomemedia.file}}" alt="{{surveyRow.welcometitle}}">
-	{%elseif surveyRow.welcomemedia.fileType == 'video' %}
-				<video controls>
-					<source src="{{surveyRow.welcomemedia.file}}" type="video/mp4">
-				</video>
-	{%endif%}
-			</div>
+   <div class="imgBox mB20">
+ {%if surveyRow.welcomemedia.fileType == 'image' or 1 %}
+    <img src="{{surveyRow.welcomemedia.file}}" alt="{{surveyRow.welcometitle}}">
+ {%elseif surveyRow.welcomemedia.fileType == 'video' %}
+    <video controls>
+     <source src="{{surveyRow.welcomemedia.file}}" type="video/mp4">
+    </video>
+ {%endif%}
+   </div>
 {%endif%}
 
 {%if surveyRow.welcometitle or surveyRow.welcomedesc%}
-			<div class="detailBox">
+   <div class="detailBox">
 {%if surveyRow.welcometitle%}
-				<h2 class="txtC">{{surveyRow.welcometitle}}</h2>
+    <h2 class="txtC">{{surveyRow.welcometitle}}</h2>
 {%endif%}
 {%if surveyRow.welcomedesc%}
-				<p class="msg txtC">{{surveyRow.welcomedesc | raw}}</p>
+    <p class="msg txtC">{{surveyRow.welcomedesc | raw}}</p>
 {%endif%}
-			</div>
+   </div>
 {%endif%}
 {%endblock%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -70,16 +102,16 @@
 <input type="hidden" name="survay" value="" class="hide">
 
 <div class="hide">
-	<input type="text" name="userprocode" value="">
+ <input type="text" name="userprocode" value="">
 </div>
 
 
 <div class="hide">
-	<input type="text" name="{{XKEY}}" value="{{XVALUE}}">
+ <input type="text" name="{{XKEY}}" value="{{XVALUE}}">
 </div>
 
 <div class="input c auto hide">
-	<input type="password" name="passwd" value="">
+ <input type="password" name="passwd" value="">
 </div>
 
 <input type="text" name="id" value="" class="input hide">
@@ -92,7 +124,7 @@
 {%block start%}
 <div class="justify-center f pA10">
 <div class="msg primary2 block c12 txtC txtB">{{surveyRow.title}}</div>
-	{{block('start_btn')}}
+ {{block('start_btn')}}
 </div>
 {%endblock%}
 
@@ -100,7 +132,7 @@
 {%block thankyoudefault%}
 <h3>{%trans "Thank you"%}</h3>
 <div class="justify-center f pA10">
-	<a href="{{url.base}}" class="btn success c3">{%trans "Sarshomar"%}</a>
+ <a href="{{url.base}}" class="btn success c3">{%trans "Sarshomar"%}</a>
 </div>
 
 {%endblock%}
@@ -112,12 +144,12 @@
 
 {%if surveyRow.thankyoudesc %}
 <div class="msg">
-	<p>{{surveyRow.thankyoudesc}}</p>
+ <p>{{surveyRow.thankyoudesc}}</p>
 </div>
 {%endif%}
 
 {%if surveyRow.thankyoumedia.file %}
-	<img src="{{surveyRow.thankyoumedia.file}}" class="w300">
+ <img src="{{surveyRow.thankyoumedia.file}}" class="w300">
 {%endif%}
 <div class="justify-center f pA10">
 
@@ -132,15 +164,15 @@
 
 {%if surveyRow.welcomedesc %}
 <div class="msg">
-	<p>{{surveyRow.welcomedesc}}</p>
+ <p>{{surveyRow.welcomedesc}}</p>
 </div>
 {%endif%}
 
 {%if surveyRow.welcomemedia.file %}
-	<img src="{{surveyRow.welcomemedia.file}}" class="w300">
+ <img src="{{surveyRow.welcomemedia.file}}" class="w300">
 {%endif%}
 <div class="justify-center f pA10">
-	{{block('start_btn')}}
+ {{block('start_btn')}}
 </div>
 
 {%endblock%}
@@ -149,8 +181,8 @@
 
 {%block nextBtn%}
 <div class="f justify-center">
-	<button class="c9 s12 m12 btn success  mT20">{%trans "Save & Next"%}</button>
-	<button name="skip" value="skip" class="c2 s12 m12 btn block mR10 outline mT20">{%trans "Skip"%}</button>
+ <button class="c9 s12 m12 btn success  mT20">{%trans "Save & Next"%}</button>
+ <button name="skip" value="skip" class="c2 s12 m12 btn block mR10 outline mT20">{%trans "Skip"%}</button>
 </div>
 {{block('next_back')}}
 {%endblock%}
@@ -159,12 +191,12 @@
 
 {%block next_back%}
 <div class="f justify-center mT5">
-	{%if requestGET.step > 1 %}
-		<a href="{{url.this}}?step={{(requestGET.step) - 1}}"  class="c2 m12 s12 btn info2 mR5 outline mT20">{%trans "Back"%}</a>
-	{%endif%}
-	{%if step.end > requestGET.step and step.must > requestGET.step%}
-		<a href="{{url.this}}?step={{(requestGET.step) + 1}}"  class="c2 m12 s12 btn info2 mR5 outline mT20">{%trans "Next"%}</a>
-	{%endif%}
+ {%if requestGET.step > 1 %}
+  <a href="{{url.this}}?step={{(requestGET.step) - 1}}"  class="c2 m12 s12 btn info2 mR5 outline mT20">{%trans "Back"%}</a>
+ {%endif%}
+ {%if step.end > requestGET.step and step.must > requestGET.step%}
+  <a href="{{url.this}}?step={{(requestGET.step) + 1}}"  class="c2 m12 s12 btn info2 mR5 outline mT20">{%trans "Next"%}</a>
+ {%endif%}
 </div>
 {%endblock%}
 
@@ -175,12 +207,12 @@
 
 {%if question.desc %}
 <div class="msg">
-	<p>{{question.desc}}</p>
+ <p>{{question.desc}}</p>
 </div>
 {%endif%}
 
 {%if question.media.file %}
-	<img src="{{question.media.file}}" class="w300">
+ <img src="{{question.media.file}}" class="w300">
 {%endif%}
 
 {%endblock%}
@@ -197,11 +229,11 @@
 {%block short_answer%}
 {{block('question_title')}}
 {{block('hidden_input')}}
-	<div class="input">
-		<label for="answer">{%trans "Type your answer"%}</label>
-		<input type="text" id="answer" name="answer" value="{{myAnswer.text}}" placeholder='{%trans "Type here ..."%}'>
-	</div>
-	{{block('nextBtn')}}
+ <div class="input">
+  <label for="answer">{%trans "Type your answer"%}</label>
+  <input type="text" id="answer" name="answer" value="{{myAnswer.text}}" placeholder='{%trans "Type here ..."%}'>
+ </div>
+ {{block('nextBtn')}}
 
 {%endblock%}
 
@@ -210,9 +242,9 @@
 {%block descriptive_answer%}
 {{block('hidden_input')}}
 {{block('question_title')}}
-	<label for="answer">{%trans "Type your answer"%}</label>
-	<textarea class="txt" type="text" id="answer" name="answer" placeholder='{%trans "Type here ..."%}' rows="3">{{myAnswer.text}}</textarea>
-	{{block('nextBtn')}}
+ <label for="answer">{%trans "Type your answer"%}</label>
+ <textarea class="txt" type="text" id="answer" name="answer" placeholder='{%trans "Type here ..."%}' rows="3">{{myAnswer.text}}</textarea>
+ {{block('nextBtn')}}
 {%endblock%}
 
 
@@ -221,8 +253,8 @@
 {%block confirm%}
 {{block('question_title')}}
 {{block('hidden_input')}}
-	<input type="hidden" name="next" value="step">
-	{{block('nextBtn')}}
+ <input type="hidden" name="next" value="step">
+ {{block('nextBtn')}}
 {%endblock%}
 
 
@@ -235,11 +267,11 @@
 {%block date%}
 {{block('question_title')}}
 {{block('hidden_input')}}
-	<label for="answer">{%trans "Answer"%}</label>
-	<div class="input">
-	  <input class="datepicker" type="text" name="answer" id="answer" placeholder='{{"1369/04/15" | fitNumber}} *' value="{{myAnswer.text}}" maxlength='20' data-format="YYYY/MM/DD" data-view="year">
-	</div>
-	{{block('nextBtn')}}
+ <label for="answer">{%trans "Answer"%}</label>
+ <div class="input">
+   <input class="datepicker" type="text" name="answer" id="answer" placeholder='{{"1369/04/15" | fitNumber}} *' value="{{myAnswer.text}}" maxlength='20' data-format="YYYY/MM/DD" data-view="year">
+ </div>
+ {{block('nextBtn')}}
 {%endblock%}
 
 
@@ -247,21 +279,21 @@
 {%block email%}
 {{block('question_title')}}
 {{block('hidden_input')}}
-	<label for="answer">{%trans "Answer"%}</label>
-	<div class="input">
-	  <input class="" type="email" name="answer" id="answer" value="{{myAnswer.text}}"  placeholder='{%trans "Type here ..."%}'>
-	</div>
-	{{block('nextBtn')}}
+ <label for="answer">{%trans "Answer"%}</label>
+ <div class="input">
+   <input class="" type="email" name="answer" id="answer" value="{{myAnswer.text}}"  placeholder='{%trans "Type here ..."%}'>
+ </div>
+ {{block('nextBtn')}}
 {%endblock%}
 
 {%block website%}
 {{block('question_title')}}
 {{block('hidden_input')}}
-	<label for="answer">{%trans "Answer"%}</label>
-	<div class="input">
-	  <input class="" type="url" name="answer" id="answer" value="{{myAnswer.text}}"  placeholder='{%trans "Type here ..."%}'>
-	</div>
-	{{block('nextBtn')}}
+ <label for="answer">{%trans "Answer"%}</label>
+ <div class="input">
+   <input class="" type="url" name="answer" id="answer" value="{{myAnswer.text}}"  placeholder='{%trans "Type here ..."%}'>
+ </div>
+ {{block('nextBtn')}}
 {%endblock%}
 
 
@@ -269,11 +301,11 @@
 {%block rating%}
 {{block('question_title')}}
 {{block('hidden_input')}}
-	<label for="answer">{%trans "Answer"%}</label>
-	<div class="input">
-	  <input class="" type="number" name="answer" id="answer" value="{{myAnswer.text}}" placeholder='{%trans "Type here ..."%}'>
-	</div>
-	{{block('nextBtn')}}
+ <label for="answer">{%trans "Answer"%}</label>
+ <div class="input">
+   <input class="" type="number" name="answer" id="answer" value="{{myAnswer.text}}" placeholder='{%trans "Type here ..."%}'>
+ </div>
+ {{block('nextBtn')}}
 {%endblock%}
 
 
@@ -281,11 +313,11 @@
 {{block('question_title')}}
 {{block('hidden_input')}}
 
-	<label for="answer">{%trans "Answer"%}</label>
-	<div class="input">
-	  <input class="" type="number" name="answer" id="answer"  value="{{myAnswer.text}}" placeholder='{%trans "Type here ..."%}'>
-	</div>
-	{{block('nextBtn')}}
+ <label for="answer">{%trans "Answer"%}</label>
+ <div class="input">
+   <input class="" type="number" name="answer" id="answer"  value="{{myAnswer.text}}" placeholder='{%trans "Type here ..."%}'>
+ </div>
+ {{block('nextBtn')}}
 {%endblock%}
 
 
@@ -295,13 +327,13 @@
 {%block single_choice%}
 {{block('question_title')}}
 {{block('hidden_input')}}
-	{%for key, value in question.choice%}
-	 <div class="radio1 green">
-	  <input type="radio" id="r-{{key}}" name="answer" value="{{value.title}}" {%if myAnswer.text == value.title%} checked {%endif%} >
-	  <label for="r-{{key}}">{{value.title}}</label>
-	 </div>
-	{%endfor%}
-	{{block('nextBtn')}}
+ {%for key, value in question.choice%}
+  <div class="radio1 green">
+   <input type="radio" id="r-{{key}}" name="answer" value="{{value.title}}" {%if myAnswer.text == value.title%} checked {%endif%} >
+   <label for="r-{{key}}">{{value.title}}</label>
+  </div>
+ {%endfor%}
+ {{block('nextBtn')}}
 {%endblock%}
 
 
@@ -309,13 +341,13 @@
 {%block multiple_choice%}
 {{block('question_title')}}
 {{block('hidden_input')}}
-	{%for key, value in question.choice%}
-	 <div class="check1 mB10">
-	 <input type="checkbox" name="answer[]" id="{{key}}" value="{{value.title}}" {%if myAnswer.text == value.title%} checked {%endif%}>
-	 <label for="{{key}}">{{value.title}}</label>
-	</div>
-	{%endfor%}
-	{{block('nextBtn')}}
+ {%for key, value in question.choice%}
+  <div class="check1 mB10">
+  <input type="checkbox" name="answer[]" id="{{key}}" value="{{value.title}}" {%if myAnswer.text == value.title%} checked {%endif%}>
+  <label for="{{key}}">{{value.title}}</label>
+ </div>
+ {%endfor%}
+ {{block('nextBtn')}}
 
 {%endblock%}
 
@@ -325,16 +357,16 @@
 {%block dropdown%}
 {{block('question_title')}}
 {{block('hidden_input')}}
-	<div class="mB10">
-	  <label for="answer">{%trans "Your answer"%}</label>
-	  <select name="answer" class="ui dropdown select">
-	    <option value=""><i>{%trans "Please select one item"%}</i></option>
-		{%for key, value in question.choice%}
-	      <option value="{{value.title}}"  {%if myAnswer.text == value.title%} checked {%endif%}>{{value.title}}</option>
-	    {%endfor%}
-	  </select>
-	</div>
-	{{block('nextBtn')}}
+ <div class="mB10">
+   <label for="answer">{%trans "Your answer"%}</label>
+   <select name="answer" class="ui dropdown select">
+     <option value=""><i>{%trans "Please select one item"%}</i></option>
+  {%for key, value in question.choice%}
+       <option value="{{value.title}}"  {%if myAnswer.text == value.title%} checked {%endif%}>{{value.title}}</option>
+     {%endfor%}
+   </select>
+ </div>
+ {{block('nextBtn')}}
 {%endblock%}
 
 
@@ -343,11 +375,11 @@
 {%block numeric%}
 {{block('question_title')}}
 {{block('hidden_input')}}
-	<div class="input">
-		<label for="answer">{%trans "Type your answer"%}</label>
-		<input type="number" id="answer" name="answer" value="{{myAnswer.text}}" placeholder='{%trans "Type here ..."%}'>
-	</div>
-	{{block('nextBtn')}}
+ <div class="input">
+  <label for="answer">{%trans "Type your answer"%}</label>
+  <input type="number" id="answer" name="answer" value="{{myAnswer.text}}" placeholder='{%trans "Type here ..."%}'>
+ </div>
+ {{block('nextBtn')}}
 {%endblock%}
 
 
@@ -358,11 +390,11 @@
 {%block short_text%}
 {{block('question_title')}}
 <div class="justify-center f pA10">
-	<div class="input">
-		<label for="answer">{%trans "Type your answer"%}</label>
-		<input type="text" id="answer" name="answer" value="{{myAnswer.text}}" placeholder='{%trans "Type here ..."%}'>
-	</div>
-	{{block('nextBtn')}}
+ <div class="input">
+  <label for="answer">{%trans "Type your answer"%}</label>
+  <input type="text" id="answer" name="answer" value="{{myAnswer.text}}" placeholder='{%trans "Type here ..."%}'>
+ </div>
+ {{block('nextBtn')}}
 </div>
 {%endblock%}
 
@@ -373,46 +405,46 @@
 
 {%block sidenav%}
 
-	<li class="detail">
-		<span class="fc-mute">{%trans "Start Time"%}</span> <span class="floatRa mRa10 fc-mute">{{askDetail.start_time | fitNumber}}</span>
-	</li>
-	<li class="detail">
-		<span class="fc-mute">{%trans "Spend Time"%}</span> <span class="floatRa mRa10 fc-mute">{{askDetail.spend_time | fitNumber}}</span>
-	</li>
+ <li class="detail">
+  <span class="fc-mute">{%trans "Start Time"%}</span> <span class="floatRa mRa10 fc-mute">{{askDetail.start_time | fitNumber}}</span>
+ </li>
+ <li class="detail">
+  <span class="fc-mute">{%trans "Spend Time"%}</span> <span class="floatRa mRa10 fc-mute">{{askDetail.spend_time | fitNumber}}</span>
+ </li>
 {%if false%}
-	<li class="detail">
-		<span class="fc-mute">{%trans "Remain Time"%}</span> <span class="floatRa mRa10 fc-mute">{{askDetail.remain_time | fitNumber}}</span>
-	</li>
+ <li class="detail">
+  <span class="fc-mute">{%trans "Remain Time"%}</span> <span class="floatRa mRa10 fc-mute">{{askDetail.remain_time | fitNumber}}</span>
+ </li>
 {%endif%}
 {%if false%}
-	<li class="detail">
-		<span class="fc-mute">{%trans "End Time"%}</span> <span class="floatRa mRa10 fc-mute">{{askDetail.end_time | fitNumber}}</span>
-	</li>
+ <li class="detail">
+  <span class="fc-mute">{%trans "End Time"%}</span> <span class="floatRa mRa10 fc-mute">{{askDetail.end_time | fitNumber}}</span>
+ </li>
 {%endif%}
 <hr>
 <li class="detail">
-	<span class="fc-mute">{%trans "Current question"%}</span> <span class="floatRa mRa10 fc-mute">{{askDetail.step | fitNumber}}</span>
+ <span class="fc-mute">{%trans "Current question"%}</span> <span class="floatRa mRa10 fc-mute">{{askDetail.step | fitNumber}}</span>
 </li>
 <li class="detail">
-	<span class="fc-mute">{%trans "Total questions"%}</span> <span class="floatRa mRa10 fc-mute">{{askDetail.countblock | fitNumber}}</span>
+ <span class="fc-mute">{%trans "Total questions"%}</span> <span class="floatRa mRa10 fc-mute">{{askDetail.countblock | fitNumber}}</span>
 </li>
 <li class="detail">
-	<span class="floatRa mRa10">{{askDetail.completed | fitNumber}} %</span> <span>{%trans "Completed"%}</span>
+ <span class="floatRa mRa10">{{askDetail.completed | fitNumber}} %</span> <span>{%trans "Completed"%}</span>
 </li>
 
 <li class="detail">
-	<div class="progress" data-percent="{{askDetail.completed}}"><div class="bar"></div></div>
+ <div class="progress" data-percent="{{askDetail.completed}}"><div class="bar"></div></div>
 </li>
 
 {%if false%}
 <li class="detail">
-	<a href="{{url.this}}/restart" class="btn warn hauto outline">{%trans "Restart"%}</a>
+ <a href="{{url.this}}/restart" class="btn warn hauto outline">{%trans "Restart"%}</a>
 </li>
 {%endif%}
 
 {%if true%}
 <li class="detail">
-	<a href="{{url.kingdom}}/a/survey?id={{surveyRow.id}}" class="btn white hauto outline" data-direct>{%trans "Edit Survey"%}</a>
+ <a href="{{url.kingdom}}/a/survey?id={{surveyRow.id}}" class="btn white hauto outline" data-direct>{%trans "Edit Survey"%}</a>
 </li>
 {%endif%}
 
