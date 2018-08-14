@@ -60,28 +60,30 @@
   <table class="tbl bordered1">
     <thead class="primary fs09">
       <tr>
-      	<th>#</th>
+
       	<th>{%trans "User"%}</th>
     		<th data-sort="{{sortLink.starthate.order}}"><a href='{{sortLink.starthate.link}}'>{% trans "Start Date" %}</a></th>
     		<th data-sort="{{sortLink.enddate.order}}"><a href='{{sortLink.enddate.link}}'>{% trans "End date" %}</a></th>
     		<th data-sort="{{sortLink.step.order}}"><a href='{{sortLink.step.link}}'>{% trans "Step" %}</a></th>
     		<th data-sort="{{sortLink.complete.order}}"><a href='{{sortLink.complete.link}}'>{% trans "Complete" %}</a></th>
-    		<th data-sort="{{sortLink.answer.order}}"><a href='{{sortLink.answer.link}}'>{% trans "Answered" %}</a></th>
-    		<th data-sort="{{sortLink.skip.order}}"><a href='{{sortLink.skip.link}}'>{% trans "Skipped" %}</a></th>
+    		<!-- <th data-sort="{{sortLink.answer.order}}"><a href='{{sortLink.answer.link}}'>{% trans "Answered" %}</a></th>
+    		<th data-sort="{{sortLink.skip.order}}"><a href='{{sortLink.skip.link}}'>{% trans "Skipped" %}</a></th> -->
       </tr>
     </thead>
 
     <tbody>
       {%for key, value in dataTable%}
-      <tr class="{%if value.status=='deleted'%}negative{%elseif value.status=='draft'%}warning{%endif%}">
-      	<td>{{value.id}}</td>
-      	<td><a href="{{url.this}}/user?id={{requestGET.id}}&answer={{value.id}}"><i class="sf-user"></i></a></td>
+      <tr class="txtC">
+
+      	<td><a class="badge success" href="{{url.this}}/user?id={{requestGET.id}}&answer={{value.id}}">{%trans "Show detail"%}</a></td>
     		<td>{{value.startdate | tdate("Y/m/d H:i:s")}}</td>
     		<td>{% if value.enddate%}{{value.enddate | tdate("Y/m/d H:i:s")}}{%else%}-{%endif%}</td>
     		<td>{{value.step | fitNumber}}</td>
     		<td>{%if value.complete%}<i class="sf-check fc-green"></i>{%else%}<i class="sf-times fc-red"></i>{%endif%}</td>
+        {%if false%}
     		<td>{{value.answer | fitNumber}}</td>
     		<td>{{value.skip | fitNumber}}</td>
+        {%endif%}
       </tr>
       {%endfor%}
     </tbody>

@@ -6,9 +6,12 @@ trait datalist
 
 	public static $sort_field =
 	[
-		'title',
-		'status',
-		'signup',
+		'startdate',
+		'enddate',
+		'step',
+		'complete',
+		'answer',
+		'skip',
 	];
 
 

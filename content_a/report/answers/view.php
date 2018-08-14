@@ -50,7 +50,7 @@ class view
 
 			$search_string = \dash\request::get('q');
 
-			\dash\data::sortLink(\content_cp\view::make_sort_link(\lib\app\answer::$sort_field, \dash\url::this()));
+			\dash\data::sortLink(\dash\app\sort::make_sortLink(\lib\app\answer::$sort_field, \dash\url::this(). '/answers'));
 			$dataTable = \lib\app\answer::list($search_string, $args);
 
 			\dash\data::dataTable($dataTable);
