@@ -8,7 +8,7 @@ class model
 	{
 		$post           = [];
 		$post['title']    = \dash\request::post('title');
-		$post['desc']     = \dash\request::post('desc');
+		$post['desc']     = \dash\request::post('desc') ? $_POST['desc'] : null;
 		$post['language'] = \dash\request::post('language');
 
 		$result = \lib\app\survey::edit($post, \dash\request::get('id'));

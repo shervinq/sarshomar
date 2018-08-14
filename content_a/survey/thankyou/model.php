@@ -9,7 +9,7 @@ class model
 
 		$post                  = [];
 		$post['thankyoutitle'] = \dash\request::post('thankyoutitle');
-		$post['thankyoudesc']  = \dash\request::post('thankyoudesc');
+		$post['thankyoudesc']  = \dash\request::post('thankyoudesc') ? $_POST['thankyoudesc'] : null;
 
 		$file = \dash\app\file::upload_quick('thankyoufile');
 

@@ -19,6 +19,11 @@ class survey
 		'brandingmeta',
 		'welcomemedia',
 		'thankyoumedia',
+		'desc',
+		'brandingdesc',
+		'emailmsg',
+		'welcomedesc',
+		'thankyoudesc',
 	];
 
 	public static function get($_id)

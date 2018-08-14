@@ -13,7 +13,7 @@ class model
 		if($post['branding'])
 		{
 			$post['brandingtitle']       = \dash\request::post('brandingtitle');
-			$post['brandingdesc']        = \dash\request::post('brandingdesc');
+			$post['brandingdesc']        = \dash\request::post('brandingdesc') ? $_POST['brandingdesc'] : null;
 			$post['brandingmeta']['url'] = \dash\request::post('brandingurl') ? $_POST['brandingurl'] : null;
 
 			$file = \dash\app\file::upload_quick('brandingfile');

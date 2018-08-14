@@ -8,7 +8,7 @@ class model
 	{
 		$post                  = [];
 		$post['welcometitle'] = \dash\request::post('welcometitle');
-		$post['welcomedesc']  = \dash\request::post('welcomedesc');
+		$post['welcomedesc']  = \dash\request::post('welcomedesc') ? $_POST['welcomedesc'] : null;
 
 		$file = \dash\app\file::upload_quick('welcomefile');
 
