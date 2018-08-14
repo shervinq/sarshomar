@@ -56,9 +56,8 @@ class controller
 			// check user id and privacy and password
 			if($load['status'] !== 'publish')
 			{
-				if(intval($load['user_id']) !== intval(\dash\user::id()))
+				if(intval(\dash\coding::decode($load['user_id'])) !== intval(\dash\user::id()))
 				{
-
 					\dash\header::status(403, T_("This survey is not publish"));
 				}
 			}
