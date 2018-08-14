@@ -285,9 +285,9 @@
 {%block dropdown%}
 {{block('question_title')}}
 {{block('hidden_input')}}
-	<div class="mB10" title='{%trans "You can publish in another language"%}'>
-	  <label for="language">{%trans "Language"%}</label>
-	  <select name="language" class="ui dropdown select">
+	<div class="mB10">
+	  <label for="answer">{%trans "Your answer"%}</label>
+	  <select name="answer" class="ui dropdown select">
 	    <option value=""><i>{%trans "Please select one item"%}</i></option>
 		{%for key, value in question.choice%}
 	      <option value="{{value.title}}"  {%if myAnswer.text == value.title%} checked {%endif%}>{{value.title}}</option>
