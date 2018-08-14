@@ -137,6 +137,22 @@ class view
 		\dash\data::step_end($end_step);
 		\dash\data::step_must($must_step);
 
+		\dash\data::skipBtn(true);
+		if(in_array($step_display, ['start', 'welcome', 'thankyou', 'thankyoudefault']))
+		{
+			\dash\data::skipBtn(false);
+		}
+
+		if($step_display === 'start' || $step_display === 'welcome')
+		{
+			\dash\data::step_type('welcome');
+		}
+
+		if($step_display === 'thankyou' || $step_display === 'thankyoudefault')
+		{
+			\dash\data::step_type('thankyou');
+		}
+
 		self::askDetail();
 	}
 
