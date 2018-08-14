@@ -288,7 +288,7 @@ class answer
 			}
 		}
 
-		\dash\notif::ok(T_("Your answer was saved"));
+		// \dash\notif::ok(T_("Your answer was saved"));
 		return true;
 
 	}
