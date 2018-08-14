@@ -35,10 +35,10 @@ class view
 				$questionid = \dash\request::get('questionid');
 
 				$result = \lib\app\answer::get_result(\dash\request::get('id'), $questionid);
-				// var_dump($result);exit();
+				\dash\data::chartData($result);
 			}
 
-
+			\dash\data::include_chart(true);
 		}
 		else
 		{

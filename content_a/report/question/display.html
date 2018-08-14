@@ -5,18 +5,15 @@
 
 {%block pageContent%}
 <div class="cbox">
+   <div class="chart" id="chartdiv" >
+   </div>
 
-  {%for key, value in dataTable%}
-  <a href="{{url.this}}/question?id={{requestGET.id}}&questionid={{value.id}}">
-    <div class="msg">#{{(key + 1) | fitNumber}}<br>
-      {%if value.title%}<b>{{value.title}}</b>{%endif%}
-      {%if value.desc%}<b>{%if value.title%} | <small>{{value.desc}}</small>{%else%}{{value.desc}}{%endif%}</b>{%endif%}
-      {%if not value.title and not value.desc%}<i>{%trans "Untitled"%}</i>{%endif%}
-      <br>
-      {%if value.type%}<b>{{value.type_detail.title}}</b>{%endif%}
-    </div>
-  </a>
-  {%endfor%}
 </div>
 {%endblock%}
 
+
+{%block foot_js%}
+<script type="text/javascript">
+  {%include 'content_a/report/question/chart.js'%}
+</script>
+{%endblock%}

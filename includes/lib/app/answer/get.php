@@ -3,7 +3,7 @@ namespace lib\app\answer;
 
 trait get
 {
-	public static function get_result($_survey_id , $_answer_id)
+	public static function get_result($_survey_id , $_question_id)
 	{
 		if(!\dash\user::id())
 		{
@@ -17,25 +17,38 @@ trait get
 			return false;
 		}
 
-		$answer_id = \dash\coding::decode($_answer_id);
-		if(!$answer_id)
+		$question_id = \dash\coding::decode($_question_id);
+		if(!$question_id)
 		{
 			\dash\notif::error(T_("Invalid answer id"));
 			return false;
 		}
 
-		$get_args =
-		[
-			'answerdetails.answer_id' => $answer_id,
-			'answerdetails.survey_id' => $survey_id,
-			'surveys.user_id'         => \dash\user::id(),
-		];
+		$chart_result = \lib\db\answers::get_chart($survey_id, $question_id, \dash\user::id());
 
-		if(\dash\permission::supervisor())
+		$new = [];
+		if(is_array($chart_result))
 		{
-			unset($get_args['surveys.user_id']);
+			foreach ($chart_result as $key => $value)
+			{
+				if(isset($value['text']) && isset($value['count']))
+				{
+					$new[] =
+					[
+						'key'   => $value['text'],
+						'value' => $value['count'],
+					];
+				}
+			}
 		}
 
+		if(!$new)
+		{
+			$new = null;
+		}
+
+		$new = json_encode($new, JSON_UNESCAPED_UNICODE);
+		return $new;
 
 	}
 
