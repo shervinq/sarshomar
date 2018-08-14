@@ -24,16 +24,19 @@ class view
 
 		$step_display = 'start';
 
+		$myTitle = [];
+
 		if(isset($survey['welcometitle']) || isset($survey['welcomedesc']) || isset($survey['welcomemedia']['file']))
 		{
-			$step_display = 'welcome';
+			$step_display     = 'welcome';
+			$myTitle['title'] = isset($survey['welcometitle']) ? $survey['welcometitle'] : null;
+			$myTitle['desc']  = isset($survey['welcomedesc'])  ? $survey['welcomedesc']  : null;
+			$myTitle['media'] = isset($survey['welcomemedia']['file']) ? $survey['welcomemedia']['file'] : null;
 		}
-
 
 		$step      = \dash\request::get('step');
 		$must_step = null;
 		$end_step  = null;
-
 
 		if($step && is_numeric($step))
 		{
@@ -61,6 +64,10 @@ class view
 					\dash\header::status(404, T_("Invalid question id"));
 				}
 			}
+
+			$myTitle['title'] = isset($question['title']) ? $question['title'] : null;
+			$myTitle['desc']  = isset($question['desc'])  ? $question['desc']  : null;
+			$myTitle['media'] = isset($question['media']['file']) ? $question['media']['file'] : null;
 
 			$answer = \lib\db\answers::get(['survey_id' => \dash\coding::decode(\dash\url::module()), 'user_id' => \dash\user::id(), 'limit' => 1]);
 
@@ -109,6 +116,11 @@ class view
 				{
 					$step_display = 'thankyoudefault';
 				}
+
+				$myTitle['title'] = isset($survey['thankyoutitle']) ? $survey['thankyoutitle'] : null;
+				$myTitle['desc']  = isset($survey['thankyoudesc'])  ? $survey['thankyoudesc']  : null;
+				$myTitle['media'] = isset($survey['thankyoumedia']['file']) ? $survey['thankyoumedia']['file'] : null;
+
 			}
 
 		}
@@ -116,6 +128,8 @@ class view
 		{
 			\dash\data::nextQuestion(1);
 		}
+
+		\dash\data::myTitle($myTitle);
 
 		self::make_xkey_xvalue();
 
