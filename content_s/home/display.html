@@ -12,11 +12,10 @@
   <div class="cbox mB10">
 {{block("blockTitle")}}
 
-
 {%if step.type == 'welcome' %}
 {{block('startBtn')}}
 {%elseif step.type == 'thankyou' %}
-BYE
+ <a class="msg info2 mB0 block txtC" href="{{url.kingdom}}"><b>{{site.title}}</b> | {{site.desc}}</a>
 {%endif%}
 
   </div>
