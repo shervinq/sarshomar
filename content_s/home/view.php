@@ -13,7 +13,7 @@ class view
 			\dash\data::page_title($page_title);
 		}
 
-		\dash\data::page_desc(T_("Description of survey"));
+		\dash\data::page_desc(" ");
 		$page_desc = \dash\data::surveyRow_desc();
 		if($page_desc)
 		{
