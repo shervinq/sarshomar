@@ -16247,7 +16247,8 @@ body.siftal .full .middle {
   background-color: #fff;
   overflow: hidden;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
-  user-select: none; }
+  user-select: none;
+  z-index: 1; }
 
 .siftal header:hover {
   overflow: visible; }
