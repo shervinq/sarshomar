@@ -195,9 +195,16 @@
 
 
 
-{%block question_title%}
+
+{%block require_html%}
+{%if question.require%}
+ <small class="fc-red">* {%trans "Require"%}</small>
+{%endif%}
 {%endblock%}
 
+{%block require_attr%}
+{%if question.require%} required {%endif%}
+{%endblock%}
 
 
 {%block start_btn%}
@@ -208,11 +215,10 @@
 
 
 {%block short_answer%}
-{{block('question_title')}}
 {{block('hidden_input')}}
  <div class="input">
-  <label for="answer">{%trans "Type your answer"%}</label>
-  <input type="text" id="answer" name="answer" value="{{myAnswer.text}}" placeholder='{%trans "Type here ..."%}'>
+  <label for="answer">{%trans "Type your answer"%}{{block('require_html')}}</label>
+  <input type="text" id="answer" name="answer" value="{{myAnswer.text}}" {{block('require_attr')}}  placeholder='{%trans "Type here ..."%}'>
  </div>
  {{block('nextBtn')}}
 
@@ -222,9 +228,8 @@
 
 {%block descriptive_answer%}
 {{block('hidden_input')}}
-{{block('question_title')}}
- <label for="answer">{%trans "Type your answer"%}</label>
- <textarea class="txt" type="text" id="answer" name="answer" placeholder='{%trans "Type here ..."%}' rows="3">{{myAnswer.text}}</textarea>
+ <label for="answer">{%trans "Type your answer"%}{{block('require_html')}}</label>
+ <textarea class="txt" type="text" id="answer" name="answer" placeholder='{%trans "Type here ..."%}' {{block('require_attr')}} rows="3">{{myAnswer.text}}</textarea>
  {{block('nextBtn')}}
 {%endblock%}
 
@@ -232,25 +237,18 @@
 
 
 {%block confirm%}
-{{block('question_title')}}
 {{block('hidden_input')}}
  <input type="hidden" name="next" value="step">
  {{block('nextBtn')}}
 {%endblock%}
 
 
-{%block require%}
- <small class="fc-red">* {%trans "Require"%}</small>
-{%endblock%}
-
-
 
 {%block date%}
-{{block('question_title')}}
 {{block('hidden_input')}}
- <label for="answer">{%trans "Answer"%}</label>
+ <label for="answer">{%trans "Answer"%}{{block('require_html')}}</label>
  <div class="input">
-   <input class="datepicker" type="text" name="answer" id="answer" placeholder='{{"1369/04/15" | fitNumber}} *' value="{{myAnswer.text}}" maxlength='20' data-format="YYYY/MM/DD" data-view="year">
+   <input class="datepicker" type="text" name="answer" id="answer" placeholder='{{"1369/04/15" | fitNumber}}' {{block('require_attr')}} value="{{myAnswer.text}}" maxlength='20' data-format="YYYY/MM/DD" data-view="year">
  </div>
  {{block('nextBtn')}}
 {%endblock%}
@@ -258,21 +256,21 @@
 
 
 {%block email%}
-{{block('question_title')}}
 {{block('hidden_input')}}
- <label for="answer">{%trans "Answer"%}</label>
+ <label for="answer">{%trans "Answer"%}{{block('require_html')}}</label>
  <div class="input">
-   <input class="" type="email" name="answer" id="answer" value="{{myAnswer.text}}"  placeholder='{%trans "Type here ..."%}'>
+   <input class="" type="email" name="answer" id="answer" value="{{myAnswer.text}}" {{block('require_attr')}} placeholder='{%trans "Type here ..."%}'>
  </div>
  {{block('nextBtn')}}
 {%endblock%}
 
+
+
 {%block website%}
-{{block('question_title')}}
 {{block('hidden_input')}}
- <label for="answer">{%trans "Answer"%}</label>
+ <label for="answer">{%trans "Answer"%}{{block('require_html')}}</label>
  <div class="input">
-   <input class="" type="url" name="answer" id="answer" value="{{myAnswer.text}}"  placeholder='{%trans "Type here ..."%}'>
+   <input class="" type="url" name="answer" id="answer" value="{{myAnswer.text}}" {{block('require_attr')}} placeholder='{%trans "Type here ..."%}'>
  </div>
  {{block('nextBtn')}}
 {%endblock%}
@@ -280,23 +278,21 @@
 
 
 {%block rating%}
-{{block('question_title')}}
 {{block('hidden_input')}}
- <label for="answer">{%trans "Answer"%}</label>
+ <label for="answer">{%trans "Answer"%}{{block('require_html')}}</label>
  <div class="input">
-   <input class="" type="number" name="answer" id="answer" value="{{myAnswer.text}}" placeholder='{%trans "Type here ..."%}'>
+   <input class="" type="number" name="answer" id="answer" value="{{myAnswer.text}}" {{block('require_attr')}} placeholder='{%trans "Type here ..."%}'>
  </div>
  {{block('nextBtn')}}
 {%endblock%}
 
 
 {%block star%}
-{{block('question_title')}}
 {{block('hidden_input')}}
 
- <label for="answer">{%trans "Answer"%}</label>
+ <label for="answer">{%trans "Answer"%}{{block('require_html')}}</label>
  <div class="input">
-   <input class="" type="number" name="answer" id="answer"  value="{{myAnswer.text}}" placeholder='{%trans "Type here ..."%}'>
+   <input class="" type="number" name="answer" id="answer"  value="{{myAnswer.text}}" {{block('require_attr')}} placeholder='{%trans "Type here ..."%}'>
  </div>
  {{block('nextBtn')}}
 {%endblock%}
@@ -306,7 +302,6 @@
 
 
 {%block single_choice%}
-{{block('question_title')}}
 {{block('hidden_input')}}
  {%for key, value in question.choice%}
   <div class="radio1 green">
@@ -320,7 +315,6 @@
 
 
 {%block multiple_choice%}
-{{block('question_title')}}
 {{block('hidden_input')}}
  {%for key, value in question.choice%}
   <div class="check1 mB10">
@@ -336,10 +330,9 @@
 
 
 {%block dropdown%}
-{{block('question_title')}}
 {{block('hidden_input')}}
  <div class="mB10">
-   <label for="answer">{%trans "Your answer"%}</label>
+   <label for="answer">{%trans "Your answer"%}{{block('require_html')}}</label>
    <select name="answer" class="ui dropdown select">
      <option value=""><i>{%trans "Please select one item"%}</i></option>
   {%for key, value in question.choice%}
@@ -354,30 +347,15 @@
 
 
 {%block numeric%}
-{{block('question_title')}}
 {{block('hidden_input')}}
  <div class="input">
   <label for="answer">{%trans "Type your answer"%}</label>
-  <input type="number" id="answer" name="answer" value="{{myAnswer.text}}" placeholder='{%trans "Type here ..."%}'>
+  <input type="number" id="answer" name="answer" value="{{myAnswer.text}}" {{block('require_attr')}} placeholder='{%trans "Type here ..."%}'>
  </div>
  {{block('nextBtn')}}
 {%endblock%}
 
 
-
-
-
-
-{%block short_text%}
-{{block('question_title')}}
-<div class="justify-center f pA10">
- <div class="input">
-  <label for="answer">{%trans "Type your answer"%}</label>
-  <input type="text" id="answer" name="answer" value="{{myAnswer.text}}" placeholder='{%trans "Type here ..."%}'>
- </div>
- {{block('nextBtn')}}
-</div>
-{%endblock%}
 
 
 

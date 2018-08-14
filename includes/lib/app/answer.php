@@ -119,7 +119,7 @@ class answer
 			}
 		}
 
-		$require = self::check_require($question_detail, $answer);
+		$require = self::check_require($question_detail, $answer, $skip);
 		if(!$require)
 		{
 			\dash\notif::error(T_("Please fill this field to continue"), 'answer');
@@ -294,7 +294,7 @@ class answer
 	}
 
 
-	public static function check_require($_question_detail, $_answer)
+	public static function check_require($_question_detail, $_answer, $_skip = false)
 	{
 		// check is require
 		if(isset($_question_detail['require']) && $_question_detail['require'])
@@ -305,7 +305,11 @@ class answer
 				{
 					return true;
 				}
-				return false;
+
+				if(!$_skip)
+				{
+					return false;
+				}
 			}
 		}
 		return true;
