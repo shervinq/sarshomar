@@ -102,16 +102,28 @@ class twigTransTerms
 	echo T_("Permission");                                                            // Line 24
 	echo T_("No permission");                                                         // Line 269
 	echo T_("Email");                                                                 // Line 108
-	echo T_("To change your password");                                               // Line 280
-	echo T_("Click here");                                                            // Line 280
-	echo T_("Delete your account");                                                   // Line 285
+	echo T_("To change your password");                                               // Line 258
+	echo T_("Click here");                                                            // Line 258
+	echo T_("Delete your account");                                                   // Line 263
 	echo T_("Confirm password");                                                      // Line 296
 	echo T_("Require to change current password");                                    // Line 296
 	echo T_("Password was set, enter to change it!");                                 // Line 298
-	echo T_("Password not set, enter to set it!");                                    // Line 294
+	echo T_("Password not set, enter to set it!");                                    // Line 272
 	echo T_("Add");                                                                   // Line 53
 	echo T_("Save");                                                                  // Line 13
 	echo T_("Save all");                                                              // Line 324
+
+	//-------------------------------addons\content_account\profile\other\display.html
+
+	//------------------------------------addons\content_account\profile\pagestep.html
+	echo T_("General");                                                               // Line 13
+	echo T_("Security");                                                              // Line 23
+	echo T_("Social network");                                                        // Line 33
+	echo T_("Other");                                                                 // Line 42
+
+	//----------------------------addons\content_account\profile\security\display.html
+
+	//------------------------------addons\content_account\profile\social\display.html
 
 	//-----------------------------------------addons\content_account\ref\display.html
 	echo T_("Referral Program");                                                      // Line 11
