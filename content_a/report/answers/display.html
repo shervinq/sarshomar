@@ -10,6 +10,7 @@
 
 
 {%if dataTable%}
+<a class="btn mA5" href="{{url.that}}?id={{requestGET.id}}&export=true">{%trans "Export csv"%}</a>
  {%if dataFilter%}
 
   {{block('htmlSearchBox')}}
