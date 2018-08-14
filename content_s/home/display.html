@@ -177,7 +177,11 @@
 
 
 {%block nextBtn%}
- <button class="btn primary block mT20">{%trans "Save & Next"%}</button>
+{%if question.setting.buttontitle%}
+<button class="btn primary block mT20">{{question.setting.buttontitle}}</button>
+{%else%}
+<button class="btn primary block mT20">{%trans "Save & Next"%}</button>
+{%endif%}
 {%endblock%}
 
 
