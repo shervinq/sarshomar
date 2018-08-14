@@ -16,33 +16,21 @@
 {{block('startBtn')}}
 {%elseif step.type == 'thankyou' %}
  <a class="msg info2 mB0 block txtC" href="{{url.kingdom}}"><b>{{site.title}}</b> | {{site.desc}}</a>
+{%else%}
+    <form method="post" autocomplete="off">
+    {{block(step.display)}}
+   </form>
 {%endif%}
 
   </div>
 {%if skipBtn %}
   <div class="f">
-   <a class="cauto os btn outline" href="#">{%trans "I'm not willing to answer"%}</a>
+   <a class="cauto os btn outline" href="{{url.pwd}}" data-ajaxify data-method='post' data-data='{"skip":true}'>{%trans "I'm not willing to answer"%}</a>
   </div>
 {%endif%}
  </div>
 </div>
 
-
-
-
-{%if step.display == 'welcome' or step.display == 'thankyou' or step.display == 'thankyoudefault' or step.display == 'start'%}
- <div class="cbox">
-  {{block(step.display)}}
- </div>
-{%else%}
- <div class="f justify-center">
-  <div class="cbox c6 m12 s11">
-   <form method="post" autocomplete="off">
-    {{block(step.display)}}
-   </form>
-  </div>
- </div>
-{%endif%}
 {%endblock%}
 
 
@@ -189,11 +177,7 @@
 
 
 {%block nextBtn%}
-<div class="f justify-center">
- <button class="c9 s12 m12 btn success  mT20">{%trans "Save & Next"%}</button>
- <button name="skip" value="skip" class="c2 s12 m12 btn block mR10 outline mT20">{%trans "Skip"%}</button>
-</div>
-{{block('next_back')}}
+ <button class="btn primary block mT20">{%trans "Save & Next"%}</button>
 {%endblock%}
 
 
@@ -212,18 +196,6 @@
 
 
 {%block question_title%}
-<div class="msg primary2"><b>{{question.title}}</b></div>
-
-{%if question.desc %}
-<div class="msg">
- <p>{{question.desc}}</p>
-</div>
-{%endif%}
-
-{%if question.media.file %}
- <img src="{{question.media.file}}" class="w300">
-{%endif%}
-
 {%endblock%}
 
 
