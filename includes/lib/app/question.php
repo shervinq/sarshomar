@@ -301,6 +301,15 @@ class question
 			return false;
 		}
 
+		$choice_sort = \dash\app::request('choice_sort');
+		if($choice_sort && !in_array($choice_sort, ['save','random','asc','desc',]))
+		{
+			\dash\notif::error(T_("Invalid choice sort of question"), 'choice_sort');
+			return false;
+		}
+
+
+
 		if(is_array($media))
 		{
 			$media = json_encode($media, JSON_UNESCAPED_UNICODE);
@@ -381,6 +390,7 @@ class question
 			$setting['random']      = \dash\app::request('random') ? true : false;
 			$setting['min']         = $min;
 			$setting['max']         = $max;
+			$setting['choice_sort'] = $choice_sort;
 			$setting['otherchoice'] = \dash\app::request('otherchoice') ? true : false;
 			$buttontitle            = \dash\app::request('buttontitle');
 			if($buttontitle && mb_strlen($buttontitle) > 10000)

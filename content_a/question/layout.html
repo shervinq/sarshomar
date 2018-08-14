@@ -35,12 +35,34 @@
 
 
 {%block irandom%}
-  {%if choiceDetail.random%}
-    <div class="switch1 mB10">
-     <input type="checkbox" name="random" id="random" {%if dataRow.setting.random %}checked{%endif%}>
-     <label for="random"></label>
-     <label for="random">{%trans "Show random choice"%}</label>
-    </div>
+  {%if choiceDetail.choice%}
+
+<div class="mT15">
+ <label >{%trans "Sort choice type"%}</label>
+
+ <div class="radio1">
+  <input type="radio" id="r-save" name="choice_sort" value="save" {%if dataRow.setting.choice_sort == 'save' or not  dataRow.setting.choice_sort %} checked{%endif%}>
+  <label for="r-save">{%trans "By save"%}</label>
+ </div>
+
+ <div class="radio1">
+  <input type="radio" id="r-random" name="choice_sort" value="random" {%if dataRow.setting.choice_sort == 'random' %} checked{%endif%}>
+  <label for="r-random">{%trans "Random"%}</label>
+ </div>
+
+
+ <div class="radio1">
+  <input type="radio" id="r-asc" name="choice_sort" value="asc" {%if dataRow.setting.choice_sort == 'asc' %} checked{%endif%}>
+  <label for="r-asc">{%trans "Alphabet A-Z"%}</label>
+ </div>
+
+ <div class="radio1">
+  <input type="radio" id="r-desc" name="choice_sort" value="desc" {%if dataRow.setting.choice_sort == 'desc' %} checked{%endif%}>
+  <label for="r-desc">{%trans "Alphabet Z-A"%}</label>
+ </div>
+
+
+</div>
   {%endif%}
 {%endblock%}
 
@@ -94,7 +116,7 @@
 {%block ichoice %}
 <label for="choicetitle">{%trans "Title"%}</label>
 <div class="input">
-  <input type="text" name="choicetitle" id="choicetitle" placeholder='{%trans "Choise title"%}' autofocus {% if not haveUploadChoise %} required {%endif%} maxlength='200' minlength="1" pattern=".{1,200}" >
+  <input type="text" name="choicetitle" id="choicetitle" placeholder='{%trans "Choise title"%}' autofocus {% if not choiceDetail.upload_choice %} required {%endif%} maxlength='200' minlength="1" pattern=".{1,200}" >
 </div>
 {% endblock %}
 
@@ -152,7 +174,7 @@
 
 
 
-   {%if haveChoise%}
+   {%if choiceDetail.choice%}
    <div class="c s4">
     <a class="dcard {%if url.child == 'choice'%}active{%endif%}" href='{{url.this}}/choice?id={{requestGET.id}}&questionid={{requestGET.questionid}}' data-shortkey="52ctrlshift" >
      <div class="statistic sm">

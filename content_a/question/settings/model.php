@@ -11,7 +11,7 @@ class model
 		$post['maxchar']     = \dash\request::post('maxchar');
 		$post['min']         = \dash\request::post('min');
 		$post['max']         = \dash\request::post('max');
-		$post['random']      = \dash\request::post('random');
+		$post['choice_sort'] = \dash\request::post('choice_sort');
 		$post['otherchoice'] = \dash\request::post('otherchoice');
 		$post['buttontitle'] = \dash\request::post('buttontitle');
 		$post['survey_id']   = \dash\request::get('id');

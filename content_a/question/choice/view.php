@@ -17,7 +17,7 @@ class view
 		\dash\data::badge_link(\dash\url::this(). '?id='. \dash\request::get('id'));
 		\dash\data::badge_text(T_('Back to question dashboard'));
 
-		if(!\dash\data::haveChoise())
+		if(!\dash\data::choiceDetail_otherchoice())
 		{
 			\dash\redirect::to(\dash\url::this(). '/title?'. http_build_query(\dash\request::get()));
 		}
