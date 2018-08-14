@@ -212,8 +212,15 @@ class answer
 
 			if(intval($_step) === intval($countblock))
 			{
-				$update_answer['complete'] = 1;
-				$update_answer['enddate']  = self::dateNow();
+				if(isset($load_old_answer['complete']) && $load_old_answer['complete'])
+				{
+					// if before this request the question is completed not complete again
+				}
+				else
+				{
+					$update_answer['complete'] = 1;
+					$update_answer['enddate']  = self::dateNow();
+				}
 			}
 
 			\lib\db\answers::update($update_answer, $answer_id);
