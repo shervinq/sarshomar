@@ -22,11 +22,11 @@ class view
 
 		$survey = \dash\data::surveyRow();
 
-		$display_step = 'start';
+		$step_display = 'start';
 
 		if(isset($survey['welcometitle']) || isset($survey['welcomedesc']) || isset($survey['welcomemedia']['file']))
 		{
-			$display_step = 'welcome';
+			$step_display = 'welcome';
 		}
 
 
@@ -46,7 +46,7 @@ class view
 				return;
 			}
 
-			$end_step  = \dash\data::surveyRow_countblock() ? \dash\data::surveyRow_countblock() : $must_step;
+			$end_step  = \dash\data::surveyRow_countblock();
 
 			$question = \lib\app\question::get_by_step(\dash\url::module(), $step);
 
@@ -54,7 +54,7 @@ class view
 			{
 				if($step >= $end_step + 1)
 				{
-					$display_step = 'thankyou';
+					$step_display = 'thankyou';
 				}
 				else
 				{
@@ -63,6 +63,8 @@ class view
 			}
 
 			$answer = \lib\db\answers::get(['survey_id' => \dash\coding::decode(\dash\url::module()), 'user_id' => \dash\user::id(), 'limit' => 1]);
+
+			\dash\data::answerRow($answer);
 
 			$must_step = 1;
 
@@ -82,9 +84,9 @@ class view
 
 			\dash\data::question($question);
 
-			if($display_step !== 'thankyou')
+			if($step_display !== 'thankyou')
 			{
-				$display_step = $question['type'];
+				$step_display = $question['type'];
 			}
 
 			if(isset($question['id']))
@@ -97,15 +99,15 @@ class view
 				\dash\data::myAnswer($myAnswer);
 			}
 
-			if($display_step === 'thankyou')
+			if($step_display === 'thankyou')
 			{
 				if(isset($survey['thankyoutitle']) || isset($survey['thankyoudesc']) || isset($survey['thankyoumedia']['file']))
 				{
-					$display_step = 'thankyou';
+					$step_display = 'thankyou';
 				}
 				else
 				{
-					$display_step = 'thankyoudefault';
+					$step_display = 'thankyoudefault';
 				}
 			}
 
@@ -117,9 +119,11 @@ class view
 
 		self::make_xkey_xvalue();
 
-		\dash\data::step_display($display_step);
+		\dash\data::step_display($step_display);
 		\dash\data::step_end($end_step);
 		\dash\data::step_must($must_step);
+
+		self::askDetail();
 	}
 
 
@@ -132,6 +136,47 @@ class view
 		$XVALUE = md5(rand());
 		\dash\session::set('XVALUE_'. \dash\url::module(), $XVALUE);
 		\dash\data::XVALUE($XVALUE);
+	}
+
+
+	public static function askDetail()
+	{
+		// $answer = \dash\data::answerRow();
+		if(\dash\data::answerRow_startdate())
+		{
+			$start_time = date("Y-m-d H:i:s", strtotime(\dash\data::answerRow_startdate()));
+		}
+		else
+		{
+			$start_time = date("Y-m-d H:i:s");
+		}
+
+		$time_left = time() - strtotime($start_time);
+		$min = intval($time_left / 60);
+		$sec = intval($time_left % 60);
+
+
+		$spend_time = "$min:$sec";
+		$remain_time = null;
+		$step = \dash\request::get('step');
+		$count_block = \dash\data::surveyRow_countblock();
+		if(!$count_block)
+		{
+			$count_block = 1;
+		}
+		$completed = round((intval($step) * 100) / $count_block);
+
+		$askDetail =
+		[
+			'start_time'  => date("H:i:s", strtotime($start_time)),
+			'spend_time'  => $spend_time,
+			'remain_time' => $remain_time,
+			'end_time'    => null,
+			'completed'   => $completed,
+		];
+
+		\dash\data::askDetail($askDetail);
+
 	}
 }
 ?>

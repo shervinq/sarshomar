@@ -293,7 +293,7 @@ class answer
 		// check is require
 		if(isset($_question_detail['require']) && $_question_detail['require'])
 		{
-			if(!$_answer && $_answer !== '0' || empty($answer))
+			if((!$_answer && $_answer !== '0') || (is_array($_answer) && empty($_answer)))
 			{
 				return false;
 			}
