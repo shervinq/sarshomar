@@ -51,12 +51,16 @@
 			</div>
 {%endif%}
 
+{%if surveyRow.welcometitle or surveyRow.welcomedesc%}
 			<div class="detailBox">
+{%if surveyRow.welcometitle%}
 				<h2 class="txtC">{{surveyRow.welcometitle}}</h2>
-{%if surveyRow.welcomedesc %}
+{%endif%}
+{%if surveyRow.welcomedesc%}
 				<p class="msg txtC">{{surveyRow.welcomedesc | raw}}</p>
 {%endif%}
 			</div>
+{%endif%}
 {%endblock%}
 
 
