@@ -19,7 +19,7 @@
   </a>
   {%endfor%}
 
-{%elseif dataTable%}
+{%elseif dataTable and not showChart%}
 
   {{block('htmlTable')}}
 
