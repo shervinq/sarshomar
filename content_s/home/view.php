@@ -14,11 +14,11 @@ class view
 		}
 
 		\dash\data::page_desc(T_("Description of survey"));
-		// $page_desc = \dash\data::surveyRow_desc();
-		// if($page_desc)
-		// {
-		// 	\dash\data::page_desc($page_desc);
-		// }
+		$page_desc = \dash\data::surveyRow_desc();
+		if($page_desc)
+		{
+			\dash\data::page_desc($page_desc);
+		}
 
 		$survey = \dash\data::surveyRow();
 
@@ -26,8 +26,9 @@ class view
 
 		if(isset($survey['welcometitle']) || isset($survey['welcomedesc']) || isset($survey['welcomemedia']['file']))
 		{
-			$step = 'welcome';
+			$display_step = 'welcome';
 		}
+
 
 		$step      = \dash\request::get('step');
 		$must_step = null;

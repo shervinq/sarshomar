@@ -134,7 +134,8 @@ trait type
 		[
 			'key'           => 'confirm',
 			'title'         => T_('Confirm buttom'),
-			'maxchar'       => true,
+			'require'       => false,
+			'maxchar'       => false,
 			// 'desc'          => T_('Confirm buttom'),
 			'logo'			=> \dash\url::site(). '/static/images/logo.png',
 		];
