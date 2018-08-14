@@ -11,6 +11,13 @@
  <div class="c4 s12">{{block ("stSort")}}</div>
 </div>
 
+
+<div class="f">
+ <div class="c4 s12">{{block ("stLink")}}</div>
+ <div class="c4 s12">{{block ("stReport")}}</div>
+ <div class="c4 s12">{{block ("prDate")}}</div>
+</div>
+{%if false%}
 <div class="f">
   <div class="c9 s12">
     {{block ("chart_primary")}}
@@ -19,13 +26,8 @@
     {{block ("stChartDetail")}}
   </div>
 </div>
+{%endif%}
 
-
-<div class="f">
- <div class="c4 s12">{{block ("stLink")}}</div>
- <div class="c4 s12">{{block ("stReport")}}</div>
- <div class="c4 s12">{{block ("prDate")}}</div>
-</div>
 
 
 {%endblock%}
@@ -33,7 +35,7 @@
 
 
 {%block stLink%}
-<a class="dcard" data-direct href='{{url.base}}/s/{{surveyRow.id}}'>
+<a class="dcard x2" data-direct href='{{url.base}}/s/{{surveyRow.id}}'>
  <div class="statistic orange">
   <div class="value"><i class="sf-link"></i></div>
   <div class="label">{%trans "Show preview"%}</div>
@@ -43,7 +45,7 @@
 
 
 {%block stSetting%}
-<a class="dcard" href='{{url.this}}/general?id={{requestGET.id}}'>
+<a class="dcard x2" href='{{url.this}}/general?id={{requestGET.id}}'>
  <div class="statistic teal">
   <div class="value"><i class="sf-cog"></i></div>
   <div class="label">{%trans "Setting"%}</div>
@@ -54,7 +56,7 @@
 
 
 {%block stQuestion%}
-<a class="dcard" href='{{url.here}}/question?id={{requestGET.id}}'>
+<a class="dcard x2" href='{{url.here}}/question?id={{requestGET.id}}'>
  <div class="statistic pink">
   <div class="value"><i class="sf-list-ol"></i></div>
   <div class="label">{%trans "Questions"%}</div>
@@ -64,7 +66,7 @@
 
 
 {%block stSort%}
-<a class="dcard" href='{{url.here}}/sort?id={{requestGET.id}}'>
+<a class="dcard x2" href='{{url.here}}/sort?id={{requestGET.id}}'>
  <div class="statistic yellow">
   <div class="value"><i class="sf-flag-checkered"></i></div>
   <div class="label">{%trans "Question Sorter"%}</div>
@@ -75,7 +77,7 @@
 
 
 {%block stReport%}
-<a class="dcard" href='{{url.here}}/report?id={{requestGET.id}}'>
+<a class="dcard x2" href='{{url.here}}/report?id={{requestGET.id}}'>
  <div class="statistic brown">
   <div class="value"><i class="sf-chart"></i></div>
   <div class="label">{%trans "Report"%}</div>
@@ -86,7 +88,7 @@
 
 
 {%block prDate%}
-<div class="dcard">
+<div class="dcard x2">
  <div class="block">
   <div class="f">
   {%if lang.current == 'fa'%}
