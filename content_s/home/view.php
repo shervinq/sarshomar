@@ -174,7 +174,7 @@ class view
 			'remain_time' => $remain_time,
 			'end_time'    => null,
 			'completed'   => $completed,
-			'step'        => $step,
+			'step'        => $step > \dash\data::surveyRow_countblock() ? \dash\data::surveyRow_countblock() : $step,
 			'countblock'  => \dash\data::surveyRow_countblock(),
 		];
 
