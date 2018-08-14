@@ -12,11 +12,19 @@
   <div class="cbox mB10">
 {{block("blockTitle")}}
 
-{{block('start_btn')}}
+
+{%if step.type == 'welcome' %}
+{{block('startBtn')}}
+{%elseif step.type == 'thankyou' %}
+BYE
+{%endif%}
+
   </div>
+{%if skipBtn %}
   <div class="f">
    <a class="cauto os btn outline" href="#">{%trans "I'm not willing to answer"%}</a>
   </div>
+{%endif%}
  </div>
 </div>
 
@@ -41,25 +49,25 @@
 
 
 {%block blockTitle%}
-{%if surveyRow.welcomemedia.file%}
+{%if myTitle.media%}
    <div class="imgBox mB20">
- {%if surveyRow.welcomemedia.fileType == 'image' or 1 %}
-    <img src="{{surveyRow.welcomemedia.file}}" alt="{{surveyRow.welcometitle}}">
- {%elseif surveyRow.welcomemedia.fileType == 'video' %}
+ {%if myTitle.mediaType == 'image' or 1 %}
+    <img src="{{myTitle.media}}" alt="{{myTitle.title}}">
+ {%elseif myTitle.mediaType == 'video' %}
     <video controls>
-     <source src="{{surveyRow.welcomemedia.file}}" type="video/mp4">
+     <source src="{{myTitle.media}}" type="video/mp4">
     </video>
  {%endif%}
    </div>
 {%endif%}
 
-{%if surveyRow.welcometitle or surveyRow.welcomedesc%}
+{%if myTitle.title or myTitle.desc%}
    <div class="detailBox">
-{%if surveyRow.welcometitle%}
-    <h2 class="txtC">{{surveyRow.welcometitle}}</h2>
+{%if myTitle.title%}
+    <h2 class="txtC">{{myTitle.title}}</h2>
 {%endif%}
-{%if surveyRow.welcomedesc%}
-    <p class="msg txtC">{{surveyRow.welcomedesc | raw}}</p>
+{%if myTitle.desc%}
+    <p class="msg txtC">{{myTitle.desc | raw}}</p>
 {%endif%}
    </div>
 {%endif%}
@@ -67,7 +75,9 @@
 
 
 
-
+{%block startBtn%}
+ <a href="{{url.pwd}}" data-ajaxify data-data='{"start":"survey", "{{XKEY}}":"{{XVALUE}}"}' data-method='post' class="btn outline lg success block">{%trans "Start"%}</a>
+{%endblock%}
 
 
 
