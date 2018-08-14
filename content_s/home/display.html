@@ -351,10 +351,10 @@
 {%endif%}
 <hr>
 <li class="detail">
-	<span class="fc-mute">{%trans "Current question"%}</span> <span class="floatRa mRa10 fc-mute">{{requestGET.step | fitNumber}}</span>
+	<span class="fc-mute">{%trans "Current question"%}</span> <span class="floatRa mRa10 fc-mute">{{askDetail.step | fitNumber}}</span>
 </li>
 <li class="detail">
-	<span class="fc-mute">{%trans "Total questions"%}</span> <span class="floatRa mRa10 fc-mute">{{surveyRow.countblock | fitNumber}}</span>
+	<span class="fc-mute">{%trans "Total questions"%}</span> <span class="floatRa mRa10 fc-mute">{{askDetail.countblock | fitNumber}}</span>
 </li>
 <li class="detail">
 	<span class="floatRa mRa10">{{askDetail.completed | fitNumber}} %</span> <span>{%trans "Completed"%}</span>

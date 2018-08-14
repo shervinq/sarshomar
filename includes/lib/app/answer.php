@@ -179,10 +179,11 @@ class answer
 		{
 			$answer_id       = $load_old_answer['id'];
 
-			$answer_count    = (isset($load_old_answer['answer']) && $load_old_answer['answer'])       ? intval($load_old_answer['answer'])    : 0;
-			$skip_count      = (isset($load_old_answer['skip']) && $load_old_answer['skip'])           ? intval($load_old_answer['skip'])      : 0;
-			$answertry_count = (isset($load_old_answer['answertry']) && $load_old_answer['answertry']) ? intval($load_old_answer['answertry']) : 0;
-			$skiptry_count   = (isset($load_old_answer['skiptry']) && $load_old_answer['skiptry'])     ? intval($load_old_answer['skiptry'])   : 0;
+			$answer_count    = (isset($load_old_answer['answer']) && $load_old_answer['answer'])            ? intval($load_old_answer['answer'])    	: 0;
+			$skip_count      = (isset($load_old_answer['skip']) && $load_old_answer['skip'])           		? intval($load_old_answer['skip'])      	: 0;
+			$answertry_count = (isset($load_old_answer['answertry']) && $load_old_answer['answertry']) 		? intval($load_old_answer['answertry']) 	: 0;
+			$skiptry_count   = (isset($load_old_answer['skiptry']) && $load_old_answer['skiptry'])     		? intval($load_old_answer['skiptry'])   	: 0;
+			$countblock      = (isset($survey_detail['countblock']) && $survey_detail['countblock'])    ? intval($survey_detail['countblock'])    : 0;
 
 			$update_answer = [];
 
@@ -201,6 +202,11 @@ class answer
 			$update_answer['step']         = $_step;
 			$update_answer['lastquestion'] = $question_id;
 			$update_answer['lastmodified'] = self::dateNow();
+
+			if(intval($_step) === intval($countblock))
+			{
+				$update_answer['complete'] = 1;
+			}
 
 			\lib\db\answers::update($update_answer, $answer_id);
 		}
@@ -295,6 +301,10 @@ class answer
 		{
 			if((!$_answer && $_answer !== '0') || (is_array($_answer) && empty($_answer)))
 			{
+				if(isset($_question_detail['type']) && $_question_detail['type'] === 'confirm')
+				{
+					return true;
+				}
 				return false;
 			}
 		}

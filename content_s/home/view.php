@@ -160,6 +160,7 @@ class view
 		$remain_time = null;
 		$step = \dash\request::get('step');
 		$count_block = \dash\data::surveyRow_countblock();
+		$count_block = $count_block + 1; // welcome and thankyou step
 		if(!$count_block)
 		{
 			$count_block = 1;
@@ -173,6 +174,8 @@ class view
 			'remain_time' => $remain_time,
 			'end_time'    => null,
 			'completed'   => $completed,
+			'step'        => $step,
+			'countblock'  => \dash\data::surveyRow_countblock(),
 		];
 
 		\dash\data::askDetail($askDetail);
