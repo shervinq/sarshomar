@@ -117,6 +117,13 @@ class answer
 				\dash\notif::error(T_("Invalid your answer"), 'answer');
 				return false;
 			}
+
+			$validation_min_max = self::answer_validate_min_max($question_detail, $answer);
+			if(!$validation_min_max)
+			{
+				\dash\notif::error(T_("Your answer is out of range"), 'answer');
+				return false;
+			}
 		}
 
 		$require = self::check_require($question_detail, $answer, $skip);
@@ -315,9 +322,83 @@ class answer
 		return true;
 	}
 
+	public static function answer_validate_min_max($_question_detail, $_answer)
+	{
+
+		$maxchar = 10000;
+		$min     = 0;
+		$max     = 999999999;
+		if(isset($_question_detail['maxchar']))
+		{
+			$maxchar = intval($_question_detail['maxchar']);
+		}
+
+		if(isset($_question_detail['setting']['min']))
+		{
+			$min = intval($_question_detail['setting']['min']);
+		}
+
+		if(isset($_question_detail['setting']['max']))
+		{
+			$max = intval($_question_detail['setting']['max']);
+		}
+
+		$valid = true;
+		switch ($_question_detail['type'])
+		{
+			case 'short_answer':
+			case 'descriptive_answer':
+			case 'email':
+			case 'website':
+				if(mb_strlen($_answer) > $maxchar)
+				{
+					$valid = false;
+				}
+				break;
+
+			case 'numeric':
+				if(intval($_answer) < $min || intval($_answer) > $max)
+				{
+					$valid = false;
+				}
+				break;
+
+			case 'single_choice':
+			case 'multiple_choice':
+			case 'dropdown':
+			case 'card_descign':
+			case 'confirm':
+			case 'date':
+			case 'rating':
+			case 'star':
+				break;
+
+		}
+
+		return $valid;
+	}
+
 
 	public static function answer_validate($_question_detail, $_answer)
 	{
+		$maxchar = 10000;
+		$min     = 0;
+		$max     = 999999999;
+		if(isset($_question_detail['maxchar']))
+		{
+			$maxchar = intval($_question_detail['maxchar']);
+		}
+
+		if(isset($_question_detail['setting']['min']))
+		{
+			$min = intval($_question_detail['setting']['min']);
+		}
+
+		if(isset($_question_detail['setting']['max']))
+		{
+			$max = intval($_question_detail['setting']['max']);
+		}
+
 		$valid = true;
 		switch ($_question_detail['type'])
 		{
