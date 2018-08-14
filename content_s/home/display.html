@@ -6,6 +6,21 @@
 <a href="{{url.kingdom}}/a/survey/status?id={{surveyRow.id}}" data-direct class="msg warn block fs14 txtC">{%trans "Survey status"%} {%set myStatus = surveyRow.status%} <b>{%trans myStatus%}</b></a>
 {%endif%}
 
+
+<div class="f justify-center">
+	<div class="c8 x6 m9 s12 mB25">
+		<div class="cbox mB10">
+{{block("blockTitle")}}
+		</div>
+		<div class="f">
+			<a class="cauto os btn outline" href="#">{%trans "I'm not willing to answer"%}</a>
+		</div>
+	</div>
+</div>
+
+
+
+
 {%if step.display == 'welcome' or step.display == 'thankyou' or step.display == 'thankyoudefault' or step.display == 'start'%}
 	<div class="cbox">
 		{{block(step.display)}}
@@ -22,6 +37,27 @@
 {%endblock%}
 
 
+
+{%block blockTitle%}
+{%if surveyRow.welcomemedia.file%}
+			<div class="imgBox mB20">
+	{%if surveyRow.welcomemedia.fileType == 'image' or 1 %}
+				<img src="{{surveyRow.welcomemedia.file}}" alt="{{surveyRow.welcometitle}}">
+	{%elseif surveyRow.welcomemedia.fileType == 'video' %}
+				<video controls>
+					<source src="{{surveyRow.welcomemedia.file}}" type="video/mp4">
+				</video>
+	{%endif%}
+			</div>
+{%endif%}
+
+			<div class="detailBox">
+				<h2 class="txtC">{{surveyRow.welcometitle}}</h2>
+{%if surveyRow.welcomedesc %}
+				<p class="msg txtC">{{surveyRow.welcomedesc | raw}}</p>
+{%endif%}
+			</div>
+{%endblock%}
 
 
 
