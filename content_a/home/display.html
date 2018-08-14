@@ -25,7 +25,7 @@
     <div class="footer txtC">{%set myStatus = value.status%} {%trans myStatus%}</div>
     <div class="footer f">
       <div>
-        <i class="compact sf-question-circle"></i> <span>{%if countblock%} {{value.countblock | fitNumber}} {%trans "Question"%}{%else%}{%trans "Without question"%}{%endif%}</span>
+        <i class="compact sf-question-circle"></i> <span>{%if value.countblock%} {{value.countblock | fitNumber}} {%trans "Question"%}{%else%}{%trans "Without question"%}{%endif%}</span>
       </div>
       <div>
         <i class="compact sf-users"></i> <span>{%if value.answer_count%}{{value.answer_count | fitNumber}} {%trans "Response"%}{%else%}{%trans "No responses"%}{%endif%}</span>
