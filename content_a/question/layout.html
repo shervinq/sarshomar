@@ -35,7 +35,7 @@
 
 
 {%block irandom%}
-  {%if haveRandom%}
+  {%if choiceDetail.random%}
     <div class="switch1 mB10">
      <input type="checkbox" name="random" id="random" {%if dataRow.setting.random %}checked{%endif%}>
      <label for="random"></label>
@@ -47,7 +47,7 @@
 
 
 {%block iother%}
-  {%if haveOtherChoise%}
+  {%if choiceDetail.otherchoice%}
     <div class="switch1 mB10">
      <input type="checkbox" name="otherchoice" id="otherchoice" {%if dataRow.setting.otherchoice %}checked{%endif%}>
      <label for="otherchoice"></label>
@@ -66,12 +66,28 @@
 
 
 {%block imaxchar %}
-{%if haveMaxchar or haveOtherChoise%}
+{%if choiceDetail.maxchar or choiceDetail.otherchoice%}
 <label for="maxchar">{%trans "Maximum char"%}</label>
 <div class="input">
-  <input type="number" name="maxchar" id="maxchar" placeholder='{{"0-99999999" | fitNumber}}' value="{{dataRow.maxchar}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
+  <input type="number" name="maxchar" id="maxchar" placeholder='{{"0-99999999" | fitNumber}}' value="{{dataRow.maxchar}}"  min='0' max="999999999">
 </div>
 {%endif%}
+
+{%if choiceDetail.min%}
+<label for="min">{%trans "Minimum"%}</label>
+<div class="input">
+  <input type="number" name="min" id="min" placeholder='{{"0-99999999" | fitNumber}}' value="{{dataRow.setting.min}}"  min='0' max="999999999">
+</div>
+{%endif%}
+
+{%if choiceDetail.max%}
+<label for="max">{%trans "Maximum"%}</label>
+<div class="input">
+  <input type="number" name="max" id="max" placeholder='{{"0-99999999" | fitNumber}}' value="{{dataRow.setting.max}}"  min='0' max="999999999">
+</div>
+{%endif%}
+
+
 {% endblock %}
 
 

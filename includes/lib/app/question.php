@@ -237,7 +237,42 @@ class question
 			$maxchar = abs(intval($maxchar));
 			if($maxchar > 1E+9)
 			{
-				\dash\notif::error(T_("Maxchart is out of range"), 'maxchar');
+				\dash\notif::error(T_("Min is out of range"), 'maxchar');
+				return false;
+			}
+		}
+
+
+		$min = \dash\app::request('min');
+		if($min && !is_numeric($min))
+		{
+			\dash\notif::error(T_("Please fill min as a number"), 'min');
+			return false;
+		}
+
+		if($min)
+		{
+			$min = abs(intval($min));
+			if($min > 1E+9)
+			{
+				\dash\notif::error(T_("Min is out of range"), 'min');
+				return false;
+			}
+		}
+
+		$max = \dash\app::request('max');
+		if($max && !is_numeric($max))
+		{
+			\dash\notif::error(T_("Please fill max as a number"), 'max');
+			return false;
+		}
+
+		if($max)
+		{
+			$max = abs(intval($max));
+			if($max > 1E+9)
+			{
+				\dash\notif::error(T_("Max is out of range"), 'max');
 				return false;
 			}
 		}
@@ -334,10 +369,18 @@ class question
 			$args['choice'] = $choice;
 		}
 
-		if(\dash\app::isset_request('random') || \dash\app::isset_request('otherchoice') || \dash\app::isset_request('buttontitle'))
+		if(
+			\dash\app::isset_request('random') ||
+			\dash\app::isset_request('otherchoice') ||
+			\dash\app::isset_request('min') ||
+			\dash\app::isset_request('max') ||
+			\dash\app::isset_request('buttontitle')
+		  )
 		{
 			$setting                = [];
 			$setting['random']      = \dash\app::request('random') ? true : false;
+			$setting['min']         = $min;
+			$setting['max']         = $max;
 			$setting['otherchoice'] = \dash\app::request('otherchoice') ? true : false;
 			$buttontitle            = \dash\app::request('buttontitle');
 			if($buttontitle && mb_strlen($buttontitle) > 10000)

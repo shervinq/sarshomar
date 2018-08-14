@@ -41,7 +41,8 @@ trait type
 		// 	'title'         => T_('Picture choice'),
 		// 	'choice'        => true,
 		// 	'random'        => true,
-		// 	'validation'    => null,
+		// 	'min'        => false,
+		// 	'max'        => false,
 		// 	'otherchoice'   => false,
 		// 	'chart'         => false,
 		// 	'prifile_field' => null,
@@ -58,7 +59,6 @@ trait type
 			'key'           => 'short_answer',
 			'title'         => T_("Short answer"),
 			'maxchar'       => true,
-			// 'desc'          => T_("Short text"),
 			'logo'			=> \dash\url::site(). '/static/images/logo.png',
 		];
 
@@ -67,7 +67,6 @@ trait type
 			'key'           => 'descriptive_answer',
 			'title'         => T_('Descriptive answer'),
 			'maxchar'       => true,
-			// 'desc'          => T_('Long text'),
 			'logo'			=> \dash\url::site(). '/static/images/logo.png',
 		];
 
@@ -76,9 +75,8 @@ trait type
 		[
 			'key'           => 'numeric',
 			'title'         => T_('Numberic'),
-			'validation'    => 'numeric',
-			'maxchar'       => true,
-			// 'desc'          => T_('Number'),
+			'min'           => true,
+			'max'           => true,
 			'logo'			=> \dash\url::site(). '/static/images/logo.png',
 		];
 
@@ -91,7 +89,6 @@ trait type
 			'chart'         => true,
 			'otherchoice'   => true,
 			'maxchar'       => true,
-			// 'desc'          => T_('Single choice'),
 			'logo'			=> \dash\url::site(). '/static/images/logo.png',
 		];
 
@@ -104,7 +101,6 @@ trait type
 			'chart'         => true,
 			'otherchoice'   => true,
 			'maxchar'       => true,
-			// 'desc'          => T_('Multiple choice'),
 			'logo'			=> \dash\url::site(). '/static/images/logo.png',
 		];
 
@@ -117,7 +113,6 @@ trait type
 			'random'        => true,
 			'otherchoice'   => true,
 			'maxchar'       => true,
-			// 'desc'          => T_('Dropdown'),
 			'logo'			=> \dash\url::site(). '/static/images/logo.png',
 		];
 
@@ -128,7 +123,6 @@ trait type
 		// 	'title'         => T_('Card design'),
 		// 	'choice'        => true,
 		// 	'random'        => true,
-		// 	// 'desc'          => T_('Picture choice'),
 		// 	'logo'			=> \dash\url::site(). '/static/images/logo.png',
 		// 	'upload_choice' => true,
 		// ];
@@ -138,9 +132,6 @@ trait type
 		[
 			'key'           => 'confirm',
 			'title'         => T_('Confirm buttom'),
-			'require'       => false,
-			'maxchar'       => false,
-			// 'desc'          => T_('Confirm buttom'),
 			'logo'			=> \dash\url::site(). '/static/images/logo.png',
 		];
 
@@ -148,9 +139,7 @@ trait type
 		[
 			'key'           => 'date',
 			'title'         => T_('Date'),
-			'validation'    => 'date',
 			'maxchar'       => true,
-			// 'desc'          => T_('Date'),
 			'logo'			=> \dash\url::site(). '/static/images/logo.png',
 		];
 
@@ -159,7 +148,6 @@ trait type
 			'key'           => 'email',
 			'title'         => T_('Email'),
 			'maxchar'       => true,
-			// 'desc'          => T_('Email'),
 			'logo'			=> \dash\url::site(). '/static/images/logo.png',
 		];
 
@@ -168,7 +156,6 @@ trait type
 			'key'           => 'website',
 			'title'         => T_('Website'),
 			'maxchar'       => true,
-			// 'desc'          => T_('Website'),
 			'logo'			=> \dash\url::site(). '/static/images/logo.png',
 		];
 
@@ -177,7 +164,6 @@ trait type
 		// 	'key'           => 'rating',
 		// 	'title'         => T_('Rating'),
 		// 	'maxchar'       => true,
-		// 	// 'desc'          => T_('Scale'),
 		// 	'logo'			=> \dash\url::site(). '/static/images/logo.png',
 		// ];
 
@@ -186,7 +172,6 @@ trait type
 		// 	'key'           => 'star',
 		// 	'title'         => T_('Star'),
 		// 	'maxchar'       => true,
-		// 	// 'desc'          => T_('Rating'),
 		// 	'logo'			=> \dash\url::site(). '/static/images/logo.png',
 		// ];
 
@@ -195,7 +180,6 @@ trait type
 		// [
 		// 	'key'           => 'file_upload',
 		// 	'title'         => T_('File upload'),
-		// 	// 'desc'          => T_('File upload'),
 		// 	'logo'			=> \dash\url::site(). '/static/images/logo.png',
 		// ];
 
