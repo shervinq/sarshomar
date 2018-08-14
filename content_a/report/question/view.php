@@ -32,6 +32,9 @@ class view
 			}
 			else
 			{
+				\dash\data::badge_link(\dash\url::this(). '/question?id='. \dash\request::get('id'));
+				\dash\data::badge_text(T_('Back to question list'));
+
 				$question_detail = \content_a\question\view::load_question();
 
 				$questionid = \dash\request::get('questionid');
@@ -44,7 +47,6 @@ class view
 				else
 				{
 					$args                              = [];
-					$args['survey.user_id']            = \dash\user::id();
 					$args['answerdetails.question_id'] = \dash\coding::decode($questionid);
 
 					$dataTable = \lib\app\answerdetail::list(null, $args);
