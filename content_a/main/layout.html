@@ -7,11 +7,11 @@
 {%if surveyRow.id%}
 <li class="title">{{surveyRow.title}}</li>
 
-<li><a href="{{url.here}}?id={{surveyRow.id}}"><i class='sf-gauge'></i> <span>{% trans "Dashboard" %}</span></a></li>
+<li><a href="{{url.here}}/survey?id={{surveyRow.id}}"><i class='sf-gauge'></i> <span>{% trans "Dashboard" %}</span></a></li>
 <li><a href="{{url.here}}/question?id={{surveyRow.id}}"><i class='sf-list-ul'></i> <span>{% trans "Questions" %}</span></a></li>
 <li><a href="{{url.here}}/sort?id={{surveyRow.id}}"><i class='sf-refresh'></i> <span>{% trans "Question Sorter" %}</span></a></li>
 <li>
-  <a href="{{url.here}}/general?id={{surveyRow.id}}"><i class='sf-cog'></i> <span>{% trans "Settings" %}</span></a>
+  <a href="{{url.here}}/survey/general?id={{surveyRow.id}}"><i class='sf-cog'></i> <span>{% trans "Settings" %}</span></a>
   <ul>
     {%if false%}<li><a href="{{url.here}}/survey/privacy?id={{surveyRow.id}}"><i class='floatRa mRa10 fc-mute sf-lock'></i> <span>{%trans "Privacy"%}</span></a></li>{%endif%}
     <li><a href="{{url.here}}/survey/welcome?id={{surveyRow.id}}"><i class='floatRa mRa10 fc-mute sf-hourglass-start'></i> <span>{%trans "Welcome message"%}</span></a></li>
