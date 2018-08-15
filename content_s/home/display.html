@@ -51,7 +51,7 @@
 {%if myTitle.title or myTitle.desc%}
    <div class="detailBox">
 {%if myTitle.title%}
-    <h2 class="txtC">{{myTitle.title}}</h2>
+    <h2 class="txtC">{{myTitle.title}}{%if question.require%} <small class="fc-red compact">* <span class="fs05">{%trans "Require"%}</span></small>{%endif%} </h2>
 {%endif%}
 {%if myTitle.desc%}
     <p class="msg txtC">{{myTitle.desc | raw | nl2br}}</p>
@@ -118,61 +118,6 @@
 
 
 
-{%block start%}
-<div class="justify-center f pA10">
-<div class="msg primary2 block c12 txtC txtB">{{surveyRow.title}}</div>
- {{block('start_btn')}}
-</div>
-{%endblock%}
-
-
-{%block thankyoudefault%}
-<h3>{%trans "Thank you"%}</h3>
-<div class="justify-center f pA10">
- <a href="{{url.base}}" class="btn success c3">{%trans "Sarshomar"%}</a>
-</div>
-
-{%endblock%}
-
-
-{%block thankyou%}
-
-<div class="msg primary2">{{surveyRow.thankyoutitle}}</div>
-
-{%if surveyRow.thankyoudesc %}
-<div class="msg">
- <p>{{surveyRow.thankyoudesc}}</p>
-</div>
-{%endif%}
-
-{%if surveyRow.thankyoumedia.file %}
- <img src="{{surveyRow.thankyoumedia.file}}" class="w300">
-{%endif%}
-<div class="justify-center f pA10">
-
-</div>
-
-{%endblock%}
-
-
-{%block welcome%}
-
-<div class="msg primary2">{{surveyRow.welcometitle}}</div>
-
-{%if surveyRow.welcomedesc %}
-<div class="msg">
- <p>{{surveyRow.welcomedesc}}</p>
-</div>
-{%endif%}
-
-{%if surveyRow.welcomemedia.file %}
- <img src="{{surveyRow.welcomemedia.file}}" class="w300">
-{%endif%}
-<div class="justify-center f pA10">
- {{block('start_btn')}}
-</div>
-
-{%endblock%}
 
 
 
