@@ -37,7 +37,7 @@
 
 {%block blockTitle%}
 {%if myTitle.media%}
-   <div class="imgBox mB20">
+   <div class="mediaBox mB20">
  {%if myTitle.mediaType == 'image' or 1 %}
     <img src="{{myTitle.media}}" alt="{{myTitle.title}}">
  {%elseif myTitle.mediaType == 'video' %}
@@ -145,12 +145,6 @@
 
 
 
-{%block require_html%}
-{%if question.require%}
- <small class="fc-red">* {%trans "Require"%}</small>
-{%endif%}
-{%endblock%}
-
 {%block question_attr%}
 
 {%if question.require%} required {%endif%}
@@ -177,7 +171,7 @@
 {%block short_answer%}
 {{block('hidden_input')}}
  <div class="input">
-  <label for="answer">{%trans "Type your answer"%}{{block('require_html')}}</label>
+  <label for="answer">{%trans "Type your answer"%}</label>
   <input type="text" id="answer" name="answer" value="{{myAnswer.text}}" {{block('question_attr')}}  >
  </div>
  {{block('nextBtn')}}
@@ -188,7 +182,7 @@
 
 {%block descriptive_answer%}
 {{block('hidden_input')}}
- <label for="answer">{%trans "Type your answer"%}{{block('require_html')}}</label>
+ <label for="answer">{%trans "Type your answer"%}</label>
  <textarea class="txt" type="text" id="answer" name="answer"  {{block('question_attr')}} rows="3">{{myAnswer.text}}</textarea>
  {{block('nextBtn')}}
 {%endblock%}
@@ -206,7 +200,7 @@
 
 {%block date%}
 {{block('hidden_input')}}
- <label for="answer">{%trans "Answer"%}{{block('require_html')}}</label>
+ <label for="answer">{%trans "Answer"%}</label>
  <div class="input">
    <input class="datepicker" type="text" name="answer" id="answer" placeholder='{{"1369/04/15" | fitNumber}}' {{block('question_attr')}} value="{{myAnswer.text}}" maxlength='20' data-format="YYYY/MM/DD" data-view="year">
  </div>
@@ -217,7 +211,7 @@
 
 {%block email%}
 {{block('hidden_input')}}
- <label for="answer">{%trans "Answer"%}{{block('require_html')}}</label>
+ <label for="answer">{%trans "Answer"%}</label>
  <div class="input">
    <input class="" type="email" name="answer" id="answer" value="{{myAnswer.text}}" {{block('question_attr')}} >
  </div>
@@ -228,7 +222,7 @@
 
 {%block website%}
 {{block('hidden_input')}}
- <label for="answer">{%trans "Answer"%}{{block('require_html')}}</label>
+ <label for="answer">{%trans "Answer"%}</label>
  <div class="input">
    <input class="" type="url" name="answer" id="answer" value="{{myAnswer.text}}" {{block('question_attr')}} >
  </div>
@@ -239,7 +233,7 @@
 
 {%block rating%}
 {{block('hidden_input')}}
- <label for="answer">{%trans "Answer"%}{{block('require_html')}}</label>
+ <label for="answer">{%trans "Answer"%}</label>
  <div class="input">
    <input class="" type="number" name="answer" id="answer" value="{{myAnswer.text}}" {{block('question_attr')}} >
  </div>
@@ -250,7 +244,7 @@
 {%block star%}
 {{block('hidden_input')}}
 
- <label for="answer">{%trans "Answer"%}{{block('require_html')}}</label>
+ <label for="answer">{%trans "Answer"%}</label>
  <div class="input">
    <input class="" type="number" name="answer" id="answer"  value="{{myAnswer.text}}" {{block('question_attr')}} >
  </div>
@@ -292,7 +286,7 @@
 {%block dropdown%}
 {{block('hidden_input')}}
  <div class="mB10">
-   <label for="answer">{%trans "Your answer"%}{{block('require_html')}}</label>
+   <label for="answer">{%trans "Your answer"%}</label>
    <select name="answer" class="ui dropdown select">
      <option value=""><i>{%trans "Please select one item"%}</i></option>
   {%for key, value in question.choice%}
