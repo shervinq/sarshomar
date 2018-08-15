@@ -50,6 +50,8 @@ trait type
 		// 	'maxchar'       => false,
 		// 	'minchoice'     => false,
 		// 	'maxchoice'     => false,
+		// 	'choiceinline'  => false,
+		// 	'label3'         => false,
 		// 	'desc'          => T_('Picture choice'),
 		// 	'logo'          => \dash\url::site(). '/static/images/logo.png',
 		// 	'upload_choice' => true,
@@ -93,6 +95,7 @@ trait type
 			'key'           => 'single_choice',
 			'title'         => T_('Single choice'),
 			'choice'        => true,
+			'choiceinline'  => true,
 			'random'        => true,
 			'chart'         => true,
 			'logo'			=> \dash\url::site(). '/static/images/logo.png',
@@ -148,6 +151,26 @@ trait type
 			'maxchar'     => true,
 			'logo'        => \dash\url::site(). '/static/images/logo.png',
 		];
+
+
+		$type['rating'] =
+		[
+			'key'   => 'rating',
+			'title' => T_('Star'),
+			'max'   => true,
+			'logo'  => \dash\url::site(). '/static/images/logo.png',
+		];
+
+		$type['rangeslider'] =
+		[
+			'key'    => 'rangeslider',
+			'title'  => T_('Range slider'),
+			'max'    => true,
+			'min'    => true,
+			'lable3' => true,
+			'logo'   => \dash\url::site(). '/static/images/logo.png',
+		];
+
 
 		// card_descign
 		// rating

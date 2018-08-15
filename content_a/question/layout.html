@@ -122,10 +122,12 @@
 
 
 {%block placeholder %}
+{%if choiceDetail.placeholder %}
 <label for="placeholder">{%trans "Placeholder"%}</label>
 <div class="input">
   <input type="text" name="placeholder" id="placeholder" placeholder='{%trans "Type here ..."%}'  value="{{dataRow.setting.placeholder}}" title='{%trans "To change placeholder type hrere"%}'  maxlength='200' minlength="1" pattern=".{1,200}" >
 </div>
+{%endif%}
 {% endblock %}
 
 
