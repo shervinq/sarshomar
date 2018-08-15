@@ -321,13 +321,17 @@
 
 
 {%block iwelcomemessagefile%}
-<label for="welcomefile" class="block txtC">{%trans "Welcome Image/Video"%}</label>
-<div class="input preview">
- <input type="file" accept="image/gif, image/jpeg, image/png" name="welcomefile" id="welcomefile" data-preview data-max="1000">
- <label for="welcomefile" title='{%trans "allowed extentions jpg, png. Max 1000Kb"%}'>
+
 {%if surveyRow.welcomemedia.file%}
+<div class="mediaBox mB20">
   <img src="{{surveyRow.welcomemedia.file}}" alt="{{surveyRow.title}}" id="logoPreview">
+</div>
 {%endif%}
+
+
+<label for="welcomefile" class="block">{%trans "Welcome Image/Video"%}</label>
+<div class="input" title='{%trans "allowed extentions jpg, png. Max 1000Kb"%}'>
+ <input type="file" accept="image/gif, image/jpeg, image/png" name="welcomefile" id="welcomefile" data-max="1000">
  </label>
 </div>
 {%endblock%}
