@@ -97,6 +97,13 @@
 {%endblock%}
 
 
+{%block single_choice%}
+{{block('hidden_input')}}
+{%for key, value in question.choice%}
+  <button class="btn block mB5{%if myAnswer.text == value.title%} success{%endif%}" id="r-{{key}}" name="answer" value="{{value.title}}">{%if myAnswer.text == value.title%}<span class="sf-check-1 floatLa"></span> {%endif%}{{value.title}}</button>
+{%endfor%}
+
+{%endblock%}
 
 
 
@@ -265,18 +272,6 @@
 
 
 
-
-
-{%block single_choice%}
-{{block('hidden_input')}}
- {%for key, value in question.choice%}
-  <div class="radio1 green">
-   <input type="radio" id="r-{{key}}" name="answer" value="{{value.title}}" {%if myAnswer.text == value.title%} checked {%endif%} >
-   <label for="r-{{key}}">{{value.title}}</label>
-  </div>
- {%endfor%}
- {{block('nextBtn')}}
-{%endblock%}
 
 
 
