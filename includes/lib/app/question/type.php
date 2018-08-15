@@ -51,7 +51,8 @@ trait type
 		// 	'minchoice'     => false,
 		// 	'maxchoice'     => false,
 		// 	'choiceinline'  => false,
-		// 	'label3'         => false,
+		// 	'label3'        => false,
+		// 	'choicehelp'    => false,
 		// 	'desc'          => T_('Picture choice'),
 		// 	'logo'          => \dash\url::site(). '/static/images/logo.png',
 		// 	'upload_choice' => true,
@@ -111,6 +112,7 @@ trait type
 			'chart'         => true,
 			'minchoice'     => true,
 			'maxchoice'     => true,
+			'choicehelp'    => true,
 			'logo'			=> \dash\url::site(). '/static/images/logo.png',
 		];
 

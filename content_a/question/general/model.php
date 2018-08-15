@@ -54,6 +54,7 @@ class model
 		$post['require']      = \dash\request::post('require');
 		$post['maxchar']      = \dash\request::post('maxchar');
 		$post['maxrate']      = \dash\request::post('maxrate');
+		$post['choicehelp']   = \dash\request::post('choicehelp');
 		$post['minchoice']    = \dash\request::post('minchoice');
 		$post['maxchoice']    = \dash\request::post('maxchoice');
 		$post['choiceinline'] = \dash\request::post('choiceinline');

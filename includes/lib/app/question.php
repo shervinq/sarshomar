@@ -387,7 +387,9 @@ class question
 			\dash\app::isset_request('maxchoice') ||
 			\dash\app::isset_request('minchoice') ||
 			\dash\app::isset_request('maxrate') ||
+			\dash\app::isset_request('choicehelp') ||
 			\dash\app::isset_request('choiceinline')
+
 		  )
 		{
 
@@ -420,7 +422,19 @@ class question
 				$placeholder = \dash\safe::remove_nl($placeholder);
 			}
 
+			$choicehelp             = \dash\app::request('choicehelp');
+			if($choicehelp && mb_strlen($choicehelp) > 10000)
+			{
+				$choicehelp = substr($choicehelp, 0, 10000);
+			}
+
+			if($choicehelp)
+			{
+				$choicehelp = \dash\safe::remove_nl($choicehelp);
+			}
+
 			$setting['placeholder'] = $placeholder;
+			$setting['choicehelp'] = $choicehelp;
 
 			$args['setting'] = json_encode($setting, JSON_UNESCAPED_UNICODE);
 		}
