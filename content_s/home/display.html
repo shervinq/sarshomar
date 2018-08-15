@@ -72,7 +72,20 @@
 
 
 
+{%block short_answer%}
+{{block('hidden_input')}}
+ <div class="input">
+  <input type="text" id="answer" name="answer" value="{{myAnswer.text}}"{%if question.require%} required{%endif%}{%if question.maxchar%} maxlength="{{question.maxchar}}"{%endif%} placeholder='{%if question.require%}* {%endif%}{%trans "Type here ..."%}' autofocus>
+ {{block('nextBtn')}}
+ </div>
+{%endblock%}
 
+
+{%block descriptive_answer%}
+{{block('hidden_input')}}
+ <textarea class="txt" type="text" id="answer" name="answer" {%if question.require%} required{%endif%}{%if question.maxchar%} maxlength="{{question.maxchar}}" rows="{{ (question.maxchar / 100) |round(0, 'ceil')  + 2}}"{%else%} rows="3"{%endif%} placeholder='{%if question.require%}* {%endif%}{%trans "Type here ..."%}' autofocus>{{myAnswer.text}}</textarea>
+ {{block('nextBtn')}}
+{%endblock%}
 
 
 
@@ -168,24 +181,10 @@
 
 
 
-{%block short_answer%}
-{{block('hidden_input')}}
- <div class="input">
-  <label for="answer">{%trans "Type your answer"%}</label>
-  <input type="text" id="answer" name="answer" value="{{myAnswer.text}}" {{block('question_attr')}}  >
- </div>
- {{block('nextBtn')}}
-
-{%endblock%}
 
 
 
-{%block descriptive_answer%}
-{{block('hidden_input')}}
- <label for="answer">{%trans "Type your answer"%}</label>
- <textarea class="txt" type="text" id="answer" name="answer"  {{block('question_attr')}} rows="3">{{myAnswer.text}}</textarea>
- {{block('nextBtn')}}
-{%endblock%}
+
 
 
 
