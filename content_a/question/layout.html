@@ -207,13 +207,16 @@
 
 
 {%block imedia%}
-<label for="media" class="block txtC">{%trans "Image/Video"%}</label>
-<div class="input preview">
- <input type="file" accept="image/gif, image/jpeg, image/png" name="media" id="media" data-preview data-max="1000">
- <label for="media" title='{%trans "allowed extentions jpg, png. Max 1000Kb"%}'>
 {%if dataRow.media.file%}
-  <img src="{{dataRow.media.file}}" alt="{{dataRow.title}}" id="logoPreview">
+  <div class="imgBox mB10">
+    <img src="{{dataRow.media.file}}" alt="{{dataRow.title}}" id="logoPreview">
+  </div>
 {%endif%}
+
+<label for="media" class="block">{%trans "Image/Video"%}</label>
+<div class="input">
+ <input type="file" accept="image/gif, image/jpeg, image/png" name="media" id="media" data-max="1000">
+ <label for="media" title='{%trans "allowed extentions jpg, png. Max 1000Kb"%}'>
  </label>
 </div>
 {%endblock%}
