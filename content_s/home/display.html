@@ -153,6 +153,15 @@
 {%endblock%}
 
 
+{%block website%}
+{{block('hidden_input')}}
+ <div class="input">
+   <input class="" type="url" name="answer" id="answer" value="{{myAnswer.text}}" {%if question.require%} required{%endif%} placeholder="http://" autofocus>
+ </div>
+ {{block('nextBtn')}}
+{%endblock%}
+
+
 
 
 
@@ -269,14 +278,6 @@
 
 
 
-{%block website%}
-{{block('hidden_input')}}
- <label for="answer">{%trans "Answer"%}</label>
- <div class="input">
-   <input class="" type="url" name="answer" id="answer" value="{{myAnswer.text}}" {{block('question_attr')}} >
- </div>
- {{block('nextBtn')}}
-{%endblock%}
 
 
 
