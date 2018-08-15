@@ -219,9 +219,15 @@ class question
 
 
 		$type = \dash\app::request('type');
-		if($type && mb_strlen($type) >= 200)
+		if($type && !self::get_type($type))
 		{
-			\dash\notif::error(T_("Please fill the question type less than 200 character"), 'type');
+			\dash\notif::error(T_("Invalid question type"), 'type');
+			return false;
+		}
+
+		if(\dash\app::isset_request('type') && !$type)
+		{
+			\dash\notif::error(T_("Type of question can not be null"), 'type');
 			return false;
 		}
 
@@ -402,13 +408,64 @@ class question
 				return false;
 			}
 			$setting['maxrate']      = $maxrate;
+
 			// @check value
 			$setting['minchoice']    = \dash\app::request('minchoice');
 			$setting['maxchoice']    = \dash\app::request('maxchoice');
 
-			$setting['choiceinline'] = \dash\app::request('choiceinline') ? true : false;
+			$myType = isset($load_question['type']) ? $load_question['type'] : null;
+
+			if(!$myType && $type)
+			{
+				$myType = $type;
+			}
+
+			if($min)
+			{
+				$min = abs(intval($min));
+			}
+
+			if($max)
+			{
+				$max = abs(intval($max));
+			}
+
+			if($myType && self::get_type($myType, 'rangenumber'))
+			{
+				$range = intval(self::get_type($myType, 'rangenumber'));
+
+				if(!$min && !$max)
+				{
+					$min = 0;
+					$max = $range;
+				}
+				elseif($min && $max)
+				{
+					if($max - $min > $range)
+					{
+						$max = $min + $range;
+					}
+				}
+				elseif(!$min && $max)
+				{
+					$min = $max - $range;
+					if($min < 0)
+					{
+						$min = 0;
+					}
+				}
+				elseif($min && !$max)
+				{
+					$max = $min + $range;
+				}
+			}
+
 			$setting['min']          = $min;
 			$setting['max']          = $max;
+
+
+			$setting['choiceinline'] = \dash\app::request('choiceinline') ? true : false;
+
 			$setting['choice_sort']  = $choice_sort;
 			$setting['otherchoice']  = \dash\app::request('otherchoice') ? true : false;
 			$placeholder             = \dash\app::request('placeholder');

@@ -45,6 +45,7 @@ trait type
 		// 	'min'           => false,
 		// 	'max'           => false,
 		// 	'otherchoice'   => false,
+		// 	'rangenumber'   => false,
 		// 	'chart'         => false,
 		// 	'prifile_field' => null,
 		// 	'maxchar'       => false,
@@ -165,12 +166,13 @@ trait type
 
 		$type['rangeslider'] =
 		[
-			'key'    => 'rangeslider',
-			'title'  => T_('Range slider'),
-			'max'    => true,
-			'min'    => true,
-			'lable3' => true,
-			'logo'   => \dash\url::site(). '/static/images/logo.png',
+			'key'         => 'rangeslider',
+			'title'       => T_('Range slider'),
+			'max'         => true,
+			'min'         => true,
+			'lable3'      => true,
+			'rangenumber' => 100,
+			'logo'        => \dash\url::site(). '/static/images/logo.png',
 		];
 
 
