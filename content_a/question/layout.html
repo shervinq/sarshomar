@@ -101,21 +101,21 @@
 {%if choiceDetail.maxchar or choiceDetail.otherchoice%}
 <label for="maxchar">{%trans "Maximum char"%}</label>
 <div class="input">
-  <input type="number" name="maxchar" id="maxchar" placeholder='{{"0-99999999" | fitNumber}}' value="{{dataRow.maxchar}}"  min='0' max="999999999">
+  <input type="number" name="maxchar" id="maxchar" placeholder='{{"0-99999999" | fitNumber}}' value="{{dataRow.maxchar}}"  min='0' max="99999999">
 </div>
 {%endif%}
 
 {%if choiceDetail.min%}
 <label for="min">{%trans "Minimum"%}</label>
 <div class="input">
-  <input type="number" name="min" id="min" placeholder='{{"0-99999999" | fitNumber}}' value="{{dataRow.setting.min}}"  min='0' max="999999999">
+  <input type="number" name="min" id="min" placeholder='{{"0-99999999" | fitNumber}}' value="{{dataRow.setting.min}}"  min='0' max="99999999">
 </div>
 {%endif%}
 
 {%if choiceDetail.max%}
 <label for="max">{%trans "Maximum"%}</label>
 <div class="input">
-  <input type="number" name="max" id="max" placeholder='{{"0-99999999" | fitNumber}}' value="{{dataRow.setting.max}}"  min='0' max="999999999">
+  <input type="number" name="max" id="max" placeholder='{{"0-99999999" | fitNumber}}' value="{{dataRow.setting.max}}"  min='0' max="99999999">
 </div>
 {%endif%}
 
@@ -123,7 +123,23 @@
 {%if choiceDetail.maxrate%}
 <label for="maxrate">{%trans "Maximum"%}</label>
 <div class="input">
-  <input type="number" name="maxrate" id="maxrate" placeholder='{{"0-10" | fitNumber}}' value="{{dataRow.setting.maxrate}}"  min='0' max="999999999">
+  <input type="number" name="maxrate" id="maxrate" placeholder='{{"0-10" | fitNumber}}' value="{{dataRow.setting.maxrate}}"  min='0' max="10">
+</div>
+{%endif%}
+
+
+{%if choiceDetail.minchoice%}
+<label for="minchoice">{%trans "Minimum choice"%}</label>
+<div class="input">
+  <input type="number" name="minchoice" id="minchoice" {%if dataRow.choice%} placeholder='{{("0-" ~ (dataRow.choice | length)) | fitNumber}}' {%endif%} value="{{dataRow.setting.minchoice}}"  min='0' max="{{dataRow.choice | length}}">
+</div>
+{%endif%}
+
+
+{%if choiceDetail.maxchoice%}
+<label for="maxchoice">{%trans "Maximum choice"%}</label>
+<div class="input">
+  <input type="number" name="maxchoice" id="maxchoice" {%if dataRow.choice%} placeholder='{{("1-" ~ (dataRow.choice | length)) | fitNumber}}' {%endif%} value="{{dataRow.setting.maxchoice}}"  min='1' max="{{dataRow.choice | length}}">
 </div>
 {%endif%}
 

@@ -384,11 +384,26 @@ class question
 			\dash\app::isset_request('min') ||
 			\dash\app::isset_request('max') ||
 			\dash\app::isset_request('placeholder') ||
+			\dash\app::isset_request('maxchoice') ||
+			\dash\app::isset_request('minchoice') ||
+			\dash\app::isset_request('maxrate') ||
 			\dash\app::isset_request('choiceinline')
 		  )
 		{
+
 			$setting                 = [];
 			$setting['random']       = \dash\app::request('random') ? true : false;
+			$maxrate = \dash\app::request('maxrate');
+			if($maxrate && (intval($maxrate) > 10 || intval($maxrate) < 0))
+			{
+				\dash\notif::error(T_("Please set maximum rate between 0 and 10"), 'maxrate');
+				return false;
+			}
+			$setting['maxrate']      = $maxrate;
+			// @check value
+			$setting['minchoice']    = \dash\app::request('minchoice');
+			$setting['maxchoice']    = \dash\app::request('maxchoice');
+
 			$setting['choiceinline'] = \dash\app::request('choiceinline') ? true : false;
 			$setting['min']          = $min;
 			$setting['max']          = $max;
