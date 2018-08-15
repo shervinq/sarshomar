@@ -57,7 +57,7 @@ class model
 		$post['max']         = \dash\request::post('max');
 		$post['choice_sort'] = \dash\request::post('choice_sort');
 		$post['otherchoice'] = \dash\request::post('otherchoice');
-		$post['buttontitle'] = \dash\request::post('buttontitle');
+		$post['placeholder'] = \dash\request::post('placeholder');
 		$post['survey_id']   = \dash\request::get('id');
 
 		$result = \lib\app\question::edit($post, \dash\request::get('questionid'));

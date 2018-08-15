@@ -383,7 +383,7 @@ class question
 			\dash\app::isset_request('otherchoice') ||
 			\dash\app::isset_request('min') ||
 			\dash\app::isset_request('max') ||
-			\dash\app::isset_request('buttontitle')
+			\dash\app::isset_request('placeholder')
 		  )
 		{
 			$setting                = [];
@@ -392,18 +392,18 @@ class question
 			$setting['max']         = $max;
 			$setting['choice_sort'] = $choice_sort;
 			$setting['otherchoice'] = \dash\app::request('otherchoice') ? true : false;
-			$buttontitle            = \dash\app::request('buttontitle');
-			if($buttontitle && mb_strlen($buttontitle) > 10000)
+			$placeholder            = \dash\app::request('placeholder');
+			if($placeholder && mb_strlen($placeholder) > 10000)
 			{
-				$buttontitle = substr($buttontitle, 0, 10000);
+				$placeholder = substr($placeholder, 0, 10000);
 			}
 
-			if($buttontitle)
+			if($placeholder)
 			{
-				$buttontitle = \dash\safe::remove_nl($buttontitle);
+				$placeholder = \dash\safe::remove_nl($placeholder);
 			}
 
-			$setting['buttontitle'] = $buttontitle;
+			$setting['placeholder'] = $placeholder;
 
 			$args['setting'] = json_encode($setting, JSON_UNESCAPED_UNICODE);
 		}
