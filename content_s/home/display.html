@@ -88,6 +88,19 @@
 {%endblock%}
 
 
+{%block numeric%}
+{{block('hidden_input')}}
+ <div class="input">
+  <input type="number" id="answer" name="answer" value="{{myAnswer.text}}" {%if question.require%} required{%endif%}{%if question.setting.min%}min="{{question.setting.min}}"{%endif%}{%if question.setting.max%}max="{{question.setting.max}}"{%endif%} placeholder='{%if question.require%}* {%endif%}{%trans "Type here ..."%}' autofocus>
+ </div>
+ {{block('nextBtn')}}
+{%endblock%}
+
+
+
+
+
+
 
 
 
@@ -299,14 +312,7 @@
 
 
 
-{%block numeric%}
-{{block('hidden_input')}}
- <div class="input">
-  <label for="answer">{%trans "Type your answer"%}</label>
-  <input type="number" id="answer" name="answer" value="{{myAnswer.text}}" {{block('question_attr')}} >
- </div>
- {{block('nextBtn')}}
-{%endblock%}
+
 
 
 
