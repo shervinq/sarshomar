@@ -10,7 +10,9 @@
 
 	<div class="c">
 		{{block('quSetting')}}
-		{{block('quChoice')}}
+		{%if choiceDetail.choice%}
+			{{block('quChoice')}}
+		{%endif%}
 	</div>
 </div>
 
@@ -29,7 +31,6 @@
 		{{block('ititle')}}
 		{{block('idesc')}}
 		<button class="btn primary block mT20">{%trans "Save question title"%}</button>
-
 	</form>
 </div>
 
@@ -48,7 +49,6 @@
 		{{block('imaxchar')}}
 		{{block('placeholder')}}
 		<button class="btn primary block mT20">{%trans "Save setting"%}</button>
-
 	</form>
 </div>
 

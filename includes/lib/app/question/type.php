@@ -155,10 +155,10 @@ trait type
 
 		$type['rating'] =
 		[
-			'key'   => 'rating',
-			'title' => T_('Star'),
-			'max'   => true,
-			'logo'  => \dash\url::site(). '/static/images/logo.png',
+			'key'     => 'rating',
+			'title'   => T_('Rating'),
+			'maxrate' => true,
+			'logo'    => \dash\url::site(). '/static/images/logo.png',
 		];
 
 		$type['rangeslider'] =
@@ -173,8 +173,7 @@ trait type
 
 
 		// card_descign
-		// rating
-		// star
+
 		// file_upload
 
 
