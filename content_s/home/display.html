@@ -135,6 +135,13 @@
 {%endblock%}
 
 
+{%block date%}
+{{block('hidden_input')}}
+ <div class="input ltr">
+   <input class="datepicker" type="text" name="answer" id="answer" placeholder='{{"1369/04/15" | fitNumber}}' {%if question.require%} required{%endif%} {{block('question_attr')}} value="{{myAnswer.text}}" maxlength='10' data-format="YYYY/MM/DD" data-view="year" autofocus>
+ </div>
+ {{block('nextBtn')}}
+{%endblock%}
 
 
 
@@ -243,14 +250,7 @@
 
 
 
-{%block date%}
-{{block('hidden_input')}}
- <label for="answer">{%trans "Answer"%}</label>
- <div class="input">
-   <input class="datepicker" type="text" name="answer" id="answer" placeholder='{{"1369/04/15" | fitNumber}}' {{block('question_attr')}} value="{{myAnswer.text}}" maxlength='20' data-format="YYYY/MM/DD" data-view="year">
- </div>
- {{block('nextBtn')}}
-{%endblock%}
+
 
 
 
