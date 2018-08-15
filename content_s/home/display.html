@@ -54,7 +54,7 @@
     <h2 class="txtC">{{myTitle.title}}</h2>
 {%endif%}
 {%if myTitle.desc%}
-    <p class="msg txtC">{{myTitle.desc | raw}}</p>
+    <p class="msg txtC">{{myTitle.desc | raw | nl2br}}</p>
 {%endif%}
    </div>
 {%endif%}
