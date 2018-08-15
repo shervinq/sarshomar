@@ -383,16 +383,18 @@ class question
 			\dash\app::isset_request('otherchoice') ||
 			\dash\app::isset_request('min') ||
 			\dash\app::isset_request('max') ||
-			\dash\app::isset_request('placeholder')
+			\dash\app::isset_request('placeholder') ||
+			\dash\app::isset_request('choiceinline')
 		  )
 		{
-			$setting                = [];
-			$setting['random']      = \dash\app::request('random') ? true : false;
-			$setting['min']         = $min;
-			$setting['max']         = $max;
-			$setting['choice_sort'] = $choice_sort;
-			$setting['otherchoice'] = \dash\app::request('otherchoice') ? true : false;
-			$placeholder            = \dash\app::request('placeholder');
+			$setting                 = [];
+			$setting['random']       = \dash\app::request('random') ? true : false;
+			$setting['choiceinline'] = \dash\app::request('choiceinline') ? true : false;
+			$setting['min']          = $min;
+			$setting['max']          = $max;
+			$setting['choice_sort']  = $choice_sort;
+			$setting['otherchoice']  = \dash\app::request('otherchoice') ? true : false;
+			$placeholder             = \dash\app::request('placeholder');
 			if($placeholder && mb_strlen($placeholder) > 10000)
 			{
 				$placeholder = substr($placeholder, 0, 10000);
