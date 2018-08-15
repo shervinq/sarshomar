@@ -91,7 +91,7 @@
 {%block numeric%}
 {{block('hidden_input')}}
  <div class="input">
-  <input type="number" id="answer" name="answer" value="{{myAnswer.text}}" {%if question.require%} required{%endif%}{%if question.setting.min%}min="{{question.setting.min}}"{%endif%}{%if question.setting.max%}max="{{question.setting.max}}"{%endif%} placeholder='{%if question.require%}* {%endif%}{%trans "Type here ..."%}' autofocus>
+  <input type="number" id="answer" name="answer" value="{{myAnswer.text}}" {%if question.require%} required{%endif%}{%if question.setting.min%}min="{{question.setting.min}}"{%endif%}{%if question.setting.max%}max="{{question.setting.max}}"{%endif%} placeholder='{%if question.require%}* {%endif%}{%trans "Type here ..."%}' inputmode="numeric" pattern="[0-9]*" autofocus>
  </div>
  {{block('nextBtn')}}
 {%endblock%}
