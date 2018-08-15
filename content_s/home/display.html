@@ -117,7 +117,22 @@
 {%endblock%}
 
 
-
+{%block dropdown%}
+{{block('hidden_input')}}
+ <div class="mB10">
+   <select name="answer" class="ui dropdown select{%if (question.choice | length) > 4 %} search{%endif%}">
+     <option value="">{%trans "Please choose one item"%}</option>
+{%for key, value in question.choice%}
+{%if myAnswer.text == value.title%}
+       <option value="{{value.title}}" checked>✔️ {{value.title}}</option>
+{%else%}
+       <option value="{{value.title}}">{{value.title}} </option>
+{%endif%}
+{%endfor%}
+   </select>
+ </div>
+ {{block('nextBtn')}}
+{%endblock%}
 
 
 
@@ -289,19 +304,7 @@
 
 
 
-{%block dropdown%}
-{{block('hidden_input')}}
- <div class="mB10">
-   <label for="answer">{%trans "Your answer"%}</label>
-   <select name="answer" class="ui dropdown select">
-     <option value=""><i>{%trans "Please select one item"%}</i></option>
-  {%for key, value in question.choice%}
-       <option value="{{value.title}}"  {%if myAnswer.text == value.title%} checked {%endif%}>{{value.title}}</option>
-     {%endfor%}
-   </select>
- </div>
- {{block('nextBtn')}}
-{%endblock%}
+
 
 
 
