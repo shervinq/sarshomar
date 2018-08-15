@@ -220,14 +220,16 @@
 
 
 {%block ibrandingfile%}
-<label for="brandingfile" class="block txtC">{%trans "Image/Video/File"%}</label>
-<div class="input preview">
- <input type="file" accept="image/gif, image/jpeg, image/png" name="brandingfile" id="brandingfile" data-preview data-max="1000">
- <label for="brandingfile" title='{%trans "allowed extentions jpg, png. Max 1000Kb"%}'>
+
 {%if surveyRow.brandingmeta.file%}
+<div class="mediaBox mB20">
   <img src="{{surveyRow.brandingmeta.file}}" alt="{{surveyRow.title}}" id="logoPreview">
+</div>
 {%endif%}
- </label>
+
+<label for="brandingfile" class="block">{%trans "Image/Video/File"%}</label>
+<div class="input" title='{%trans "allowed extentions jpg, png. Max 1000Kb"%}'>
+ <input type="file" accept="image/gif, image/jpeg, image/png" name="brandingfile" id="brandingfile" data-max="1000">
 </div>
 {%endblock%}
 
