@@ -59,7 +59,7 @@ trait type
 		// 	'choicehelp'    => false,
 		//  'default_load'  => [],
 		// 	'desc'          => T_('Picture choice'),
-		// 	'logo'          => \dash\url::site(). '/static/images/logo.png',
+		// 	'logo'          => \dash\url::site(). '/static/images/question-type/sarshomar.png',
 		// 	'upload_choice' => true,
 		// ];
 
@@ -72,7 +72,7 @@ trait type
 			'title'        => T_("Short answer"),
 			'placeholder'  => true,
 			'maxcharshort' => true,
-			'logo'         => \dash\url::site(). '/static/images/logo.png',
+			'logo'         => \dash\url::site(). '/static/images/question-type/short_answer.png',
 			'default_load' =>
 			[
 				'placeholder'  => T_("Type here ..."),
@@ -88,7 +88,7 @@ trait type
 			'placeholder'  => true,
 			'title'        => T_('Descriptive answer'),
 			'maxcharlong'  => true,
-			'logo'         => \dash\url::site(). '/static/images/logo.png',
+			'logo'         => \dash\url::site(). '/static/images/question-type/descriptive_answer.png',
 			'default_load' =>
 			[
 				'maxcharlong' => 10000,
@@ -104,7 +104,7 @@ trait type
 			'title'        => T_('Numberic'),
 			'min'          => true,
 			'max'          => true,
-			'logo'         => \dash\url::site(). '/static/images/logo.png',
+			'logo'         => \dash\url::site(). '/static/images/question-type/numeric.png',
 			'default_load' =>
 			[
 				'min'     => 0,
@@ -122,7 +122,7 @@ trait type
 			'choiceinline'  => true,
 			'random'        => true,
 			'chart'         => true,
-			'logo'			=> \dash\url::site(). '/static/images/logo.png',
+			'logo'			=> \dash\url::site(). '/static/images/question-type/sarshomar.png',
 			'default_load' =>
 			[
 
@@ -140,7 +140,7 @@ trait type
 			'minchoice'     => true,
 			'maxchoice'     => true,
 			'choicehelp'    => true,
-			'logo'			=> \dash\url::site(). '/static/images/logo.png',
+			'logo'			=> \dash\url::site(). '/static/images/question-type/sarshomar.png',
 			'default_load' =>
 			[
 				'minchoice'  => 1,
@@ -158,7 +158,7 @@ trait type
 			'choice'        => true,
 			'chart'         => true,
 			'random'        => true,
-			'logo'			=> \dash\url::site(). '/static/images/logo.png',
+			'logo'			=> \dash\url::site(). '/static/images/question-type/sarshomar.png',
 			'default_load' =>
 			[
 				'placeholder' => T_("Please choose one item"),
@@ -171,7 +171,7 @@ trait type
 			'key'           => 'date',
 			'placeholder'   => true,
 			'title'         => T_('Date'),
-			'logo'			=> \dash\url::site(). '/static/images/logo.png',
+			'logo'			=> \dash\url::site(). '/static/images/question-type/sarshomar.png',
 			'default_load' =>
 			[
 				'placeholder' => T_("Select one date"),
@@ -183,7 +183,7 @@ trait type
 		[
 			'key'          => 'mobile',
 			'title'        => T_('Mobile'),
-			'logo'         => \dash\url::site(). '/static/images/logo.png',
+			'logo'         => \dash\url::site(). '/static/images/question-type/sarshomar.png',
 			'default_load' =>
 			[
 				'placeholder' => T_("Enter mobile"),
@@ -195,7 +195,7 @@ trait type
 			'key'          => 'email',
 			'placeholder'  => true,
 			'title'        => T_('Email'),
-			'logo'         => \dash\url::site(). '/static/images/logo.png',
+			'logo'         => \dash\url::site(). '/static/images/question-type/sarshomar.png',
 			'default_load' =>
 			[
 				'placeholder' => T_("Enter email"),
@@ -208,7 +208,7 @@ trait type
 			'placeholder'  => true,
 			'title'        => T_('Website'),
 			'maxchar'      => true,
-			'logo'         => \dash\url::site(). '/static/images/logo.png',
+			'logo'         => \dash\url::site(). '/static/images/question-type/sarshomar.png',
 			'default_load' =>
 			[
 				'placeholder' => T_("Enter website"),
@@ -222,7 +222,7 @@ trait type
 			'title'    => T_('Rating'),
 			'maxrate'  => true,
 			'ratetype' => true,
-			'logo'     => \dash\url::site(). '/static/images/logo.png',
+			'logo'     => \dash\url::site(). '/static/images/question-type/sarshomar.png',
 			'default_load' =>
 			[
 				'maxrate'  => 10,
@@ -240,7 +240,7 @@ trait type
 			'default'     => 5,
 			'step'        => 10,
 			'rangenumber' => 1000,
-			'logo'        => \dash\url::site(). '/static/images/logo.png',
+			'logo'        => \dash\url::site(). '/static/images/question-type/sarshomar.png',
 			'default_load' =>
 			[
 				'min'     => 0,
