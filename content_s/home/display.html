@@ -154,7 +154,7 @@
 
 
 {%block rating%}
-  <div class="radioRating txtC {{question.setting.ratetype}}">
+  <div class="radioRating togglable txtC {{question.setting.ratetype}}">
     <div class="rateBox">
 {% for i in 1..(question.setting.maxrate) %}
 {%set currentRate = question.setting.maxrate - i + 1%}
@@ -168,12 +168,17 @@
 
 
 {%block rangeslider%}
-  <input type="range" name="answer" min="{{question.setting.min}}" max="{{question.setting.max}}" step="{{question.setting.step}}" value="{{myAnswer.text}}" class="slider round" {%if question.require%} required{%endif%}>
-  <div class="f">
-    <div class="c">{{question.setting.min}}</div>
-    <div class="c txtC">center</div>
-    <div class="c txtRa">{{question.setting.max}}</div>
+  <div class="rangeSlider1">
+    <input type="range" name="answer" min="{{question.setting.min}}" max="{{question.setting.max}}" step="{{question.setting.step}}" value="{{myAnswer.text}}"{%if question.require%} required{%endif%}>
+    <output>60</output>
   </div>
+  <div class="f">
+    <div class="c txtLa">{{question.setting.min}}</div>
+    <div class="c txtC">Average</div>
+    <div class="c txtRa">{{question.setting.max}}</div>
+    <div class="cauto we80"></div>
+  </div>
+
 
  {{block('nextBtn')}}
 {%endblock%}
