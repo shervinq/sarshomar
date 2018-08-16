@@ -15,18 +15,13 @@
 {%block itype%}
 
 <div class='normal f justify-center'>
-
-
 {%for key, value in allType%}
-
   {%if requestGET.questionid%}
 
-    <a class="vcard mA10 {%if dataRow.type == value.key %} green {%endif%}active " href='{{url.pwd}}' data-ajaxify data-method='post' data-data='{"type" : "{{value.key}}"}'>
+    <a class="vcard mA10 {%if dataRow.type == value.key %} green {%endif%}active" href='{{url.pwd}}' data-ajaxify data-method='post' data-data='{"type" : "{{value.key}}"}'>
       <img src="{{value.logo}}" alt="{{value.title}}" class="pA10-f">
       <div class="content">
         <div class="header">{{value.title}}</div>
-        <div class="meta"></div>
-        <div class="footer">{{value.desc}}</div>
       </div>
     </a>
 
@@ -41,11 +36,9 @@
       </div>
     </a>
   {%endif%}
-
 {%endfor%}
 
 </div>
-
 {%endblock%}
 
 
