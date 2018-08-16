@@ -307,15 +307,6 @@ class question
 			return false;
 		}
 
-		$choice_sort = \dash\app::request('choice_sort');
-		if($choice_sort && !in_array($choice_sort, ['save','random','asc','desc']))
-		{
-			\dash\notif::error(T_("Invalid choice sort of question"), 'choice_sort');
-			return false;
-		}
-
-
-
 		if(is_array($media))
 		{
 			$media = json_encode($media, JSON_UNESCAPED_UNICODE);
@@ -384,35 +375,21 @@ class question
 			$args['choice'] = $choice;
 		}
 
-		if(
-			\dash\app::isset_request('random') ||
-			\dash\app::isset_request('otherchoice') ||
-			\dash\app::isset_request('min') ||
-			\dash\app::isset_request('max') ||
-			\dash\app::isset_request('placeholder') ||
-			\dash\app::isset_request('maxchoice') ||
-			\dash\app::isset_request('minchoice') ||
-			\dash\app::isset_request('maxrate') ||
-			\dash\app::isset_request('choicehelp') ||
-			\dash\app::isset_request('choiceinline')
+		$setting = [];
 
-		  )
+		if(\dash\app::isset_request('random'))
 		{
+			$setting['random'] = \dash\app::request('random') ? true : false;
+		}
 
-			$setting                 = [];
-			$setting['random']       = \dash\app::request('random') ? true : false;
-			$maxrate = \dash\app::request('maxrate');
-			if($maxrate && (intval($maxrate) > 10 || intval($maxrate) < 0))
-			{
-				\dash\notif::error(T_("Please set maximum rate between 0 and 10"), 'maxrate');
-				return false;
-			}
-			$setting['maxrate']      = $maxrate;
+		if(\dash\app::isset_request('otherchoice'))
+		{
+			$setting['otherchoice'] = \dash\app::request('otherchoice') ? true : false;
+		}
 
-			// @check value
-			$setting['minchoice']    = \dash\app::request('minchoice');
-			$setting['maxchoice']    = \dash\app::request('maxchoice');
 
+		if(\dash\app::isset_request('min') || \dash\app::isset_request('max'))
+		{
 			$myType = isset($load_question['type']) ? $load_question['type'] : null;
 
 			if(!$myType && $type)
@@ -470,12 +447,11 @@ class question
 			$setting['min']          = $min;
 			$setting['max']          = $max;
 
+		}
 
-			$setting['choiceinline'] = \dash\app::request('choiceinline') ? true : false;
-
-			$setting['choice_sort']  = $choice_sort;
-			$setting['otherchoice']  = \dash\app::request('otherchoice') ? true : false;
-			$placeholder             = \dash\app::request('placeholder');
+		if(\dash\app::isset_request('placeholder'))
+		{
+			$placeholder = \dash\app::request('placeholder');
 			if($placeholder && mb_strlen($placeholder) > 10000)
 			{
 				$placeholder = substr($placeholder, 0, 10000);
@@ -486,7 +462,65 @@ class question
 				$placeholder = \dash\safe::remove_nl($placeholder);
 			}
 
-			$choicehelp             = \dash\app::request('choicehelp');
+			$setting['placeholder'] = $placeholder;
+
+		}
+
+
+		if(\dash\app::isset_request('minchoice') || \dash\app::isset_request('maxchoice'))
+		{
+			$choice_count = [];
+			if(isset($load_question['choice']))
+			{
+				$choice_count = $load_question['choice'];
+				$choice_count = json_decode($choice_count, true);
+				if(!is_array($choice_count))
+				{
+					$choice_count = [];
+				}
+			}
+
+			$minchoice = abs(intval(\dash\app::request('minchoice')));
+			$maxchoice = abs(intval(\dash\app::request('maxchoice')));
+
+			if($minchoice < 0 )
+			{
+				\dash\notif::error(T_("Please set min choic larger than 0"), 'minchoice');
+				return false;
+			}
+
+			if($maxchoice > count($choice_count))
+			{
+				\dash\notif::error(T_("Maximum choice must be less than choice count"), 'maxchoice');
+				return false;
+			}
+
+			if($minchoice > count($choice_count))
+			{
+				\dash\notif::error(T_("Minimum choice must be less than choice count"), 'minchoice');
+				return false;
+			}
+
+			$setting['minchoice']    = \dash\app::request('minchoice');
+			$setting['maxchoice']    = \dash\app::request('maxchoice');
+		}
+
+
+		if(\dash\app::isset_request('maxrate'))
+		{
+			$maxrate = \dash\app::request('maxrate');
+			if($maxrate && (intval($maxrate) > 10 || intval($maxrate) <= 0))
+			{
+				\dash\notif::error(T_("Please set maximum rate between 1 and 10"), 'maxrate');
+				return false;
+			}
+			$setting['maxrate']      = $maxrate;
+		}
+
+
+		if(\dash\app::isset_request('choicehelp'))
+		{
+			$choicehelp = \dash\app::request('choicehelp');
 			if($choicehelp && mb_strlen($choicehelp) > 10000)
 			{
 				$choicehelp = substr($choicehelp, 0, 10000);
@@ -497,21 +531,42 @@ class question
 				$choicehelp = \dash\safe::remove_nl($choicehelp);
 			}
 
-			$setting['placeholder'] = $placeholder;
 			$setting['choicehelp'] = $choicehelp;
+		}
 
+
+		if(\dash\app::isset_request('choiceinline'))
+		{
+			$setting['choiceinline'] = \dash\app::request('choiceinline') ? true : false;
+		}
+
+
+		if(\dash\app::isset_request('choice_sort'))
+		{
+			$choice_sort = \dash\app::request('choice_sort');
+			if($choice_sort && !in_array($choice_sort, ['save','random','asc','desc']))
+			{
+				\dash\notif::error(T_("Invalid choice sort of question"), 'choice_sort');
+				return false;
+			}
+			$setting['choice_sort']  = $choice_sort;
+		}
+
+
+		if(!empty($setting))
+		{
 			$args['setting'] = json_encode($setting, JSON_UNESCAPED_UNICODE);
 		}
 
 		$args['survey_id'] = $survey_id;
-		$args['title']   = $title;
-		$args['desc']    = $desc;
-		$args['media']   = $media;
-		$args['require'] = $require;
-		$args['type']    = $type;
-		$args['maxchar'] = $maxchar;
-		$args['sort']    = $sort;
-		$args['status']  = $status;
+		$args['title']     = $title;
+		$args['desc']      = $desc;
+		$args['media']     = $media;
+		$args['require']   = $require;
+		$args['type']      = $type;
+		$args['maxchar']   = $maxchar;
+		$args['sort']      = $sort;
+		$args['status']    = $status;
 
 		return $args;
 	}
