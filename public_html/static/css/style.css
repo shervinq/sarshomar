@@ -366,7 +366,7 @@ footer #xaccess a:hover{opacity:0.8;padding:0.5em 2em;margin-right:0;}
 .special-heading{position:relative;padding-left:90px;color:#00667a;font-size:20px;line-height:26px;margin-bottom:30px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}
 .rtl .special-heading{padding-left:0;padding-right:90px}
 .special-heading a{color:inherit;font-weight:400}
-.special-heading::before{content:"";position:absolute;top:-2px;bottom:0;margin:auto;left:-15px;width:100px;height:2px;background-color:#00667a}
+.special-heading::before{content:"";position:absolute;top:-22px;bottom:0;margin:auto;left:-15px;width:100px;height:2px;background-color:#00667a}
 .rtl .special-heading::before{left:auto;right:-15px}
 .special-heading::after{content:"";position:absolute;width:60px;height:115px;background-image:url(../images/border-object.svg);background-repeat:no-repeat;top:5px;left:-75px}
 .rtl .special-heading::after{right:-75px;left:initial;background-image:url(../images/border-object-fa.svg)}
