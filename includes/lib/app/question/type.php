@@ -171,7 +171,7 @@ trait type
 			'key'           => 'date',
 			'placeholder'   => true,
 			'title'         => T_('Date'),
-			'logo'			=> \dash\url::site(). '/static/images/question-type/sarshomar.png',
+			'logo'			=> \dash\url::site(). '/static/images/question-type/date.png',
 			'default_load' =>
 			[
 				'placeholder' => T_("Select one date"),
@@ -183,7 +183,7 @@ trait type
 		[
 			'key'          => 'mobile',
 			'title'        => T_('Mobile'),
-			'logo'         => \dash\url::site(). '/static/images/question-type/sarshomar.png',
+			'logo'         => \dash\url::site(). '/static/images/question-type/mobile.png',
 			'default_load' =>
 			[
 				'placeholder' => T_("Enter mobile"),
@@ -195,7 +195,7 @@ trait type
 			'key'          => 'email',
 			'placeholder'  => true,
 			'title'        => T_('Email'),
-			'logo'         => \dash\url::site(). '/static/images/question-type/sarshomar.png',
+			'logo'         => \dash\url::site(). '/static/images/question-type/email.png',
 			'default_load' =>
 			[
 				'placeholder' => T_("Enter email"),
@@ -208,7 +208,7 @@ trait type
 			'placeholder'  => true,
 			'title'        => T_('Website'),
 			'maxchar'      => true,
-			'logo'         => \dash\url::site(). '/static/images/question-type/sarshomar.png',
+			'logo'         => \dash\url::site(). '/static/images/question-type/website.png',
 			'default_load' =>
 			[
 				'placeholder' => T_("Enter website"),
@@ -222,7 +222,7 @@ trait type
 			'title'    => T_('Rating'),
 			'maxrate'  => true,
 			'ratetype' => true,
-			'logo'     => \dash\url::site(). '/static/images/question-type/sarshomar.png',
+			'logo'     => \dash\url::site(). '/static/images/question-type/rating.png',
 			'default_load' =>
 			[
 				'maxrate'  => 10,
@@ -240,7 +240,7 @@ trait type
 			'default'     => 5,
 			'step'        => 10,
 			'rangenumber' => 1000,
-			'logo'        => \dash\url::site(). '/static/images/question-type/sarshomar.png',
+			'logo'        => \dash\url::site(). '/static/images/question-type/rangeslider.png',
 			'default_load' =>
 			[
 				'min'     => 0,
