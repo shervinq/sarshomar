@@ -4,21 +4,6 @@ namespace content_s\home;
 
 class model
 {
-	// public static function check_hiden_input()
-	// {
-	// 	$survay      = \dash\request::post('survay');
-	// 	// $userprocode = \dash\request::post('userprocode');
-	// 	// $passwd      = \dash\request::post('passwd');
-	// 	$id          = \dash\request::post('id');
-
-	// 	if($survay || $id)
-	// 	{
-	// 		return false;
-	// 	}
-	// 	return true;
-	// }
-
-
 	public static function check_xkey_xvalue()
 	{
 		if(\dash\request::post("start") === "survey")
@@ -37,11 +22,6 @@ class model
 
 	public static function post()
 	{
-		// if(!self::check_hiden_input())
-		// {
-		// 	\dash\notif::error(T_("Dont!"));
-		// 	return false;
-		// }
 
 		if(!self::check_xkey_xvalue())
 		{
@@ -53,10 +33,19 @@ class model
 		{
 			if(!\dash\user::id())
 			{
-				$user_id = \dash\db\users::signup();
-				\dash\user::init($user_id);
-				\dash\db\sessions::set($user_id);
-				\dash\notif::direct();
+				$survay_setting = \dash\data::surveyRow();
+				if(isset($survay_setting['setting']['forcelogin']) && $survay_setting['setting']['forcelogin'])
+				{
+					\dash\redirect::to(\dash\url::kingdom(). '/enter?referer='. \dash\url::pwd());
+				}
+				else
+				{
+					$user_id = \dash\db\users::signup();
+					\dash\user::init($user_id);
+					\dash\db\sessions::set($user_id);
+					\dash\notif::direct();
+				}
+
 			}
 
 			$query = ['step' => 1];
