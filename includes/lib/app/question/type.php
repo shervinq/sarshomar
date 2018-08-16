@@ -174,7 +174,19 @@ trait type
 			'logo'			=> \dash\url::site(). '/static/images/question-type/date.png',
 			'default_load' =>
 			[
-				'placeholder' => T_("Select one date"),
+				'placeholder' => T_("Select date"),
+			],
+		];
+
+		$type['time'] =
+		[
+			'key'           => 'time',
+			'placeholder'   => true,
+			'title'         => T_('Time'),
+			'logo'			=> \dash\url::site(). '/static/images/question-type/time.png',
+			'default_load' =>
+			[
+				'placeholder' => T_("Select time"),
 			],
 		];
 
