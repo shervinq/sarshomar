@@ -524,6 +524,19 @@ class question
 	 */
 	public static function ready($_data)
 	{
+		$setting = [];
+		if(isset($_data['setting']))
+		{
+			$setting = $_data['setting'];
+			$setting = json_decode($setting, true);
+		}
+
+		$myType = null;
+		if(isset($_data['type']))
+		{
+			$myType = $_data['type'];
+		}
+
 		$result = [];
 		foreach ($_data as $key => $value)
 		{
@@ -546,6 +559,20 @@ class question
 				case 'media':
 				case 'setting':
 					$result[$key] = json_decode($value, true);
+					switch ($myType)
+					{
+						case 'rating':
+							if(!isset($setting['maxrate']))
+							{
+								$setting['maxrate'] = 5;
+							}
+							break;
+
+						default:
+							// no thing
+							break;
+					}
+					$result[$key] = $setting;
 					break;
 
 				case 'choice':
@@ -558,14 +585,9 @@ class question
 					}
 
 					$choice_sort  = 'save';
-					if(isset($_data['setting']))
+					if(isset($setting['choice_sort']))
 					{
-						$setting = $_data['setting'];
-						$setting = json_decode($setting, true);
-						if(isset($setting['choice_sort']))
-						{
-							$choice_sort = $setting['choice_sort'];
-						}
+						$choice_sort = $setting['choice_sort'];
 					}
 
 					switch ($choice_sort)
