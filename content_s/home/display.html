@@ -154,12 +154,12 @@
 
 
 {%block rating%}
-  <div class="radioRating txtC">
+  <div class="radioRating txtC {{question.setting.ratetype}}">
     <div class="rateBox">
 {% for i in 1..(question.setting.maxrate) %}
 {%set currentRate = question.setting.maxrate - i + 1%}
       <input type="radio" name="answer" value="{{currentRate}}" id="myRate-{{i}}" {%if question.require%} required{%endif%}{%if myAnswer.text == currentRate %} checked{%endif%}>
-      <label for="myRate-{{i}}">{{currentRate}}</label>
+      <label for="myRate-{{i}}">{% if question.setting.maxrate | length == 1%}{%else%}{{currentRate}}{%endif%}</label>
 {% endfor %}
     </div>
   </div>

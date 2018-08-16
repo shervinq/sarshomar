@@ -510,7 +510,7 @@ class question
 		if(\dash\app::isset_request('maxrate'))
 		{
 			$maxrate = \dash\app::request('maxrate');
-			if($maxrate && (intval($maxrate) > 10 || intval($maxrate) <= 0))
+			if(isset($maxrate) && (intval($maxrate) > 10 || intval($maxrate) <=0))
 			{
 				\dash\notif::error(T_("Please set maximum rate between 1 and 10"), 'maxrate');
 				return false;
