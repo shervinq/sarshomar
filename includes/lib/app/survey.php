@@ -159,14 +159,25 @@ class survey
 			$thankyoumedia = json_encode($thankyoumedia, JSON_UNESCAPED_UNICODE);
 		}
 
-		$args                  = [];
+		$args    = [];
+		$setting = [];
 
 		if(\dash\app::isset_request('buttontitle'))
 		{
 			$buttontitle                    = \dash\app::request('buttontitle');
 			$buttontitle                    = \dash\safe::remove_nl($buttontitle);
-			$args['setting']['buttontitle'] = $buttontitle;
-			$args['setting']                = json_encode($args['setting'], JSON_UNESCAPED_UNICODE);
+			$setting['buttontitle'] = $buttontitle;
+		}
+
+		if(\dash\app::isset_request('forcelogin'))
+		{
+			$setting['forcelogin'] = \dash\app::request('forcelogin') ? true : false;
+		}
+
+
+		if(!empty($setting))
+		{
+			$args['setting'] = json_encode($setting, JSON_UNESCAPED_UNICODE);
 		}
 
 
