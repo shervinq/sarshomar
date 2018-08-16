@@ -23,6 +23,10 @@ class view
 		\dash\data::include_editor(true);
 		\dash\data::include_chart(true);
 
+		// set shortkey for all badges is this content
+		\dash\data::badge_shortkey(120);
+		\dash\data::badge2_shortkey(121);
+
 		\dash\data::service_title(T_("Sarshomar"));
 		\dash\data::service_desc(T_("Focus on your question. Do not be too concerned about how to ask or analyze."));
 		\dash\data::service_slogan(T_("Ask Anyone Anywhere"));
