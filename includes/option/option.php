@@ -23,6 +23,9 @@ self::$config['site']['desc']   = "Focus on your question. Do not be too concern
 self::$config['site']['slogan'] = "Ask Anyone Anywhere";
 
 
+// upload file on dl.sarshomar.com
+self::$config['upload_subdomain']  = 'dl';
+
 /**
 @ In the name Of Allah
 * The base configurations of the jibres.
