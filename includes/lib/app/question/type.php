@@ -122,7 +122,7 @@ trait type
 			'choiceinline'  => true,
 			'random'        => true,
 			'chart'         => true,
-			'logo'			=> \dash\url::site(). '/static/images/question-type/sarshomar.png',
+			'logo'			=> \dash\url::site(). '/static/images/question-type/single_choice.png',
 			'default_load' =>
 			[
 
@@ -140,7 +140,7 @@ trait type
 			'minchoice'     => true,
 			'maxchoice'     => true,
 			'choicehelp'    => true,
-			'logo'			=> \dash\url::site(). '/static/images/question-type/sarshomar.png',
+			'logo'			=> \dash\url::site(). '/static/images/question-type/multiple_choice.png',
 			'default_load' =>
 			[
 				'minchoice'  => 1,
@@ -158,7 +158,7 @@ trait type
 			'choice'        => true,
 			'chart'         => true,
 			'random'        => true,
-			'logo'			=> \dash\url::site(). '/static/images/question-type/sarshomar.png',
+			'logo'			=> \dash\url::site(). '/static/images/question-type/dropdown.png',
 			'default_load' =>
 			[
 				'placeholder' => T_("Please choose one item"),
