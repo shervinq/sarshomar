@@ -12,7 +12,7 @@ class view
 
 		if(\dash\request::get('id'))
 		{
-			$id        = \dash\request::get('id');
+			$id          = \dash\request::get('id');
 			$load_survey = \lib\app\survey::get($id);
 			if(!$load_survey)
 			{
@@ -22,8 +22,11 @@ class view
 
 			\dash\data::page_title(\dash\data::page_title(). ' | '. \dash\data::surveyRow_title());
 
-			\dash\data::badge_link(\dash\url::here());
-			\dash\data::badge_text(T_('Back to survey list'));
+			\dash\data::badge_link(\dash\url::kingdom(). '/s/'. $id);
+			\dash\data::badge_text(T_('Preview'));
+
+			\dash\data::badge2_link(\dash\url::here());
+			\dash\data::badge2_text(T_('Back to survey list'));
 
 			$dashboard_detail['month_detail'] = \dash\date::month_precent();
 
