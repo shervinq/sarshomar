@@ -23,6 +23,9 @@ class view
 		\dash\data::service_logo(\dash\url::site(). '/static/siftal/images/logo/sarshomar.png');
 		\dash\data::service_url(\dash\url::kingdom());
 
+		// set shortkey for all badges is this content
+		\dash\data::badge_shortkey(120);
+		\dash\data::badge2_shortkey(121);
 	}
 }
 ?>
