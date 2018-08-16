@@ -153,48 +153,64 @@
 
 {%if choiceDetail.ratetype%}
 
-<div class="mT15">
  <label >{%trans "Rate emoji"%}</label>
+<div class="mT15">
 
- <div class="radio1 yellow">
-  <input type="radio" id="r-star" name="ratetype" value="star" {%if dataRow.setting.ratetype == 'star' or not  dataRow.setting.ratetype %} checked {%endif%}>
-  <label for="r-star">{%if false%}{%trans "Star"%}{%endif%} <i class="sf-star"></i></label>
- </div>
+ <div class="radioRating compact" >
+  <div class="rateBox">
+    <input type="radio" id="r-star" name="ratetype" value="star" {%if dataRow.setting.ratetype == 'star' or not  dataRow.setting.ratetype %} checked {%endif%}>
+    <label for="r-star"></label>
+   </div>
+  </div>
 
- <div class="radio1 red">
-  <input type="radio" id="r-like" name="ratetype" value="like" {%if dataRow.setting.ratetype == 'like' %} checked {%endif%}>
-  <label for="r-like">{%if false%}{%trans "Heart"%}{%endif%} <i class="sf-heart"></i></label>
- </div>
+ <div class="radioRating compact heart">
+  <div class="rateBox">
+    <input type="radio" id="r-heart" name="ratetype" value="heart" {%if dataRow.setting.ratetype == 'heart' %} checked {%endif%}>
+    <label for="r-heart"></label>
+   </div>
+  </div>
 
- <div class="radio1 black">
-  <input type="radio" id="r-bell" name="ratetype" value="bell" {%if dataRow.setting.ratetype == 'bell' %} checked {%endif%}>
-  <label for="r-bell">{%if false%}{%trans "Bell"%}{%endif%} <i class="sf-bell"></i></label>
- </div>
+ <div class="radioRating compact bell">
+  <div class="rateBox">
+    <input type="radio" id="r-bell" name="ratetype" value="bell" {%if dataRow.setting.ratetype == 'bell' %} checked {%endif%}>
+    <label for="r-bell"></label>
+   </div>
+  </div>
 
- <div class="radio1 blue">
-  <input type="radio" id="r-flag" name="ratetype" value="flag" {%if dataRow.setting.ratetype == 'flag' %} checked {%endif%}>
-  <label for="r-flag">{%if false%}{%trans "Flag"%}{%endif%} <i class="sf-flag"></i></label>
- </div>
+ <div class="radioRating compact flag">
+  <div class="rateBox">
+    <input type="radio" id="r-flag" name="ratetype" value="flag" {%if dataRow.setting.ratetype == 'flag' %} checked {%endif%}>
+    <label for="r-flag"></label>
+   </div>
+  </div>
 
- <div class="radio1">
-  <input type="radio" id="r-bookmark" name="ratetype" value="bookmark" {%if dataRow.setting.ratetype == 'bookmark' %} checked {%endif%}>
-  <label for="r-bookmark">{%if false%}{%trans "Bookmark"%}{%endif%} <i class="sf-bookmark"></i></label>
- </div>
+ <div class="radioRating compact bookmark">
+  <div class="rateBox">
+    <input type="radio" id="r-bookmark" name="ratetype" value="bookmark" {%if dataRow.setting.ratetype == 'bookmark' %} checked {%endif%}>
+    <label for="r-bookmark"></label>
+   </div>
+  </div>
 
-<div class="radio1 green">
-  <input type="radio" id="r-thumbs-up" name="ratetype" value="thumbs-up" {%if dataRow.setting.ratetype == 'thumbs-up' %} checked {%endif%}>
-  <label for="r-thumbs-up">{%if false%}{%trans "Thumbs up"%}{%endif%} <i class="sf-thumbs-up"></i></label>
- </div>
+<div class="radioRating compact like">
+  <div class="rateBox">
+    <input type="radio" id="r-like" name="ratetype" value="like" {%if dataRow.setting.ratetype == 'like' %} checked {%endif%}>
+    <label for="r-like"></label>
+   </div>
+  </div>
 
- <div class="radio1 orange">
-  <input type="radio" id="r-thumbs-down" name="ratetype" value="thumbs-down" {%if dataRow.setting.ratetype == 'thumbs-down' %} checked {%endif%}>
-  <label for="r-thumbs-down">{%if false%}{%trans "Thumbs down"%}{%endif%} <i class="sf-thumbs-down"></i></label>
- </div>
+ <div class="radioRating compact dislike">
+  <div class="rateBox">
+    <input type="radio" id="r-dislike" name="ratetype" value="dislike" {%if dataRow.setting.ratetype == 'dislike' %} checked {%endif%}>
+    <label for="r-dislike"></label>
+   </div>
+  </div>
 
- <div class="radio1">
-  <input type="radio" id="r-user-6" name="ratetype" value="user-6" {%if dataRow.setting.ratetype == 'user-6' %} checked {%endif%}>
-  <label for="r-user-6">{%if false%}{%trans "User"%}{%endif%} <i class="sf-user-6"></i></label>
- </div>
+ <div class="radioRating compact user1">
+  <div class="rateBox">
+    <input type="radio" id="r-user1" name="ratetype" value="user1" {%if dataRow.setting.ratetype == 'user1' %} checked {%endif%}>
+    <label for="r-user1"></label>
+   </div>
+  </div>
 
 </div>
 {%endif%}

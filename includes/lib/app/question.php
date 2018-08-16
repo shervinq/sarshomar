@@ -444,10 +444,11 @@ class question
 				}
 			}
 
-			$setting['min']          = $min;
-			$setting['max']          = $max;
+			$setting['min'] = $min;
+			$setting['max'] = $max;
 
 		}
+
 
 		if(\dash\app::isset_request('placeholder'))
 		{
@@ -515,6 +516,18 @@ class question
 				return false;
 			}
 			$setting['maxrate']      = $maxrate;
+		}
+
+
+		if(\dash\app::isset_request('ratetype'))
+		{
+			$ratetype = \dash\app::request('ratetype');
+			if($ratetype && !in_array($ratetype, ['star','heart','bell','flag','bookmark','like','dislike','user1']))
+			{
+				\dash\notif::error(T_("Please a valid range type"), 'ratetype');
+				return false;
+			}
+			$setting['ratetype']      = $ratetype;
 		}
 
 

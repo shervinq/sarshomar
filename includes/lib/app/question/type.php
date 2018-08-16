@@ -46,6 +46,7 @@ trait type
 		// 	'max'           => false,
 		// 	'otherchoice'   => false,
 		// 	'rangenumber'   => false,
+		// 	'ratetype'      => null,
 		// 	'chart'         => false,
 		// 	'prifile_field' => null,
 		// 	'maxchar'       => false,
@@ -158,10 +159,11 @@ trait type
 
 		$type['rating'] =
 		[
-			'key'     => 'rating',
-			'title'   => T_('Rating'),
-			'maxrate' => true,
-			'logo'    => \dash\url::site(). '/static/images/logo.png',
+			'key'      => 'rating',
+			'title'    => T_('Rating'),
+			'maxrate'  => true,
+			'ratetype' => true,
+			'logo'     => \dash\url::site(). '/static/images/logo.png',
 		];
 
 		$type['rangeslider'] =
