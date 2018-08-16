@@ -20,7 +20,8 @@ class view
 		\dash\data::include_adminPanel(true);
 		\dash\data::include_css(false);
 		\dash\data::include_js(false);
-
+		\dash\data::include_editor(true);
+		\dash\data::include_chart(true);
 
 		\dash\data::service_title(T_("Sarshomar"));
 		\dash\data::service_desc(T_("Focus on your question. Do not be too concerned about how to ask or analyze."));

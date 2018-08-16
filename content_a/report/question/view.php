@@ -54,7 +54,6 @@ class view
 				}
 			}
 
-			\dash\data::include_chart(true);
 		}
 		else
 		{
