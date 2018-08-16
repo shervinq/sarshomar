@@ -223,26 +223,7 @@ header .logo h1 a{color:#f4f4f4;display:block}
 
 header #header-box{display:-webkit-box;display:-ms-flexbox;display:-webkit-flex;display:-moz-box;display:flex;-webkit-box-flex:1;-ms-flex:1;-webkit-flex:1;-moz-box-flex:1;flex:1;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-moz-box-orient:vertical;-moz-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:justify;-webkit-justify-content:space-between;-moz-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}
 header #header-box .headerLine{border-top:2px solid #00667a}
-
 header #header-bottom{display:-webkit-box;display:-ms-flexbox;display:-webkit-flex;display:-moz-box;display:flex;height:30px;-webkit-box-align:center;-webkit-align-items:center;-moz-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-moz-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}
-
-/* header quick */
-header #header-quick>a{display:inline-block;padding:0 10px;font-size:12px;color:#00667a;line-height:40px;font-weight:700;-webkit-transition:.3s;-o-transition:.3s;-moz-transition:.3s;transition:.3s;margin-top:10px}
-header #header-quick>a:hover{background-color:#e8e6e6}
-header #header-quick>a:focus{background-color:#00667a;color:#f4f4f4}
-
-/* header profile */
-header #header-profile{display:-webkit-box;display:-ms-flexbox;display:-webkit-flex;display:-moz-box;display:flex;height:40px;margin:10px 10px 0 0}
-.rtl header #header-profile{margin:10px 0 0 10px}
-header .header-profile-link,header .header-profile-button{padding:0 10px;-webkit-transition:.3s;-o-transition:.3s;-moz-transition:.3s;transition:.3s;font-weight:700;line-height:40px}
-header .header-profile-link{color:#00667a;font-size:12px}
-header .header-profile-link:hover{background-color:#e8e6e6}
-header .header-profile-link:active,header .header-profile-link:focus{background-color:#e8e6e6;color:#37aaa7}
-header .header-profile-link .header-link-icon{display:none}
-header .header-profile-button{background-color:#37aaa7;color:#f6f6e6;font-size:15px;margin-left:5px;text-align:center}
-.rtl header .header-profile-button{margin-left:0;margin-right:5px}
-header .header-profile-button:hover{background-color:#129491;color:#eee}
-header .header-profile-button:active,header .header-profile-button:focus{background-color:#0e7d7a}
 
 header .ui-language-link{background-color:#efefef;color:#37aaa7;margin-left:5px;font-size:2em;position:relative;cursor:pointer}
 .rtl header .ui-language-link{margin:0;margin-right:5px}
@@ -2247,9 +2228,6 @@ html{font-size:60%}
 .in.xlarge,.in.xxlarge{width:100%}
 .special-heading:after,.sh::after{display:none}
 .customers-container .customer{width:75%}
-header #header-profile #add-question .header-link-text{display:none}
-header #header-profile #add-question .header-link-icon{display:inline-block;width:20px;text-align:center;vertical-align:middle}
-header #header-quick>a{padding:0 5px;font-size:10px}
 .society-dist .span5{display:none}
 .society-dist .span7{width:100%}
 .triplet .triplet-item img{max-width:150px}
@@ -2355,19 +2333,11 @@ footer{-webkit-box-shadow:0 -2px 0 0 #f4f4f5,0 -6px 0 0 #e7a429;-moz-box-shadow:
 header{display:block;height:auto;border:none}
 .container header .logo{background-image:none;width:100%;padding:2em 0;background-color:#00667a}
 header .logo h1{display:inline-block;vertical-align:bottom}
-header #header-quick{display:none}
 header #header-bottom #financial-box{flex-direction: row-reverse;}
-.rtl header .header-profile-button{font-size:12px}
 header #financial-box{width:100%;margin:0 20px!important;padding:0 1em}
 header #financial-box .total,header #financial-box .cost{background:#efefef;min-width:10em}
-header .header-profile-link .header-link-icon{display:inline-block;vertical-align:middle}
 header.open::before{content:"";position:fixed;top:0;bottom:0;right:0;left:0;background-color:rgba(0,0,0,0.5);z-index:4}
 header.open #header-box{width:300px}
-header #header-profile{width:100%;margin:0;padding:0;flex-flow:row wrap;color:#000;height:auto}
-.rtl header #header-profile {margin: 0}
-header #header-profile > *{flex:1 100%;padding:1rem 3rem;margin:0;background-color:transparent;color:#00667a;text-align:left;font-size:1.1em;line-height:initial}
-.rtl header #header-profile > * {text-align: right}
-header #header-profile > :hover,header #header-profile > :focus{background-color:#efefef}
 header .profile .info{width:100%;max-width:initial;padding:0;margin:0}
 .rtl header .profile .info {text-align: right}
 header .profile .profile-detail{position:static;z-index:initial;opacity:1;box-shadow:none}
@@ -2375,14 +2345,8 @@ header .ui-language-link{display: block}
 header .langlist {font-size: 1em;}
 header .langlist>a{padding:1em}
 header .icon-globe:before{content:""}
-header .header-profile-link nav{position:static;z-index:initial;opacity:1;box-shadow:none}
 .profile .profile-detail .dashboard {-webkit-box-flex: 1;-ms-flex: 1;-webkit-flex: 1;-moz-box-flex: 1;flex: 1;}
 header .icon-plus:before{content:""}
-header #header-profile .profile{order:1;background-color:#eee;padding-top:6px}
-header #header-profile .header-profile-button{order:2;background-color:#37aaa7!important;color:#fff!important;margin-top:2em}
-header #header-profile .header-profile-link{order:3}
-header #header-profile .header-profile-link:focus,header #header-profile .header-profile-link:hover {background: #fff}
-header #header-profile .header-link-text{order:4}
 header.open #header-box{left:0;}
 .rtl header #header-box{left:initial;right:-300px}
 .rtl header.open #header-box{left:initial;right:0}
