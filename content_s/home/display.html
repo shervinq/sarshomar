@@ -25,7 +25,7 @@
   </div>
 {%if skipBtn %}
   <div class="f">
-   <a class="cauto os btn outline" href="{{url.pwd}}&skip=true" data-ajaxify data-method='post' data-data='{"skip":true}'>{%trans "I'm not willing to answer"%}</a>
+   <a class="cauto os btn outline" href="{{url.pwd}}&skip=true" data-ajaxify data-method='post' data-data='{"skip":true}' data-shortkey="113">{%trans "I'm not willing to answer"%} <kbd>f2</kbd></a>
   </div>
 {%endif%}
  </div>
@@ -63,7 +63,7 @@
 
 
 {%block startBtn%}
- <a href="{{url.pwd}}" data-ajaxify data-data='{"start":"survey", "{{XKEY}}":"{{XVALUE}}"}' data-method='post' class="btn outline lg success block">{%trans "Start"%}</a>
+ <a href="{{url.pwd}}" data-ajaxify data-data='{"start":"survey", "{{XKEY}}":"{{XVALUE}}"}' data-method='post' class="btn outline lg success block" data-shortkey="13">{%trans "Start"%} <kbd>Enter</kbd></a>
 {%endblock%}
 
 
@@ -254,9 +254,6 @@
 {%endblock%}
 
 
-{%block start_btn%}
-<a href="{{url.pwd}}" data-ajaxify data-data='{"start" : "survey", "{{XKEY}}":"{{XVALUE}}" }' data-method='post' class="btn c3 hauto xl primary ">{%trans "Start"%}</a>
-{%endblock%}
 
 
 
