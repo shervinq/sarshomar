@@ -159,7 +159,7 @@
 {% for i in 1..(question.setting.maxrate) %}
 {%set currentRate = question.setting.maxrate - i + 1%}
       <input type="radio" name="answer" value="{{currentRate}}" id="myRate-{{i}}" {%if question.require%} required{%endif%}{%if myAnswer.text == currentRate %} checked{%endif%}>
-      <label for="myRate-{{i}}"></label>
+      <label for="myRate-{{i}}">{{currentRate}}</label>
 {% endfor %}
     </div>
   </div>
