@@ -5,7 +5,16 @@
 
 {%block pageContent%}
 <div class="cbox">
-  <div class="msg success2"><a href="{{url.this}}/add?id={{requestGET.id}}">{%trans "Add new question"%}</a></div>
+
+    <a class="msg f " href="{{url.this}}/add?id={{requestGET.id}}">
+    <div class="cauto">
+      <span class="sf-plus-circle fs40  pRa25 vlbottom"></span>
+    </div>
+    <div class="c">
+      <h3>{%trans "Add new question"%}</h3>
+    </div>
+    </a>
+
   {%for key, value in dataTable%}
     <div class="msg f">
       <div class="cauto pRa20">{{(key + 1) | fitNumber}}</div>

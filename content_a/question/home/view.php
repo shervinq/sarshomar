@@ -23,11 +23,6 @@ class view
 
 			$dataTable = \lib\app\question::block_survey($id);
 
-			if(!$dataTable)
-			{
-				\dash\redirect::to(\dash\url::this(). '/add?new=1&id='. \dash\request::get('id'));
-			}
-
 			\dash\data::dataTable($dataTable);
 
 		}

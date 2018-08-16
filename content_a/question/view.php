@@ -8,6 +8,8 @@ class view
 	{
 		\content_a\survey\view::load_survey();
 
+		$load = null;
+
 		$id = \dash\request::get('questionid');
 		if($id)
 		{
@@ -25,6 +27,25 @@ class view
 			\dash\data::dataRow($load);
 
 			return $load;
+		}
+		else
+		{
+			if(!$load)
+			{
+				if(\dash\request::get('type'))
+				{
+					$dataRow = [];
+					$dataRow['type'] = \dash\request::get('type');
+					$dataRow['type_detail'] = \lib\app\question::get_type($dataRow['type']);
+					$dataRow['setting'] = $dataRow['type_detail'];
+					\dash\data::choiceDetail(\lib\app\question::get_type($dataRow['type']));
+					\dash\data::dataRow($dataRow);
+				}
+				else
+				{
+					\dash\redirect::to(\dash\url::this().'/type?id='. \dash\request::get('id'));
+				}
+			}
 		}
 	}
 }
