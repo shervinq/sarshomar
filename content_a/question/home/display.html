@@ -22,7 +22,7 @@
         {%if value.type%}<small class="badge warn">{{value.type_detail.title}}</small>{%endif%}
       </div>
       <div class="s12">
-        <a href="{{url.this}}/title?id={{requestGET.id}}&questionid={{value.id}}" class="fc-black">
+        <a href="{{url.this}}/general?id={{requestGET.id}}&questionid={{value.id}}" class="fc-black">
           {%if value.title%}<b>{{value.title}}</b>{%endif%}
           {%if value.desc%}<b>{%if value.title%} | <small>{{value.desc}}</small>{%else%}{{value.desc}}{%endif%}</b>{%endif%}
           {%if not value.title and not value.desc%}<i>{%trans "Untitled"%}</i>{%endif%}
