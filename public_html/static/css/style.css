@@ -2013,7 +2013,7 @@ footer{-webkit-box-shadow:0 -2px 0 0 #f4f4f5,0 -6px 0 0 #e7a429;-moz-box-shadow:
 .special-btn::after{right:-4px}
 .special-btn.disabled::after{right:-4px}
 .wrapper{margin-left:6px;-webkit-box-shadow:0 0 0 2px #f4f4f5,0 0 0 6px #e7a429;-moz-box-shadow:0 0 0 2px #f4f4f5,0 0 0 6px #e7a429;box-shadow:0 0 0 2px #f4f4f5,0 0 0 6px #e7a429;border-right:2px solid #00667a;margin-right:6px;border-left:2px solid #00667a;border-top:2px solid #00667a}
-header{display:block;height:auto;border:none}
+header{display:block;height:auto;border:none;background-color: rgba(0,0,0,0.2);}
 .container header .logo{background-image:none;width:100%;padding:2em 0;background-color:#00667a}
 header .logo h1{display:inline-block;vertical-align:bottom}
 header #header-bottom #financial-box{flex-direction: row-reverse;}
