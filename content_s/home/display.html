@@ -96,7 +96,7 @@
 
 {%block single_choice%}
 {%for key, value in question.choice%}
-  <button class="btn block mB5{%if myAnswer.text == value.title%} success{%endif%}" id="r-{{key}}" name="answer" value="{{value.title}}">{%if myAnswer.text == value.title%}<span class="sf-check-1 floatLa"></span> {%endif%}{{value.title}}</button>
+  <button class="btn block mB5{%if myAnswer.text == value.title%} success{%endif%}" id="r-{{key}}" name="answer" value="{{value.title}}" data-shortkey='{{key + 49}}'>{%if myAnswer.text == value.title%}<span class="sf-check-1 floatRa"></span> {%endif%}{{value.title}} <kbd class="floatLa">{{key + 1}}</kbd></button>
 {%endfor%}
 {%endblock%}
 
