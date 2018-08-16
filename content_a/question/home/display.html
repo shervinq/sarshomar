@@ -7,15 +7,22 @@
 <div class="cbox">
   <div class="msg success2"><a href="{{url.this}}/add?id={{requestGET.id}}">{%trans "Add new question"%}</a></div>
   {%for key, value in dataTable%}
-  <a href="{{url.this}}/title?id={{requestGET.id}}&questionid={{value.id}}">
-    <div class="msg">#{{(key + 1) | fitNumber}}<br>
-      {%if value.title%}<b>{{value.title}}</b>{%endif%}
-      {%if value.desc%}<b>{%if value.title%} | <small>{{value.desc}}</small>{%else%}{{value.desc}}{%endif%}</b>{%endif%}
-      {%if not value.title and not value.desc%}<i>{%trans "Untitled"%}</i>{%endif%}
-      <br>
-      {%if value.type%}<b>{{value.type_detail.title}}</b>{%endif%}
+    <div class="msg f">
+      <div class="cauto pRa20">{{(key + 1) | fitNumber}}</div>
+      <div class="c2">
+        {%if value.type%}<small class="badge warn">{{value.type_detail.title}}</small>{%endif%}
+      </div>
+      <div class="s12">
+        <a href="{{url.this}}/title?id={{requestGET.id}}&questionid={{value.id}}" class="fc-black">
+          {%if value.title%}<b>{{value.title}}</b>{%endif%}
+          {%if value.desc%}<b>{%if value.title%} | <small>{{value.desc}}</small>{%else%}{{value.desc}}{%endif%}</b>{%endif%}
+          {%if not value.title and not value.desc%}<i>{%trans "Untitled"%}</i>{%endif%}
+        </a>
+      </div>
+      <div class="cauto os">
+        <a href="{{url.pwd}}" data-ajaxify data-method='post' data-data='{"type" : "remove", "id" : "{{value.id}}"}' class="badge danger">{%trans "Remove"%}</a>
+      </div>
     </div>
-  </a>
   {%endfor%}
 </div>
 {%endblock%}

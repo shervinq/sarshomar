@@ -4,6 +4,25 @@ namespace lib\db;
 
 class questions
 {
+	public static function is_my_question($_survey_id, $_question_id, $_user_id)
+	{
+		$query =
+		"
+			SELECT
+				*
+			FROM questions
+			INNER JOIN surveys ON questions.survey_id = surveys.id
+			WHERE
+				questions.id        = $_question_id AND
+				questions.survey_id = $_survey_id AND
+				surveys.user_id     = $_user_id
+			LIMIT 1
+		";
+		$result = \dash\db::get($query, null, true);
+		return $result;
+	}
+
+
 	public static function save_sort($_sort)
 	{
 		$query = [];
@@ -81,6 +100,17 @@ class questions
 	public static function get_count()
 	{
 		return \dash\db\config::public_get_count('questions', ...func_get_args());
+	}
+
+	public static function delete($_question_id)
+	{
+		if(!$_question_id || !is_numeric($_question_id))
+		{
+			return false;
+		}
+
+		$query = " DELETE FROM questions WHERE questions.id = $_question_id LIMIT 1";
+		return \dash\db::query($query);
 	}
 
 }

@@ -48,7 +48,7 @@ trait add
 			return false;
 		}
 
-		\lib\db\surveys::plus_field($survey_id, 'countblock');
+		\lib\db\surveys::update_countblock($survey_id);
 
 		if(\dash\engine\process::status())
 		{

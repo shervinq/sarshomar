@@ -5,6 +5,13 @@ namespace lib\db;
 class surveys
 {
 
+	public static function update_countblock($_survery_id)
+	{
+		$query = "UPDATE surveys SET surveys.countblock = (SELECT COUNT(*) FROM questions WHERE questions.survey_id = $_survery_id AND questions.status != 'deleted') WHERE surveys.id = $_survery_id LIMIT 1";
+		return \dash\db::query($query);
+	}
+
+
 	public static function plus_field()
 	{
 		return \dash\db\config::public_plus_field('surveys', ...func_get_args());
