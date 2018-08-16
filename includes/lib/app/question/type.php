@@ -171,7 +171,7 @@ trait type
 			'max'         => true,
 			'min'         => true,
 			'lable3'      => true,
-			'rangenumber' => 100,
+			'rangenumber' => 1000,
 			'logo'        => \dash\url::site(). '/static/images/logo.png',
 		];
 

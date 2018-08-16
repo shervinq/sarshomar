@@ -436,11 +436,18 @@ class question
 
 				if(!$min && !$max)
 				{
-					$min = 0;
-					$max = $range;
+					$min = null;
+					$max = null;
 				}
 				elseif($min && $max)
 				{
+					if($min > $max)
+					{
+						$tempMin = $min;
+						$min = $max;
+						$max = $tempMin;
+					}
+
 					if($max - $min > $range)
 					{
 						$max = $min + $range;
