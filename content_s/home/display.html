@@ -168,7 +168,7 @@
 
 
 {%block rangeslider%}
-  <input type="range" name="answer" min="{{question.setting.min}}" max="{{question.setting.max}}" value="{{myAnswer.text}}" class="slider round" {%if question.require%} required{%endif%}>
+  <input type="range" name="answer" min="{{question.setting.min}}" max="{{question.setting.max}}" step="{{question.setting.step}}" value="{{myAnswer.text}}" class="slider round" {%if question.require%} required{%endif%}>
   <div class="f">
     <div class="c">{{question.setting.min}}</div>
     <div class="c txtC">center</div>
