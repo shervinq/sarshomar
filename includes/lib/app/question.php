@@ -571,18 +571,9 @@ class question
 
 				case 'setting':
 					$result[$key] = json_decode($value, true);
-					switch ($myType)
+					if($myType)
 					{
-						case 'rating':
-							if(!isset($setting['maxrate']))
-							{
-								$setting['maxrate'] = 5;
-							}
-							break;
-
-						default:
-							// no thing
-							break;
+						$setting = array_merge($setting, self::get_type($myType, 'default_load'));
 					}
 					$result[$key] = $setting;
 					break;

@@ -57,6 +57,7 @@ trait type
 		// 	'default'       => 5,
 		// 	'label3'        => false,
 		// 	'choicehelp'    => false,
+		//  'default_load'  => [],
 		// 	'desc'          => T_('Picture choice'),
 		// 	'logo'          => \dash\url::site(). '/static/images/logo.png',
 		// 	'upload_choice' => true,
@@ -64,34 +65,51 @@ trait type
 
 		$type = [];
 
+
 		$type['short_answer'] =
 		[
-			'key'           => 'short_answer',
-			'title'         => T_("Short answer"),
-			'placeholder'   => true,
-			'maxchar'       => true,
-			'logo'			=> \dash\url::site(). '/static/images/logo.png',
+			'key'          => 'short_answer',
+			'title'        => T_("Short answer"),
+			'placeholder'  => true,
+			'maxcharshort' => true,
+			'logo'         => \dash\url::site(). '/static/images/logo.png',
+			'default_load' =>
+			[
+				'placeholder' => T_("Type here ..."),
+				'maxchar'     => 500,
+				'defaultchar' => 100,
+			],
 		];
 
 
 		$type['descriptive_answer'] =
 		[
-			'key'           => 'descriptive_answer',
-			'placeholder'   => true,
-			'title'         => T_('Descriptive answer'),
-			'maxchar'       => true,
-			'logo'			=> \dash\url::site(). '/static/images/logo.png',
+			'key'          => 'descriptive_answer',
+			'placeholder'  => true,
+			'title'        => T_('Descriptive answer'),
+			'maxcharlong'  => true,
+			'logo'         => \dash\url::site(). '/static/images/logo.png',
+			'default_load' =>
+			[
+				'maxchar'     => 10000,
+				'defaultchar' => 1000,
+			],
 		];
 
 
 		$type['numeric'] =
 		[
-			'key'           => 'numeric',
-			'placeholder'   => true,
-			'title'         => T_('Numberic'),
-			'min'           => true,
-			'max'           => true,
-			'logo'			=> \dash\url::site(). '/static/images/logo.png',
+			'key'          => 'numeric',
+			'placeholder'  => true,
+			'title'        => T_('Numberic'),
+			'min'          => true,
+			'max'          => true,
+			'logo'         => \dash\url::site(). '/static/images/logo.png',
+			'default_load' =>
+			[
+				'min' => 0,
+				'max' => 100,
+			],
 		];
 
 
@@ -104,6 +122,10 @@ trait type
 			'random'        => true,
 			'chart'         => true,
 			'logo'			=> \dash\url::site(). '/static/images/logo.png',
+			'default_load' =>
+			[
+
+			],
 		];
 
 
@@ -118,6 +140,12 @@ trait type
 			'maxchoice'     => true,
 			'choicehelp'    => true,
 			'logo'			=> \dash\url::site(). '/static/images/logo.png',
+			'default_load' =>
+			[
+				'minchoice'     => 1,
+				'maxchoice'     => null,
+				'choicehelp'    => T_("You can select more than one items"),
+			],
 		];
 
 
@@ -130,6 +158,10 @@ trait type
 			'chart'         => true,
 			'random'        => true,
 			'logo'			=> \dash\url::site(). '/static/images/logo.png',
+			'default_load' =>
+			[
+				'placeholder' => T_("Please select one item"),
+			],
 		];
 
 
@@ -139,7 +171,12 @@ trait type
 			'placeholder'   => true,
 			'title'         => T_('Date'),
 			'logo'			=> \dash\url::site(). '/static/images/logo.png',
+			'default_load' =>
+			[
+				'placeholder' => T_("Slect one date"),
+			],
 		];
+
 
 		$type['email'] =
 		[
@@ -147,6 +184,10 @@ trait type
 			'placeholder' => true,
 			'title'       => T_('Email'),
 			'logo'        => \dash\url::site(). '/static/images/logo.png',
+			'default_load' =>
+			[
+				'placeholder' => T_("Enter email"),
+			],
 		];
 
 		$type['website'] =
@@ -156,6 +197,10 @@ trait type
 			'title'       => T_('Website'),
 			'maxchar'     => true,
 			'logo'        => \dash\url::site(). '/static/images/logo.png',
+			'default_load' =>
+			[
+				'placeholder' => T_("Enter website"),
+			],
 		];
 
 
@@ -166,6 +211,11 @@ trait type
 			'maxrate'  => true,
 			'ratetype' => true,
 			'logo'     => \dash\url::site(). '/static/images/logo.png',
+			'default_load' =>
+			[
+				'maxrate'  => 10,
+				'ratetype' => 'star',
+			],
 		];
 
 		$type['rangeslider'] =
@@ -179,6 +229,16 @@ trait type
 			'step'        => 10,
 			'rangenumber' => 1000,
 			'logo'        => \dash\url::site(). '/static/images/logo.png',
+			'default_load' =>
+			[
+				'min'     => 0,
+				'step'    => 1,
+				'default' => 0,
+				'max'     => 10,
+				'label1'  => T_("Short"),
+				'label2'  => T_("Medium"),
+				'label3'  => T_("Large"),
+			],
 		];
 
 

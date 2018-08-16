@@ -98,11 +98,20 @@
 
 
 {%block imaxchar %}
-{%if choiceDetail.maxchar or choiceDetail.otherchoice%}
+{%if choiceDetail.maxcharlong%}
 <label for="maxchar">{%trans "Maximum char"%}</label>
-<div class="input">
-  <input type="number" name="maxchar" id="maxchar" placeholder='{{"0-99999999" | fitNumber}}' value="{{dataRow.maxchar}}"  min='0' max="99999999">
-</div>
+ <div class="rangeSlider1">
+    <input type="range" name="maxchar" min="1" max="10000"  value="{{dataRow.maxchar}}" >
+    <output>{{dataRow.maxchar}}</output>
+  </div>
+{%endif%}
+
+{%if choiceDetail.maxcharshort%}
+<label for="maxchar">{%trans "Maximum char"%}</label>
+ <div class="rangeSlider1">
+    <input type="range" name="maxchar" min="1" max="100"  value="{{dataRow.maxchar}}" >
+    <output>{{dataRow.maxchar}}</output>
+  </div>
 {%endif%}
 
 {%if choiceDetail.min%}
