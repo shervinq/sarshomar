@@ -9,7 +9,6 @@ class view
 		\content_a\survey\view::load_survey();
 
 		$load = null;
-
 		$id = \dash\request::get('questionid');
 		if($id)
 		{
@@ -36,6 +35,12 @@ class view
 				{
 					$dataRow = [];
 					$dataRow['type'] = \dash\request::get('type');
+
+					if(!\lib\app\question::get_type(\dash\request::get('type')))
+					{
+						\dash\header::status(404, T_("Invalid type"));
+					}
+
 					$dataRow['type_detail'] = \lib\app\question::get_type($dataRow['type']);
 					$dataRow['setting'] = $dataRow['type_detail'];
 					\dash\data::choiceDetail(\lib\app\question::get_type($dataRow['type']));
@@ -43,7 +48,7 @@ class view
 				}
 				else
 				{
-					\dash\redirect::to(\dash\url::this().'/type?id='. \dash\request::get('id'));
+					\dash\redirect::to(\dash\url::this().'?id='. \dash\request::get('id'));
 				}
 			}
 		}
