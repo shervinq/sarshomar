@@ -150,6 +150,55 @@
 </div>
 {%endif%}
 
+
+{%if choiceDetail.ratetype%}
+
+<div class="mT15">
+ <label >{%trans "Rate emoji"%}</label>
+
+ <div class="radio1 yellow">
+  <input type="radio" id="r-star" name="ratetype" value="star" {%if dataRow.setting.ratetype == 'star' or not  dataRow.setting.ratetype %} checked {%endif%}>
+  <label for="r-star">{%if false%}{%trans "Star"%}{%endif%} <i class="sf-star"></i></label>
+ </div>
+
+ <div class="radio1 red">
+  <input type="radio" id="r-like" name="ratetype" value="like" {%if dataRow.setting.ratetype == 'like' %} checked {%endif%}>
+  <label for="r-like">{%if false%}{%trans "Heart"%}{%endif%} <i class="sf-heart"></i></label>
+ </div>
+
+ <div class="radio1 black">
+  <input type="radio" id="r-bell" name="ratetype" value="bell" {%if dataRow.setting.ratetype == 'bell' %} checked {%endif%}>
+  <label for="r-bell">{%if false%}{%trans "Bell"%}{%endif%} <i class="sf-bell"></i></label>
+ </div>
+
+ <div class="radio1 blue">
+  <input type="radio" id="r-flag" name="ratetype" value="flag" {%if dataRow.setting.ratetype == 'flag' %} checked {%endif%}>
+  <label for="r-flag">{%if false%}{%trans "Flag"%}{%endif%} <i class="sf-flag"></i></label>
+ </div>
+
+ <div class="radio1">
+  <input type="radio" id="r-bookmark" name="ratetype" value="bookmark" {%if dataRow.setting.ratetype == 'bookmark' %} checked {%endif%}>
+  <label for="r-bookmark">{%if false%}{%trans "Bookmark"%}{%endif%} <i class="sf-bookmark"></i></label>
+ </div>
+
+<div class="radio1 green">
+  <input type="radio" id="r-thumbs-up" name="ratetype" value="thumbs-up" {%if dataRow.setting.ratetype == 'thumbs-up' %} checked {%endif%}>
+  <label for="r-thumbs-up">{%if false%}{%trans "Thumbs up"%}{%endif%} <i class="sf-thumbs-up"></i></label>
+ </div>
+
+ <div class="radio1 orange">
+  <input type="radio" id="r-thumbs-down" name="ratetype" value="thumbs-down" {%if dataRow.setting.ratetype == 'thumbs-down' %} checked {%endif%}>
+  <label for="r-thumbs-down">{%if false%}{%trans "Thumbs down"%}{%endif%} <i class="sf-thumbs-down"></i></label>
+ </div>
+
+ <div class="radio1">
+  <input type="radio" id="r-user-6" name="ratetype" value="user-6" {%if dataRow.setting.ratetype == 'user-6' %} checked {%endif%}>
+  <label for="r-user-6">{%if false%}{%trans "User"%}{%endif%} <i class="sf-user-6"></i></label>
+ </div>
+
+</div>
+{%endif%}
+
 {% endblock %}
 
 
@@ -177,15 +226,6 @@
 
   <div class="f">
 
-  <!--   <div class="cauto">
-    <a class="dcard " href='{{url.this}}/add?id={{requestGET.id}}'  >
-     <div class="statistic sm blue" >
-      <div class="value"><i class="sf-plus"></i></div>
-      <div class="label">{%trans "Add new"%}</div>
-     </div>
-    </a>
-   </div> -->
-
    <div class="c">
     <a class="dcard {%if url.child == 'type'%}active{%endif%}" href='{{url.this}}/type?id={{requestGET.id}}&questionid={{requestGET.questionid}}' data-shortkey="49ctrlshift" >
      <div class="statistic sm">
@@ -204,30 +244,6 @@
      </div>
     </a>
    </div>
-
-<!--     <div class="c">
-    <a class="dcard {%if url.child == 'settings'%}active{%endif%}" href='{{url.this}}/settings?id={{requestGET.id}}&questionid={{requestGET.questionid}}' data-shortkey="51ctrlshift" >
-     <div class="statistic sm">
-      <div class="value"><i class="sf-cogs"></i></div>
-      <div class="label">{%trans "Settings"%}<br><kbd class="mT5">Ctrl+Shift+3</kbd></div>
-     </div>
-    </a>
-   </div>
- -->
-
-<!--
-   {%if choiceDetail.choice%}
-   <div class="c">
-    <a class="dcard {%if url.child == 'choice'%}active{%endif%}" href='{{url.this}}/choice?id={{requestGET.id}}&questionid={{requestGET.questionid}}' data-shortkey="52ctrlshift" >
-     <div class="statistic sm">
-      <div class="value"><i class="sf-list-ol"></i></div>
-      <div class="label">{%trans "Choise"%}<br><kbd class="mT5">Ctrl+Shift+4</kbd></div>
-     </div>
-    </a>
-   </div>
-   {%endif%}
- -->
-
 
   </div>
 {%endblock%}
