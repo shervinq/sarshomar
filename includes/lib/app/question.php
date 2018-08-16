@@ -308,7 +308,7 @@ class question
 		}
 
 		$choice_sort = \dash\app::request('choice_sort');
-		if($choice_sort && !in_array($choice_sort, ['save','random','asc','desc',]))
+		if($choice_sort && !in_array($choice_sort, ['save','random','asc','desc']))
 		{
 			\dash\notif::error(T_("Invalid choice sort of question"), 'choice_sort');
 			return false;
@@ -544,9 +544,52 @@ class question
 					break;
 
 				case 'media':
-				case 'choice':
 				case 'setting':
 					$result[$key] = json_decode($value, true);
+					break;
+
+				case 'choice':
+					$result[$key] = json_decode($value, true);
+					$choice       = $result[$key];
+
+					if(!is_array($choice) || \dash\url::content() === 'a')
+					{
+						continue;
+					}
+
+					$choice_sort  = 'save';
+					if(isset($_data['setting']))
+					{
+						$setting = $_data['setting'];
+						$setting = json_decode($setting, true);
+						if(isset($setting['choice_sort']))
+						{
+							$choice_sort = $setting['choice_sort'];
+						}
+					}
+
+					switch ($choice_sort)
+					{
+						case 'random':
+							shuffle($choice);
+							break;
+
+						case 'asc':
+							sort($choice);
+							break;
+
+						case 'desc':
+							rsort($choice);
+							break;
+
+						case 'save':
+						default:
+							// no thing
+							break;
+					}
+
+					$result[$key] = $choice;
+
 					break;
 
 				default:
