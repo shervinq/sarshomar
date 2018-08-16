@@ -73,7 +73,6 @@
 
 
 {%block short_answer%}
-{{block('hidden_input')}}
  <div class="input">
   <input type="text" id="answer" name="answer" value="{{myAnswer.text}}"{%if question.require%} required{%endif%}{%if question.maxchar%} maxlength="{{question.maxchar}}"{%endif%} placeholder='{%if question.require%}* {%endif%}{%trans "Type here ..."%}' autofocus>
  {{block('nextBtn')}}
@@ -82,14 +81,12 @@
 
 
 {%block descriptive_answer%}
-{{block('hidden_input')}}
  <textarea class="txt" type="text" id="answer" name="answer" {%if question.require%} required{%endif%}{%if question.maxchar%} maxlength="{{question.maxchar}}" rows="{{ (question.maxchar / 100) |round(0, 'ceil')  + 2}}"{%else%} rows="3"{%endif%} placeholder='{%if question.require%}* {%endif%}{%trans "Type here ..."%}' autofocus>{{myAnswer.text}}</textarea>
  {{block('nextBtn')}}
 {%endblock%}
 
 
 {%block numeric%}
-{{block('hidden_input')}}
  <div class="input">
   <input type="number" id="answer" name="answer" value="{{myAnswer.text}}" {%if question.require%} required{%endif%}{%if question.setting.min%}min="{{question.setting.min}}"{%endif%}{%if question.setting.max%}max="{{question.setting.max}}"{%endif%} placeholder='{%if question.require%}* {%endif%}{%trans "Type here ..."%}' inputmode="numeric" pattern="[0-9]*" autofocus>
  </div>
@@ -98,7 +95,6 @@
 
 
 {%block single_choice%}
-{{block('hidden_input')}}
 {%for key, value in question.choice%}
   <button class="btn block mB5{%if myAnswer.text == value.title%} success{%endif%}" id="r-{{key}}" name="answer" value="{{value.title}}">{%if myAnswer.text == value.title%}<span class="sf-check-1 floatLa"></span> {%endif%}{{value.title}}</button>
 {%endfor%}
@@ -106,7 +102,6 @@
 
 
 {%block multiple_choice%}
-{{block('hidden_input')}}
  {%for key, value in question.choice%}
   <div class="check1{%if myAnswer.text == value.title%} green{%endif%}">
   <input type="checkbox" name="answer[]" id="{{key}}" value="{{value.title}}" {%if myAnswer.text == value.title%} checked {%endif%}>
@@ -118,7 +113,6 @@
 
 
 {%block dropdown%}
-{{block('hidden_input')}}
  <div class="mB10">
    <select name="answer" class="ui dropdown select{%if (question.choice | length) > 4 %} search{%endif%}">
      <option value="">{%trans "Please choose one item"%}</option>
@@ -136,7 +130,6 @@
 
 
 {%block date%}
-{{block('hidden_input')}}
  <div class="input ltr">
    <input class="datepicker" type="text" name="answer" id="answer" placeholder='{{"1369/04/15" | fitNumber}}' {%if question.require%} required{%endif%} value="{{myAnswer.text}}" maxlength='10' data-format="YYYY/MM/DD" data-view="year" autofocus>
  </div>
@@ -145,7 +138,6 @@
 
 
 {%block email%}
-{{block('hidden_input')}}
  <div class="input">
    <input class="" type="email" name="answer" id="answer" value="{{myAnswer.text}}" {%if question.require%} required{%endif%} placeholder="abc@yourdomain.com" autofocus>
  </div>
@@ -154,9 +146,16 @@
 
 
 {%block website%}
-{{block('hidden_input')}}
  <div class="input">
    <input class="" type="url" name="answer" id="answer" value="{{myAnswer.text}}" {%if question.require%} required{%endif%} placeholder="http://" autofocus>
+ </div>
+ {{block('nextBtn')}}
+{%endblock%}
+
+
+{%block rating%}
+ <div class="input">
+   <input class="" type="number" name="answer" id="answer" value="{{myAnswer.text}}" {{block('question_attr')}} >
  </div>
  {{block('nextBtn')}}
 {%endblock%}
@@ -180,28 +179,6 @@
 
 
 
-
-{%block hidden_input%}
-
-<input type="hidden" name="survay" value="" class="hide">
-
-<div class="hide">
- <input type="text" name="userprocode" value="">
-</div>
-
-
-<div class="hide">
- <input type="text" name="{{XKEY}}" value="{{XVALUE}}">
-</div>
-
-<div class="input c auto hide">
- <input type="password" name="passwd" value="">
-</div>
-
-<input type="text" name="id" value="" class="input hide">
-
-
-{%endblock%}
 
 
 
@@ -264,7 +241,6 @@
 
 
 {%block confirm%}
-{{block('hidden_input')}}
  <input type="hidden" name="next" value="step">
  {{block('nextBtn')}}
 {%endblock%}
@@ -281,18 +257,9 @@
 
 
 
-{%block rating%}
-{{block('hidden_input')}}
- <label for="answer">{%trans "Answer"%}</label>
- <div class="input">
-   <input class="" type="number" name="answer" id="answer" value="{{myAnswer.text}}" {{block('question_attr')}} >
- </div>
- {{block('nextBtn')}}
-{%endblock%}
 
 
 {%block star%}
-{{block('hidden_input')}}
 
  <label for="answer">{%trans "Answer"%}</label>
  <div class="input">

@@ -4,19 +4,19 @@ namespace content_s\home;
 
 class model
 {
-	public static function check_hiden_input()
-	{
-		$survay      = \dash\request::post('survay');
-		// $userprocode = \dash\request::post('userprocode');
-		// $passwd      = \dash\request::post('passwd');
-		$id          = \dash\request::post('id');
+	// public static function check_hiden_input()
+	// {
+	// 	$survay      = \dash\request::post('survay');
+	// 	// $userprocode = \dash\request::post('userprocode');
+	// 	// $passwd      = \dash\request::post('passwd');
+	// 	$id          = \dash\request::post('id');
 
-		if($survay || $id)
-		{
-			return false;
-		}
-		return true;
-	}
+	// 	if($survay || $id)
+	// 	{
+	// 		return false;
+	// 	}
+	// 	return true;
+	// }
 
 
 	public static function check_xkey_xvalue()
@@ -37,11 +37,11 @@ class model
 
 	public static function post()
 	{
-		if(!self::check_hiden_input())
-		{
-			\dash\notif::error(T_("Dont!"));
-			return false;
-		}
+		// if(!self::check_hiden_input())
+		// {
+		// 	\dash\notif::error(T_("Dont!"));
+		// 	return false;
+		// }
 
 		if(!self::check_xkey_xvalue())
 		{
