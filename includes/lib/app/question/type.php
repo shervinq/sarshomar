@@ -75,9 +75,9 @@ trait type
 			'logo'         => \dash\url::site(). '/static/images/logo.png',
 			'default_load' =>
 			[
-				'placeholder' => T_("Type here ..."),
-				'maxchar'     => 500,
-				'defaultchar' => 100,
+				'placeholder'  => T_("Type here ..."),
+				'maxcharshort' => 500,
+				'defaultchar'  => 100,
 			],
 		];
 
@@ -91,7 +91,7 @@ trait type
 			'logo'         => \dash\url::site(). '/static/images/logo.png',
 			'default_load' =>
 			[
-				'maxchar'     => 10000,
+				'maxcharlong' => 10000,
 				'defaultchar' => 1000,
 			],
 		];
@@ -107,8 +107,9 @@ trait type
 			'logo'         => \dash\url::site(). '/static/images/logo.png',
 			'default_load' =>
 			[
-				'min' => 0,
-				'max' => 999999999999,
+				'min'     => 0,
+				'max'     => 1E+10,
+				'default' => 100,
 			],
 		];
 
@@ -142,9 +143,9 @@ trait type
 			'logo'			=> \dash\url::site(). '/static/images/logo.png',
 			'default_load' =>
 			[
-				'minchoice'     => 1,
-				'maxchoice'     => null,
-				'choicehelp'    => T_("You can select more than one items"),
+				'minchoice'  => 1,
+				'maxchoice'  => null,
+				'choicehelp' => T_("You can choose as many as you want"),
 			],
 		];
 
@@ -160,7 +161,7 @@ trait type
 			'logo'			=> \dash\url::site(). '/static/images/logo.png',
 			'default_load' =>
 			[
-				'placeholder' => T_("Please select one item"),
+				'placeholder' => T_("Please choose one item"),
 			],
 		];
 
@@ -173,17 +174,28 @@ trait type
 			'logo'			=> \dash\url::site(). '/static/images/logo.png',
 			'default_load' =>
 			[
-				'placeholder' => T_("Slect one date"),
+				'placeholder' => T_("Select one date"),
 			],
 		];
 
 
+		$type['mobile'] =
+		[
+			'key'          => 'mobile',
+			'title'        => T_('Mobile'),
+			'logo'         => \dash\url::site(). '/static/images/logo.png',
+			'default_load' =>
+			[
+				'placeholder' => T_("Enter mobile"),
+			],
+		];
+
 		$type['email'] =
 		[
-			'key'         => 'email',
-			'placeholder' => true,
-			'title'       => T_('Email'),
-			'logo'        => \dash\url::site(). '/static/images/logo.png',
+			'key'          => 'email',
+			'placeholder'  => true,
+			'title'        => T_('Email'),
+			'logo'         => \dash\url::site(). '/static/images/logo.png',
 			'default_load' =>
 			[
 				'placeholder' => T_("Enter email"),
@@ -192,11 +204,11 @@ trait type
 
 		$type['website'] =
 		[
-			'key'         => 'website',
-			'placeholder' => true,
-			'title'       => T_('Website'),
-			'maxchar'     => true,
-			'logo'        => \dash\url::site(). '/static/images/logo.png',
+			'key'          => 'website',
+			'placeholder'  => true,
+			'title'        => T_('Website'),
+			'maxchar'      => true,
+			'logo'         => \dash\url::site(). '/static/images/logo.png',
 			'default_load' =>
 			[
 				'placeholder' => T_("Enter website"),
@@ -232,21 +244,17 @@ trait type
 			'default_load' =>
 			[
 				'min'     => 0,
+				'max'     => 10,
 				'step'    => 1,
 				'default' => 0,
-				'max'     => 10,
 				'label1'  => T_("Short"),
 				'label2'  => T_("Medium"),
 				'label3'  => T_("Large"),
 			],
 		];
 
-
 		// card_descign
-
 		// file_upload
-
-
 		return $type;
 	}
 }
