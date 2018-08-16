@@ -154,9 +154,13 @@
 
 
 {%block rating%}
- <div class="input">
-   <input class="" type="number" name="answer" id="answer" value="{{myAnswer.text}}" {{block('question_attr')}} >
- </div>
+  <div class="radioRating">
+{% for i in 1..(question.setting.maxrate) %}
+{%set currentRate = question.setting.maxrate - i + 1%}
+    <input type="radio" name="answer" value="{{currentRate}}" id="myRate-{{i}}" {%if question.require%} required{%endif%}{%if myAnswer.text == currentRate %} checked{%endif%}>
+    <label for="myRate-{{i}}"></label>
+{% endfor %}
+  </div>
  {{block('nextBtn')}}
 {%endblock%}
 
