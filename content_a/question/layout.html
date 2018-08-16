@@ -151,6 +151,45 @@
 {%endif%}
 
 
+
+{%if choiceDetail.label3 %}
+<label for="label3">{%trans "Label"%}</label>
+<div class="f">
+
+  <div class="c">
+    <div class="input">
+      <input type="text" name="label1" id="label3" placeholder='{%trans "For example: Low"%}' value="{{dataRow.setting.label1}}" maxlength='100' minlength="1" pattern=".{1,100}">
+    </div>
+  </div>
+
+  <div class="c mLa5">
+    <div class="input">
+      <input type="text" name="label2" id="label3-2" placeholder='{%trans "For example: Middle"%}' value="{{dataRow.setting.label2}}" maxlength='100' minlength="1" pattern=".{1,100}">
+    </div>
+  </div>
+
+  <div class="c mLa5">
+    <div class="input">
+      <input type="text" name="label3" id="label3-3" placeholder='{%trans "For example: High"%}' value="{{dataRow.setting.label3}}" maxlength='100' minlength="1" pattern=".{1,100}">
+    </div>
+  </div>
+</div>
+{%endif%}
+
+{%if choiceDetail.default %}
+<label for="default">{%trans "Default"%}</label>
+<div class="input">
+  <input type="number" name="default" id="default" placeholder='{%trans "Default"%}' value="{{dataRow.setting.default}}" min="{{dataRow.setting.min}}" max="{{dataRow.setting.max}}">
+</div>
+{%endif%}
+
+{%if choiceDetail.step %}
+<label for="step">{%trans "Step"%}</label>
+<div class="input">
+  <input type="number" name="step" id="step" placeholder='{%trans "Step"%}' value="{{dataRow.setting.step}}" min="{{dataRow.setting.min}}" max="{{dataRow.setting.max}}">
+</div>
+{%endif%}
+
 {%if choiceDetail.ratetype%}
 
  <label >{%trans "Rate emoji"%}</label>

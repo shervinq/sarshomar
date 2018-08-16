@@ -58,12 +58,17 @@ class model
 		$post['minchoice']    = \dash\request::post('minchoice');
 		$post['maxchoice']    = \dash\request::post('maxchoice');
 		$post['choiceinline'] = \dash\request::post('choiceinline');
-		$post['ratetype']    = \dash\request::post('ratetype');
+		$post['ratetype']     = \dash\request::post('ratetype');
 		$post['min']          = \dash\request::post('min');
 		$post['max']          = \dash\request::post('max');
 		$post['choice_sort']  = \dash\request::post('choice_sort');
 		$post['otherchoice']  = \dash\request::post('otherchoice');
 		$post['placeholder']  = \dash\request::post('placeholder');
+		$post['label1']       = \dash\request::post('label1');
+		$post['label2']       = \dash\request::post('label2');
+		$post['label3']       = \dash\request::post('label3');
+		$post['default']      = \dash\request::post('default');
+		$post['step']         = \dash\request::post('step');
 		$post['survey_id']    = \dash\request::get('id');
 
 		$result = \lib\app\question::edit($post, \dash\request::get('questionid'));

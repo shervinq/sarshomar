@@ -423,6 +423,89 @@ class question
 		}
 
 
+		if(\dash\app::isset_request('label1'))
+		{
+			$label1 = \dash\app::request('label1');
+			if($label1 && mb_strlen($label1) > 100)
+			{
+				$label1 = substr($label1, 0, 100);
+			}
+
+			if($label1)
+			{
+				$label1 = \dash\safe::remove_nl($label1);
+			}
+
+			$setting['label1'] = $label1;
+		}
+
+		if(\dash\app::isset_request('label2'))
+		{
+			$label2 = \dash\app::request('label2');
+			if($label2 && mb_strlen($label2) > 100)
+			{
+				$label2 = substr($label2, 0, 100);
+			}
+
+			if($label2)
+			{
+				$label2 = \dash\safe::remove_nl($label2);
+			}
+
+			$setting['label2'] = $label2;
+		}
+
+		if(\dash\app::isset_request('label3'))
+		{
+			$label3 = \dash\app::request('label3');
+			if($label3 && mb_strlen($label3) > 300)
+			{
+				$label3 = substr($label3, 0, 300);
+			}
+
+			if($label3)
+			{
+				$label3 = \dash\safe::remove_nl($label3);
+			}
+
+			$setting['label3'] = $label3;
+		}
+
+		if(\dash\app::isset_request('default'))
+		{
+			$default = \dash\app::request('default');
+			if($default && !is_numeric($default))
+			{
+				\dash\notif::error(T_("Please set default as a number"), 'default');
+				return false;
+			}
+
+			if($default)
+			{
+				$default = abs(intval($default));
+			}
+
+			$setting['default'] = $default;
+		}
+
+		if(\dash\app::isset_request('step'))
+		{
+			$step = \dash\app::request('step');
+			if($step && !is_numeric($step))
+			{
+				\dash\notif::error(T_("Please set step as a number"), 'step');
+				return false;
+			}
+
+			if($step)
+			{
+				$step = abs(intval($step));
+			}
+
+			$setting['step'] = $step;
+		}
+
+
 		if(!empty($setting))
 		{
 			$args['setting'] = json_encode($setting, JSON_UNESCAPED_UNICODE);
