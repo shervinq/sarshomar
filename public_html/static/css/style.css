@@ -222,7 +222,8 @@ header .logo h1 a{color:#f4f4f4;display:block}
 .grayscale:hover{-webkit-filter:none;filter:none}
 
 header #header-box{display:-webkit-box;display:-ms-flexbox;display:-webkit-flex;display:-moz-box;display:flex;-webkit-box-flex:1;-ms-flex:1;-webkit-flex:1;-moz-box-flex:1;flex:1;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-moz-box-orient:vertical;-moz-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:justify;-webkit-justify-content:space-between;-moz-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}
-header #header-top{display:-webkit-box;display:-ms-flexbox;display:-webkit-flex;display:-moz-box;display:flex;border-top:2px solid #00667a;height:60px;-webkit-box-pack:justify;-webkit-justify-content:space-between;-moz-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}
+header #header-box .headerLine{border-top:2px solid #00667a}
+
 header #header-bottom{display:-webkit-box;display:-ms-flexbox;display:-webkit-flex;display:-moz-box;display:flex;height:30px;-webkit-box-align:center;-webkit-align-items:center;-moz-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-moz-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}
 
 /* header quick */
@@ -2362,7 +2363,6 @@ header #financial-box .total,header #financial-box .cost{background:#efefef;min-
 header .header-profile-link .header-link-icon{display:inline-block;vertical-align:middle}
 header.open::before{content:"";position:fixed;top:0;bottom:0;right:0;left:0;background-color:rgba(0,0,0,0.5);z-index:4}
 header.open #header-box{width:300px}
-header #header-top{border:none;height:auto}
 header #header-profile{width:100%;margin:0;padding:0;flex-flow:row wrap;color:#000;height:auto}
 .rtl header #header-profile {margin: 0}
 header #header-profile > *{flex:1 100%;padding:1rem 3rem;margin:0;background-color:transparent;color:#00667a;text-align:left;font-size:1.1em;line-height:initial}
@@ -2675,7 +2675,6 @@ html:before{content:":\\";position:absolute;right:0;left:0;font-size:100vw;color
 
 /* Design for print */
 @media print {
-.wrapper,footer,header,header#header-top{border:none}
 .container,.wrapper{width:100%;max-width:100%}
 #inestimable{display:none}
 footer{background-color:#eee}

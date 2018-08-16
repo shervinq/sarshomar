@@ -10,25 +10,25 @@
     <span>{{site.title}}</span>
    </h1>
    <div id='header-box'>
-    <div id='header-top'>
-     <nav id='header-quick'>
-      <a href='{{url.kingdom}}/benefits' tabindex='3'>{%trans "Benefits"%}</a>
-      <a href='{{url.kingdom}}/help' tabindex='4'>{%trans "Help Center"%}</a>
-     </nav>
-     <nav id='header-profile' data-xhr='header-profile' {%if login%}class='login'{%endif%}>
-{%if login%}
-      <a href='{{url.kingdom}}/a' class='btn primary' tabindex='6' data-direct>{%trans "Dashboard"%}</a>
 
+    <nav class="f pA10 headerLine fs14">
+      <div class="c s0">
+        <a class="btn outline mRa10" href='{{url.kingdom}}/benefits' tabindex='3'>{%trans "Benefits"%}</a>
+        <a class="btn outline" href='{{url.kingdom}}/help' tabindex='4'>{%trans "Help Center"%}</a>
+      </div>
+      <div class="cauto os s12 txtC">
+{%if login%}
+        <a href='{{url.kingdom}}/a' class='btn primary' tabindex='6' data-direct>{%trans "Dashboard"%}</a>
 {%else%}
-      <a href='{{url.kingdom}}/enter' data-direct class='btn primary'>{%trans "Enter"%}</a>
+        <a href='{{url.kingdom}}/enter' data-direct class='btn primary'>{%trans "Enter"%}</a>
 {%endif%}
 {% set lang_list = langList() %}
 {%for key, value in lang_list%}
       <a href="/{{key}}" hreflang="{{key}}" data-direct class="btn mLa5"><span class="sf-globe mRa10"></span> {{value}}</a>
 {%endfor%}
+      </div>
+    </nav>
 
-     </nav>
-    </div>
    </div>
    <div id='menu-bar'><span></span></div>
   </header>
