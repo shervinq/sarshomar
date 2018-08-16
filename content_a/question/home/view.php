@@ -12,8 +12,11 @@ class view
 
 		if(\dash\request::get('id'))
 		{
-			\dash\data::badge_link(\dash\url::here(). '/survey?id='. \dash\request::get('id'));
-			\dash\data::badge_text(T_('Back to survey dashboard'));
+			\dash\data::badge_link(\dash\url::this(). '/add?id='. \dash\request::get('id'));
+			\dash\data::badge_text(T_('Add new question'));
+
+			\dash\data::badge2_link(\dash\url::here(). '/survey?id='. \dash\request::get('id'));
+			\dash\data::badge2_text(T_('Back to survey dashboard'));
 
 			\content_a\survey\view::load_survey();
 
