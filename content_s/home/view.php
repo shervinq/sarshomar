@@ -86,7 +86,10 @@ class view
 			}
 			else
 			{
-				\dash\redirect::to(\dash\url::this(). '?step='. $must_step);
+				if(!\dash\data::mySurvey())
+				{
+					\dash\redirect::to(\dash\url::this(). '?step='. $must_step);
+				}
 			}
 
 			\dash\data::question($question);
