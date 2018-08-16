@@ -2046,16 +2046,39 @@ progress.xl, meter.xl {
 .cbox:hover h4 [class^="sf-"]:before {
   color: #777; }
 
-.cbox .imgBox img {
+.cbox .mediaBox {
+  position: relative;
+  overflow: hidden; }
+
+.cbox .mediaBox img {
   display: block;
   margin: 0 auto;
-  max-height: 500px;
-  transition: 0.3s opacity;
-  opacity: 1; }
+  max-height: 500px; }
 
-.cbox .imgBox img:hover {
-  opacity: 0.9; }
+.cbox .mediaBox::before {
+  position: absolute;
+  top: 0;
+  left: -75%;
+  z-index: 2;
+  display: block;
+  content: '';
+  width: 50%;
+  height: 100%;
+  background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 100%);
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 100%);
+  -webkit-transform: skewX(-25deg);
+  transform: skewX(-25deg); }
 
+.cbox .mediaBox:hover::before {
+  -webkit-animation: shine .75s;
+  animation: shine .75s; }
+
+@-webkit-keyframes shine {
+  100% {
+    left: 125%; } }
+@keyframes shine {
+  100% {
+    left: 125%; } }
 .cbox .example {
   padding: 1em; }
 
@@ -12938,11 +12961,19 @@ label + .input {
 input[type="tel"],
 input[type="email"],
 input[type="date"],
-input[type="number"],
 input[type="url"],
 input[name="email"],
 input[name="website"] {
   direction: ltr; }
+
+input[type="number"] {
+  direction: ltr;
+  -moz-appearance: textfield; }
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0; }
 
 /* checkbox type 1*/
 .check1 {
@@ -13023,6 +13054,9 @@ input[name="website"] {
 
 .check1.red input:checked + label::before {
   background-color: #da4041; }
+
+.check1.green input:checked + label::before {
+  background-color: #2ecc71; }
 
 .switch1 {
   overflow: hidden;
@@ -13424,6 +13458,88 @@ html[lang=fa] .switch1.gender input:checked + label:first-of-type:before {
 .radioGateway input:focus + label {
   border-color: #22827f; }
 
+.radioRating {
+  min-height: 56px; }
+
+.radioRating input[type="radio"] {
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  z-index: -1;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  cursor: pointer; }
+
+.radioRating label {
+  float: right;
+  padding: 10px;
+  font-size: 36px;
+  line-height: 1em;
+  color: #444;
+  transition: all .2s; }
+
+.radioRating label:before {
+  font-family: "siftal", "tahoma" !important;
+  content: '\e002'; }
+
+.radioRating label:hover {
+  transform: rotate(-15deg) scale(1.3); }
+
+.radioRating input:checked ~ label:before {
+  content: '\5c';
+  color: #FD4;
+  transition: all .25s; }
+
+.radioRating input:first-of-type:checked ~ label:before {
+  color: #FE7;
+  text-shadow: 0 0 20px #952; }
+
+.radioRating input:last-of-type:checked ~ label:before {
+  color: #F62; }
+
+.radioRating.heart label:before {
+  content: '\2b'; }
+
+.radioRating.heart input:checked ~ label:before {
+  content: '\2a'; }
+
+.radioRating.bell label:before {
+  content: '\66'; }
+
+.radioRating.bell input:checked ~ label:before {
+  content: '\65'; }
+
+.radioRating.bookmark label:before {
+  content: '\54'; }
+
+.radioRating.bookmark input:checked ~ label:before {
+  content: '\55'; }
+
+.radioRating.flag label:before {
+  content: '\28'; }
+
+.radioRating.flag input:checked ~ label:before {
+  content: '\26'; }
+
+.radioRating.like label:before {
+  content: '\e01a'; }
+
+.radioRating.like input:checked ~ label:before {
+  content: '\e01b'; }
+
+.radioRating.dislike label:before {
+  content: '\e019'; }
+
+.radioRating.dislike input:checked ~ label:before {
+  content: '\e018'; }
+
+.radioRating.user1 label:before {
+  content: '\e07a'; }
+
+.radioRating.user1 input:checked ~ label:before {
+  content: '\e079'; }
+
 .txt {
   display: block;
   margin: 0;
@@ -13508,6 +13624,40 @@ html[lang=fa] .switch1.gender input:checked + label:first-of-type:before {
 
 .select.preview.ok label {
   border-color: rgba(39, 128, 39, 0.5); }
+
+input[type="range"].slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s; }
+
+input[type="range"].slider:hover {
+  opacity: 1; }
+
+input[type="range"].slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #4CAF50;
+  cursor: pointer; }
+
+input[type="range"].slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #4CAF50;
+  cursor: pointer; }
+
+input[type="range"].slider.round {
+  height: 15px;
+  border-radius: 5px; }
+
+input[type="range"].slider.round::-webkit-slider-thumb {
+  border-radius: 50%; }
 
 .btn {
   cursor: pointer;
@@ -16304,7 +16454,15 @@ body.siftal .full .middle {
 .siftal header h1 img {
   height: 50px;
   width: 50px;
-  padding: 5px; }
+  padding: 5px;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out; }
+
+.siftal header h1 a:hover img {
+  -webkit-filter: grayscale(0);
+  filter: grayscale(0); }
 
 .siftal header h1 span {
   padding: 0 0.5em;
@@ -16432,9 +16590,6 @@ body.siftal .full .middle {
   border-color: transparent #888;
   border-radius: 50%; }
 
-.siftal #sidebar figure:hover .avatar:before {
-  border-color: transparent #fff; }
-
 .siftal #sidebar figure .avatar:after {
   font-family: "siftal";
   content: "\e05f";
@@ -16452,10 +16607,6 @@ body.siftal .full .middle {
   transition: 0.3s;
   margin: 5px; }
 
-.siftal #sidebar figure:hover .avatar:after {
-  background-color: rgba(0, 0, 0, 0.3);
-  opacity: 1; }
-
 .siftal #sidebar figure .avatar img {
   display: block;
   max-width: 100%;
@@ -16464,7 +16615,21 @@ body.siftal .full .middle {
   border-radius: 50%;
   margin: 0 auto;
   width: 100%;
-  overflow: hidden; }
+  overflow: hidden;
+  transition: 0.3s; }
+
+.siftal #sidebar figure .avatar:hover img {
+  transform: scale(1.2); }
+
+.siftal #sidebar figure .avatar:focus img {
+  transform: scale(1.4); }
+
+.siftal #sidebar figure:hover .avatar:before {
+  border-color: transparent #fff; }
+
+.siftal #sidebar figure:hover .avatar:after {
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 1; }
 
 .siftal #sidebar figure figcaption {
   max-width: 100%;
