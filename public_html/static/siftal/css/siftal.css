@@ -13728,7 +13728,9 @@ html[lang=fa] .switch1.gender input:checked + label:first-of-type:before {
   border-radius: 3px;
   background: #2c3e50;
   padding: 5px 10px;
-  margin-left: 10px; }
+  margin-left: 10px;
+  min-height: 30px;
+  vertical-align: middle; }
 
 .rangeSlider1 output:after {
   position: absolute;
