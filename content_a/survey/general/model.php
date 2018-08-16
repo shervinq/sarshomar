@@ -6,10 +6,11 @@ class model
 {
 	public static function post()
 	{
-		$post           = [];
-		$post['title']    = \dash\request::post('title');
-		$post['desc']     = \dash\request::post('desc') ? $_POST['desc'] : null;
-		$post['language'] = \dash\request::post('language');
+		$post                = [];
+		$post['title']       = \dash\request::post('title');
+		$post['desc']        = \dash\request::post('desc') ? $_POST['desc'] : null;
+		$post['language']    = \dash\request::post('language');
+		$post['buttontitle'] = \dash\request::post('buttontitle');
 
 		$result = \lib\app\survey::edit($post, \dash\request::get('id'));
 

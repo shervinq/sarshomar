@@ -159,9 +159,19 @@ class survey
 			$thankyoumedia = json_encode($thankyoumedia, JSON_UNESCAPED_UNICODE);
 		}
 
+		$args                  = [];
+
+		if(\dash\app::isset_request('buttontitle'))
+		{
+			$buttontitle                    = \dash\app::request('buttontitle');
+			$buttontitle                    = \dash\safe::remove_nl($buttontitle);
+			$args['setting']['buttontitle'] = $buttontitle;
+			$args['setting']                = json_encode($args['setting'], JSON_UNESCAPED_UNICODE);
+		}
+
+
 		$desc  = \dash\app::request('desc');
 
-		$args                  = [];
 		$args['desc']          = $desc;
 		$args['title']         = $title;
 		$args['lang']          = $language;
@@ -211,6 +221,7 @@ class survey
 				case 'brandingmeta':
 				case 'welcomemedia':
 				case 'thankyoumedia':
+				case 'setting':
 					$result[$key] = json_decode($value, true);
 					break;
 

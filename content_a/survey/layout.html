@@ -36,6 +36,16 @@
 
 
 
+{%block ibuttontitle %}
+<label for="buttontitle">{%trans "Survey button title"%}</label>
+<div class="input">
+  <input type="text" name="buttontitle" id="buttontitle" placeholder='{%trans "Survey botton title"%}' value="{{surveyRow.setting.buttontitle}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
+</div>
+{% endblock %}
+
+
+
+
 {%block istatus%}
 
 <div class="mT15">
