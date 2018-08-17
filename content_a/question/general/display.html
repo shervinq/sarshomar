@@ -25,6 +25,7 @@
 
 {%block quTitle%}
 <div class="cbox">
+	<h3 class="txtC">{%trans "Question title"%}</h3>
 	<form method="post" autocomplete="off">
 		<input type="hidden" name="formType" value="title">
 		{{block('imedia')}}
@@ -41,14 +42,14 @@
 {%block quSetting%}
 
 <div class="cbox">
+	<h3 class="txtC">{%trans "General setting"%}</h3>
 	<form method="post" autocomplete="off">
 		<input type="hidden" name="formType" value="setting">
 		{{block('irequire')}}
-		{{block('choiceinline')}}
-		{{block('irandom')}}
-		{{block('iother')}}
-		{{block('imaxchar')}}
-		{{block('placeholder')}}
+		{%if choiceDetail.key%}
+			{{block(choiceDetail.key)}}
+		{%endif%}
+
 		<button class="btn primary block mT20">{%trans "Save setting"%}</button>
 	</form>
 </div>

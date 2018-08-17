@@ -34,6 +34,7 @@ trait type
 
 	public static function all_type()
 	{
+
 		// sample array
 		// $sample =
 		// [
@@ -71,13 +72,13 @@ trait type
 			'key'          => 'short_answer',
 			'title'        => T_("Short answer"),
 			'placeholder'  => true,
-			'maxcharshort' => true,
+			'max'          => true,
 			'logo'         => \dash\url::site(). '/static/images/question-type/short_answer.png',
 			'default_load' =>
 			[
-				'placeholder'  => T_("Type here ..."),
-				'maxcharshort' => 500,
-				'defaultchar'  => 100,
+				'placeholder' => T_("Type here ..."),
+				'max'         => 500,
+				'default'     => 100,
 			],
 		];
 
@@ -85,14 +86,14 @@ trait type
 		$type['descriptive_answer'] =
 		[
 			'key'          => 'descriptive_answer',
-			'placeholder'  => true,
 			'title'        => T_('Descriptive answer'),
-			'maxcharlong'  => true,
+			'placeholder'  => true,
+			'max'          => true,
 			'logo'         => \dash\url::site(). '/static/images/question-type/descriptive_answer.png',
 			'default_load' =>
 			[
-				'maxcharlong' => 10000,
-				'defaultchar' => 1000,
+				'max'     => 10000,
+				'default' => 1000,
 			],
 		];
 
@@ -109,20 +110,19 @@ trait type
 			[
 				'min'     => 0,
 				'max'     => 1E+10,
-				'default' => 100,
 			],
 		];
 
 
 		$type['single_choice'] =
 		[
-			'key'           => 'single_choice',
-			'title'         => T_('Single choice'),
-			'choice'        => true,
-			'choiceinline'  => true,
-			'random'        => true,
-			'chart'         => true,
-			'logo'			=> \dash\url::site(). '/static/images/question-type/single_choice.png',
+			'key'          => 'single_choice',
+			'title'        => T_('Single choice'),
+			'choice'       => true,
+			'choiceinline' => true,
+			'random'       => true,
+			'chart'        => true,
+			'logo'         => \dash\url::site(). '/static/images/question-type/single_choice.png',
 			'default_load' =>
 			[
 
@@ -132,19 +132,18 @@ trait type
 
 		$type['multiple_choice'] =
 		[
-			'key'           => 'multiple_choice',
-			'title'         => T_('Multiple choice'),
-			'choice'        => true,
-			'random'        => true,
-			'chart'         => true,
-			'minchoice'     => true,
-			'maxchoice'     => true,
-			'choicehelp'    => true,
-			'logo'			=> \dash\url::site(). '/static/images/question-type/multiple_choice.png',
+			'key'          => 'multiple_choice',
+			'title'        => T_('Multiple choice'),
+			'choice'       => true,
+			'random'       => true,
+			'chart'        => true,
+			'min'          => true,
+			'max'          => true,
+			'choicehelp'   => true,
+			'logo'         => \dash\url::site(). '/static/images/question-type/multiple_choice.png',
 			'default_load' =>
 			[
-				'minchoice'  => 1,
-				'maxchoice'  => null,
+				'min'        => 1,
 				'choicehelp' => T_("You can choose as many as you want"),
 			],
 		];
@@ -152,13 +151,13 @@ trait type
 
 		$type['dropdown'] =
 		[
-			'key'           => 'dropdown',
-			'title'         => T_('Dropdown'),
-			'placeholder'   => true,
-			'choice'        => true,
-			'chart'         => true,
-			'random'        => true,
-			'logo'			=> \dash\url::site(). '/static/images/question-type/dropdown.png',
+			'key'          => 'dropdown',
+			'title'        => T_('Dropdown'),
+			'placeholder'  => true,
+			'choice'       => true,
+			'chart'        => true,
+			'random'       => true,
+			'logo'         => \dash\url::site(). '/static/images/question-type/dropdown.png',
 			'default_load' =>
 			[
 				'placeholder' => T_("Please choose one item"),
@@ -168,10 +167,10 @@ trait type
 
 		$type['date'] =
 		[
-			'key'           => 'date',
-			'placeholder'   => true,
-			'title'         => T_('Date'),
-			'logo'			=> \dash\url::site(). '/static/images/question-type/date.png',
+			'key'          => 'date',
+			'placeholder'  => true,
+			'title'        => T_('Date'),
+			'logo'         => \dash\url::site(). '/static/images/question-type/date.png',
 			'default_load' =>
 			[
 				'placeholder' => T_("Select date"),
@@ -180,10 +179,10 @@ trait type
 
 		$type['time'] =
 		[
-			'key'           => 'time',
-			'placeholder'   => true,
-			'title'         => T_('Time'),
-			'logo'			=> \dash\url::site(). '/static/images/question-type/time.png',
+			'key'          => 'time',
+			'placeholder'  => true,
+			'title'        => T_('Time'),
+			'logo'         => \dash\url::site(). '/static/images/question-type/time.png',
 			'default_load' =>
 			[
 				'placeholder' => T_("Select time"),
@@ -230,38 +229,36 @@ trait type
 
 		$type['rating'] =
 		[
-			'key'      => 'rating',
-			'title'    => T_('Rating'),
-			'maxrate'  => true,
-			'ratetype' => true,
-			'logo'     => \dash\url::site(). '/static/images/question-type/rating.png',
+			'key'          => 'rating',
+			'title'        => T_('Rating'),
+			'max'          => true,
+			'ratetype'     => true,
+			'logo'         => \dash\url::site(). '/static/images/question-type/rating.png',
 			'default_load' =>
 			[
-				'maxrate'  => 10,
+				'max'      => 10,
 				'ratetype' => 'star',
 			],
 		];
 
 		$type['rangeslider'] =
 		[
-			'key'         => 'rangeslider',
-			'title'       => T_('Range slider'),
-			'max'         => true,
-			'min'         => true,
-			'label3'      => true,
-			'default'     => 5,
-			'step'        => 10,
-			'rangenumber' => 1000,
-			'logo'        => \dash\url::site(). '/static/images/question-type/rangeslider.png',
+			'key'          => 'rangeslider',
+			'title'        => T_('Range slider'),
+			'max'          => true,
+			'min'          => true,
+			'label3'       => true,
+			'default'      => true,
+			'step'         => true,
+			'maxrange'     => 1000,
+			'logo'         => \dash\url::site(). '/static/images/question-type/rangeslider.png',
 			'default_load' =>
 			[
 				'min'     => 0,
-				'max'     => 10,
+				'max'     => 1E+10,
 				'step'    => 1,
 				'default' => 0,
-				'label1'  => T_("Short"),
-				'label2'  => T_("Medium"),
-				'label3'  => T_("Large"),
+
 			],
 		];
 

@@ -92,26 +92,22 @@ class model
 
 	public static function setting()
 	{
-		$post                 = [];
-		$post['require']      = \dash\request::post('require');
-		$post['maxchar']      = \dash\request::post('maxchar');
-		$post['maxrate']      = \dash\request::post('maxrate');
-		$post['choicehelp']   = \dash\request::post('choicehelp');
-		$post['minchoice']    = \dash\request::post('minchoice');
-		$post['maxchoice']    = \dash\request::post('maxchoice');
-		$post['choiceinline'] = \dash\request::post('choiceinline');
-		$post['ratetype']     = \dash\request::post('ratetype');
-		$post['min']          = \dash\request::post('min');
-		$post['max']          = \dash\request::post('max');
-		$post['choice_sort']  = \dash\request::post('choice_sort');
-		$post['otherchoice']  = \dash\request::post('otherchoice');
-		$post['placeholder']  = \dash\request::post('placeholder');
-		$post['label1']       = \dash\request::post('label1');
-		$post['label2']       = \dash\request::post('label2');
-		$post['label3']       = \dash\request::post('label3');
-		$post['default']      = \dash\request::post('default');
-		$post['step']         = \dash\request::post('step');
-		$post['survey_id']    = \dash\request::get('id');
+		$post                   = [];
+		$post['step']           = \dash\request::post('step');
+		$post['require']        = \dash\request::post('require');
+		$post['default']        = \dash\request::post('default');
+		$post['label1']         = \dash\request::post('label1');
+		$post['label2']         = \dash\request::post('label2');
+		$post['label3']         = \dash\request::post('label3');
+		$post['survey_id']      = \dash\request::get('id');
+		$post['ratetype']       = \dash\request::post('ratetype');
+		$post['choicehelp']     = \dash\request::post('choicehelp');
+		$post['choice_sort']    = \dash\request::post('choice_sort');
+		$post['choiceinline']   = \dash\request::post('choiceinline');
+		$post['min']            = \dash\request::post('min');
+		$post['max']            = \dash\request::post('max');
+		$post['placeholder']    = \dash\request::post('placeholder');
+		$post['change_setting'] = true;
 
 		$result = \lib\app\question::edit($post, self::$questionid);
 

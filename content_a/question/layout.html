@@ -6,10 +6,14 @@
 <textarea class="txt mB10" id='title' name="title" placeholder='{%trans "Title"%}' maxlength='500' rows="2">{{dataRow.title}}</textarea>
 {%endblock%}
 
+
+
 {%block idesc%}
 <label for="desc">{%trans "Description"%}</label>
 <textarea class="txt mB10" id='desc' name="desc" placeholder='{%trans "Description"%}' maxlength='500' rows="3" >{{dataRow.desc}}</textarea>
 {%endblock%}
+
+
 
 
 {%block itype%}
@@ -42,59 +46,281 @@
 {%endblock%}
 
 
+
+
+{%block placeholder %}
+
+<label for="placeholder">{%trans "Placeholder"%}</label>
+<div class="input">
+  <input type="text" name="placeholder" id="placeholder" placeholder='{%trans "Type here ..."%}'  value="{{dataRow['setting'][choiceDetail.key]['placeholder']}}" title='{%trans "To change placeholder type hrere"%}'  maxlength='200' minlength="1" pattern=".{1,200}" >
+</div>
+
+{% endblock %}
+
+
+
+
+
+{% block short_answer %}
+<label for="max">{%trans "Maximum char"%}</label>
+ <div class="rangeSlider1">
+  <input type="range" name="max" min="1" max="{{choiceDetail.default_load.max}}"  value="{%if dataRow.setting.short_answer.max%}{{dataRow.setting.short_answer.max}}{%else%}{{choiceDetail.default_load.default}}{%endif%}" >
+  <output>{%if dataRow.setting.short_answer.max%}{{dataRow.setting.short_answer.max}}{%else%}{{choiceDetail.default_load.default}}{%endif%}</output>
+</div>
+{{block('placeholder')}}
+
+{%endblock%}
+
+
+
+{% block descriptive_answer %}
+<label for="max">{%trans "Maximum char"%}</label>
+ <div class="rangeSlider1">
+  <input type="range" name="max" min="1" max="{{choiceDetail.default_load.max}}"  value="{%if dataRow.setting.descriptive_answer.max%}{{dataRow.setting.descriptive_answer.max}}{%else%}{{choiceDetail.default_load.default}}{%endif%}" >
+  <output>{%if dataRow.setting.descriptive_answer.max%}{{dataRow.setting.descriptive_answer.max}}{%else%}{{choiceDetail.default_load.default}}{%endif%}</output>
+</div>
+{{block('placeholder')}}
+
+{%endblock%}
+
+
+
+
+{% block numeric %}
+
+<label for="min">{%trans "Minimum"%}</label>
+<div class="input">
+  <input type="number" name="min" id="min" placeholder='{{(choiceDetail.default_load.min ~ "-" ~ choiceDetail.default_load.max)  | fitNumber}}' value="{{dataRow.setting.numeric.min}}"  min='{{choiceDetail.default_load.min}}' max="{{choiceDetail.default_load.max}}">
+</div>
+
+<label for="max">{%trans "Maximum"%}</label>
+<div class="input">
+  <input type="number" name="max" id="max" placeholder='{{(choiceDetail.default_load.min ~ "-" ~ choiceDetail.default_load.max)  | fitNumber}}' value="{{dataRow.setting.numeric.max}}"  min='{{choiceDetail.default_load.min}}' max="{{choiceDetail.default_load.max}}">
+</div>
+
+{%endblock%}
+
+
+
 {%block irandom%}
-  {%if choiceDetail.choice%}
 
 <div class="mT15">
  <label >{%trans "Sort choice type"%}</label>
 
  <div class="radio1">
-  <input type="radio" id="r-save" name="choice_sort" value="save" {%if dataRow.setting.choice_sort == 'save' or not  dataRow.setting.choice_sort %} checked{%endif%}>
+  <input type="radio" id="r-save" name="choice_sort" value="save" {%if dataRow['setting'][choiceDetail.key]['choice_sort'] == 'save' or not  dataRow['setting'][choiceDetail.key]['choice_sort'] %} checked{%endif%}>
   <label for="r-save">{%trans "By save"%}</label>
  </div>
 
  <div class="radio1">
-  <input type="radio" id="r-random" name="choice_sort" value="random" {%if dataRow.setting.choice_sort == 'random' %} checked{%endif%}>
+  <input type="radio" id="r-random" name="choice_sort" value="random" {%if dataRow['setting'][choiceDetail.key]['choice_sort'] == 'random' %} checked{%endif%}>
   <label for="r-random">{%trans "Random"%}</label>
  </div>
 
-
  <div class="radio1">
-  <input type="radio" id="r-asc" name="choice_sort" value="asc" {%if dataRow.setting.choice_sort == 'asc' %} checked{%endif%}>
+  <input type="radio" id="r-asc" name="choice_sort" value="asc" {%if dataRow['setting'][choiceDetail.key]['choice_sort'] == 'asc' %} checked{%endif%}>
   <label for="r-asc">{%trans "Alphabet A-Z"%}</label>
  </div>
 
  <div class="radio1">
-  <input type="radio" id="r-desc" name="choice_sort" value="desc" {%if dataRow.setting.choice_sort == 'desc' %} checked{%endif%}>
+  <input type="radio" id="r-desc" name="choice_sort" value="desc" {%if dataRow['setting'][choiceDetail.key]['choice_sort'] == 'desc' %} checked{%endif%}>
   <label for="r-desc">{%trans "Alphabet Z-A"%}</label>
  </div>
+</div>
+{%endblock%}
 
+
+
+{% block single_choice %}
+  {{block('irandom')}}
+  <div class="switch1 mB10">
+   <input type="checkbox" name="choiceinline" id="choiceinline" {%if dataRow.setting.single_choice.choiceinline %}checked{%endif%}>
+   <label for="choiceinline"></label>
+   <label for="choiceinline">{%trans "Show every choice in one line"%}</label>
+ </div>
+{%endblock%}
+
+
+
+
+{% block multiple_choice %}
+
+  {{block('irandom')}}
+  <label for="min">{%trans "Minimum"%}</label>
+<div class="input">
+  <input type="number" name="min" id="min" placeholder='{{(choiceDetail.default_load.min ~ "-" ~ (dataRow.choice | length))  | fitNumber}}' value="{{dataRow.setting.multiple_choice.min}}"  min='{{choiceDetail.default_load.min}}' max="{{(dataRow.choice | length)}}">
+</div>
+
+<label for="max">{%trans "Maximum"%}</label>
+<div class="input">
+  <input type="number" name="max" id="max" placeholder='{{(choiceDetail.default_load.min ~ "-" ~ (dataRow.choice | length))  | fitNumber}}' value="{{dataRow.setting.multiple_choice.max}}"  min='{{choiceDetail.default_load.min}}' max="{{(dataRow.choice | length)}}">
+</div>
+
+<label for="choicehelp">{%trans "Multi choice help text"%}</label>
+<div class="input">
+  <input type="text" name="choicehelp" id="choicehelp" placeholder='{%trans "You can select more than one choice!"%}' value="{{dataRow.setting.choicehelp}}"  min='1' max="{{dataRow.choice | length}}">
+</div>
+{%endblock%}
+
+
+
+{% block dropdown %}
+  {{block('irandom')}}
+  {{block('placeholder')}}
+{%endblock%}
+
+
+
+{% block date %}
+  {{block('placeholder')}}
+{%endblock%}
+
+
+{% block time %}
+  {{block('placeholder')}}
+{%endblock%}
+
+
+{% block mobile %}
+  {{block('placeholder')}}
+{%endblock%}
+
+
+{% block email %}
+  {{block('placeholder')}}
+{%endblock%}
+
+
+
+{% block website %}
+  {{block('placeholder')}}
+{%endblock%}
+
+
+{% block rating %}
+<label for="max">{%trans "Maximum"%}</label>
+<div class="input">
+  <input type="number" name="max" id="max" placeholder='{{"1-10" | fitNumber}}' value="{{dataRow.setting.rating.max}}"  min='1' max="10">
+</div>
+
+
+ <label >{%trans "Rate emoji"%}</label>
+<div class="mT15">
+
+ <div class="radioRating compact" >
+  <div class="rateBox">
+    <input type="radio" id="r-star" name="ratetype" value="star" {%if dataRow['setting'][choiceDetail.key]['ratetype'] == 'star' or not  dataRow['setting'][choiceDetail.key]['ratetype'] %} checked {%endif%}>
+    <label for="r-star"></label>
+   </div>
+  </div>
+
+ <div class="radioRating compact heart">
+  <div class="rateBox">
+    <input type="radio" id="r-heart" name="ratetype" value="heart" {%if dataRow['setting'][choiceDetail.key]['ratetype'] == 'heart' %} checked {%endif%}>
+    <label for="r-heart"></label>
+   </div>
+  </div>
+
+ <div class="radioRating compact bell">
+  <div class="rateBox">
+    <input type="radio" id="r-bell" name="ratetype" value="bell" {%if dataRow['setting'][choiceDetail.key]['ratetype'] == 'bell' %} checked {%endif%}>
+    <label for="r-bell"></label>
+   </div>
+  </div>
+
+ <div class="radioRating compact flag">
+  <div class="rateBox">
+    <input type="radio" id="r-flag" name="ratetype" value="flag" {%if dataRow['setting'][choiceDetail.key]['ratetype'] == 'flag' %} checked {%endif%}>
+    <label for="r-flag"></label>
+   </div>
+  </div>
+
+ <div class="radioRating compact bookmark">
+  <div class="rateBox">
+    <input type="radio" id="r-bookmark" name="ratetype" value="bookmark" {%if dataRow['setting'][choiceDetail.key]['ratetype'] == 'bookmark' %} checked {%endif%}>
+    <label for="r-bookmark"></label>
+   </div>
+  </div>
+
+<div class="radioRating compact like">
+  <div class="rateBox">
+    <input type="radio" id="r-like" name="ratetype" value="like" {%if dataRow['setting'][choiceDetail.key]['ratetype'] == 'like' %} checked {%endif%}>
+    <label for="r-like"></label>
+   </div>
+  </div>
+
+ <div class="radioRating compact dislike">
+  <div class="rateBox">
+    <input type="radio" id="r-dislike" name="ratetype" value="dislike" {%if dataRow['setting'][choiceDetail.key]['ratetype'] == 'dislike' %} checked {%endif%}>
+    <label for="r-dislike"></label>
+   </div>
+  </div>
+
+ <div class="radioRating compact user1">
+  <div class="rateBox">
+    <input type="radio" id="r-user1" name="ratetype" value="user1" {%if dataRow['setting'][choiceDetail.key]['ratetype'] == 'user1' %} checked {%endif%}>
+    <label for="r-user1"></label>
+   </div>
+  </div>
 
 </div>
-  {%endif%}
 {%endblock%}
 
 
 
-{%block choiceinline%}
-  {%if choiceDetail.choiceinline%}
-    <div class="switch1 mB10">
-     <input type="checkbox" name="choiceinline" id="choiceinline" {%if dataRow.setting.choiceinline %}checked{%endif%}>
-     <label for="choiceinline"></label>
-     <label for="choiceinline">{%trans "Show every choice in one line"%}</label>
+{% block rangeslider %}
+
+
+<label for="label3">{%trans "Label"%}</label>
+<div class="f">
+
+  <div class="c">
+    <div class="input">
+      <input type="text" name="label1" id="label3" placeholder='{%trans "For example: Low"%}' value="{{dataRow.setting.rangeslider.label1}}" maxlength='100' minlength="1" pattern=".{1,100}">
     </div>
-  {%endif%}
+  </div>
+
+  <div class="c mLa5">
+    <div class="input">
+      <input type="text" name="label2" id="label3-2" placeholder='{%trans "For example: Middle"%}' value="{{dataRow.setting.rangeslider.label2}}" maxlength='100' minlength="1" pattern=".{1,100}">
+    </div>
+  </div>
+
+  <div class="c mLa5">
+    <div class="input">
+      <input type="text" name="label3" id="label3-3" placeholder='{%trans "For example: High"%}' value="{{dataRow.setting.rangeslider.label3}}" maxlength='100' minlength="1" pattern=".{1,100}">
+    </div>
+  </div>
+</div>
+
+
+<label for="min">{%trans "Minimum"%}</label>
+<div class="input">
+  <input type="number" name="min" id="min" placeholder='{{(choiceDetail.default_load.min ~ "-" ~ choiceDetail.default_load.max)  | fitNumber}}' value="{{dataRow.setting.rangeslider.min}}"  min='{{choiceDetail.default_load.min}}' max="{{choiceDetail.default_load.max}}">
+</div>
+
+<label for="max">{%trans "Maximum"%}</label>
+<div class="input">
+  <input type="number" name="max" id="max" placeholder='{{(choiceDetail.default_load.min ~ "-" ~ choiceDetail.default_load.max)  | fitNumber}}' value="{{dataRow.setting.rangeslider.max}}"  min='{{choiceDetail.default_load.min}}' max="{{choiceDetail.default_load.max}}">
+</div>
+
+<label for="default">{%trans "Default"%}</label>
+<div class="input">
+  <input type="number" name="default" id="default" placeholder='{%trans "Default"%}' value="{{dataRow.setting.rangeslider.default}}" min="0" max="{{dataRow.setting.rangeslider.max}}">
+</div>
+
+
+<label for="step">{%trans "Step"%}</label>
+<div class="input">
+  <input type="number" name="step" id="step" placeholder='{%trans "Step"%}' value="{{dataRow.setting.rangeslider.step}}" min="0" max="{{dataRow.setting.rangeslider.max}}">
+</div>
+
+
 {%endblock%}
 
-{%block iother%}
-  {%if choiceDetail.otherchoice%}
-    <div class="switch1 mB10">
-     <input type="checkbox" name="otherchoice" id="otherchoice" {%if dataRow.setting.otherchoice %}checked{%endif%}>
-     <label for="otherchoice"></label>
-     <label for="otherchoice">{%trans "Show other choice"%}</label>
-    </div>
-  {%endif%}
-{%endblock%}
+
+
+
 
 {%block irequire%}
 <div class="switch1 mB10">
@@ -105,173 +331,6 @@
 {%endblock%}
 
 
-{%block imaxchar %}
-{%if choiceDetail.maxcharlong%}
-<label for="maxchar">{%trans "Maximum char"%}</label>
- <div class="rangeSlider1">
-    <input type="range" name="maxchar" min="1" max="10000"  value="{{dataRow.maxchar}}" >
-    <output>{{dataRow.maxchar}}</output>
-  </div>
-{%endif%}
-
-{%if choiceDetail.maxcharshort%}
-<label for="maxchar">{%trans "Maximum char"%}</label>
- <div class="rangeSlider1">
-    <input type="range" name="maxchar" min="1" max="100"  value="{{dataRow.maxchar}}" >
-    <output>{{dataRow.maxchar}}</output>
-  </div>
-{%endif%}
-
-{%if choiceDetail.min%}
-<label for="min">{%trans "Minimum"%}</label>
-<div class="input">
-  <input type="number" name="min" id="min" placeholder='{{"0-99999999" | fitNumber}}' value="{{dataRow.setting.min}}"  min='0' max="99999999">
-</div>
-{%endif%}
-
-{%if choiceDetail.max%}
-<label for="max">{%trans "Maximum"%}</label>
-<div class="input">
-  <input type="number" name="max" id="max" placeholder='{{"0-99999999" | fitNumber}}' value="{{dataRow.setting.max}}"  min='0' max="99999999">
-</div>
-{%endif%}
-
-
-{%if choiceDetail.maxrate%}
-<label for="maxrate">{%trans "Maximum"%}</label>
-<div class="input">
-  <input type="number" name="maxrate" id="maxrate" placeholder='{{"1-10" | fitNumber}}' value="{{dataRow.setting.maxrate}}"  min='1' max="10">
-</div>
-{%endif%}
-
-
-{%if choiceDetail.minchoice%}
-<label for="minchoice">{%trans "Minimum choice"%}</label>
-<div class="input">
-  <input type="number" name="minchoice" id="minchoice" {%if dataRow.choice%} placeholder='{{("0-" ~ (dataRow.choice | length)) | fitNumber}}' {%endif%} value="{{dataRow.setting.minchoice}}"  min='0' max="{{dataRow.choice | length}}">
-</div>
-{%endif%}
-
-
-{%if choiceDetail.maxchoice%}
-<label for="maxchoice">{%trans "Maximum choice"%}</label>
-<div class="input">
-  <input type="number" name="maxchoice" id="maxchoice" {%if dataRow.choice%} placeholder='{{("1-" ~ (dataRow.choice | length)) | fitNumber}}' {%endif%} value="{{dataRow.setting.maxchoice}}"  min='1' max="{{dataRow.choice | length}}">
-</div>
-{%endif%}
-
-{%if choiceDetail.choicehelp%}
-<label for="choicehelp">{%trans "Multi choice help text"%}</label>
-<div class="input">
-  <input type="text" name="choicehelp" id="choicehelp" placeholder='{%trans "You can select more than one choice!"%}' value="{{dataRow.setting.choicehelp}}"  min='1' max="{{dataRow.choice | length}}">
-</div>
-{%endif%}
-
-
-
-{%if choiceDetail.label3 %}
-<label for="label3">{%trans "Label"%}</label>
-<div class="f">
-
-  <div class="c">
-    <div class="input">
-      <input type="text" name="label1" id="label3" placeholder='{%trans "For example: Low"%}' value="{{dataRow.setting.label1}}" maxlength='100' minlength="1" pattern=".{1,100}">
-    </div>
-  </div>
-
-  <div class="c mLa5">
-    <div class="input">
-      <input type="text" name="label2" id="label3-2" placeholder='{%trans "For example: Middle"%}' value="{{dataRow.setting.label2}}" maxlength='100' minlength="1" pattern=".{1,100}">
-    </div>
-  </div>
-
-  <div class="c mLa5">
-    <div class="input">
-      <input type="text" name="label3" id="label3-3" placeholder='{%trans "For example: High"%}' value="{{dataRow.setting.label3}}" maxlength='100' minlength="1" pattern=".{1,100}">
-    </div>
-  </div>
-</div>
-{%endif%}
-
-{%if choiceDetail.default %}
-<label for="default">{%trans "Default"%}</label>
-<div class="input">
-  <input type="number" name="default" id="default" placeholder='{%trans "Default"%}' value="{{dataRow.setting.default}}" min="{{dataRow.setting.min}}" max="{{dataRow.setting.max}}">
-</div>
-{%endif%}
-
-{%if choiceDetail.step %}
-<label for="step">{%trans "Step"%}</label>
-<div class="input">
-  <input type="number" name="step" id="step" placeholder='{%trans "Step"%}' value="{{dataRow.setting.step}}" min="{{dataRow.setting.min}}" max="{{dataRow.setting.max}}">
-</div>
-{%endif%}
-
-{%if choiceDetail.ratetype%}
-
- <label >{%trans "Rate emoji"%}</label>
-<div class="mT15">
-
- <div class="radioRating compact" >
-  <div class="rateBox">
-    <input type="radio" id="r-star" name="ratetype" value="star" {%if dataRow.setting.ratetype == 'star' or not  dataRow.setting.ratetype %} checked {%endif%}>
-    <label for="r-star"></label>
-   </div>
-  </div>
-
- <div class="radioRating compact heart">
-  <div class="rateBox">
-    <input type="radio" id="r-heart" name="ratetype" value="heart" {%if dataRow.setting.ratetype == 'heart' %} checked {%endif%}>
-    <label for="r-heart"></label>
-   </div>
-  </div>
-
- <div class="radioRating compact bell">
-  <div class="rateBox">
-    <input type="radio" id="r-bell" name="ratetype" value="bell" {%if dataRow.setting.ratetype == 'bell' %} checked {%endif%}>
-    <label for="r-bell"></label>
-   </div>
-  </div>
-
- <div class="radioRating compact flag">
-  <div class="rateBox">
-    <input type="radio" id="r-flag" name="ratetype" value="flag" {%if dataRow.setting.ratetype == 'flag' %} checked {%endif%}>
-    <label for="r-flag"></label>
-   </div>
-  </div>
-
- <div class="radioRating compact bookmark">
-  <div class="rateBox">
-    <input type="radio" id="r-bookmark" name="ratetype" value="bookmark" {%if dataRow.setting.ratetype == 'bookmark' %} checked {%endif%}>
-    <label for="r-bookmark"></label>
-   </div>
-  </div>
-
-<div class="radioRating compact like">
-  <div class="rateBox">
-    <input type="radio" id="r-like" name="ratetype" value="like" {%if dataRow.setting.ratetype == 'like' %} checked {%endif%}>
-    <label for="r-like"></label>
-   </div>
-  </div>
-
- <div class="radioRating compact dislike">
-  <div class="rateBox">
-    <input type="radio" id="r-dislike" name="ratetype" value="dislike" {%if dataRow.setting.ratetype == 'dislike' %} checked {%endif%}>
-    <label for="r-dislike"></label>
-   </div>
-  </div>
-
- <div class="radioRating compact user1">
-  <div class="rateBox">
-    <input type="radio" id="r-user1" name="ratetype" value="user1" {%if dataRow.setting.ratetype == 'user1' %} checked {%endif%}>
-    <label for="r-user1"></label>
-   </div>
-  </div>
-
-</div>
-{%endif%}
-
-{% endblock %}
 
 
 {%block ichoice %}
@@ -282,14 +341,6 @@
 {% endblock %}
 
 
-{%block placeholder %}
-{%if choiceDetail.placeholder %}
-<label for="placeholder">{%trans "Placeholder"%}</label>
-<div class="input">
-  <input type="text" name="placeholder" id="placeholder" placeholder='{%trans "Type here ..."%}'  value="{{dataRow.setting.placeholder}}" title='{%trans "To change placeholder type hrere"%}'  maxlength='200' minlength="1" pattern=".{1,200}" >
-</div>
-{%endif%}
-{% endblock %}
 
 
 
