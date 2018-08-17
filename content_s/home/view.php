@@ -156,7 +156,7 @@ class view
 			\dash\data::step_type('thankyou');
 		}
 
-		if(false || \dash\url::isLocal())
+		if(\dash\data::mySurvey())
 		{
 			// @reza
 			// show id he is creator

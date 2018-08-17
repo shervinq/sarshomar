@@ -74,29 +74,34 @@
 
 {%block short_answer%}
  <div class="input">
-  <input type="text" id="answer" name="answer" value="{{myAnswer.text}}"{%if question.require%} required{%endif%}{%if question.maxchar%} maxlength="{{question.maxchar}}"{%endif%} placeholder='{%if question.require%}* {%endif%}{%trans "Type here ..."%}' autofocus>
+  <input type="text" id="answer" name="answer" value="{{myAnswer.text}}"{%if question.require%} required{%endif%}{%if question.setting.short_answer.max%} maxlength="{{question.setting.short_answer.max}}"{%endif%} placeholder='{%if question.require%}* {%endif%}{{question.setting.short_answer.placeholder}}' autofocus>
  {{block('nextBtn')}}
  </div>
 {%endblock%}
 
 
 {%block descriptive_answer%}
- <textarea class="txt" type="text" id="answer" name="answer" {%if question.require%} required{%endif%}{%if question.maxchar%} maxlength="{{question.maxchar}}" rows="{{ (question.maxchar / 100) |round(0, 'ceil')  + 2}}"{%else%} rows="3"{%endif%} placeholder='{%if question.require%}* {%endif%}{%trans "Type here ..."%}' autofocus>{{myAnswer.text}}</textarea>
+ <textarea class="txt" type="text" id="answer" name="answer" {%if question.require%} required{%endif%}{%if question.setting.descriptive_answer.max%} maxlength="{{question.setting.descriptive_answer.max}}" rows="{{ (question.setting.descriptive_answer.max / 100) |round(0, 'ceil')  + 2}}"{%else%} rows="3"{%endif%} placeholder='{%if question.require%}* {%endif%}{{question.setting.descriptive_answer.placeholder}}' autofocus>{{myAnswer.text}}</textarea>
  {{block('nextBtn')}}
 {%endblock%}
 
 
 {%block numeric%}
  <div class="input">
-  <input type="number" id="answer" name="answer" value="{{myAnswer.text}}" {%if question.require%} required{%endif%}{%if question.setting.min%}min="{{question.setting.min}}"{%endif%}{%if question.setting.max%}max="{{question.setting.max}}"{%endif%} placeholder='{%if question.require%}* {%endif%}{%trans "Type here ..."%}' inputmode="numeric" pattern="[0-9]*" autofocus>
+  <input type="number" id="answer" name="answer" value="{{myAnswer.text}}" {%if question.require%} required{%endif%}{%if question.setting.numeric.min%} min="{{question.setting.numeric.min}}"{%endif%}{%if question.setting.numeric.max%} max="{{question.setting.numeric.max}}"{%endif%} placeholder='{%if question.require%}* {%endif%}{{question.setting.numeric.placeholder}}' inputmode="numeric" pattern="[0-9]*" autofocus>
  </div>
  {{block('nextBtn')}}
 {%endblock%}
 
 
 {%block single_choice%}
+{%if question.choice | length < 10%}
+{%set haveKBD = true%}
+{%endif%}
+
 {%for key, value in question.choice%}
-  <button class="btn block mB5{%if myAnswer.text == value.title%} success{%endif%}" id="r-{{key}}" name="answer" value="{{value.title}}" data-shortkey='{{key + 49}}'>{%if myAnswer.text == value.title%}<span class="sf-check-1 floatRa"></span> {%endif%}{{value.title}} <kbd class="floatLa">{{key + 1}}</kbd></button>
+
+  <button class="btn {%if question.setting.single_choice.choiceinline%}block {%else%} mR10{%endif%} mB5{%if myAnswer.text == value.title%} success{%endif%}" id="r-{{key}}" name="answer" value="{{value.title}}" {%if haveKBD%} data-shortkey='{{loop.index + 48}}' {%endif%}>{%if myAnswer.text == value.title%}<span class="sf-check-1 floatRa"></span> {%endif%}{{value.title}} {%if haveKBD%}<kbd class="floatLa">{{loop.index}}</kbd> {%endif%}</button>
 {%endfor%}
 {%endblock%}
 
