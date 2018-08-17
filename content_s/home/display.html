@@ -120,7 +120,7 @@
 {%block dropdown%}
  <div class="mB10">
    <select name="answer" class="ui dropdown select{%if (question.choice | length) > 4 %} search{%endif%}">
-     <option value="">{%trans "Please choose one item"%}</option>
+     <option value="">{{question.setting.dropdown.placeholder}}</option>
 {%for key, value in question.choice%}
 {%if myAnswer.text == value.title%}
        <option value="{{value.title}}" checked>✔️ {{value.title}}</option>
@@ -136,14 +136,14 @@
 
 {%block date%}
  <div class="input ltr">
-   <input class="datepicker" type="text" name="answer" id="answer" placeholder='{{"1369/04/15" | fitNumber}}' {%if question.require%} required{%endif%} value="{{myAnswer.text}}" maxlength='10' data-format="YYYY/MM/DD" data-view="year" autofocus>
+   <input class="datepicker" type="text" name="answer" id="answer" placeholder='{{question.setting.date.placeholder}}' {%if question.require%} required{%endif%} value="{{myAnswer.text}}" maxlength='10' data-format="YYYY/MM/DD" data-view="year" autofocus>
  </div>
  {{block('nextBtn')}}
 {%endblock%}
 
 {%block time%}
  <div class="input clockpicker ltr">
-    <input type="text" class="input" name="answer" placeholder="choose clock" value="{{myAnswer.text}}" {%if question.require%} required{%endif%} autofocus>
+    <input type="text" class="input" name="answer" placeholder="{{question.setting.time.placeholder}}" value="{{myAnswer.text}}" {%if question.require%} required{%endif%} autofocus>
  </div>
  {{block('nextBtn')}}
 {%endblock%}
@@ -151,7 +151,7 @@
 
 {%block email%}
  <div class="input">
-   <input class="" type="email" name="answer" id="answer" value="{{myAnswer.text}}" {%if question.require%} required{%endif%} placeholder="abc@yourdomain.com" autofocus>
+   <input class="" type="email" name="answer" id="answer" value="{{myAnswer.text}}" {%if question.require%} required{%endif%} placeholder="{{question.setting.email.placeholder}}" autofocus>
  </div>
  {{block('nextBtn')}}
 {%endblock%}
@@ -159,19 +159,19 @@
 
 {%block website%}
  <div class="input">
-   <input class="" type="url" name="answer" id="answer" value="{{myAnswer.text}}" {%if question.require%} required{%endif%} placeholder="http://" autofocus>
+   <input class="" type="url" name="answer" id="answer" value="{{myAnswer.text}}" {%if question.require%} required{%endif%} placeholder="{{question.setting.date.placeholder}}" autofocus>
  </div>
  {{block('nextBtn')}}
 {%endblock%}
 
 
 {%block rating%}
-  <div class="radioRating togglable txtC {{question.setting.ratetype}}">
+  <div class="radioRating togglable txtC {{question.setting.rating.ratetype}}">
     <div class="rateBox">
-{% for i in 1..(question.setting.maxrate) %}
-{%set currentRate = question.setting.maxrate - i + 1%}
+{% for i in 1..(question.setting.rating.max) %}
+{%set currentRate = question.setting.rating.max - i + 1%}
       <input type="radio" name="answer" value="{{currentRate}}" id="myRate-{{i}}" {%if question.require%} required{%endif%}{%if myAnswer.text == currentRate %} checked{%endif%}>
-      <label for="myRate-{{i}}">{% if question.setting.maxrate | length == 1%}{%else%}{{currentRate}}{%endif%}</label>
+      <label for="myRate-{{i}}">{% if question.setting.rating.max | length == 1%}{%else%}{{currentRate}}{%endif%}</label>
 {% endfor %}
     </div>
   </div>
@@ -181,13 +181,13 @@
 
 {%block rangeslider%}
   <div class="rangeSlider1">
-    <input type="range" name="answer" min="{{question.setting.min}}" max="{{question.setting.max}}" step="{{question.setting.step}}" value="{{myAnswer.text}}"{%if question.require%} required{%endif%}>
+    <input type="range" name="answer" min="{{question.setting.rangeslider.min}}" max="{{question.setting.rangeslider.max}}" step="{{question.setting.rangeslider.step}}" value="{{myAnswer.text}}"{%if question.require%} required{%endif%}>
     <output>60</output>
   </div>
   <div class="f">
-    <div class="c txtLa">{{question.setting.min}}</div>
-    <div class="c txtC">Average</div>
-    <div class="c txtRa">{{question.setting.max}}</div>
+    <div class="c txtLa">{{question.setting.rangeslider.label1}}</div>
+    <div class="c txtC">{{question.setting.rangeslider.label2}}</div>
+    <div class="c txtRa">{{question.setting.rangeslider.label3}}</div>
     <div class="cauto we80"></div>
   </div>
 

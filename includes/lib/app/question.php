@@ -408,7 +408,6 @@ class question
 			$setting[$myType]['max'] = $max;
 		}
 
-
 		if(\dash\app::isset_request('placeholder') && self::get_type($myType, 'placeholder'))
 		{
 			$placeholder = \dash\app::request('placeholder');
@@ -592,17 +591,21 @@ class question
 	public static function ready($_data)
 	{
 		$setting = [];
-		if(isset($_data['setting']))
-		{
-			$setting = $_data['setting'];
-			$setting = json_decode($setting, true);
-		}
-
 		$myType = null;
 		if(isset($_data['type']))
 		{
 			$myType = $_data['type'];
 		}
+		if(isset($_data['setting']))
+		{
+			$setting = $_data['setting'];
+			$setting = json_decode($setting, true);
+			if(isset($setting[$myType]))
+			{
+				$setting = $setting[$myType];
+			}
+		}
+
 
 		$result = [];
 		foreach ($_data as $key => $value)
@@ -632,9 +635,9 @@ class question
 					$result[$key] = json_decode($value, true);
 					if($myType)
 					{
-						$setting = array_merge($setting, self::get_type($myType, 'default_load'));
+						$setting = array_merge(self::get_type($myType, 'default_load'), $setting);
 					}
-					$result[$key] = $setting;
+					$result[$key][$myType] = $setting;
 					break;
 
 				case 'choice':

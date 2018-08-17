@@ -173,7 +173,7 @@ trait type
 			'logo'         => \dash\url::site(). '/static/images/question-type/date.png',
 			'default_load' =>
 			[
-				'placeholder' => T_("Select date"),
+				'placeholder' => \dash\utility\human::fitNumber("1369/10/09"),
 			],
 		];
 
@@ -185,7 +185,7 @@ trait type
 			'logo'         => \dash\url::site(). '/static/images/question-type/time.png',
 			'default_load' =>
 			[
-				'placeholder' => T_("Select time"),
+				'placeholder' => T_("Choose time"),
 			],
 		];
 
@@ -209,7 +209,7 @@ trait type
 			'logo'         => \dash\url::site(). '/static/images/question-type/email.png',
 			'default_load' =>
 			[
-				'placeholder' => T_("Enter email"),
+				'placeholder' => T_("abc@youdomain.com"),
 			],
 		];
 
@@ -222,7 +222,7 @@ trait type
 			'logo'         => \dash\url::site(). '/static/images/question-type/website.png',
 			'default_load' =>
 			[
-				'placeholder' => T_("Enter website"),
+				'placeholder' => T_("http://"),
 			],
 		];
 
