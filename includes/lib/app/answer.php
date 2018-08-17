@@ -338,54 +338,60 @@ class answer
 	public static function answer_validate_min_max($_question_detail, $_answer)
 	{
 
-		$maxchar = 10000;
 		$min     = 0;
 		$max     = 999999999;
-		if(isset($_question_detail['maxchar']))
+		$myType = null;
+
+		if(isset($_question_detail['type']))
 		{
-			$maxchar = intval($_question_detail['maxchar']);
+			$myType = $_question_detail['type'];
 		}
 
-		if(isset($_question_detail['setting']['min']))
+		if(isset($_question_detail['setting'][$myType]['min']))
 		{
-			$min = intval($_question_detail['setting']['min']);
+			$min = intval($_question_detail['setting'][$myType]['min']);
 		}
 
-		if(isset($_question_detail['setting']['max']))
+		if(isset($_question_detail['setting'][$myType]['max']))
 		{
-			$max = intval($_question_detail['setting']['max']);
+			$max = intval($_question_detail['setting'][$myType]['max']);
 		}
 
 		$valid = true;
+
 		switch ($_question_detail['type'])
 		{
 			case 'short_answer':
 			case 'descriptive_answer':
 			case 'email':
 			case 'website':
-				if(mb_strlen($_answer) > $maxchar)
+				if(!is_string($_answer))
 				{
 					$valid = false;
 				}
+				elseif(mb_strlen($_answer) > $max)
+				{
+					$valid = false;
+				}
+
 				break;
 
 			case 'numeric':
-				if(intval($_answer) < $min || intval($_answer) > $max)
+			case 'rangeslider':
+			case 'rating':
+				if(!is_numeric($_answer))
+				{
+					$valid = false;
+				}
+				elseif(intval($_answer) < $min || intval($_answer) > $max)
 				{
 					$valid = false;
 				}
 				break;
 
-			case 'single_choice':
-			case 'multiple_choice':
-			case 'dropdown':
-			case 'card_descign':
-			case 'confirm':
-			case 'date':
-			case 'rating':
-			case 'star':
+			default:
+				// nothing
 				break;
-
 		}
 
 		return $valid;
@@ -394,23 +400,6 @@ class answer
 
 	public static function answer_validate($_question_detail, $_answer)
 	{
-		$maxchar = 10000;
-		$min     = 0;
-		$max     = 999999999;
-		if(isset($_question_detail['maxchar']))
-		{
-			$maxchar = intval($_question_detail['maxchar']);
-		}
-
-		if(isset($_question_detail['setting']['min']))
-		{
-			$min = intval($_question_detail['setting']['min']);
-		}
-
-		if(isset($_question_detail['setting']['max']))
-		{
-			$max = intval($_question_detail['setting']['max']);
-		}
 
 		$valid = true;
 		switch ($_question_detail['type'])
@@ -424,6 +413,8 @@ class answer
 				break;
 
 			case 'numeric':
+			case 'rating':
+			case 'rangeslider':
 				if(!is_numeric($_answer))
 				{
 					$valid = false;
@@ -457,30 +448,46 @@ class answer
 				}
 				break;
 
-
-			case 'card_descign':
-				break;
-
-			case 'confirm':
-				break;
-
 			case 'date':
-				//
+				if(strtotime(\dash\utility\convert::to_en_number($_answer)) === false)
+				{
+					$valid = false;
+				}
+				break;
+
+			case 'time':
+				if(\dash\date::make_time(\dash\utility\convert::to_en_number($_answer)) === false)
+				{
+					$valid = false;
+				}
 				break;
 
 			case 'email':
+				break;
+			case 'mobile':
+				if(!\dash\utility\filter::mobile(\dash\utility\convert::to_en_number($_answer)))
+				{
+					$valid = false;
+				}
 				break;
 
 			case 'website':
 				break;
 
-			case 'rating':
-				break;
-
-			case 'star':
-				break;
-
 		}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 		return $valid;
 	}
