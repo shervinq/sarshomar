@@ -226,7 +226,7 @@ class question
 		if($min)
 		{
 			$min = abs(intval($min));
-			if($min > 1E+9)
+			if($min > 999999999999)
 			{
 				\dash\notif::error(T_("Min is out of range"), 'min');
 				return false;
@@ -243,7 +243,7 @@ class question
 		if($max)
 		{
 			$max = abs(intval($max));
-			if($max > 1E+9)
+			if($max > 999999999999)
 			{
 				\dash\notif::error(T_("Max is out of range"), 'max');
 				return false;

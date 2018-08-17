@@ -109,7 +109,7 @@ trait type
 			'default_load' =>
 			[
 				'min'     => 0,
-				'max'     => 1E+10,
+				'max'     => 999999999999,
 			],
 		];
 
