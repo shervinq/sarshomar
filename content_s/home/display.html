@@ -181,7 +181,7 @@
 
 {%block rangeslider%}
   <div class="rangeSlider1">
-    <input type="range" name="answer" min="{{question.setting.rangeslider.min}}" max="{{question.setting.rangeslider.max}}" step="{{question.setting.rangeslider.step}}" value="{{myAnswer.text}}"{%if question.require%} required{%endif%}>
+    <input type="range" name="answer" min="{{question.setting.rangeslider.min}}" max="{{question.setting.rangeslider.max}}" step="{{question.setting.rangeslider.step}}" value="{%if myAnswer.text%}{{myAnswer.text | number_format }}{%endif%}"{%if question.require%} required{%endif%}>
     <output>60</output>
   </div>
   <div class="f">

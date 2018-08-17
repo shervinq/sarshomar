@@ -294,44 +294,7 @@ class question
 					return false;
 				}
 			}
-			elseif($myType === 'rangeslider')
-			{
-				$range = intval(self::get_type($myType, 'rangenumber'));
 
-				if(!$min && !$max)
-				{
-					$min = null;
-					$max = null;
-				}
-				elseif($min && $max)
-				{
-					if($min > $max)
-					{
-						$tempMin = $min;
-						$min = $max;
-						$max = $tempMin;
-					}
-
-					if($max - $min > $range)
-					{
-						$max = $min + $range;
-					}
-				}
-				elseif(!$min && $max)
-				{
-					$min = $max - $range;
-					if($min < 0)
-					{
-						$min = 0;
-					}
-				}
-				elseif($min && !$max)
-				{
-					$max = $min + $range;
-				}
-
-
-			}
 
 			$setting[$myType]['min'] = \dash\app::request('min');
 		}
@@ -367,42 +330,7 @@ class question
 				}
 
 			}
-			elseif($myType === 'rangeslider')
-			{
-				$range = intval(self::get_type($myType, 'rangenumber'));
 
-				if(!$min && !$max)
-				{
-					$min = null;
-					$max = null;
-				}
-				elseif($min && $max)
-				{
-					if($min > $max)
-					{
-						$tempMin = $min;
-						$min = $max;
-						$max = $tempMin;
-					}
-
-					if($max - $min > $range)
-					{
-						$max = $min + $range;
-					}
-				}
-				elseif(!$min && $max)
-				{
-					$min = $max - $range;
-					if($min < 0)
-					{
-						$min = 0;
-					}
-				}
-				elseif($min && !$max)
-				{
-					$max = $min + $range;
-				}
-			}
 
 
 			$setting[$myType]['max'] = $max;
@@ -471,6 +399,87 @@ class question
 		}
 
 
+		if(\dash\app::isset_request('default') && self::get_type($myType, 'default'))
+		{
+			$default = \dash\app::request('default');
+			if($default && !is_numeric($default))
+			{
+				\dash\notif::error(T_("Please set default as a number"), 'default');
+				return false;
+			}
+
+			if($default)
+			{
+				$default = abs(intval($default));
+			}
+
+			$setting[$myType]['default'] = $default;
+		}
+
+
+		if(\dash\app::isset_request('step') && self::get_type($myType, 'step'))
+		{
+			$step = \dash\app::request('step');
+			if($step && !is_numeric($step))
+			{
+				\dash\notif::error(T_("Please set step as a number"), 'step');
+				return false;
+			}
+
+			if($step)
+			{
+				$step = abs(intval($step));
+			}
+
+			$setting[$myType]['step'] = $step;
+
+		}
+
+		if($myType === 'rangeslider')
+		{
+			$check_default = 0;
+			$check_min     = 0;
+			$check_max     = 0;
+			$check_step    = 0;
+			$range = intval(self::get_type($myType, 'maxrange'));
+
+			if(isset($default)) $check_default = intval($default);
+			if(isset($min)) $check_min         = intval($min);
+			if(isset($max)) $check_max         = intval($max);
+			if(isset($step)) $check_step       = intval($step);
+
+			// var_dump($check_default, $check_min, $check_max, $check_step);exit();
+			if($check_min > $check_max)
+			{
+				\dash\notif::error(T_("Please set min less than max"), ['element' => ['min', 'max']]);
+				return false;
+			}
+
+			if($check_max - $check_min > $range)
+			{
+				\dash\notif::error(T_("Please set min and max in range :range", ['range' => \dash\utility\human::fitNumber($range)]), ['element' => ['min', 'max']]);
+				return false;
+			}
+
+			if($check_step > $check_max)
+			{
+				\dash\notif::error(T_("Please set step less than max"), ['element' => ['step', 'max']]);
+				return false;
+			}
+
+			if($check_default > $check_max)
+			{
+				\dash\notif::error(T_("Please default less than max"), ['element' => ['default', 'max']]);
+				return false;
+			}
+
+			if($check_default < $check_min)
+			{
+				\dash\notif::error(T_("Please default larger than min"), ['element' => ['default', 'min']]);
+				return false;
+			}
+		}
+
 		if(\dash\app::isset_request('label1') && self::get_type($myType, 'label3'))
 		{
 			$label1 = \dash\app::request('label1');
@@ -520,49 +529,6 @@ class question
 		}
 
 
-		if(\dash\app::isset_request('default') && self::get_type($myType, 'default'))
-		{
-			$default = \dash\app::request('default');
-			if($default && !is_numeric($default))
-			{
-				\dash\notif::error(T_("Please set default as a number"), 'default');
-				return false;
-			}
-
-			if($default)
-			{
-				$default = abs(intval($default));
-			}
-
-			$setting[$myType]['default'] = $default;
-		}
-
-
-		if(\dash\app::isset_request('step') && self::get_type($myType, 'step'))
-		{
-			$step = \dash\app::request('step');
-			if($step && !is_numeric($step))
-			{
-				\dash\notif::error(T_("Please set step as a number"), 'step');
-				return false;
-			}
-
-			if($step)
-			{
-				$step = abs(intval($step));
-			}
-
-			$setting[$myType]['step'] = $step;
-
-			if(isset($max) && $step)
-			{
-				if(intval($step) > intval($max))
-				{
-					\dash\notif::error(T_("Please set step less than maximum"), ['element' => ['step', 'max']]);
-					return false;
-				}
-			}
-		}
 
 
 		if(!empty($setting))
