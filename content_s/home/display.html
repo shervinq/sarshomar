@@ -95,6 +95,15 @@
 {%endblock%}
 
 
+
+{%block mobile%}
+ <div class="input">
+  <input type="tel" id="answer" name="answer" value="{{myAnswer.text}}" {%if question.require%} required{%endif%}{%if question.setting.mobile.min%} min="{{question.setting.mobile.min}}"{%endif%}{%if question.setting.mobile.max%} max="{{question.setting.mobile.max}}"{%endif%} placeholder='{%if question.require%}* {%endif%}{{question.setting.mobile.placeholder}}' inputmode="numeric" pattern="[0-9]*" autofocus>
+ </div>
+ {{block('nextBtn')}}
+{%endblock%}
+
+
 {%block single_choice%}
 {%if question.choice | length < 10%}
 {%set haveKBD = true%}
