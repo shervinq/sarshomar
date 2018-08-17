@@ -6,30 +6,24 @@ class twigTransTerms
 
 	//-----------------------------------------------------content_s/home/display.html
 	echo T_("Survey status");                                                         // Line 6
-	echo T_("I'm not willing to answer");                                             // Line 28
-	echo T_("Start");                                                                 // Line 226
-	echo T_("Thank you");                                                             // Line 130
-	echo T_("Sarshomar");                                                             // Line 730
-	echo T_("Save & Next");                                                           // Line 183
-	echo T_("Back");                                                                  // Line 192
-	echo T_("Next");                                                                  // Line 195
+	echo T_("I'm not willing to answer");                                             // Line 29
 	echo T_("Require");                                                               // Line 5
-	echo T_("Between");                                                               // Line 217
+	echo T_("Start");                                                                 // Line 67
+	echo T_("Save & Next");                                                           // Line 227
+	echo T_("Back");                                                                  // Line 236
+	echo T_("Next");                                                                  // Line 388
+	echo T_("Between");                                                               // Line 255
 	echo T_("and");                                                                   // Line 34
-	echo T_("Type here ...");                                                         // Line 219
-	echo T_("Type your answer");                                                      // Line 367
-	echo T_("Answer");                                                                // Line 308
-	echo T_("Your answer");                                                           // Line 350
-	echo T_("Please select one item");                                                // Line 18
-	echo T_("Start Time");                                                            // Line 383
-	echo T_("Spend Time");                                                            // Line 386
-	echo T_("Remain Time");                                                           // Line 390
-	echo T_("End Time");                                                              // Line 395
-	echo T_("Current question");                                                      // Line 400
-	echo T_("Total questions");                                                       // Line 403
-	echo T_("Completed");                                                             // Line 406
-	echo T_("Restart");                                                               // Line 415
-	echo T_("Edit Survey");                                                           // Line 421
+	echo T_("Type here ...");                                                         // Line 55
+	echo T_("Start Time");                                                            // Line 309
+	echo T_("Spend Time");                                                            // Line 312
+	echo T_("Remain Time");                                                           // Line 316
+	echo T_("End Time");                                                              // Line 321
+	echo T_("Current question");                                                      // Line 326
+	echo T_("Total questions");                                                       // Line 329
+	echo T_("Completed");                                                             // Line 332
+	echo T_("Restart");                                                               // Line 341
+	echo T_("Edit Survey");                                                           // Line 347
 
 	//---------------------public_html/static/siftal/fonts/siftal/icons-reference.html
 
@@ -49,11 +43,11 @@ class twigTransTerms
 	echo T_("Press and Media");                                                       // Line 7
 	echo T_("Careers");                                                               // Line 7
 	echo T_("Social Responsibility");                                                 // Line 12
-	echo T_("Help Center");                                                           // Line 16
+	echo T_("Help Center");                                                           // Line 17
 	echo T_("Eco Friendly");                                                          // Line 10
 	echo T_("Enamad");                                                                // Line 18
 	echo T_("Service");                                                               // Line 25
-	echo T_("Benefits");                                                              // Line 15
+	echo T_("Benefits");                                                              // Line 16
 	echo T_("Learn More");                                                            // Line 32
 	echo T_("Terms of Service");                                                      // Line 34
 	echo T_("Privacy Policy");                                                        // Line 12
@@ -75,15 +69,15 @@ class twigTransTerms
 	echo T_("Mobile");                                                                // Line 23
 	echo T_("Inspection and Answer");                                                 // Line 45
 	echo T_("Then if we were inestimable, Signup!");                                  // Line 46
-	echo T_("Try Before Register");                                                   // Line 48
+	echo T_("Enter to Sarshomar");                                                    // Line 104
 
 	//--------------------------------------------------content/template/register.html
 	echo T_("Verify account");                                                        // Line 36
+	echo T_("Try Before Register");                                                   // Line 48
 
 	//----------------------------------------------------content/template/header.html
 	echo T_("Dashboard");                                                             // Line 10
 	echo T_("Enter");                                                                 // Line 23
-	echo T_("View your current location and navigate to parent of it");               // Line 2
 
 	//------------------------------------------------content/template/attachment.html
 	echo T_("File is not support to show preview");                                   // Line 24
@@ -107,6 +101,7 @@ class twigTransTerms
 
 	//---------------------------content/template/static/benefits/question-charts.html
 	echo T_("Question Charts");                                                       // Line 80
+	echo T_("Sarshomar");                                                             // Line 730
 	echo T_("A question chart links a question to another.");                         // Line 17
 	echo T_("To do so, you can specify the desired options to create the link when defining the question.");// Line 17
 	echo T_("For example, as for the questions related to Bloodletting, you can only ask those users who have chosen the positive option for using Iranian traditional medicine.");// Line 19
@@ -251,7 +246,7 @@ class twigTransTerms
 	echo T_("We were born to do Best!");                                              // Line 71
 	echo T_("We are Developers, please wait!");                                       // Line 23
 	echo T_("Date");                                                                  // Line 18
-	echo T_("Description");                                                           // Line 346
+	echo T_("Description");                                                           // Line 369
 	echo T_("Version 1 of sarshomar released");                                       // Line 29
 	echo T_("Delta version of sarshomar released");                                   // Line 34
 	echo T_("Gamma version of sarshomar released");                                   // Line 39
@@ -301,7 +296,6 @@ class twigTransTerms
 	echo T_("People who complete profile after enter");                               // Line 66
 	echo T_("Enter to get a unique referral link.");                                  // Line 71
 	echo T_("Use our logo to help spread the word.");                                 // Line 72
-	echo T_("Enter to Sarshomar");                                                    // Line 102
 
 	//--------------------------------------------content/template/static/privacy.html
 	echo T_("As the final remark, we wish to assure you that our main concern is to secure your privacy and protect your information against impermissible access.");// Line 33
@@ -428,8 +422,6 @@ class twigTransTerms
 	echo T_("Agencies");                                                              // Line 31
 	echo T_("Finally, using API, you can have the benefit of Sarshomar's qualities and forget your concerns about polling.");// Line 45
 
-	//----------------------------------------------------content/main/layout-xhr.html
-
 	//------------------------------------------content/referer/instagram/display.html
 	echo T_("You are connected to Instagram");                                        // Line 12
 	echo T_("Enjoy!");                                                                // Line 14
@@ -454,7 +446,7 @@ class twigTransTerms
 	echo T_("Name");                                                                  // Line 19
 	echo T_("Full Name");                                                             // Line 20
 	echo T_("Please enter valid mobile number. `:val` is incorrect");                 // Line 24
-	echo T_("Email");                                                                 // Line 139
+	echo T_("Email");                                                                 // Line 149
 	echo T_("Your Message");                                                          // Line 31
 	echo T_("Send");                                                                  // Line 32
 	echo T_("How to contact Sarshomar");                                              // Line 39
@@ -493,7 +485,7 @@ class twigTransTerms
 	echo T_("Status and period of publish");                                          // Line 395
 	echo T_("People voted to this poll");                                             // Line 402
 	echo T_("Skip/Votes");                                                            // Line 415
-	echo T_("Privacy");                                                               // Line 111
+	echo T_("Privacy");                                                               // Line 121
 	echo T_("Author");                                                                // Line 430
 	echo T_("Range");                                                                 // Line 437
 	echo T_("All society of Sarshomar");                                              // Line 439
@@ -533,12 +525,12 @@ class twigTransTerms
 	echo T_("You");                                                                   // Line 718
 	echo T_("People");                                                                // Line 732
 	echo T_("Lottery");                                                               // Line 739
-	echo T_("Publish");                                                               // Line 46
+	echo T_("Publish");                                                               // Line 56
 	echo T_("Trash");                                                                 // Line 766
 	echo T_("Delete");                                                                // Line 771
 	echo T_("Stop");                                                                  // Line 776
 	echo T_("Pause");                                                                 // Line 781
-	echo T_("Draft");                                                                 // Line 51
+	echo T_("Draft");                                                                 // Line 61
 
 	//-------------------------------------------------------content/poll/display.html
 	echo T_("Comments");                                                              // Line 39
@@ -560,7 +552,7 @@ class twigTransTerms
 	echo T_("User");                                                                  // Line 65
 	echo T_("Start Date");                                                            // Line 66
 	echo T_("End date");                                                              // Line 67
-	echo T_("Step");                                                                  // Line 68
+	echo T_("Step");                                                                  // Line 315
 	echo T_("Complete");                                                              // Line 69
 	echo T_("Answered");                                                              // Line 70
 	echo T_("Skipped");                                                               // Line 67
@@ -586,36 +578,47 @@ class twigTransTerms
 
 	//--------------------------------------------------content_a/question/layout.html
 	echo T_("Title");                                                                 // Line 5
-	echo T_("Sort choice type");                                                      // Line 41
-	echo T_("By save");                                                               // Line 45
-	echo T_("Random");                                                                // Line 50
-	echo T_("Alphabet A-Z");                                                          // Line 56
-	echo T_("Alphabet Z-A");                                                          // Line 61
-	echo T_("Show other choice");                                                     // Line 76
-	echo T_("Is require");                                                            // Line 85
-	echo T_("Maximum char");                                                          // Line 92
-	echo T_("Minimum");                                                               // Line 99
-	echo T_("Maximum");                                                               // Line 106
-	echo T_("Choise title");                                                          // Line 119
-	echo T_("Button Title");                                                          // Line 125
-	echo T_("Button title");                                                          // Line 127
-	echo T_("Add new");                                                               // Line 142
-	echo T_("Type");                                                                  // Line 151
-	echo T_("Settings");                                                              // Line 14
-	echo T_("Choise");                                                                // Line 182
-	echo T_("Add");                                                                   // Line 184
-	echo T_("Save");                                                                  // Line 188
-	echo T_("Image/Video");                                                           // Line 210
-	echo T_("allowed extentions jpg, png. Max 1000Kb");                               // Line 354
-
-	//------------------------------------------content_a/question/choice/display.html
-	echo T_("Remove");                                                                // Line 23
+	echo T_("Placeholder");                                                           // Line 53
+	echo T_("To change placeholder type hrere");                                      // Line 55
+	echo T_("Maximum char");                                                          // Line 77
+	echo T_("Minimum");                                                               // Line 297
+	echo T_("Maximum");                                                               // Line 302
+	echo T_("Sort choice type");                                                      // Line 108
+	echo T_("By save");                                                               // Line 112
+	echo T_("Random");                                                                // Line 117
+	echo T_("Alphabet A-Z");                                                          // Line 122
+	echo T_("Alphabet Z-A");                                                          // Line 127
+	echo T_("Show every choice in one line");                                         // Line 139
+	echo T_("Multi choice help text");                                                // Line 159
+	echo T_("You can select more than one choice!");                                  // Line 161
+	echo T_("Rate emoji");                                                            // Line 207
+	echo T_("Label");                                                                 // Line 274
+	echo T_("For example: Low");                                                      // Line 279
+	echo T_("For example: Middle");                                                   // Line 285
+	echo T_("For example: High");                                                     // Line 291
+	echo T_("Default");                                                               // Line 309
+	echo T_("Is require");                                                            // Line 329
+	echo T_("Choise title");                                                          // Line 339
+	echo T_("Save");                                                                  // Line 198
+	echo T_("Type");                                                                  // Line 357
+	echo T_("Setting");                                                               // Line 51
+	echo T_("Show preview");                                                          // Line 41
+	echo T_("Add");                                                                   // Line 194
+	echo T_("Image/Video");                                                           // Line 409
+	echo T_("allowed extentions jpg, png. Max 1000Kb");                               // Line 382
 
 	//---------------------------------------------content_a/question/add/display.html
 	echo T_("Please select one type to continue");                                    // Line 8
 
+	//-----------------------------------------content_a/question/general/display.html
+	echo T_("Question title");                                                        // Line 28
+	echo T_("Save question title");                                                   // Line 34
+	echo T_("General setting");                                                       // Line 45
+	echo T_("Save setting");                                                          // Line 53
+	echo T_("Remove");                                                                // Line 32
+
 	//--------------------------------------------content_a/question/home/display.html
-	echo T_("Add new question");                                                      // Line 8
+	echo T_("Add new question");                                                      // Line 14
 
 	//--------------------------------------------content_a/question/type/display.html
 
@@ -623,8 +626,9 @@ class twigTransTerms
 	echo T_("Questionnaires");                                                        // Line 44
 	echo T_("Questions");                                                             // Line 62
 	echo T_("Question Sorter");                                                       // Line 72
-	echo T_("Welcome message");                                                       // Line 149
-	echo T_("Thank you message");                                                     // Line 160
+	echo T_("Settings");                                                              // Line 14
+	echo T_("Welcome message");                                                       // Line 159
+	echo T_("Thank you message");                                                     // Line 170
 	echo T_("Reports");                                                               // Line 22
 	echo T_("Live");                                                                  // Line 23
 
@@ -632,34 +636,36 @@ class twigTransTerms
 	echo T_("Survey title");                                                          // Line 7
 	echo T_("You can publish in another language");                                   // Line 15
 	echo T_("Language");                                                              // Line 16
+	echo T_("Please select one item");                                                // Line 18
 	echo T_("Survey password");                                                       // Line 32
-	echo T_("Status");                                                                // Line 171
-	echo T_("Expire");                                                                // Line 56
-	echo T_("Deleted");                                                               // Line 61
-	echo T_("Private");                                                               // Line 77
-	echo T_("Public");                                                                // Line 82
-	echo T_("General");                                                               // Line 100
-	echo T_("Branding");                                                              // Line 121
-	echo T_("Translation");                                                           // Line 262
-	echo T_("Enable branding");                                                       // Line 197
-	echo T_("Branding title");                                                        // Line 205
-	echo T_("Image/Video/File");                                                      // Line 223
-	echo T_("Branding url");                                                          // Line 237
-	echo T_("Redirect after complete");                                               // Line 244
-	echo T_("Like");                                                                  // Line 246
-	echo T_("Show progresbar");                                                       // Line 256
-	echo T_("Translation list");                                                      // Line 263
-	echo T_("Enable email");                                                          // Line 274
-	echo T_("Email title");                                                           // Line 282
-	echo T_("Email to");                                                              // Line 297
-	echo T_("Welcome message title");                                                 // Line 310
-	echo T_("Welcome Image/Video");                                                   // Line 322
-	echo T_("Thankyou message title");                                                // Line 339
-	echo T_("Thankyou Image/Video");                                                  // Line 351
+	echo T_("Survey button title");                                                   // Line 40
+	echo T_("Survey botton title");                                                   // Line 42
+	echo T_("Status");                                                                // Line 181
+	echo T_("Expire");                                                                // Line 66
+	echo T_("Deleted");                                                               // Line 71
+	echo T_("Private");                                                               // Line 87
+	echo T_("Public");                                                                // Line 92
+	echo T_("General");                                                               // Line 110
+	echo T_("Branding");                                                              // Line 131
+	echo T_("Translation");                                                           // Line 282
+	echo T_("Force user to login and continue");                                      // Line 206
+	echo T_("Enable branding");                                                       // Line 215
+	echo T_("Branding title");                                                        // Line 223
+	echo T_("Image/Video/File");                                                      // Line 248
+	echo T_("Branding url");                                                          // Line 257
+	echo T_("Redirect after complete");                                               // Line 264
+	echo T_("Like");                                                                  // Line 266
+	echo T_("Show progresbar");                                                       // Line 276
+	echo T_("Translation list");                                                      // Line 283
+	echo T_("Enable email");                                                          // Line 294
+	echo T_("Email title");                                                           // Line 302
+	echo T_("Email to");                                                              // Line 317
+	echo T_("Welcome message title");                                                 // Line 330
+	echo T_("Welcome Image/Video");                                                   // Line 349
+	echo T_("Thankyou message title");                                                // Line 362
+	echo T_("Thankyou Image/Video");                                                  // Line 381
 
 	//----------------------------------------------content_a/survey/home/display.html
-	echo T_("Show preview");                                                          // Line 41
-	echo T_("Setting");                                                               // Line 51
 	echo T_("No user answer to this survey yet!");                                    // Line 121
 	echo T_("Answer chart");                                                          // Line 132
 

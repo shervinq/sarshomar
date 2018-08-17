@@ -392,7 +392,7 @@ class question
 			$ratetype = \dash\app::request('ratetype');
 			if($ratetype && !in_array($ratetype, ['star','heart','bell','flag','bookmark','like','dislike','user1']))
 			{
-				\dash\notif::error(T_("Please a valid range type"), 'ratetype');
+				\dash\notif::error(T_("Invalid rate emoji"), 'ratetype');
 				return false;
 			}
 			$setting[$myType]['ratetype'] = $ratetype;
@@ -469,13 +469,13 @@ class question
 
 			if($check_default > $check_max)
 			{
-				\dash\notif::error(T_("Please default less than max"), ['element' => ['default', 'max']]);
+				\dash\notif::error(T_("Please set default less than max"), ['element' => ['default', 'max']]);
 				return false;
 			}
 
 			if($check_default < $check_min)
 			{
-				\dash\notif::error(T_("Please default larger than min"), ['element' => ['default', 'min']]);
+				\dash\notif::error(T_("Please set default larger than min"), ['element' => ['default', 'min']]);
 				return false;
 			}
 		}
