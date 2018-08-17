@@ -23,13 +23,22 @@ trait get
 		}
 
 		$_step = intval($_step);
+		$load = \lib\db\questions::get_sort(['survey_id' => $survey_id, 'status' => [' != ', " 'deleted' "]]);
 
-		$load = \lib\db\questions::get(['survey_id' => $survey_id, 'sort' => $_step, 'status' => [' != ', " 'deleted' "], 'limit' => 1]);
 		if(is_array($load))
 		{
-			$load = self::ready($load);
+			foreach ($load as $key => $value)
+			{
+				if(($key + 1)  === $_step)
+				{
+					$load = self::ready($value);
+					return $load;
+				}
+			}
 		}
-		return $load;
+
+
+		return null;
 
 	}
 

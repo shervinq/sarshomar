@@ -63,7 +63,7 @@ class model
 		$post['answer'] = \dash\request::post('answer');
 		$post['skip']   = \dash\request::post('skip');
 
-		$result         = \lib\app\answer::add(\dash\url::module(), \dash\request::get('step'), $post);
+		$result         = \lib\app\answer::add(\dash\url::module(), \dash\request::post('questionid'), $post);
 
 		if(!$result)
 		{

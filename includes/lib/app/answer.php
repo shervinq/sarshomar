@@ -57,7 +57,7 @@ class answer
 
 	}
 
-	public static function add($_survey_id, $_step, $_args)
+	public static function add($_survey_id, $_question_id, $_args)
 	{
 		if(!\dash\user::id())
 		{
@@ -72,6 +72,13 @@ class answer
 			return false;
 		}
 
+		$question_id = \dash\coding::decode($_question_id);
+		if(!$question_id)
+		{
+			\dash\notif::error(T_("Invalid question id"));
+			return false;
+		}
+
 		$survey_detail = \lib\db\surveys::get(['id' => $survey_id, 'limit' => 1]);
 
 		if(!$survey_detail)
@@ -80,20 +87,18 @@ class answer
 			return false;
 		}
 
-		if(!$_step || !is_numeric($_step))
-		{
-			\dash\notif::error(T_("Question step not set"));
-			return false;
-		}
-
-		$_step = intval($_step);
-
-		$question_detail = \lib\db\questions::get(['sort' => $_step, 'survey_id' => $survey_id, 'limit' => 1]);
+		$question_detail = \lib\db\questions::get(['survey_id' => $survey_id, 'id' => $question_id, 'limit' => 1]);
 
 		if(!$question_detail || !isset($question_detail['id']))
 		{
 			\dash\notif::error(T_("Invalid question id"));
 			return false;
+		}
+
+		$step = 1;
+		if(array_key_exists('step', $question_detail))
+		{
+			$step = intval($question_detail['step']);
 		}
 
 		$question_id = $question_detail['id'];
@@ -171,7 +176,7 @@ class answer
 				'user_id'      => \dash\user::id(),
 				'survey_id'    => $survey_id,
 				'startdate'    => self::dateNow(),
-				'step'         => $_step,
+				'step'         => 1,
 				'lastquestion' => $question_id,
 				'status'       => 'start',
 				'ref'          => null,
@@ -190,7 +195,7 @@ class answer
 			$skip_count      = (isset($load_old_answer['skip']) && $load_old_answer['skip'])           		? intval($load_old_answer['skip'])      	: 0;
 			$answertry_count = (isset($load_old_answer['answertry']) && $load_old_answer['answertry']) 		? intval($load_old_answer['answertry']) 	: 0;
 			$skiptry_count   = (isset($load_old_answer['skiptry']) && $load_old_answer['skiptry'])     		? intval($load_old_answer['skiptry'])   	: 0;
-			$countblock      = (isset($survey_detail['countblock']) && $survey_detail['countblock'])    ? intval($survey_detail['countblock'])    : 0;
+			$countblock      = (isset($survey_detail['countblock']) && $survey_detail['countblock'])        ? intval($survey_detail['countblock'])      : 0;
 
 			$update_answer = [];
 
@@ -206,11 +211,11 @@ class answer
 				$update_answer['answertry'] = $answertry_count + 1;
 			}
 
-			$update_answer['step']         = $_step;
+			$update_answer['step']         = $step;
 			$update_answer['lastquestion'] = $question_id;
 			$update_answer['lastmodified'] = self::dateNow();
 
-			if(intval($_step) === intval($countblock))
+			if(intval($step) === intval($countblock))
 			{
 				if(isset($load_old_answer['complete']) && $load_old_answer['complete'])
 				{
@@ -234,7 +239,7 @@ class answer
 			'question_id' => $question_id,
 		];
 
-		$time_key = 'dateview_'. (string) $survey_id. '_'. (string) $_step;
+		$time_key = 'dateview_'. (string) $survey_id. '_'. (string) $step;
 		$dateview = \dash\session::get($time_key) && is_string(\dash\session::get($time_key)) ? \dash\session::get($time_key) : self::dateNow();
 
 		if(!$multiple_choice || $skip)

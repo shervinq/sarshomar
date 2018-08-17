@@ -18,6 +18,7 @@
  <a class="msg info2 mB0 block txtC" href="{{url.kingdom}}"><b>{{site.title}}</b> | {{site.desc}}</a>
 {%else%}
     <form method="post" autocomplete="off">
+      <input type="hidden" name="questionid" value="{{question.id}}">
     {{block(step.display)}}
    </form>
 {%endif%}
