@@ -96,9 +96,9 @@ class answer
 		}
 
 		$step = 1;
-		if(array_key_exists('step', $question_detail))
+		if(array_key_exists('sort', $question_detail))
 		{
-			$step = intval($question_detail['step']);
+			$step = intval($question_detail['sort']);
 		}
 
 		$question_id = $question_detail['id'];
