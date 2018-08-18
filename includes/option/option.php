@@ -23,6 +23,11 @@ self::$config['site']['desc']   = "Focus on your question. Do not be too concern
 self::$config['site']['slogan'] = "Ask Anyone Anywhere";
 
 
+// max upload file size
+// byte
+self::$config['max_upload'] = 5 * 1024 * 1024; // 5 MB;
+
+
 // upload file on dl.sarshomar.com
 self::$config['upload_subdomain']  = 'dl';
 
