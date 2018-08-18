@@ -183,18 +183,18 @@ class question
 		}
 
 		$setting = [];
+		$myType  = 'other';
+		if($type)
+		{
+			$myType = $type;
+		}
+		elseif(isset($load_question['type']))
+		{
+			$myType = $load_question['type'];
+		}
 
 		if(\dash\app::isset_request('change_setting'))
 		{
-			$myType  = 'other';
-			if($type)
-			{
-				$myType = $type;
-			}
-			elseif(isset($load_question['type']))
-			{
-				$myType = $load_question['type'];
-			}
 
 			if(isset($load_question['setting']))
 			{

@@ -338,7 +338,7 @@ class answer
 			$myType = $_question_detail['type'];
 		}
 
-		$default = self::get_type($myType, 'default_load');
+		$default = \lib\app\question::get_type($myType, 'default_load');
 		$min    = 0;
 		if(isset($default['min']))
 		{
@@ -421,6 +421,7 @@ class answer
 					{
 						if(!in_array($value, $choice_title))
 						{
+							\dash\notif::error(T_("This choice not found in choice list!"), 'answer');
 							$valid = false;
 						}
 					}
@@ -454,6 +455,7 @@ class answer
 			case 'mobile':
 				if(!\dash\utility\filter::mobile(\dash\utility\convert::to_en_number($_answer)))
 				{
+					\dash\notif::error(T_("Invalid mobile"), 'answer');
 					$valid = false;
 				}
 				break;
