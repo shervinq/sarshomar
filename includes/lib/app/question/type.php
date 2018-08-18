@@ -50,7 +50,6 @@ trait type
 		// 	'ratetype'      => null,
 		// 	'chart'         => false,
 		// 	'prifile_field' => null,
-		// 	'maxchar'       => false,
 		// 	'minchoice'     => false,
 		// 	'maxchoice'     => false,
 		// 	'choiceinline'  => false,
@@ -218,7 +217,6 @@ trait type
 			'key'          => 'website',
 			'placeholder'  => true,
 			'title'        => T_('Website'),
-			'maxchar'      => true,
 			'logo'         => \dash\url::site(). '/static/images/question-type/website.png',
 			'default_load' =>
 			[

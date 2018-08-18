@@ -119,14 +119,6 @@ class answer
 			$validation = self::answer_validate($question_detail, $answer);
 			if(!$validation)
 			{
-				\dash\notif::error(T_("Invalid your answer"), 'answer');
-				return false;
-			}
-
-			$validation_min_max = self::answer_validate_min_max($question_detail, $answer);
-			if(!$validation_min_max)
-			{
-				\dash\notif::error(T_("Your answer is out of range"), 'answer');
 				return false;
 			}
 		}
@@ -335,16 +327,29 @@ class answer
 		return true;
 	}
 
-	public static function answer_validate_min_max($_question_detail, $_answer)
-	{
 
-		$min     = 0;
-		$max     = 999999999;
+
+	public static function answer_validate($_question_detail, $_answer)
+	{
 		$myType = null;
 
 		if(isset($_question_detail['type']))
 		{
 			$myType = $_question_detail['type'];
+		}
+
+		$default = self::get_type($myType, 'default_load');
+		$min    = 0;
+		if(isset($default['min']))
+		{
+			$min = $default['min'];
+		}
+
+		$max = 1E+9;
+
+		if(isset($default['max']))
+		{
+			$max = $default['max'];
 		}
 
 		if(isset($_question_detail['setting'][$myType]['min']))
@@ -357,59 +362,25 @@ class answer
 			$max = intval($_question_detail['setting'][$myType]['max']);
 		}
 
-		$valid = true;
 
+		$valid = true;
 		switch ($_question_detail['type'])
 		{
 			case 'short_answer':
 			case 'descriptive_answer':
-			case 'email':
-			case 'website':
 				if(!is_string($_answer))
 				{
+					\dash\notif::error(T_("Invalid answer"), 'answer');
 					$valid = false;
 				}
-				elseif(mb_strlen($_answer) > $max)
+				if($_answer)
 				{
-					$valid = false;
+					if(mb_strlen($_answer) < $min || mb_strlen($_answer) > $max)
+					{
+						\dash\notif::error(T_("Your answer is out of range"), 'answer');
+						$valid = false;
+					}
 				}
-
-				break;
-
-			case 'numeric':
-			case 'rangeslider':
-			case 'rating':
-				if(!is_numeric($_answer))
-				{
-					$valid = false;
-				}
-				elseif(intval($_answer) < $min || intval($_answer) > $max)
-				{
-					$valid = false;
-				}
-				break;
-
-			default:
-				// nothing
-				break;
-		}
-
-		return $valid;
-	}
-
-
-	public static function answer_validate($_question_detail, $_answer)
-	{
-
-		$valid = true;
-		switch ($_question_detail['type'])
-		{
-			case 'short_answer':
-				// no thing
-				break;
-
-			case 'descriptive_answer':
-				// no thing
 				break;
 
 			case 'numeric':
@@ -417,24 +388,32 @@ class answer
 			case 'rangeslider':
 				if(!is_numeric($_answer))
 				{
+					$valid = false;
+				}
+
+				if(intval($_answer) < $min || intval($_answer) > $max)
+				{
+
+					\dash\notif::error(T_("Your answer is out of range"), 'answer');
 					$valid = false;
 				}
 				break;
 
 			case 'single_choice':
+			case 'dropdown':
 				if(isset($_question_detail['choice']) && is_array($_question_detail['choice']))
 				{
 					$choice_title = array_column($_question_detail['choice'], 'title');
 
 					if(!in_array($_answer, $choice_title))
 					{
+						\dash\notif::error(T_("This choice not found in choice list!"), 'answer');
 						$valid = false;
 					}
 				}
 				break;
 
 			case 'multiple_choice':
-			case 'dropdown':
 				if(is_array($_answer) && isset($_question_detail['choice']) && is_array($_question_detail['choice']))
 				{
 					$choice_title = array_column($_question_detail['choice'], 'title');
@@ -449,8 +428,9 @@ class answer
 				break;
 
 			case 'date':
-				if(strtotime(\dash\utility\convert::to_en_number($_answer)) === false)
+				if(\dash\date::db($_answer) === false)
 				{
+					\dash\notif::error(T_("Invalid date"), 'answer');
 					$valid = false;
 				}
 				break;
@@ -458,12 +438,19 @@ class answer
 			case 'time':
 				if(\dash\date::make_time(\dash\utility\convert::to_en_number($_answer)) === false)
 				{
+					\dash\notif::error(T_("Invalid time"), 'answer');
 					$valid = false;
 				}
 				break;
 
 			case 'email':
+				if(!filter_var($_answer, FILTER_VALIDATE_EMAIL))
+				{
+					\dash\notif::error(T_("Invalid email"), 'answer');
+					$valid = false;
+				}
 				break;
+
 			case 'mobile':
 				if(!\dash\utility\filter::mobile(\dash\utility\convert::to_en_number($_answer)))
 				{
@@ -472,22 +459,13 @@ class answer
 				break;
 
 			case 'website':
+				if(!filter_var($_answer, FILTER_VALIDATE_URL))
+				{
+					\dash\notif::error(T_("Invalid url"), 'answer');
+					$valid = false;
+				}
 				break;
-
 		}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 		return $valid;
 	}
