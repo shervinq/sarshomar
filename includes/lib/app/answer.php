@@ -42,7 +42,7 @@ class answer
 			'answerdetails.question_id' => $question_id,
 			'answerdetails.user_id'     => \dash\user::id(),
 			'answerdetails.survey_id'   => $survey_id,
-			'limit'                     => 1,
+			// 'limit'                     => 1,
 		];
 
 		$old_answer_detail = \lib\db\answerdetails::get_join($get_answer);

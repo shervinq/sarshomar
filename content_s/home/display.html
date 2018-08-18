@@ -75,21 +75,21 @@
 
 {%block short_answer%}
  <div class="input">
-  <input type="text" id="answer" name="answer" value="{{myAnswer.text}}"{%if question.require%} required{%endif%}{%if question.setting.short_answer.max%} maxlength="{{question.setting.short_answer.max}}"{%endif%} placeholder='{%if question.require%}* {%endif%}{{question.setting.short_answer.placeholder}}' autofocus>
+  <input type="text" id="answer" name="answer" value="{{myAnswer[0].text}}"{%if question.require%} required{%endif%}{%if question.setting.short_answer.max%} maxlength="{{question.setting.short_answer.max}}"{%endif%} placeholder='{%if question.require%}* {%endif%}{{question.setting.short_answer.placeholder}}' autofocus>
  {{block('nextBtn')}}
  </div>
 {%endblock%}
 
 
 {%block descriptive_answer%}
- <textarea class="txt" type="text" id="answer" name="answer" {%if question.require%} required{%endif%}{%if question.setting.descriptive_answer.max%} maxlength="{{question.setting.descriptive_answer.max}}" rows="{{ (question.setting.descriptive_answer.max / 100) |round(0, 'ceil')  + 2}}"{%else%} rows="3"{%endif%} placeholder='{%if question.require%}* {%endif%}{{question.setting.descriptive_answer.placeholder}}' autofocus>{{myAnswer.text}}</textarea>
+ <textarea class="txt" type="text" id="answer" name="answer" {%if question.require%} required{%endif%}{%if question.setting.descriptive_answer.max%} maxlength="{{question.setting.descriptive_answer.max}}" rows="{{ (question.setting.descriptive_answer.max / 100) |round(0, 'ceil')  + 2}}"{%else%} rows="3"{%endif%} placeholder='{%if question.require%}* {%endif%}{{question.setting.descriptive_answer.placeholder}}' autofocus>{{myAnswer[0].text}}</textarea>
  {{block('nextBtn')}}
 {%endblock%}
 
 
 {%block numeric%}
  <div class="input">
-  <input type="number" id="answer" name="answer" value="{{myAnswer.text}}" {%if question.require%} required{%endif%}{%if question.setting.numeric.min%} min="{{question.setting.numeric.min}}"{%endif%}{%if question.setting.numeric.max%} max="{{question.setting.numeric.max}}"{%endif%} placeholder='{%if question.require%}* {%endif%}{{question.setting.numeric.placeholder}}' inputmode="numeric" pattern="[0-9]*" autofocus>
+  <input type="number" id="answer" name="answer" value="{{myAnswer[0].text}}" {%if question.require%} required{%endif%}{%if question.setting.numeric.min%} min="{{question.setting.numeric.min}}"{%endif%}{%if question.setting.numeric.max%} max="{{question.setting.numeric.max}}"{%endif%} placeholder='{%if question.require%}* {%endif%}{{question.setting.numeric.placeholder}}' inputmode="numeric" pattern="[0-9]*" autofocus>
  </div>
  {{block('nextBtn')}}
 {%endblock%}
@@ -98,7 +98,7 @@
 
 {%block mobile%}
  <div class="input">
-  <input type="tel" id="answer" name="answer" value="{{myAnswer.text}}" {%if question.require%} required{%endif%} maxlength="12"  placeholder='{%if question.require%}* {%endif%}{{question.setting.mobile.placeholder}}' inputmode="numeric" pattern="[0-9]*" autofocus>
+  <input type="tel" id="answer" name="answer" value="{{myAnswer[0].text}}" {%if question.require%} required{%endif%} maxlength="12"  placeholder='{%if question.require%}* {%endif%}{{question.setting.mobile.placeholder}}' inputmode="numeric" pattern="[0-9]*" autofocus>
  </div>
  {{block('nextBtn')}}
 {%endblock%}
@@ -111,15 +111,15 @@
 
 {%for key, value in question.choice%}
 
-  <button class="btn {%if question.setting.single_choice.choiceinline%}block {%else%} mR10{%endif%} mB5{%if myAnswer.text == value.title%} success{%endif%}" id="r-{{key}}" name="answer" value="{{value.title}}" {%if haveKBD%} data-shortkey='{{loop.index + 48}}' {%endif%}>{%if myAnswer.text == value.title%}<span class="sf-check-1 floatRa"></span> {%endif%}{{value.title}} {%if haveKBD%}<kbd class="floatLa">{{loop.index}}</kbd> {%endif%}</button>
+  <button class="btn {%if question.setting.single_choice.choiceinline%}block {%else%} mR10{%endif%} mB5{%if value.title in myAnswerTitle%} success{%endif%}" id="r-{{key}}" name="answer" value="{{value.title}}" {%if haveKBD%} data-shortkey='{{loop.index + 48}}' {%endif%}>{%if value.title in myAnswerTitle%}<span class="sf-check-1 floatRa"></span> {%endif%}{{value.title}} {%if haveKBD%}<kbd class="floatLa">{{loop.index}}</kbd> {%endif%}</button>
 {%endfor%}
 {%endblock%}
 
 
 {%block multiple_choice%}
  {%for key, value in question.choice%}
-  <div class="check1{%if myAnswer.text == value.title%} green{%endif%}">
-  <input type="checkbox" name="answer[]" id="{{key}}" value="{{value.title}}" {%if myAnswer.text == value.title%} checked {%endif%}>
+  <div class="check1{%if value.title in myAnswerTitle%} green{%endif%}">
+  <input type="checkbox" name="answer[]" id="{{key}}" value="{{value.title}}" {%if value.title in myAnswerTitle %} checked {%endif%}>
   <label for="{{key}}">{{value.title}}</label>
  </div>
  {%endfor%}
@@ -132,7 +132,7 @@
    <select name="answer" class="ui dropdown select{%if (question.choice | length) > 4 %} search{%endif%}">
      <option value="">{{question.setting.dropdown.placeholder}}</option>
 {%for key, value in question.choice%}
-{%if myAnswer.text == value.title%}
+{%if value.title in myAnswerTitle%}
        <option value="{{value.title}}" checked>✔️ {{value.title}}</option>
 {%else%}
        <option value="{{value.title}}">{{value.title}} </option>
@@ -146,14 +146,14 @@
 
 {%block date%}
  <div class="input ltr">
-   <input class="datepicker" type="text" name="answer" id="answer" placeholder='{{question.setting.date.placeholder}}' {%if question.require%} required{%endif%} value="{{myAnswer.text}}" maxlength='10' data-format="YYYY/MM/DD" data-view="year" autofocus>
+   <input class="datepicker" type="text" name="answer" id="answer" placeholder='{{question.setting.date.placeholder}}' {%if question.require%} required{%endif%} value="{{myAnswer[0].text}}" maxlength='10' data-format="YYYY/MM/DD" data-view="year" autofocus>
  </div>
  {{block('nextBtn')}}
 {%endblock%}
 
 {%block time%}
  <div class="input clockpicker ltr">
-    <input type="text" class="input" name="answer" placeholder="{{question.setting.time.placeholder}}" value="{{myAnswer.text}}" {%if question.require%} required{%endif%} autofocus>
+    <input type="text" class="input" name="answer" placeholder="{{question.setting.time.placeholder}}" value="{{myAnswer[0].text}}" {%if question.require%} required{%endif%} autofocus>
  </div>
  {{block('nextBtn')}}
 {%endblock%}
@@ -161,7 +161,7 @@
 
 {%block email%}
  <div class="input">
-   <input class="" type="email" name="answer" id="answer" value="{{myAnswer.text}}" {%if question.require%} required{%endif%} placeholder="{{question.setting.email.placeholder}}" autofocus>
+   <input class="" type="email" name="answer" id="answer" value="{{myAnswer[0].text}}" {%if question.require%} required{%endif%} placeholder="{{question.setting.email.placeholder}}" autofocus>
  </div>
  {{block('nextBtn')}}
 {%endblock%}
@@ -169,7 +169,7 @@
 
 {%block website%}
  <div class="input">
-   <input class="" type="url" name="answer" id="answer" value="{{myAnswer.text}}" {%if question.require%} required{%endif%} placeholder="{{question.setting.date.placeholder}}" autofocus>
+   <input class="" type="url" name="answer" id="answer" value="{{myAnswer[0].text}}" {%if question.require%} required{%endif%} placeholder="{{question.setting.date.placeholder}}" autofocus>
  </div>
  {{block('nextBtn')}}
 {%endblock%}
@@ -180,7 +180,7 @@
     <div class="rateBox">
 {% for i in 1..(question.setting.rating.max) %}
 {%set currentRate = question.setting.rating.max - i + 1%}
-      <input type="radio" name="answer" value="{{currentRate}}" id="myRate-{{i}}" {%if question.require%} required{%endif%}{%if myAnswer.text == currentRate %} checked{%endif%}>
+      <input type="radio" name="answer" value="{{currentRate}}" id="myRate-{{i}}" {%if question.require%} required{%endif%}{%if myAnswer[0].text == currentRate %} checked{%endif%}>
       <label for="myRate-{{i}}">{% if question.setting.rating.max | length == 1%}{%else%}{{currentRate}}{%endif%}</label>
 {% endfor %}
     </div>
@@ -191,7 +191,7 @@
 
 {%block rangeslider%}
   <div class="rangeSlider1">
-    <input type="range" name="answer" min="{{question.setting.rangeslider.min}}" max="{{question.setting.rangeslider.max}}" step="{{question.setting.rangeslider.step}}" value="{%if myAnswer.text%}{{myAnswer.text | number_format }}{%endif%}"{%if question.require%} required{%endif%}>
+    <input type="range" name="answer" min="{{question.setting.rangeslider.min}}" max="{{question.setting.rangeslider.max}}" step="{{question.setting.rangeslider.step}}" value="{%if myAnswer[0].text%}{{myAnswer[0].text | number_format }}{%endif%}"{%if question.require%} required{%endif%}>
     <output>60</output>
   </div>
   <div class="f">

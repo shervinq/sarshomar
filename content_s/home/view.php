@@ -101,12 +101,15 @@ class view
 
 			if(isset($question['id']))
 			{
-
 				$time_key = 'dateview_'. (string) \dash\coding::decode(\dash\data::surveyRow_id()). '_'. (string) $step;
 				\dash\session::set($time_key, date("Y-m-d H:i:s"));
 
 				$myAnswer = \lib\app\answer::my_answer(\dash\url::module(), $question['id']);
-				\dash\data::myAnswer($myAnswer);
+				if($myAnswer && is_array($myAnswer))
+				{
+					\dash\data::myAnswer($myAnswer);
+					\dash\data::myAnswerTitle(array_column($myAnswer, 'text'));
+				}
 			}
 
 			if($step_display === 'thankyou')

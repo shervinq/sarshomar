@@ -36,10 +36,33 @@ trait get
 				}
 			}
 		}
-
-
 		return null;
+	}
 
+
+	public static function get_by_answered($_survey_id, $_user_id)
+	{
+		$survey_id = \dash\coding::decode($_survey_id);
+		if(!$survey_id)
+		{
+			\dash\notif::error(T_("Survay id not set"), 'survey_id');
+			return false;
+		}
+
+		if(!$_user_id)
+		{
+			return false;
+		}
+
+		$load_answered = \lib\db\answers::get(['survey_id' => $survey_id, 'user_id' => $_user_id]);
+		if(array_key_exists('step', $load_answered))
+		{
+			return self::get_by_step($_survey_id, $load_answered['step']);
+		}
+		else
+		{
+			return self::get_by_step($_survey_id, 1);
+		}
 	}
 
 	public static function sort_choice($_args)
