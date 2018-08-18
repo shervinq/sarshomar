@@ -9,21 +9,21 @@ class twigTransTerms
 	echo T_("I'm not willing to answer");                                             // Line 29
 	echo T_("Require");                                                               // Line 5
 	echo T_("Start");                                                                 // Line 67
-	echo T_("Save & Next");                                                           // Line 227
-	echo T_("Back");                                                                  // Line 236
+	echo T_("Save & Next");                                                           // Line 236
+	echo T_("Back");                                                                  // Line 245
 	echo T_("Next");                                                                  // Line 388
-	echo T_("Between");                                                               // Line 255
+	echo T_("Between");                                                               // Line 264
 	echo T_("and");                                                                   // Line 34
 	echo T_("Type here ...");                                                         // Line 55
-	echo T_("Start Time");                                                            // Line 309
-	echo T_("Spend Time");                                                            // Line 312
-	echo T_("Remain Time");                                                           // Line 316
-	echo T_("End Time");                                                              // Line 321
-	echo T_("Current question");                                                      // Line 326
-	echo T_("Total questions");                                                       // Line 329
-	echo T_("Completed");                                                             // Line 332
-	echo T_("Restart");                                                               // Line 341
-	echo T_("Edit Survey");                                                           // Line 347
+	echo T_("Start Time");                                                            // Line 318
+	echo T_("Spend Time");                                                            // Line 321
+	echo T_("Remain Time");                                                           // Line 325
+	echo T_("End Time");                                                              // Line 330
+	echo T_("Current question");                                                      // Line 335
+	echo T_("Total questions");                                                       // Line 338
+	echo T_("Completed");                                                             // Line 341
+	echo T_("Restart");                                                               // Line 350
+	echo T_("Edit Survey");                                                           // Line 356
 
 	//---------------------public_html/static/siftal/fonts/siftal/icons-reference.html
 
@@ -579,7 +579,7 @@ class twigTransTerms
 	//--------------------------------------------------content_a/question/layout.html
 	echo T_("Title");                                                                 // Line 5
 	echo T_("Placeholder");                                                           // Line 53
-	echo T_("To change placeholder type hrere");                                      // Line 55
+	echo T_("To change placeholder type here");                                       // Line 55
 	echo T_("Maximum char");                                                          // Line 77
 	echo T_("Minimum");                                                               // Line 297
 	echo T_("Maximum");                                                               // Line 302

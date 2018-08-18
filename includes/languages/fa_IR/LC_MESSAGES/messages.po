@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Sarshomar - Persian\n"
-"POT-Creation-Date: 2018-08-17 21:12+0430\n"
-"PO-Revision-Date: 2018-08-17 21:13+0430\n"
+"POT-Creation-Date: 2018-08-18 09:53+0430\n"
+"PO-Revision-Date: 2018-08-18 09:54+0430\n"
 "Last-Translator: Javad <J.Evazzadeh@gmail.com>\n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -736,6 +736,7 @@ msgid "Come back to us!"
 msgstr "پیش ما برگردید!"
 
 #: dash/addons/content_enter/callback/controller.php:12
+#: sarshomar/includes/lib/app/answer.php:466
 msgid "Invalid url"
 msgstr "آدرس اشتباه"
 
@@ -1762,7 +1763,7 @@ msgstr "یکی از موارد را انتخاب کنید"
 
 #: dash/addons/includes/languages/trans_dash.php:38
 #: sarshomar/includes/languages/trans_dash.php:38
-#: sarshomar/includes/lib/app/question/type.php:220
+#: sarshomar/includes/lib/app/question/type.php:219
 msgid "Website"
 msgstr "وب‌سایت"
 
@@ -1918,7 +1919,7 @@ msgstr "نام نمایشی معتبری بین ۳ و ۴۰ حرف وارد کن�
 #: dash/addons/includes/languages/trans_static.php:166
 #: sarshomar/includes/languages/trans_dash.php:67
 #: sarshomar/includes/languages/trans_project.php:69
-#: sarshomar/includes/lib/app/question/type.php:196
+#: sarshomar/includes/lib/app/question/type.php:195
 msgid "Mobile"
 msgstr "موبایل"
 
@@ -1994,7 +1995,7 @@ msgstr "بدون سطح دسترسی"
 #: dash/addons/includes/languages/trans_static.php:981
 #: sarshomar/includes/languages/trans_dash.php:82
 #: sarshomar/includes/languages/trans_project.php:449
-#: sarshomar/includes/lib/app/question/type.php:208
+#: sarshomar/includes/lib/app/question/type.php:207
 msgid "Email"
 msgstr "رایانامه"
 
@@ -2514,7 +2515,7 @@ msgstr "جزئیات"
 #: dash/addons/includes/languages/trans_static.php:199
 #: sarshomar/includes/languages/trans_dash.php:202
 #: sarshomar/includes/languages/trans_project.php:248
-#: sarshomar/includes/lib/app/question/type.php:172
+#: sarshomar/includes/lib/app/question/type.php:171
 msgid "Date"
 msgstr "تاریخ"
 
@@ -8730,7 +8731,7 @@ msgstr "کلید رابط برنامه‌نویسی صحیح نیست!"
 msgid "Curl failed to initialize"
 msgstr "سی‌یو‌آر‌ال ناموفق در مقداردهی اولیه"
 
-#: dash/lib/social/telegram/exec.php:79
+#: dash/lib/social/telegram/exec.php:81
 msgid "Empty server response"
 msgstr "پاسخ خالی از سرور"
 
@@ -9553,7 +9554,7 @@ msgid "and"
 msgstr "و"
 
 #: sarshomar/includes/languages/trans_project.php:17
-#: sarshomar/includes/lib/app/question/type.php:79
+#: sarshomar/includes/lib/app/question/type.php:78
 msgid "Type here ..."
 msgstr "اینجا بنویسید ..."
 
@@ -11614,7 +11615,7 @@ msgid "Placeholder"
 msgstr "راهنمای ورود متن"
 
 #: sarshomar/includes/languages/trans_project.php:582
-msgid "To change placeholder type hrere"
+msgid "To change placeholder type here"
 msgstr "برای تغییر متن پیشفرض اینجا تایپ کنید"
 
 #: sarshomar/includes/languages/trans_project.php:583
@@ -14456,21 +14457,43 @@ msgstr "شناسه پرسشنامه وارد نشده است"
 msgid "Question id not set"
 msgstr "شناسه سوال تنظیم نشده است"
 
-#: sarshomar/includes/lib/app/answer.php:122
-msgid "Invalid your answer"
-msgstr "پاسخ خود را به صورت صحیح وارد کنید"
-
 #: sarshomar/includes/lib/app/answer.php:129
-msgid "Your answer is out of range"
-msgstr "پاسخ شما خارج از محدوده کاراکتر مجاز است"
-
-#: sarshomar/includes/lib/app/answer.php:137
 msgid "Please fill this field to continue"
 msgstr "لطفا برای ادامه، پاسخ خود را وارد کنید"
 
-#: sarshomar/includes/lib/app/answer.php:157
+#: sarshomar/includes/lib/app/answer.php:149
 msgid "No way to inset your answer"
 msgstr "هیچ راهی برای ثبت پاسخ شما وجود ندارد"
+
+#: sarshomar/includes/lib/app/answer.php:373
+msgid "Invalid answer"
+msgstr "پاسخ اشتباه است"
+
+#: sarshomar/includes/lib/app/answer.php:380
+#: sarshomar/includes/lib/app/answer.php:397
+msgid "Your answer is out of range"
+msgstr "پاسخ شما خارج از محدوده کاراکتر مجاز است"
+
+#: sarshomar/includes/lib/app/answer.php:410
+#: sarshomar/includes/lib/app/answer.php:424
+msgid "This choice not found in choice list!"
+msgstr "این گزینه در لیست گزینه‌های این سوال یافت نشد!"
+
+#: sarshomar/includes/lib/app/answer.php:434
+msgid "Invalid date"
+msgstr "تاریخ نامعتبر است"
+
+#: sarshomar/includes/lib/app/answer.php:442
+msgid "Invalid time"
+msgstr "ساعت نامعتبر است"
+
+#: sarshomar/includes/lib/app/answer.php:450
+msgid "Invalid email"
+msgstr "رایانامه اشتباه است"
+
+#: sarshomar/includes/lib/app/answer.php:458
+msgid "Invalid mobile"
+msgstr "شماره‌ی تلفن همراه نامعتبر است"
 
 #: sarshomar/includes/lib/app/answer/get.php:24
 #: sarshomar/includes/lib/app/answer/get.php:74
@@ -14619,63 +14642,63 @@ msgstr "برخی از اطلاعات نادرست هستند!"
 msgid "Sort question saved"
 msgstr "مرتب سازی سوالات ثبت شده"
 
-#: sarshomar/includes/lib/app/question/type.php:73
+#: sarshomar/includes/lib/app/question/type.php:72
 msgid "Short answer"
 msgstr "پاسخ کوتاه"
 
-#: sarshomar/includes/lib/app/question/type.php:89
+#: sarshomar/includes/lib/app/question/type.php:88
 msgid "Descriptive answer"
 msgstr "پاسخ تشریحی"
 
-#: sarshomar/includes/lib/app/question/type.php:105
+#: sarshomar/includes/lib/app/question/type.php:104
 msgid "Numberic"
 msgstr "عددی"
 
-#: sarshomar/includes/lib/app/question/type.php:120
+#: sarshomar/includes/lib/app/question/type.php:119
 msgid "Single choice"
 msgstr "تک انتخابی"
 
-#: sarshomar/includes/lib/app/question/type.php:136
+#: sarshomar/includes/lib/app/question/type.php:135
 msgid "Multiple choice"
 msgstr "چند گزینه‌ای"
 
-#: sarshomar/includes/lib/app/question/type.php:147
+#: sarshomar/includes/lib/app/question/type.php:146
 msgid "You can choose as many as you want"
 msgstr "شما می‌توانید یک یا چند گزینه را انتخاب کنید"
 
-#: sarshomar/includes/lib/app/question/type.php:155
+#: sarshomar/includes/lib/app/question/type.php:154
 msgid "Dropdown"
 msgstr "لیست پایین افتادنی"
 
-#: sarshomar/includes/lib/app/question/type.php:163
+#: sarshomar/includes/lib/app/question/type.php:162
 msgid "Please choose one item"
 msgstr "لطفا یک گزینه را انتخاب کنید"
 
-#: sarshomar/includes/lib/app/question/type.php:184
+#: sarshomar/includes/lib/app/question/type.php:183
 msgid "Time"
 msgstr "زمان"
 
-#: sarshomar/includes/lib/app/question/type.php:188
+#: sarshomar/includes/lib/app/question/type.php:187
 msgid "Choose time"
 msgstr "زمان را انتخاب کنید"
 
-#: sarshomar/includes/lib/app/question/type.php:200
+#: sarshomar/includes/lib/app/question/type.php:199
 msgid "Enter mobile"
 msgstr "موبایل را وارد کنید"
 
-#: sarshomar/includes/lib/app/question/type.php:212
+#: sarshomar/includes/lib/app/question/type.php:211
 msgid "abc@youdomain.com"
 msgstr "abc@youdomain.com"
 
-#: sarshomar/includes/lib/app/question/type.php:225
+#: sarshomar/includes/lib/app/question/type.php:223
 msgid "http://"
 msgstr "http://"
 
-#: sarshomar/includes/lib/app/question/type.php:233
+#: sarshomar/includes/lib/app/question/type.php:231
 msgid "Rating"
 msgstr "امتیازدهی"
 
-#: sarshomar/includes/lib/app/question/type.php:247
+#: sarshomar/includes/lib/app/question/type.php:245
 msgid "Range slider"
 msgstr "محدوده عددی"
 
@@ -14723,6 +14746,12 @@ msgstr "پرسشنامه با موفقیت اضافه شد"
 #: sarshomar/includes/lib/app/survey/edit.php:62
 msgid "Survay successfully updated"
 msgstr "پرسشنامه با موفقیت بروزرسانی شد"
+
+#~ msgid "To change placeholder type hrere"
+#~ msgstr "برای تغییر متن پیشفرض اینجا تایپ کنید"
+
+#~ msgid "Invalid your answer"
+#~ msgstr "پاسخ خود را به صورت صحیح وارد کنید"
 
 #~ msgid "Store id or shortname not set"
 #~ msgstr "شناسه فروشگاه یا نام آن تنظیم نشده است"
