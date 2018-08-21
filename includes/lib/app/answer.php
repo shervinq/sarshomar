@@ -403,14 +403,17 @@ class answer
 
 			case 'single_choice':
 			case 'dropdown':
-				if(isset($_question_detail['choice']) && is_array($_question_detail['choice']))
+				if($_answer)
 				{
-					$choice_title = array_column($_question_detail['choice'], 'title');
-
-					if(!in_array($_answer, $choice_title))
+					if(isset($_question_detail['choice']) && is_array($_question_detail['choice']))
 					{
-						\dash\notif::error(T_("This choice not found in choice list!"), 'answer');
-						$valid = false;
+						$choice_title = array_column($_question_detail['choice'], 'title');
+
+						if(!in_array($_answer, $choice_title))
+						{
+							\dash\notif::error(T_("This choice not found in choice list!"), 'answer');
+							$valid = false;
+						}
 					}
 				}
 				break;
@@ -447,7 +450,7 @@ class answer
 				break;
 
 			case 'email':
-				if(!filter_var($_answer, FILTER_VALIDATE_EMAIL))
+				if($_answer && !filter_var($_answer, FILTER_VALIDATE_EMAIL))
 				{
 					\dash\notif::error(T_("Invalid email"), 'answer');
 					$valid = false;
@@ -455,7 +458,7 @@ class answer
 				break;
 
 			case 'mobile':
-				if(!\dash\utility\filter::mobile(\dash\utility\convert::to_en_number($_answer)))
+				if($_answer && !\dash\utility\filter::mobile(\dash\utility\convert::to_en_number($_answer)))
 				{
 					\dash\notif::error(T_("Invalid mobile"), 'answer');
 					$valid = false;
@@ -463,7 +466,7 @@ class answer
 				break;
 
 			case 'website':
-				if(!filter_var($_answer, FILTER_VALIDATE_URL))
+				if($_answer && !filter_var($_answer, FILTER_VALIDATE_URL))
 				{
 					\dash\notif::error(T_("Invalid url"), 'answer');
 					$valid = false;
