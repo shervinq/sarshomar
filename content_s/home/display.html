@@ -26,7 +26,7 @@
   </div>
 {%if skipBtn %}
   <div class="f">
-   <a class="cauto os btn outline" href="{{url.pwd}}&skip=true" data-ajaxify data-method='post' data-data='{"skip":true}' data-shortkey="113">{%trans "I'm not willing to answer"%} <kbd>f2</kbd></a>
+   <a class="cauto os btn outline" href="{{url.pwd}}&skip=true" data-ajaxify data-method='post' data-data='{"skip":true, "questionid" : "{{question.id}}"}' data-shortkey="113">{%trans "I'm not willing to answer"%} <kbd>f2</kbd></a>
   </div>
 {%endif%}
  </div>

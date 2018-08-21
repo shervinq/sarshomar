@@ -386,16 +386,18 @@ class answer
 			case 'numeric':
 			case 'rating':
 			case 'rangeslider':
-				if(!is_numeric($_answer))
+				if($_answer)
 				{
-					$valid = false;
-				}
+					if(!is_numeric($_answer))
+					{
+						$valid = false;
+					}
 
-				if(intval($_answer) < $min || intval($_answer) > $max)
-				{
-
-					\dash\notif::error(T_("Your answer is out of range"), 'answer');
-					$valid = false;
+					if(intval($_answer) < $min || intval($_answer) > $max)
+					{
+						\dash\notif::error(T_("Your answer is out of range"), 'answer');
+						$valid = false;
+					}
 				}
 				break;
 
