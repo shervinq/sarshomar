@@ -13832,6 +13832,14 @@ html[lang=fa] .switch1.gender input:checked + label:first-of-type:before {
 .btn.weAreHere {
   border-color: #168187; }
 
+.btn[data-shortkey] kbd {
+  font-size: 1rem;
+  background-color: rgba(0, 0, 0, 0.07);
+  transition: none; }
+
+.btn[data-shortkey] kbd.floatLa {
+  font-size: 1.3em; }
+
 .pA0 {
   padding: 0px 0px; }
 
@@ -16556,15 +16564,7 @@ body.siftal .full .middle {
 .siftal header h1 img {
   height: 50px;
   width: 50px;
-  padding: 5px;
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
-  -webkit-transition: .3s ease-in-out;
-  transition: .3s ease-in-out; }
-
-.siftal header h1 a:hover img {
-  -webkit-filter: grayscale(0);
-  filter: grayscale(0); }
+  padding: 5px; }
 
 .siftal header h1 span {
   padding: 0 0.5em;
