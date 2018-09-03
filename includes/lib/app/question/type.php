@@ -104,6 +104,7 @@ trait type
 			'title'        => T_('Numberic'),
 			'min'          => true,
 			'max'          => true,
+			'chart'        => true,
 			'logo'         => \dash\url::site(). '/static/images/question-type/numeric.png',
 			'default_load' =>
 			[

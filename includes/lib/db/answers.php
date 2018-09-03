@@ -27,6 +27,8 @@ class answers
 		if(is_array($result))
 		{
 			$answerterm_id = array_keys($result);
+			$answerterm_id = array_filter($answerterm_id);
+			$answerterm_id = array_unique($answerterm_id);
 
 			if($answerterm_id)
 			{
