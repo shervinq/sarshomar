@@ -4,6 +4,73 @@ namespace lib\app\answer;
 trait get
 {
 
+	public static function export_all($_survey_id)
+	{
+		$load_survery = \lib\app\survey::get($_survey_id);
+		if(!$load_survery)
+		{
+			return false;
+		}
+
+		$survey_id = \dash\coding::decode($_survey_id);
+		$question  = \lib\db\questions::get(['survey_id' => $survey_id]);
+		$answer    = \lib\db\answerdetails::get_join(['answerdetails.survey_id' => $survey_id], ['for_export' => true]);
+
+		if(!is_array($question))
+		{
+			$question = [];
+		}
+
+		$question = array_combine(array_column($question, 'id'), $question);
+
+		$question_key = array_keys($question);
+		$question_key = array_flip($question_key);
+		$question_key = array_map(function(){return null;}, $question_key);
+
+		$result = [];
+
+		if(!is_array($answer))
+		{
+			$answer = [];
+		}
+
+		foreach ($answer as $key => $value)
+		{
+			if(!isset($result[$value['user_id']]))
+			{
+				$result[$value['user_id']]          = $question_key;
+				$result[$value['user_id']]['start'] = $value['startdate'] ? \dash\date::tdate(strtotime($value['startdate']), 'full') : null;
+				$result[$value['user_id']]['end']   = $value['enddate'] ? \dash\date::tdate(strtotime($value['enddate']), 'full') : null;
+			}
+
+			if(!isset($result[$value['user_id']][$value['question_id']]))
+			{
+				$result[$value['user_id']][$value['question_id']] = null;
+			}
+
+			$result[$value['user_id']][$value['question_id']] = $value['text'];
+		}
+
+		$final = [];
+
+		foreach ($result as $key => $value)
+		{
+			foreach ($value as $my_question_id => $text)
+			{
+				if(isset($question[$my_question_id]['title']))
+				{
+					$final[$key][$question[$my_question_id]['title']] = $text;
+				}
+				else
+				{
+					$final[$key][$my_question_id] = $text;
+				}
+			}
+		}
+
+		\dash\utility\export::csv([ 'name' => 'export_answer', 'data' => $final]);
+	}
+
 	public static function get_result_table($_survey_id , $_question_id)
 	{
 		if(!\dash\user::id())

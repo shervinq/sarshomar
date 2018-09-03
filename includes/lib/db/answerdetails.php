@@ -13,10 +13,13 @@ class answerdetails
 
 	public static function get_join($_where, $_option = [])
 	{
-		$option =
+		$default_option =
 		[
 			'public_show_field' =>
 			"
+				answers.startdate,
+				answers.enddate,
+				answers.lastmodified,
 				questions.title AS `question_title`,
 				questions.desc  AS `question_desc`,
 				questions.type  AS `question_type`,
@@ -29,9 +32,31 @@ class answerdetails
 				INNER JOIN answerterms ON answerterms.id = answerdetails.answerterm_id
 				INNER JOIN questions   ON questions.id   = answerdetails.question_id
 				INNER JOIN surveys     ON surveys.id     = questions.survey_id
+				INNER JOIN answers     ON answers.id     = answerdetails.answer_id
 			",
 		];
-		return self::get($_where, $option);
+
+		if(!is_array($_option))
+		{
+			$_option = [];
+		}
+
+		$_option = array_merge($default_option, $_option);
+
+		if($_option['for_export'])
+		{
+			$_option['public_show_field'] =
+			"
+				questions.id AS `question_id`,
+				questions.title AS `question_title`,
+				answerterms.text,
+				answerdetails.user_id,
+				answers.startdate,
+				answers.enddate
+			";
+		}
+
+		return self::get($_where, $_option);
 	}
 
 

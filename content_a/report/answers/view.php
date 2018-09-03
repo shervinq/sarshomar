@@ -48,12 +48,13 @@ class view
 				$args['sort'] = 'id';
 			}
 
-			$export = false;
+
 			if(\dash\request::get('export') === 'true')
 			{
-				$export = true;
-				$args['pagenation'] = false;
+				\lib\app\answer::export_all(\dash\request::get('id'));
+				return;
 			}
+
 			$search_string = \dash\request::get('q');
 
 			\dash\data::sortLink(\dash\app\sort::make_sortLink(\lib\app\answer::$sort_field, \dash\url::this(). '/answers'));
@@ -64,21 +65,6 @@ class view
 			$filterArray = $args;
 			unset($filterArray['survey_id']);
 
-
-			if($export)
-			{
-				$ignore =
-				[
-					'user_id',
-					'status',
-					'skiptry',
-					'answertry',
-					'lastquestion',
-					'datecreated',
-					'datemodified',
-				];
-				\dash\utility\export::csv(['ignore' => $ignore, 'name' => 'export_answer', 'data' => \dash\data::dataTable()]);
-			}
 
 
 			// set dataFilter
