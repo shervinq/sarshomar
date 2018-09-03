@@ -418,10 +418,15 @@ class twigTransTerms
 	echo T_("click here!");                                                           // Line 9
 
 	//---------------------------------addons/content_enter/pass/recovery/display.html
-	echo T_("Remembered your password?");                                             // Line 48
+	echo T_("Remembered your password?");                                             // Line 56
 
 	//------------------------------------------addons/content_enter/pass/display.html
 	echo T_("Can't access your account?");                                            // Line 12
+
+	//----------------------------------addons/content_enter/verify/later/display.html
+	echo T_("You must confirm your mobile in the future");                            // Line 7
+	echo T_("Verify now");                                                            // Line 10
+	echo T_("Verify later");                                                          // Line 49
 
 	//----------------------------------------addons/content_enter/verify/display.html
 	echo T_("Send code in your Telegram");                                            // Line 11
@@ -456,6 +461,7 @@ class twigTransTerms
 	echo T_("Subject of your ticket");                                                // Line 8
 	echo T_("Set title will help us answer quickly");                                 // Line 8
 	echo T_("Attachment");                                                            // Line 69
+	echo T_("Max size 5Mb");                                                          // Line 16
 
 	//---------------------------------addons/content_support/ticket/show/display.html
 	echo T_("Ticket No");                                                             // Line 15
@@ -653,8 +659,8 @@ class twigTransTerms
 
 	//---------------------------------------------addons/content_su/info/display.html
 	echo T_("Info");                                                                  // Line 7
-	echo T_("Show server info");                                                      // Line 9
-	echo T_("Show PHP info");                                                         // Line 10
+	echo T_("Show server info");                                                      // Line 8
+	echo T_("Show PHP info");                                                         // Line 9
 
 	//-------------------------------------------addons/content_su/backup/display.html
 	echo T_("Backup database");                                                       // Line 5
@@ -769,10 +775,10 @@ class twigTransTerms
 
 	//------------------------------------addons/content_su/tools/sitemap/display.html
 	echo T_("Create sitemap automatically by click on this page");                    // Line 6
-	echo T_("Base Sitemap");                                                          // Line 8
-	echo T_("Sitemap Detail");                                                        // Line 9
-	echo T_("Create it Again");                                                       // Line 10
-	echo T_("Create Sitemap Result");                                                 // Line 18
+	echo T_("Base Sitemap");                                                          // Line 7
+	echo T_("Sitemap Detail");                                                        // Line 8
+	echo T_("Create it Again");                                                       // Line 9
+	echo T_("Create Sitemap Result");                                                 // Line 16
 
 	//---------------------------------------------addons/content_su/home/display.html
 	echo T_("Some code was changed!!!");                                              // Line 6

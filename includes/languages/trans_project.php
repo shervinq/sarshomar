@@ -66,7 +66,7 @@ class twigTransTerms
 	echo T_("Ask and Answer with Sarshomar");                                         // Line 24
 	echo T_("Sarshomar is about to launch...");                                       // Line 25
 	echo T_("If we were inestimable, Signup!");                                       // Line 25
-	echo T_("Mobile");                                                                // Line 23
+	echo T_("Go to profile");                                                         // Line 26
 	echo T_("Inspection and Answer");                                                 // Line 45
 	echo T_("Then if we were inestimable, Signup!");                                  // Line 46
 	echo T_("Enter to Sarshomar");                                                    // Line 104
@@ -445,6 +445,7 @@ class twigTransTerms
 	echo T_("We do our best to improve Sarshomar's quality. So, knowing your valuable comments about bugs and problems and more importantly your precious offers will help us in this way.");// Line 14
 	echo T_("Name");                                                                  // Line 19
 	echo T_("Full Name");                                                             // Line 20
+	echo T_("Mobile");                                                                // Line 23
 	echo T_("Please enter valid mobile number. `:val` is incorrect");                 // Line 24
 	echo T_("Email");                                                                 // Line 149
 	echo T_("Your Message");                                                          // Line 31
