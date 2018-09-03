@@ -28,6 +28,11 @@ class survey
 
 	public static function get($_id)
 	{
+		if(!\dash\user::id())
+		{
+			return false;
+		}
+
 		$id = \dash\coding::decode($_id);
 		if(!$id)
 		{
@@ -38,10 +43,18 @@ class survey
 
 		$get = \lib\db\surveys::get(['id' => $id, 'limit' => 1]);
 
-		if(!$get)
+		if(!$get || !isset($get['user_id']))
 		{
 			\dash\notif::error(T_("Invalid survey id"));
 			return false;
+		}
+
+		if(intval($get['user_id']) !== intval(\dash\user::id()))
+		{
+			if(!\dash\permission::supervisor())
+			{
+				return false;
+			}
 		}
 
 		$result = self::ready($get);
