@@ -49,13 +49,13 @@ class survey
 			return false;
 		}
 
-		if(intval($get['user_id']) !== intval(\dash\user::id()))
-		{
-			if(!\dash\permission::supervisor())
-			{
-				return false;
-			}
-		}
+		// if(intval($get['user_id']) !== intval(\dash\user::id()))
+		// {
+		// 	if(!\dash\permission::supervisor())
+		// 	{
+		// 		return false;
+		// 	}
+		// }
 
 		$result = self::ready($get);
 
