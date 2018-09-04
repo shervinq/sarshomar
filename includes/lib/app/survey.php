@@ -28,10 +28,10 @@ class survey
 
 	public static function get($_id)
 	{
-		if(!\dash\user::id())
-		{
-			return false;
-		}
+		// if(!\dash\user::id())
+		// {
+		// 	return false;
+		// }
 
 		$id = \dash\coding::decode($_id);
 		if(!$id)
