@@ -15,6 +15,7 @@ class answerdetails
 	{
 		$default_option =
 		[
+			'for_export' => false,
 			'public_show_field' =>
 			"
 				answers.startdate,

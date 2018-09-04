@@ -43,7 +43,7 @@ class survey
 
 		$get = \lib\db\surveys::get(['id' => $id, 'limit' => 1]);
 
-		if(!$get || !isset($get['user_id']))
+		if(!$get)
 		{
 			\dash\notif::error(T_("Invalid survey id"));
 			return false;
