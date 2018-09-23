@@ -15,7 +15,7 @@ class model
 		{
 			if(isset($result['id']))
 			{
-				\dash\redirect::to(\dash\url::this(). '/general?id='. $result['id']);
+				\dash\redirect::to(\dash\url::here(). '/question/add?id='. $result['id']);
 			}
 			else
 			{
