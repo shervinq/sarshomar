@@ -52,7 +52,7 @@ trait add
 
 		if(\dash\engine\process::status())
 		{
-			\dash\log::db('addNewSurvay', ['data' => $question_id, 'datalink' => \dash\coding::encode($question_id)]);
+			\dash\log::set('addNewSurvay', ['data' => $question_id, 'datalink' => \dash\coding::encode($question_id)]);
 			// \dash\notif::ok(T_("Question successfuly added"));
 		}
 
