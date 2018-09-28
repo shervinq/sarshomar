@@ -39,8 +39,8 @@ trait get
 			if(!isset($result[$value['user_id']]))
 			{
 				$result[$value['user_id']]          = $question_key;
-				$result[$value['user_id']]['start'] = $value['startdate'] ? \dash\date::tdate(strtotime($value['startdate']), 'full') : null;
-				$result[$value['user_id']]['end']   = $value['enddate'] ? \dash\date::tdate(strtotime($value['enddate']), 'full') : null;
+				$result[$value['user_id']]['start'] = $value['startdate'] ? \dash\datetime::fit(strtotime($value['startdate']), 'full') : null;
+				$result[$value['user_id']]['end']   = $value['enddate'] ? \dash\datetime::fit(strtotime($value['enddate']), 'full') : null;
 			}
 
 			if(!isset($result[$value['user_id']][$value['question_id']]))

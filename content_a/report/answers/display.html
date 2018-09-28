@@ -77,8 +77,8 @@
       <tr class="txtC">
 
       	<td><a class="badge success" href="{{url.this}}/user?id={{requestGET.id}}&answer={{value.id}}">{%trans "Show detail"%}</a></td>
-    		<td>{{value.startdate | tdate("Y/m/d H:i:s")}}</td>
-    		<td>{% if value.enddate%}{{value.enddate | tdate("Y/m/d H:i:s")}}{%else%}-{%endif%}</td>
+    		<td>{{value.startdate | dt(true)}}</td>
+    		<td>{% if value.enddate%}{{value.enddate | dt(true)}}{%else%}-{%endif%}</td>
     		<td>{{value.step | fitNumber}}</td>
     		<td>{%if value.complete%}<i class="sf-check fc-green"></i>{%else%}<i class="sf-times fc-red"></i>{%endif%}</td>
         {%if false%}
