@@ -21,7 +21,6 @@ class view
 		\dash\data::include_css(false);
 		\dash\data::include_js(false);
 		\dash\data::include_editor(true);
-		\dash\data::include_chart(true);
 
 		// set shortkey for all badges is this content
 		\dash\data::badge_shortkey(120);
