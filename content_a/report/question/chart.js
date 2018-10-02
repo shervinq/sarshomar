@@ -1,45 +1,84 @@
 function chartDrawer()
 {
-  if($("#chartdiv").length == 1){myChart();}
-
-
+  if($("#chartdiv").length == 1){highChart();}
 }
 
 
-//-------------------------------------------------------------------------------------------------------
-function myChart()
+
+function highChart()
 {
-  am4core.useTheme(am4themes_animated);
 
-  var chart = am4core.create("chartdiv", am4charts.XYChart);
-  chart.data = {{dataTable | raw}};
-
-  var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-  categoryAxis.renderer.grid.template.location = 0;
-  categoryAxis.dataFields.category = "key";
-  categoryAxis.renderer.minGridDistance = 60;
-
-
-  var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-  // valueAxis.title.text = '{%trans "Count"%}';
-
-  var series = chart.series.push(new am4charts.ColumnSeries());
-  series.dataFields.categoryX = "key";
-  series.dataFields.valueY = "value";
-  series.tooltipText = "{valueY.value}"
-  series.columns.template.strokeOpacity = 0;
-
-
-  chart.cursor = new am4charts.XYCursor();
-
-  // as by default columns of the same series are of the same color, we add adapter which takes colors from chart.colors color set
-  series.columns.template.adapter.add("fill", function (fill, target)
+Highcharts.chart('chartdiv',
+{
+  chart: {
+    zoomType: 'x',
+    style: {
+      fontFamily: 'IRANSans, Tahoma, sans-serif'
+    }
+  },
+  title: {
+    text: '{{questionDetail.title}}'
+  },
+  xAxis: [{
+    categories: {{dataTable.categories | raw}},
+    crosshair: true
+  }],
+  yAxis: [{ // Primary yAxis
+    labels: {
+      format: '{value}',
+      style: {
+        color: Highcharts.getOptions().colors[0]
+      }
+    },
+    title: {
+      text: '{%trans "Count"%}',
+      useHTML: Highcharts.hasBidiBug,
+      style: {
+        color: Highcharts.getOptions().colors[0]
+      }
+    }
+  }],
+  tooltip: {
+    useHTML: true,
+    borderWidth: 0,
+    shared: true
+  },
+  exporting:
   {
-    return chart.colors.getIndex(target.dataItem.index);
-  });
+    buttons:
+    {
+      contextButton:
+      {
+        menuItems:
+        [
+         'printChart',
+         'separator',
+         'downloadPNG',
+         'downloadJPEG',
+         'downloadSVG'
+        ]
+      }
+    }
+  },
+  legend: {
+    layout: 'vertical',
+    align: 'left',
+    x: 120,
+    verticalAlign: 'top',
+    y: 100,
+    floating: true,
+    backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || 'rgba(255,255,255,0.25)'
+  },
+  series: [
+  {
+    name: '{%trans "Count"%}',
+    type: 'area',
+    data: {{dataTable.value | raw}},
+    tooltip: {
+      valueSuffix: ' {%trans "Person"%}'
+    }
 
-  // var label = chart.plotContainer.createChild(am4core.Label);
-  // label.text = '{%trans "Price Variation"%}';
-  // label.x = 10;
-  // label.y = 10;
+  }
+  ]
+});
 }

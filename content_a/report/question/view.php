@@ -37,6 +37,8 @@ class view
 
 				$question_detail = \content_a\question\view::load_question();
 
+				\dash\data::questionDetail($question_detail);
+
 				$questionid = \dash\request::get('questionid');
 
 				if(isset($question_detail['type_detail']['chart']))

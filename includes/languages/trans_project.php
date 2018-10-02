@@ -29,6 +29,8 @@ class twigTransTerms
 
 	//--------------------------------------public_html/static/siftal/js/siftal.min.js
 
+	//-----------------------public_html/static/siftal/js/highcharts/highcharts.min.js
+
 	//-----------------------------------public_html/static/siftal/js/amcharts3.min.js
 
 	//-----------------------------------public_html/static/siftal/js/highlight.min.js
@@ -52,7 +54,7 @@ class twigTransTerms
 	echo T_("Terms of Service");                                                      // Line 34
 	echo T_("Privacy Policy");                                                        // Line 12
 	echo T_("Changelog");                                                             // Line 13
-	echo T_("Support");                                                               // Line 41
+	echo T_("Support");                                                               // Line 24
 	echo T_("Contact us");                                                            // Line 43
 	echo T_("Logo");                                                                  // Line 45
 	echo T_("Latest News");                                                           // Line 51
@@ -243,20 +245,22 @@ class twigTransTerms
 
 	//------------------------------------------content/template/static/changelog.html
 	echo T_("Sarshomar's change log");                                                // Line 3
-	echo T_("We were born to do Best!");                                              // Line 71
+	echo T_("We were born to do Best!");                                              // Line 81
 	echo T_("We are Developers, please wait!");                                       // Line 23
 	echo T_("Date");                                                                  // Line 18
 	echo T_("Description");                                                           // Line 369
-	echo T_("Version 1 of sarshomar released");                                       // Line 29
-	echo T_("Delta version of sarshomar released");                                   // Line 34
-	echo T_("Gamma version of sarshomar released");                                   // Line 39
-	echo T_("Finally Sarshomar logo is accepted and we started branding");            // Line 44
-	echo T_("Sarshomar Logo");                                                        // Line 44
-	echo T_("Beta version of Sarshomar released");                                    // Line 50
-	echo T_("Alfa version of Sarshomar is ready");                                    // Line 54
-	echo T_("Demo version of Sarshomar released");                                    // Line 58
-	echo T_("Sarshomar is ready to start");                                           // Line 62
-	echo T_("The name of project selected as Sarshomar and <a href='https://sarshomar.com'>Sarshomar.com</a> and <a href='http://sarshomar.ir'>Sarshomar.ir</a> domains registered. ");// Line 66
+	echo T_("Version 2 of sarshomar is released");                                    // Line 29
+	echo T_("Rebuild version 2 of sarshomar is started");                             // Line 34
+	echo T_("Version 1 of sarshomar released");                                       // Line 39
+	echo T_("Delta version of sarshomar released");                                   // Line 44
+	echo T_("Gamma version of sarshomar released");                                   // Line 49
+	echo T_("Finally Sarshomar logo is accepted and we started branding");            // Line 54
+	echo T_("Sarshomar Logo");                                                        // Line 54
+	echo T_("Beta version of Sarshomar released");                                    // Line 60
+	echo T_("Alfa version of Sarshomar is ready");                                    // Line 64
+	echo T_("Demo version of Sarshomar released");                                    // Line 68
+	echo T_("Sarshomar is ready to start");                                           // Line 72
+	echo T_("The name of project selected as Sarshomar and <a href='https://sarshomar.com'>Sarshomar.com</a> and <a href='http://sarshomar.ir'>Sarshomar.ir</a> domains registered. ");// Line 76
 
 	//------------------------------------------------content/template/static/eco.html
 	echo T_("Eco");                                                                   // Line 12
@@ -479,7 +483,7 @@ class twigTransTerms
 	echo T_("Vote");                                                                  // Line 325
 	echo T_("Ratio");                                                                 // Line 326
 	echo T_("Total");                                                                 // Line 342
-	echo T_("Person");                                                                // Line 344
+	echo T_("Person");                                                                // Line 78
 	echo T_("Similar Questions");                                                     // Line 374
 	echo T_("Latest Questions");                                                      // Line 367
 	echo T_("There is no similar post");                                              // Line 375
@@ -569,7 +573,6 @@ class twigTransTerms
 
 	//----------------------------------------------content_a/report/question/chart.js
 	echo T_("Count");                                                                 // Line 24
-	echo T_("Price Variation");                                                       // Line 42
 
 	//----------------------------------------------content_a/report/home/display.html
 	echo T_("Group by answer");                                                       // Line 21
@@ -671,6 +674,7 @@ class twigTransTerms
 	echo T_("Answer chart");                                                          // Line 132
 
 	//--------------------------------------------------content_a/survey/home/chart.js
+	echo T_("Price Variation");                                                       // Line 42
 
 	//---------------------------------------------content_a/survey/trans/display.html
 

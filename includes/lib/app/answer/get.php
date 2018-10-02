@@ -154,20 +154,16 @@ trait get
 					$new[] =
 					[
 						'key'   => $value['text'],
-						'value' => $value['count'],
+						'value' => intval($value['count']),
 					];
 				}
 			}
 		}
+		$hi_chart               = [];
+		$hi_chart['categories'] = json_encode(array_column($new, 'key'), JSON_UNESCAPED_UNICODE);
+		$hi_chart['value']      = json_encode(array_column($new, 'value'), JSON_UNESCAPED_UNICODE);
 
-		if(!$new)
-		{
-			$new = null;
-		}
-
-		$new = json_encode($new, JSON_UNESCAPED_UNICODE);
-		return $new;
-
+		return $hi_chart;
 	}
 
 
