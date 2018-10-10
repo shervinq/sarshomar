@@ -37,7 +37,7 @@ Highcharts.chart('chartdiv',
         color: Highcharts.getOptions().colors[0]
       }
     },
-    tickInterval:1,
+    // tickInterval:1,
     title: {
       text: '{%trans "Count"%}',
       useHTML: Highcharts.hasBidiBug,
