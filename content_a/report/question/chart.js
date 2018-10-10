@@ -8,6 +8,13 @@ function chartDrawer()
 function highChart()
 {
 
+var myData = {{dataTable.value | raw}};
+var dataSum = 0;
+for (var i=0;i < myData.length;i++)
+{
+  dataSum += myData[i]
+}
+
 Highcharts.chart('chartdiv',
 {
   chart: {
@@ -30,6 +37,7 @@ Highcharts.chart('chartdiv',
         color: Highcharts.getOptions().colors[0]
       }
     },
+    tickInterval:1,
     title: {
       text: '{%trans "Count"%}',
       useHTML: Highcharts.hasBidiBug,
@@ -42,6 +50,19 @@ Highcharts.chart('chartdiv',
     useHTML: true,
     borderWidth: 0,
     shared: true
+  },
+  plotOptions: {
+      series: {
+          shadow:false,
+          borderWidth:0,
+          dataLabels:{
+              enabled:true,
+              formatter:function() {
+                  var pcnt = (this.y / dataSum) * 100;
+                  return Highcharts.numberFormat(pcnt) + '%';
+              }
+          }
+      }
   },
   exporting:
   {
@@ -73,7 +94,7 @@ Highcharts.chart('chartdiv',
   {
     name: '{%trans "Count"%}',
     type: 'column',
-    data: {{dataTable.value | raw}},
+    data: myData,
     tooltip: {
       valueSuffix: ' {%trans "Person"%}'
     }
