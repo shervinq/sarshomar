@@ -72,7 +72,7 @@ Highcharts.chart('chartdiv',
   series: [
   {
     name: '{%trans "Count"%}',
-    type: 'area',
+    type: 'column',
     data: {{dataTable.value | raw}},
     tooltip: {
       valueSuffix: ' {%trans "Person"%}'
