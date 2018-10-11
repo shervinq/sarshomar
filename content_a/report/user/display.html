@@ -64,6 +64,7 @@
         <th class="collapsing">{{(key +1) | fitNumber}}</th>
         <th class="collapsing">{{value.question_title}}</th>
         <td>{%if value.skip%}<i class="sf-red">{%trans "Skipped"%}</i>{%else%}{{value.text}}{%endif%}</td>
+        <td class="collapsing pRa10 s0"><a href="{{url.this}}/question?id={{requestGET.id}}&questionid={{value.id}}">{%trans "Check question Detail"%}</a></td>
       </tr>
       {%endfor%}
     </tbody>
