@@ -24,7 +24,7 @@ class view
 			\dash\redirect::to(\dash\url::here());
 		}
 
-		$visitor_page = \dash\db\visitors::visitor_page(\dash\url::this());
+		$visitor_page = \dash\db\visitors::visitor_page(\dash\data::surveyRow_s_url());
 		$survey_id = \dash\coding::decode(\dash\request::get('id'));
 		$count_start = 0;
 		$count_complete = 0;
