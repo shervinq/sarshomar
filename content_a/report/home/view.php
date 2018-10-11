@@ -23,6 +23,26 @@ class view
 		{
 			\dash\redirect::to(\dash\url::here());
 		}
+
+		$visitor_page = \dash\db\visitors::visitor_page(\dash\url::this());
+		$survey_id = \dash\coding::decode(\dash\request::get('id'));
+		$count_start = 0;
+		$count_complete = 0;
+		if($survey_id)
+		{
+			$count_start = \lib\db\answers::get_count(['survey_id' => $survey_id]);
+			$count_complete = \lib\db\answers::get_count(['survey_id' => $survey_id, 'complete' => 1]);
+		}
+
+		$qifChart =
+		[
+	        ['Website visits', intval($visitor_page)],
+	        ['Start', intval($count_start)],
+	        ['Complete', intval($count_complete)]
+  		];
+
+		\dash\data::qifChart(json_encode($qifChart, JSON_UNESCAPED_UNICODE));
+
 	}
 }
 ?>

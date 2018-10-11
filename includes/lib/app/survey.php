@@ -242,6 +242,30 @@ class survey
 					$result[$key] = \dash\coding::encode($value);
 					break;
 
+				case 'lang':
+					$result[$key] = $value;
+					if(isset($value))
+					{
+						$myId = null;
+						if(isset($_data['id']))
+						{
+							$myId = \dash\coding::encode($_data['id']);
+						}
+
+						$new_url = \dash\url::base();
+
+						if($value !== \dash\language::primary())
+						{
+							$new_url .= '/'. $value. '/s/'. $myId;
+						}
+						else
+						{
+							$new_url .= '/s/'. $myId;
+						}
+						$result['s_url'] = $new_url;
+					}
+					break;
+
 				case 'brandingmeta':
 				case 'welcomemedia':
 				case 'thankyoumedia':

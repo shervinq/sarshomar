@@ -54,11 +54,7 @@ function highChart()
     },
     series: [{
       name: '{%trans "Person"%}',
-      data: [
-        ['Website visits', 15654],
-        ['Start', 4064],
-        ['Complete', 846]
-      ]
+      data: {{qifChart | raw}}
     }]
   });
 }

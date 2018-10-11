@@ -38,7 +38,7 @@ class controller
 				$new_url .= '/'. $load['lang']. '/s/'. \dash\url::module();
 				if(\dash\url::child())
 				{
-					$new_url .= '/'. \dash\url::module();
+					$new_url .= '/'. \dash\url::child();
 				}
 
 				if(\dash\request::get())
