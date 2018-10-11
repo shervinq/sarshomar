@@ -81,7 +81,7 @@ class twigTransTerms
 	echo T_("Vote");                                                                  // Line 325
 	echo T_("Ratio");                                                                 // Line 326
 	echo T_("Total");                                                                 // Line 342
-	echo T_("Person");                                                                // Line 78
+	echo T_("Person");                                                                // Line 99
 	echo T_("Similar Questions");                                                     // Line 374
 	echo T_("Latest Questions");                                                      // Line 367
 	echo T_("There is no similar post");                                              // Line 375
@@ -572,7 +572,7 @@ class twigTransTerms
 	echo T_("For example: Middle");                                                   // Line 285
 	echo T_("For example: High");                                                     // Line 291
 	echo T_("Default");                                                               // Line 309
-	echo T_("Step");                                                                  // Line 68
+	echo T_("Step");                                                                  // Line 67
 	echo T_("Is require");                                                            // Line 329
 	echo T_("Choise title");                                                          // Line 339
 	echo T_("Save");                                                                  // Line 198
@@ -586,30 +586,35 @@ class twigTransTerms
 	//--------------------------------------------content_a\question\type\display.html
 
 	//-------------------------------------------content_a\report\answers\display.html
-	echo T_("Export csv");                                                            // Line 13
-	echo T_("User");                                                                  // Line 65
-	echo T_("Start Date");                                                            // Line 66
-	echo T_("End date");                                                              // Line 67
-	echo T_("Complete");                                                              // Line 69
-	echo T_("Answered");                                                              // Line 70
-	echo T_("Skipped");                                                               // Line 67
-	echo T_("Show detail");                                                           // Line 79
-	echo T_("Clear filters");                                                         // Line 88
-	echo T_("Result not found!");                                                     // Line 87
-	echo T_("Search with new keywords.");                                             // Line 87
-	echo T_("No data was found!");                                                    // Line 94
+	echo T_("User");                                                                  // Line 63
+	echo T_("Start Date");                                                            // Line 64
+	echo T_("End date");                                                              // Line 65
+	echo T_("Answer in");                                                             // Line 66
+	echo T_("Complete");                                                              // Line 68
+	echo T_("Answered");                                                              // Line 69
+	echo T_("Skipped");                                                               // Line 66
+	echo T_("Show detail");                                                           // Line 78
+	echo T_("Clear filters");                                                         // Line 87
+	echo T_("Result not found!");                                                     // Line 86
+	echo T_("Search with new keywords.");                                             // Line 86
+	echo T_("No data was found!");                                                    // Line 93
+
+	//--------------------------------------------------content_a\report\home\chart.js
+	echo T_("Survey detail");                                                         // Line 19
 
 	//----------------------------------------------content_a\report\home\display.html
-	echo T_("Group by answer");                                                       // Line 21
-	echo T_("Group by question");                                                     // Line 32
+	echo T_("Group by answer");                                                       // Line 23
+	echo T_("Group by question");                                                     // Line 34
 
 	//----------------------------------------------content_a\report\question\chart.js
 	echo T_("Count");                                                                 // Line 24
 
 	//------------------------------------------content_a\report\question\display.html
-	echo T_("Answers");                                                               // Line 58
+	echo T_("Answer");                                                                // Line 56
+	echo T_("Answers");                                                               // Line 82
 
 	//----------------------------------------------content_a\report\user\display.html
+	echo T_("Check question Detail");                                                 // Line 67
 
 	//------------------------------------------------content_a\sort\home\display.html
 	echo T_("Save sort");                                                             // Line 26
@@ -675,10 +680,6 @@ class twigTransTerms
 	echo T_("Edit Survey");                                                           // Line 356
 
 	//---------------------public_html\static\siftal\fonts\siftal\icons-reference.html
-
-	//-----------------------------------public_html\static\siftal\js\amcharts3.min.js
-
-	//-----------------------------------public_html\static\siftal\js\amcharts4.min.js
 
 	//--------------------------------------public_html\static\siftal\js\error_page.js
 
