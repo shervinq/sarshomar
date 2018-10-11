@@ -485,25 +485,39 @@ class answer
 	 */
 	public static function ready($_data)
 	{
-		$result = [];
+		$result    = [];
+		$startdate = null;
+		$enddate   = null;
+
 		foreach ($_data as $key => $value)
 		{
-
 			switch ($key)
 			{
-
-
 				case 'id':
 				case 'user_id':
 				case 'survey_id':
 					$result[$key] = \dash\coding::encode($value);
 					break;
 
+				case 'startdate':
+					$result[$key] = $value;
+					$startdate = strtotime($value);
+					break;
+
+				case 'enddate':
+					$result[$key] = $value;
+					$enddate = strtotime($value);
+					break;
 
 				default:
 					$result[$key] = $value;
 					break;
 			}
+		}
+
+		if($startdate && $enddate)
+		{
+			$result['answer_in'] = \dash\utility\human::time($enddate - $startdate, null, null, 'sec');
 		}
 
 		return $result;
