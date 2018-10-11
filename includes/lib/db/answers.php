@@ -5,49 +5,122 @@ namespace lib\db;
 class answers
 {
 
-	public static function get_chart($_survey_id, $_question_id, $_user_id)
+	public static function get_chart($_survey_id, $_question_id, $_user_id, $_sort = null, $_order = null)
 	{
-		$query =
-		"
-			SELECT
-				COUNT(*) AS `count`,
-				answerdetails.answerterm_id AS `term`
-			FROM
-				answerdetails
-			WHERE
-				answerdetails.survey_id = $_survey_id AND
-				answerdetails.question_id = $_question_id
-			GROUP BY
-				answerdetails.answerterm_id
-		";
-
-		$result = \dash\db::get($query, ['term', 'count']);
-		$new    = [];
-		$term   = [];
-		if(is_array($result))
+		$query_order = null;
+		$sort_term = null;
+		if($_sort)
 		{
-			$answerterm_id = array_keys($result);
-			$answerterm_id = array_filter($answerterm_id);
-			$answerterm_id = array_unique($answerterm_id);
-
-			if($answerterm_id)
+			if($_sort === 'answerdetails.answerterm_id')
 			{
-				$answerterm_id = implode(',', $answerterm_id);
-				$query_term = "SELECT * FROM answerterms WHERE answerterms.id IN ($answerterm_id) ";
-				$term = \dash\db::get($query_term);
+				$sort_term = " ORDER BY answerterms.text ";
+				if($_order)
+				{
+					$sort_term .= mb_strtoupper($_order);
+				}
 			}
 
-			foreach ($term as $key => $value)
+			$query_order = " ORDER BY $_sort ";
+			if($_order)
 			{
-				if(array_key_exists($value['id'], $result))
+				$query_order .= mb_strtoupper($_order);
+			}
+		}
+		if($sort_term)
+		{
+			$query =
+			"
+				SELECT
+					COUNT(*) AS `count`,
+					answerdetails.answerterm_id AS `term`
+				FROM
+					answerdetails
+				WHERE
+					answerdetails.survey_id = $_survey_id AND
+					answerdetails.question_id = $_question_id
+				GROUP BY
+					answerdetails.answerterm_id
+			";
+
+			$result = \dash\db::get($query, ['term', 'count']);
+
+			$new    = [];
+			$term   = [];
+			if(is_array($result))
+			{
+				$answerterm_id = array_keys($result);
+				$answerterm_id = array_filter($answerterm_id);
+				$answerterm_id = array_unique($answerterm_id);
+
+				if($answerterm_id)
 				{
-					$new[] =
-					[
-						'count'   => $result[$value['id']],
-						'term_id' => $value['id'],
-						'text'    => $value['text'],
-						'file'    => $value['file'],
-					];
+					$answerterm_id = implode(',', $answerterm_id);
+					$query_term = "SELECT * FROM answerterms WHERE answerterms.id IN ($answerterm_id) $sort_term";
+					$term = \dash\db::get($query_term);
+
+					foreach ($term as $key => $value)
+					{
+						if(array_key_exists($value['id'], $result))
+						{
+							$new[] =
+							[
+								'count'   => $result[$value['id']],
+								'term_id' => $value['id'],
+								'text'    => $value['text'],
+								'file'    => $value['file'],
+							];
+						}
+					}
+				}
+			}
+		}
+		else
+		{
+			$query =
+			"
+				SELECT
+					COUNT(*) AS `count`,
+					answerdetails.answerterm_id AS `term`
+				FROM
+					answerdetails
+				WHERE
+					answerdetails.survey_id = $_survey_id AND
+					answerdetails.question_id = $_question_id
+				GROUP BY
+					answerdetails.answerterm_id
+				$query_order
+			";
+
+			$result = \dash\db::get($query, ['term', 'count']);
+
+			$new    = [];
+			$term   = [];
+			if(is_array($result))
+			{
+				$answerterm_id = array_keys($result);
+				$answerterm_id = array_filter($answerterm_id);
+				$answerterm_id = array_unique($answerterm_id);
+
+				if($answerterm_id)
+				{
+					$answerterm_id = implode(',', $answerterm_id);
+					$query_term = "SELECT * FROM answerterms WHERE answerterms.id IN ($answerterm_id) $sort_term";
+					$term = \dash\db::get($query_term);
+					$term = array_combine(array_column($term, 'id'), $term);
+
+					foreach ($result as $key => $value)
+					{
+						if(isset($term[$key]))
+						{
+							$new[] =
+							[
+								'count'   => $value,
+								'term_id' => @$term[$key]['id'],
+								'text'    => @$term[$key]['text'],
+								'file'    => @$term[$key]['file'],
+							];
+						}
+					}
 				}
 			}
 		}

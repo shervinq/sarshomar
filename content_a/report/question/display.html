@@ -4,8 +4,8 @@
 
 
 {%block pageContent%}
-<div class="cbox">
 {%if questionList%}
+<div class="cbox mB20">
 
   {%for key, value in questionList%}
   <a href="{{url.this}}/question?id={{requestGET.id}}&questionid={{value.id}}">
@@ -19,17 +19,17 @@
   </a>
   {%endfor%}
 
+</div>
 {%elseif dataTable and not showChart%}
 
   {{block('htmlTable')}}
 
-
-
 {%else%}
-   <div class="chart x4" id="chartdiv" >
+   <div class="chart x4 mB20" id="chartdiv" >
    </div>
+
+  {{block('htmlTableRow')}}
 {%endif%}
-</div>
 
 {%endblock%}
 
@@ -47,11 +47,35 @@
 
 
 
+{%block htmlTableRow%}
+
+
+  <table class="tbl1 v1 cbox fs12 ">
+    <thead class="primary fs09">
+      <tr>
+        <th data-sort='{{sortLink.answer.order}}'><a href="{{sortLink.answer.link}}">{%trans "Answer"%}</a></th>
+        <th data-sort='{{sortLink.value.order}}'><a href="{{sortLink.value.link}}">{%trans "Count"%}</a></th>
+      </tr>
+    </thead>
+    <tbody>
+      {%for key, value in tableRow.categories%}
+      <tr>
+          <td>{{value}}</td>
+          <td>{{tableRow['value'][key]}}</td>
+      </tr>
+      {%endfor%}
+
+    </tbody>
+  </table>
+  {%include display.pagination%}
+
+{%endblock%}
+
 
 {%block htmlTable%}
 
- <div class="cbox fs12">
-  <table class="tbl bordered1">
+
+  <table class="tbl1 v1 cbox fs12">
     <thead class="primary fs09">
       <tr>
 
@@ -68,5 +92,5 @@
     </tbody>
   </table>
   {%include display.pagination%}
- </div>
+
 {%endblock%}

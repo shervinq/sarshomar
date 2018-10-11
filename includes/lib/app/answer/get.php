@@ -121,7 +121,7 @@ trait get
 	}
 
 
-	public static function get_result($_survey_id , $_question_id)
+	public static function get_result($_survey_id , $_question_id, $_sort = null, $_order = null)
 	{
 		if(!\dash\user::id())
 		{
@@ -142,7 +142,7 @@ trait get
 			return false;
 		}
 
-		$chart_result = \lib\db\answers::get_chart($survey_id, $question_id, \dash\user::id());
+		$chart_result = \lib\db\answers::get_chart($survey_id, $question_id, \dash\user::id(), $_sort, $_order);
 
 		$new = [];
 		if(is_array($chart_result))
