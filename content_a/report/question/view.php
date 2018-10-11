@@ -24,15 +24,11 @@ class view
 
 			if(!\dash\request::get('questionid'))
 			{
-				$id = \dash\request::get('id');
-
-				$questionList = \lib\app\question::block_survey($id);
-
-				\dash\data::questionList($questionList);
+				\dash\redirect::to(\dash\url::this(). '/questionlist?id='. \dash\request::get('id'));
 			}
 			else
 			{
-				\dash\data::badge_link(\dash\url::this(). '/question?id='. \dash\request::get('id'));
+				\dash\data::badge_link(\dash\url::this(). '/questionlist?id='. \dash\request::get('id'));
 				\dash\data::badge_text(T_('Back to question list'));
 
 				$question_detail = \content_a\question\view::load_question();
