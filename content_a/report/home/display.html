@@ -15,7 +15,7 @@
 
 
 {%block stAnswers%}
-<a class="dcard x2" data-direct href='{{url.this}}/answers?id={{requestGET.id}}'>
+<a class="dcard x2" href='{{url.this}}/answers?id={{requestGET.id}}'>
  <div class="statistic orange">
   <div class="value"><i class="sf-list"></i></div>
   <div class="label">{%trans "Group by answer"%}</div>
@@ -26,7 +26,7 @@
 
 
 {%block stQuestion%}
-<a class="dcard x2" data-direct href='{{url.this}}/question?id={{requestGET.id}}'>
+<a class="dcard x2" href='{{url.this}}/question?id={{requestGET.id}}'>
  <div class="statistic yellow">
   <div class="value"><i class="sf-bar-chart"></i></div>
   <div class="label">{%trans "Group by question"%}</div>
