@@ -252,7 +252,7 @@ class survey
 							$myId = \dash\coding::encode($_data['id']);
 						}
 
-						$new_url = \dash\url::base();
+						$new_url = \dash\url::kingdom();
 
 						if($value !== \dash\language::primary())
 						{

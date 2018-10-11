@@ -9,7 +9,7 @@ class controller
 		$module = \dash\coding::decode($module);
 		if(!$module)
 		{
-			\dash\redirect::to(\dash\url::base());
+			\dash\redirect::to(\dash\url::kingdom());
 		}
 
 		if(\dash\url::child())
@@ -34,7 +34,7 @@ class controller
 		{
 			if($load['lang'] !== \dash\language::current())
 			{
-				$new_url = \dash\url::base();
+				$new_url = \dash\url::kingdom();
 				$new_url .= '/'. $load['lang']. '/s/'. \dash\url::module();
 				if(\dash\url::child())
 				{

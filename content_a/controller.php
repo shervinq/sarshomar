@@ -7,7 +7,7 @@ class controller
 	{
 		if(!\dash\user::login())
 		{
-			\dash\redirect::to(\dash\url::base(). '/enter/signup?referer='. \dash\url::pwd());
+			\dash\redirect::to(\dash\url::kingdom(). '/enter/signup?referer='. \dash\url::pwd());
 			return;
 		}
 	}
