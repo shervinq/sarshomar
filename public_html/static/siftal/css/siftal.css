@@ -2041,13 +2041,11 @@ progress.xl, meter.xl {
 
 .ltr .tbl1 th.collapsing, .ltr .tbl1 td.collapsing {
   width: 1px;
-  white-space: nowrap;
-  padding-right: 2em; }
+  white-space: nowrap; }
 
 .rtl .tbl1 th.collapsing, .rtl .tbl1 td.collapsing {
   width: 1px;
-  white-space: nowrap;
-  padding-left: 2em; }
+  white-space: nowrap; }
 
 .rtl .tbl1 th {
   text-align: right;
@@ -4530,7 +4528,7 @@ iframe.gMap {
   position: relative;
   background-color: #fff;
   padding: 0 10%;
-  padding: 3em 0;
+  padding: 2em 0 3em;
   max-width: 1080px;
   margin: 0 auto;
   border-radius: 0.25rem;
@@ -4547,13 +4545,8 @@ iframe.gMap {
 
 .sTimeline .event {
   position: relative;
-  background: #e8eded;
-  border-radius: 2px;
-  padding: 1em;
-  transition: 0.3s;
-  color: #fff;
-  width: 45%;
-  margin: 0 2% 1em; }
+  margin: 0;
+  overflow: hidden; }
 
 .sTimeline .event:before {
   content: "";
@@ -4565,40 +4558,53 @@ iframe.gMap {
   background-color: #ccc;
   left: 50%;
   margin-left: -4px;
-  box-shadow: 0px 0px 2px 8px #fff; }
+  box-shadow: 0px 0px 2px 8px #fff;
+  z-index: 1; }
 
 .sTimeline .event[data-done]:before {
   background-color: green; }
 
-.sTimeline .event:hover {
-  background-color: #e4e5e7; }
+.ltr .sTimeline .event:nth-child(even) .box {
+  float: right; }
 
-.sTimeline .event:after {
-  content: '';
-  position: absolute;
-  top: 16px;
-  right: 100%;
-  height: 0;
-  width: 0;
-  border: 7px solid transparent;
-  border-right: 7px solid #e8eded; }
-
-.sTimeline .event::after {
+.ltr .sTimeline .event:nth-child(even) .box::before {
   top: 30px;
-  left: 100%;
-  border-color: transparent;
-  border-left-color: #e8eded; }
-
-.rtl .sTimeline .event::after {
   left: auto;
   right: 100%;
   border-color: transparent;
   border-right-color: #e8eded; }
 
-.sTimeline .event h2 {
+.rtl .sTimeline .event:nth-child(even) .box {
+  float: left; }
+
+.rtl .sTimeline .event:nth-child(even) .box::before {
+  top: 30px;
+  left: 100%;
+  right: auto;
+  border-color: transparent;
+  border-left-color: #e8eded; }
+
+.sTimeline .event .box {
+  position: relative;
+  margin-left: 60px;
+  margin-right: 30px;
+  background: #e8eded;
+  border-radius: 2px;
+  padding: 1em;
+  transition: 0.3s;
+  color: #fff;
+  padding: 1em;
+  width: 45%;
+  margin: 0 2%; }
+
+.sTimeline .event .box h2 {
   color: rgba(0, 0, 0, 0.9);
   margin-top: 0;
   margin-bottom: 5px; }
+
+.sTimeline .event .box p {
+  color: rgba(0, 0, 0, 0.7);
+  margin: 1em 0; }
 
 .sTimeline .event .detail {
   background: #f5f6f8;
@@ -4607,33 +4613,50 @@ iframe.gMap {
   box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.08);
   border-radius: 2px; }
 
-.sTimeline .event p {
-  color: rgba(0, 0, 0, 0.7);
-  margin: 1em 0; }
-
-.sTimeline .event:nth-child(even) {
-  float: right; }
-
-.sTimeline .event:nth-child(even)::after {
+.sTimeline .event .box::before {
+  content: '';
+  position: absolute;
+  top: 16px;
+  right: 100%;
+  height: 0;
+  width: 0;
+  border: 7px solid transparent;
+  border-right: 7px solid #e8eded;
   top: 30px;
+  left: 100%;
+  border-color: transparent;
+  border-left-color: #e8eded; }
+
+.rtl .sTimeline .event .box::before {
   left: auto;
   right: 100%;
   border-color: transparent;
   border-right-color: #e8eded; }
 
-.rtl .sTimeline .event:nth-child(even) {
-  float: left; }
-
-.rtl .sTimeline .event:nth-child(even)::after {
-  top: 30px;
-  left: 100%;
-  right: auto;
-  border-color: transparent;
-  border-left-color: #e8eded; }
+.sTimeline .event .box:hover {
+  background-color: #e4e5e7; }
 
 @media only screen and (max-width: 768px) {
   .sTimeline::before {
-    left: 25px; } }
+    left: 10px; }
+
+  .sTimeline .event {
+    margin-bottom: 1em; }
+
+  .sTimeline .event:before {
+    left: 10px; }
+
+  .sTimeline .event .box {
+    width: 85%;
+    float: none !important;
+    margin-left: 30px; }
+
+  .sTimeline .event .box::before {
+    top: 30px;
+    left: auto;
+    right: 100%;
+    border-color: transparent;
+    border-right-color: #e8eded; } }
 [class^="sf-"] {
   margin: 0;
   min-width: 1.2em;
@@ -17637,7 +17660,7 @@ body .we500 {
   top: 0; }
 
 .siftal #main #content {
-  padding: 1em 1%; }
+  padding: 1em 2%; }
 
 body.siftal .full {
   width: 100%;
