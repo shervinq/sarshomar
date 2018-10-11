@@ -15,6 +15,9 @@ class view
 			\dash\data::badge_link(\dash\url::this(). '?id='. \dash\request::get('id'));
 			\dash\data::badge_text(T_('Back to report dashboard'));
 
+			\dash\data::badge2_link(\dash\url::that(). '?id='. \dash\request::get('id'). '&export=true');
+			\dash\data::badge2_text(T_('Export CSV'));
+
 			\content_a\survey\view::load_survey();
 
 			\dash\data::page_title(\dash\data::page_title(). ' | '. \dash\data::surveyRow_title());
