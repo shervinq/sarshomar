@@ -36,9 +36,9 @@ class view
 
 		$qifChart =
 		[
-	        [T_("Survey Visitor"), intval($visitor_page)],
-	        [T_("Start"), intval($count_start)],
-	        [T_("Complete"), intval($count_complete)]
+	        ["Survey Visitor", intval($visitor_page)],
+	        ["Start", intval($count_start)],
+	        ["Complete", intval($count_complete)]
   		];
 
 		\dash\data::qifChart(json_encode($qifChart, JSON_UNESCAPED_UNICODE));

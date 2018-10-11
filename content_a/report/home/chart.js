@@ -32,6 +32,13 @@ function highChart()
         width: '80%'
       }
     },
+    tooltip: {
+      useHTML: true,
+      borderWidth: 0,
+    },
+    yAxis: [{
+      enabled: false
+    }],
     legend: {
       enabled: false
     },
