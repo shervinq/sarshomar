@@ -53,6 +53,8 @@ Highcharts.chart('chartdiv',
   },
   plotOptions: {
       series: {
+          stacking: 'normal',
+          grouping: false,
           shadow:false,
           borderWidth:0,
           dataLabels:{
@@ -92,9 +94,20 @@ Highcharts.chart('chartdiv',
   },
   series: [
   {
-    name: '{%trans "Count"%}',
+    name: '{%trans "Incomplete survey"%}',
     type: 'column',
     data: myData,
+    pointPadding: 0.4,
+    tooltip: {
+      valueSuffix: ' {%trans "Person"%}'
+    }
+
+  },
+  {
+    name: '{%trans "Complete survey"%}',
+    type: 'column',
+    data: myData,
+    pointPadding: 0.3,
     tooltip: {
       valueSuffix: ' {%trans "Person"%}'
     }
