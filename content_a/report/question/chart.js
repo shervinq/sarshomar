@@ -9,11 +9,11 @@ function highChart()
 {
 
 var myData = {{dataTable.value | raw}};
-var dataSum = 0;
-for (var i=0;i < myData.length;i++)
-{
-  dataSum += myData[i]
-}
+var dataSum = {{dataTable.value_all | raw}};
+// for (var i=0;i < myData.length;i++)
+// {
+//   dataSum += myData[i]
+// }
 
 Highcharts.chart('chartdiv',
 {
@@ -96,7 +96,7 @@ Highcharts.chart('chartdiv',
   {
     name: '{%trans "Incomplete survey"%}',
     type: 'column',
-    data: myData,
+    data: dataSum,
     pointPadding: 0.4,
     tooltip: {
       valueSuffix: ' {%trans "Person"%}'

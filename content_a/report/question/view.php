@@ -48,7 +48,7 @@ class view
 						{
 							$sort = 'answerdetails.answerterm_id';
 						}
-						elseif(\dash\request::get('sort') === 'value')
+						elseif(in_array(\dash\request::get('sort'), ['value', 'value_all']))
 						{
 							$sort = 'count';
 						}
@@ -61,12 +61,13 @@ class view
 
 
 					$dataTable = \lib\app\answer::get_result(\dash\request::get('id'), $questionid, $sort, $order);
+
 					$table = $dataTable;
 					if(is_array($table))
 					{
 						$table = array_map('json_decode', $table);
 						\dash\data::tableRow($table);
-						\dash\data::sortLink(\dash\app\sort::make_sortLink(['answer', 'value'], \dash\url::this(). '/question'));
+						\dash\data::sortLink(\dash\app\sort::make_sortLink(['answer', 'value', 'value_all'], \dash\url::this(). '/question'));
 					}
 					\dash\data::showChart(true);
 				}
