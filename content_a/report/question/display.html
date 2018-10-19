@@ -54,8 +54,8 @@
     <thead class="primary fs09">
       <tr>
         <th data-sort='{{sortLink.answer.order}}'><a href="{{sortLink.answer.link}}">{%trans "Answer"%}</a></th>
-        <th data-sort='{{sortLink.value.order}}'><a href="{{sortLink.value.link}}">{%trans "Complete survey"%}</a></th>
-        <th data-sort='{{sortLink.value_all.order}}'><a href="{{sortLink.value_all.link}}">{%trans "Incomplete survey"%}</a></th>
+        <th data-sort='{{sortLink.value.order}}'><a href="{{sortLink.value.link}}">{%trans "Count"%}</a></th>
+        {%if false%}<th data-sort='{{sortLink.value_all.order}}'><a href="{{sortLink.value_all.link}}">{%trans "Incomplete survey"%}</a></th>{%endif%}
       </tr>
     </thead>
     <tbody>
@@ -63,7 +63,7 @@
       <tr>
           <td>{{value}}</td>
           <td>{{tableRow['value'][key] | fitNumber}}</td>
-          <td>{{tableRow['value_all'][key] | fitNumber}}</td>
+          {%if false%}<td>{{tableRow['value_all'][key] | fitNumber}}</td>{%endif%}
       </tr>
       {%endfor%}
 

@@ -9,7 +9,7 @@ function highChart()
 {
 
 var myData = {{dataTable.value | raw}};
-var dataSum = {{dataTable.value_all | raw}};
+var dataSum = [];
 // for (var i=0;i < myData.length;i++)
 // {
 //   dataSum += myData[i]
@@ -93,16 +93,7 @@ Highcharts.chart('chartdiv',
     backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || 'rgba(255,255,255,0.25)'
   },
   series: [
-  {
-    name: '{%trans "Incomplete survey"%}',
-    type: 'column',
-    data: dataSum,
-    pointPadding: 0.4,
-    tooltip: {
-      valueSuffix: ' {%trans "Person"%}'
-    }
 
-  },
   {
     name: '{%trans "Complete survey"%}',
     type: 'column',

@@ -46,23 +46,23 @@ class answers
 
 			$result = \dash\db::get($query, ['term', 'count']);
 
-			$query_all =
-			"
-				SELECT
-					COUNT(*) AS `count`,
-					answerdetails.answerterm_id AS `term`
-				FROM
-					answerdetails
-				INNER JOIN answers ON answers.id = answerdetails.answer_id
-				WHERE
-					answers.complete IS NULL AND
-					answerdetails.survey_id = $_survey_id AND
-					answerdetails.question_id = $_question_id
-				GROUP BY
-					answerdetails.answerterm_id
-			";
+			// $query_all =
+			// "
+			// 	SELECT
+			// 		COUNT(*) AS `count`,
+			// 		answerdetails.answerterm_id AS `term`
+			// 	FROM
+			// 		answerdetails
+			// 	INNER JOIN answers ON answers.id = answerdetails.answer_id
+			// 	WHERE
+			// 		answers.complete IS NULL AND
+			// 		answerdetails.survey_id = $_survey_id AND
+			// 		answerdetails.question_id = $_question_id
+			// 	GROUP BY
+			// 		answerdetails.answerterm_id
+			// ";
 
-			$result_all = \dash\db::get($query_all, ['term', 'count']);
+			// $result_all = \dash\db::get($query_all, ['term', 'count']);
 
 			$new    = [];
 			$term   = [];
@@ -85,7 +85,7 @@ class answers
 							$new[] =
 							[
 								'count'     => $result[$value['id']],
-								'count_all' => isset($result_all[$value['id']]) ? $result_all[$value['id']] : 0,
+								// 'count_all' => isset($result_all[$value['id']]) ? $result_all[$value['id']] : 0,
 								'term_id'   => $value['id'],
 								'text'      => $value['text'],
 								'file'      => $value['file'],
@@ -116,24 +116,24 @@ class answers
 
 			$result = \dash\db::get($query, ['term', 'count']);
 
-			$query_all =
-			"
-				SELECT
-					COUNT(*) AS `count`,
-					answerdetails.answerterm_id AS `term`
-				FROM
-					answerdetails
-				INNER JOIN answers ON answers.id = answerdetails.answer_id
-				WHERE
-					answers.complete IS NULL AND
-					answerdetails.survey_id = $_survey_id AND
-					answerdetails.question_id = $_question_id
-				GROUP BY
-					answerdetails.answerterm_id
-				$query_order
-			";
+			// $query_all =
+			// "
+			// 	SELECT
+			// 		COUNT(*) AS `count`,
+			// 		answerdetails.answerterm_id AS `term`
+			// 	FROM
+			// 		answerdetails
+			// 	INNER JOIN answers ON answers.id = answerdetails.answer_id
+			// 	WHERE
+			// 		answers.complete IS NULL AND
+			// 		answerdetails.survey_id = $_survey_id AND
+			// 		answerdetails.question_id = $_question_id
+			// 	GROUP BY
+			// 		answerdetails.answerterm_id
+			// 	$query_order
+			// ";
 
-			$result_all = \dash\db::get($query_all, ['term', 'count']);
+			// $result_all = \dash\db::get($query_all, ['term', 'count']);
 
 			$new    = [];
 			$term   = [];
@@ -157,7 +157,7 @@ class answers
 							$new[] =
 							[
 								'count'     => $value,
-								'count_all' => isset($result_all[$key]) ? $result_all[$key] : 0,
+								// 'count_all' => isset($result_all[$key]) ? $result_all[$key] : 0,
 								'term_id'   => @$term[$key]['id'],
 								'text'      => @$term[$key]['text'],
 								'file'      => @$term[$key]['file'],
