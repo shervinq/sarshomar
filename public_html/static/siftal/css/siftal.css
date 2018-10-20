@@ -2077,6 +2077,9 @@ progress.xl, meter.xl {
 .rtl .tbl1 tr th:first-of-type, .rtl .tbl1 tr td:first-of-type {
   padding-right: 3rem; }
 
+.tbl1 td a {
+  word-break: break-all; }
+
 /*================================================================== [ v1 ]*/
 .tbl1.v1 {
   border-radius: 1rem;
@@ -18330,6 +18333,7 @@ body .we500 {
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
   transition: all 200ms cubic-bezier(0.694, 0.0482, 0.335, 1);
+  transition-property: right,left;
   transform: translateX(0); }
 
 .siftal.ltr #sidebar {
@@ -18358,7 +18362,7 @@ body .we500 {
 .siftal[data-clean] #sidebar figure {
   margin: 2em 0; }
 
-.siftal[data-clean] header #sidenavHandler {
+.siftal[data-clean] .header .sidenavHandler {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -18380,7 +18384,7 @@ body .we500 {
 .siftal[data-sidebar] #main:after {
   top: 0; }
 
-.siftal #header.cloner {
+.siftal .header.cloner {
   position: fixed;
   z-index: 8;
   top: -100%;
@@ -18394,7 +18398,7 @@ body .we500 {
   transition: all 200ms cubic-bezier(0.694, 0.0482, 0.335, 1);
   transform: translateX(0); }
 
-.siftal #header.cloner[data-cloner-trigger] {
+.siftal .header.cloner[data-cloner-trigger] {
   top: 0; }
 
 .siftal #main #content {
@@ -18420,7 +18424,7 @@ body.siftal .cbox table {
   direction: ltr; }
 
 /* header */
-.siftal header {
+.siftal .header {
   height: 50px;
   flex-shrink: 0;
   background-color: #fff;
@@ -18429,29 +18433,29 @@ body.siftal .cbox table {
   user-select: none;
   z-index: 1; }
 
-.siftal header:hover {
+.siftal .header:hover {
   overflow: visible; }
 
-.siftal header #sidenavHandler {
+.siftal .header .sidenavHandler {
   width: 50px;
   text-align: center;
   font-size: 1.2em;
   cursor: pointer !important; }
 
-.siftal header #sidenavHandler:hover {
+.siftal .header .sidenavHandler:hover {
   background-color: rgba(0, 0, 0, 0.2); }
 
-.siftal header #sidenavHandler i {
+.siftal .header .sidenavHandler i {
   width: 100%;
   padding: 0; }
 
-.siftal header h1 {
+.siftal .header h1 {
   margin: 0;
   overflow: hidden;
   min-width: 100px;
   font-size: 1.5em; }
 
-.siftal header h1 a {
+.siftal .header h1 a {
   margin: 0;
   padding: 0 1em;
   color: #888;
@@ -18462,25 +18466,25 @@ body.siftal .cbox table {
   line-height: 50px;
   color: #888; }
 
-.siftal header h1 a:hover {
+.siftal .header h1 a:hover {
   color: #444;
   background-color: rgba(0, 0, 0, 0.1); }
 
-.siftal header h1 a:focus {
+.siftal .header h1 a:focus {
   color: #444;
   background-color: rgba(0, 0, 0, 0.15); }
 
-.siftal header h1 img {
+.siftal .header h1 img {
   height: 50px;
   width: 50px;
   padding: 5px; }
 
-.siftal header h1 span {
+.siftal .header h1 span {
   padding: 0 0.5em;
   font-weight: bold; }
 
 /* header flex */
-.siftal header i {
+.siftal .header i {
   padding: 0 1.5em;
   cursor: pointer;
   transition-duration: 0.3s;
@@ -18491,26 +18495,26 @@ body.siftal .cbox table {
   color: #888;
   line-height: 45px; }
 
-.siftal header i:before {
+.siftal .header i:before {
   font-size: 1.5em;
   vertical-align: -webkit-baseline-middle !important; }
 
-.siftal header .hm a, .siftal header .hm div {
+.siftal .header .hm a, .siftal .header .hm div {
   transition-duration: 0.3s;
   transition-property: color, background-color;
   color: #888;
   max-height: 50px; }
 
-.siftal header .hm a:hover, .siftal header .hm div:hover {
+.siftal .header .hm a:hover, .siftal .header .hm div:hover {
   color: #555;
   background-color: rgba(0, 0, 0, 0.1); }
 
-.siftal header .hm a:focus, .siftal header .hm div:focus {
+.siftal .header .hm a:focus, .siftal .header .hm div:focus {
   color: #000;
   background-color: rgba(0, 0, 0, 0.2); }
 
 /* vertical menu nav */
-.siftal header .vm nav {
+.siftal .header .vm nav {
   max-width: 200px;
   min-width: 140px;
   width: auto;
@@ -18522,23 +18526,23 @@ body.siftal .cbox table {
   visibility: hidden;
   z-index: 1; }
 
-.siftal header .vm nav > a {
+.siftal .header .vm nav > a {
   display: block;
   padding: 1em 1em;
   transition: background-color 0.3s;
   margin: 0.5em;
   background-color: #eee; }
 
-.siftal header .vm nav > a:hover {
+.siftal .header .vm nav > a:hover {
   background-color: #fff; }
 
-.siftal header .vm nav > a:focus {
+.siftal .header .vm nav > a:focus {
   background-color: rgba(255, 255, 255, 0.4); }
 
-.siftal header .vm nav .isActive, .siftal header .vm nav .active {
+.siftal .header .vm nav .isActive, .siftal .header .vm nav .active {
   cursor: alias; }
 
-.siftal header .vm nav .isActive::after, .siftal header .vm nav .active::after {
+.siftal .header .vm nav .isActive::after, .siftal .header .vm nav .active::after {
   content: "\6f";
   display: inline-block;
   color: #5cb85c;
@@ -18550,7 +18554,7 @@ body.siftal .cbox table {
 .siftal.rtl header .vm nav .isActive::after, .siftal.rtl header .vm nav .active::after {
   float: left; }
 
-.siftal header .vm:hover nav {
+.siftal .header .vm:hover nav {
   opacity: 1;
   visibility: visible; }
 
@@ -19173,7 +19177,7 @@ body.siftal .cbox table {
     left: initial;
     right: 300px; }
 
-  .siftal #header.cloner {
+  .siftal .header.cloner {
     width: calc( 100% - 300px); }
 
   .siftal #sidebar {
@@ -19520,7 +19524,7 @@ body.siftal .cbox table {
   .siftal.rtl #sidebar {
     right: -250px; }
 
-  .siftal #header.cloner {
+  .siftal .header.cloner {
     width: 100%; }
 
   .siftal .toggleClean {
@@ -19863,7 +19867,7 @@ body.siftal .cbox table {
   kbd {
     display: none; }
 
-  .siftal header h1 a {
+  .siftal .header h1 a {
     padding: 0; }
 
   .siftal .wrapper {
@@ -19894,12 +19898,12 @@ body.siftal .cbox table {
     min-width: 150px;
     width: 150px; }
 
-  .siftal #header h1 {
+  .siftal .header h1 {
     max-width: 60%;
     max-width: calc( 100% - 110px);
     font-size: 1.2em; }
 
-  .siftal #header h1 + .hm {
+  .siftal .header h1 + .hm {
     display: none !important; }
 
   .siftal.ltr #main {
@@ -19908,7 +19912,7 @@ body.siftal .cbox table {
   .siftal.rtl #main {
     margin-right: 0; }
 
-  .siftal #header.cloner {
+  .siftal .header.cloner {
     width: 100%; }
 
   .siftal.ltr #sidebar {
