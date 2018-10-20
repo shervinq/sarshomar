@@ -9,11 +9,11 @@ function highChart()
 {
 
 var myData = {{dataTable.value | raw}};
-var dataSum = [];
-// for (var i=0;i < myData.length;i++)
-// {
-//   dataSum += myData[i]
-// }
+var dataSum = 0;
+for (var i=0;i < myData.length;i++)
+{
+  dataSum += parseInt(myData[i]);
+}
 
 Highcharts.chart('chartdiv',
 {
