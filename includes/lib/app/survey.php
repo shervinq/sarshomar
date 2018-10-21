@@ -35,6 +35,7 @@ class survey
 			if($_site)
 			{
 				\dash\redirect::to(\dash\url::kingdom());
+				return false;
 			}
 			else
 			{
@@ -48,6 +49,7 @@ class survey
 		if(!$load || !isset($load['status']) || !isset($load['privacy']) || !isset($load['user_id']))
 		{
 			\dash\header::status(404, T_("Survay not found"));
+			return false;
 		}
 
 		if(isset($load['lang']))
@@ -67,6 +69,7 @@ class survey
 				}
 
 				\dash\redirect::to($new_url);
+				return false;
 			}
 		}
 
@@ -88,6 +91,7 @@ class survey
 		}
 
 		\dash\data::surveyRow($load);
+		return $load;
 	}
 
 

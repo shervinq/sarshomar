@@ -4,6 +4,7 @@ namespace content_s\home;
 
 class view
 {
+
 	public static function config()
 	{
 		\dash\data::page_title(T_("Survey"));
@@ -20,11 +21,36 @@ class view
 			\dash\data::page_desc($page_desc);
 		}
 
+		self::load(\dash\url::module(), \dash\request::get('step'), ['site' => true]);
+	}
+
+
+	public static function load($_id, $_step, $_args = [])
+	{
+		$default_args =
+		[
+			'site' => false,
+		];
+
+		if(!is_array($_args))
+		{
+			$_args = [];
+		}
+
+		$_args = array_merge($default_args, $_args);
+
+		$is_site = false;
+		if($_args['site'])
+		{
+			$is_site = true;
+		}
+
 		$survey = \dash\data::surveyRow();
 
 		$step_display = 'start';
 
 		$myTitle = [];
+
 
 		if(isset($survey['welcometitle']) || isset($survey['welcomedesc']) || isset($survey['welcomemedia']['file']))
 		{
@@ -34,7 +60,7 @@ class view
 			$myTitle['media'] = isset($survey['welcomemedia']['file']) ? $survey['welcomemedia']['file'] : null;
 		}
 
-		$step      = \dash\request::get('step');
+		$step      = $_step;
 		$must_step = null;
 		$end_step  = null;
 
@@ -45,13 +71,16 @@ class view
 			// if not login go to first page to signup firset
 			if(!\dash\user::id())
 			{
-				\dash\redirect::to(\dash\url::this());
-				return;
+				if($is_site)
+				{
+					\dash\redirect::to(\dash\url::this());
+				}
+				return false;
 			}
 
 			$end_step  = \dash\data::surveyRow_countblock();
 
-			$question = \lib\app\question::get_by_step(\dash\url::module(), $step);
+			$question = \lib\app\question::get_by_step($_id, $step);
 
 			if(!$question || !isset($question['type']))
 			{
@@ -69,7 +98,7 @@ class view
 			$myTitle['desc']  = isset($question['desc'])  ? $question['desc']  : null;
 			$myTitle['media'] = isset($question['media']['file']) ? $question['media']['file'] : null;
 
-			$answer = \lib\db\answers::get(['survey_id' => \dash\coding::decode(\dash\url::module()), 'user_id' => \dash\user::id(), 'limit' => 1]);
+			$answer = \lib\db\answers::get(['survey_id' => \dash\coding::decode($_id), 'user_id' => \dash\user::id(), 'limit' => 1]);
 
 			\dash\data::answerRow($answer);
 
@@ -88,7 +117,14 @@ class view
 			{
 				if(!\dash\data::mySurvey())
 				{
-					\dash\redirect::to(\dash\url::this(). '?step='. $must_step);
+					if($is_site)
+					{
+						\dash\redirect::to(\dash\url::this(). '?step='. $must_step);
+					}
+					else
+					{
+						return ['must_step' => $must_step];
+					}
 				}
 			}
 
@@ -104,7 +140,7 @@ class view
 				$time_key = 'dateview_'. (string) \dash\coding::decode(\dash\data::surveyRow_id()). '_'. (string) $step;
 				\dash\session::set($time_key, date("Y-m-d H:i:s"));
 
-				$myAnswer = \lib\app\answer::my_answer(\dash\url::module(), $question['id']);
+				$myAnswer = \lib\app\answer::my_answer($_id, $question['id']);
 				if($myAnswer && is_array($myAnswer))
 				{
 					\dash\data::myAnswer($myAnswer);
@@ -137,7 +173,10 @@ class view
 
 		\dash\data::myTitle($myTitle);
 
-		self::make_xkey_xvalue();
+		if($is_site)
+		{
+			self::make_xkey_xvalue();
+		}
 
 		\dash\data::step_display($step_display);
 		\dash\data::step_end($end_step);
@@ -159,7 +198,7 @@ class view
 			\dash\data::step_type('thankyou');
 		}
 
-		if(\dash\data::mySurvey())
+		if(\dash\data::mySurvey() && $is_site)
 		{
 			// @reza
 			// show id he is creator
@@ -167,8 +206,18 @@ class view
 			\dash\data::badge_text(T_('Back to survey dashboard'));
 		}
 
-		self::askDetail();
+		if($is_site)
+		{
+			self::askDetail();
+		}
+
+		if(!$is_site)
+		{
+			return true;
+		}
+
 	}
+
 
 
 	public static function make_xkey_xvalue()
