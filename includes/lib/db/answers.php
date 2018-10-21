@@ -7,8 +7,9 @@ class answers
 
 	public static function get_chart($_survey_id, $_question_id, $_user_id, $_sort = null, $_order = null)
 	{
+		$skip_count  = 0;
 		$query_order = null;
-		$sort_term = null;
+		$sort_term   = null;
 		if($_sort)
 		{
 			if($_sort === 'answerdetails.answerterm_id')
@@ -26,13 +27,14 @@ class answers
 				$query_order .= mb_strtoupper($_order);
 			}
 		}
+
 		if($sort_term)
 		{
 			$query =
 			"
 				SELECT
 					COUNT(*) AS `count`,
-					answerdetails.answerterm_id AS `term`
+					IF(answerdetails.answerterm_id IS NULL, 'skip', answerdetails.answerterm_id)  AS `term`
 				FROM
 					answerdetails
 				INNER JOIN answers ON answers.id = answerdetails.answer_id
@@ -46,6 +48,11 @@ class answers
 
 			$result = \dash\db::get($query, ['term', 'count']);
 
+			if(isset($result['skip']))
+			{
+				$skip_count = intval($result['skip']);
+			}
+			unset($result['skip']);
 			// $query_all =
 			// "
 			// 	SELECT
@@ -101,7 +108,7 @@ class answers
 			"
 				SELECT
 					COUNT(*) AS `count`,
-					answerdetails.answerterm_id AS `term`
+					IF(answerdetails.answerterm_id IS NULL, 'skip', answerdetails.answerterm_id)  AS `term`
 				FROM
 					answerdetails
 				INNER JOIN answers ON answers.id = answerdetails.answer_id
@@ -115,6 +122,13 @@ class answers
 			";
 
 			$result = \dash\db::get($query, ['term', 'count']);
+
+
+			if(isset($result['skip']))
+			{
+				$skip_count = intval($result['skip']);
+			}
+			unset($result['skip']);
 
 			// $query_all =
 			// "
@@ -134,8 +148,9 @@ class answers
 			// ";
 
 			// $result_all = \dash\db::get($query_all, ['term', 'count']);
-
 			$new    = [];
+
+
 			$term   = [];
 			if(is_array($result))
 			{
@@ -157,7 +172,6 @@ class answers
 							$new[] =
 							[
 								'count'     => $value,
-								// 'count_all' => isset($result_all[$key]) ? $result_all[$key] : 0,
 								'term_id'   => @$term[$key]['id'],
 								'text'      => @$term[$key]['text'],
 								'file'      => @$term[$key]['file'],
@@ -203,6 +217,17 @@ class answers
 					}
 				}
 			}
+		}
+
+		if($skip_count)
+		{
+			$new[] =
+			[
+				'count'     => $skip_count,
+				'term_id'   => null,
+				'text'      => T_("Skipped"),
+				'file'      => null,
+			];
 		}
 		return $new;
 	}
