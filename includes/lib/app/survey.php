@@ -26,6 +26,71 @@ class survey
 		'thankyoudesc',
 	];
 
+
+	public static function fire($_id, $_site = false)
+	{
+		$id = \dash\coding::decode($_id);
+		if(!$id)
+		{
+			if($_site)
+			{
+				\dash\redirect::to(\dash\url::kingdom());
+			}
+			else
+			{
+				\dash\header::status(404, T_("Survay not found"));
+				return false;
+			}
+		}
+
+		$load = \lib\app\survey::get($_id);
+
+		if(!$load || !isset($load['status']) || !isset($load['privacy']) || !isset($load['user_id']))
+		{
+			\dash\header::status(404, T_("Survay not found"));
+		}
+
+		if(isset($load['lang']))
+		{
+			if($load['lang'] !== \dash\language::current())
+			{
+				$new_url = \dash\url::kingdom();
+				$new_url .= '/'. $load['lang']. '/s/'. $_id;
+				if(\dash\url::child())
+				{
+					$new_url .= '/'. \dash\url::child();
+				}
+
+				if(\dash\request::get())
+				{
+					$new_url .= '?'. \dash\url::query();
+				}
+
+				\dash\redirect::to($new_url);
+			}
+		}
+
+		if(intval(\dash\coding::decode($load['user_id'])) === intval(\dash\user::id()))
+		{
+			\dash\data::mySurvey(true);
+		}
+
+		if(!\dash\permission::supervisor())
+		{
+			// check user id and privacy and password
+			if($load['status'] !== 'publish')
+			{
+				if(!\dash\data::mySurvey())
+				{
+					\dash\header::status(403, T_("This survey is not publish"));
+				}
+			}
+		}
+
+		\dash\data::surveyRow($load);
+	}
+
+
 	public static function get($_id)
 	{
 		// if(!\dash\user::id())
