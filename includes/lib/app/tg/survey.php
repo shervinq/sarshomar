@@ -42,10 +42,28 @@ class survey
 		}
 	}
 
-
-	public static function answer($_id, $_step, $_answer)
+	public static function skip($_id, $_question_id)
 	{
+		return self::answer($_id, $_question_id, null, true);
+	}
 
+	public static function answer($_id, $_question_id, $_answer, $_skip = false)
+	{
+		$answer           = [];
+		$answer['answer'] = $_answer;
+		$answer['skip']   = $_skip;
+		$result           = \lib\app\answer::add($_id, $_question_id, $answer);
+
+		if(!$result)
+		{
+			return false;
+		}
+		// @check
+		$step = 0;
+		// $step  = \dash\request::get('step');
+		$step  = intval($step) + 1;
+		// new step
+		return null;
 	}
 
 
@@ -101,7 +119,21 @@ class survey
 
 	private static function multiple_choice()
 	{
-		return null;
+		$question = \dash\data::question();
+		$msg = '';
+		if(isset($question['choice']) && is_array($question['choice']))
+		{
+			foreach ($question['choice'] as $key => $choice)
+			{
+				if(isset($choice['title']))
+				{
+					$msg .= $key . ': '. $choice['title']. "\n";
+
+				}
+			}
+
+		}
+		return $msg;
 	}
 
 
