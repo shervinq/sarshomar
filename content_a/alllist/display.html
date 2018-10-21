@@ -1,0 +1,64 @@
+{%extends display.admin%}
+
+
+
+{%block htmlSearchBox%}
+<div class="cbox fs12">
+  <form method="get" action='{{url.this}}' data-action>
+    <div class="input">
+      <input type="search" name="q" placeholder='{%trans "Search"%}' id="q" value="{{requestGET.q}}" autofocus autocomplete='off'>
+
+      <button class="addon btn ">{%trans "Search" %}</button>
+    </div>
+  </form>
+</div>
+{%endblock%}
+
+{%block pageContent%}
+{{block('htmlSearchBox')}}
+<div class='middle normal live f justify-center'>
+
+
+{%for key, value in dataTable%}
+
+{%set cardColor%}
+	{%if value.status == 'publish'%}blue{%elseif value.status == 'draft'%}green{%elseif value.status == 'deleted'%}red{%else%}black{%endif%}
+{%endset%}
+  <a href='{{url.here}}/survey?id={{value.id}}' class="vcard shadow c3 {{cardColor}} mA10 s6" data-live="{%if value.status == 'publish'%}on{%elseif value.status == 'draft'%}half{%else%}off{%endif%}" >
+    <div class="content title">
+      <div class="header">{{value.title}}</div>
+      <div class="meta">{{value.desc}}</div>
+    </div>
+    <div class="footer txtC">{%set myStatus = value.status%} {%trans myStatus%}</div>
+    <div class="footer f">
+      <div>
+        <i class="compact sf-question-circle"></i> <span>{%if value.countblock%} {{value.countblock | fitNumber}} {%trans "Question"%}{%else%}{%trans "Without question"%}{%endif%}</span>
+      </div>
+      <div>
+        <i class="compact sf-users"></i> <span>{%if value.answer_count%}{{value.answer_count | fitNumber}} {%trans "Response"%}{%else%}{%trans "No responses"%}{%endif%}</span>
+      </div>
+    </div>
+
+  </a>
+{%endfor%}
+
+</div>
+{%include display.pagination%}
+{%endblock%}
+
+
+
+{%block sidenav%}
+<li><a href="{{url.here}}"><i class='sf-tachometer'></i> <span>{% trans "Questionnaires" %}</span></a></li>
+<li>
+  <ul>
+{%for key, value in dataTable%}
+    <li><a href="{{url.here}}/survey?id={{value.id}}"><i class='floatRa mRa10 fc-mute sf-question-circle'></i> <span>{{value.title}}</span></a></li>
+{%endfor%}
+
+  </ul>
+</li>
+<li><a href="{{url.here}}/survey/add"><i class='sf-plus'></i> <span>{%trans "Add new survey"%}</span></a></li>
+
+{%endblock%}
+
