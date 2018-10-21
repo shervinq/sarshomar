@@ -166,6 +166,43 @@ class answers
 					}
 				}
 			}
+
+			if(!$query_order)
+			{
+				$question_detail = \lib\db\questions::get(['id' => $_question_id, 'limit' => 1]);
+				$question_detail = \lib\app\question::ready($question_detail);
+
+				if(isset($question_detail['type']) && in_array($question_detail['type'], ['single_choice','multiple_choice','dropdown']))
+				{
+					if(isset($question_detail['choice']) && is_array($question_detail['choice']))
+					{
+						$master_sort = $question_detail['choice'];
+
+						$new2 = [];
+						foreach ($master_sort as $base_sort)
+						{
+							if(!array_key_exists('title', $base_sort))
+							{
+								continue;
+							}
+
+							foreach ($new as $value)
+							{
+								if(!array_key_exists('text', $value))
+								{
+									continue;
+								}
+
+								if($value['text'] == $base_sort['title'])
+								{
+									$new2[] = $value;
+								}
+							}
+						}
+						$new = $new2;
+					}
+				}
+			}
 		}
 		return $new;
 	}

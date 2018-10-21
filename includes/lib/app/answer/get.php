@@ -144,27 +144,25 @@ trait get
 
 		$chart_result = \lib\db\answers::get_chart($survey_id, $question_id, \dash\user::id(), $_sort, $_order);
 
-		$new = [];
+		$categories = [];
+		$chartvalue      = [];
+
 		if(is_array($chart_result))
 		{
 			foreach ($chart_result as $key => $value)
 			{
 				if(isset($value['text']) && isset($value['count']))
 				{
-					$new[] =
-					[
-						'key'       => $value['text'],
-						'value'     => intval($value['count']),
-						// 'value_all' => intval($value['count_all']),
-					];
+					$categories[] = $value['text'];
+					$chartvalue[]      = intval($value['count']);
 				}
 			}
 		}
 		$hi_chart               = [];
-		$hi_chart['categories'] = json_encode(array_column($new, 'key'), JSON_UNESCAPED_UNICODE);
-		$hi_chart['value']      = json_encode(array_column($new, 'value'), JSON_UNESCAPED_UNICODE);
+		$hi_chart['categories'] = json_encode($categories, JSON_UNESCAPED_UNICODE);
+		$hi_chart['value']      = json_encode($chartvalue, JSON_UNESCAPED_UNICODE);
 		// $hi_chart['value_all']  = json_encode(array_column($new, 'value_all'), JSON_UNESCAPED_UNICODE);
-
+		// var_dump($hi_chart);exit();
 		return $hi_chart;
 	}
 
