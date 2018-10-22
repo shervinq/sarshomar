@@ -4,31 +4,41 @@
 
 
 {%block pageContent%}
-{%if questionList%}
-<div class="cbox mB20">
 
-  {%for key, value in questionList%}
-  <a href="{{url.this}}/question?id={{requestGET.id}}&questionid={{value.id}}">
-    <div class="msg">#{{(key + 1) | fitNumber}}<br>
-      {%if value.title%}<b>{{value.title}}</b>{%endif%}
-      {%if value.desc%}<b>{%if value.title%} | <small>{{value.desc}}</small>{%else%}{{value.desc}}{%endif%}</b>{%endif%}
-      {%if not value.title and not value.desc%}<i>{%trans "Untitled"%}</i>{%endif%}
-      <br>
-      {%if value.type%}<b>{{value.type_detail.title}}</b>{%endif%}
-    </div>
-  </a>
-  {%endfor%}
-
-</div>
-{%elseif dataTable and not showChart%}
+{%if dataTable and not showChart%}
 
   {{block('htmlTable')}}
 
 {%else%}
-   <div class="chart x4 mB20" id="chartdiv" >
-   </div>
+<form method="get" action="{{url.this}}/question">
 
-  {{block('htmlTableRow')}}
+  <input type="hidden" name="id" value="{{requestGET.id}}">
+  <input type="hidden" name="questionid" value="{{requestGET.questionid}}">
+
+  <div class="f">
+    <div class="c s12 pRa5">
+        {{block('iQuestion2')}}
+    </div>
+    <div class="c s12 pRa5">
+        {{block('iQuestion3')}}
+    </div>
+    <div class="cauto s12">
+      <label>&nbsp;</label>
+      <button class="btn block primary">{%trans "Run"%}</button>
+    </div>
+  </div>
+</form>
+
+   {%if showAdvanceChart%}
+      <div class="chart x4 mB20" id="chartdiv" >
+     </div>
+   {%else%}
+
+     <div class="chart x4 mB20" id="chartdiv" >
+     </div>
+      {{block('htmlTableRow')}}
+   {%endif%}
+
 {%endif%}
 
 {%endblock%}
@@ -36,14 +46,56 @@
 
 
 {%block foot_js%}
+<script src="https://code.highcharts.com/modules/sunburst.js"></script>
 {%if showChart%}
 <script type="text/javascript">
   {%include 'content_a/report/question/chart.js'%}
+</script>
+{%elseif showAdvanceChart%}
+<script type="text/javascript">
+  {%include 'content_a/report/question/advancechart.js'%}
 </script>
 {%endif%}
 {%endblock%}
 
 
+
+
+
+
+
+{%block iQuestion2%}
+
+
+  <label for="question2">{%trans "Question"%}</label>
+  <select name="question2" class="ui dropdown select">
+    <option value=""><i>{%trans "Please select one item"%}</i></option>
+    <option value="0"><i>{%trans "Whitout question"%}</i></option>
+    {%for key, value in questionList%}
+    {%if value.id != requestGET.questionid%}
+    <option value="{{value.id}}" {%if value.id == requestGET.question2%} selected {%endif%}>{{value.title}}</option>
+    {%endif%}
+    {%endfor%}
+  </select>
+
+{%endblock%}
+
+
+{%block iQuestion3%}
+
+
+  <label for="question3">{%trans "Question"%}</label>
+  <select name="question3" class="ui dropdown select">
+    <option value=""><i>{%trans "Please select one item"%}</i></option>
+    <option value="0"><i>{%trans "Whitout question"%}</i></option>
+    {%for key, value in questionList%}
+    {%if value.id != requestGET.questionid%}
+    <option value="{{value.id}}" {%if value.id == requestGET.question3%} selected {%endif%}>{{value.title}}</option>
+    {%endif%}
+    {%endfor%}
+  </select>
+
+{%endblock%}
 
 
 
@@ -53,8 +105,8 @@
   <table class="tbl1 v1 cbox fs12 ">
     <thead class="primary fs09">
       <tr>
-        <th data-sort='{{sortLink.answer.order}}'><a href="{{sortLink.answer.link}}">{%trans "Answer"%} <small>{%trans "Click to sort"%}</small></a> </th>
-        <th data-sort='{{sortLink.value.order}}'><a href="{{sortLink.value.link}}">{%trans "Count"%} <small>{%trans "Click to sort"%}</small></a></th>
+        <th title='{%trans "Click to sort"%}' data-sort='{{sortLink.answer.order}}'><a href="{{sortLink.answer.link}}">{%trans "Answer"%}</a> </th>
+        <th title='{%trans "Click to sort"%}' data-sort='{{sortLink.value.order}}'><a href="{{sortLink.value.link}}">{%trans "Count"%}</a></th>
         {%if false%}<th data-sort='{{sortLink.value_all.order}}'><a href="{{sortLink.value_all.link}}">{%trans "Incomplete survey"%}</a></th>{%endif%}
       </tr>
     </thead>

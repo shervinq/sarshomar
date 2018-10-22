@@ -35,6 +35,16 @@ class view
 
 				\dash\data::questionDetail($question_detail);
 
+				if(\dash\request::get('question2') || \dash\request::get('question3'))
+				{
+					$load_advance_chart = self::load_advance_chart(\dash\request::get('id'),\dash\request::get('questionid'), \dash\request::get('question2'), \dash\request::get('question3'));
+					if($load_advance_chart)
+					{
+						\dash\data::showAdvanceChart(true);
+						return;
+					}
+				}
+
 				$questionid = \dash\request::get('questionid');
 
 				if(isset($question_detail['type_detail']['chart']))
@@ -70,6 +80,13 @@ class view
 						\dash\data::sortLink(\dash\app\sort::make_sortLink(['answer', 'value', 'value_all'], \dash\url::this(). '/question'));
 					}
 					\dash\data::showChart(true);
+
+
+					$id = \dash\request::get('id');
+
+					$questionList = \lib\app\question::block_survey($id);
+
+					\dash\data::questionList($questionList);
 				}
 				else
 				{
@@ -88,6 +105,37 @@ class view
 		}
 
 		\dash\data::dataTable($dataTable);
+	}
+
+
+	public static function load_advance_chart($_id, $_question1, $_question2, $_question3 = null)
+	{
+		$id        = \dash\coding::decode($_id);
+		$question1 = \dash\coding::decode($_question1);
+		$question2 = \dash\coding::decode($_question2);
+		$question3 = \dash\coding::decode($_question3);
+
+		if(!$_question2 && !$question3)
+		{
+			return false;
+		}
+
+		if(!$question2 && $question3)
+		{
+			$question2 = $question3;
+			$question3 = null;
+		}
+
+		if($question2 == $question3)
+		{
+			$question3 = null;
+		}
+
+
+		$result = \lib\app\answer\chart::advance_chart($id, $question1, $question2, $question3);
+		\dash\data::advanceChart($result);
+		return true;
+
 	}
 }
 ?>
