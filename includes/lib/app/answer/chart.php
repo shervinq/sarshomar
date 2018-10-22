@@ -8,18 +8,30 @@ class chart
 		$query =
 		"
 			SELECT
-				COUNT(*) AS `count`,
-				-- answerdetails.user_id,
-			  	MAX(CASE WHEN answerdetails.question_id = $_question1 THEN answerdetails.answerterm_id END) 'q1',
-			  	MAX(CASE WHEN answerdetails.question_id = $_question2 THEN answerdetails.answerterm_id END) 'q2',
-			  	MAX(CASE WHEN answerdetails.question_id = $_question3 THEN answerdetails.answerterm_id END) 'q3'
+				count(myTable.q3) AS `count`,
+				myTable.q1,
+				myTable.q2,
+				myTable.q3
 			FROM
-				answerdetails
-			WHERE
-				answerdetails.survey_id   = $_survey_id
-			GROUP BY
-			answerdetails.user_id
+			(
+				SELECT
+					answerdetails.user_id,
+				  	MAX(CASE WHEN answerdetails.question_id = $_question1 THEN answerdetails.answerterm_id END) 'q1',
+				  	MAX(CASE WHEN answerdetails.question_id = $_question2 THEN answerdetails.answerterm_id END) 'q2',
+				  	MAX(CASE WHEN answerdetails.question_id = $_question3 THEN answerdetails.answerterm_id END) 'q3'
+				FROM
+					answerdetails
+				WHERE
+					answerdetails.survey_id   = $_survey_id
+				GROUP BY
+				answerdetails.user_id
+			)
+			AS `myTable`
+
+			GROUP BY myTable.q1, myTable.q2, myTable.q3
+
 		";
+
 		$result = \dash\db::get($query);
 
 		if(!is_array($result))
@@ -84,6 +96,7 @@ class chart
 				unset($question3_choise[$key]);
 			}
 		}
+
 
 		$ready = [];
 
