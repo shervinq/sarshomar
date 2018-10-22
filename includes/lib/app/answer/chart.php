@@ -100,13 +100,21 @@ class chart
 
 		$ready = [];
 
+		$ready[] =
+		[
+			'id'     => "0.0",
+			'name'   => T_("All"),
+			'parent' => null,
+			'value'  => null,
+		];
+
 		foreach ($question1_choise as $key1 => $value1)
 		{
 			$ready[] =
 			[
-				'id'     => "0.$key1",
+				'id'     => "1.$key1",
 				'name'   => $value1,
-				'parent' => null,
+				'parent' => '0.0',
 				'value'  => null,
 			];
 
@@ -114,9 +122,9 @@ class chart
 			{
 				$ready[] =
 				[
-					'id'     => "1.$key1.$key2",
+					'id'     => "2.$key1.$key2",
 					'name'   => $value2,
-					'parent' => "0.$key1",
+					'parent' => "1.$key1",
 					'value'  => null,
 				];
 
@@ -124,9 +132,9 @@ class chart
 				{
 					$ready[] =
 					[
-						'id'     => "2.$key1.$key2.$key3",
+						'id'     => "3.$key1.$key2.$key3",
 						'name'   => $value3,
-						'parent' => "1.$key1.$key2",
+						'parent' => "2.$key1.$key2",
 						'value'  => null,
 					];
 				}
@@ -137,7 +145,7 @@ class chart
 
 		foreach ($result as $key => $value)
 		{
-			$check_key = array_search("2.$value[q1].$value[q2].$value[q3]", $ready_key);
+			$check_key = array_search("3.$value[q1].$value[q2].$value[q3]", $ready_key);
 			if($check_key !== false)
 			{
 				$ready[$check_key]['value'] = intval($value['count']);
