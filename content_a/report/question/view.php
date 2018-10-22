@@ -35,6 +35,13 @@ class view
 
 				\dash\data::questionDetail($question_detail);
 
+
+				$id = \dash\request::get('id');
+
+				$questionList = \lib\app\question::block_survey($id);
+
+				\dash\data::questionList($questionList);
+
 				if(\dash\request::get('question2') || \dash\request::get('question3'))
 				{
 					$load_advance_chart = self::load_advance_chart(\dash\request::get('id'),\dash\request::get('questionid'), \dash\request::get('question2'), \dash\request::get('question3'));
@@ -82,11 +89,7 @@ class view
 					\dash\data::showChart(true);
 
 
-					$id = \dash\request::get('id');
 
-					$questionList = \lib\app\question::block_survey($id);
-
-					\dash\data::questionList($questionList);
 				}
 				else
 				{

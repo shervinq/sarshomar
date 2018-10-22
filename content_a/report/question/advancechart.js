@@ -21,10 +21,10 @@ Highcharts.chart('chartdiv', {
   },
 
   title: {
-    text: 'World population 2017'
+    text: '{{questionDetail.title}}'
   },
   subtitle: {
-    text: 'Source <href="https://en.wikipedia.org/wiki/List_of_countries_by_population_(United_Nations)">Wikipedia</a>'
+    text: 'Advance chart'
   },
   series: [{
     type: "sunburst",
@@ -70,7 +70,7 @@ Highcharts.chart('chartdiv', {
   }],
   tooltip: {
     headerFormat: "",
-    pointFormat: 'The population of <b>{point.name}</b> is <b>{point.value}</b>'
+    pointFormat: 'The answer of {point.name} is <b>{point.value}</b>'
   }
 });
 }
