@@ -5,32 +5,65 @@ class chart
 {
 	public static function advance_chart($_survey_id, $_question1, $_question2, $_question3)
 	{
-		$query =
-		"
-			SELECT
-				count(myTable.q3) AS `count`,
-				myTable.q1,
-				myTable.q2,
-				myTable.q3
-			FROM
-			(
+		$my_query_3 = null;
+		$my_query_3_field = null;
+
+
+		if($_question3)
+		{
+			$query =
+			"
 				SELECT
-					answerdetails.user_id,
-				  	MAX(CASE WHEN answerdetails.question_id = $_question1 THEN answerdetails.answerterm_id END) 'q1',
-				  	MAX(CASE WHEN answerdetails.question_id = $_question2 THEN answerdetails.answerterm_id END) 'q2',
-				  	MAX(CASE WHEN answerdetails.question_id = $_question3 THEN answerdetails.answerterm_id END) 'q3'
+					count(myTable.q3) AS `count`,
+					myTable.q1,
+					myTable.q2,
+					myTable.q3
 				FROM
-					answerdetails
-				WHERE
-					answerdetails.survey_id   = $_survey_id
-				GROUP BY
-				answerdetails.user_id
-			)
-			AS `myTable`
+				(
+					SELECT
+						answerdetails.user_id,
+					  	MAX(CASE WHEN answerdetails.question_id = $_question1 THEN answerdetails.answerterm_id END) 'q1',
+					  	MAX(CASE WHEN answerdetails.question_id = $_question2 THEN answerdetails.answerterm_id END) 'q2'
+					  	$my_query_3
+					FROM
+						answerdetails
+					WHERE
+						answerdetails.survey_id   = $_survey_id
+					GROUP BY
+					answerdetails.user_id
+				)
+				AS `myTable`
+				GROUP BY myTable.q1, myTable.q2, myTable.q3
+			";
+		}
+		else
+		{
+			$query =
+			"
+				SELECT
+					count(myTable.q2) AS `count`,
+					myTable.q1,
+					myTable.q2
+				FROM
+				(
+					SELECT
+						answerdetails.user_id,
+					  	MAX(CASE WHEN answerdetails.question_id = $_question1 THEN answerdetails.answerterm_id END) 'q1',
+					  	MAX(CASE WHEN answerdetails.question_id = $_question2 THEN answerdetails.answerterm_id END) 'q2'
+					FROM
+						answerdetails
+					WHERE
+						answerdetails.survey_id   = $_survey_id
+					GROUP BY
+					answerdetails.user_id
+				)
+				AS `myTable`
+				GROUP BY myTable.q1, myTable.q2
+			";
+		}
 
-			GROUP BY myTable.q1, myTable.q2, myTable.q3
 
-		";
+
 
 		$result = \dash\db::get($query);
 
@@ -46,7 +79,6 @@ class chart
 
 		$answerterm_id = array_filter($answerterm_id);
 		$answerterm_id = array_unique($answerterm_id);
-
 		$answerterm_text = [];
 		if(!empty($answerterm_id))
 		{
@@ -83,17 +115,22 @@ class chart
 			}
 		}
 
-		$question3_choise = \lib\db\questions::get(['id' => $_question3, 'limit' => 1]);
-		$question3_choise = \lib\app\question::ready($question3_choise);
-		$question3_choise = isset($question3_choise['choice']) ? $question3_choise['choice'] : [];
-		$question3_choise = array_column($question3_choise, 'title');
-		foreach ($question3_choise as $key => $value)
+		$question3_choise = [];
+
+		if($_question3)
 		{
-			$new_key = array_search($value, $answerterm_text);
-			if($new_key !== false)
+			$question3_choise = \lib\db\questions::get(['id' => $_question3, 'limit' => 1]);
+			$question3_choise = \lib\app\question::ready($question3_choise);
+			$question3_choise = isset($question3_choise['choice']) ? $question3_choise['choice'] : [];
+			$question3_choise = array_column($question3_choise, 'title');
+			foreach ($question3_choise as $key => $value)
 			{
-				$question3_choise[$new_key] = $value;
-				unset($question3_choise[$key]);
+				$new_key = array_search($value, $answerterm_text);
+				if($new_key !== false)
+				{
+					$question3_choise[$new_key] = $value;
+					unset($question3_choise[$key]);
+				}
 			}
 		}
 
@@ -128,16 +165,20 @@ class chart
 					'value'  => null,
 				];
 
-				foreach ($question3_choise as $key3 => $value3)
+				if($_question3)
 				{
-					$ready[] =
-					[
-						'id'     => "3.$key1.$key2.$key3",
-						'name'   => $value3,
-						'parent' => "2.$key1.$key2",
-						'value'  => null,
-					];
+					foreach ($question3_choise as $key3 => $value3)
+					{
+						$ready[] =
+						[
+							'id'     => "3.$key1.$key2.$key3",
+							'name'   => $value3,
+							'parent' => "2.$key1.$key2",
+							'value'  => null,
+						];
+					}
 				}
+
 			}
 		}
 
@@ -145,12 +186,19 @@ class chart
 
 		foreach ($result as $key => $value)
 		{
-			$check_key = array_search("3.$value[q1].$value[q2].$value[q3]", $ready_key);
+			if($_question3)
+			{
+				$check_key = array_search("3.$value[q1].$value[q2].$value[q3]", $ready_key);
+			}
+			else
+			{
+				$check_key = array_search("2.$value[q1].$value[q2]", $ready_key);
+			}
+
 			if($check_key !== false)
 			{
 				$ready[$check_key]['value'] = intval($value['count']);
 			}
-
 		}
 
 		$ready = json_encode($ready, JSON_UNESCAPED_UNICODE);
