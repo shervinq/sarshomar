@@ -23,7 +23,8 @@ class chart
 					SELECT
 						answerdetails.user_id,
 					  	MAX(CASE WHEN answerdetails.question_id = $_question1 THEN answerdetails.answerterm_id END) 'q1',
-					  	MAX(CASE WHEN answerdetails.question_id = $_question2 THEN answerdetails.answerterm_id END) 'q2'
+					  	MAX(CASE WHEN answerdetails.question_id = $_question2 THEN answerdetails.answerterm_id END) 'q2',
+					  	MAX(CASE WHEN answerdetails.question_id = $_question3 THEN answerdetails.answerterm_id END) 'q3'
 					  	$my_query_3
 					FROM
 						answerdetails
