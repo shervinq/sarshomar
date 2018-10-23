@@ -5,69 +5,7 @@ class chart
 {
 	public static function advance_chart($_survey_id, $_question1, $_question2, $_question3)
 	{
-		$my_query_3 = null;
-		$my_query_3_field = null;
-
-
-		if($_question3)
-		{
-			$query =
-			"
-				SELECT
-					count(myTable.q3) AS `count`,
-					myTable.q1,
-					myTable.q2,
-					myTable.q3
-				FROM
-				(
-					SELECT
-						answerdetails.user_id,
-					  	MAX(CASE WHEN answerdetails.question_id = $_question1 THEN IF(answerdetails.answerterm_id IS NULL AND answerdetails.skip = 1, 0, answerdetails.answerterm_id) END) 'q1',
-					  	MAX(CASE WHEN answerdetails.question_id = $_question2 THEN IF(answerdetails.answerterm_id IS NULL AND answerdetails.skip = 1, 0, answerdetails.answerterm_id) END) 'q2',
-					  	MAX(CASE WHEN answerdetails.question_id = $_question3 THEN IF(answerdetails.answerterm_id IS NULL AND answerdetails.skip = 1, 0, answerdetails.answerterm_id) END) 'q3'
-					  	$my_query_3
-					FROM
-						answerdetails
-					INNER JOIN answers ON answers.id = answerdetails.answer_id
-					WHERE
-						answerdetails.survey_id = $_survey_id AND
-						answers.complete        = 1
-					GROUP BY
-					answerdetails.user_id
-				)
-				AS `myTable`
-				GROUP BY myTable.q1, myTable.q2, myTable.q3
-			";
-		}
-		else
-		{
-			$query =
-			"
-				SELECT
-					count(myTable.q2) AS `count`,
-					myTable.q1,
-					myTable.q2
-				FROM
-				(
-					SELECT
-						answerdetails.user_id,
-					  	MAX(CASE WHEN answerdetails.question_id = $_question1 THEN IF(answerdetails.answerterm_id IS NULL AND answerdetails.skip = 1, 0, answerdetails.answerterm_id) END) 'q1',
-					  	MAX(CASE WHEN answerdetails.question_id = $_question2 THEN IF(answerdetails.answerterm_id IS NULL AND answerdetails.skip = 1, 0, answerdetails.answerterm_id) END) 'q2'
-					FROM
-						answerdetails
-					INNER JOIN answers ON answers.id = answerdetails.answer_id
-					WHERE
-						answerdetails.survey_id = $_survey_id AND
-						answers.complete        = 1
-					GROUP BY
-					answerdetails.user_id
-				)
-				AS `myTable`
-				GROUP BY myTable.q1, myTable.q2
-			";
-		}
-
-		$result = \dash\db::get($query);
+		$result = \lib\db\answers::advance_chart($_survey_id, $_question1, $_question2, $_question3);
 
 		if(!is_array($result))
 		{
