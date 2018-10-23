@@ -22,14 +22,16 @@ class chart
 				(
 					SELECT
 						answerdetails.user_id,
-					  	MAX(CASE WHEN answerdetails.question_id = $_question1 THEN answerdetails.answerterm_id END) 'q1',
-					  	MAX(CASE WHEN answerdetails.question_id = $_question2 THEN answerdetails.answerterm_id END) 'q2',
-					  	MAX(CASE WHEN answerdetails.question_id = $_question3 THEN answerdetails.answerterm_id END) 'q3'
+					  	MAX(CASE WHEN answerdetails.question_id = $_question1 THEN IF(answerdetails.answerterm_id IS NULL AND answerdetails.skip = 1, 0, answerdetails.answerterm_id) END) 'q1',
+					  	MAX(CASE WHEN answerdetails.question_id = $_question2 THEN IF(answerdetails.answerterm_id IS NULL AND answerdetails.skip = 1, 0, answerdetails.answerterm_id) END) 'q2',
+					  	MAX(CASE WHEN answerdetails.question_id = $_question3 THEN IF(answerdetails.answerterm_id IS NULL AND answerdetails.skip = 1, 0, answerdetails.answerterm_id) END) 'q3'
 					  	$my_query_3
 					FROM
 						answerdetails
+					INNER JOIN answers ON answers.id = answerdetails.answer_id
 					WHERE
-						answerdetails.survey_id   = $_survey_id
+						answerdetails.survey_id = $_survey_id AND
+						answers.complete        = 1
 					GROUP BY
 					answerdetails.user_id
 				)
@@ -49,12 +51,14 @@ class chart
 				(
 					SELECT
 						answerdetails.user_id,
-					  	MAX(CASE WHEN answerdetails.question_id = $_question1 THEN answerdetails.answerterm_id END) 'q1',
-					  	MAX(CASE WHEN answerdetails.question_id = $_question2 THEN answerdetails.answerterm_id END) 'q2'
+					  	MAX(CASE WHEN answerdetails.question_id = $_question1 THEN IF(answerdetails.answerterm_id IS NULL AND answerdetails.skip = 1, 0, answerdetails.answerterm_id) END) 'q1',
+					  	MAX(CASE WHEN answerdetails.question_id = $_question2 THEN IF(answerdetails.answerterm_id IS NULL AND answerdetails.skip = 1, 0, answerdetails.answerterm_id) END) 'q2'
 					FROM
 						answerdetails
+					INNER JOIN answers ON answers.id = answerdetails.answer_id
 					WHERE
-						answerdetails.survey_id   = $_survey_id
+						answerdetails.survey_id = $_survey_id AND
+						answers.complete        = 1
 					GROUP BY
 					answerdetails.user_id
 				)
@@ -62,9 +66,6 @@ class chart
 				GROUP BY myTable.q1, myTable.q2
 			";
 		}
-
-
-
 
 		$result = \dash\db::get($query);
 
@@ -102,6 +103,9 @@ class chart
 			}
 		}
 
+		$question1_choise[0] = T_("Skipped");
+
+
 		$question2_choise = \lib\db\questions::get(['id' => $_question2, 'limit' => 1]);
 		$question2_choise = \lib\app\question::ready($question2_choise);
 		$question2_choise = isset($question2_choise['choice']) ? $question2_choise['choice'] : [];
@@ -115,6 +119,7 @@ class chart
 				unset($question2_choise[$key]);
 			}
 		}
+		$question2_choise[0] = T_("Skipped");
 
 		$question3_choise = [];
 
@@ -133,6 +138,7 @@ class chart
 					unset($question3_choise[$key]);
 				}
 			}
+			$question3_choise[0] = T_("Skipped");
 		}
 
 
