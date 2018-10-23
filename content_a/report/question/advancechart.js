@@ -8,7 +8,7 @@ function chartDrawer()
 function highChart1()
 {
 
-var data = {{advanceChart | raw}};
+var data = {{advanceChart.chart | raw}};
 
 // Splice in transparent for the center circle
 Highcharts.getOptions().colors.splice(0, 0, 'transparent');

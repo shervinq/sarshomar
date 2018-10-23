@@ -135,8 +135,9 @@ class view
 		}
 
 
-		$result = \lib\app\answer\chart::advance_chart($id, $question1, $question2, $question3);
+		$result = \lib\app\answer\chart::advance_chart($id, $question1, $question2, $question3, ['sort' => \dash\request::get('sort'), 'order' => \dash\request::get('order')]);
 		\dash\data::advanceChart($result);
+		\dash\data::sortLink(\dash\app\sort::make_sortLink(['count', 'q1', 'q2', 'q3'], \dash\url::this(). '/question'));
 		return true;
 
 	}

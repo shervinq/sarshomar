@@ -32,6 +32,7 @@
    {%if showAdvanceChart%}
       <div class="chart x4 mB20" id="chartdiv" >
      </div>
+     {{block('tableAdvanceChart')}}
    {%else%}
 
      <div class="chart x4 mB20" id="chartdiv" >
@@ -133,18 +134,45 @@
     <thead class="primary fs09">
       <tr>
 
-      	<th>{%trans "Answers"%}</th>
+        <th>{%trans "Answers"%}</th>
       </tr>
     </thead>
 
     <tbody>
       {%for key, value in dataTable%}
       <tr>
-      	<td>{{value.text}}</td>
+        <td>{{value.text}}</td>
       </tr>
       {%endfor%}
     </tbody>
   </table>
   {%include display.pagination%}
+
+{%endblock%}
+
+
+{%block tableAdvanceChart%}
+
+  <table class="tbl1 v1 cbox fs12">
+    <thead class="primary fs09">
+      <tr>
+        {%for key, value in advanceChart.question%}
+        <th data-sort="{{sortLink[key]['sort']}}"><a href="{{sortLink[key]['link']}}">{{value}}</a></th>
+        {%endfor%}
+        <th data-sort="{{sortLink['count']['sort']}}"><a href="{{sortLink['count']['link']}}">{%trans "Count"%}</a></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {%for key, value in advanceChart.table%}
+      <tr>
+        {%for k, v in value%}
+          <td>{{v | fitNumber}}</td>
+        {%endfor%}
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+
 
 {%endblock%}

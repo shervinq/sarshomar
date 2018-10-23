@@ -3,7 +3,7 @@ namespace lib\app\answer;
 
 class chart
 {
-	public static function advance_chart($_survey_id, $_question1, $_question2, $_question3)
+	public static function advance_chart($_survey_id, $_question1, $_question2, $_question3, $_args = [])
 	{
 		$result = \lib\db\answers::advance_chart($_survey_id, $_question1, $_question2, $_question3);
 
@@ -29,6 +29,7 @@ class chart
 
 		$question1_choise = \lib\db\questions::get(['id' => $_question1, 'limit' => 1]);
 		$question1_choise = \lib\app\question::ready($question1_choise);
+		$question1_choise_title = isset($question1_choise['title']) ? $question1_choise['title'] : null;
 		$question1_choise = isset($question1_choise['choice']) ? $question1_choise['choice'] : [];
 		$question1_choise = array_column($question1_choise, 'title');
 		foreach ($question1_choise as $key => $value)
@@ -46,6 +47,7 @@ class chart
 
 		$question2_choise = \lib\db\questions::get(['id' => $_question2, 'limit' => 1]);
 		$question2_choise = \lib\app\question::ready($question2_choise);
+		$question2_choise_title = isset($question2_choise['title']) ? $question2_choise['title'] : null;
 		$question2_choise = isset($question2_choise['choice']) ? $question2_choise['choice'] : [];
 		$question2_choise = array_column($question2_choise, 'title');
 		foreach ($question2_choise as $key => $value)
@@ -65,6 +67,7 @@ class chart
 		{
 			$question3_choise = \lib\db\questions::get(['id' => $_question3, 'limit' => 1]);
 			$question3_choise = \lib\app\question::ready($question3_choise);
+			$question3_choise_title = isset($question3_choise['title']) ? $question3_choise['title'] : null;
 			$question3_choise = isset($question3_choise['choice']) ? $question3_choise['choice'] : [];
 			$question3_choise = array_column($question3_choise, 'title');
 			foreach ($question3_choise as $key => $value)
@@ -123,7 +126,6 @@ class chart
 						];
 					}
 				}
-
 			}
 		}
 
@@ -147,7 +149,83 @@ class chart
 		}
 
 		$ready = json_encode($ready, JSON_UNESCAPED_UNICODE);
-		return $ready;
+
+		$table = [];
+
+		foreach ($result as $key => $value)
+		{
+			$table[] =
+			[
+				$question1_choise_title    => @$question1_choise[$value['q1']],
+				$question2_choise_title    => @$question2_choise[$value['q2']],
+				$question3_choise_title    => @$question3_choise[$value['q3']],
+				'count' => $value['count'],
+			];
+		}
+
+		$default_args =
+		[
+			'sort'  => 'count',
+			'order' => 'desc',
+		];
+
+		if(!is_array($_args))
+		{
+			$_args = [];
+		}
+
+		$_args = array_merge($default_args, $_args);
+
+		$my_sort        = 'count';
+		$my_order       = SORT_DESC;
+
+		if($_args['sort'] && in_array($_args['sort'], ['q1', 'q2', 'q3', 'count']))
+		{
+			$my_sort = $_args['sort'];
+			switch ($my_sort)
+			{
+				case 'q1':
+					$my_sort = $question1_choise_title;
+					break;
+
+				case 'q2':
+					$my_sort = $question2_choise_title;
+					break;
+
+				case 'q3':
+					$my_sort = $question3_choise_title;
+					break;
+			}
+		}
+
+		if($_args['order'] && in_array($_args['order'], ['desc', 'asc']))
+		{
+			$my_order = $_args['order'];
+			if($_args['order'] === 'asc')
+			{
+				$my_order = SORT_ASC;
+			}
+			else
+			{
+				$my_order = SORT_DESC;
+			}
+		}
+
+		$my_sort_detail = $my_sort === 'count' ?  SORT_NUMERIC : SORT_STRING;
+
+		$result_sort = array_column($table, $my_sort);
+
+		// $result_sort = array_column($table, 'count');
+
+		// array_multisort($table, $result_sort, $my_order | $my_sort_detail);
+		array_multisort($table, $my_order, $result_sort, $my_order | SORT_NUMERIC);
+
+		$return             = [];
+		$return['chart']    = $ready;
+		$return['table']    = $table;
+		$return['question'] = ['q1' => $question1_choise_title, 'q2' => $question2_choise_title, 'q3' => $question3_choise_title];
+
+		return $return;
 	}
 }
 ?>
