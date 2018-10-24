@@ -157,9 +157,9 @@
     <thead class="primary fs09">
       <tr>
         {%for key, value in advanceChart.question%}
-        <th data-sort="{{sortLink[key]['sort']}}"><a href="{{sortLink[key]['link']}}">{{value}}</a></th>
+        <th data-sort="{{sortLink[key]['sort']}}">{{value}}</th>
         {%endfor%}
-        <th data-sort="{{sortLink['count']['sort']}}"><a href="{{sortLink['count']['link']}}">{%trans "Count"%}</a></th>
+        <th data-sort="{{sortLink['count']['sort']}}">{%trans "Count"%}</th>
       </tr>
     </thead>
 

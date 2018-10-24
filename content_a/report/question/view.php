@@ -142,7 +142,7 @@ class view
 		}
 
 		\dash\data::advanceChart($result);
-		\dash\data::sortLink(\dash\app\sort::make_sortLink(['count', 'q1', 'q2', 'q3'], \dash\url::this(). '/question'));
+		// \dash\data::sortLink(\dash\app\sort::make_sortLink(['count', 'q1', 'q2', 'q3'], \dash\url::this(). '/question'));
 		return true;
 
 	}

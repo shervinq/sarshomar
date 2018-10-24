@@ -231,16 +231,30 @@ class chart
 
 		$my_sort_detail = $my_sort === 'count' ?  SORT_NUMERIC : SORT_STRING;
 
-		$result_sort = array_column($table, $my_sort);
+		// $result_sort = array_column($table, $my_sort);
 
-		// $result_sort = array_column($table, 'count');
+		$result_sort = array_column($table, 'count');
+		rsort($result_sort);
+
+		$new_table = [];
+		foreach ($result_sort as $count)
+		{
+			foreach ($table as $value)
+			{
+				if(intval($value['count']) === intval($count))
+				{
+					$new_table[] = $value;
+				}
+			}
+		}
+
 
 		// array_multisort($table, $result_sort, $my_order | $my_sort_detail);
-		array_multisort($table, $my_order, $result_sort, $my_order | SORT_NUMERIC);
+		// array_multisort($table, $result_sort, SORT_DESC | SORT_NUMERIC);
 
 		$return             = [];
 		$return['chart']    = $ready;
-		$return['table']    = $table;
+		$return['table']    = $new_table;
 		$return['question'] = ['q1' => $question1_choise_title, 'q2' => $question2_choise_title, 'q3' => $question3_choise_title];
 
 		return $return;
