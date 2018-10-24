@@ -32,6 +32,12 @@ class chart
 		$question1_choise_title = isset($question1_choise['title']) ? $question1_choise['title'] : null;
 		$question1_choise = isset($question1_choise['choice']) ? $question1_choise['choice'] : [];
 		$question1_choise = array_column($question1_choise, 'title');
+		if(empty($question1_choise))
+		{
+			\dash\notif::warn(T_("The question 1 is not choiceable"), 'q1');
+			return false;
+		}
+
 		foreach ($question1_choise as $key => $value)
 		{
 			$new_key = array_search($value, $answerterm_text);
@@ -50,6 +56,12 @@ class chart
 		$question2_choise_title = isset($question2_choise['title']) ? $question2_choise['title'] : null;
 		$question2_choise = isset($question2_choise['choice']) ? $question2_choise['choice'] : [];
 		$question2_choise = array_column($question2_choise, 'title');
+		if(empty($question2_choise))
+		{
+			\dash\notif::warn(T_("The question 2 is not choiceable"), 'q2');
+			return false;
+		}
+
 		foreach ($question2_choise as $key => $value)
 		{
 			$new_key = array_search($value, $answerterm_text);
@@ -70,6 +82,12 @@ class chart
 			$question3_choise_title = isset($question3_choise['title']) ? $question3_choise['title'] : null;
 			$question3_choise = isset($question3_choise['choice']) ? $question3_choise['choice'] : [];
 			$question3_choise = array_column($question3_choise, 'title');
+			if(empty($question3_choise))
+			{
+				\dash\notif::warn(T_("The question 3 is not choiceable"), 'q3');
+				return false;
+			}
+
 			foreach ($question3_choise as $key => $value)
 			{
 				$new_key = array_search($value, $answerterm_text);
