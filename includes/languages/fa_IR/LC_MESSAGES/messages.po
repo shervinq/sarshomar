@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Sarshomar - Persian\n"
-"POT-Creation-Date: 2018-10-20 16:39+0330\n"
-"PO-Revision-Date: 2018-10-20 16:40+0330\n"
+"POT-Creation-Date: 2018-10-27 14:43+0330\n"
+"PO-Revision-Date: 2018-10-27 14:45+0330\n"
 "Last-Translator: Javad <J.Evazzadeh@gmail.com>\n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -232,7 +232,7 @@ msgstr "داشبورد سیستم مدیریت محتوا"
 #: dash/addons/content_cp/posts/edit/controller.php:12
 #: dash/addons/content_cp/posts/edit/view.php:13
 #: dash/addons/content_support/message/edit/view.php:23
-#: dash/addons/content_support/ticket/show/view.php:21 dash/lib/app/posts.php:119
+#: dash/addons/content_support/ticket/show/view.php:26 dash/lib/app/posts.php:119
 #: sarshomar/includes/lib/app/question/edit.php:20
 #: sarshomar/includes/lib/app/survey/edit.php:20
 msgid "Invalid id"
@@ -240,8 +240,9 @@ msgstr "شناسه نامعتبر"
 
 #: dash/addons/content_cp/comments/edit/model.php:12
 #: dash/addons/content_cp/contact/edit/model.php:12
-#: dash/addons/content_support/ticket/show/model.php:95 dash/lib/app/address.php:189
-#: dash/lib/app/comment.php:250 dash/lib/app/ticket.php:347
+#: dash/addons/content_support/ticket/show/model.php:100
+#: dash/lib/app/address.php:189 dash/lib/app/comment.php:250
+#: dash/lib/app/ticket.php:348
 msgid "Invalid status"
 msgstr "وضعیت نامعتبر است"
 
@@ -1706,17 +1707,16 @@ msgstr "بازگشت به لیست تیکت‌ها"
 
 #: dash/addons/content_support/message/edit/view.php:29
 #: dash/addons/content_support/message/edit/view.php:41
-#: dash/addons/content_support/ticket/show/model.php:85
-#: dash/addons/content_support/ticket/show/model.php:190
-#: dash/addons/content_support/ticket/show/view.php:27
-#: dash/addons/content_support/ticket/show/view.php:55
-#: dash/addons/content_support/ticket/show/view.php:265
-#: dash/addons/content_support/ticket/show/view.php:272
+#: dash/addons/content_support/ticket/show/model.php:90
+#: dash/addons/content_support/ticket/show/model.php:203
+#: dash/addons/content_support/ticket/show/view.php:32
+#: dash/addons/content_support/ticket/show/view.php:60
+#: dash/addons/content_support/ticket/show/view.php:271
+#: dash/addons/content_support/ticket/show/view.php:278
 msgid "Ticket not found"
 msgstr "تیکتی یافت نشد"
 
 #: dash/addons/content_support/message/edit/view.php:50
-#: dash/addons/content_support/ticket/show/view.php:68
 msgid "This is not your ticket!"
 msgstr "این تیکت شما نیست!"
 
@@ -1742,14 +1742,15 @@ msgstr "تگ نادرست"
 msgid "Category"
 msgstr "دسته‌بندی"
 
-#: dash/addons/content_support/ticket/add/model.php:74
-#: dash/addons/content_support/ticket/show/model.php:196
+#: dash/addons/content_support/ticket/add/model.php:58
+#: dash/addons/content_support/ticket/show/model.php:209
 msgid "Your ticket was sended"
 msgstr "تیکت شما ارسال شد"
 
 #: dash/addons/content_support/ticket/add/view.php:9
 #: dash/addons/includes/languages/trans_static.php:1091
 #: dash/lib/app/log/msg/support.php:60
+#: dash/lib/social/telegram/commands/ermile.php:253
 msgid "Add new ticket"
 msgstr "افزودن تیکت جدید"
 
@@ -1836,43 +1837,43 @@ msgstr "همه تیکت‌ها"
 msgid "Please select tag from list"
 msgstr "لطفا تگ را از لیست انتخاب کنید"
 
-#: dash/addons/content_support/ticket/show/model.php:73
+#: dash/addons/content_support/ticket/show/model.php:77
 msgid "Tag was saved"
 msgstr "کلیدواژه ذخیره شد"
 
-#: dash/addons/content_support/ticket/show/model.php:133
+#: dash/addons/content_support/ticket/show/model.php:138
 msgid "Ticket closed"
 msgstr "تیکت بسته شد"
 
-#: dash/addons/content_support/ticket/show/model.php:137
+#: dash/addons/content_support/ticket/show/model.php:142
 msgid "Ticket was open again"
 msgstr "تیکت دوباره باز شد"
 
-#: dash/addons/content_support/ticket/show/model.php:141
+#: dash/addons/content_support/ticket/show/model.php:146
 msgid "Ticket was deleted"
 msgstr "تیکت حذف شد"
 
-#: dash/addons/content_support/ticket/show/model.php:145
+#: dash/addons/content_support/ticket/show/model.php:150
 msgid "Ticket set on spam"
 msgstr "تیکت به‌عنوان جفنگ علامت‌گذاری شد"
 
-#: dash/addons/content_support/ticket/show/model.php:164
+#: dash/addons/content_support/ticket/show/model.php:173
 msgid "Ticket set as solved"
 msgstr "مشکل حل شد"
 
-#: dash/addons/content_support/ticket/show/model.php:169
+#: dash/addons/content_support/ticket/show/model.php:178
 msgid "Ticket set as unsolved"
 msgstr "مشکل هنوز حل نشده"
 
-#: dash/addons/content_support/ticket/show/model.php:233
+#: dash/addons/content_support/ticket/show/model.php:246
 msgid "Your note saved"
 msgstr "پیام شما ذخیره شد"
 
-#: dash/addons/content_support/ticket/show/model.php:270
+#: dash/addons/content_support/ticket/show/model.php:283
 msgid "Your message has been added"
 msgstr "پیام شما اضافه شد"
 
-#: dash/addons/content_support/ticket/show/model.php:307
+#: dash/addons/content_support/ticket/show/model.php:343
 msgid "Your answer was saved"
 msgstr "پاسخ شما ذخیره شد"
 
@@ -1888,11 +1889,11 @@ msgstr "بررسی جزئیات تیکت شما"
 msgid "We try to answer to you as soon as posibble."
 msgstr "ما سعی می کنیم تا در اسرع وقت به شما پاسخ دهیم."
 
-#: dash/addons/content_support/ticket/show/view.php:44
+#: dash/addons/content_support/ticket/show/view.php:49
 msgid "This ticket closed automatically on :time because it marked as solved."
 msgstr "این تیکت حل شده و به‌صورت خودکار در :time بسته خواهد شد."
 
-#: dash/addons/content_support/ticket/show/view.php:44
+#: dash/addons/content_support/ticket/show/view.php:49
 msgid "If it's okay you can close it manually."
 msgstr "اگر مشکلی وجود ندارد شما می‌توانید آن را به‌صورت دستی ببندید."
 
@@ -2298,6 +2299,8 @@ msgid "Default language"
 msgstr "زبان پیش‌فرض"
 
 #: dash/addons/includes/languages/trans_dash.php:100
+#: dash/lib/social/telegram/commands/ermile.php:265
+#: dash/lib/social/telegram/commands/ermile.php:412
 #: sarshomar/includes/languages/trans_dash.php:103
 #: sarshomar/includes/lib/app/question/type.php:220
 msgid "Website"
@@ -3160,7 +3163,6 @@ msgstr "برخی از حقوق محفوظ است!"
 #: dash/addons/includes/languages/trans_dash.php:303
 #: dash/addons/includes/languages/trans_static.php:58
 #: dash/addons/includes/languages/trans_static.php:175 dash/lib/engine/view.php:78
-#: dash/lib/social/telegram/commands/ermile.php:174
 #: sarshomar/includes/languages/trans_dash.php:307
 msgid "Ermile"
 msgstr "ارمایل"
@@ -3178,7 +3180,7 @@ msgid "User"
 msgstr "کاربر"
 
 #: dash/addons/includes/languages/trans_dash.php:308
-#: dash/lib/social/telegram/commands/conversation.php:226
+#: dash/lib/social/telegram/commands/utility.php:38
 #: sarshomar/includes/languages/trans_dash.php:312
 msgid "User id"
 msgstr "کد کاربر"
@@ -3273,7 +3275,7 @@ msgid "Deleted"
 msgstr "حذف شده"
 
 #: dash/addons/includes/languages/trans_dash.php:329
-#: dash/lib/social/telegram/commands/menu.php:70
+#: dash/lib/social/telegram/commands/ermile.php:404
 #: sarshomar/includes/languages/trans_dash.php:333
 #: sarshomar/includes/languages/trans_project.php:9
 msgid "Contact"
@@ -3711,7 +3713,10 @@ msgstr "متن الگو"
 
 #: dash/addons/includes/languages/trans_dash.php:438
 #: dash/addons/includes/languages/trans_static.php:90
-#: dash/lib/social/telegram/commands/ermile.php:295
+#: dash/lib/social/telegram/commands/step_ticketAnswer.php:42
+#: dash/lib/social/telegram/commands/step_ticketCreate.php:44
+#: dash/lib/social/telegram/step.php:207 dash/lib/social/telegram/step.php:340
+#: dash/lib/social/telegram/step.php:355
 #: sarshomar/includes/languages/trans_dash.php:9
 msgid "Cancel"
 msgstr "انصراف"
@@ -4127,6 +4132,7 @@ msgid "If have problem"
 msgstr "در صورت بروز مشکل"
 
 #: dash/addons/includes/languages/trans_dash.php:547
+#: dash/lib/social/telegram/commands/ermile.php:252
 #: sarshomar/includes/languages/trans_dash.php:546
 #: sarshomar/includes/languages/trans_project.php:198
 msgid "Contact us"
@@ -5117,6 +5123,7 @@ msgstr "تیکت جدید"
 
 #: dash/addons/includes/languages/trans_dash.php:842
 #: sarshomar/includes/languages/trans_dash.php:844
+#: sarshomar/includes/lib/app/answer/chart.php:144
 msgid "All"
 msgstr "همه"
 
@@ -5525,6 +5532,8 @@ msgstr "نام کامل"
 
 #: dash/addons/includes/languages/trans_dash.php:947
 #: dash/addons/includes/languages/trans_static.php:409
+#: dash/lib/social/telegram/commands/ermile.php:58
+#: dash/lib/social/telegram/step.php:307
 #: sarshomar/includes/languages/trans_dash.php:952
 msgid "email"
 msgstr "رایانامه"
@@ -5863,7 +5872,7 @@ msgid "iran"
 msgstr "ایران"
 
 #: dash/addons/includes/languages/trans_static.php:63
-#: dash/lib/social/telegram/commands/ermile.php:168
+#: dash/lib/social/telegram/commands/ermile.php:170
 #: sarshomar/includes/languages/trans_project.php:24
 msgid "Qom"
 msgstr "قم"
@@ -5895,6 +5904,8 @@ msgid "sign in"
 msgstr "ورود"
 
 #: dash/addons/includes/languages/trans_static.php:70
+#: dash/lib/social/telegram/commands/ermile.php:71
+#: dash/lib/social/telegram/step.php:309
 msgid "signup"
 msgstr "ثبت نام"
 
@@ -5903,6 +5914,8 @@ msgid "sign up"
 msgstr "ثبت نام"
 
 #: dash/addons/includes/languages/trans_static.php:72
+#: dash/lib/social/telegram/commands/ermile.php:70
+#: dash/lib/social/telegram/step.php:308
 msgid "register"
 msgstr "ثبت نام"
 
@@ -6131,7 +6144,6 @@ msgid "upload"
 msgstr "بارگذاری"
 
 #: dash/addons/includes/languages/trans_static.php:146
-#: dash/lib/social/telegram/commands/step_ticketAnswer.php:47
 msgid "View"
 msgstr "نمایش"
 
@@ -6392,6 +6404,8 @@ msgid "disable"
 msgstr "غیرفعال"
 
 #: dash/addons/includes/languages/trans_static.php:231
+#: dash/lib/social/telegram/commands/ermile.php:93
+#: dash/lib/social/telegram/step.php:311
 msgid "help"
 msgstr "راهنمایی"
 
@@ -6894,19 +6908,19 @@ msgid "We will thank you for this."
 msgstr "ما از این اقدام شما تشکر می‌کنیم."
 
 #: dash/addons/includes/languages/trans_static.php:395
-#: dash/lib/social/telegram/user.php:132 dash/lib/social/tg older -
+#: dash/lib/social/telegram/user.php:136 dash/lib/social/tg older -
 #: addons/log.php:361
 msgid "Your phone number registered successfully;)"
 msgstr "شماره موبایل شما با موفقیت ثبت شد;)"
 
 #: dash/addons/includes/languages/trans_static.php:396
-#: dash/lib/social/telegram/user.php:113 dash/lib/social/tg old/log.php:418 older -
+#: dash/lib/social/telegram/user.php:117 dash/lib/social/tg old/log.php:418 older -
 #: addons/log.php:369
 msgid "We dont need another users contact:?)"
 msgstr "ما به مخاطب سایر کاربران نیاز نداریم:؟)"
 
 #: dash/addons/includes/languages/trans_static.php:397
-#: dash/lib/social/telegram/user.php:104 dash/lib/social/tg old/log.php:426 older -
+#: dash/lib/social/telegram/user.php:108 dash/lib/social/tg old/log.php:426 older -
 #: addons/log.php:377
 msgid "We need mobile number!"
 msgstr "ما به شماره موبایل نیاز داریم!"
@@ -6942,6 +6956,8 @@ msgid "password"
 msgstr "گذرواژه"
 
 #: dash/addons/includes/languages/trans_static.php:408
+#: dash/lib/social/telegram/commands/ermile.php:56
+#: dash/lib/social/telegram/step.php:304
 #: sarshomar/includes/languages/trans_static.php:604
 msgid "mobile"
 msgstr "موبایل"
@@ -6995,6 +7011,8 @@ msgid "unit_id"
 msgstr "کد واحد مالی"
 
 #: dash/addons/includes/languages/trans_static.php:423
+#: dash/lib/social/telegram/commands/ermile.php:24
+#: dash/lib/social/telegram/step.php:297
 #: sarshomar/includes/languages/trans_static.php:357
 msgid "language"
 msgstr "زبان"
@@ -7004,6 +7022,8 @@ msgid "meta"
 msgstr "متا"
 
 #: dash/addons/includes/languages/trans_static.php:425
+#: dash/lib/social/telegram/commands/ermile.php:63
+#: dash/lib/social/telegram/step.php:306
 msgid "website"
 msgstr "وب سایت"
 
@@ -8785,6 +8805,7 @@ msgid "removeadmin"
 msgstr "حذف مدیریت"
 
 #: dash/addons/includes/languages/trans_static.php:897
+#: dash/lib/social/telegram/step.php:206
 msgid "cancel"
 msgstr "انصراف"
 
@@ -9460,17 +9481,17 @@ msgid "The ticket set as unsolved ticket"
 msgstr "تیکت به وضعیت حل نشده تغییر کرد"
 
 #: dash/addons/includes/languages/trans_static.php:1097
-#: dash/lib/app/log/msg/support.php:126
+#: dash/lib/app/log/msg/support.php:143
 msgid "Answer ticket"
 msgstr "پاسخ به تیکت"
 
 #: dash/addons/includes/languages/trans_static.php:1098
-#: dash/lib/app/log/msg/support.php:195
+#: dash/lib/app/log/msg/support.php:229
 msgid "Add new message to ticket"
 msgstr "افزودن پیام به تیکت"
 
 #: dash/addons/includes/languages/trans_static.php:1099
-#: dash/lib/app/log/msg/support.php:263
+#: dash/lib/app/log/msg/support.php:314
 msgid "Add new note to ticket"
 msgstr "افزودن یادداشت به تیکت"
 
@@ -9614,19 +9635,19 @@ msgstr "شما دسترسی لازم برای حذف این آدرس را ندا
 msgid "Address removed"
 msgstr "آدرس حذف شد"
 
-#: dash/lib/app/comment.php:79 dash/lib/app/ticket.php:148
+#: dash/lib/app/comment.php:79 dash/lib/app/ticket.php:149
 msgid "This text is duplicate and you are sended something like this before!"
 msgstr "این متن تکراری است و شما قبلا چیزی شبیه این را ارسال کردید!"
 
-#: dash/lib/app/comment.php:96 dash/lib/app/ticket.php:169
+#: dash/lib/app/comment.php:96 dash/lib/app/ticket.php:170
 msgid "No way to add new data"
 msgstr "هیچ راهی برای افزودن اطلاعات وجود ندارد"
 
-#: dash/lib/app/comment.php:120 dash/lib/app/ticket.php:217
+#: dash/lib/app/comment.php:120 dash/lib/app/ticket.php:218
 msgid "Can not access to edit comment"
 msgstr "شما دسترسی لازم را برای ویرایش این نظر ندارید"
 
-#: dash/lib/app/comment.php:213 dash/lib/app/ticket.php:310
+#: dash/lib/app/comment.php:213 dash/lib/app/ticket.php:311
 msgid "Please fill the content box"
 msgstr "لطفا جعبه محتوا را پر کنید"
 
@@ -9639,12 +9660,12 @@ msgstr "شناسه پست اشتباه است"
 msgid "Comment of this post is closed!"
 msgstr "دیدگاه‌های این نوشته بسته است!"
 
-#: dash/lib/app/comment.php:285 dash/lib/app/ticket.php:355
+#: dash/lib/app/comment.php:285 dash/lib/app/ticket.php:356
 msgid "Title is out of range!"
 msgstr "عنوان خارج از محدوده است!"
 
 #: dash/lib/app/comment.php:294 dash/lib/app/term.php:168
-#: dash/lib/app/ticket.php:363
+#: dash/lib/app/ticket.php:364
 msgid "Invalid parent"
 msgstr "شناسه والد اشتباه است"
 
@@ -9681,17 +9702,48 @@ msgstr "ناشناس"
 msgid ":val add new ticket"
 msgstr ":val یک تیکت جدید ثبت کرد"
 
-#: dash/lib/app/log/msg/support.php:127
+#: dash/lib/app/log/msg/support.php:107 dash/lib/app/log/msg/support.php:192
+#: dash/lib/app/log/msg/support.php:277
+#: dash/lib/social/telegram/commands/ticket.php:89
+msgid "Visit in site"
+msgstr "مشاهده در سایت"
+
+#: dash/lib/app/log/msg/support.php:113 dash/lib/app/log/msg/support.php:198
+#: dash/lib/app/log/msg/support.php:283
+#: dash/lib/social/telegram/commands/ticket.php:108
+msgid "Check ticket"
+msgstr "بررسی تیکت"
+
+#: dash/lib/app/log/msg/support.php:119 dash/lib/app/log/msg/support.php:204
+#: dash/lib/app/log/msg/support.php:289
+#: dash/lib/social/telegram/commands/ticket.php:95
+#: sarshomar/includes/languages/trans_project.php:614
+msgid "Answer"
+msgstr "پاسخ"
+
+#: dash/lib/app/log/msg/support.php:144
 msgid ":val answer ticket"
 msgstr ":val تیکت را جواب داد"
 
-#: dash/lib/app/log/msg/support.php:196
+#: dash/lib/app/log/msg/support.php:230
 msgid ":val add new message to ticket"
 msgstr ":val یک پیام جدید به تیکت اضافه کرد"
 
-#: dash/lib/app/log/msg/support.php:264
+#: dash/lib/app/log/msg/support.php:315
 msgid ":val add new note to ticket"
 msgstr ":val یک یادداشت جدید به تیکت اضافه کرد"
+
+#: dash/lib/app/log/msg/support.php:362 dash/lib/app/log/msg/support.php:371
+msgid "Regards"
+msgstr "با احترام"
+
+#: dash/lib/app/log/msg/support.php:362 dash/lib/app/log/msg/support.php:372
+msgid "Ticket :val answered"
+msgstr "تیکت :val پاسخ داده شد"
+
+#: dash/lib/app/log/msg/support.php:363
+msgid ":val answer your ticket"
+msgstr ":val پاسخ تیکت شما را داد"
 
 #: dash/lib/app/parent/add.php:69
 msgid "Please set the parent mobile"
@@ -9784,8 +9836,8 @@ msgid "This is not your post. And you can not edit it!"
 msgstr "این خبر شما نیست و شما نمی‌توانید آن را حذف کنید!"
 
 #: dash/lib/app/posts.php:177 dash/lib/app/posts.php:183 dash/lib/app/term.php:91
-#: dash/lib/app/term.php:97 sarshomar/includes/lib/app/survey.php:90
-#: sarshomar/includes/lib/app/survey.php:96
+#: dash/lib/app/term.php:97 sarshomar/includes/lib/app/survey.php:159
+#: sarshomar/includes/lib/app/survey.php:165
 msgid "Invalid parameter language"
 msgstr "پارامتر زبان نامعتبر است"
 
@@ -9989,6 +10041,10 @@ msgstr "هیچ راهی برای ثبت ترم وجود ندارد"
 #: dash/lib/app/term.php:452
 msgid "Can not access to edit term"
 msgstr "دسترسی لازم برای ویرایش ترم وجود ندارد"
+
+#: dash/lib/app/tg/ticket.php:32
+msgid "Ticket via telegram"
+msgstr "تیکت از طریق تلگرام"
 
 #: dash/lib/app/user.php:50
 msgid "Mobile is incorrect"
@@ -10295,124 +10351,296 @@ msgstr "سطح دسترسی ذخیره شد"
 msgid "Permission denied"
 msgstr "دسترسی غیر مجاز"
 
-#: dash/lib/social/telegram/answer.php:59
+#: dash/lib/social/telegram/answer.php:50
 msgid "Thanks for using me!"
 msgstr "ممنون که از من استفاده می‌کنید!"
 
-#: dash/lib/social/telegram/answer.php:60
+#: dash/lib/social/telegram/answer.php:51
 msgid "I'm Bot."
 msgstr "من بات هستم."
 
-#: dash/lib/social/telegram/answer.php:87
+#: dash/lib/social/telegram/answer.php:74
 msgid "Hey 😀"
 msgstr "سلام 😀"
 
-#: dash/lib/social/telegram/answer.php:88
+#: dash/lib/social/telegram/answer.php:75
 msgid "What's up?"
 msgstr "چه‌خبر؟"
 
-#: dash/lib/social/telegram/answer.php:89
+#: dash/lib/social/telegram/answer.php:76
 msgid "Tell me a joke!"
 msgstr "یه جوک برام بگو!"
 
-#: dash/lib/social/telegram/answer.php:90
+#: dash/lib/social/telegram/answer.php:77
 msgid "Surprise me!"
 msgstr "سورپرایزم کن!"
 
-#: dash/lib/social/telegram/answer.php:91
+#: dash/lib/social/telegram/answer.php:78
 msgid "How are you?"
 msgstr "حال شما چطوره؟"
 
-#: dash/lib/social/telegram/answer.php:92
+#: dash/lib/social/telegram/answer.php:79
 msgid "How old are you?"
 msgstr "چند سالتونه؟"
 
-#: dash/lib/social/telegram/commands/conversation.php:217
+#: dash/lib/social/telegram/commands/conversation.php:52
 msgid "Test <b>:name</b> bot on :site"
 msgstr "تست بات <b>:name</b> در :site"
 
-#: dash/lib/social/telegram/commands/conversation.php:248
-msgid "Booom"
-msgstr "بوووم"
+#: dash/lib/social/telegram/commands/ermile.php:18
+#: dash/lib/social/telegram/step.php:296
+msgid "start"
+msgstr "شروع"
 
-#: dash/lib/social/telegram/commands/ermile.php:133
-#: dash/lib/social/telegram/commands/ermile.php:285
+#: dash/lib/social/telegram/commands/ermile.php:30
+#: dash/lib/social/telegram/step.php:312
+msgid "menu"
+msgstr "منو"
+
+#: dash/lib/social/telegram/commands/ermile.php:32
+#: dash/lib/social/telegram/step.php:313
+msgid "mainmenu"
+msgstr "منوی اصلی"
+
+#: dash/lib/social/telegram/commands/ermile.php:34
+#: dash/lib/social/telegram/step.php:314 dash/lib/social/tg
+#: old/commands/step_register.php:84 older - addons/commands/step_register.php:84
+msgid "return"
+msgstr "بازگشت"
+
+#: dash/lib/social/telegram/commands/ermile.php:39
+#: dash/lib/social/telegram/step.php:298
+msgid "about"
+msgstr "درباره"
+
+#: dash/lib/social/telegram/commands/ermile.php:40
+msgid "detail"
+msgstr "جزئیات"
+
+#: dash/lib/social/telegram/commands/ermile.php:46
+#: dash/lib/social/telegram/step.php:299
+msgid "me"
+msgstr "من"
+
+#: dash/lib/social/telegram/commands/ermile.php:47
+msgid "whoami"
+msgstr "کیم"
+
+#: dash/lib/social/telegram/commands/ermile.php:52
+#: dash/lib/social/telegram/step.php:300
+msgid "contact"
+msgstr "تماس"
+
+#: dash/lib/social/telegram/commands/ermile.php:53
+#: dash/lib/social/telegram/step.php:301
+msgid "address"
+msgstr "آدرس"
+
+#: dash/lib/social/telegram/commands/ermile.php:54
+#: dash/lib/social/telegram/step.php:302
+msgid "tel"
+msgstr "تلفن"
+
+#: dash/lib/social/telegram/commands/ermile.php:55
+#: dash/lib/social/telegram/step.php:303
+msgid "telephone"
+msgstr "تلفن"
+
+#: dash/lib/social/telegram/commands/ermile.php:57
+#: dash/lib/social/telegram/step.php:305
+msgid "phone"
+msgstr "تلفن"
+
+#: dash/lib/social/telegram/commands/ermile.php:72
+#: dash/lib/social/telegram/step.php:310
+msgid "sync"
+msgstr "همگام‌سازی"
+
+#: dash/lib/social/telegram/commands/ermile.php:115
 msgid "Haloo"
 msgstr "سلووو"
 
-#: dash/lib/social/telegram/commands/ermile.php:134
+#: dash/lib/social/telegram/commands/ermile.php:116
 msgid "We are so glad to meet you."
 msgstr "از ملاقات با شما خوشحالیم."
 
-#: dash/lib/social/telegram/commands/ermile.php:136
+#: dash/lib/social/telegram/commands/ermile.php:118
 msgid "Made by @Ermile"
 msgstr "ساخت ارمایل @Ermile"
 
-#: dash/lib/social/telegram/commands/ermile.php:153
-msgid "Ermile is inteligent"
-msgstr "ارمایل باهوش است"
+#: dash/lib/social/telegram/commands/ermile.php:145
+#: dash/lib/social/telegram/commands/ermile.php:186
+msgid "Check website"
+msgstr "بررسی وب‌سایت"
 
-#: dash/lib/social/telegram/commands/ermile.php:168
+#: dash/lib/social/telegram/commands/ermile.php:151
+msgid "Read more about us"
+msgstr "درباره ما بیشتر بخوانید"
+
+#: dash/lib/social/telegram/commands/ermile.php:170
 #: sarshomar/includes/languages/trans_project.php:22
 msgid "Ermile, Floor2, Yas Building"
 msgstr "ساختمان یاس، طبقه دوم، ارمایل"
 
-#: dash/lib/social/telegram/commands/ermile.php:168
+#: dash/lib/social/telegram/commands/ermile.php:170
 #: sarshomar/includes/languages/trans_project.php:23
 msgid "1st alley, Haft-e-tir St"
 msgstr "خیابان هفت تیر، کوچه یکم"
 
-#: dash/lib/social/telegram/commands/ermile.php:168
+#: dash/lib/social/telegram/commands/ermile.php:170
 msgid "IRAN"
 msgstr "ایران"
 
-#: dash/lib/social/telegram/commands/ermile.php:176
+#: dash/lib/social/telegram/commands/ermile.php:179
 msgid "We are happy to see you!"
 msgstr "از دیدنتون خوشحالیم!"
 
-#: dash/lib/social/telegram/commands/ermile.php:286
-msgid "You can connect your telegram with your mobile number in our service."
-msgstr ""
-"شما می‌توانید در سرویس ما تلگرام خود را به حساب کاربری روی شماره موبایل خود متصل "
-"کنید."
+#: dash/lib/social/telegram/commands/ermile.php:192
+msgid "Submit new ticket"
+msgstr "ارسال تیکت جدید"
 
-#: dash/lib/social/telegram/commands/ermile.php:287
+#: dash/lib/social/telegram/commands/ermile.php:222
+msgid "Open :val website"
+msgstr "بازکردن وب‌سایت :val"
+
+#: dash/lib/social/telegram/commands/ermile.php:228
+msgid ":val Telegram bot"
+msgstr "ربات تلگرام :val"
+
+#: dash/lib/social/telegram/commands/ermile.php:246
+msgid "You can control me by sending these commands"
+msgstr "میتونید من رو با دستورات زیر کنترل کنید"
+
+#: dash/lib/social/telegram/commands/ermile.php:247
+msgid "Start again"
+msgstr "شروع دوباره"
+
+#: dash/lib/social/telegram/commands/ermile.php:248
+msgid "Change your language"
+msgstr "تغییر زبان"
+
+#: dash/lib/social/telegram/commands/ermile.php:249
+msgid "Go to main menu"
+msgstr "برو به منوی اصلی"
+
+#: dash/lib/social/telegram/commands/ermile.php:250
+#: dash/lib/social/telegram/commands/ermile.php:416
+msgid "Sync with website"
+msgstr "همگام‌سازی با وب‌سایت"
+
+#: dash/lib/social/telegram/commands/ermile.php:251
+#: dash/lib/social/telegram/commands/ermile.php:404
+#: sarshomar/includes/languages/trans_project.php:184
+msgid "About"
+msgstr "درباره"
+
+#: dash/lib/social/telegram/commands/ermile.php:254
+msgid "or ?"
+msgstr "یا ؟"
+
+#: dash/lib/social/telegram/commands/ermile.php:254
+msgid "Get help commands"
+msgstr "دریافت راهنمایی دستورات"
+
+#: dash/lib/social/telegram/commands/ermile.php:294
+msgid "We do not need contact of anothers!"
+msgstr "ما به مخاطب سایر کاربران نیاز نداریم!"
+
+#: dash/lib/social/telegram/commands/ermile.php:294
+msgid "You can share your contact by press on /register"
+msgstr "شما می‌توانید مخاطب خود را با فشردن روی /register با من به اشتراک بگذارید"
+
+#: dash/lib/social/telegram/commands/ermile.php:298
+msgid "We need mobile number to complete registeration process."
+msgstr "ما برای تکمیل فرآیند ثبت‌نام نیاز به شماره موبایل شما داریم."
+
+#: dash/lib/social/telegram/commands/ermile.php:304
+msgid "I don't have enough time for listening!"
+msgstr "من به اندازه کافی زمان برای گوش دادن به آهنگ ندارم!"
+
+#: dash/lib/social/telegram/commands/ermile.php:304
+msgid "Type for me:)"
+msgstr "برای من تایپ کنید!"
+
+#: dash/lib/social/telegram/commands/ermile.php:308
+msgid "Thanks for your kindness"
+msgstr "ممنون از محبتتون"
+
+#: dash/lib/social/telegram/commands/ermile.php:312
+msgid "I'm busy and i dont think have time to watch video!"
+msgstr "حسابی سرم شلوفه، فکر نکنم وقت فیلم دیدن باشه!"
+
+#: dash/lib/social/telegram/commands/ermile.php:316
+msgid "A long time until I want to recognize your voice!!"
+msgstr "خیلی مونده تا بخوام صدای شما رو تشخیص بدم!"
+
+#: dash/lib/social/telegram/commands/ermile.php:320
+msgid "I'm still not advanced enough!"
+msgstr "من هنوز اونقدر پیشرفته نشدم!"
+
+#: dash/lib/social/telegram/commands/ermile.php:336
+msgid ""
+"You can connect complete your registeration on :val from telegram by share your "
+"mobile number."
+msgstr ""
+"شما می‌توانید با به‌اشتراک‌گذاری شماره موبایل خود از طریق تلگرام ثبت‌نام خودتان را "
+"در :val کامل کنید."
+
+#: dash/lib/social/telegram/commands/ermile.php:337
+msgid ""
+"By press share contact we get your mobile and after that you can use our website "
+"and your account is synced."
+msgstr ""
+"با فشردن دکمه به‌اشتراک‌گذاری مخاطب خودتان،‌ تلگرام شماره موبایل شما را پس از کسب "
+"اجازه برای ما ارسال می‌کند و بدین ترتیب ما می‌توانیم حساب کاربری شما را همگام‌سازی "
+"کرده و اتصال آن را با وب‌سایت برقرار کنیم تا شما درآینده بتوانید با موبایل خود در ‌"
+"وب‌سایت هم وارد شوید."
+
+#: dash/lib/social/telegram/commands/ermile.php:338
 msgid "Also you can do it anytime you need with /register command."
 msgstr ""
 "هم‌چنین هر زمانی که مایل باشید می‌توانید از طریق دستور /register این کار را انجام "
 "دهید."
 
-#: dash/lib/social/telegram/commands/ermile.php:294
+#: dash/lib/social/telegram/commands/ermile.php:345
 msgid "Register with mobile"
 msgstr "ثبت‌نام با موبایل"
 
-#: dash/lib/social/telegram/commands/ermile.php:295
+#: dash/lib/social/telegram/commands/ermile.php:346
 msgid "Help"
 msgstr "راهنمایی"
 
-#: dash/lib/social/telegram/commands/ermile.php:309
+#: dash/lib/social/telegram/commands/ermile.php:346
+msgid "Return to main menu"
+msgstr "بازگشت به منوی اصلی"
+
+#: dash/lib/social/telegram/commands/ermile.php:358
 msgid "Please choose your language"
 msgstr "لطفا زبان خود را انتخاب کنید"
 
-#: dash/lib/social/telegram/commands/menu.php:69
-#: sarshomar/includes/languages/trans_project.php:184
-msgid "About"
-msgstr "درباره"
-
-#: dash/lib/social/telegram/commands/menu.php:70
-msgid "Feedback"
-msgstr "بازخورد"
-
-#: dash/lib/social/telegram/commands/menu.php:79
+#: dash/lib/social/telegram/commands/ermile.php:424
 msgid "Main menu"
 msgstr "منوی اصلی"
 
-#: dash/lib/social/telegram/commands/step_feedback.php:37
+#: dash/lib/social/telegram/commands/step_ticketAnswer.php:22
+msgid "Answer to ticket "
+msgstr "پاسخ به تیکت"
+
+#: dash/lib/social/telegram/commands/step_ticketAnswer.php:34
+#: dash/lib/social/telegram/commands/step_ticketAnswer.php:57
+msgid "Please wrote your answer"
+msgstr "لطفا پیام خود را بنویسید"
+
+#: dash/lib/social/telegram/commands/step_ticketCreate.php:21
+msgid "Ask from support"
+msgstr "از پشتیبانی بپرس"
+
+#: dash/lib/social/telegram/commands/step_ticketCreate.php:35
 #: sarshomar/includes/languages/trans_project.php:11
 msgid "Thank you for choosing us."
 msgstr "از اینکه ما را انتخاب کردید، متشکریم."
 
-#: dash/lib/social/telegram/commands/step_feedback.php:38
+#: dash/lib/social/telegram/commands/step_ticketCreate.php:36
 msgid ""
 "Knowing your valuable comments about bugs and problems and more importantly your "
 "precious offers will help us in this way."
@@ -10420,124 +10648,105 @@ msgstr ""
 "دانستن نظرات ارزشمند شما درباره‌ی مشکلات و نواقص و صدالبته پیشنهادات گرانبهایتان "
 "از طریق فرم زیر سبب کمک به ما برای این مهم خواهد شد."
 
-#: dash/lib/social/telegram/commands/step_feedback.php:39
-msgid "Please wrote your request, offer, criticism or appreciation"
-msgstr "لطفا درخواست، پیشنهاد، انتقاد یا قدردانی خود را بنویسید"
+#: dash/lib/social/telegram/commands/step_ticketCreate.php:37
+msgid "Please wrote about your problem and describe it."
+msgstr "لطفا درباره مشکل خود نوشته و آن را شرح دهید."
 
-#: dash/lib/social/telegram/commands/step_feedback.php:57
-msgid "Your valuable feedback is saved."
-msgstr "بازخورد ارزشمند شما ثبت شد."
+#: dash/lib/social/telegram/commands/step_ticketCreate.php:60
+msgid "Please wrote about your ticket"
+msgstr "لطفا درباره تیکت خود بنویسید"
 
-#: dash/lib/social/telegram/commands/step_feedback.php:58
-msgid "Thank you;)"
-msgstr "سپاسگزاریم ;)"
+#: dash/lib/social/telegram/commands/ticket.php:15
+msgid "/ticket"
+msgstr "/تیکت"
 
-#: dash/lib/social/telegram/commands/step_feedback.php:62
-msgid "Thanks"
-msgstr "سپاسگزاریم"
+#: dash/lib/social/telegram/commands/ticket.php:16
+msgid "ticket"
+msgstr "تیکت"
 
-#: dash/lib/social/telegram/commands/step_feedback.php:96
-msgid "New feedback"
-msgstr "بازخورد"
+#: dash/lib/social/telegram/commands/ticket.php:119
+msgid "We can't find detail of this ticket!"
+msgstr "ما نمی‌توانیم جزئیات این تیکت را بیابیم!"
 
-#: dash/lib/social/telegram/commands/step_feedback.php:102
-msgid "User_id"
-msgstr "کد کاربر"
-
-#: dash/lib/social/telegram/commands/step_ticket.php:35
-msgid "We can give your ticket easily in via telegram"
-msgstr "ما می‌توانید به راحتی تیکت شما را از طریق تلگرام دریافت کنیم"
-
-#: dash/lib/social/telegram/commands/step_ticket.php:36
-msgid "Please enter your ticket title"
-msgstr "لطفا عنوان تیکت خود را وارد کنید"
-
-#: dash/lib/social/telegram/commands/step_ticket.php:56
-msgid "Ticket title is saved."
-msgstr "عنوان تیکت ذخیره شد."
-
-#: dash/lib/social/telegram/commands/step_ticket.php:57
-msgid "Please wrote your problem"
-msgstr "لطفا مشکل خود را بنویسید"
-
-#: dash/lib/social/telegram/commands/step_ticket.php:74
-msgid "Your ticket is successfully saved."
-msgstr "تیکت شما با موفقیت ذخیره شد."
-
-#: dash/lib/social/telegram/commands/step_ticket.php:75
-msgid "We try to answer to you as soon as posible."
-msgstr "ما سعی می کنیم تا در اسرع وقت به شما پاسخ دهیم."
-
-#: dash/lib/social/telegram/commands/step_ticketAnswer.php:45
-msgid "What do you want to do?"
-msgstr "می‌خواهید چه کاری انجام بدهید؟"
-
-#: dash/lib/social/telegram/commands/step_ticketAnswer.php:47
-#: dash/lib/social/telegram/commands/step_ticketAnswer.php:74
-#: sarshomar/includes/languages/trans_project.php:614
-msgid "Answer"
-msgstr "پاسخ"
-
-#: dash/lib/social/telegram/commands/step_ticketAnswer.php:76
-msgid "Please wrote your answer"
-msgstr "لطفا پیام خود را بنویسید"
-
-#: dash/lib/social/telegram/commands/step_ticketAnswer.php:102
-msgid "We are save you answer to this ticket."
-msgstr "ما پاسخ شما را به این تیکت ذخیره کردیم."
-
-#: dash/lib/social/telegram/commands/step_ticketAnswer.php:103
-msgid "Thanks."
-msgstr "سپاسگزاریم."
-
-#: dash/lib/social/telegram/commands/step_ticketAnswer.php:121
+#: dash/lib/social/telegram/commands/ticket.php:141
 msgid "We need ticket number!"
 msgstr "ما به شماره تیکت نیاز داریم!"
 
-#: dash/lib/social/telegram/exec.php:22 dash/lib/social/telegram/tg.php:40
+#: dash/lib/social/telegram/commands/utility.php:33
+msgid "More and more"
+msgstr "بیشتر و بیشتر"
+
+#: dash/lib/social/telegram/commands/utility.php:65
+msgid "Booom"
+msgstr "بوووم"
+
+#: dash/lib/social/telegram/commands/utility.php:90
+msgid "say"
+msgstr "بگو"
+
+#: dash/lib/social/telegram/exec.php:24 dash/lib/social/telegram/tg.php:35
 msgid "Telegram is off!"
 msgstr "تلگراف خاموش است!"
 
-#: dash/lib/social/telegram/exec.php:27
+#: dash/lib/social/telegram/exec.php:30
 msgid "Method is not set!"
 msgstr "روش تنظیم نشده است!"
 
-#: dash/lib/social/telegram/exec.php:39
+#: dash/lib/social/telegram/exec.php:43
 msgid "Api key is not correct!"
 msgstr "کلید رابط برنامه‌نویسی صحیح نیست!"
 
-#: dash/lib/social/telegram/exec.php:54
+#: dash/lib/social/telegram/exec.php:56
+msgid "Maybe we have problem!"
+msgstr "شاید ما مشکلی داریم!"
+
+#: dash/lib/social/telegram/exec.php:71
 msgid "Curl failed to initialize"
 msgstr "سی‌یو‌آر‌ال ناموفق در مقداردهی اولیه"
 
-#: dash/lib/social/telegram/exec.php:90
+#: dash/lib/social/telegram/exec.php:108
 msgid "Empty server response"
 msgstr "پاسخ خالی از سرور"
 
-#: dash/lib/social/telegram/log.php:166
+#: dash/lib/social/telegram/log.php:167
 msgid "debug mode is off!"
 msgstr "حالت اشکال‌زدایی خاموش است!"
 
-#: dash/lib/social/telegram/user.php:120
+#: dash/lib/social/telegram/step.php:337
+msgid "Press enter valid value"
+msgstr "لطفا مقداری معتبر وارد کنید"
+
+#: dash/lib/social/telegram/step.php:352
+msgid "Press another inappropirate key to exit from active process!"
+msgstr "با ورود مقدار نامعتبر دیگری از این فرآیند فعال خارج خواهد شد!"
+
+#: dash/lib/social/telegram/step.php:375
+msgid "Cancel operation."
+msgstr "انصراف از عملیات."
+
+#: dash/lib/social/telegram/tg.php:148
+msgid "We are detect outdated message in hook."
+msgstr "ما پیام تاریخ گذشته در هوک یافتیم."
+
+#: dash/lib/social/telegram/user.php:124
 msgid "Why your name is different!"
 msgstr "چرا نام شما متفاوت است!"
 
-#: dash/lib/social/telegram/user.php:124
+#: dash/lib/social/telegram/user.php:128
 msgid "Why your family is different!"
 msgstr "چرا نام خانوادگی شما متفاوت است!"
 
-#: dash/lib/social/telegram/user.php:137
+#: dash/lib/social/telegram/user.php:141
 msgid "Registration failed!"
 msgstr "ثبت‌نام ناموفق!"
 
-#: dash/lib/social/telegram/user.php:180
+#: dash/lib/social/telegram/user.php:184
 msgid "Your language was successfully set to :lang."
 msgstr "زبان شما به موفقیت به :lang  تغییر کرد."
 
-#: dash/lib/social/tg old/commands/step_register.php:84 older -
-#: addons/commands/step_register.php:84
-msgid "return"
-msgstr "بازگشت"
+#: dash/lib/social/telegram/user.php:235
+msgid "More detail"
+msgstr "جزئیات بیشتر"
 
 #: dash/lib/social/tg old/commands/step_register.php:142 older -
 #: addons/commands/step_register.php:142
@@ -10773,8 +10982,8 @@ msgstr "خطا در درگاه پرداخت - هیچ پاسخی گرفته نش�
 #: dash/lib/utility/payment/payment/asanpardakht.php:111
 #: dash/lib/utility/payment/payment/irkish.php:73
 #: dash/lib/utility/payment/payment/irkish.php:135
-#: dash/lib/utility/payment/payment/mellat.php:80
-#: dash/lib/utility/payment/payment/mellat.php:140
+#: dash/lib/utility/payment/payment/mellat.php:82
+#: dash/lib/utility/payment/payment/mellat.php:142
 #: dash/lib/utility/payment/payment/parsian.php:81
 #: dash/lib/utility/payment/payment/parsian.php:145
 #: dash/lib/utility/payment/payment/parsian.php:198
@@ -10793,7 +11002,7 @@ msgstr "خطا در اتصل به سرویس بانک"
 
 #: dash/lib/utility/payment/payment/irkish.php:188
 #: dash/lib/utility/payment/payment/irkish.php:192
-#: dash/lib/utility/payment/payment/mellat.php:208
+#: dash/lib/utility/payment/payment/mellat.php:210
 #: dash/lib/utility/payment/payment/parsian.php:324
 #: dash/lib/utility/payment/payment/parsian.php:329
 msgid "Unkown payment error"
@@ -10803,183 +11012,183 @@ msgstr "خطای پرداخت ناشناس"
 msgid "Can not connect to mellat gateway. Install it!"
 msgstr "نمی‌توانیم به درگاه پرداخت ملت متصل شویم. آن را نصب کنید!"
 
-#: dash/lib/utility/payment/payment/mellat.php:155
+#: dash/lib/utility/payment/payment/mellat.php:157
 msgid "Transaction Approved"
 msgstr "تراکنش تایید شده است"
 
-#: dash/lib/utility/payment/payment/mellat.php:156
+#: dash/lib/utility/payment/payment/mellat.php:158
 msgid "Invalid Card Number"
 msgstr "شماره کارت نامعتبر است"
 
-#: dash/lib/utility/payment/payment/mellat.php:157
+#: dash/lib/utility/payment/payment/mellat.php:159
 msgid "No Sufficient Funds"
 msgstr "بدون پول کافی"
 
-#: dash/lib/utility/payment/payment/mellat.php:158
+#: dash/lib/utility/payment/payment/mellat.php:160
 msgid "Incorrect Pin"
 msgstr "پین نادرست"
 
-#: dash/lib/utility/payment/payment/mellat.php:159
+#: dash/lib/utility/payment/payment/mellat.php:161
 msgid "Allowable Number Of Pin Tries Exceeded"
 msgstr "تعداد قابل قبولی از پین تلاش می کند بیش از"
 
-#: dash/lib/utility/payment/payment/mellat.php:160
+#: dash/lib/utility/payment/payment/mellat.php:162
 msgid "Card Not Effective"
 msgstr "کارت موثر نیست"
 
-#: dash/lib/utility/payment/payment/mellat.php:161
+#: dash/lib/utility/payment/payment/mellat.php:163
 msgid "Exceeds Withdrawal Frequency Limit"
 msgstr "بیش از حد فرکانس خروج"
 
-#: dash/lib/utility/payment/payment/mellat.php:162
+#: dash/lib/utility/payment/payment/mellat.php:164
 msgid "Customer Cancellation"
 msgstr "لغو مشتری"
 
-#: dash/lib/utility/payment/payment/mellat.php:163
+#: dash/lib/utility/payment/payment/mellat.php:165
 msgid "Expired Card"
 msgstr "کارت خاتمه یافته"
 
-#: dash/lib/utility/payment/payment/mellat.php:164
+#: dash/lib/utility/payment/payment/mellat.php:166
 msgid "Exceeds Withdrawal Amount Limit"
 msgstr "حد مجاز بازپرداخت بیشتر است"
 
-#: dash/lib/utility/payment/payment/mellat.php:165
+#: dash/lib/utility/payment/payment/mellat.php:167
 msgid "No Such Issuer"
 msgstr "چنین صادر کننده ای وجود ندارد"
 
-#: dash/lib/utility/payment/payment/mellat.php:166
+#: dash/lib/utility/payment/payment/mellat.php:168
 msgid "Card Switch Internal Error"
 msgstr "کارت سوئیچ داخلی خطا"
 
-#: dash/lib/utility/payment/payment/mellat.php:167
+#: dash/lib/utility/payment/payment/mellat.php:169
 msgid "Issuer Or Switch Is Inoperative"
 msgstr "صادر کننده یا سوئیچ نامناسب است"
 
-#: dash/lib/utility/payment/payment/mellat.php:168
+#: dash/lib/utility/payment/payment/mellat.php:170
 msgid "Transaction Not Permitted To Card Holder"
 msgstr "تراکنش به دارنده کارت مجاز نمی باشد"
 
-#: dash/lib/utility/payment/payment/mellat.php:169
+#: dash/lib/utility/payment/payment/mellat.php:171
 msgid "Invalid Merchant"
 msgstr "Merchant نامعتبر است"
 
-#: dash/lib/utility/payment/payment/mellat.php:170
+#: dash/lib/utility/payment/payment/mellat.php:172
 msgid "Security Violation"
 msgstr "نقض امنیتی"
 
-#: dash/lib/utility/payment/payment/mellat.php:171
+#: dash/lib/utility/payment/payment/mellat.php:173
 msgid "Invalid User Or Password"
 msgstr "کاربر یا گذرواژه نامعتبر است"
 
-#: dash/lib/utility/payment/payment/mellat.php:172
+#: dash/lib/utility/payment/payment/mellat.php:174
 msgid "Invalid Amount"
 msgstr "مقدار نامعتبر"
 
-#: dash/lib/utility/payment/payment/mellat.php:173
+#: dash/lib/utility/payment/payment/mellat.php:175
 msgid "Invalid Response"
 msgstr "پاسخ نامعتبر"
 
-#: dash/lib/utility/payment/payment/mellat.php:174
+#: dash/lib/utility/payment/payment/mellat.php:176
 msgid "Format Error"
 msgstr "خطای قالب"
 
-#: dash/lib/utility/payment/payment/mellat.php:175
+#: dash/lib/utility/payment/payment/mellat.php:177
 msgid "No Investment Account"
 msgstr "حساب سرمایه گذاری ندارد"
 
-#: dash/lib/utility/payment/payment/mellat.php:176
+#: dash/lib/utility/payment/payment/mellat.php:178
 msgid "System Internal Error"
 msgstr "خطای داخلی سیستم"
 
-#: dash/lib/utility/payment/payment/mellat.php:177
+#: dash/lib/utility/payment/payment/mellat.php:179
 msgid "Invalid Business Date"
 msgstr "تاریخ کسب و کار نامعتبر است"
 
-#: dash/lib/utility/payment/payment/mellat.php:178
+#: dash/lib/utility/payment/payment/mellat.php:180
 msgid "Duplicate Order Id"
 msgstr "شناسه سفارش تکراری"
 
-#: dash/lib/utility/payment/payment/mellat.php:179
+#: dash/lib/utility/payment/payment/mellat.php:181
 msgid "Sale Transaction Not Found"
 msgstr "معامله فروش یافت نشد"
 
-#: dash/lib/utility/payment/payment/mellat.php:180
+#: dash/lib/utility/payment/payment/mellat.php:182
 msgid "Duplicate Verify"
 msgstr "تکثیر تأیید"
 
-#: dash/lib/utility/payment/payment/mellat.php:181
+#: dash/lib/utility/payment/payment/mellat.php:183
 msgid "Verify Transaction Not Found"
 msgstr "تأیید معامله یافت نشد"
 
-#: dash/lib/utility/payment/payment/mellat.php:182
+#: dash/lib/utility/payment/payment/mellat.php:184
 msgid "Transaction Has Been Settled"
 msgstr "معامله صورت گرفته است"
 
-#: dash/lib/utility/payment/payment/mellat.php:183
+#: dash/lib/utility/payment/payment/mellat.php:185
 msgid "Transaction Has Not Been Settled"
 msgstr "معامله انجام نشده است"
 
-#: dash/lib/utility/payment/payment/mellat.php:184
+#: dash/lib/utility/payment/payment/mellat.php:186
 msgid "Settle Transaction Not Found"
 msgstr "معامله معامله پیدا نشد"
 
-#: dash/lib/utility/payment/payment/mellat.php:185
+#: dash/lib/utility/payment/payment/mellat.php:187
 msgid "Transaction Has Been Reversed"
 msgstr "معامله معکوس شده است"
 
-#: dash/lib/utility/payment/payment/mellat.php:186
+#: dash/lib/utility/payment/payment/mellat.php:188
 msgid "Refund Transaction Not Found"
 msgstr "معامله بازپرداخت یافت نشد"
 
-#: dash/lib/utility/payment/payment/mellat.php:187
+#: dash/lib/utility/payment/payment/mellat.php:189
 msgid "Bill Digit Incorrect"
 msgstr "بیل سیگنال اشتباه است"
 
-#: dash/lib/utility/payment/payment/mellat.php:188
+#: dash/lib/utility/payment/payment/mellat.php:190
 msgid "Payment Digit Incorrect"
 msgstr "سیگنال پرداخت اشتباه است"
 
-#: dash/lib/utility/payment/payment/mellat.php:189
+#: dash/lib/utility/payment/payment/mellat.php:191
 msgid "Bill Organization Not Valid"
 msgstr "سازمان بیل معتبر نیست"
 
-#: dash/lib/utility/payment/payment/mellat.php:190
+#: dash/lib/utility/payment/payment/mellat.php:192
 msgid "Session Timeout"
 msgstr "مدت زمان جلسه"
 
-#: dash/lib/utility/payment/payment/mellat.php:191
+#: dash/lib/utility/payment/payment/mellat.php:193
 msgid "Data Access Exception"
 msgstr "استثناء دسترسی به داده ها"
 
-#: dash/lib/utility/payment/payment/mellat.php:192
+#: dash/lib/utility/payment/payment/mellat.php:194
 msgid "Payer Id Is Invalid"
 msgstr "شناسه پرداخت نامعتبر است"
 
-#: dash/lib/utility/payment/payment/mellat.php:193
+#: dash/lib/utility/payment/payment/mellat.php:195
 msgid "Customer Not Found"
 msgstr "مشتری یافت نشد"
 
-#: dash/lib/utility/payment/payment/mellat.php:194
+#: dash/lib/utility/payment/payment/mellat.php:196
 msgid "Try Count Exceeded"
 msgstr "سعی کنید تعداد بیش از حد"
 
-#: dash/lib/utility/payment/payment/mellat.php:195
+#: dash/lib/utility/payment/payment/mellat.php:197
 msgid "Invalid IP"
 msgstr "IP نامعتبر است"
 
-#: dash/lib/utility/payment/payment/mellat.php:196
+#: dash/lib/utility/payment/payment/mellat.php:198
 msgid "Duplicate Transmission"
 msgstr "انتقال تکراری"
 
-#: dash/lib/utility/payment/payment/mellat.php:197
+#: dash/lib/utility/payment/payment/mellat.php:199
 msgid "Original Transaction Not Found"
 msgstr "معامله اصلی یافت نشد"
 
-#: dash/lib/utility/payment/payment/mellat.php:198
+#: dash/lib/utility/payment/payment/mellat.php:200
 msgid "Invalid Transaction"
 msgstr "معامله نامعتبر"
 
-#: dash/lib/utility/payment/payment/mellat.php:199
+#: dash/lib/utility/payment/payment/mellat.php:201
 msgid "Error In Settle"
 msgstr "خطا در حل و فصل"
 
@@ -11243,12 +11452,12 @@ msgid ""
 msgstr ""
 "سرشمار با زیرساختی یکپارچه، امکان پرسیدن با هر ابزاری را برای شما فراهم کرده است."
 
-#: sarshomar/content_a/home/view.php:11
+#: sarshomar/content_a/alllist/view.php:14 sarshomar/content_a/home/view.php:11
 #: sarshomar/includes/languages/trans_project.php:528
 msgid "Questionnaires"
 msgstr "پرسشنامه‌ها"
 
-#: sarshomar/content_a/home/view.php:12
+#: sarshomar/content_a/alllist/view.php:15 sarshomar/content_a/home/view.php:12
 msgid "Manage all of your surveys and easily add new one or manage exisiting."
 msgstr ""
 "مدیریت تمام پرسشنامه‌های شما و افزودن یک نمونه جدید یا مدیریت پرسشنامه‌های موجود"
@@ -11276,7 +11485,7 @@ msgstr "افزودن سوال جدید با اطلاعات اولیه و امک�
 #: sarshomar/content_a/survey/thankyou/view.php:17
 #: sarshomar/content_a/survey/trans/view.php:18
 #: sarshomar/content_a/survey/welcome/view.php:17
-#: sarshomar/content_s/home/view.php:167
+#: sarshomar/content_s/home/view.php:206
 msgid "Back to survey dashboard"
 msgstr "بازگشت به داشبورد پرسشنامه"
 
@@ -11318,7 +11527,7 @@ msgstr "لیست سوالات"
 msgid "Check your survey question list"
 msgstr "بررسی لیست سوالات پرسشنامه"
 
-#: sarshomar/content_a/question/view.php:21 sarshomar/content_s/home/view.php:64
+#: sarshomar/content_a/question/view.php:21 sarshomar/content_s/home/view.php:93
 #: sarshomar/includes/lib/app/answer.php:78 sarshomar/includes/lib/app/answer.php:94
 #: sarshomar/includes/lib/app/question/get.php:158
 msgid "Invalid question id"
@@ -11423,10 +11632,10 @@ msgstr "بررسی جزئیات پرسشنامه و رهگیری هرچیزی د
 #: sarshomar/content_a/survey/view.php:14 sarshomar/includes/lib/app/answer.php:86
 #: sarshomar/includes/lib/app/answer/get.php:84
 #: sarshomar/includes/lib/app/answer/get.php:134
-#: sarshomar/includes/lib/app/answer/get.php:182
+#: sarshomar/includes/lib/app/answer/get.php:180
 #: sarshomar/includes/lib/app/question.php:49
 #: sarshomar/includes/lib/app/question/get.php:90
-#: sarshomar/includes/lib/app/survey.php:48
+#: sarshomar/includes/lib/app/survey.php:117
 msgid "Invalid survey id"
 msgstr "شناسه نامعتبر پرسشنامه"
 
@@ -11472,15 +11681,7 @@ msgstr "پیام خوش‌آمد گویی"
 msgid "You can set specail welcome message on your survey."
 msgstr "شما می‌توانید پیام خوش آمد گویی خاص خود را تنظیم کنید"
 
-#: sarshomar/content_s/home/controller.php:30
-msgid "Survay not found"
-msgstr "پرسشنامه یافت نشد"
-
-#: sarshomar/content_s/home/controller.php:65
-msgid "This survey is not publish"
-msgstr "این پرسشنامه منتشر نشده است"
-
-#: sarshomar/content_s/home/view.php:9
+#: sarshomar/content_s/home/view.php:10
 msgid "Survey"
 msgstr "پرسش‌نامه"
 
@@ -13642,6 +13843,7 @@ msgid "Complete"
 msgstr "کامل"
 
 #: sarshomar/includes/languages/trans_project.php:595
+#: sarshomar/includes/lib/db/answers.php:228
 msgid "Skipped"
 msgstr "رد شده"
 
@@ -16433,7 +16635,7 @@ msgstr "لطفا برای ادامه مراحل وارد سیستم شوید"
 #: sarshomar/includes/lib/app/question/get.php:83
 #: sarshomar/includes/lib/app/question/get.php:149
 #: sarshomar/includes/lib/app/question/get.php:173
-#: sarshomar/includes/lib/app/survey.php:39
+#: sarshomar/includes/lib/app/survey.php:108
 msgid "Survay id not set"
 msgstr "شناسه پرسشنامه وارد نشده است"
 
@@ -16477,7 +16679,7 @@ msgstr "رایانامه اشتباه است"
 
 #: sarshomar/includes/lib/app/answer/get.php:91
 #: sarshomar/includes/lib/app/answer/get.php:141
-#: sarshomar/includes/lib/app/answer/get.php:189
+#: sarshomar/includes/lib/app/answer/get.php:187
 msgid "Invalid answer id"
 msgstr "شناسه پاسخ نامعتبر است"
 
@@ -16678,36 +16880,44 @@ msgstr "امتیازدهی"
 msgid "Range slider"
 msgstr "محدوده عددی"
 
-#: sarshomar/includes/lib/app/survey.php:77
+#: sarshomar/includes/lib/app/survey.php:42 sarshomar/includes/lib/app/survey.php:51
+msgid "Survay not found"
+msgstr "پرسشنامه یافت نشد"
+
+#: sarshomar/includes/lib/app/survey.php:88
+msgid "This survey is not publish"
+msgstr "این پرسشنامه منتشر نشده است"
+
+#: sarshomar/includes/lib/app/survey.php:146
 #: sarshomar/includes/lib/app/survey/add.php:37
 msgid "Please fill the survey title"
 msgstr "لطفا عنوان پرسشنامه را کامل کنید"
 
-#: sarshomar/includes/lib/app/survey.php:83
+#: sarshomar/includes/lib/app/survey.php:152
 msgid "Please fill the survey title less than 500 character"
 msgstr "لطفا عنوان پرسشنامه را کمتر از ۵۰۰ حرف وارد کنید"
 
-#: sarshomar/includes/lib/app/survey.php:103
+#: sarshomar/includes/lib/app/survey.php:172
 msgid "Please fill the survey password less than 200 character"
 msgstr "لطفا گذرواژه پرسشنامه را کمتر از ۲۰۰ حرف وارد کنید"
 
-#: sarshomar/includes/lib/app/survey.php:110
+#: sarshomar/includes/lib/app/survey.php:179
 msgid "Invalid privacy of survey"
 msgstr "وضعیت حریم خصوصی نامعتبر برای پرسشنامه"
 
-#: sarshomar/includes/lib/app/survey.php:117
+#: sarshomar/includes/lib/app/survey.php:186
 msgid "Invalid status of survey"
 msgstr "وضعیت نامعتبر برای پرسشنامه"
 
-#: sarshomar/includes/lib/app/survey.php:133
+#: sarshomar/includes/lib/app/survey.php:202
 msgid "Please fill the survey redirect less than 2000 character"
 msgstr "لطفا جزئیات مربوط به عنوان آدرس پرسشنامه را کمتر از ۲۰۰۰ حرف وارد کنید"
 
-#: sarshomar/includes/lib/app/survey.php:146
+#: sarshomar/includes/lib/app/survey.php:215
 msgid "Please fill the survey emailtitle less than 500 character"
 msgstr "لطفا جزئیات مربوط به عنوان ایمیل پرسشنامه را کمتر از ۵۰۰ حرف وارد کنید"
 
-#: sarshomar/includes/lib/app/survey.php:153
+#: sarshomar/includes/lib/app/survey.php:222
 msgid "Please fill the survey emailto less than 500 character"
 msgstr "لطفا جزئیات مربوط به مقصد ایمیل پرسشنامه را کمتر از ۵۰۰ حرف وارد کنید"
 
@@ -16722,6 +16932,70 @@ msgstr "پرسشنامه با موفقیت اضافه شد"
 #: sarshomar/includes/lib/app/survey/edit.php:62
 msgid "Survay successfully updated"
 msgstr "پرسشنامه با موفقیت بروزرسانی شد"
+
+#: sarshomar/includes/lib/app/tg/survey.php:31
+msgid "Invalid step"
+msgstr "مرحله نامعتبر"
+
+#: sarshomar/includes/lib/app/tg/survey.php:159
+msgid "Wellcome to sarshomar"
+msgstr "به سرشمار خوش آمدید"
+
+#~ msgid "Ermile is inteligent"
+#~ msgstr "ارمایل باهوش است"
+
+#~ msgid "You can connect your telegram with your mobile number in our service."
+#~ msgstr ""
+#~ "شما می‌توانید در سرویس ما تلگرام خود را به حساب کاربری روی شماره موبایل خود "
+#~ "متصل کنید."
+
+#~ msgid "Feedback"
+#~ msgstr "بازخورد"
+
+#~ msgid "Please wrote your request, offer, criticism or appreciation"
+#~ msgstr "لطفا درخواست، پیشنهاد، انتقاد یا قدردانی خود را بنویسید"
+
+#~ msgid "Your valuable feedback is saved."
+#~ msgstr "بازخورد ارزشمند شما ثبت شد."
+
+#~ msgid "Thank you;)"
+#~ msgstr "سپاسگزاریم ;)"
+
+#~ msgid "Thanks"
+#~ msgstr "سپاسگزاریم"
+
+#~ msgid "New feedback"
+#~ msgstr "بازخورد"
+
+#~ msgid "User_id"
+#~ msgstr "کد کاربر"
+
+#~ msgid "We can give your ticket easily in via telegram"
+#~ msgstr "ما می‌توانید به راحتی تیکت شما را از طریق تلگرام دریافت کنیم"
+
+#~ msgid "Please enter your ticket title"
+#~ msgstr "لطفا عنوان تیکت خود را وارد کنید"
+
+#~ msgid "Ticket title is saved."
+#~ msgstr "عنوان تیکت ذخیره شد."
+
+#~ msgid "Please wrote your problem"
+#~ msgstr "لطفا مشکل خود را بنویسید"
+
+#~ msgid "Your ticket is successfully saved."
+#~ msgstr "تیکت شما با موفقیت ذخیره شد."
+
+#~ msgid "We try to answer to you as soon as posible."
+#~ msgstr "ما سعی می کنیم تا در اسرع وقت به شما پاسخ دهیم."
+
+#~ msgid "What do you want to do?"
+#~ msgstr "می‌خواهید چه کاری انجام بدهید؟"
+
+#~ msgid "We are save you answer to this ticket."
+#~ msgstr "ما پاسخ شما را به این تیکت ذخیره کردیم."
+
+#~ msgid "Thanks."
+#~ msgstr "سپاسگزاریم."
 
 #~ msgid "Telegram id not found"
 #~ msgstr "شناسه‌ی تلگرام یافت نشد"
@@ -19715,9 +19989,6 @@ msgstr "پرسشنامه با موفقیت بروزرسانی شد"
 #~ msgid "Please contact to us to help you in enter in site"
 #~ msgstr "لطفا برای رفع مشکل خود برای ورود به سایت با ما تماس بگیرید"
 
-#~ msgid "Invalid step"
-#~ msgstr "مرحله نامعتبر"
-
 #~ msgid "Don't!"
 #~ msgstr "نکن!"
 
@@ -19815,9 +20086,6 @@ msgstr "پرسشنامه با موفقیت بروزرسانی شد"
 
 #~ msgid "Add poll canceled"
 #~ msgstr "افزودن نظرسنجی لغو شد"
-
-#~ msgid "Return to main menu"
-#~ msgstr "بازگشت به منوی اصلی"
 
 #~ msgid "Do you like it!"
 #~ msgstr "میپسندید؟"
@@ -20140,14 +20408,8 @@ msgstr "پرسشنامه با موفقیت بروزرسانی شد"
 #~ msgid "#614, Omranieh, Moallem Sq, Qom, Iran. 37158-39959"
 #~ msgstr "ایران، قم، میدان معلم، مجتمع عمرانیه، واحد۶۱۴، ارمایل، ۳۷۱۵۸۳۹۹۵۹"
 
-#~ msgid "menu"
-#~ msgstr "منو"
-
 #~ msgid "main"
 #~ msgstr "اصلی"
-
-#~ msgid "mainmenu"
-#~ msgstr "منوی اصلی"
 
 #~ msgid "New"
 #~ msgstr "جدید"
@@ -23509,9 +23771,6 @@ msgstr "پرسشنامه با موفقیت بروزرسانی شد"
 
 #~ msgid "paper"
 #~ msgstr "سند"
-
-#~ msgid "start"
-#~ msgstr "شروع"
 
 #~ msgid "inprogress"
 #~ msgstr "در حال انجام"
