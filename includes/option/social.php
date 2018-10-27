@@ -17,15 +17,12 @@ self::$social['list']['aparat']               = 'sarshomar';
 * TELEGRAM
 * t.me
 */
-self::$social['telegram']['status']           = true;
-self::$social['telegram']['name']             = 'sarshomar';
-self::$social['telegram']['key']              = '142711391:AAFH0ULw7BzwdmmiZHv2thKQj7ibb49DJ44';
-self::$social['telegram']['bot']              = 'sarshomarbot';
-self::$social['telegram']['hookFolder']       = '$*ermile*$';
-self::$social['telegram']['hook']             = 'https://sarshomar.com/saloos_tg/sarshomarbot/$*ermile*$';
-self::$social['telegram']['debug']            = true;
-self::$social['telegram']['channel']          = null;
-self::$social['telegram']['botan']            = null;
+self::$social['telegram']['status']     = true;
+self::$social['telegram']['bot']        = 'SarshomarBot';
+self::$social['telegram']['token']      = '';
+self::$social['telegram']['hookFolder'] = '';
+self::$social['telegram']['hook']       = null;
+self::$social['telegram']['debug']      = true;
 
 /**
 * FACEBOOK
