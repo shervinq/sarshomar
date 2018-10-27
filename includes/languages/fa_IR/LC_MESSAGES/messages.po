@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Sarshomar - Persian\n"
 "POT-Creation-Date: 2018-10-27 14:43+0330\n"
-"PO-Revision-Date: 2018-10-27 16:55+0330\n"
+"PO-Revision-Date: 2018-10-27 16:56+0330\n"
 "Last-Translator: Javad <J.Evazzadeh@gmail.com>\n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -15167,7 +15167,7 @@ msgstr "راه‌آهن"
 
 #: sarshomar/includes/languages/trans_static.php:334
 msgid "middle school"
-msgstr "راهنمایی"
+msgstr "مدرسه راهنمایی"
 
 #: sarshomar/includes/languages/trans_static.php:335
 msgid "traffic police"
