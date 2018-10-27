@@ -20,8 +20,7 @@ self::$social['list']['aparat']               = 'sarshomar';
 self::$social['telegram']['status']     = true;
 self::$social['telegram']['bot']        = 'SarshomarBot';
 self::$social['telegram']['token']      = '';
-self::$social['telegram']['hookFolder'] = '';
-self::$social['telegram']['hook']       = null;
+self::$social['telegram']['hookFolder'] = 'Ermile';
 self::$social['telegram']['debug']      = true;
 
 /**
