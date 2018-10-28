@@ -48,15 +48,12 @@ class questionSender
 				break;
 
 			case 'single_choice':
+			case 'dropdown':
 				self::single_choice($_questionData, $text, $reply_markup);
 				break;
 
 			case 'multiple_choice':
-				// self::multiple_choice($_questionData, $text, $reply_markup);
-				break;
-
-			case 'dropdown':
-				// self::dropdown($_questionData, $text, $reply_markup);
+				self::multiple_choice($_questionData, $text, $reply_markup);
 				break;
 
 			case 'rating':
@@ -188,7 +185,7 @@ class questionSender
 	private static function single_choice($_question, &$_txt, &$_kbd)
 	{
 		$_txt .= "\n\n";
-		$_txt .= '❇️ '. T_('Please choose your answer to this question');
+		$_txt .= '❇️ '. T_('Please choose your answer');
 
 		if(isset($_question['choice']))
 		{
@@ -208,8 +205,7 @@ class questionSender
 						[
 							'text' => $value['title'],
 							'callback_data' => 'survey_123 '. $value['title'],
-						]
-						;
+						];
 					}
 				}
 
@@ -218,30 +214,36 @@ class questionSender
 	}
 
 
+	private static function multiple_choice($_question, &$_txt, &$_kbd)
+	{
+		$_txt .= "\n\n";
+		$_txt .= '❇️ '. T_('Please choose your answer');
 
+		if(isset($_question['choice']))
+		{
+			$choices = $_question['choice'];
+			if(is_array($choices) && $choices)
+			{
+				$_kbd =
+				[
+					'inline_keyboard' => []
+				];
 
+				foreach ($choices as $key => $value)
+				{
+					if(isset($value['title']))
+					{
+						$_kbd['inline_keyboard'][][] =
+						[
+							'text' => $value['title'],
+							'callback_data' => 'survey_123 '. $value['title'],
+						];
+					}
+				}
 
-
-
-
-	// private static function multiple_choice()
-	// {
-	// 	$question = \dash\data::question();
-	// 	$msg = '';
-	// 	if(isset($question['choice']) && is_array($question['choice']))
-	// 	{
-	// 		foreach ($question['choice'] as $key => $choice)
-	// 		{
-	// 			if(isset($choice['title']))
-	// 			{
-	// 				$msg .= $key . ': '. $choice['title']. "\n";
-
-	// 			}
-	// 		}
-
-	// 	}
-	// 	return $msg;
-	// }
+			}
+		}
+	}
 
 
 
