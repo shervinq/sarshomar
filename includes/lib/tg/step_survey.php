@@ -33,6 +33,8 @@ class step_survey
 	{
 		step::plus();
 		$txt_text = T_("Hello This is question one");
+		$surveyNo = step::get('surveyNo');
+		step::set('questionID', 12);
 
 		// empty keyboard
 		$result =
@@ -52,23 +54,31 @@ class step_survey
 	// get answer
 	public static function step2($_answer)
 	{
-		if(bot::isCallback())
-		{
-			$callbackResult =
-			[
-				'text' => T_("Please choose answer")." 📝",
-				'show_alert' => true,
-			];
-			bot::answerCallbackQuery($callbackResult);
-			return false;
-		}
-		elseif(step::checkFalseTry())
+		if(step::checkFalseTry())
 		{
 			return false;
 		}
 
-		$surveyNo = step::get('surveyNo');
+		// save answer
+		$surveyNo   = step::get('surveyNo');
+		$questionId = step::get('questionID');
+		$saveResult = \lib\app\tg\survey::answer($surveyNo, $questionId, $_answer)
 
+		$nextIsExist = null;
+		// check next question if exist show it
+		// else show thankyou msg
+		if($nextIsExist)
+		{
+			// go to next message
+			step::goingto(1);
+			return self::step1();
+		}
+		else
+		{
+			// show thankyou msg
+			survey::thankyou($surveyNo);
+			step::stop();
+		}
 	}
 }
 ?>

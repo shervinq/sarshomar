@@ -47,10 +47,12 @@ class survey
 		}
 	}
 
+
 	public static function skip($_id, $_question_id)
 	{
 		return self::answer($_id, $_question_id, null, true);
 	}
+
 
 	public static function answer($_id, $_question_id, $_answer, $_skip = false)
 	{
@@ -68,7 +70,7 @@ class survey
 		// $step  = \dash\request::get('step');
 		$step  = intval($step) + 1;
 		// new step
-		return null;
+		return true;
 	}
 
 
@@ -174,8 +176,6 @@ class survey
 	}
 
 
-
-
 	private static function thankyou_msg()
 	{
 		$survey = \dash\data::surveyRow();
@@ -201,7 +201,7 @@ class survey
 
 		if(!trim($msg))
 		{
-			$msg = T_("Let's go to start answer survey");
+			$msg = T_("Thank you to answer our question");
 		}
 
 		return $msg;
