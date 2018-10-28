@@ -27,6 +27,27 @@ class questionSender
 				self::numeric($_questionData, $text, $reply_markup);
 				break;
 
+			case 'date':
+				self::date($_questionData, $text, $reply_markup);
+				break;
+
+			case 'time':
+				self::time($_questionData, $text, $reply_markup);
+				break;
+
+			case 'mobile':
+				self::mobile($_questionData, $text, $reply_markup);
+				break;
+
+			case 'email':
+				self::email($_questionData, $text, $reply_markup);
+				break;
+
+			case 'website':
+				self::website($_questionData, $text, $reply_markup);
+				break;
+
+
 
 			case 'multiple_choice':
 				// self::multiple_choice($_questionData, $text, $reply_markup);
@@ -35,11 +56,6 @@ class questionSender
 
 			case 'single_choice':
 			case 'dropdown':
-			case 'date':
-			case 'time':
-			case 'mobile':
-			case 'email':
-			case 'website':
 			case 'rating':
 			case 'rangeslider':
 				break;
@@ -98,15 +114,16 @@ class questionSender
 	private static function short_answer($_question, &$_txt, &$_kbd)
 	{
 		$_txt .= "\n\n";
-		$_txt .= '❇️ '. T_('Please wrote short answer for this question.');
+		$_txt .= '❇️ '. T_('Please wrote short answer for this question');
 	}
 
 
 	private static function descriptive_answer($_question, &$_txt, &$_kbd)
 	{
 		$_txt .= "\n\n";
-		$_txt .= '❇️ '. T_('Please describe your answer.');
+		$_txt .= '❇️ '. T_('Please describe your answer');
 	}
+
 
 	private static function numeric($_question, &$_txt, &$_kbd)
 	{
@@ -122,7 +139,42 @@ class questionSender
 		}
 
 		$_txt .= "\n\n";
-		$_txt .= '❇️ '. T_('Please enter number between :min and :max.', ['min' => $min, 'max' => $max]);
+		$_txt .= '❇️ '. T_('Please enter number between :min and :max', ['min' => $min, 'max' => $max]);
+	}
+
+
+	private static function date($_question, &$_txt, &$_kbd)
+	{
+		$_txt .= "\n\n";
+		$_txt .= '❇️ '. T_('Please enter date in format <code>yyyy-mm-dd</code> like <code>2018-10-28</code>');
+	}
+
+
+	private static function time($_question, &$_txt, &$_kbd)
+	{
+		$_txt .= "\n\n";
+		$_txt .= '❇️ '. T_('Please enter time like <code>19:41</code>');
+	}
+
+
+	private static function mobile($_question, &$_txt, &$_kbd)
+	{
+		$_txt .= "\n\n";
+		$_txt .= '❇️ '. T_('Please enter mobile number like <code>09350001234</code>');
+	}
+
+
+	private static function email($_question, &$_txt, &$_kbd)
+	{
+		$_txt .= "\n\n";
+		$_txt .= '❇️ '. T_('Please enter email like <code>abc@example.com</code>');
+	}
+
+
+	private static function website($_question, &$_txt, &$_kbd)
+	{
+		$_txt .= "\n\n";
+		$_txt .= '❇️ '. T_('Please enter website like <code>jibres.com</code>');
 	}
 
 
