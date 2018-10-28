@@ -71,14 +71,15 @@ class survey
 	{
 		bot::ok();
 
-		$surveyNo = $_id;
-		$survey = \lib\app\tg\survey::get($surveyNo);
+		$surveyNo  = $_id;
+		$surveyTxt = \lib\app\tg\survey::get($surveyNo);
+		$surveyTxt .= "\n\n". T_("You can cancel answer operation anytime by send command /cancel");
 
-		if($survey)
+		if($surveyTxt)
 		{
 			$result =
 			[
-				'text'         => $survey,
+				'text'         => $surveyTxt,
 				'reply_markup' =>
 				[
 					'inline_keyboard' =>

@@ -31,7 +31,7 @@ class step_survey
 	public static function step1()
 	{
 		step::plus();
-		$txt_text = T_("Hello survey");
+		$txt_text = T_("Hello This is question one");
 
 		// empty keyboard
 		$result =
