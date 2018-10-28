@@ -60,7 +60,14 @@ class questionSender
 		$bodyTxt = '';
 		if(isset($_questionData['title']))
 		{
-			$bodyTxt .= "❔ <b>". $_questionData['title']. "</b>\n\n";
+			$bodyTxt .= "❔";
+			$bodyTxt .= " <b>". $_questionData['title']. "</b>";
+			// add require badge
+			if(isset($_questionData['require']))
+			{
+				$bodyTxt .= " <code>*". T_('Require'). "</code>";
+			}
+			$bodyTxt .= "\n\n";
 		}
 
 		if(isset($_questionData['desc']))
@@ -84,7 +91,7 @@ class questionSender
 	private static function shortAnswer($_question, &$_txt, &$_kbd)
 	{
 		$_txt .= "\n\n";
-		$_txt .= '✳️ '. T_('Please wrote short answer for this question.');
+		$_txt .= '❇️ '. T_('Please wrote short answer for this question.');
 	}
 
 
