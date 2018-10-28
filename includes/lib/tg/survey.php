@@ -6,8 +6,6 @@ use \dash\social\telegram\step;
 
 class survey
 {
-
-
 	public static function detector($_cmd)
 	{
 		$myCommand = $_cmd['commandRaw'];

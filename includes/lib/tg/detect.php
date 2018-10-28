@@ -2,7 +2,7 @@
 namespace lib\tg;
 
 
-class answer
+class detect
 {
 	public static function run($_cmd)
 	{
