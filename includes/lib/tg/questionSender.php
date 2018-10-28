@@ -18,15 +18,21 @@ class questionSender
 			case 'short_answer':
 				self::short_answer($_questionData, $text, $reply_markup);
 				break;
+
 			case 'descriptive_answer':
 				self::descriptive_answer($_questionData, $text, $reply_markup);
 				break;
+
+			case 'numeric':
+				self::numeric($_questionData, $text, $reply_markup);
+				break;
+
+
 			case 'multiple_choice':
 				// self::multiple_choice($_questionData, $text, $reply_markup);
 				break;
 
 
-			case 'numeric':
 			case 'single_choice':
 			case 'dropdown':
 			case 'date':
@@ -102,6 +108,22 @@ class questionSender
 		$_txt .= '❇️ '. T_('Please describe your answer.');
 	}
 
+	private static function numeric($_question, &$_txt, &$_kbd)
+	{
+		$min = null;
+		$max = null;
+		if(isset($_question['setting']['numeric']['min']))
+		{
+			$min = $_question['setting']['numeric']['min'];
+		}
+		if(isset($_question['setting']['numeric']['max']))
+		{
+			$max = $_question['setting']['numeric']['max'];
+		}
+
+		$_txt .= "\n\n";
+		$_txt .= '❇️ '. T_('Please enter number between :min and :max.', ['min' => $min, 'max' => $max]);
+	}
 
 
 
