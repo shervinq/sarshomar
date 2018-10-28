@@ -83,8 +83,8 @@ class questionSender
 
 	private static function shortAnswer($_question, &$_txt, &$_kbd)
 	{
-
-
+		$_txt .= "\n\n";
+		$_txt .= '✳️ '. T_('Please wrote short answer for this question.');
 	}
 
 
