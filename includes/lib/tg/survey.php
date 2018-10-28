@@ -24,13 +24,13 @@ class survey
 					[
 						[
 							[
-								'text' => T_("Visit in site"),
+								'text' => T_("Answer via site"),
 								'url'  => \dash\url::base(). '/s/'. $surveyNo,
 							],
 						],
 						[
 							[
-								'text'          => 	T_("Answer"),
+								'text'          => 	T_("Start"),
 								'callback_data' => 'survey '. $surveyNo. ' start',
 							],
 						],

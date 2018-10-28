@@ -144,7 +144,7 @@ class survey
 		$msg = '';
 		if(isset($survey['welcometitle']))
 		{
-			$msg .= "<b>". $survey['welcometitle']. "</b>\n\n";
+			$msg .= "🔹 <b>". $survey['welcometitle']. "</b>\n\n";
 		}
 
 		if(isset($survey['welcomedesc']))
