@@ -74,8 +74,8 @@ class survey
 				if($_site)
 				{
 					\dash\redirect::to($new_url);
+					return false;
 				}
-				return false;
 			}
 		}
 

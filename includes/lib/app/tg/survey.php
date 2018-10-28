@@ -38,6 +38,7 @@ class survey
 		}
 		else
 		{
+			\dash\notif::error(T_('Survey not found'));
 			return false;
 		}
 	}
@@ -143,20 +144,25 @@ class survey
 		$msg = '';
 		if(isset($survey['welcometitle']))
 		{
-			$msg .= $survey['welcometitle']. "\n";
+			$msg .= "<b>". $survey['welcometitle']. "</b>\n\n";
 		}
 
 		if(isset($survey['welcomedesc']))
 		{
 			$temp = $survey['welcomedesc'];
-			$temp = strip_tags($temp);
 			$temp = str_replace('&nbsp;', ' ', $temp);
+			$temp = strip_tags($temp, '<br><b>');
 			$msg .= $temp. "\n";
+		}
+
+		if(isset($survey['welcomemedia']['file']))
+		{
+			$msg .= "\n". "<a href='". $survey['welcomemedia']['file']. "'>". T_("Image"). "</a>";
 		}
 
 		if(!trim($msg))
 		{
-			$msg = T_("Wellcome to sarshomar");
+			$msg = T_("Let's go to start answer survey");
 		}
 
 		return $msg;
