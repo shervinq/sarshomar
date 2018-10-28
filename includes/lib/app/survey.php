@@ -71,7 +71,10 @@ class survey
 					$new_url .= '?'. \dash\url::query();
 				}
 
-				\dash\redirect::to($new_url);
+				if($_site)
+				{
+					\dash\redirect::to($new_url);
+				}
 				return false;
 			}
 		}
