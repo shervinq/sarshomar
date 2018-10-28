@@ -248,14 +248,54 @@ class questionSender
 
 	private static function rating($_question, &$_txt, &$_kbd)
 	{
-		$_txt .= "\n\n";
-		$_txt .= '❇️ '. T_('Please your rate');
-		$max = 5;
+		$_txt      .= "\n\n";
+		$_txt      .= '❇️ '. T_('Please your rate');
+		$max       = 5;
+		$rateEmoji = '⭐️';
 
 		if(isset($_question['setting']['rating']['max']))
 		{
 			$max = $_question['setting']['rating']['max'];
 		}
+
+		if(isset($_question['setting']['rating']['ratetype']))
+		{
+			switch ($_question['setting']['rating']['ratetype'])
+			{
+				case 'star':
+					$rateEmoji = '⭐️';
+					break;
+
+				case 'heart':
+					$rateEmoji = '❤️';
+					break;
+
+				case 'bell':
+					$rateEmoji = '🔔';
+					break;
+
+				case 'flag':
+					$rateEmoji = '🏁';
+					break;
+
+				case 'bookmark':
+					$rateEmoji = '📎';
+					break;
+
+				case 'like':
+					$rateEmoji = '👍';
+					break;
+
+				case 'dislike':
+					$rateEmoji = '👎';
+					break;
+
+				case 'user1':
+					$rateEmoji = '👤';
+					break;
+			}
+		}
+
 
 		$_kbd =
 		[
@@ -266,7 +306,7 @@ class questionSender
 		{
 			$_kbd['inline_keyboard'][][] =
 			[
-				'text' => str_repeat('⭐️', $i),
+				'text' => str_repeat($rateEmoji, $i),
 				'callback_data' => 'survey_123 '. 'rating'.$i,
 			];
 		}
