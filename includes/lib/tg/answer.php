@@ -31,6 +31,25 @@ class answer
 					survey::empty();
 				}
 				break;
+
+			case 'cb_survey':
+				if(isset($_cmd['optional']))
+				{
+					$surveyNo = $_cmd['optionalRaw'];
+					if(\dash\coding::is($surveyNo))
+					{
+						survey::show($surveyNo);
+					}
+					else
+					{
+						survey::requireCode();
+					}
+				}
+				else
+				{
+					survey::empty();
+				}
+				break;
 		}
 
 	}
