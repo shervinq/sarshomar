@@ -76,17 +76,21 @@ class survey
 	public static function requireCode()
 	{
 		bot::ok();
+		$msg = T_("We need survey code!")." 🙁";
 
-		// $result =
-		// [
-		// 	'text' => T_("We need survey number!")." 🙁",
-		// 	'show_alert' => true,
-		// ];
-		// bot::answerCallbackQuery($result);
+		// if start with callback answer callback
+		if(bot::isCallback())
+		{
+			$callbackResult =
+			[
+				'text' => $msg,
+			];
+			bot::answerCallbackQuery($callbackResult);
+		}
 
 		$result =
 		[
-			'text' => T_("We need survey code!")." 🙁",
+			'text' => $msg,
 		];
 		bot::sendMessage($result);
 	}
@@ -95,10 +99,21 @@ class survey
 	public static function empty()
 	{
 		bot::ok();
+		$msg = T_("You must have survey id to use in telegram.")." 🙁";
+
+		// if start with callback answer callback
+		if(bot::isCallback())
+		{
+			$callbackResult =
+			[
+				'text' => $msg,
+			];
+			bot::answerCallbackQuery($callbackResult);
+		}
 
 		$result =
 		[
-			'text' => T_("You must have survey id to use in telegram.")." 🙁",
+			'text' => $msg,
 		];
 		bot::sendMessage($result);
 	}
