@@ -41,7 +41,7 @@ class step_answering
 		// get question of this step
 		$myQuestion = \lib\app\tg\survey::get($surveyNo, $_step);
 		// send question
-		questionSender::send($myQuestion);
+		questionSender::analyse($myQuestion);
 
 		// go to next step to get answer
 		step::plus();

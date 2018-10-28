@@ -81,67 +81,9 @@ class survey
 		{
 			return false;
 		}
-
-		$title = self::title_detect();
-
-		switch ($question['type'])
-		{
-			case 'multiple_choice':
-				self::multiple_choice();
-				break;
-
-			case 'short_answer':
-			case 'descriptive_answer':
-			case 'numeric':
-			case 'single_choice':
-			case 'dropdown':
-			case 'date':
-			case 'time':
-			case 'mobile':
-			case 'email':
-			case 'website':
-			case 'rating':
-			case 'rangeslider':
-
-				break;
-
-			default:
-				// not support this type
-				return false;
-				break;
-		}
+		return $question;
 	}
 
-
-	private static function title_detect()
-	{
-		$question = \dash\data::question();
-		if(!isset($question['title']))
-		{
-			return null;
-		}
-		return $question['title'];
-	}
-
-
-	private static function multiple_choice()
-	{
-		$question = \dash\data::question();
-		$msg = '';
-		if(isset($question['choice']) && is_array($question['choice']))
-		{
-			foreach ($question['choice'] as $key => $choice)
-			{
-				if(isset($choice['title']))
-				{
-					$msg .= $key . ': '. $choice['title']. "\n";
-
-				}
-			}
-
-		}
-		return $msg;
-	}
 
 
 	private static function wellcome_msg()
