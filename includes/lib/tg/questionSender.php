@@ -10,7 +10,7 @@ class questionSender
 	{
 		// get message body
 		$text         = self::body($_questionData);
-		$reply_markup = null;
+		$reply_markup = false;
 
 
 		switch ($_questionData['type'])
