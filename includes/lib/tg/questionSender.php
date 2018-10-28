@@ -16,15 +16,16 @@ class questionSender
 		switch ($_questionData['type'])
 		{
 			case 'short_answer':
-				self::shortAnswer($_questionData, $text, $reply_markup);
+				self::short_answer($_questionData, $text, $reply_markup);
 				break;
-
+			case 'descriptive_answer':
+				self::descriptive_answer($_questionData, $text, $reply_markup);
+				break;
 			case 'multiple_choice':
 				// self::multiple_choice($_questionData, $text, $reply_markup);
 				break;
 
 
-			case 'descriptive_answer':
 			case 'numeric':
 			case 'single_choice':
 			case 'dropdown':
@@ -88,12 +89,18 @@ class questionSender
 	}
 
 
-	private static function shortAnswer($_question, &$_txt, &$_kbd)
+	private static function short_answer($_question, &$_txt, &$_kbd)
 	{
 		$_txt .= "\n\n";
 		$_txt .= '❇️ '. T_('Please wrote short answer for this question.');
 	}
 
+
+	private static function descriptive_answer($_question, &$_txt, &$_kbd)
+	{
+		$_txt .= "\n\n";
+		$_txt .= '❇️ '. T_('Please describe your answer.');
+	}
 
 
 
