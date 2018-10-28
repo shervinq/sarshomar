@@ -24,30 +24,20 @@ class step_answering
 			bot::answerCallbackQuery($callbackResult);
 		}
 
-		return self::step1();
+		return self::step1(1);
 	}
 
 
 	// show question
-	public static function step1()
+	public static function step1($_step)
 	{
 		step::plus();
-		$txt_text = T_("Hello This is question one");
 		$surveyNo = step::get('surveyNo');
-		step::set('questionID', 12);
+		step::set('surveyStep', $_step);
 
-		// empty keyboard
-		$result =
-		[
-			'text'         => $txt_text,
-			'reply_markup' =>
-			[
-				'keyboard' => [[T_('Cancel')]],
-				'resize_keyboard' => true,
-				'one_time_keyboard' => true
-			],
-		];
-		bot::sendMessage($result);
+		$myQuestion = \lib\app\tg\survey::get($surveyNo, $_step);
+		// send question
+		questionSender::send($myQuestion);
 	}
 
 
@@ -65,16 +55,20 @@ class step_answering
 
 		// save answer
 		$surveyNo   = step::get('surveyNo');
-		$questionId = step::get('questionID');
-		$saveResult = \lib\app\tg\survey::answer($surveyNo, $questionId, $_answer);
+		$surveyStep = step::get('surveyStep');
+		$saveResult = \lib\app\tg\survey::answer($surveyNo, $surveyStep, $_answer);
 
 		$nextIsExist = null;
 		// check next question if exist show it
 		// else show thankyou msg
 		if($nextIsExist)
 		{
+			// increase step of survey
+			$surveyStep++;
+			step::set('surveyStep', $surveyStep);
 			// go to next message
 			step::goingto(1);
+
 			return self::step1();
 		}
 		else
