@@ -88,7 +88,11 @@ class survey
 			{
 				if(!\dash\data::mySurvey())
 				{
-					\dash\header::status(403, T_("This survey is not publish"));
+					if($_site)
+					{
+						\dash\header::status(403, T_("This survey is not publish"));
+					}
+					return false;
 				}
 			}
 		}
