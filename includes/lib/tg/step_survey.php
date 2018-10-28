@@ -6,12 +6,12 @@ use \dash\social\telegram\step;
 
 class step_survey
 {
-	public static function start($_cmd)
+	public static function start($_id)
 	{
 		// its okay on start
 		bot::ok();
 
-		step::set('surveyNo', \dash\utility\convert::to_en_number($_cmd['optional']));
+		step::set('surveyNo', $_id);
 		step::start('surveyAnswer');
 
 		// if start with callback answer callback
@@ -19,7 +19,7 @@ class step_survey
 		{
 			$callbackResult =
 			[
-				'text' => T_("Answer to ticket "). $_cmd['optional'],
+				'text' => T_("Answer to survey "). $_id,
 			];
 			bot::answerCallbackQuery($callbackResult);
 		}

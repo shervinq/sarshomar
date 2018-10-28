@@ -38,7 +38,7 @@ class answer
 					$surveyNo = $_cmd['optionalRaw'];
 					if(\dash\coding::is($surveyNo))
 					{
-						survey::show($surveyNo);
+						step_survey::start($surveyNo);
 					}
 					else
 					{
