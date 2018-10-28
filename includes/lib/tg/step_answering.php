@@ -19,25 +19,32 @@ class step_answering
 		{
 			$callbackResult =
 			[
-				'text' => T_("Answer to survey "). $_id,
+				'text' => T_("Answer to survey"). ' '. $_id,
 			];
 			bot::answerCallbackQuery($callbackResult);
 		}
 
-		return self::step1(1);
+		return self::step1();
 	}
 
 
 	// show question
-	public static function step1($_step)
+	public static function step1($_txt = null, $_step = null)
 	{
-		step::plus();
+		// init first step
+		if($_step === null)
+		{
+			$_step = 1;
+		}
 		$surveyNo = step::get('surveyNo');
 		step::set('surveyStep', $_step);
-
+		// get question of this step
 		$myQuestion = \lib\app\tg\survey::get($surveyNo, $_step);
 		// send question
 		questionSender::send($myQuestion);
+
+		// go to next step to get answer
+		step::plus();
 	}
 
 

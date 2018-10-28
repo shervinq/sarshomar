@@ -4,9 +4,9 @@ namespace lib\tg;
 
 class questionSender
 {
-	public static function send($_question)
+	public static function send($_questionData)
 	{
-		var_dump($_question);
+		var_dump($_questionData);
 		exit();
 		$txt_text = T_("Hello This is question one");
 		// empty keyboard
