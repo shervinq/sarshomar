@@ -59,7 +59,7 @@ class survey
 		}
 		if($myOpt === 'start' && bot::isCallback())
 		{
-			step_survey::start($surveyNo);
+			step_surveyAnswer::start($surveyNo);
 			return true;
 		}
 		if($myOpt === 'end')

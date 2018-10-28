@@ -4,7 +4,7 @@ namespace lib\tg;
 use \dash\social\telegram\tg as bot;
 use \dash\social\telegram\step;
 
-class step_survey
+class step_surveyAnswer
 {
 	public static function start($_id)
 	{
@@ -59,10 +59,14 @@ class step_survey
 			return false;
 		}
 
+		bot::sendMessage('test, answer to question....');
+
+
+
 		// save answer
 		$surveyNo   = step::get('surveyNo');
 		$questionId = step::get('questionID');
-		$saveResult = \lib\app\tg\survey::answer($surveyNo, $questionId, $_answer)
+		$saveResult = \lib\app\tg\survey::answer($surveyNo, $questionId, $_answer);
 
 		$nextIsExist = null;
 		// check next question if exist show it
