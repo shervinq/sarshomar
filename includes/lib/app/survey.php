@@ -39,16 +39,19 @@ class survey
 			}
 			else
 			{
-				\dash\header::status(404, T_("Survay not found"));
 				return false;
 			}
 		}
 
 		$load = \lib\app\survey::get($_id);
 
+
 		if(!$load || !isset($load['status']) || !isset($load['privacy']) || !isset($load['user_id']))
 		{
-			\dash\header::status(404, T_("Survay not found"));
+			if($_site)
+			{
+				\dash\header::status(404, T_("Survay not found"));
+			}
 			return false;
 		}
 
