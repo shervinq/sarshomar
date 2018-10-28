@@ -4,7 +4,7 @@ namespace lib\tg;
 use \dash\social\telegram\tg as bot;
 use \dash\social\telegram\step;
 
-class step_surveyAnswer
+class step_answering
 {
 	public static function start($_id)
 	{
@@ -12,7 +12,7 @@ class step_surveyAnswer
 		bot::ok();
 
 		step::set('surveyNo', $_id);
-		step::start('surveyAnswer');
+		step::start('answering');
 
 		// if start with callback answer callback
 		if(bot::isCallback())
