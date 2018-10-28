@@ -47,17 +47,24 @@ class questionSender
 				self::website($_questionData, $text, $reply_markup);
 				break;
 
-
+			case 'single_choice':
+				self::single_choice($_questionData, $text, $reply_markup);
+				break;
 
 			case 'multiple_choice':
 				// self::multiple_choice($_questionData, $text, $reply_markup);
 				break;
 
-
-			case 'single_choice':
 			case 'dropdown':
+				// self::dropdown($_questionData, $text, $reply_markup);
+				break;
+
 			case 'rating':
+				// self::rating($_questionData, $text, $reply_markup);
+				break;
+
 			case 'rangeslider':
+				// self::rangeslider($_questionData, $text, $reply_markup);
 				break;
 
 			default:
@@ -176,6 +183,40 @@ class questionSender
 		$_txt .= "\n\n";
 		$_txt .= '❇️ '. T_('Please enter website like <code>jibres.com</code>');
 	}
+
+
+	private static function single_choice($_question, &$_txt, &$_kbd)
+	{
+		$_txt .= "\n\n";
+		$_txt .= '❇️ '. T_('Please choose your answer to this question');
+
+		if(isset($_question['choice']))
+		{
+			$choices = $_question['choice'];
+			if(is_array($choices) && $choices)
+			{
+				$_kbd =
+				[
+					'inline_keyboard' => []
+				];
+
+				foreach ($choices as $key => $value)
+				{
+					if(isset($value['title']))
+					{
+						$_kbd['inline_keyboard'][][] =
+						[
+							'text' => $value['title'],
+							'callback_data' => 'survey_123 '. $value['title'],
+						]
+						;
+					}
+				}
+
+			}
+		}
+	}
+
 
 
 
