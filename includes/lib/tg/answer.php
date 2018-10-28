@@ -13,9 +13,10 @@ class answer
 			case '/s':
 			case T_('survey'):
 			case T_('poll'):
+
 				if(isset($_cmd['optional']))
 				{
-					$surveyNo = \dash\utility\convert::to_en_number($_cmd['optional']);
+					$surveyNo = $_cmd['optionalRaw'];
 					if(\dash\coding::is($surveyNo))
 					{
 						survey::show($surveyNo);
