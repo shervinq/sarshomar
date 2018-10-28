@@ -155,8 +155,9 @@ class survey
 		{
 			$temp = $survey['welcomedesc'];
 			$temp = str_replace('&nbsp;', ' ', $temp);
+			$temp = str_replace('</p>', "</p>\n", $temp);
 			$temp = strip_tags($temp, '<br><b>');
-			$msg .= $temp. "\n";
+			$msg .= $temp;
 		}
 
 		if(isset($survey['welcomemedia']['file']))
@@ -188,8 +189,9 @@ class survey
 		{
 			$temp = $survey['thankyoudesc'];
 			$temp = str_replace('&nbsp;', ' ', $temp);
+			$temp = str_replace('</p>', "</p>\n", $temp);
 			$temp = strip_tags($temp, '<br><b>');
-			$msg .= $temp. "\n";
+			$msg .= $temp;
 		}
 
 		if(isset($survey['thankyoumedia']['file']))
