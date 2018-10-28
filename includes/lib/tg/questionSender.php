@@ -57,7 +57,7 @@ class questionSender
 				break;
 
 			case 'rating':
-				// self::rating($_questionData, $text, $reply_markup);
+				self::rating($_questionData, $text, $reply_markup);
 				break;
 
 			case 'rangeslider':
@@ -245,6 +245,32 @@ class questionSender
 		}
 	}
 
+
+	private static function rating($_question, &$_txt, &$_kbd)
+	{
+		$_txt .= "\n\n";
+		$_txt .= '❇️ '. T_('Please your rate');
+		$max = 5;
+
+		if(isset($_question['setting']['rating']['max']))
+		{
+			$max = $_question['setting']['rating']['max'];
+		}
+
+		$_kbd =
+		[
+			'inline_keyboard' => []
+		];
+
+		for ($i=0; $i < $max; $i++)
+		{
+			$_kbd['inline_keyboard'][][] =
+			[
+				'text' => str_repeat('⭐️', $i),
+				'callback_data' => 'survey_123 '. 'rating'.$i,
+			];
+		}
+	}
 
 
 }
