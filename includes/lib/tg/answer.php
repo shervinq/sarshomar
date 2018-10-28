@@ -16,7 +16,7 @@ class answer
 				if(isset($_cmd['optional']))
 				{
 					$surveyNo = \dash\utility\convert::to_en_number($_cmd['optional']);
-					if(is_numeric($surveyNo))
+					if(\dash\coding::is($surveyNo))
 					{
 						survey::show($surveyNo);
 					}

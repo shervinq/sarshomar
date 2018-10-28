@@ -52,12 +52,23 @@ class survey
 		}
 		else
 		{
-			$result =
-			[
-				'text' => T_("We can't find detail of this survey!"),
-				'show_alert' => true,
-			];
-			bot::answerCallbackQuery($result);
+			if(bot::isCallback())
+			{
+				$callbackResult =
+				[
+					'text' => T_("We can't find detail of this survey!"),
+					'show_alert' => true,
+				];
+				bot::answerCallbackQuery($callbackResult);
+			}
+			// else
+			// {
+			// 	// $result =
+			// 	// [
+			// 	// 	'text' => T_("Survey id is not found")." 🙁",
+			// 	// ];
+			// 	// bot::sendMessage($result);
+			// }
 		}
 	}
 
@@ -75,7 +86,7 @@ class survey
 
 		$result =
 		[
-			'text' => T_("We need survey number!")." 🙁",
+			'text' => T_("We need survey code!")." 🙁",
 		];
 		bot::sendMessage($result);
 	}
