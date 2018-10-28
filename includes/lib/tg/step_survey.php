@@ -28,6 +28,7 @@ class step_survey
 	}
 
 
+	// show question
 	public static function step1()
 	{
 		step::plus();
@@ -48,6 +49,7 @@ class step_survey
 	}
 
 
+	// get answer
 	public static function step2($_answer)
 	{
 		if(bot::isCallback())
@@ -67,7 +69,6 @@ class step_survey
 
 		$surveyNo = step::get('surveyNo');
 
-		step::stop();
 	}
 }
 ?>

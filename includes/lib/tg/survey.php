@@ -54,7 +54,7 @@ class survey
 
 		if($myOpt === null)
 		{
-			survey::show($surveyNo);
+			survey::welcome($surveyNo);
 			return true;
 		}
 		if($myOpt === 'start' && bot::isCallback())
@@ -62,17 +62,21 @@ class survey
 			step_survey::start($surveyNo);
 			return true;
 		}
+		if($myOpt === 'end')
+		{
+			survey::thankyou($surveyNo);
+			return true;
+		}
 		// if we are in step skip check and continue step
 	}
 
 
 
-	public static function show($_id)
+	public static function welcome($_surveyId)
 	{
 		bot::ok();
 
-		$surveyNo  = $_id;
-		$surveyTxt = \lib\app\tg\survey::get($surveyNo);
+		$surveyTxt = \lib\app\tg\survey::get($_surveyId);
 		$surveyTxt .= "\n\n". T_("You can cancel answer operation anytime by send command /cancel");
 
 		if($surveyTxt)
@@ -87,13 +91,13 @@ class survey
 						[
 							[
 								'text' => T_("Answer via site"),
-								'url'  => \dash\url::base(). '/s/'. $surveyNo,
+								'url'  => \dash\url::base(). '/s/'. $_surveyId,
 							],
 						],
 						[
 							[
 								'text'          => 	T_("Start"),
-								'callback_data' => 'survey '. $surveyNo. ' start',
+								'callback_data' => 'survey '. $_surveyId. ' start',
 							],
 						],
 					]
@@ -105,7 +109,7 @@ class survey
 			{
 				$callbackResult =
 				[
-					'text' => T_("Survey"). ' '. $surveyNo,
+					'text' => T_("Survey"). ' '. $_surveyId,
 				];
 				bot::answerCallbackQuery($callbackResult);
 			}
@@ -123,17 +127,60 @@ class survey
 				];
 				bot::answerCallbackQuery($callbackResult);
 			}
-			// else
-			// {
-			// 	// $result =
-			// 	// [
-			// 	// 	'text' => T_("Survey id is not found")." 🙁",
-			// 	// ];
-			// 	// bot::sendMessage($result);
-			// }
 		}
 	}
 
+
+	public static function thankyou($_surveyId)
+	{
+		bot::ok();
+
+		$surveyTxt = \lib\app\tg\survey::get($_surveyId, 'thankyou');
+
+		if($surveyTxt)
+		{
+			$result =
+			[
+				'text'         => $surveyTxt,
+				'reply_markup' =>
+				[
+					'inline_keyboard' =>
+					[
+						[
+							[
+								'text' => T_("Sarshomar website"),
+								'url'  => \dash\url::kingdom(),
+							],
+						]
+					]
+				]
+			];
+
+			// if start with callback answer callback
+			if(bot::isCallback())
+			{
+				$callbackResult =
+				[
+					'text' => T_("Survey"). ' '. $_surveyId,
+				];
+				bot::answerCallbackQuery($callbackResult);
+			}
+
+			bot::sendMessage($result);
+		}
+		else
+		{
+			if(bot::isCallback())
+			{
+				$callbackResult =
+				[
+					'text' => T_("We can't find detail of this survey!"),
+					'show_alert' => true,
+				];
+				bot::answerCallbackQuery($callbackResult);
+			}
+		}
+	}
 
 	public static function requireCode()
 	{

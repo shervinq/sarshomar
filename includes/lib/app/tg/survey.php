@@ -14,6 +14,10 @@ class survey
 			{
 				return self::wellcome_msg();
 			}
+			elseif($_step === 'thankyou')
+			{
+				return self::thankyou_msg();
+			}
 			else
 			{
 				$load_step = \content_s\home\view::load($_id, $_step);
@@ -158,6 +162,39 @@ class survey
 		if(isset($survey['welcomemedia']['file']))
 		{
 			$msg .= "\n". "<a href='". $survey['welcomemedia']['file']. "'>". T_("Image"). "</a>";
+		}
+
+		if(!trim($msg))
+		{
+			$msg = T_("Let's go to start answer survey");
+		}
+
+		return $msg;
+	}
+
+
+
+
+	private static function thankyou_msg()
+	{
+		$survey = \dash\data::surveyRow();
+		$msg = '';
+		if(isset($survey['thankyoutitle']))
+		{
+			$msg .= "🔹 <b>". $survey['thankyoutitle']. "</b>\n\n";
+		}
+
+		if(isset($survey['thankyoudesc']))
+		{
+			$temp = $survey['thankyoudesc'];
+			$temp = str_replace('&nbsp;', ' ', $temp);
+			$temp = strip_tags($temp, '<br><b>');
+			$msg .= $temp. "\n";
+		}
+
+		if(isset($survey['thankyoumedia']['file']))
+		{
+			$msg .= "\n". "<a href='". $survey['thankyoumedia']['file']. "'>". T_("Image"). "</a>";
 		}
 
 		if(!trim($msg))
