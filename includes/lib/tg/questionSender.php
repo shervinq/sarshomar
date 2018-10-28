@@ -1,23 +1,29 @@
 <?php
 namespace lib\tg;
+// use telegram class as bot
+use \dash\social\telegram\tg as bot;
 
 
 class questionSender
 {
 	public static function analyse($_questionData)
 	{
-		var_dump($_questionData);
-		exit();
+		// get message body
+		$text         = self::body($_questionData);
+		$reply_markup = null;
 
-		$title = self::title_detect();
 
-		switch ($question['type'])
+		switch ($_questionData['type'])
 		{
-			case 'multiple_choice':
-				self::multiple_choice();
+			case 'short_answer':
+				self::shortAnswer($_questionData, $text, $reply_markup);
 				break;
 
-			case 'short_answer':
+			case 'multiple_choice':
+				// self::multiple_choice($_questionData, $text, $reply_markup);
+				break;
+
+
 			case 'descriptive_answer':
 			case 'numeric':
 			case 'single_choice':
@@ -29,58 +35,84 @@ class questionSender
 			case 'website':
 			case 'rating':
 			case 'rangeslider':
-
 				break;
 
 			default:
 				// not support this type
+				bot::sendMessage(T_('This type of message is not supported!'));
 				return false;
 				break;
 		}
 
-
-
-
-
-		$txt_text = T_("Hello This is question one");
-		// empty keyboard
+		// generate result
 		$result =
 		[
-			'text'         => $txt_text,
-			'reply_markup' =>
-			[
-				'keyboard' => [[T_('Cancel')]],
-				'resize_keyboard' => true,
-				'one_time_keyboard' => true
-			],
+			'text'         => $text,
+			'reply_markup' => $reply_markup
 		];
+		// send message
 		bot::sendMessage($result);
 	}
 
 
-
-
-
-
-
-	private static function multiple_choice()
+	private static function body($_questionData)
 	{
-		$question = \dash\data::question();
-		$msg = '';
-		if(isset($question['choice']) && is_array($question['choice']))
+		$bodyTxt = '';
+		if(isset($_questionData['title']))
 		{
-			foreach ($question['choice'] as $key => $choice)
-			{
-				if(isset($choice['title']))
-				{
-					$msg .= $key . ': '. $choice['title']. "\n";
-
-				}
-			}
-
+			$bodyTxt .= "❔ <b>". $_questionData['title']. "</b>\n\n";
 		}
-		return $msg;
+
+		if(isset($_questionData['desc']))
+		{
+			$temp = $_questionData['desc'];
+			$temp = str_replace('&nbsp;', ' ', $temp);
+			$temp = str_replace('</p>', "</p>\n", $temp);
+			$temp = strip_tags($temp, '<br><b>');
+			$bodyTxt .= $temp;
+		}
+
+		if(isset($_questionData['media']['file']))
+		{
+			$bodyTxt .= "\n". "<a href='". $_questionData['media']['file']. "'>". T_("Image"). "</a>";
+		}
+
+		return $bodyTxt;
 	}
+
+
+	private static function shortAnswer($_question, &$_txt, &$_kbd)
+	{
+
+
+	}
+
+
+
+
+
+
+
+
+
+	// private static function multiple_choice()
+	// {
+	// 	$question = \dash\data::question();
+	// 	$msg = '';
+	// 	if(isset($question['choice']) && is_array($question['choice']))
+	// 	{
+	// 		foreach ($question['choice'] as $key => $choice)
+	// 		{
+	// 			if(isset($choice['title']))
+	// 			{
+	// 				$msg .= $key . ': '. $choice['title']. "\n";
+
+	// 			}
+	// 		}
+
+	// 	}
+	// 	return $msg;
+	// }
 
 
 
