@@ -24,6 +24,7 @@ class questionSender
 				break;
 
 			case 'numeric':
+			case 'rangeslider':
 				self::numeric($_questionData, $text, $reply_markup);
 				break;
 
@@ -58,10 +59,6 @@ class questionSender
 
 			case 'rating':
 				self::rating($_questionData, $text, $reply_markup);
-				break;
-
-			case 'rangeslider':
-				// self::rangeslider($_questionData, $text, $reply_markup);
 				break;
 
 			default:
