@@ -23,7 +23,6 @@ class step_survey
 			];
 			bot::answerCallbackQuery($callbackResult);
 		}
-		var_dump(22);
 
 		return self::step1();
 	}
