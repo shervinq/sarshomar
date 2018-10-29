@@ -85,12 +85,19 @@ class step_answering
 		$questionId = step::get('questionId');
 		$saveResult = \lib\app\tg\survey::answer($surveyNo, $questionId, $_answer);
 
-		// increase step of survey
-		$surveyStep++;
-		// go to next message
-		step::goingto(1);
+		if($saveResult)
+		{
+			// increase step of survey
+			$surveyStep++;
+			// go to next message
+			step::goingto(1);
 
-		return self::step1(null, $surveyStep);
+			return self::step1(null, $surveyStep);
+		}
+		else
+		{
+			// notif created on app based on question type
+		}
 	}
 }
 ?>
