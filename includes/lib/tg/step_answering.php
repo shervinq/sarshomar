@@ -56,6 +56,7 @@ class step_answering
 			// show thankyou msg
 			survey::thankyou($surveyNo);
 			step::stop();
+			return true;
 		}
 		// send question
 		questionSender::analyse($myQuestion);
