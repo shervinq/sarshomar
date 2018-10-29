@@ -302,11 +302,19 @@ class questionSender
 		$max       = 5;
 		$rateEmoji = '⭐️';
 
-		$surveyId = null;
+		$surveyId   = null;
+		$questionId = null;
 		if(isset($_question['survey_id']))
 		{
 			$surveyId = $_question['survey_id'];
 		}
+		if(isset($_question['id']))
+		{
+			$questionId = $_question['id'];
+		}
+		// get user answer list
+		$userAnswerArr = \dash\data::myAnswerTitle();
+
 
 		if(isset($_question['setting']['rating']['max']))
 		{
@@ -359,11 +367,24 @@ class questionSender
 
 		for ($i=0; $i < $max; $i++)
 		{
+			$itemTitle    = $value['title'];
+			$itemId       = $value['title'];
+			$selectedMark = '';
+
+			if(isset($value['id']) && $value['id'])
+			{
+				$itemId = $value['id'];
+			}
+			if(in_array($i, $userAnswerArr))
+			{
+				$selectedMark = '☑️ ';
+			}
+
+
 			$_kbd['inline_keyboard'][][] =
 			[
 				'text' => str_repeat($rateEmoji, $i),
-				// 'callback_data' => 'survey_'. $surveyId. ' '. $i,
-				'callback_data' => $i,
+				'callback_data' => 'survey_'. $surveyId. ' '. $questionId. ' '. $i,
 			];
 		}
 	}
