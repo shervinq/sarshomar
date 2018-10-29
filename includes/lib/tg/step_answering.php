@@ -47,7 +47,8 @@ class step_answering
 		$surveyNo = step::get('surveyNo');
 		step::set('surveyStep', $_step);
 		// get question of this step
-		$myQuestion = \lib\app\tg\survey::get($surveyNo, $_step);
+		$myQuestion    = \lib\app\tg\survey::get($surveyNo, $_step);
+		$userAnswerArr = \dash\data::myAnswerTitle();
 		if(isset($myQuestion['id']))
 		{
 			step::set('questionId', $myQuestion['id']);
@@ -60,7 +61,7 @@ class step_answering
 			return true;
 		}
 		// send question
-		questionSender::analyse($myQuestion);
+		questionSender::analyse($myQuestion, $userAnswerArr);
 
 		// go to next step to get answer
 		step::plus();

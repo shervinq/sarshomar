@@ -6,10 +6,10 @@ use \dash\social\telegram\tg as bot;
 
 class questionSender
 {
-	public static function analyse($_questionData)
+	public static function analyse($_questionData, $_answer)
 	{
 		// get message body
-		$text         = self::body($_questionData);
+		$text         = self::body($_questionData, $_answer);
 		$reply_markup = false;
 
 
@@ -79,7 +79,7 @@ class questionSender
 	}
 
 
-	private static function body($_questionData)
+	private static function body($_questionData, $_answer)
 	{
 		$bodyTxt = '';
 		if(isset($_questionData['title']))
@@ -109,11 +109,9 @@ class questionSender
 		}
 
 		// get user answer list
-		$userAnswerArr = \dash\data::myAnswerTitle();
-		if($userAnswer)
+		if($_answer)
 		{
-			$userAnswer = implode(', ', $userAnswerArr);
-			$bodyTxt = T_('Your answer'). " <code>". $userAnswer. "</code>";
+			$bodyTxt = T_('Your answer'). " <code>". implode(', ', $_answer). "</code>";
 		}
 		return $bodyTxt;
 	}
