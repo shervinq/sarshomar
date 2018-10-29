@@ -35,6 +35,13 @@ class step_answering
 		if($_step === null)
 		{
 			$_step = 1;
+
+			$initMsg =
+			[
+				'text' => T_("You can cancel answer operation anytime by send command /cancel or skip current question by send /skip"),
+				'reply_markup' => ['remove_keyboard' => true]
+			];
+			bot::sendMessage($initMsg);
 		}
 		$surveyNo = step::get('surveyNo');
 		step::set('surveyStep', $_step);
@@ -65,8 +72,6 @@ class step_answering
 		{
 			return false;
 		}
-
-		bot::sendMessage('test, answer to question....');
 
 		// save answer
 		$surveyNo   = step::get('surveyNo');

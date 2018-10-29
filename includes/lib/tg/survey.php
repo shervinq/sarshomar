@@ -80,7 +80,6 @@ class survey
 		bot::ok();
 
 		$surveyTxt = \lib\app\tg\survey::get($_surveyId);
-		$surveyTxt .= "\n\n". T_("You can cancel answer operation anytime by send command /cancel");
 
 		if($surveyTxt)
 		{

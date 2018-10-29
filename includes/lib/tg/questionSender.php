@@ -63,7 +63,7 @@ class questionSender
 
 			default:
 				// not support this type
-				bot::sendMessage(T_('This type of message is not supported!'));
+				bot::sendMessage(T_('This type of message is not supported!'). $_questionData['type']);
 				return false;
 				break;
 		}
