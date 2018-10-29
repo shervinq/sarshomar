@@ -4,6 +4,26 @@ namespace lib\app\tg;
 
 class survey
 {
+	public static function list()
+	{
+		$result            = '';
+		$arg               = [];
+		$arg['user_id']    = \dash\user::id();
+		$arg['pagenation'] = false;
+		$dataTable         = \lib\app\survey::list(null, $arg);
+
+		foreach ($dataTable as $key => $value)
+		{
+			$thisSurvey = '';
+			$thisSurvey .= '🔸 <b>'. $value['title'] . "</b>\n";
+			$thisSurvey .= '/survey_'. $value['id'] . "\n—————\n";
+
+			$result .= $thisSurvey;
+		}
+
+		return $result;
+	}
+
 
 	public static function get($_id, $_step = null)
 	{

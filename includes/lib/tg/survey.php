@@ -24,6 +24,7 @@ class survey
 		}
 		// remove survey from start of command
 		// and detect survey No
+		$surveyNo = null;
 		if(substr($myCommand, 0, 7) === 'survey_')
 		{
 			$surveyNo = substr($myCommand, 7);
@@ -36,11 +37,17 @@ class survey
 		{
 			$surveyNo = substr($myCommand, 1);
 		}
+		elseif($myCommand === 'survey' || $myCommand === '$')
+		{
+			// show list of survey
+			survey::list();
+			return true;
+		}
 		else
 		{
 			return false;
 		}
-
+		// check if survey id is not exist show list
 		if(!$surveyNo)
 		{
 			survey::empty();
@@ -239,5 +246,24 @@ class survey
 		];
 		bot::sendMessage($result);
 	}
+
+
+	public static function list()
+	{
+		bot::ok();
+
+		// if start with callback answer callback
+		if(bot::isCallback())
+		{
+			bot::answerCallbackQuery(T_("List of your survey in Sarshomr"));
+		}
+
+		$result =
+		[
+			'text' => \lib\app\tg\survey::list(),
+		];
+		bot::sendMessage($result);
+	}
+
 }
 ?>
