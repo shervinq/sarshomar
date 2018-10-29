@@ -109,6 +109,12 @@ class step_answering
 			{
 				$receiveMsg['text'] = T_("Dont!");
 				$receiveMsg['text'] .= $_answer;
+				$receiveMsg['text'] .= 'cmd '. $cmd['command']. "\n";
+				$receiveMsg['text'] .= 'cmd '. 'cb_survey_'. $surveyNo. "\n";
+
+				$receiveMsg['text'] .= 'cmd '. $cmd['optionalRaw']. "\n";
+				$receiveMsg['text'] .= 'cmd '. $questionId. "\n"
+
 				bot::sendMessage($receiveMsg);
 				// show message and
 				return false;
