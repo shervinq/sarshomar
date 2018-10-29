@@ -113,7 +113,7 @@ class step_answering
 				$receiveMsg['text'] .= 'cmd '. 'cb_survey_'. $surveyNo. "\n";
 
 				$receiveMsg['text'] .= 'cmd '. $cmd['optionalRaw']. "\n";
-				$receiveMsg['text'] .= 'cmd '. $questionId. "\n"
+				$receiveMsg['text'] .= 'cmd '. $questionId. "\n";
 
 				bot::sendMessage($receiveMsg);
 				// show message and
