@@ -91,7 +91,7 @@ class survey
 		else
 		{
 			// remove keyboard of old messages
-			bot::editMessageText(['text	' => T_('Please dont try old messages!')]);
+			bot::editMessageText(['text' => T_('Please dont try old messages!')]);
 		}
 		// if we are in step skip check and continue step
 	}
