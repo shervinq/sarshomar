@@ -11,20 +11,21 @@ function highChart1()
 var data = {{advanceChart.chart | raw}};
 
 // Splice in transparent for the center circle
-Highcharts.getOptions().colors.splice(0, 0, 'transparent');
+
+// Highcharts.getOptions().colors.splice(0, 0, 'transparent');
 
 
 Highcharts.chart('chartdiv', {
 
   chart: {
-    height: '100%'
+    // height: '100%'
   },
 
   title: {
     text: '{{questionDetail.title}}'
   },
   subtitle: {
-    text: 'Advance chart'
+    // text: 'Advance chart'
   },
   series: [{
     type: "sunburst",
@@ -70,7 +71,7 @@ Highcharts.chart('chartdiv', {
   }],
   tooltip: {
     headerFormat: "",
-    pointFormat: 'The answer of {point.name} is <b>{point.value}</b>'
+    pointFormat: '{%trans "Answer"%} {point.name} {%trans "is"%} <b>{point.value}</b>'
   }
 });
 }

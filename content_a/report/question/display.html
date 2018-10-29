@@ -30,7 +30,7 @@
 </form>
 
    {%if showAdvanceChart%}
-      <div class="chart x4 mB20" id="chartdiv" >
+      <div class="chart x5 mB20" id="chartdiv" >
      </div>
      {{block('tableAdvanceChart')}}
    {%else%}
@@ -47,7 +47,6 @@
 
 
 {%block foot_js%}
-<script src="https://code.highcharts.com/modules/sunburst.js"></script>
 {%if showChart%}
 <script type="text/javascript">
   {%include 'content_a/report/question/chart.js'%}
