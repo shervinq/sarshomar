@@ -148,6 +148,17 @@ class survey
 				]
 			];
 
+			if(bot::isPrivate())
+			{
+				$result['reply_markup']['inline_keyboard'][1] =
+				[
+					[
+						'text' => T_("Answer via bot"),
+						'url'  => 'https://t.me/'. bot::$name. '?start=survey_'. $_surveyId .' start',
+					],
+				];
+			}
+
 			// if start with callback answer callback
 			if(bot::isCallback())
 			{
