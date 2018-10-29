@@ -84,7 +84,12 @@ class step_answering
 			// answer callback result
 			bot::answerCallbackQuery(T_("Answer saved"). ' #'. $surveyStep);
 			// send message
-			bot::sendMessage(T_("Your answer"). "\n<b>". $_answer. '</b>');
+			$receiveMsg =
+			[
+				'text' => T_("Your answer"). "\n<b>". $_answer. '</b>',
+				'disable_notification' => true,
+			];
+			bot::sendMessage($receiveMsg);
 		}
 		if($_answer === '/skip')
 		{
