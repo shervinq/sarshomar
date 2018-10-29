@@ -85,13 +85,6 @@ class step_answering
 
 			// answer callback result
 			bot::answerCallbackQuery('#'. $surveyStep. ' '. T_("Answer received"));
-			// send message
-			$receiveMsg =
-			[
-				'text' => T_("Your answer"). "\n<b>". $_answer. '</b>',
-				'reply_markup' => ['remove_keyboard' => true],
-				'disable_notification' => true,
-			];
 
 			$fakeAnswer = true;
 			$cmd = hook::cmd();
@@ -104,6 +97,14 @@ class step_answering
 					$_answer    = $cmd['argumentRaw'];
 				}
 			}
+
+			// send message
+			$receiveMsg =
+			[
+				'text' => T_("Your answer"). "\n<b>". $_answer. '</b>',
+				'reply_markup' => ['remove_keyboard' => true],
+				'disable_notification' => true,
+			];
 
 			if($fakeAnswer)
 			{
