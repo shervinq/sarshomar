@@ -111,7 +111,7 @@ class questionSender
 		// get user answer list
 		if($_answer)
 		{
-			$bodyTxt = T_('Your answer'). " <code>". implode(', ', $_answer). "</code>";
+			$bodyTxt .= "\n". T_('Your answer'). " <code>". implode(', ', $_answer). "</code>";
 		}
 		return $bodyTxt;
 	}
