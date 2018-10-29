@@ -229,7 +229,7 @@ class questionSender
 
 						$_kbd['inline_keyboard'][][] =
 						[
-							'text' => $value['title'],
+							'text' => $selectedMark. $value['title'],
 							'callback_data' => 'survey_'. $surveyId. ' '. $questionId. ' '. $itemId,
 						];
 					}
