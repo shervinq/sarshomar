@@ -73,20 +73,21 @@ class step_answering
 		{
 			return false;
 		}
+		// define variables
+		$surveyNo   = step::get('surveyNo');
+		$surveyStep = step::get('surveyStep');
+		$questionId = step::get('questionId');
 		if(bot::isCallback())
 		{
 			if(substr($_answer, 0, 3) === 'cb_')
 			$_answer = substr($_answer, 3);
 			// answer callback result
-			bot::answerCallbackQuery(T_("Your answer"). "\n". $_answer);
+			bot::answerCallbackQuery(T_("Answer saved"). ' #'. $surveyStep);
 			// send message
-			bot::sendMessage(T_("Your answer"). "\n". $_answer);
+			bot::sendMessage(T_("Your answer"). "\n<b>". $_answer. '</b>');
 		}
 
 		// save answer
-		$surveyNo   = step::get('surveyNo');
-		$surveyStep = step::get('surveyStep');
-		$questionId = step::get('questionId');
 		$saveResult = \lib\app\tg\survey::answer($surveyNo, $questionId, $_answer);
 
 		if($saveResult)
