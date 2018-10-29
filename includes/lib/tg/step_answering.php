@@ -74,16 +74,12 @@ class step_answering
 		$questionId = step::get('questionId');
 		$saveResult = \lib\app\tg\survey::answer($surveyNo, $questionId, $_answer);
 
-		if($questionId)
-		{
-			// increase step of survey
-			$surveyStep++;
-			step::set('surveyStep', $surveyStep);
-			// go to next message
-			step::goingto(1);
+		// increase step of survey
+		$surveyStep++;
+		// go to next message
+		step::goingto(1);
 
-			return self::step1();
-		}
+		return self::step1(null, $surveyStep);
 	}
 }
 ?>
