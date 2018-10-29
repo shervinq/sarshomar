@@ -413,6 +413,9 @@ class answer
 			case 'numeric':
 			case 'rating':
 			case 'rangeslider':
+				$_answer = \dash\utility\convert::to_en_number($_answer);
+				\dash\temp::set('realAnswerTitle',$_answer);
+
 				if($_answer)
 				{
 					if(!is_numeric($_answer))
@@ -491,6 +494,8 @@ class answer
 				break;
 
 			case 'date':
+				$_answer = \dash\utility\convert::to_en_number($_answer);
+				\dash\temp::set('realAnswerTitle',$_answer);
 				if(\dash\date::db($_answer) === false)
 				{
 					\dash\notif::error(T_("Invalid date"), 'answer');
@@ -499,6 +504,8 @@ class answer
 				break;
 
 			case 'time':
+				$_answer = \dash\utility\convert::to_en_number($_answer);
+				\dash\temp::set('realAnswerTitle',$_answer);
 				if(\dash\date::make_time(\dash\utility\convert::to_en_number($_answer)) === false)
 				{
 					\dash\notif::error(T_("Invalid time"), 'answer');
@@ -507,6 +514,8 @@ class answer
 				break;
 
 			case 'email':
+				$_answer = \dash\utility\convert::to_en_number($_answer);
+				\dash\temp::set('realAnswerTitle',$_answer);
 				if($_answer && !filter_var($_answer, FILTER_VALIDATE_EMAIL))
 				{
 					\dash\notif::error(T_("Invalid email"), 'answer');
@@ -515,6 +524,8 @@ class answer
 				break;
 
 			case 'mobile':
+				$_answer = \dash\utility\convert::to_en_number($_answer);
+				\dash\temp::set('realAnswerTitle',$_answer);
 				if($_answer && !\dash\utility\filter::mobile(\dash\utility\convert::to_en_number($_answer)))
 				{
 					\dash\notif::error(T_("Invalid mobile"), 'answer');
@@ -523,6 +534,12 @@ class answer
 				break;
 
 			case 'website':
+
+				if(substr($_answer, 0, 4) !== 'http')
+				{
+					$_answer = 'http://'. $_answer;
+				}
+
 				if($_answer && !filter_var($_answer, FILTER_VALIDATE_URL))
 				{
 					\dash\notif::error(T_("Invalid url"), 'answer');
