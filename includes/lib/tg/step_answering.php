@@ -82,7 +82,7 @@ class step_answering
 			if(substr($_answer, 0, 3) === 'cb_')
 			$_answer = substr($_answer, 3);
 			// answer callback result
-			bot::answerCallbackQuery(T_("Answer saved"). ' #'. $surveyStep);
+			bot::answerCallbackQuery('#'. $surveyStep. ' ' T_("Answer saved"));
 			// send message
 			$receiveMsg =
 			[
