@@ -86,9 +86,16 @@ class step_answering
 			// send message
 			bot::sendMessage(T_("Your answer"). "\n<b>". $_answer. '</b>');
 		}
+		if($_answer === '/skip')
+		{
+			$saveResult = \lib\app\tg\survey::skip($surveyNo, $questionId);
+		}
+		else
+		{
+			// save answer
+			$saveResult = \lib\app\tg\survey::answer($surveyNo, $questionId, $_answer);
+		}
 
-		// save answer
-		$saveResult = \lib\app\tg\survey::answer($surveyNo, $questionId, $_answer);
 
 		if($saveResult)
 		{
