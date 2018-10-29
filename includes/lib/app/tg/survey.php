@@ -15,8 +15,15 @@ class survey
 		foreach ($dataTable as $key => $value)
 		{
 			$thisSurvey = '';
-			$thisSurvey .= '🔸 <b>'. $value['title'] . "</b>\n";
-			$thisSurvey .= '/survey_'. $value['id'] . "\n—————\n";
+			$thisSurvey .= '🔸 <b>'. $value['title'] . "</b>";
+			if(isset($value['answer_count']))
+			{
+				$thisSurvey .= ' <code> '. $value['answer_count'] . " ". T_("Answer")."</code>";
+			}
+			$thisSurvey .= "\n";
+			$thisSurvey .= \dash\datetime::fit($value['datemodified'], true). "\n";
+			$thisSurvey .= '/survey_'. $value['id'] . "\n";
+			$thisSurvey .= "—————\n\n";
 
 			$result .= $thisSurvey;
 		}

@@ -33,7 +33,7 @@ class survey
 		{
 			$surveyNo = substr($myCommand, 2);
 		}
-		elseif(substr($myCommand, 0, 1) === '$')
+		elseif(substr($myCommand, 0, 1) === '$' && strlen($myCommand) > 1)
 		{
 			$surveyNo = substr($myCommand, 1);
 		}
