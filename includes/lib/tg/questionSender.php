@@ -208,7 +208,7 @@ class questionSender
 						[
 							'text' => $value['title'],
 							// 'callback_data' => 'survey_'. $surveyId. ' '. $value['title'],
-							'callback_data' => $value['title'],
+							'callback_data' => $value['id'],
 						];
 					}
 				}
@@ -247,7 +247,7 @@ class questionSender
 						[
 							'text' => $value['title'],
 							// 'callback_data' => 'survey_'. $surveyId. ' '. $value['title'],
-							'callback_data' => $value['title'],
+							'callback_data' => $value['id'],
 
 						];
 					}
