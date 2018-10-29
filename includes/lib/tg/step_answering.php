@@ -108,6 +108,8 @@ class step_answering
 			if($fakeAnswer)
 			{
 				$receiveMsg['text'] = T_("Dont!");
+				$receiveMsg['text'] .= $_answer;
+				bot::sendMessage($receiveMsg);
 				// show message and
 				return false;
 			}
