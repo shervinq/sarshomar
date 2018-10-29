@@ -17,6 +17,11 @@ class survey
 		{
 			$myCommand = substr($myCommand, 3);
 		}
+		// remove command from start
+		if(substr($myCommand, 0, 1) == '/')
+		{
+			$myCommand = substr($myCommand, 1);
+		}
 		// remove survey from start of command
 		if(substr($myCommand, 0, 7) !== 'survey_')
 		{
