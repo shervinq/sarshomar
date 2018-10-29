@@ -108,6 +108,13 @@ class questionSender
 			$bodyTxt .= "\n". "<a href='". $_questionData['media']['file']. "'>". T_("Image"). "</a>";
 		}
 
+		// get user answer list
+		$userAnswerArr = \dash\data::myAnswerTitle();
+		if($userAnswer)
+		{
+			$userAnswer = implode(', ', $userAnswerArr);
+			$bodyTxt = T_('Your answer'). " <code>". $userAnswer. "</code>";
+		}
 		return $bodyTxt;
 	}
 
