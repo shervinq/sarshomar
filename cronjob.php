@@ -1,7 +1,7 @@
 <?php
+
 class cronjob
 {
-
 	public function _curl($_requests)
 	{
 		$handle   = curl_init();
@@ -12,9 +12,9 @@ class cronjob
 		curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
 		curl_setopt($handle, CURLOPT_POST, true);
 
-		curl_setopt($handle, CURLOPT_POSTFIELDS, json_encode($_requests['header'], JSON_UNESCAPED_UNICODE));
-		curl_setopt($handle, CURLOPT_CONNECTTIMEOUT, 10);
-		curl_setopt($handle, CURLOPT_TIMEOUT, 3);
+		curl_setopt($handle, CURLOPT_POSTFIELDS, http_build_query($_requests['header']));
+		curl_setopt($handle, CURLOPT_CONNECTTIMEOUT, 20);
+		curl_setopt($handle, CURLOPT_TIMEOUT, 20);
 
 		if(defined('CURLOPT_IPRESOLVE') && defined('CURL_IPRESOLVE_V4'))
 		{
@@ -28,14 +28,40 @@ class cronjob
 	}
 
 
+	/**
+	 * { function_description }
+	 */
 	public function requests()
 	{
-		$requests      = [];
-		// $requests[]    = ['url' => 'https://sarshomar.com/en/cronjob?type=homepagenumber', 'header' => []];
+		$file = __DIR__. '/list.crontab.txt';
+		$list = [];
 
+		if(is_file($file))
+		{
+			$list = file_get_contents($file);
+			$list = json_decode($list, true);
+			if(!is_array($list))
+			{
+				$list = [];
+			}
+		}
+
+		$token         = time(). '_Ermile_cronjob_'. (string) rand(1,999999). '_'. (string) rand(1,999999). '_'. (string) rand(1,999999);
+		$token         = md5($token);
+		$list['token'] = $token;
+
+		file_put_contents($file, json_encode($list, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+
+		$requests   = [];
+		foreach ($list as $key => $value)
+		{
+			if(isset($value['url']))
+			{
+				$requests[] = ['url' => $value['url'], 'header' => ['token' => $token]];
+			}
+		}
 		return $requests;
 	}
-
 
 	public function run()
 	{
@@ -45,7 +71,6 @@ class cronjob
 		}
 	}
 }
-
 
 (new cronjob)->run();
 
