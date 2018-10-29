@@ -65,11 +65,6 @@ class survey
 		{
 			return false;
 		}
-		// @check
-		$step = 0;
-		// $step  = \dash\request::get('step');
-		$step  = intval($step) + 1;
-		// new step
 		return true;
 	}
 

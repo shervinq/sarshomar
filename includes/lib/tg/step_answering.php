@@ -40,6 +40,10 @@ class step_answering
 		step::set('surveyStep', $_step);
 		// get question of this step
 		$myQuestion = \lib\app\tg\survey::get($surveyNo, $_step);
+		if(isset($myQuestion['id']))
+		{
+			step::set('questionId', $myQuestion['id']);
+		}
 		// send question
 		questionSender::analyse($myQuestion);
 
@@ -63,7 +67,8 @@ class step_answering
 		// save answer
 		$surveyNo   = step::get('surveyNo');
 		$surveyStep = step::get('surveyStep');
-		$saveResult = \lib\app\tg\survey::answer($surveyNo, $surveyStep, $_answer);
+		$questionId = step::get('questionId');
+		$saveResult = \lib\app\tg\survey::answer($surveyNo, $questionId, $_answer);
 
 		$nextIsExist = null;
 		// check next question if exist show it
