@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Sarshomar - Persian\n"
-"POT-Creation-Date: 2018-10-29 17:35+0330\n"
-"PO-Revision-Date: 2018-10-29 18:04+0330\n"
+"POT-Creation-Date: 2018-10-29 18:06+0330\n"
+"PO-Revision-Date: 2018-10-29 18:07+0330\n"
 "Last-Translator: Javad <J.Evazzadeh@gmail.com>\n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -11689,8 +11689,8 @@ msgstr "پیام خوش‌آمد گویی"
 msgid "You can set specail welcome message on your survey."
 msgstr "شما می‌توانید پیام خوش آمد گویی خاص خود را تنظیم کنید"
 
-#: sarshomar/content_s/home/view.php:10 sarshomar/includes/lib/tg/survey.php:114
-#: sarshomar/includes/lib/tg/survey.php:166
+#: sarshomar/content_s/home/view.php:10 sarshomar/includes/lib/tg/survey.php:121
+#: sarshomar/includes/lib/tg/survey.php:173
 msgid "Survey"
 msgstr "پرسش‌نامه"
 
@@ -14012,7 +14012,7 @@ msgid "I'm not willing to answer"
 msgstr "مایل به پاسخ‌دهی نیستم"
 
 #: sarshomar/includes/languages/trans_project.php:672
-#: sarshomar/includes/lib/tg/survey.php:101
+#: sarshomar/includes/lib/tg/survey.php:108
 msgid "Start"
 msgstr "شروع"
 
@@ -16682,9 +16682,6 @@ msgid "Your answer is out of range"
 msgstr "پاسخ شما خارج از محدوده کاراکتر مجاز است"
 
 #: sarshomar/includes/lib/app/answer.php:437
-msgid "This choice not found in choice list! "
-msgstr ""
-
 #: sarshomar/includes/lib/app/answer.php:441
 #: sarshomar/includes/lib/app/answer.php:457
 msgid "This choice not found in choice list!"
@@ -17037,8 +17034,8 @@ msgid "Please choose your answer"
 msgstr "لطفا پاسخ خود را انتخاب کنید"
 
 #: sarshomar/includes/lib/tg/questionSender.php:264
-msgid "Please your rate"
-msgstr ""
+msgid "Please choose your rate"
+msgstr "لطفا رتبه‌ای را انتخاب کنید"
 
 #: sarshomar/includes/lib/tg/step_answering.php:22
 msgid "Answer to survey"
@@ -17056,23 +17053,23 @@ msgstr ""
 msgid "Your answer"
 msgstr "پاسخ شما"
 
-#: sarshomar/includes/lib/tg/survey.php:95
+#: sarshomar/includes/lib/tg/survey.php:102
 msgid "Answer via site"
 msgstr "پاسخ از طریق وب‌سایت"
 
-#: sarshomar/includes/lib/tg/survey.php:127 sarshomar/includes/lib/tg/survey.php:179
+#: sarshomar/includes/lib/tg/survey.php:134 sarshomar/includes/lib/tg/survey.php:186
 msgid "We can't find detail of this survey!"
 msgstr "ما نمی‌توانیم جزئیات این پرسشنامه را بیابیم!"
 
-#: sarshomar/includes/lib/tg/survey.php:153
+#: sarshomar/includes/lib/tg/survey.php:160
 msgid "Sarshomar website"
 msgstr "وب‌سایت سرشمار"
 
-#: sarshomar/includes/lib/tg/survey.php:190
+#: sarshomar/includes/lib/tg/survey.php:197
 msgid "We need survey code!"
 msgstr "ما نیاز به کد پرسشنامه داریم!"
 
-#: sarshomar/includes/lib/tg/survey.php:213
+#: sarshomar/includes/lib/tg/survey.php:220
 msgid "You must have survey id to use in telegram."
 msgstr "شما باید کد پرسشنامه را برای استفاده در تلگرام داشته باشید."
 

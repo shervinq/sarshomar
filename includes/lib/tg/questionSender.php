@@ -261,7 +261,7 @@ class questionSender
 	private static function rating($_question, &$_txt, &$_kbd)
 	{
 		$_txt      .= "\n\n";
-		$_txt      .= '❇️ '. T_('Please your rate');
+		$_txt      .= '❇️ '. T_('Please choose your rate');
 		$max       = 5;
 		$rateEmoji = '⭐️';
 
