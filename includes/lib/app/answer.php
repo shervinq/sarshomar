@@ -130,6 +130,12 @@ class answer
 			return false;
 		}
 
+		if(\dash\temp::get('realAnswerTitle'))
+		{
+			$answer = \dash\temp::get('realAnswerTitle');
+		}
+
+
 		$answer_term_id = null;
 
 		$multiple_choice = false;
@@ -428,7 +434,7 @@ class answer
 				{
 					if(isset($_question_detail['choice']) && is_array($_question_detail['choice']))
 					{
-						$choice_title = array_column($_question_detail['choice'], 'title');
+						$choice_title = array_column($_question_detail['choice'], 'id');
 
 						if(!in_array($_answer, $choice_title))
 						{
@@ -442,6 +448,15 @@ class answer
 							}
 							$valid = false;
 						}
+						else
+						{
+							$myKey = array_search($_answer, $choice_title);
+
+							if(isset($_question_detail['choice'][$myKey]) && array_key_exists('title', $_question_detail['choice'][$myKey]))
+							{
+								\dash\temp::set('realAnswerTitle', $_question_detail['choice'][$myKey]['title']);
+							}
+						}
 					}
 				}
 				break;
@@ -449,7 +464,7 @@ class answer
 			case 'multiple_choice':
 				if(is_array($_answer) && isset($_question_detail['choice']) && is_array($_question_detail['choice']))
 				{
-					$choice_title = array_column($_question_detail['choice'], 'title');
+					$choice_title = array_column($_question_detail['choice'], 'id');
 					foreach ($_answer as $key => $value)
 					{
 						if(!in_array($value, $choice_title))
@@ -458,6 +473,20 @@ class answer
 							$valid = false;
 						}
 					}
+
+					$realAnswerTitle = [];
+
+					foreach ($_answer as $key => $value)
+					{
+						$myKey = array_search($value, $choice_title);
+
+						if(isset($_question_detail['choice'][$myKey]) && array_key_exists('title', $_question_detail['choice'][$myKey]))
+						{
+							array_push($realAnswerTitle, $_question_detail['choice'][$myKey]['title']);
+						}
+					}
+
+					\dash\temp::set('realAnswerTitle', $realAnswerTitle);
 				}
 				break;
 

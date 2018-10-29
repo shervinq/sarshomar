@@ -178,6 +178,11 @@ class question
 				$old_choice[] = $new_choice;
 			}
 
+			foreach ($old_choice as $key => $value)
+			{
+				$old_choice[$key] = array_merge(['id' => $key + 1], $value);
+			}
+
 			$choice         = json_encode($old_choice, JSON_UNESCAPED_UNICODE);
 			$args['choice'] = $choice;
 		}

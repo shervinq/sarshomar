@@ -117,7 +117,7 @@
 
 {%for key, value in question.choice%}
 
-  <button class="btn {%if question.setting.single_choice.choiceinline%}block {%else%} mR10{%endif%} mB5{%if value.title in myAnswerTitle%} success{%endif%}" id="r-{{key}}" name="answer" value="{{value.title}}" {%if haveKBD%} data-shortkey='{{loop.index + 48}}' {%endif%}>{%if value.title in myAnswerTitle%}<span class="sf-check-1 floatRa"></span> {%endif%}{{value.title}} {%if haveKBD%}<kbd class="floatLa">{{loop.index}}</kbd> {%endif%}</button>
+  <button class="btn {%if question.setting.single_choice.choiceinline%}block {%else%} mR10{%endif%} mB5{%if value.title in myAnswerTitle%} success{%endif%}" id="r-{{key}}" name="answer" value="{{value.id}}" {%if haveKBD%} data-shortkey='{{loop.index + 48}}' {%endif%}>{%if value.title in myAnswerTitle%}<span class="sf-check-1 floatRa"></span> {%endif%}{{value.title}} {%if haveKBD%}<kbd class="floatLa">{{loop.index}}</kbd> {%endif%}</button>
 {%endfor%}
 {%endblock%}
 
@@ -125,7 +125,7 @@
 {%block multiple_choice%}
  {%for key, value in question.choice%}
   <div class="check1{%if value.title in myAnswerTitle%} green{%endif%}">
-  <input type="checkbox" name="answer[]" id="{{key}}" value="{{value.title}}" {%if value.title in myAnswerTitle %} checked {%endif%}>
+  <input type="checkbox" name="answer[]" id="{{key}}" value="{{value.id}}" {%if value.title in myAnswerTitle %} checked {%endif%}>
   <label for="{{key}}">{{value.title}}</label>
  </div>
  {%endfor%}
@@ -139,9 +139,9 @@
      <option value="">{{question.setting.dropdown.placeholder}}</option>
 {%for key, value in question.choice%}
 {%if value.title in myAnswerTitle%}
-       <option value="{{value.title}}" checked>✔️ {{value.title}}</option>
+       <option value="{{value.id}}" checked>✔️ {{value.title}}</option>
 {%else%}
-       <option value="{{value.title}}">{{value.title}} </option>
+       <option value="{{value.id}}">{{value.title}} </option>
 {%endif%}
 {%endfor%}
    </select>
