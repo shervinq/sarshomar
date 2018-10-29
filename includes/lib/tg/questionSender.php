@@ -207,7 +207,8 @@ class questionSender
 						$_kbd['inline_keyboard'][][] =
 						[
 							'text' => $value['title'],
-							'callback_data' => 'survey_'. $surveyId. ' '. $value['title'],
+							// 'callback_data' => 'survey_'. $surveyId. ' '. $value['title'],
+							'callback_data' => $value['title'],
 						];
 					}
 				}
@@ -245,7 +246,8 @@ class questionSender
 						$_kbd['inline_keyboard'][][] =
 						[
 							'text' => $value['title'],
-							'callback_data' => 'survey_'. $surveyId. ' '. $value['title'],
+							// 'callback_data' => 'survey_'. $surveyId. ' '. $value['title'],
+							'callback_data' => $value['title'],
 
 						];
 					}
@@ -323,7 +325,8 @@ class questionSender
 			$_kbd['inline_keyboard'][][] =
 			[
 				'text' => str_repeat($rateEmoji, $i),
-				'callback_data' => 'survey_'. $surveyId. ' '. $i,
+				// 'callback_data' => 'survey_'. $surveyId. ' '. $i,
+				'callback_data' => $i,
 			];
 		}
 	}
