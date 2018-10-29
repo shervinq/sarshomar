@@ -15,18 +15,33 @@
   <input type="hidden" name="id" value="{{requestGET.id}}">
   <input type="hidden" name="questionid" value="{{requestGET.questionid}}">
 
-  <div class="f">
-    <div class="c s12 pRa5">
-        {{block('iQuestion2')}}
-    </div>
-    <div class="c s12 pRa5">
-        {{block('iQuestion3')}}
-    </div>
-    <div class="cauto s12">
-      <label>&nbsp;</label>
-      <button class="btn block primary">{%trans "Run"%}</button>
+  <div class="cbox">
+    <div class="f">
+      <div class="c s12 pRa5">
+          {{block('iQuestion2')}}
+      </div>
+        <div class="cauto s12">
+          <label>&nbsp;</label>
+          <button class="btn block primary">{%trans "Run"%}</button>
+        </div>
     </div>
   </div>
+
+  <div data-response='question2' data-response-effect='slide' {%if requestGET.question2%}{%else%} data-response-hide {%endif%}>
+    <div class="cbox">
+      <div class="f">
+        <div class="c s12 pRa5">
+            {{block('iQuestion3')}}
+        </div>
+          <div class="cauto s12">
+            <label>&nbsp;</label>
+            <button class="btn block primary">{%trans "Run"%}</button>
+          </div>
+      </div>
+    </div>
+  </div>
+
+
 </form>
 
    {%if showAdvanceChart%}
