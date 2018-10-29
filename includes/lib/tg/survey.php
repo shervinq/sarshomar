@@ -78,15 +78,20 @@ class survey
 			survey::welcome($surveyNo);
 			return true;
 		}
-		if($myOpt === 'start' && bot::isCallback())
+		elseif($myOpt === 'start' && bot::isCallback())
 		{
 			step_answering::start($surveyNo);
 			return true;
 		}
-		if($myOpt === 'end')
+		elseif($myOpt === 'end')
 		{
 			survey::thankyou($surveyNo);
 			return true;
+		}
+		else
+		{
+			// remove keyboard of old messages
+			bot::editMessageText(['text	' => T_('Please dont try old messages!')]);
 		}
 		// if we are in step skip check and continue step
 	}
