@@ -90,6 +90,8 @@ class survey
 		}
 		else
 		{
+			bot::ok();
+
 			// remove keyboard of old messages
 			$newMsg =
 			[
@@ -107,6 +109,8 @@ class survey
 				]
 			];
 			bot::editMessageReplyMarkup($newMsg);
+			// show funny message
+			bot::answerCallbackQuery(T_('Please do not play with keyboard of old messages!'). ' 🤖');
 		}
 		// if we are in step skip check and continue step
 	}
