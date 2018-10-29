@@ -95,7 +95,7 @@ class survey
 						[
 							[
 								'text'          => 	T_("Start"),
-								'callback_data' => 'survey '. $_surveyId. ' start',
+								'callback_data' => 'survey_'. $_surveyId. ' start',
 							],
 						],
 					]
