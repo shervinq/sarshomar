@@ -242,7 +242,10 @@ class answer
 							$msg = "<a href='". \dash\url::kingdom(). '/s/'. \dash\coding::encode($survey_id). '?step='. $check_require_is_answer[0]['sort']. "'>$msg</a>";
 						}
 
-						\dash\notif::warn($msg);
+						if(\dash\url::content() !== 'hook')
+						{
+							\dash\notif::warn($msg);
+						}
 					}
 				// }
 			}
