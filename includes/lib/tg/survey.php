@@ -23,12 +23,19 @@ class survey
 			$myCommand = substr($myCommand, 1);
 		}
 		// remove survey from start of command
-		if(substr($myCommand, 0, 7) !== 'survey_')
+		if(substr($myCommand, 0, 7) === 'survey_')
+		{
+			// detect survey No
+			$surveyNo = substr($myCommand, 7);
+		}
+		elseif(substr($myCommand, 0, 1) === '$')
+		{
+			$surveyNo = substr($myCommand, 1);
+		}
+		else
 		{
 			return false;
 		}
-		// detect survey No
-		$surveyNo = substr($myCommand, 7);
 
 		if(!$surveyNo)
 		{
