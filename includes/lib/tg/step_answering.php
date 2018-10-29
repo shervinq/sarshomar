@@ -96,7 +96,7 @@ class step_answering
 			$fakeAnswer = true;
 			$cmd = hook::cmd();
 
-			if($cmd['command'] === 'cb_survey_'. $surveyNo)
+			if($cmd['commandRaw'] === 'cb_survey_'. $surveyNo)
 			{
 				if($cmd['optionalRaw'] === $questionId)
 				{
@@ -109,7 +109,7 @@ class step_answering
 			{
 				$receiveMsg['text'] = T_("Dont!");
 				$receiveMsg['text'] .= $_answer;
-				$receiveMsg['text'] .= 'cmd '. $cmd['command']. "\n";
+				$receiveMsg['text'] .= 'cmd '. $cmd['commandRaw']. "\n";
 				$receiveMsg['text'] .= 'cmd '. 'cb_survey_'. $surveyNo. "\n";
 
 				$receiveMsg['text'] .= 'cmd '. $cmd['optionalRaw']. "\n";
