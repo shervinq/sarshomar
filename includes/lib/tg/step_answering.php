@@ -44,6 +44,12 @@ class step_answering
 		{
 			step::set('questionId', $myQuestion['id']);
 		}
+		else
+		{
+			// show thankyou msg
+			survey::thankyou($surveyNo);
+			step::stop();
+		}
 		// send question
 		questionSender::analyse($myQuestion);
 
@@ -62,18 +68,13 @@ class step_answering
 
 		bot::sendMessage('test, answer to question....');
 
-
-
 		// save answer
 		$surveyNo   = step::get('surveyNo');
 		$surveyStep = step::get('surveyStep');
 		$questionId = step::get('questionId');
 		$saveResult = \lib\app\tg\survey::answer($surveyNo, $questionId, $_answer);
 
-		$nextIsExist = null;
-		// check next question if exist show it
-		// else show thankyou msg
-		if($nextIsExist)
+		if($questionId)
 		{
 			// increase step of survey
 			$surveyStep++;
@@ -82,12 +83,6 @@ class step_answering
 			step::goingto(1);
 
 			return self::step1();
-		}
-		else
-		{
-			// show thankyou msg
-			survey::thankyou($surveyNo);
-			step::stop();
 		}
 	}
 }
