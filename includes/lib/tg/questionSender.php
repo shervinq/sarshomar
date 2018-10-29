@@ -223,11 +223,18 @@ class questionSender
 		$_txt .= "\n\n";
 		$_txt .= '❇️ '. T_('Please choose your answer');
 
-		$surveyId = null;
+		$surveyId   = null;
+		$questionId = null;
 		if(isset($_question['survey_id']))
 		{
 			$surveyId = $_question['survey_id'];
 		}
+		if(isset($_question['id']))
+		{
+			$questionId = $_question['id'];
+		}
+		// get user answer list
+		$userAnswerArr = \dash\data::myAnswerTitle();
 
 		if(isset($_question['choice']))
 		{
@@ -243,12 +250,24 @@ class questionSender
 				{
 					if(isset($value['title']))
 					{
+						$itemTitle    = $value['title'];
+						$itemId       = $value['title'];
+						$selectedMark = '';
+
+						if(isset($value['id']) && $value['id'])
+						{
+							$itemId = $value['id'];
+						}
+						if(in_array($itemTitle, $userAnswerArr))
+						{
+							$selectedMark = '☑️ ';
+						}
+
 						$_kbd['inline_keyboard'][][] =
 						[
-							'text' => $value['title'],
-							// 'callback_data' => 'survey_'. $surveyId. ' '. $value['title'],
-							'callback_data' => ($value['id']? $value['id']: $value['title']),
-
+							'text' => $selectedMark. $itemTitle,
+							'callback_data' => 'survey_'. $surveyId. ' '. $questionId ' '. $itemTitle,
+							// 'callback_data' => $itemId,
 						];
 					}
 				}
