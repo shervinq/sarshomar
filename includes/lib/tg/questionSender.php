@@ -16,49 +16,49 @@ class questionSender
 		switch ($_questionData['type'])
 		{
 			case 'short_answer':
-				self::short_answer($_questionData, $text, $reply_markup);
+				self::short_answer($_questionData, $text, $reply_markup, $_answer);
 				break;
 
 			case 'descriptive_answer':
-				self::descriptive_answer($_questionData, $text, $reply_markup);
+				self::descriptive_answer($_questionData, $text, $reply_markup, $_answer);
 				break;
 
 			case 'numeric':
 			case 'rangeslider':
-				self::numeric($_questionData, $text, $reply_markup);
+				self::numeric($_questionData, $text, $reply_markup, $_answer);
 				break;
 
 			case 'date':
-				self::date($_questionData, $text, $reply_markup);
+				self::date($_questionData, $text, $reply_markup, $_answer);
 				break;
 
 			case 'time':
-				self::time($_questionData, $text, $reply_markup);
+				self::time($_questionData, $text, $reply_markup, $_answer);
 				break;
 
 			case 'mobile':
-				self::mobile($_questionData, $text, $reply_markup);
+				self::mobile($_questionData, $text, $reply_markup, $_answer);
 				break;
 
 			case 'email':
-				self::email($_questionData, $text, $reply_markup);
+				self::email($_questionData, $text, $reply_markup, $_answer);
 				break;
 
 			case 'website':
-				self::website($_questionData, $text, $reply_markup);
+				self::website($_questionData, $text, $reply_markup, $_answer);
 				break;
 
 			case 'single_choice':
 			case 'dropdown':
-				self::single_choice($_questionData, $text, $reply_markup);
+				self::single_choice($_questionData, $text, $reply_markup, $_answer);
 				break;
 
 			case 'multiple_choice':
-				self::multiple_choice($_questionData, $text, $reply_markup);
+				self::multiple_choice($_questionData, $text, $reply_markup, $_answer);
 				break;
 
 			case 'rating':
-				self::rating($_questionData, $text, $reply_markup);
+				self::rating($_questionData, $text, $reply_markup, $_answer);
 				break;
 
 			default:
@@ -117,21 +117,21 @@ class questionSender
 	}
 
 
-	private static function short_answer($_question, &$_txt, &$_kbd)
+	private static function short_answer($_question, &$_txt, &$_kbd, $_answer)
 	{
 		$_txt .= "\n\n";
 		$_txt .= '❇️ '. T_('Please wrote short answer for this question');
 	}
 
 
-	private static function descriptive_answer($_question, &$_txt, &$_kbd)
+	private static function descriptive_answer($_question, &$_txt, &$_kbd, $_answer)
 	{
 		$_txt .= "\n\n";
 		$_txt .= '❇️ '. T_('Please describe your answer');
 	}
 
 
-	private static function numeric($_question, &$_txt, &$_kbd)
+	private static function numeric($_question, &$_txt, &$_kbd, $_answer)
 	{
 		$min = null;
 		$max = null;
@@ -149,42 +149,42 @@ class questionSender
 	}
 
 
-	private static function date($_question, &$_txt, &$_kbd)
+	private static function date($_question, &$_txt, &$_kbd, $_answer)
 	{
 		$_txt .= "\n\n";
 		$_txt .= '❇️ '. T_('Please enter date in format <code>yyyy-mm-dd</code> like <code>2018-10-28</code>');
 	}
 
 
-	private static function time($_question, &$_txt, &$_kbd)
+	private static function time($_question, &$_txt, &$_kbd, $_answer)
 	{
 		$_txt .= "\n\n";
 		$_txt .= '❇️ '. T_('Please enter time like <code>19:41</code>');
 	}
 
 
-	private static function mobile($_question, &$_txt, &$_kbd)
+	private static function mobile($_question, &$_txt, &$_kbd, $_answer)
 	{
 		$_txt .= "\n\n";
 		$_txt .= '❇️ '. T_('Please enter mobile number like <code>09350001234</code>');
 	}
 
 
-	private static function email($_question, &$_txt, &$_kbd)
+	private static function email($_question, &$_txt, &$_kbd, $_answer)
 	{
 		$_txt .= "\n\n";
 		$_txt .= '❇️ '. T_('Please enter email like <code>abc@example.com</code>');
 	}
 
 
-	private static function website($_question, &$_txt, &$_kbd)
+	private static function website($_question, &$_txt, &$_kbd, $_answer)
 	{
 		$_txt .= "\n\n";
 		$_txt .= '❇️ '. T_('Please enter website like <code>jibres.com</code>');
 	}
 
 
-	private static function single_choice($_question, &$_txt, &$_kbd)
+	private static function single_choice($_question, &$_txt, &$_kbd, $_answer)
 	{
 		$_txt .= "\n\n";
 		$_txt .= '❇️ '. T_('Please choose your answer');
@@ -199,8 +199,6 @@ class questionSender
 		{
 			$questionId = $_question['id'];
 		}
-		// get user answer list
-		$userAnswerArr = \dash\data::myAnswerTitle();
 
 		if(isset($_question['choice']))
 		{
@@ -224,7 +222,7 @@ class questionSender
 						{
 							$itemId = $value['id'];
 						}
-						if(in_array($itemTitle, $userAnswerArr))
+						if(in_array($itemTitle, $_answer))
 						{
 							$selectedMark = '☑️ ';
 						}
@@ -242,7 +240,7 @@ class questionSender
 	}
 
 
-	private static function multiple_choice($_question, &$_txt, &$_kbd)
+	private static function multiple_choice($_question, &$_txt, &$_kbd, $_answer)
 	{
 		$_txt .= "\n\n";
 		$_txt .= '❇️ '. T_('Please choose your answer');
@@ -257,8 +255,6 @@ class questionSender
 		{
 			$questionId = $_question['id'];
 		}
-		// get user answer list
-		$userAnswerArr = \dash\data::myAnswerTitle();
 
 		if(isset($_question['choice']))
 		{
@@ -282,7 +278,7 @@ class questionSender
 						{
 							$itemId = $value['id'];
 						}
-						if(in_array($itemTitle, $userAnswerArr))
+						if(in_array($itemTitle, $_answer))
 						{
 							$selectedMark = '☑️ ';
 						}
@@ -300,7 +296,7 @@ class questionSender
 	}
 
 
-	private static function rating($_question, &$_txt, &$_kbd)
+	private static function rating($_question, &$_txt, &$_kbd, $_answer)
 	{
 		$_txt      .= "\n\n";
 		$_txt      .= '❇️ '. T_('Please choose your rate');
@@ -317,9 +313,6 @@ class questionSender
 		{
 			$questionId = $_question['id'];
 		}
-		// get user answer list
-		$userAnswerArr = \dash\data::myAnswerTitle();
-
 
 		if(isset($_question['setting']['rating']['max']))
 		{
@@ -380,7 +373,7 @@ class questionSender
 			{
 				$itemId = $value['id'];
 			}
-			if(in_array($i, $userAnswerArr))
+			if(in_array($i, $_answer))
 			{
 				$selectedMark = '☑️ ';
 			}
