@@ -184,6 +184,12 @@ class questionSender
 		$_txt .= "\n\n";
 		$_txt .= '❇️ '. T_('Please choose your answer');
 
+		$surveyId = null;
+		if(isset($_question['survey_id']))
+		{
+			$surveyId = $_question['survey_id'];
+		}
+
 		if(isset($_question['choice']))
 		{
 			$choices = $_question['choice'];
@@ -201,7 +207,7 @@ class questionSender
 						$_kbd['inline_keyboard'][][] =
 						[
 							'text' => $value['title'],
-							'callback_data' => 'survey_123 '. $value['title'],
+							'callback_data' => 'survey_'. $surveyId. ' '. $value['title'],
 						];
 					}
 				}
@@ -216,6 +222,12 @@ class questionSender
 		$_txt .= "\n\n";
 		$_txt .= '❇️ '. T_('Please choose your answer');
 
+		$surveyId = null;
+		if(isset($_question['survey_id']))
+		{
+			$surveyId = $_question['survey_id'];
+		}
+
 		if(isset($_question['choice']))
 		{
 			$choices = $_question['choice'];
@@ -233,7 +245,8 @@ class questionSender
 						$_kbd['inline_keyboard'][][] =
 						[
 							'text' => $value['title'],
-							'callback_data' => 'survey_123 '. $value['title'],
+							'callback_data' => 'survey_'. $surveyId. ' '. $value['title'],
+
 						];
 					}
 				}
@@ -249,6 +262,12 @@ class questionSender
 		$_txt      .= '❇️ '. T_('Please your rate');
 		$max       = 5;
 		$rateEmoji = '⭐️';
+
+		$surveyId = null;
+		if(isset($_question['survey_id']))
+		{
+			$surveyId = $_question['survey_id'];
+		}
 
 		if(isset($_question['setting']['rating']['max']))
 		{
@@ -304,7 +323,7 @@ class questionSender
 			$_kbd['inline_keyboard'][][] =
 			[
 				'text' => str_repeat($rateEmoji, $i),
-				'callback_data' => 'survey_123 '. 'rating'.$i,
+				'callback_data' => 'survey_'. $surveyId. ' '. $i,
 			];
 		}
 	}
