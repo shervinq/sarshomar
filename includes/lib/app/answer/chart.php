@@ -73,7 +73,8 @@ class chart
 		}
 		$question2_choise[0] = T_("Skipped");
 
-		$question3_choise = [];
+		$question3_choise       = [];
+		$question3_choise_title = null;
 
 		if($_question3)
 		{
