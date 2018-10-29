@@ -93,7 +93,6 @@ class survey
 			// remove keyboard of old messages
 			$newMsg =
 			[
-				'text'         => T_('Please dont try old messages!'),
 				'reply_markup' =>
 				[
 					'inline_keyboard' =>
@@ -107,7 +106,7 @@ class survey
 					]
 				]
 			];
-			bot::editMessageText($newMsg);
+			bot::editMessageReplyMarkup($newMsg);
 		}
 		// if we are in step skip check and continue step
 	}
