@@ -47,6 +47,8 @@ class survey
 		{
 			return false;
 		}
+		// remove botname from surveyNo if exist
+		$surveyNo = strtok($surveyNo, '@',);
 		// check if survey id is not exist show list
 		if(!$surveyNo)
 		{
