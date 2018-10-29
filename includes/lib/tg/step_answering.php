@@ -77,6 +77,10 @@ class step_answering
 		{
 			if(substr($_answer, 0, 3) === 'cb_')
 			$_answer = substr($_answer, 3);
+			// answer callback result
+			bot::answerCallbackQuery(T_("Your answer"). "\n". $_answer);
+			// send message
+			bot::sendMessage(T_("Your answer"). "\n". $_answer);
 		}
 
 		// save answer
