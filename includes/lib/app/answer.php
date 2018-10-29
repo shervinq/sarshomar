@@ -215,8 +215,26 @@ class answer
 				}
 				else
 				{
-					$update_answer['complete'] = 1;
-					$update_answer['enddate']  = self::dateNow();
+					// need to check all required question is answered
+					$check_require_is_answer = \lib\db\answers::required_question_is_answered($survey_id, \dash\user::id());
+					if($check_require_is_answer === true)
+					{
+						$update_answer['complete'] = 1;
+						$update_answer['enddate']  = self::dateNow();
+					}
+					else
+					{
+						\dash\temp::set('notAnsweredQuestion', $check_require_is_answer);
+
+						$msg = T_("You not answer to some required question"). ' '. T_("Your survey is not complete");
+
+						if(isset($check_require_is_answer[0]['sort']))
+						{
+							$msg = "<a href='". \dash\url::kingdom(). '/s/'. \dash\coding::encode($survey_id). '?step='. $check_require_is_answer[0]['sort']. "'>$msg</a>";
+						}
+
+						\dash\notif::warn($msg);
+					}
 				}
 			}
 
