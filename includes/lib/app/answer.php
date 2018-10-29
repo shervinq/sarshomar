@@ -434,7 +434,7 @@ class answer
 						{
 							if(\dash\permission::supervisor())
 							{
-								\dash\notif::error(T_("This choice not found in choice list!"). json_encode([$_answer, @$_question_detail['title']]), 'answer');
+								\dash\notif::error(T_("This choice not found in choice list!"). ' _ '.$_answer . ' _ '. @$_question_detail['title'], 'answer');
 							}
 							else
 							{
