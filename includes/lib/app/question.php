@@ -590,6 +590,7 @@ class question
 
 				case 'id':
 				case 'user_id':
+				case 'survey_id':
 					$result[$key] = \dash\coding::encode($value);
 					break;
 
