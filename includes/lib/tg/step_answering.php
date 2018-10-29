@@ -87,7 +87,7 @@ class step_answering
 			$receiveMsg =
 			[
 				'text' => T_("Your answer"). "\n<b>". $_answer. '</b>',
-				'reply_markup' => ['remove_keyboard' => true]
+				'reply_markup' => ['remove_keyboard' => true],
 				'disable_notification' => true,
 			];
 			bot::sendMessage($receiveMsg);
