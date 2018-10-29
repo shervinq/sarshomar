@@ -2,6 +2,7 @@
 namespace lib\tg;
 // use telegram class as bot
 use \dash\social\telegram\tg as bot;
+use \dash\social\telegram\hook;
 use \dash\social\telegram\step;
 
 class step_answering
@@ -81,6 +82,7 @@ class step_answering
 		{
 			if(substr($_answer, 0, 3) === 'cb_')
 			$_answer = substr($_answer, 3);
+
 			// answer callback result
 			bot::answerCallbackQuery('#'. $surveyStep. ' '. T_("Answer received"));
 			// send message
@@ -90,6 +92,26 @@ class step_answering
 				'reply_markup' => ['remove_keyboard' => true],
 				'disable_notification' => true,
 			];
+
+			$fakeAnswer = true;
+			$cmd = hook::cmd();
+
+			if($cmd['command'] === 'cb_survey_'. $surveyNo)
+			{
+				if($cmd['optionalRaw'] === $questionId)
+				{
+					$fakeAnswer = false;
+					$_answer    = $cmd['argumentRaw'];
+				}
+			}
+
+			if($fakeAnswer)
+			{
+				$receiveMsg['text'] = T_("Dont!");
+				// show message and
+				return false;
+			}
+
 			bot::sendMessage($receiveMsg);
 		}
 		if($_answer === '/skip')
