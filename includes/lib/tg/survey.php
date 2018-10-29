@@ -110,7 +110,7 @@ class survey
 			];
 			bot::editMessageReplyMarkup($newMsg);
 			// show funny message
-			bot::answerCallbackQuery(T_('Please do not play with keyboard of old messages!'). ' 🤖');
+			bot::answerCallbackQuery(T_('Please do not play with them!'). ' 🤖');
 		}
 		// if we are in step skip check and continue step
 	}
