@@ -91,7 +91,23 @@ class survey
 		else
 		{
 			// remove keyboard of old messages
-			bot::editMessageText(['text' => T_('Please dont try old messages!')]);
+			$newMsg =
+			[
+				'text'         => T_('Please dont try old messages!'),
+				'reply_markup' =>
+				[
+					'inline_keyboard' =>
+					[
+						[
+							[
+								'text' => T_("Sarshomar website"),
+								'url'  => \dash\url::kingdom(),
+							],
+						]
+					]
+				]
+			];
+			bot::editMessageText($newMsg);
 		}
 		// if we are in step skip check and continue step
 	}
