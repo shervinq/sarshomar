@@ -209,12 +209,12 @@ class answer
 
 			if(intval($step) === intval($countblock))
 			{
-				if(isset($load_old_answer['complete']) && $load_old_answer['complete'])
-				{
-					// if before this request the question is completed not complete again
-				}
-				else
-				{
+				// if(isset($load_old_answer['complete']) && $load_old_answer['complete'])
+				// {
+				// 	// if before this request the question is completed not complete again
+				// }
+				// else
+				// {
 					// need to check all required question is answered
 					$check_require_is_answer = \lib\db\answers::required_question_is_answered($survey_id, \dash\user::id());
 					if($check_require_is_answer === true)
@@ -224,6 +224,9 @@ class answer
 					}
 					else
 					{
+						$update_answer['complete'] = 0;
+						$update_answer['enddate']  = null;
+
 						\dash\temp::set('notAnsweredQuestion', $check_require_is_answer);
 
 						$msg = T_("You not answer to some required question"). ' '. T_("Your survey is not complete");
@@ -235,7 +238,7 @@ class answer
 
 						\dash\notif::warn($msg);
 					}
-				}
+				// }
 			}
 
 			\lib\db\answers::update($update_answer, $answer_id);
