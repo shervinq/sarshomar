@@ -432,7 +432,7 @@ class answer
 
 						if(!in_array($_answer, $choice_title))
 						{
-							\dash\notif::error(T_("This choice not found in choice list!"), 'answer');
+							\dash\notif::error(T_("This choice not found in choice list! ". json_encode([$_answer, $question_detail])), 'answer');
 							$valid = false;
 						}
 					}
