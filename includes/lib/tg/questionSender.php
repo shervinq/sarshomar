@@ -56,18 +56,18 @@ class questionSender
 			case 'multiple_choice':
 				self::multiple_choice($_questionData, $text, $reply_markup, $_answer);
 
-				// if(step::get('qMessageId') && step::get('qChatId'))
-				// {
-				// 	$updateData =
-				// 	[
-				// 		'message_id'   => step::get('qMessageId'),
-				// 		'chat_id'      => step::get('qChatId'),
-				// 		'text'         => $text,
-				// 		'reply_markup' => $reply_markup,
-				// 	];
-				// 	bot::editMessageText($updateData);
-				// 	return true;
-				// }
+				if(step::get('qMessageId') && step::get('qChatId'))
+				{
+					$updateData =
+					[
+						'message_id'   => step::get('qMessageId'),
+						'chat_id'      => step::get('qChatId'),
+						'text'         => $text,
+						'reply_markup' => $reply_markup,
+					];
+					bot::editMessageText($updateData);
+					return true;
+				}
 
 				break;
 
