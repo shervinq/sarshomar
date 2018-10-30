@@ -178,7 +178,7 @@ class step_answering
 				else
 				{
 					// set in variable
-					step::set('multipleLastAnswer', $multipleAnswers);
+					step::set('multipleLastAnswer', $_answer);
 					return self::step1(null, $surveyStep);
 				}
 
