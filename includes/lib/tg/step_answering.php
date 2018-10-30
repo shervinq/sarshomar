@@ -138,7 +138,7 @@ class step_answering
 			else
 			{
 				// reset false try if user send correct answer
-				step::set('falseTry', 0);
+				step::set('falseTry', false);
 			}
 
 			// answer callback result
@@ -179,6 +179,7 @@ class step_answering
 				{
 					// set in variable
 					step::set('multipleLastAnswer', $_answer);
+					step::goingto(1);
 					return self::step1(null, $surveyStep);
 				}
 
