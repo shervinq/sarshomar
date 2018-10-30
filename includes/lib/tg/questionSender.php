@@ -74,8 +74,15 @@ class questionSender
 			'text'         => $text,
 			'reply_markup' => $reply_markup
 		];
-		// send message
-		bot::sendMessage($result);
+		if($_questionData['type'] === 'multiple_choice')
+		{
+			bot::editMessageText($result);
+		}
+		else
+		{
+			// send message
+			bot::sendMessage($result);
+		}
 	}
 
 

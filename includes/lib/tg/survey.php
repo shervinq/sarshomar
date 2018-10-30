@@ -292,7 +292,7 @@ class survey
 		// if start with callback answer callback
 		if(bot::isCallback())
 		{
-			bot::answerCallbackQuery(T_("List of your survey in Sarshomr"));
+			bot::answerCallbackQuery(T_("List of your survey in Sarshomar"));
 		}
 
 		$result =

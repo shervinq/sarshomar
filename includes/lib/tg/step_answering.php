@@ -197,6 +197,7 @@ class step_answering
 					}
 					// set in variable
 					step::set('multipleAnswers', $multipleAnswers);
+					return self::step1(null, $surveyStep);
 				}
 
 			}
