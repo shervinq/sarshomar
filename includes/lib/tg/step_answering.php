@@ -70,9 +70,9 @@ class step_answering
 		// send question
 		questionSender::analyse($myQuestion, $userAnswerArr);
 		// set type of question
-		if(isset($_questionData['type']))
+		if(isset($myQuestion['type']))
 		{
-			step::set('questionType', $_questionData['type']);
+			step::set('questionType', $myQuestion['type']);
 		}
 
 		// go to next step to get answer
