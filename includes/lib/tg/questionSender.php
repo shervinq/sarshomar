@@ -62,10 +62,10 @@ class questionSender
 					[
 						'message_id'   => step::get('qMessageId'),
 						'chat_id'      => step::get('qChatId'),
-						'text'         => $text,
+						// 'text'         => $text,
 						'reply_markup' => $reply_markup,
 					];
-					bot::editMessageText($updateData);
+					bot::editMessageReplyMarkup($updateData);
 					return true;
 				}
 
