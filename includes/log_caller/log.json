@@ -1,11 +1,9 @@
 {
   "surveyPublished": {
-    "title": "Your survey was published",
-    "content": "Your survey was published",
     "notification": true,
-    "send_msg": {
-      "telegram": "Your survey was published"
-    },
-    "telegram": true
+    "fn": [
+      "\\lib\\app\\log\\send",
+      "surveyPublished"
+    ],
   }
 }

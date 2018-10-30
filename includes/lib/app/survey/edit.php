@@ -65,6 +65,7 @@ trait edit
 						[
 							'user_id' => \dash\user::id(),
 							'code'    => $_id,
+							'ttitle'  => isset($old_detail['title']) ? $old_detail['title'] : null,
 						];
 
 						\dash\log::temp_set('surveyPublished', $log);
