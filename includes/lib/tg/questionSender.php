@@ -332,15 +332,13 @@ class questionSender
 
 		}
 
-		$myKey = array_search($newAnswer, $userFlyAnswer);
-		// unset
-		if($myKey !== false)
+		if(isset($userFlyAnswer[$newAnswerKey]))
 		{
-			unset($userFlyAnswer[$myKey]);
+			unset($userFlyAnswer[$newAnswerKey]);
 		}
 		else
 		{
-			array_push($userFlyAnswer, $newAnswer);
+			$userFlyAnswer[$newAnswerKey] = $newAnswer;
 		}
 		// clean array
 		if(is_array($userFlyAnswer))
