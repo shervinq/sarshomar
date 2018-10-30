@@ -54,7 +54,45 @@ class questionSender
 				break;
 
 			case 'multiple_choice':
-				self::multiple_choice($_questionData, $text, $reply_markup, $_answer);
+				$myInitAns = step::get('multipleAnswersInit');
+				if(!$myInitAns && is_array($myInitAns))
+				{
+					step::set('multipleAnswersInit', $_answer);
+				}
+				if(!is_array($myInitAns))
+				{
+					$myInitAns = [];
+				}
+
+				$userFlyAnswer = step::get('multipleAnswers');
+				if(!is_array($userFlyAnswer))
+				{
+					$userFlyAnswer = [];
+				}
+				$mergerdAns = array_merge($myInitAns, $userFlyAnswer);
+				$mergerdAns = array_unique($mergerdAns);
+				$mergerdAns = array_filter($mergerdAns);
+
+				// get new answer
+				$newAnswer = step::get('multipleLastAnswer');
+
+				if(in_array($newAnswer, $mergerdAns))
+				{
+					// unset
+					$myKey = array_search($newAnswer, $mergerdAns);
+					if($myKey !== false)
+					{
+						unset($mergerdAns[$myKey]);
+					}
+				}
+				else
+				{
+					array_push($mergerdAns, $newAnswer);
+				}
+
+				step::set('multipleAnswers', $mergerdAns);
+
+				self::multiple_choice($_questionData, $text, $reply_markup, $mergerdAns);
 
 				// if(step::get('qMessageId') && step::get('qChatId'))
 				// {

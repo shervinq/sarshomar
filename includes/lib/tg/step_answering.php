@@ -169,10 +169,6 @@ class step_answering
 			if($questionType === 'multiple_choice')
 			{
 				$multipleAnswers = step::get('multipleAnswers');
-				if(!is_array($multipleAnswers))
-				{
-					$multipleAnswers = [];
-				}
 
 				if($_answer === '/save')
 				{
@@ -181,22 +177,8 @@ class step_answering
 				}
 				else
 				{
-					if(in_array($_answer, $multipleAnswers))
-					{
-						// unset
-						$myKey = array_search($_answer, $multipleAnswers);
-						if($myKey !== false)
-						{
-							unset($multipleAnswers[$myKey]);
-						}
-					}
-					else
-					{
-						array_push($multipleAnswers, $_answer);
-
-					}
 					// set in variable
-					step::set('multipleAnswers', $multipleAnswers);
+					step::set('multipleLastAnswer', $multipleAnswers);
 					return self::step1(null, $surveyStep);
 				}
 
