@@ -111,7 +111,15 @@ class questionSender
 		// get user answer list
 		if($_answer)
 		{
-			$bodyTxt .= "\n☑️ ". T_('Your answer'). " <code>". implode(', ', $_answer). "</code>";
+			$bodyTxt .= "\n☑️ ". T_('Your answer');
+			if(count($_answer) > 1)
+			{
+				$bodyTxt .= "\n<pre>". implode("\n", $_answer). "</pre>";
+			}
+			else
+			{
+				$bodyTxt .= " <code>". implode(T_(', '), $_answer). "</code>";
+			}
 		}
 		return $bodyTxt;
 	}
