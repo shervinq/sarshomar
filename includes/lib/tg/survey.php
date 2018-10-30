@@ -150,7 +150,7 @@ class survey
 				]
 			];
 
-			if(bot::isPrivate())
+			if(!bot::isPrivate())
 			{
 				$result['reply_markup']['inline_keyboard'][1] =
 				[
