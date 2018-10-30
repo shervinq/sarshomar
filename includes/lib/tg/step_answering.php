@@ -13,6 +13,7 @@ class step_answering
 		if(!bot::isPrivate())
 		{
 			survey::goToPrivate($_id);
+			return false;
 		}
 
 		// its okay on start
