@@ -141,15 +141,25 @@ class step_answering
 				step::set('falseTry', false);
 			}
 
-			// answer callback result
-			bot::answerCallbackQuery('#'. $surveyStep.$_answer. ' '. T_("Answer received"));
 
 			if($questionType === 'multiple_choice')
 			{
-				// dont send message
+				if($_answer === '/save')
+				{
+					// answer callback result
+					bot::answerCallbackQuery('#'. $surveyStep. ' '. T_("Answer received"));
+				}
+				else
+				{
+					// answer callback result
+					bot::answerCallbackQuery('#'. $surveyStep. ' '. T_("Item :val selected", ['val' => $_answer]));
+				}
 			}
 			else
 			{
+				// answer callback result
+				bot::answerCallbackQuery('#'. $surveyStep. ' '. T_("Answer received"));
+
 				// send message of recieve on callback
 				$receiveMsg =
 				[
