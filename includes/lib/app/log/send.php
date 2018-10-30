@@ -37,7 +37,7 @@ class send
 		$tg_msg .= "\n #SurveyPublished";
 		if($code)
 		{
-			$tg_msg .= " /s_". $code;
+			$tg_msg .= " /s_". $code. "\n";
 		}
 
 		if($ttitle)
