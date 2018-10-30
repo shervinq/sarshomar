@@ -182,10 +182,14 @@ class step_answering
 
 				if($_answer === '/save')
 				{
-					var_dump($multipleAnswers);
 					// save answer
 					$userAnswerKeys = array_keys($multipleAnswers);
 					$saveResult = \lib\app\tg\survey::answer($surveyNo, $questionId, $userAnswerKeys);
+					// clean all detail
+					step::set('qMessageId', null);
+					step::set('qChatId', null);
+					step::set('multipleAnswers', null);
+					step::set('multipleLastAnswer', null);
 				}
 				else
 				{
