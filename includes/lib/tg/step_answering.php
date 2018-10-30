@@ -117,7 +117,8 @@ class step_answering
 				bot::editMessageReplyMarkup($newMsg);
 				// show funny message
 				bot::answerCallbackQuery('❌ '. T_('How are you!'));
-				// show message and
+				// show false try message
+				step::checkFalseTry(true);
 				return false;
 			}
 
