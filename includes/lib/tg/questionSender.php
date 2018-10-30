@@ -60,8 +60,10 @@ class questionSender
 				{
 					$updateData =
 					[
+						'message_id'   => step::get('qMessageId'),
+						'chat_id'      => step::get('qChatId'),
 						'text'         => $text,
-						'reply_markup' => $reply_markup
+						'reply_markup' => $reply_markup,
 					];
 					bot::editMessageText($updateData);
 					return true;
