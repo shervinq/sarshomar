@@ -142,7 +142,7 @@ class step_answering
 			}
 
 			// answer callback result
-			bot::answerCallbackQuery('#'. $surveyStep. ' '. T_("Answer received"));
+			bot::answerCallbackQuery('#'. $surveyStep. $questionType. ' '. T_("Answer received"));
 
 			if($questionType === 'multiple_choice')
 			{
