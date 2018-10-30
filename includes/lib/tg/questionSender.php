@@ -55,9 +55,10 @@ class questionSender
 
 			case 'multiple_choice':
 				$myInitAns = step::get('multipleAnswersInit');
-				if(!$myInitAns && is_array($myInitAns))
+				if(!$myInitAns)
 				{
 					step::set('multipleAnswersInit', $_answer);
+					$myInitAns = $_answer;
 				}
 				if(!is_array($myInitAns))
 				{
@@ -75,19 +76,22 @@ class questionSender
 
 				// get new answer
 				$newAnswer = step::get('multipleLastAnswer');
-
-				if(in_array($newAnswer, $mergerdAns))
+				if($newAnswer)
 				{
-					// unset
-					$myKey = array_search($newAnswer, $mergerdAns);
-					if($myKey !== false)
+					if(in_array($newAnswer, $mergerdAns))
 					{
-						unset($mergerdAns[$myKey]);
+						// unset
+						$myKey = array_search($newAnswer, $mergerdAns);
+						if($myKey !== false)
+						{
+							unset($mergerdAns[$myKey]);
+						}
 					}
-				}
-				else
-				{
-					array_push($mergerdAns, $newAnswer);
+					else
+					{
+						array_push($mergerdAns, $newAnswer);
+					}
+
 				}
 
 				step::set('multipleAnswers', $mergerdAns);
