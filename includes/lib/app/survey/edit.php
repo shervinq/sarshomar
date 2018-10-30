@@ -54,10 +54,29 @@ trait edit
 
 		if(!empty($args))
 		{
+			if(array_key_exists('status', $args))
+			{
+				$old_detail = \lib\db\surveys::get(['id' => $id, 'limit' => 1]);
+				if($args['status'] === 'publish')
+				{
+					if(isset($old_detail['status']) && $old_detail['status'] !== 'publish')
+					{
+						$log =
+						[
+							'user_id' => \dash\user::id(),
+							'code'    => $_id,
+						];
+
+						\dash\log::temp_set('surveyPublished', $log);
+					}
+				}
+			}
+
 			$update = \lib\db\surveys::update($args, $id);
 
 			if(\dash\engine\process::status())
 			{
+				\dash\log::save_temp();
 				\dash\log::set('editSurvay', ['data' => $id, 'datalink' => \dash\coding::encode($id)]);
 				\dash\notif::ok(T_("Survay successfully updated"));
 			}
