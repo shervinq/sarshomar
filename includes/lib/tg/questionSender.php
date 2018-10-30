@@ -382,7 +382,7 @@ class questionSender
 			$_kbd['inline_keyboard'][][] =
 			[
 				'text'          => T_('Save and next'),
-				'callback_data' => 'survey_'. $surveyId. ' '. $questionId. '  /save',
+				'callback_data' => 'survey_'. $surveyId. ' '. $questionId. ' /save',
 			];
 
 		}
