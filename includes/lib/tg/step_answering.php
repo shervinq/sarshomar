@@ -128,6 +128,11 @@ class step_answering
 				step::checkFalseTry(true);
 				return false;
 			}
+			else
+			{
+				// reset false try if user send correct answer
+				step::set('falseTry', 0);
+			}
 
 			// answer callback result
 			bot::answerCallbackQuery('#'. $surveyStep. ' '. T_("Answer received"));
