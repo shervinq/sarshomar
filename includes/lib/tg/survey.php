@@ -37,7 +37,7 @@ class survey
 		{
 			$surveyNo = substr($myCommand, 1);
 		}
-		elseif($myCommand === 'survey' || $myCommand === '$')
+		elseif($myCommand === 'survey' || $myCommand === '$' || $myCommand === 'list')
 		{
 			// show list of survey
 			survey::list();
