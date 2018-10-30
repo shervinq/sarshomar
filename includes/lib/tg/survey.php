@@ -43,6 +43,12 @@ class survey
 			survey::list();
 			return true;
 		}
+		elseif($myCommand === 'how' || $myCommand === 'howto')
+		{
+			// show list of survey
+			survey::list(true);
+			return true;
+		}
 		else
 		{
 			return false;
@@ -285,7 +291,7 @@ class survey
 	}
 
 
-	public static function list()
+	public static function list($_detail = null)
 	{
 		bot::ok();
 
@@ -294,11 +300,14 @@ class survey
 		{
 			bot::answerCallbackQuery(T_("List of your survey in Sarshomar"));
 		}
-		$surveyList = \lib\app\tg\survey::list();
-		if(!$surveyList)
+		if($_detail === null)
 		{
-			bot::sendMessage($surveyList);
-			return true;
+			$surveyList = \lib\app\tg\survey::list();
+			if($surveyList)
+			{
+				bot::sendMessage($surveyList);
+				return true;
+			}
 		}
 
 		// show message to go to website
@@ -326,7 +335,7 @@ class survey
 		];
 
 		// add sync
-		// if(!\dash\user::detail('mobile'))
+		if(!\dash\user::detail('mobile'))
 		{
 			$result['reply_markup']['inline_keyboard'][][] =
 			[
