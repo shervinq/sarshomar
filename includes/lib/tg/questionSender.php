@@ -369,7 +369,7 @@ class questionSender
 
 				if(in_array($itemTitle, $userFlyAnswer))
 				{
-					$selectedMark = '✅ ';
+					$selectedMark = '📌 ';
 				}
 
 				$_kbd['inline_keyboard'][][] =
