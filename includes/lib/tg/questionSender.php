@@ -54,33 +54,7 @@ class questionSender
 				break;
 
 			case 'multiple_choice':
-				$userFlyAnswer = step::get('multipleAnswers');
-				if(!is_array($userFlyAnswer))
-				{
-					$userFlyAnswer = [];
-				}
-				$mergerdAns = $userFlyAnswer;
-
-				// get new answer
-				$newAnswer = step::get('multipleLastAnswer');
-				if($newAnswer)
-				{
-					$myKey = array_search($newAnswer, $mergerdAns);
-					// unset
-					if($myKey !== false)
-					{
-						unset($mergerdAns[$myKey]);
-					}
-					else
-					{
-						array_push($mergerdAns, $newAnswer);
-					}
-
-				}
-
-				step::set('multipleAnswers', $mergerdAns);
-
-				self::multiple_choice($_questionData, $text, $reply_markup, $mergerdAns);
+				self::multiple_choice($_questionData, $text, $reply_markup, $_answer);
 
 				// if(step::get('qMessageId') && step::get('qChatId'))
 				// {
@@ -318,53 +292,101 @@ class questionSender
 		{
 			$questionId = $_question['id'];
 		}
-
-		if(isset($_question['choice']))
+		// if choice is not exist return
+		if(!isset($_question['choice']))
 		{
-			$choices = $_question['choice'];
-			if(is_array($choices) && $choices)
+			return false;
+		}
+		$choices = $_question['choice'];
+		// if value is not correct return
+		if(!is_array($choices) || count($choices) < 1)
+		{
+			return false;
+		}
+
+		// get user answers to this question
+		$userFlyAnswer = step::get('multipleAnswers');
+		if(!is_array($userFlyAnswer))
+		{
+			$userFlyAnswer = [];
+		}
+		// get new answer value
+		$newAnswerKey = intval(step::get('multipleLastAnswer'));
+		$newAnswer    = null;
+		// get name of this new key
+		if($newAnswerKey)
+		{
+			foreach ($choices as $key => $value)
 			{
-				$_kbd =
-				[
-					'inline_keyboard' => []
-				];
-
-				foreach ($choices as $key => $value)
+				if(isset($value['title']) && $value['title'])
 				{
-					if(isset($value['title']))
+					if(isset($value['id']) && $value['id'])
 					{
-						$itemTitle    = $value['title'];
-						$itemId       = $value['title'];
-						$selectedMark = '';
-
-						if(isset($value['id']) && $value['id'])
+						if($newAnswerKey === $value['id'])
 						{
-							$itemId = $value['id'];
+							$newAnswer = $value['title'];
 						}
-						if(in_array($itemTitle, $_answer))
-						{
-							$selectedMark = '☑️ ';
-						}
-
-						$_kbd['inline_keyboard'][][] =
-						[
-							'text' => $selectedMark. $itemTitle,
-							'callback_data' => 'survey_'. $surveyId. ' '. $questionId. ' '. $itemId,
-						];
 					}
 				}
+			}
 
-				// if($_answer)
+		}
+
+		$myKey = array_search($newAnswer, $userFlyAnswer);
+		// unset
+		if($myKey !== false)
+		{
+			unset($userFlyAnswer[$myKey]);
+		}
+		else
+		{
+			array_push($userFlyAnswer, $newAnswer);
+		}
+		// set for next use
+		step::set('multipleAnswers', $userFlyAnswer);
+
+		// define kbd
+		$_kbd =
+		[
+			'inline_keyboard' => []
+		];
+
+		foreach ($choices as $key => $value)
+		{
+			if(isset($value['title']) && $value['title'])
+			{
+				$itemTitle    = $value['title'];
+				$itemId       = $value['title'];
+				$selectedMark = '';
+
+				if(isset($value['id']) && $value['id'])
 				{
-					$_kbd['inline_keyboard'][][] =
-					[
-						'text'          => T_('Save and next'),
-						'callback_data' => 'survey_'. $surveyId. ' '. $questionId. '  /save',
-					];
-
+					$itemId = $value['id'];
 				}
+
+				if(in_array($itemTitle, $userFlyAnswer))
+				{
+					$selectedMark = '☑️ ';
+				}
+
+				$_kbd['inline_keyboard'][][] =
+				[
+					'text' => $selectedMark. $itemTitle,
+					'callback_data' => 'survey_'. $surveyId. ' '. $questionId. ' '. $itemId,
+				];
 			}
 		}
+
+		// if($userFlyAnswer)
+		{
+			$_kbd['inline_keyboard'][][] =
+			[
+				'text'          => T_('Save and next'),
+				'callback_data' => 'survey_'. $surveyId. ' '. $questionId. '  /save',
+			];
+
+		}
+
 	}
 
 
