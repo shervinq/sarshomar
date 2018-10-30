@@ -54,38 +54,22 @@ class questionSender
 				break;
 
 			case 'multiple_choice':
-				$myInitAns = step::get('multipleAnswersInit');
-				if(!$myInitAns)
-				{
-					step::set('multipleAnswersInit', $_answer);
-					$myInitAns = $_answer;
-				}
-				if(!is_array($myInitAns))
-				{
-					$myInitAns = [];
-				}
-
 				$userFlyAnswer = step::get('multipleAnswers');
 				if(!is_array($userFlyAnswer))
 				{
 					$userFlyAnswer = [];
 				}
-				$mergerdAns = array_merge($myInitAns, $userFlyAnswer);
-				$mergerdAns = array_unique($mergerdAns);
-				$mergerdAns = array_filter($mergerdAns);
+				$mergerdAns = $userFlyAnswer;
 
 				// get new answer
 				$newAnswer = step::get('multipleLastAnswer');
 				if($newAnswer)
 				{
-					if(in_array($newAnswer, $mergerdAns))
+					$myKey = array_search($newAnswer, $mergerdAns);
+					// unset
+					if($myKey !== false)
 					{
-						// unset
-						$myKey = array_search($newAnswer, $mergerdAns);
-						if($myKey !== false)
-						{
-							unset($mergerdAns[$myKey]);
-						}
+						unset($mergerdAns[$myKey]);
 					}
 					else
 					{
