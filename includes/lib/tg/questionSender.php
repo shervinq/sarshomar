@@ -2,7 +2,7 @@
 namespace lib\tg;
 // use telegram class as bot
 use \dash\social\telegram\tg as bot;
-
+use \dash\social\telegram\step;
 
 class questionSender
 {
@@ -55,6 +55,18 @@ class questionSender
 
 			case 'multiple_choice':
 				self::multiple_choice($_questionData, $text, $reply_markup, $_answer);
+
+				if(step::get('qMessageId') && step::get('qChatId'))
+				{
+					$updateData =
+					[
+						'text'         => $text,
+						'reply_markup' => $reply_markup
+					];
+					bot::editMessageText($updateData);
+					return true;
+				}
+
 				break;
 
 			case 'rating':
@@ -69,20 +81,28 @@ class questionSender
 		}
 
 		// generate result
-		$result =
+		$sendQData =
 		[
 			'text'         => $text,
 			'reply_markup' => $reply_markup
 		];
-		if($_questionData['type'] === 'multiple_choice')
+
+		// send message
+		$questionSended = bot::sendMessage($sendQData);
+		// get result of sended message
+		$qMessageId     = null;
+		$qChatId        = null;
+		if(isset($questionSended['result']['message_id']))
 		{
-			bot::editMessageText($result);
+			$qMessageId = $questionSended['result']['message_id'];
 		}
-		else
+		if(isset($questionSended['result']['chat']['id']))
 		{
-			// send message
-			bot::sendMessage($result);
+			$qChatId = $questionSended['result']['chat']['id'];
 		}
+
+		step::set('qMessageId', $qMessageId);
+		step::set('qChatId', $qChatId);
 	}
 
 
@@ -118,7 +138,7 @@ class questionSender
 		// get user answer list
 		if($_answer)
 		{
-			$bodyTxt .= "\n☑️ ". T_('Your answer');
+			$bodyTxt .= "\n☑️ ". T_('Your last answer');
 			if(count($_answer) > 1)
 			{
 				$bodyTxt .= "\n<pre>". implode("\n", $_answer). "</pre>";
