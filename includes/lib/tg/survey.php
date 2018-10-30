@@ -302,5 +302,39 @@ class survey
 		bot::sendMessage($result);
 	}
 
+
+
+	public static function goToPrivate($_id = null)
+	{
+		bot::ok();
+
+		// if start with callback answer callback
+		if(bot::isCallback())
+		{
+			$callbackResult =
+			[
+				'text' => T_("Please come into private"). ' 😅',
+			];
+			bot::answerCallbackQuery($callbackResult);
+		}
+
+		$result =
+		[
+			'text' => T_("Please start answer to survey in private message not in public!")." 😗",
+			'reply_markup' =>
+			[
+				'inline_keyboard' =>
+				[
+					[
+						[
+							'text' => T_("Answer via bot"),
+							'url'  => 'https://t.me/'. bot::$name. '?start=/survey_$_id',
+						],
+					],
+				]
+			]
+		];
+		bot::sendMessage($result);
+	}
 }
 ?>

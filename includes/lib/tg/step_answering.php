@@ -9,6 +9,12 @@ class step_answering
 {
 	public static function start($_id)
 	{
+		// dont run on public chats!
+		if(!bot::isPrivate())
+		{
+			survey::goToPrivate($_id);
+		}
+
 		// its okay on start
 		bot::ok();
 
