@@ -142,7 +142,7 @@ class step_answering
 			}
 
 			// answer callback result
-			bot::answerCallbackQuery('#'. $surveyStep. $questionType. ' '. T_("Answer received"));
+			bot::answerCallbackQuery('#'. $surveyStep.$_answer. ' '. T_("Answer received"));
 
 			if($questionType === 'multiple_choice')
 			{
@@ -157,8 +157,8 @@ class step_answering
 					'reply_markup' => ['remove_keyboard' => true],
 					'disable_notification' => true,
 				];
+				bot::sendMessage($receiveMsg);
 			}
-			bot::sendMessage($receiveMsg);
 		}
 		if($_answer === '/skip')
 		{
