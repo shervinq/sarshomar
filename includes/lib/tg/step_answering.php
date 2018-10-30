@@ -69,6 +69,11 @@ class step_answering
 		}
 		// send question
 		questionSender::analyse($myQuestion, $userAnswerArr);
+		// set type of question
+		if(isset($_questionData['type']))
+		{
+			step::set('questionType', $_questionData['type']);
+		}
 
 		// go to next step to get answer
 		step::plus();
@@ -83,9 +88,11 @@ class step_answering
 			return false;
 		}
 		// define variables
-		$surveyNo   = step::get('surveyNo');
-		$surveyStep = step::get('surveyStep');
-		$questionId = step::get('questionId');
+		$surveyNo     = step::get('surveyNo');
+		$surveyStep   = step::get('surveyStep');
+		$questionId   = step::get('questionId');
+		$questionType = step::get('questionType');
+
 		if(bot::isCallback())
 		{
 			if(substr($_answer, 0, 3) === 'cb_')
@@ -137,13 +144,20 @@ class step_answering
 			// answer callback result
 			bot::answerCallbackQuery('#'. $surveyStep. ' '. T_("Answer received"));
 
-			// send message
-			$receiveMsg =
-			[
-				'text' => T_("Your answer"). "\n<b>". $_answer. '</b>',
-				'reply_markup' => ['remove_keyboard' => true],
-				'disable_notification' => true,
-			];
+			if($questionType === 'multiple_choice')
+			{
+				// dont send message
+			}
+			else
+			{
+				// send message of recieve on callback
+				$receiveMsg =
+				[
+					'text' => T_("Your answer"). "\n<b>". $_answer. '</b>',
+					'reply_markup' => ['remove_keyboard' => true],
+					'disable_notification' => true,
+				];
+			}
 			bot::sendMessage($receiveMsg);
 		}
 		if($_answer === '/skip')
@@ -152,8 +166,45 @@ class step_answering
 		}
 		else
 		{
-			// save answer
-			$saveResult = \lib\app\tg\survey::answer($surveyNo, $questionId, $_answer);
+			if($questionType === 'multiple_choice')
+			{
+				$multipleAnswers = step::get('multipleAnswers');
+				if(!is_array($multipleAnswers))
+				{
+					$multipleAnswers = [];
+				}
+
+				if($_answer === '/save')
+				{
+					// save answer
+					$saveResult = \lib\app\tg\survey::answer($surveyNo, $questionId, $multipleAnswers);
+				}
+				else
+				{
+					if(in_array($_answer, $multipleAnswers))
+					{
+						// unset
+						$myKey = array_search($_answer, $multipleAnswers);
+						if($myKey !== false)
+						{
+							unset($multipleAnswers[$myKey]);
+						}
+					}
+					else
+					{
+						array_push($multipleAnswers, $_answer);
+
+					}
+					// set in variable
+					step::set('multipleAnswers', $multipleAnswers);
+				}
+
+			}
+			else
+			{
+				// save answer
+				$saveResult = \lib\app\tg\survey::answer($surveyNo, $questionId, $_answer);
+			}
 		}
 
 
