@@ -342,6 +342,11 @@ class questionSender
 		{
 			array_push($userFlyAnswer, $newAnswer);
 		}
+		// clean array
+		if(is_array($userFlyAnswer))
+		{
+			$userFlyAnswer = array_filter($userFlyAnswer);
+		}
 		// set for next use
 		step::set('multipleAnswers', $userFlyAnswer);
 
