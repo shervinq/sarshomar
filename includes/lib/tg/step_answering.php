@@ -182,8 +182,10 @@ class step_answering
 
 				if($_answer === '/save')
 				{
+					var_dump($multipleAnswers);
 					// save answer
-					$saveResult = \lib\app\tg\survey::answer($surveyNo, $questionId, $multipleAnswers);
+					$userAnswerKeys = array_keys($multipleAnswers);
+					$saveResult = \lib\app\tg\survey::answer($surveyNo, $questionId, $userAnswerKeys);
 				}
 				else
 				{
