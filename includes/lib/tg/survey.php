@@ -294,11 +294,48 @@ class survey
 		{
 			bot::answerCallbackQuery(T_("List of your survey in Sarshomar"));
 		}
+		$surveyList = \lib\app\tg\survey::list();
+		if(!$surveyList)
+		{
+			bot::sendMessage($surveyList);
+			return true;
+		}
+
+		// show message to go to website
+		$msg = T_('You have no survey yet!') ."\n\n";
+		$msg .= "<b>". T_('Sarshomar is changed'). "</b>\n";
+		$msg .= T_('To add new survey you must go to :val and try to add new survey and you can use many of or features.', ['val' => '<a href="sarshomar.com">'. T_("Sarshomar website").'</a>']);
+		$msg .= "\n\n";
+		$msg .= T_('If you are complete /register in telegram bot and sync your account with website, after create new survey we are send survey link here in telegram and you can access it via /list command anytime.');
 
 		$result =
 		[
-			'text' => \lib\app\tg\survey::list(),
+			'text' => $msg,
+			'reply_markup' =>
+			[
+				'inline_keyboard' =>
+				[
+					[
+						[
+							'text' => T_("Add new survey"),
+							'url'  => \dash\url::kingdom().'/a',
+						],
+					],
+				]
+			]
 		];
+
+		// add sync
+		// if(!\dash\user::detail('mobile'))
+		{
+			$result['reply_markup']['inline_keyboard'][][] =
+			[
+				'text'          => T_("Sync with website"),
+				'callback_data' => 'sync',
+			];
+		}
+		var_dump($result);
+
 		bot::sendMessage($result);
 	}
 
