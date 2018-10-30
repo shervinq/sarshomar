@@ -109,8 +109,25 @@ class step_answering
 
 			if($fakeAnswer)
 			{
-				$receiveMsg['text'] = T_("Dont!");
-				bot::sendMessage($receiveMsg);
+				// remove keyboard of old messages
+				$newMsg =
+				[
+					'reply_markup' =>
+					[
+						'inline_keyboard' =>
+						[
+							[
+								[
+									'text' => T_("Sarshomar website"),
+									'url'  => \dash\url::kingdom(),
+								],
+							]
+						]
+					]
+				];
+				bot::editMessageReplyMarkup($newMsg);
+				// show funny message
+				bot::answerCallbackQuery('❌ '. T_('How are you!'));
 				// show message and
 				return false;
 			}
