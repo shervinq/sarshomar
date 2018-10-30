@@ -84,9 +84,6 @@ class step_answering
 			if(substr($_answer, 0, 3) === 'cb_')
 			$_answer = substr($_answer, 3);
 
-			// answer callback result
-			bot::answerCallbackQuery('#'. $surveyStep. ' '. T_("Answer received"));
-
 			$fakeAnswer = true;
 			$cmd = hook::cmd();
 
@@ -98,14 +95,6 @@ class step_answering
 					$_answer    = $cmd['argumentRaw'];
 				}
 			}
-
-			// send message
-			$receiveMsg =
-			[
-				'text' => T_("Your answer"). "\n<b>". $_answer. '</b>',
-				'reply_markup' => ['remove_keyboard' => true],
-				'disable_notification' => true,
-			];
 
 			if($fakeAnswer)
 			{
@@ -132,6 +121,16 @@ class step_answering
 				return false;
 			}
 
+			// answer callback result
+			bot::answerCallbackQuery('#'. $surveyStep. ' '. T_("Answer received"));
+
+			// send message
+			$receiveMsg =
+			[
+				'text' => T_("Your answer"). "\n<b>". $_answer. '</b>',
+				'reply_markup' => ['remove_keyboard' => true],
+				'disable_notification' => true,
+			];
 			bot::sendMessage($receiveMsg);
 		}
 		if($_answer === '/skip')
