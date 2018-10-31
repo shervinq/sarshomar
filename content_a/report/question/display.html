@@ -122,8 +122,7 @@
       <tr>
         <th title='{%trans "Click to sort"%}' data-sort='{{sortLink.answer.order}}'><a href="{{sortLink.answer.link}}">{%trans "Answer"%}</a> </th>
         <th title='{%trans "Click to sort"%}' data-sort='{{sortLink.value.order}}'><a href="{{sortLink.value.link}}">{%trans "Count"%}</a></th>
-        {%if false%}<th data-sort='{{sortLink.value_all.order}}'><a href="{{sortLink.value_all.link}}">{%trans "Incomplete survey"%}</a></th>{%endif%}
-
+        <th>{%trans "Percent"%}</th>
       </tr>
     </thead>
     <tbody>
@@ -131,13 +130,14 @@
       <tr>
           <td>{{value}}</td>
           <td>{{tableRow['value'][key] | fitNumber}}</td>
-          {%if false%}<td>{{tableRow['value_all'][key] | fitNumber}}</td>{%endif%}
+          <td>{{tableRow['percent'][key] | fitNumber(false)}} {%trans "%"%}</td>
       </tr>
       {%endfor%}
       {%if tableRow.sum%}
       <tr>
-          <td>{%trans "Sum"%}</td>
+          <td class="txtB">{%trans "Sum"%}</td>
           <td class="txtB">{{tableRow.sum  | fitNumber}}</td>
+          <td class="txtB">{{100 | fitNumber}} {%trans "%"%}</td>
       </tr>
       {%endif%}
 

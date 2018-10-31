@@ -144,8 +144,15 @@ trait get
 
 		$chart_result = \lib\db\answers::get_chart($survey_id, $question_id, \dash\user::id(), $_sort, $_order);
 
+		$count_answer = array_sum(array_column($chart_result, 'count'));
+		if($count_answer <= 0)
+		{
+			$count_answer = 1;
+		}
+
 		$categories = [];
-		$chartvalue      = [];
+		$chartvalue = [];
+		$percent    = [];
 
 		if(is_array($chart_result))
 		{
@@ -155,6 +162,7 @@ trait get
 				{
 					$categories[] = $value['text'];
 					$chartvalue[] = intval($value['count']);
+					$percent[]    = round((intval($value['count']) * 100) / $count_answer, 3);
 				}
 			}
 		}
@@ -162,6 +170,7 @@ trait get
 		$hi_chart['sum']        = array_sum($chartvalue);
 		$hi_chart['categories'] = json_encode($categories, JSON_UNESCAPED_UNICODE);
 		$hi_chart['value']      = json_encode($chartvalue, JSON_UNESCAPED_UNICODE);
+		$hi_chart['percent']    = json_encode($percent, JSON_UNESCAPED_UNICODE);
 		// $hi_chart['value_all']  = json_encode(array_column($new, 'value_all'), JSON_UNESCAPED_UNICODE);
 		// var_dump($hi_chart);exit();
 		return $hi_chart;
