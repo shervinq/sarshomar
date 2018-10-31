@@ -1,0 +1,137 @@
+{%extends display.question%}
+
+
+
+
+{%block pageContent%}
+
+
+  {%for allKey, allResult in allData%}
+  <div class="cbox">
+
+  <a href="{{url.this}}/question?id={{requestGET.id}}&questionid={{allResult.question_detail.id}}">
+    <div class="msg">#{{(allKey + 1) | fitNumber}}<br>
+      {%if allResult.question_detail.title%}<b>{{allResult.question_detail.title}}</b>{%endif%}
+      {%if allResult.question_detail.desc%}<b>{%if allResult.question_detail.title%} | <small>{{allResult.question_detail.desc}}</small>{%else%}{{allResult.question_detail.desc}}{%endif%}</b>{%endif%}
+      {%if not allResult.question_detail.title and not allResult.question_detail.desc%}<i>{%trans "Untitled"%}</i>{%endif%}
+      <br>
+      {%if allResult.question_detail.type%}<b>{{allResult.question_detail.type_detail.title}}</b>{%endif%}
+    </div>
+  </a>
+
+  </div>
+  {{block('pageContent2')}}
+
+
+  {%endfor%}
+
+{%endblock%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{%block pageContent2%}
+
+{%if allResult.dataTable and not allResult.showChart%}
+
+  {{block('htmlTable')}}
+
+{%else%}
+
+  {{block('htmlTableRow')}}
+
+{%endif%}
+
+{%endblock%}
+
+
+
+{%block foot_js%}
+{%if allResult.showChart%}
+<script type="text/javascript">
+  {%include 'content_a/report/question/chart.js'%}
+</script>
+{%endif%}
+{%endblock%}
+
+
+
+
+
+
+{%block htmlTableRow%}
+
+
+  <table class="tbl1 v1 cbox fs12 ">
+    <thead class="primary fs09">
+      <tr>
+        <th title='{%trans "Click to sort"%}' data-sort='{{sortLink.answer.order}}'><a href="{{sortLink.answer.link}}">{%trans "Answer"%}</a> </th>
+        <th class="txtC" title='{%trans "Click to sort"%}' data-sort='{{sortLink.value.order}}'><a href="{{sortLink.value.link}}">{%trans "Count"%}</a></th>
+        <th class="txtC" title='{%trans "Click to sort"%}' data-sort='{{sortLink.percent.order}}'><a href="{{sortLink.percent.link}}">{%trans "Percent"%}</a></th>
+      </tr>
+    </thead>
+    <tbody>
+      {%for key, value in allResult.tableRow.categories%}
+      <tr>
+          <td>{{value}}</td>
+          <td class="txtC">{{allResult.tableRow['value'][key] | fitNumber}}</td>
+          <td class="txtC">{{allResult.tableRow['percent'][key] | fitNumber(false)}} {%trans "%"%}</td>
+      </tr>
+      {%endfor%}
+
+    </tbody>
+    <tfoot>
+      {%if allResult.tableRow.sum%}
+      <tr class="positive">
+          <td class="txtB">{%trans "Sum"%}</td>
+          <td class="txtB txtC">{{allResult.tableRow.sum  | fitNumber}}</td>
+          <td class="txtB txtC">{{100 | fitNumber}} {%trans "%"%}</td>
+      </tr>
+      {%endif%}
+    </tfoot>
+  </table>
+  {%include display.pagination%}
+
+{%endblock%}
+
+
+{%block htmlTable%}
+
+
+  <table class="tbl1 v1 cbox fs12">
+    <thead class="primary fs09">
+      <tr>
+
+        <th>{%trans "Answers"%}</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {%for key, value in allResult.dataTable%}
+      <tr>
+        <td>{{value.text}}</td>
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+  {%include display.pagination%}
+
+{%endblock%}
+
