@@ -121,27 +121,29 @@
     <thead class="primary fs09">
       <tr>
         <th title='{%trans "Click to sort"%}' data-sort='{{sortLink.answer.order}}'><a href="{{sortLink.answer.link}}">{%trans "Answer"%}</a> </th>
-        <th title='{%trans "Click to sort"%}' data-sort='{{sortLink.value.order}}'><a href="{{sortLink.value.link}}">{%trans "Count"%}</a></th>
-        <th>{%trans "Percent"%}</th>
+        <th class="txtC" title='{%trans "Click to sort"%}' data-sort='{{sortLink.value.order}}'><a href="{{sortLink.value.link}}">{%trans "Count"%}</a></th>
+        <th class="txtC" title='{%trans "Click to sort"%}' data-sort='{{sortLink.percent.order}}'><a href="{{sortLink.percent.link}}">{%trans "Percent"%}</a></th>
       </tr>
     </thead>
     <tbody>
       {%for key, value in tableRow.categories%}
       <tr>
           <td>{{value}}</td>
-          <td>{{tableRow['value'][key] | fitNumber}}</td>
-          <td>{{tableRow['percent'][key] | fitNumber(false)}} {%trans "%"%}</td>
+          <td class="txtC">{{tableRow['value'][key] | fitNumber}}</td>
+          <td class="txtC">{{tableRow['percent'][key] | fitNumber(false)}} {%trans "%"%}</td>
       </tr>
       {%endfor%}
-      {%if tableRow.sum%}
-      <tr>
-          <td class="txtB">{%trans "Sum"%}</td>
-          <td class="txtB">{{tableRow.sum  | fitNumber}}</td>
-          <td class="txtB">{{100 | fitNumber}} {%trans "%"%}</td>
-      </tr>
-      {%endif%}
 
     </tbody>
+    <tfoot>
+      {%if tableRow.sum%}
+      <tr class="positive">
+          <td class="txtB">{%trans "Sum"%}</td>
+          <td class="txtB txtC">{{tableRow.sum  | fitNumber}}</td>
+          <td class="txtB txtC">{{100 | fitNumber}} {%trans "%"%}</td>
+      </tr>
+      {%endif%}
+    </tfoot>
   </table>
   {%include display.pagination%}
 
@@ -181,6 +183,7 @@
         <th data-sort="{{sortLink[key]['sort']}}">{{value}}</th>
         {%endfor%}
         <th data-sort="{{sortLink['count']['sort']}}">{%trans "Count"%}</th>
+        <th data-sort="{{sortLink['percent']['sort']}}">{%trans "Percent"%}</th>
       </tr>
     </thead>
 
@@ -188,7 +191,7 @@
       {%for key, value in advanceChart.table%}
       <tr>
         {%for k, v in value%}
-          <td>{{v | fitNumber}}</td>
+          <td>{{v | fitNumber(false)}}</td>
         {%endfor%}
       </tr>
       {%endfor%}

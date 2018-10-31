@@ -162,7 +162,7 @@ trait get
 				{
 					$categories[] = $value['text'];
 					$chartvalue[] = intval($value['count']);
-					$percent[]    = round((intval($value['count']) * 100) / $count_answer, 3);
+					$percent[]    = round((intval($value['count']) * 100) / $count_answer, 2);
 				}
 			}
 		}

@@ -65,7 +65,7 @@ class view
 						{
 							$sort = 'answerdetails.answerterm_id';
 						}
-						elseif(in_array(\dash\request::get('sort'), ['value', 'value_all']))
+						elseif(in_array(\dash\request::get('sort'), ['value', 'value_all', 'percent']))
 						{
 							$sort = 'count';
 						}
@@ -84,7 +84,7 @@ class view
 					{
 						$table = array_map('json_decode', $table);
 						\dash\data::tableRow($table);
-						\dash\data::sortLink(\dash\app\sort::make_sortLink(['answer', 'value', 'value_all'], \dash\url::this(). '/question'));
+						\dash\data::sortLink(\dash\app\sort::make_sortLink(['answer', 'value', 'value_all', 'percent'], \dash\url::this(). '/question'));
 					}
 					\dash\data::showChart(true);
 

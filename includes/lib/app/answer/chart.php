@@ -148,6 +148,13 @@ class chart
 			}
 		}
 
+		$count_answer = array_sum(array_column($result, 'count'));
+
+		if(!$count_answer)
+		{
+			$count_answer = 1;
+		}
+
 		$ready_key = array_column($ready, 'id');
 
 		foreach ($result as $key => $value)
@@ -163,11 +170,12 @@ class chart
 
 			if($check_key !== false)
 			{
-				$ready[$check_key]['value'] = intval($value['count']);
+				$ready[$check_key]['value'] = round((intval($value['count']) * 100)/ $count_answer);
+				// $ready[$check_key]['value'] = intval($value['count']);
 			}
 		}
 
-		$ready = json_encode($ready, JSON_UNESCAPED_UNICODE);
+		$ready        = json_encode($ready, JSON_UNESCAPED_UNICODE);
 
 		$table = [];
 
@@ -175,10 +183,11 @@ class chart
 		{
 			$table[] =
 			[
-				$question1_choise_title    => @$question1_choise[$value['q1']],
-				$question2_choise_title    => @$question2_choise[$value['q2']],
-				$question3_choise_title    => @$question3_choise[$value['q3']],
-				'count' => $value['count'],
+				$question1_choise_title => @$question1_choise[$value['q1']],
+				$question2_choise_title => @$question2_choise[$value['q2']],
+				$question3_choise_title => @$question3_choise[$value['q3']],
+				'count'                 => $value['count'],
+				'percent'               => round((intval($value['count']) * 100)/ $count_answer, 2),
 			];
 		}
 
@@ -248,7 +257,6 @@ class chart
 				}
 			}
 		}
-
 
 		// array_multisort($table, $result_sort, $my_order | $my_sort_detail);
 		// array_multisort($table, $result_sort, SORT_DESC | SORT_NUMERIC);
