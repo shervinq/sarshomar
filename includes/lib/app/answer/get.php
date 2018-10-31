@@ -154,11 +154,12 @@ trait get
 				if(isset($value['text']) && isset($value['count']))
 				{
 					$categories[] = $value['text'];
-					$chartvalue[]      = intval($value['count']);
+					$chartvalue[] = intval($value['count']);
 				}
 			}
 		}
 		$hi_chart               = [];
+		$hi_chart['sum']        = array_sum($chartvalue);
 		$hi_chart['categories'] = json_encode($categories, JSON_UNESCAPED_UNICODE);
 		$hi_chart['value']      = json_encode($chartvalue, JSON_UNESCAPED_UNICODE);
 		// $hi_chart['value_all']  = json_encode(array_column($new, 'value_all'), JSON_UNESCAPED_UNICODE);
