@@ -51,10 +51,10 @@ class inline
 		}
 
 		$welcomeMedia = \dash\url::site().'/static/images/logo.png';
-		if(isset($_welcome['welcomemedia']['file']) && $_welcome['welcomemedia']['file'])
-		{
-			$welcomeMedia = $_welcome['welcomemedia']['file'];
-		}
+		// if(isset($_welcome['welcomemedia']['file']) && $_welcome['welcomemedia']['file'])
+		// {
+		// 	$welcomeMedia = $_welcome['welcomemedia']['file'];
+		// }
 		// get txt of survey welcome msg
 		$surveyTxt = \lib\app\tg\survey::get($_id);
 
