@@ -14,6 +14,7 @@ class detect
 		else
 		{
 			survey::detector($_cmd);
+			hafez::check($_cmd);
 		}
 	}
 
