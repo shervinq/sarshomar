@@ -68,6 +68,7 @@ class inline
 					'title'                 => $surveyTitle,
 					'description'           => $surveyDesc,
 					'thumb_url'             => $welcomeMedia,
+					'cache_time'            => 60,
 					'input_message_content' =>
 					[
 						'message_text' => $surveyTxt,
