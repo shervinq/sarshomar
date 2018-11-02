@@ -7,7 +7,14 @@ class detect
 {
 	public static function run($_cmd)
 	{
-		survey::detector($_cmd);
+		if(bot::isInline())
+		{
+			inline::search($_cmd);
+		}
+		else
+		{
+			survey::detector($_cmd);
+		}
 	}
 
 
