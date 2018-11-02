@@ -126,7 +126,7 @@ class survey
 						[
 							[
 								'text' => T_("Sarshomar website"),
-								'url'  => \dash\url::kingdom(),
+								'url'  => bot::website(),
 							],
 						]
 					]
@@ -228,7 +228,7 @@ class survey
 						[
 							[
 								'text' => T_("Sarshomar website"),
-								'url'  => \dash\url::kingdom(),
+								'url'  => bot::website(),
 							],
 						]
 					]
@@ -359,7 +359,7 @@ class survey
 					[
 						[
 							'text' => T_("Add new survey"),
-							'url'  => \dash\url::kingdom().'/a',
+							'url'  => bot::website().'/a',
 						],
 					],
 				]

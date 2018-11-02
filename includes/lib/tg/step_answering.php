@@ -125,7 +125,7 @@ class step_answering
 							[
 								[
 									'text' => T_("Sarshomar website"),
-									'url'  => \dash\url::kingdom(),
+									'url'  => bot::website(),
 								],
 							]
 						]
