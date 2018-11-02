@@ -1,5 +1,6 @@
 <?php
 namespace lib\tg;
+use \dash\social\telegram\tg as bot;
 
 
 class detect
