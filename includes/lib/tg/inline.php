@@ -45,6 +45,9 @@ class inline
 		if(isset($_welcome['welcomedesc']) && $_welcome['welcomedesc'])
 		{
 			$welcomeDesc = $_welcome['welcomedesc'];
+			$welcomeDesc = str_replace('&nbsp;', ' ', $welcomeDesc);
+			$welcomeDesc = str_replace('</p>', "</p>\n", $welcomeDesc);
+			$welcomeDesc = strip_tags($welcomeDesc);
 		}
 
 		$welcomeMedia = \dash\url::site().'/static/images/logo.png';
