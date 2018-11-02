@@ -53,7 +53,7 @@ class inline
 			$welcomeMedia = $_welcome['welcomemedia']['file'];
 		}
 		// get txt of survey welcome msg
-		$surveyTxt = \lib\app\tg\survey::get($_surveyId);
+		$surveyTxt = \lib\app\tg\survey::get($_id);
 
 		$resultInline =
 		[
