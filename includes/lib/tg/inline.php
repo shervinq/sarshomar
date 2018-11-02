@@ -88,7 +88,7 @@ class inline
 							[
 								[
 									'text'          => 	T_("Answer via bot"),
-									'url'  => 'https://t.me/'. bot::$name. '?start=survey_'. $_id .' start',
+									'url'  => 'https://t.me/'. bot::$name. '?start=survey_'. $_id,
 								],
 							],
 						]

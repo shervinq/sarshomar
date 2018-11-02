@@ -184,7 +184,7 @@ class survey
 				[
 					[
 						'text' => T_("Answer via bot"),
-						'url'  => 'https://t.me/'. bot::$name. '?start=survey_'. $_surveyId .' start',
+						'url'  => 'https://t.me/'. bot::$name. '?start=survey_'. $_surveyId,
 					],
 				];
 			}
