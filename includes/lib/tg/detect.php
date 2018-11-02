@@ -15,13 +15,13 @@ class detect
 		// define
 		$menu =
 		[
-			'keyboard' =>
-			[
-				[T_("Survey List")],
-				[T_("About"), T_("Contact")],
-			],
+			'keyboard' =>[],
 			'resize_keyboard' => true,
 		];
+
+		$menu['keyboard'][] = [T_("Survey List")];
+		// add about and contact link
+		$menu['keyboard'][] = [T_("About"), T_("Contact")];
 
 		// add sync
 		if(\dash\user::detail('mobile'))

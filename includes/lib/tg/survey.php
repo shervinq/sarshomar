@@ -43,7 +43,7 @@ class survey
 			survey::list();
 			return true;
 		}
-		elseif($myCommand === 'how' || $myCommand === 'howto')
+		elseif($myCommand === 'how' || $myCommand === 'howto' || $myCommand === T_('add') || $myCommand === T_('how'))
 		{
 			// show list of survey
 			survey::list(true);
