@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Sarshomar - Persian\n"
-"POT-Creation-Date: 2018-10-31 16:21+0330\n"
-"PO-Revision-Date: 2018-10-31 16:23+0330\n"
+"POT-Creation-Date: 2018-11-02 14:35+0330\n"
+"PO-Revision-Date: 2018-11-02 14:36+0330\n"
 "Last-Translator: Javad <J.Evazzadeh@gmail.com>\n"
 "Language-Team: \n"
 "Language: fa_IR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-Basepath: ../../../../..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -2299,9 +2299,10 @@ msgstr "زبان پیش‌فرض"
 
 #: dash/addons/includes/languages/trans_dash.php:100
 #: dash/lib/social/telegram/commands/ermile.php:305
-#: dash/lib/social/telegram/commands/ermile.php:459
+#: dash/lib/social/telegram/commands/ermile.php:464
 #: sarshomar/includes/languages/trans_dash.php:38
 #: sarshomar/includes/lib/app/question/type.php:220
+#: sarshomar/includes/lib/tg/detect.php:29
 msgid "Website"
 msgstr "وب‌سایت"
 
@@ -3274,9 +3275,10 @@ msgid "Deleted"
 msgstr "حذف شده"
 
 #: dash/addons/includes/languages/trans_dash.php:329
-#: dash/lib/social/telegram/commands/ermile.php:451
+#: dash/lib/social/telegram/commands/ermile.php:459
 #: sarshomar/includes/languages/trans_dash.php:367
 #: sarshomar/includes/languages/trans_project.php:443
+#: sarshomar/includes/lib/tg/detect.php:24
 msgid "Contact"
 msgstr "تماس"
 
@@ -8776,6 +8778,7 @@ msgid "remove"
 msgstr "حذف"
 
 #: dash/addons/includes/languages/trans_static.php:894
+#: sarshomar/includes/lib/tg/survey.php:46
 msgid "add"
 msgstr "افزودن"
 
@@ -10534,15 +10537,16 @@ msgid "Go to main menu"
 msgstr "برو به منوی اصلی"
 
 #: dash/lib/social/telegram/commands/ermile.php:290
-#: dash/lib/social/telegram/commands/ermile.php:463
-#: sarshomar/includes/lib/tg/survey.php:342
+#: dash/lib/social/telegram/commands/ermile.php:468
+#: sarshomar/includes/lib/tg/detect.php:33 sarshomar/includes/lib/tg/survey.php:342
 msgid "Sync with website"
 msgstr "همگام‌سازی با وب‌سایت"
 
 #: dash/lib/social/telegram/commands/ermile.php:291
-#: dash/lib/social/telegram/commands/ermile.php:451
+#: dash/lib/social/telegram/commands/ermile.php:459
 #: dash/lib/social/telegram/commands/ermileInline.php:70
 #: sarshomar/includes/languages/trans_project.php:41
+#: sarshomar/includes/lib/tg/detect.php:24
 msgid "About"
 msgstr "درباره"
 
@@ -10634,7 +10638,8 @@ msgstr "بازگشت به منوی اصلی"
 msgid "Please choose your language"
 msgstr "لطفا زبان خود را انتخاب کنید"
 
-#: dash/lib/social/telegram/commands/ermile.php:471
+#: dash/lib/social/telegram/commands/ermile.php:476
+#: sarshomar/includes/lib/tg/detect.php:41
 msgid "Main menu"
 msgstr "منوی اصلی"
 
@@ -11372,6 +11377,21 @@ msgstr "نام فایل غیرمجاز"
 msgid "Exceeded file extension limit"
 msgstr "نوع فایل غیرمجاز"
 
+#: sarshomar/content/changelog/view.php:9
+#: sarshomar/includes/languages/trans_project.php:244
+msgid "Sarshomar's change log"
+msgstr "پیشرفت پروژه سرشمار"
+
+#: sarshomar/content/changelog/view.php:10
+#: sarshomar/includes/languages/trans_project.php:245
+msgid "We were born to do Best!"
+msgstr "ما برای انجام بهترین‌ها متولد شدیم!"
+
+#: sarshomar/content/changelog/view.php:10
+#: sarshomar/includes/languages/trans_project.php:246
+msgid "We are Developers, please wait!"
+msgstr "ما توسعه دهنده هستیم، صبور باشید!"
+
 #: sarshomar/content/poll/model.php:188
 msgid "Comment saved, Thank you"
 msgstr "دیدگاه ذخیره شد، متشکریم"
@@ -11543,6 +11563,7 @@ msgid "Back to question dashboard"
 msgstr "بازگشت به داشبورد سوالات"
 
 #: sarshomar/content_a/question/home/view.php:10
+#: sarshomar/content_a/report/allquestion/view.php:10
 #: sarshomar/content_a/report/question/view.php:10
 #: sarshomar/content_a/report/questionlist/view.php:10
 msgid "Question list"
@@ -11558,6 +11579,19 @@ msgstr "بررسی لیست سوالات پرسشنامه"
 msgid "Invalid question id"
 msgstr "شناسه سوال نامعتبر است"
 
+#: sarshomar/content_a/report/allquestion/view.php:11
+#: sarshomar/content_a/report/question/view.php:11
+#: sarshomar/content_a/report/questionlist/view.php:11
+msgid "List of your survey answers by select one question"
+msgstr "لیست پاسخ‌های به پرسشنامه شما بر اساس یک سوال"
+
+#: sarshomar/content_a/report/allquestion/view.php:19
+#: sarshomar/content_a/report/answers/view.php:16
+#: sarshomar/content_a/report/question/view.php:19
+#: sarshomar/content_a/report/questionlist/view.php:19
+msgid "Back to report dashboard"
+msgstr "بازگشت به داشبورد گزارشات"
+
 #: sarshomar/content_a/report/answers/view.php:10
 #: sarshomar/content_a/report/user/view.php:10
 #: sarshomar/includes/languages/trans_project.php:578
@@ -11568,12 +11602,6 @@ msgstr "پاسخ‌ها"
 #: sarshomar/content_a/report/user/view.php:11
 msgid "List of your survey answers"
 msgstr "لیست پاسخ‌ها به پرسشنامه شما"
-
-#: sarshomar/content_a/report/answers/view.php:16
-#: sarshomar/content_a/report/question/view.php:19
-#: sarshomar/content_a/report/questionlist/view.php:19
-msgid "Back to report dashboard"
-msgstr "بازگشت به داشبورد گزارشات"
 
 #: sarshomar/content_a/report/answers/view.php:19
 msgid "Export CSV"
@@ -11586,11 +11614,6 @@ msgstr "لیست گزارشات"
 #: sarshomar/content_a/report/home/view.php:11
 msgid "Check your survey report"
 msgstr "بررسی گزارش‌های پرسشنامه"
-
-#: sarshomar/content_a/report/question/view.php:11
-#: sarshomar/content_a/report/questionlist/view.php:11
-msgid "List of your survey answers by select one question"
-msgstr "لیست پاسخ‌های به پرسشنامه شما بر اساس یک سوال"
 
 #: sarshomar/content_a/report/user/view.php:16
 msgid "Back to answer list"
@@ -12606,18 +12629,6 @@ msgstr "سوالی دارید؟ مرکز تماس و پشتیبانی سرشما
 #: sarshomar/includes/languages/trans_project.php:241
 msgid "Get in touch"
 msgstr "تماس بگیرید"
-
-#: sarshomar/includes/languages/trans_project.php:244
-msgid "Sarshomar's change log"
-msgstr "پیشرفت پروژه سرشمار"
-
-#: sarshomar/includes/languages/trans_project.php:245
-msgid "We were born to do Best!"
-msgstr "ما برای انجام بهترین‌ها متولد شدیم!"
-
-#: sarshomar/includes/languages/trans_project.php:246
-msgid "We are Developers, please wait!"
-msgstr "ما توسعه دهنده هستیم، صبور باشید!"
 
 #: sarshomar/includes/languages/trans_project.php:249
 msgid "Version 2 of sarshomar is released"
@@ -17065,6 +17076,10 @@ msgstr "برای پاسخ‌دهی به پرسشنامه شروع کنید"
 msgid "Thank you to answer our question"
 msgstr "ممنون از پاسخ به سوالات ما"
 
+#: sarshomar/includes/lib/tg/detect.php:22
+msgid "Survey List"
+msgstr "لیست پرسشنامه‌ها"
+
 #: sarshomar/includes/lib/tg/questionSender.php:80
 msgid "This type of message is not supported!"
 msgstr "این نوع پیام پشتیبانی نمی‌شود!"
@@ -17155,6 +17170,18 @@ msgstr "گزینه :val ‌انتخاب شد"
 #: sarshomar/includes/lib/tg/step_answering.php:166
 msgid "Your answer"
 msgstr "پاسخ شما"
+
+#: sarshomar/includes/lib/tg/survey.php:40
+msgid "list"
+msgstr "لیست"
+
+#: sarshomar/includes/lib/tg/survey.php:40
+msgid "survey"
+msgstr "پرسش‌نامه"
+
+#: sarshomar/includes/lib/tg/survey.php:46
+msgid "how"
+msgstr "چطور"
 
 #: sarshomar/includes/lib/tg/survey.php:121
 msgid "Please do not play with them!"
@@ -18506,9 +18533,6 @@ msgstr ""
 
 #~ msgid "sarshomar"
 #~ msgstr "سرشمار"
-
-#~ msgid "survey"
-#~ msgstr "پرسش‌نامه"
 
 #~ msgid "Privacy type"
 #~ msgstr "نوع حریم خصوصی"
