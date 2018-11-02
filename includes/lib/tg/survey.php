@@ -158,6 +158,12 @@ class survey
 					[
 						[
 							[
+								'text'          => 	T_("Share"),
+								'switch_inline_query' => $_surveyId,
+							],
+						],
+						[
+							[
 								'text' => T_("Answer via site"),
 								'url'  => \dash\url::base(). '/s/'. $_surveyId,
 							],
