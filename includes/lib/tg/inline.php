@@ -11,7 +11,6 @@ class inline
 		if(isset($_cmd['commandRaw']) && substr($_cmd['commandRaw'], 0, 3) === 'iq_')
 		{
 			$surveyNo = substr($_cmd['commandRaw'], 3);
-			bot::sendMessage($surveyNo);
 		}
 		else
 		{

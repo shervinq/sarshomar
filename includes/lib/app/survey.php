@@ -147,7 +147,7 @@ class survey
 	 *
 	 * @return     array|boolean  ( description_of_the_return_value )
 	 */
-	private static function check($_id = null)
+	public static function check($_id = null)
 	{
 
 		$title = \dash\app::request('title');
