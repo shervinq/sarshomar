@@ -17,7 +17,7 @@ class detect
 		[
 			'keyboard' =>
 			[
-				[T_("List")],
+				[T_("Survey List")],
 				[T_("About"), T_("Contact")],
 			],
 			'resize_keyboard' => true,
