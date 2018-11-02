@@ -46,6 +46,7 @@ class survey
 				case T_('survey'):
 				case 'list':
 				case T_('List'):
+				case T_('list'):
 				case T_('$'):
 					// show list of survey
 					survey::list();
