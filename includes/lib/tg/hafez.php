@@ -28,6 +28,7 @@ class hafez
 				break;
 
 
+			case 'hafezSaySomething':
 			case 'cb_hafezSaySomething':
 				// if start with callback answer callback
 				if(bot::isCallback())
@@ -37,6 +38,7 @@ class hafez
 				break;
 
 
+			case 'hafezReadIt':
 			case 'cb_hafezReadIt':
 				// if start with callback answer callback
 				if(bot::isCallback())
