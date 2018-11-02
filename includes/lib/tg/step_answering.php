@@ -51,6 +51,9 @@ class step_answering
 			];
 			bot::sendMessage($initMsg);
 		}
+		// on save reset try
+		step::checkFalseTry('reset');
+
 		$surveyNo = step::get('surveyNo');
 		step::set('surveyStep', $_step);
 		// get question of this step
