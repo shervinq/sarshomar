@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Sarshomar - Persian\n"
-"POT-Creation-Date: 2018-11-02 20:49+0330\n"
-"PO-Revision-Date: 2018-11-02 20:52+0330\n"
+"POT-Creation-Date: 2018-11-02 21:56+0330\n"
+"PO-Revision-Date: 2018-11-02 21:56+0330\n"
 "Last-Translator: Javad <J.Evazzadeh@gmail.com>\n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -2304,7 +2304,7 @@ msgstr "زبان پیش‌فرض"
 #: dash/lib/social/telegram/commands/ermile.php:498
 #: sarshomar/includes/languages/trans_dash.php:103
 #: sarshomar/includes/lib/app/question/type.php:220
-#: sarshomar/includes/lib/tg/detect.php:30
+#: sarshomar/includes/lib/tg/detect.php:37
 msgid "Website"
 msgstr "وب‌سایت"
 
@@ -3280,7 +3280,7 @@ msgstr "حذف شده"
 #: dash/lib/social/telegram/commands/ermile.php:493
 #: sarshomar/includes/languages/trans_dash.php:333
 #: sarshomar/includes/languages/trans_project.php:31
-#: sarshomar/includes/lib/tg/detect.php:25
+#: sarshomar/includes/lib/tg/detect.php:32
 msgid "Contact"
 msgstr "تماس"
 
@@ -10621,7 +10621,7 @@ msgstr "برو به منوی اصلی"
 
 #: dash/lib/social/telegram/commands/ermile.php:300
 #: dash/lib/social/telegram/commands/ermile.php:502
-#: sarshomar/includes/lib/tg/detect.php:34 sarshomar/includes/lib/tg/survey.php:374
+#: sarshomar/includes/lib/tg/detect.php:41 sarshomar/includes/lib/tg/survey.php:380
 msgid "Sync with website"
 msgstr "همگام‌سازی با وب‌سایت"
 
@@ -10629,7 +10629,7 @@ msgstr "همگام‌سازی با وب‌سایت"
 #: dash/lib/social/telegram/commands/ermile.php:493
 #: dash/lib/social/telegram/commands/ermileInline.php:70
 #: sarshomar/includes/languages/trans_project.php:204
-#: sarshomar/includes/lib/tg/detect.php:25
+#: sarshomar/includes/lib/tg/detect.php:32
 msgid "About"
 msgstr "درباره"
 
@@ -10718,7 +10718,7 @@ msgid "Please choose your language"
 msgstr "لطفا زبان خود را انتخاب کنید"
 
 #: dash/lib/social/telegram/commands/ermile.php:510
-#: sarshomar/includes/lib/tg/detect.php:42
+#: sarshomar/includes/lib/tg/detect.php:49
 msgid "Main menu"
 msgstr "منوی اصلی"
 
@@ -10777,7 +10777,7 @@ msgid "We need ticket number!"
 msgstr "ما به شماره تیکت نیاز داریم!"
 
 #: dash/lib/social/telegram/commands/ticket.php:161
-#: sarshomar/includes/lib/tg/survey.php:393
+#: sarshomar/includes/lib/tg/survey.php:399
 msgid "Please come into private"
 msgstr "لطفا بیاین خصوصی"
 
@@ -10881,11 +10881,11 @@ msgstr "ما شماره موبایل شما را پیش از این داشتیم
 msgid "Registration failed!"
 msgstr "ثبت‌نام ناموفق!"
 
-#: dash/lib/social/telegram/user.php:275
+#: dash/lib/social/telegram/user.php:270
 msgid "Your language was successfully set to :lang."
 msgstr "زبان شما به موفقیت به :lang  تغییر کرد."
 
-#: dash/lib/social/telegram/user.php:331
+#: dash/lib/social/telegram/user.php:336
 msgid "More detail"
 msgstr "جزئیات بیشتر"
 
@@ -11730,7 +11730,7 @@ msgstr "بررسی لیست سوالات پرسشنامه و مرتب سازی �
 
 #: sarshomar/content_a/survey/add/view.php:12
 #: sarshomar/includes/languages/trans_project.php:529
-#: sarshomar/includes/lib/tg/survey.php:361
+#: sarshomar/includes/lib/tg/survey.php:367
 msgid "Add new survey"
 msgstr "افزودن پرسشنامه جدید"
 
@@ -11831,8 +11831,8 @@ msgstr "پیام خوش‌آمد گویی"
 msgid "You can set specail welcome message on your survey."
 msgstr "شما می‌توانید پیام خوش آمد گویی خاص خود را تنظیم کنید"
 
-#: sarshomar/content_s/home/view.php:10 sarshomar/includes/lib/tg/survey.php:191
-#: sarshomar/includes/lib/tg/survey.php:243
+#: sarshomar/content_s/home/view.php:10 sarshomar/includes/lib/tg/survey.php:197
+#: sarshomar/includes/lib/tg/survey.php:249
 msgid "Survey"
 msgstr "پرسش‌نامه"
 
@@ -14194,7 +14194,7 @@ msgid "I'm not willing to answer"
 msgstr "مایل به پاسخ‌دهی نیستم"
 
 #: sarshomar/includes/languages/trans_project.php:689
-#: sarshomar/includes/lib/tg/survey.php:167
+#: sarshomar/includes/lib/tg/survey.php:173
 msgid "Start"
 msgstr "شروع"
 
@@ -17185,9 +17185,18 @@ msgstr "برای پاسخ‌دهی به پرسشنامه شروع کنید"
 msgid "Thank you to answer our question"
 msgstr "ممنون از پاسخ به سوالات ما"
 
-#: sarshomar/includes/lib/tg/detect.php:23
+#: sarshomar/includes/lib/tg/detect.php:30
 msgid "Survey List"
 msgstr "لیست پرسشنامه‌ها"
+
+#: sarshomar/includes/lib/tg/inline.php:84 sarshomar/includes/lib/tg/survey.php:167
+msgid "Answer via site"
+msgstr "پاسخ از طریق وب‌سایت"
+
+#: sarshomar/includes/lib/tg/inline.php:90 sarshomar/includes/lib/tg/survey.php:186
+#: sarshomar/includes/lib/tg/survey.php:413
+msgid "Answer via bot"
+msgstr "پاسخ از طریق بات"
 
 #: sarshomar/includes/lib/tg/questionSender.php:80
 msgid "This type of message is not supported!"
@@ -17258,8 +17267,8 @@ msgstr ""
 "از پاسخ به این پرسشنامه انصراف دهید یا با دستور /skip آن سوال خاص را رد کنید"
 
 #: sarshomar/includes/lib/tg/step_answering.php:127
-#: sarshomar/includes/lib/tg/survey.php:128 sarshomar/includes/lib/tg/survey.php:230
-#: sarshomar/includes/lib/tg/survey.php:348
+#: sarshomar/includes/lib/tg/survey.php:128 sarshomar/includes/lib/tg/survey.php:236
+#: sarshomar/includes/lib/tg/survey.php:354
 msgid "Sarshomar website"
 msgstr "وب‌سایت سرشمار"
 
@@ -17305,38 +17314,34 @@ msgid "Please do not play with them!"
 msgstr "لطفا با اینا بازی نکنید!"
 
 #: sarshomar/includes/lib/tg/survey.php:161
-msgid "Answer via site"
-msgstr "پاسخ از طریق وب‌سایت"
+msgid "Share"
+msgstr "اشتراک‌گذاری"
 
-#: sarshomar/includes/lib/tg/survey.php:180 sarshomar/includes/lib/tg/survey.php:407
-msgid "Answer via bot"
-msgstr "پاسخ از طریق بات"
-
-#: sarshomar/includes/lib/tg/survey.php:204 sarshomar/includes/lib/tg/survey.php:256
+#: sarshomar/includes/lib/tg/survey.php:210 sarshomar/includes/lib/tg/survey.php:262
 msgid "We can't find detail of this survey!"
 msgstr "ما نمی‌توانیم جزئیات این پرسشنامه را بیابیم!"
 
-#: sarshomar/includes/lib/tg/survey.php:267
+#: sarshomar/includes/lib/tg/survey.php:273
 msgid "We need survey code!"
 msgstr "ما نیاز به کد پرسشنامه داریم!"
 
-#: sarshomar/includes/lib/tg/survey.php:290
+#: sarshomar/includes/lib/tg/survey.php:296
 msgid "You must have survey id to use in telegram."
 msgstr "شما باید کد پرسشنامه را برای استفاده در تلگرام داشته باشید."
 
-#: sarshomar/includes/lib/tg/survey.php:321
+#: sarshomar/includes/lib/tg/survey.php:327
 msgid "List of your survey in Sarshomar"
 msgstr "لیست پرسشنامه‌های شما در سرشمار"
 
-#: sarshomar/includes/lib/tg/survey.php:341
+#: sarshomar/includes/lib/tg/survey.php:347
 msgid "How to add survey"
 msgstr "چطور پرسشنامه اضافه کنم"
 
-#: sarshomar/includes/lib/tg/survey.php:347
+#: sarshomar/includes/lib/tg/survey.php:353
 msgid "Sarshomar is changed"
 msgstr "سرشمار تغییر کرده است"
 
-#: sarshomar/includes/lib/tg/survey.php:348
+#: sarshomar/includes/lib/tg/survey.php:354
 msgid ""
 "To add new survey you must go to :val and try to add new survey and you can use "
 "many of or features."
@@ -17344,7 +17349,7 @@ msgstr ""
 "برای افزودن پرسشنامه جدید شما باید به :val رفته و یک پرسشنامه با امکانات کامل "
 "ارائه شده در وب‌سایت بسازید."
 
-#: sarshomar/includes/lib/tg/survey.php:350
+#: sarshomar/includes/lib/tg/survey.php:356
 msgid ""
 "If you are complete /register in telegram bot and sync your account with website, "
 "after create new survey we are send survey link here in telegram and you can "
@@ -17355,7 +17360,7 @@ msgstr ""
 "پرسشنامه جدید ما لینک آن را از طریق تلگرام هم برای شما ارسال خواهیم کرد. البته هر "
 "زمانی نیاز داشتید با کد دستوری /list می‌توانید لیست پرسشنامه‌های خود را مشاهده کنید."
 
-#: sarshomar/includes/lib/tg/survey.php:400
+#: sarshomar/includes/lib/tg/survey.php:406
 msgid "Please start answer to survey in private message not in public!"
 msgstr ""
 "لطفا فرآیند پاسخ‌دهی به پرسشنامه را در پیام خصوصی با من انجام دهید نه در یک مکان "
@@ -20868,9 +20873,6 @@ msgstr ""
 
 #~ msgid "‌Bot"
 #~ msgstr "ربات"
-
-#~ msgid "Share"
-#~ msgstr "اشتراک‌گذاری"
 
 #~ msgid "Review result"
 #~ msgstr "بررسی نتایج"
