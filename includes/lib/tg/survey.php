@@ -37,22 +37,37 @@ class survey
 		{
 			$surveyNo = substr($myCommand, 1);
 		}
-		elseif($myCommand === 'survey' || $myCommand === '$' || $myCommand === 'list' || $myCommand === T_('list') || $myCommand === T_('survey'))
-		{
-			// show list of survey
-			survey::list();
-			return true;
-		}
-		elseif($myCommand === 'how' || $myCommand === 'howto' || $myCommand === T_('add') || $myCommand === T_('how'))
-		{
-			// show list of survey
-			survey::list(true);
-			return true;
-		}
 		else
 		{
-			return false;
+			switch ($myCommand)
+			{
+				case 'survey':
+				case 'Survey':
+				case T_('survey':):
+				case 'list':
+				case T_('List'):
+				case T_('$'):
+					// show list of survey
+					survey::list();
+					return true;
+					break;
+
+				case 'how':
+				case 'add':
+				case T_('how'):
+				case T_('howto'):
+				case T_('Add'):
+					// show list of survey
+					survey::list(true);
+					return true;
+					break;
+
+				default:
+					return false;
+					break;
+			}
 		}
+
 		// remove botname from surveyNo if exist
 		$surveyNo = strtok($surveyNo, '@');
 		// check if survey id is not exist show list
