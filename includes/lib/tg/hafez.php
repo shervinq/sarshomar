@@ -28,18 +28,16 @@ class hafez
 				break;
 
 
-			case 'hafezSaySomething':
-			case 'cb_hafezSaySomething':
+			case 'cb_hafez_say_something':
 				// if start with callback answer callback
-				// if(bot::isCallback())
+				if(bot::isCallback())
 				{
 					self::fal();
 				}
 				break;
 
 
-			case 'hafezReadIt':
-			case 'cb_hafezReadIt':
+			case 'cb_hafez_read_it':
 				// if start with callback answer callback
 				if(bot::isCallback())
 				{
@@ -72,7 +70,7 @@ class hafez
 					[
 						[
 							'text' => T_("Lets go"),
-							'callback_data' => 'hafezSaySomething',
+							'callback_data' => 'hafez_say_something',
 						],
 					]
 				]
@@ -104,7 +102,7 @@ class hafez
 					[
 						[
 							'text' => T_("Lets go"),
-							'callback_data' => 'hafezReadIt 12',
+							'callback_data' => 'hafez_read_it 12',
 						],
 					]
 				]
