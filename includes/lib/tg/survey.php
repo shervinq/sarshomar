@@ -43,7 +43,7 @@ class survey
 			{
 				case 'survey':
 				case 'Survey':
-				case T_('survey':):
+				case T_('survey'):
 				case 'list':
 				case T_('List'):
 				case T_('$'):
