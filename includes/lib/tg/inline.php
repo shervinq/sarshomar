@@ -8,9 +8,10 @@ class inline
 	public static function search($_cmd)
 	{
 		$surveyNo = null;
-		if(isset($_cmd['commandRaw']))
+		if(isset($_cmd['commandRaw']) && substr($_cmd['commandRaw'], 0, 3) === 'iq_')
 		{
-			$surveyNo = $_cmd['commandRaw'];
+			$surveyNo = substr($_cmd['commandRaw'], 3);
+			bot::sendMessage($surveyNo);
 		}
 		else
 		{
