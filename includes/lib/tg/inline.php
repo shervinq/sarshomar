@@ -35,19 +35,19 @@ class inline
 
 	public static function showSurveyInline($_id, $_welcome)
 	{
-		$welcomeTitle = 'Survey';
-		if(isset($_welcome['welcometitle']) && $_welcome['welcometitle'])
+		$surveyTitle = 'Survey';
+		if(isset($_welcome['title']) && $_welcome['title'])
 		{
-			$welcomeTitle = $_welcome['welcometitle'];
+			$surveyTitle = $_welcome['title'];
 		}
 
-		$welcomeDesc = 'Sarshomar';
-		if(isset($_welcome['welcomedesc']) && $_welcome['welcomedesc'])
+		$surveyDesc = 'Sarshomar';
+		if(isset($_welcome['desc']) && $_welcome['desc'])
 		{
-			$welcomeDesc = $_welcome['welcomedesc'];
-			$welcomeDesc = str_replace('&nbsp;', ' ', $welcomeDesc);
-			$welcomeDesc = str_replace('</p>', "</p>\n", $welcomeDesc);
-			$welcomeDesc = strip_tags($welcomeDesc);
+			$surveyDesc = $_welcome['desc'];
+			$surveyDesc = str_replace('&nbsp;', ' ', $surveyDesc);
+			$surveyDesc = str_replace('</p>', "</p>\n", $surveyDesc);
+			$surveyDesc = strip_tags($surveyDesc);
 		}
 
 		$welcomeMedia = \dash\url::site().'/static/images/logo.png';
@@ -65,8 +65,8 @@ class inline
 				[
 					'type'                  => 'article',
 					'id'                    => 1001,
-					'title'                 => $welcomeTitle,
-					'description'           => $welcomeDesc,
+					'title'                 => $surveyTitle,
+					'description'           => $surveyDesc,
 					'thumb_url'             => $welcomeMedia,
 					'input_message_content' =>
 					[
