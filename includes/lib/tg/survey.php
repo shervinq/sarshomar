@@ -58,7 +58,7 @@ class survey
 				case T_('howto'):
 				case T_('Add'):
 					// show list of survey
-					survey::list(true);
+					survey::howto();
 					return true;
 					break;
 
@@ -306,27 +306,43 @@ class survey
 	}
 
 
-	public static function list($_detail = null)
+	public static function list()
+	{
+		$surveyListTxt = \lib\app\tg\survey::list();
+
+		if($surveyListTxt)
+		{
+			bot::ok();
+
+			// if start with callback answer callback
+			if(bot::isCallback())
+			{
+				bot::answerCallbackQuery(T_("List of your survey in Sarshomar"));
+			}
+
+			bot::sendMessage($surveyListTxt);
+			return true;
+		}
+		else
+		{
+			self::howto();
+		}
+	}
+
+
+	public static function howto()
 	{
 		bot::ok();
 
 		// if start with callback answer callback
 		if(bot::isCallback())
 		{
-			bot::answerCallbackQuery(T_("List of your survey in Sarshomar"));
-		}
-		if($_detail === null)
-		{
-			$surveyList = \lib\app\tg\survey::list();
-			if($surveyList)
-			{
-				bot::sendMessage($surveyList);
-				return true;
-			}
+			bot::answerCallbackQuery(T_("How to add survey"));
 		}
 
 		// show message to go to website
-		$msg = T_('You have no survey yet!') ."\n\n";
+		$msg = '';
+		// $msg .= T_('You have no survey yet!') ."\n\n";
 		$msg .= "<b>". T_('Sarshomar is changed'). "</b>\n";
 		$msg .= T_('To add new survey you must go to :val and try to add new survey and you can use many of or features.', ['val' => '<a href="sarshomar.com">'. T_("Sarshomar website").'</a>']);
 		$msg .= "\n\n";
