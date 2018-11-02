@@ -345,7 +345,7 @@ class survey
 		$msg = '';
 		// $msg .= T_('You have no survey yet!') ."\n\n";
 		$msg .= "<b>". T_('Sarshomar is changed'). "</b>\n";
-		$msg .= T_('To add new survey you must go to :val and try to add new survey and you can use many of or features.', ['val' => '<a href="sarshomar.com">'. T_("Sarshomar website").'</a>']);
+		$msg .= T_('To add new survey you must go to :val and try to add new survey and you can use many of or features.', ['val' => '<a href="'. bot::website(). '">'. T_("Sarshomar website").'</a>']);
 		$msg .= "\n\n";
 		$msg .= T_('If you are complete /register in telegram bot and sync your account with website, after create new survey we are send survey link here in telegram and you can access it via /list command anytime.');
 
@@ -375,7 +375,6 @@ class survey
 				'callback_data' => 'sync',
 			];
 		}
-		var_dump($result);
 
 		bot::sendMessage($result);
 	}
