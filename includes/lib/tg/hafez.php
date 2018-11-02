@@ -31,7 +31,7 @@ class hafez
 			case 'hafezSaySomething':
 			case 'cb_hafezSaySomething':
 				// if start with callback answer callback
-				if(bot::isCallback())
+				// if(bot::isCallback())
 				{
 					self::fal();
 				}
