@@ -1,0 +1,98 @@
+{%extends display.main%}
+
+
+{%block content%}
+<div class="main pad lg">
+  <div class="box">
+    <h2 class="sh large">{%trans "Changelog"%}</h2>
+  </div>
+
+  <div class="box in xxlarge">
+    <table class="tbl1 v1">
+     <thead>
+      <tr>
+       <th>{%trans "Date"%}</th>
+       <th>{%trans "Description"%}</th>
+      </tr>
+     </thead>
+     <tbody>
+
+      <tr>
+       <td>...</td>
+       <td>{%trans "We are Developers, please wait!"%}</td>
+      </tr>
+
+      <tr>
+       <td>{%trans "Soon"%}</td>
+       <td></td>
+      </tr>
+
+      <tr>
+       <td>{{"2018-08-21" | dt(true)}}</td>
+       <td>{%trans "Version 2 of sarshomar is released"%}</td>
+      </tr>
+
+      <tr>
+       <td>{{"2018-07-01" | dt(true)}}</td>
+       <td>{%trans "Rebuild version 2 of sarshomar is started"%}</td>
+      </tr>
+
+      <tr>
+       <td>{{"2017-03-28" | dt(true)}}</td>
+       <td>{%trans "Version 1 of sarshomar released"%}</td>
+      </tr>
+
+      <tr>
+       <td>{{"2017-03-21" | dt(true)}}</td>
+       <td>{%trans "Delta version of sarshomar released"%}</td>
+      </tr>
+
+      <tr>
+       <td>{{"2017-02-10" | dt(true)}}</td>
+       <td>{%trans "Gamma version of sarshomar released"%}</td>
+      </tr>
+
+      <tr>
+       <td>{{"2017-02-09" | dt(true)}}</td>
+       <td>{%trans "Finally Sarshomar logo is accepted and we started branding"%} <a href='{{url.kingdom}}/logo' target="_blank"><img src="{{url.site}}/static/images/logo/logo.png" height="40" width="40" alt='{%trans "Sarshomar Logo"%}'/></a></td>
+      </tr>
+
+      <tr class="active">
+       <td>{{"2016-12-26" | dt(true)}}</td>
+       <td>{%trans "Beta version of Sarshomar released"%}</td>
+      </tr>
+
+      <tr>
+       <td>{{"2016-11-22" | dt(true)}}</td>
+       <td>{%trans "Alfa version of Sarshomar is ready"%}</td>
+      </tr>
+
+      <tr>
+       <td>{{"2016-10-23" | dt(true)}}</td>
+       <td>{%trans "Demo version of Sarshomar released"%}</td>
+      </tr>
+
+      <tr>
+       <td>{{"2016-08-22" | dt(true)}}</td>
+       <td>{%trans "Sarshomar is ready to start"%}</td>
+      </tr>
+
+      <tr>
+       <td>{{"2016-01-30" | dt(true)}}</td>
+       <td>{%trans "The name of project selected as Sarshomar and <a href='https://sarshomar.com'>Sarshomar.com</a> and <a href='http://sarshomar.ir'>Sarshomar.ir</a> domains registered. "%}</td>
+      </tr>
+
+      <tr>
+       <td>...</td>
+       <td>{%trans "We were born to do Best!"%}</td>
+      </tr>
+     </tbody>
+    </table>
+
+    <p class="msg info txtC mT25">{%trans "Be patient..."%}</p>
+
+  </div>
+</div>
+
+{%endblock%}
+
