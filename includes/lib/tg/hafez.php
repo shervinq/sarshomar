@@ -69,7 +69,7 @@ class hafez
 				[
 					[
 						[
-							'text' => T_("Lets go"),
+							'text' => T_("Read it"),
 							'callback_data' => 'hafez_say_something',
 						],
 					]
@@ -119,15 +119,17 @@ class hafez
 		bot::answerCallbackQuery(T_("Fal of Hafez"). ' 🎻');
 
 		// get random fal from hafez
+		$myPage = 126;
 
-		$text .= T_('Soon'). "\n";
-		$text .= ''. "\n";
-		$text .= ''. "\n";
-		$text .= ''. "\n";
+		$text .= '<b>'. T_('Fal of Hafez'). "</b>\n";
+		$text .= T_('Page'). ' '. $myPage "\n";
+		// $text .= ''. "\n";
 
+		$myPage = str_pad((string)$myPage, 3, "0", STR_PAD_LEFT);
 		$result =
 		[
-			'text' => $text,
+			'caption'      => $text,
+			'audio'        => \dash\url::site().'/static/hafez/hafez'. $myPage  '.mp3';
 			'reply_markup' =>
 			[
 				'inline_keyboard' =>
@@ -141,7 +143,13 @@ class hafez
 				]
 			]
 		];
-		bot::sendMessage($result);
+
+		if(\dash\url::isLocal())
+		{
+			$result['audio']   = \dash\url::protocol(). '://'. \dash\url::root() .'.com/static/hafez/hafez'. $id. '.mp3';
+		}
+
+		bot::sendAudio($result);
 	}
 
 }
