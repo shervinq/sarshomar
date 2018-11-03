@@ -122,7 +122,7 @@ class hafez
 		$myPage = 126;
 
 		$text .= '<b>'. T_('Fal of Hafez'). "</b>\n";
-		$text .= T_('Page'). ' '. $myPage "\n";
+		$text .= T_('Page'). ' '. $myPage. "\n";
 		// $text .= ''. "\n";
 
 		$myPage = str_pad((string)$myPage, 3, "0", STR_PAD_LEFT);
