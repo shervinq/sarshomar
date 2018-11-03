@@ -42,6 +42,19 @@ function highChart()
     legend: {
       enabled: false
     },
+    credits:
+    {
+        text: '{{service.title}}',
+        href: '{{service.url}}',
+        position:
+        {
+            x: -35,
+            y: -7
+        },
+        style: {
+            fontWeight: 'bold'
+        }
+    },
     exporting:
     {
       buttons:
@@ -63,5 +76,8 @@ function highChart()
       name: '{%trans "Person"%}',
       data: {{qifChart | raw}}
     }]
+  }, function(_chart)
+  {
+    _chart.renderer.image('{{service.logo}}', 10, 5, 30, 30).attr({class: 'chartServiceLogo'}).add();
   });
 }
