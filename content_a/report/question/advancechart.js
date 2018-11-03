@@ -85,6 +85,23 @@ function highChart1()
             fontWeight: 'bold'
         }
     },
+    exporting:
+    {
+      buttons:
+      {
+        contextButton:
+        {
+          menuItems:
+          [
+           'printChart',
+           'separator',
+           'downloadPNG',
+           'downloadJPEG',
+           'downloadSVG'
+          ]
+        }
+      }
+    },
     tooltip: {
       headerFormat: "",
       pointFormat: '{%trans "Answer"%} {point.name} {%trans "is"%} <b>{point.value}</b>'
