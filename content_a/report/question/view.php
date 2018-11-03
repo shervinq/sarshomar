@@ -20,7 +20,6 @@ class view
 
 			\content_a\survey\view::load_survey();
 
-			\dash\data::page_title(\dash\data::page_title(). ' | '. \dash\data::surveyRow_title());
 
 			if(!\dash\request::get('questionid'))
 			{
@@ -32,9 +31,13 @@ class view
 				\dash\data::badge_text(T_('Back to question list'));
 
 				$question_detail = \content_a\question\view::load_question();
-
 				\dash\data::questionDetail($question_detail);
 
+				if(isset($question_detail['title']))
+				{
+					\dash\data::page_title(\dash\data::surveyRow_title(). ' | '. $question_detail['title']);
+
+				}
 
 				$id = \dash\request::get('id');
 
