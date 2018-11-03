@@ -119,7 +119,7 @@ class hafez
 		bot::answerCallbackQuery(T_("Fal of Hafez"). ' 🎻');
 
 		// get random fal from hafez
-		$myPage = 126;
+		$myPage = 076;
 
 		$text .= '<b>'. T_('Fal of Hafez'). "</b>\n";
 		$text .= T_('Page'). ' '. $myPage. "\n";
