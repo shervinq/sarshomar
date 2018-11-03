@@ -129,7 +129,7 @@ class hafez
 		$result =
 		[
 			'caption'      => $text,
-			'audio'        => \dash\url::site().'/static/hafez/hafez'. $myPage  '.mp3';
+			'audio'        => \dash\url::site().'/static/hafez/hafez'. $myPage. '.mp3';
 			'reply_markup' =>
 			[
 				'inline_keyboard' =>
@@ -146,7 +146,7 @@ class hafez
 
 		if(\dash\url::isLocal())
 		{
-			$result['audio']   = \dash\url::protocol(). '://'. \dash\url::root() .'.com/static/hafez/hafez'. $id. '.mp3';
+			$result['audio']   = \dash\url::protocol(). '://'. \dash\url::root() .'.com/static/hafez/hafez'. $myPage. '.mp3';
 		}
 
 		bot::sendAudio($result);
