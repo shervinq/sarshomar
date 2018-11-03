@@ -20,6 +20,10 @@ function highChart1()
     chart:
     {
       // height: '100%'
+      style:
+      {
+        fontFamily: 'IRANSans, Tahoma, sans-serif'
+      }
     },
 
     title:
@@ -116,7 +120,8 @@ function highChart1()
            'downloadSVG'
           ]
         }
-      }
+      },
+      allowHTML:true
     },
     legend: {
         useHTML: Highcharts.hasBidiBug
