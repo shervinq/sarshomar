@@ -125,7 +125,7 @@ function highChart()
     ]
   }, function(_chart)
   {
-    _chart.renderer.image('/static/images/logo/logo.png', 10, 5, 30, 30).add();
+    _chart.renderer.image('{{service.logo}}', 10, 5, 30, 30).add();
   }
   );
 }
