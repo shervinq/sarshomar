@@ -44,7 +44,43 @@
 
 </form>
 
+{%if not requestGET.question2%}
   <p class="msg fs16 txtC txtB info2">{{questionDetail.title}}</p>
+{%endif%}
+
+
+
+{%if requestGET.question2%}
+    <div class="msg fs14 txtC info2 f">
+      <div class="cauto">{%trans "Question"%} {{"1" | fitNumber}}</div>
+      <div class="txtB">{{questionDetail.title}}</div>
+    </div>
+
+    {%for key, value in questionList%}
+      {%if value.id != requestGET.questionid%}
+        {%if value.id == requestGET.question2%}
+          <div class="msg fs14 txtC info2 f">
+            <div class="cauto">{%trans "Question"%} {{"2" | fitNumber}}</div>
+            <div class="txtB">{{value.title}}</div>
+          </div>
+        {%endif%}
+      {%endif%}
+    {%endfor%}
+{%endif%}
+
+{%if requestGET.question3%}
+    {%for key, value in questionList%}
+      {%if value.id != requestGET.questionid%}
+        {%if value.id == requestGET.question3%}
+          <div class="msg fs14 txtC info2 f">
+            <div class="cauto">{%trans "Question"%} {{"3" | fitNumber}}</div>
+            <div class="txtB">{{value.title}}</div>
+          </div>
+        {%endif%}
+      {%endif%}
+    {%endfor%}
+{%endif%}
+
 
    {%if showAdvanceChart%}
       <div class="chart x5 mB20" id="chartdiv" >
