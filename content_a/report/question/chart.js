@@ -96,8 +96,8 @@ function highChart()
     },
     credits:
     {
-        text: '{{site.title}}',
-        href: '{{url.kingdom}}',
+        text: '{{service.title}}',
+        href: '{{service.url}}',
         position:
         {
             align: 'left',
