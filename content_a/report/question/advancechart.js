@@ -46,6 +46,10 @@ function highChart1()
       {
         useHTML: Highcharts.hasBidiBug,
         format: '{point.name}',
+        style:
+        {
+          textOutline: false
+        },
         filter:
         {
           property: 'innerArcLength',
