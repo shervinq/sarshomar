@@ -3,6 +3,34 @@ function chartDrawer()
   if($("#chartdiv").length == 1){highChart();}
 }
 
+(function() {
+
+    var beforePrint = function() {
+        chart = jQuery('#chartdiv').highcharts();
+        chartWidth = chart.chartWidth;
+        chartHeight = chart.chartHeight;
+        chart.setSize(670,chartHeight, false);
+    };
+
+    var afterPrint = function() {
+        chart.setSize(chartWidth,chartHeight, false);
+        chart.hasUserSize = null;    // This makes chart responsive
+    };
+
+    if (window.matchMedia) {
+        var mediaQueryList = window.matchMedia('print');
+        mediaQueryList.addListener(function(mql) {
+            if (mql.matches) {
+                beforePrint();
+            } else {
+                afterPrint();
+            }
+        });
+    }
+
+    window.onbeforeprint = beforePrint;
+    window.onafterprint = afterPrint;
+}());
 
 
 function highChart()
