@@ -54,7 +54,7 @@ function highChart()
       }
     },
     title: {
-      text: '{{questionDetail.title}}'
+      text: ''
     },
     xAxis: [{
       categories: {{dataTable.categories | raw}},
