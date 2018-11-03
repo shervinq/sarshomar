@@ -9240,9 +9240,7 @@ li.sortable-placeholder {
   font-family: IRANSans, Tahoma, sans-serif !important; }
 
 .highcharts-title {
-  font-weight: bold;
-  font-size: 14px;
-  margin-left: 80px; }
+  font-weight: bold; }
 
 .highcharts-tooltip > span {
   background: rgba(255, 255, 255, 0.85);
