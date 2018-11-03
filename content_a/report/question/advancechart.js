@@ -20,6 +20,9 @@ function highChart1()
     chart:
     {
       // height: '100%'
+      plotBackgroundColor: null,
+      plotBorderWidth: null,
+      plotShadow: false,
       style:
       {
         fontFamily: 'IRANSans, Tahoma, sans-serif'
@@ -130,7 +133,7 @@ function highChart1()
     {
       headerFormat: "",
       useHTML: true,
-      pointFormat: '{point.name} <b>{point.value}</b>'
+      pointFormat: '{point.name} <b>{point.value}</b>%'
     }
   },function(_chart)
   {
