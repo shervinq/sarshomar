@@ -15,58 +15,74 @@ function highChart1()
   // Highcharts.getOptions().colors.splice(0, 0, 'transparent');
 
 
-  Highcharts.chart('chartdiv', {
-
-    chart: {
+  Highcharts.chart('chartdiv',
+  {
+    chart:
+    {
       // height: '100%'
     },
 
-    title: {
+    title:
+    {
       text: '{{questionDetail.title}}'
     },
     subtitle: {
       // text: 'Advance chart'
     },
-    series: [{
+    series: [
+    {
       type: "sunburst",
       data: data,
       allowDrillToNode: true,
       cursor: 'pointer',
-      dataLabels: {
+      dataLabels:
+      {
+        useHTML: Highcharts.hasBidiBug,
         format: '{point.name}',
-        filter: {
+        filter:
+        {
           property: 'innerArcLength',
           operator: '>',
           value: 16
         }
       },
-      levels: [{
-        level: 1,
-        levelIsConstant: false,
-        dataLabels: {
-          filter: {
-            property: 'outerArcLength',
-            operator: '>',
-            value: 64
+      levels:
+      [
+        {
+          level: 1,
+          levelIsConstant: false,
+          dataLabels:
+          {
+            useHTML: Highcharts.hasBidiBug,
+            filter:
+            {
+              property: 'outerArcLength',
+              operator: '>',
+              value: 64
+            }
+          }
+        },
+        {
+          level: 2,
+          colorByPoint: true
+        },
+        {
+          level: 3,
+          colorVariation:
+          {
+            key: 'brightness',
+            to: -0.5
+          }
+        },
+        {
+          level: 4,
+          colorVariation:
+          {
+            key: 'brightness',
+            to: 0.5
           }
         }
-      }, {
-        level: 2,
-        colorByPoint: true
-      },
-      {
-        level: 3,
-        colorVariation: {
-          key: 'brightness',
-          to: -0.5
-        }
-      }, {
-        level: 4,
-        colorVariation: {
-          key: 'brightness',
-          to: 0.5
-        }
-      }]
+      ]
 
     }],
     credits:
@@ -102,9 +118,14 @@ function highChart1()
         }
       }
     },
-    tooltip: {
+    legend: {
+        useHTML: Highcharts.hasBidiBug
+    },
+    tooltip:
+    {
       headerFormat: "",
-      pointFormat: '{%trans "Answer"%} {point.name} {%trans "is"%} <b>{point.value}</b>'
+      useHTML: true,
+      pointFormat: '{point.name} <b>{point.value}</b>'
     }
   },function(_chart)
   {
