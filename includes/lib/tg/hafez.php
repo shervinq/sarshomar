@@ -146,7 +146,7 @@ class hafez
 
 		if(\dash\url::isLocal())
 		{
-			$result['audio']   = \dash\url::protocol(). '://'. \dash\url::root() .'.com/static/hafez/hafez'. $myPage. '.mp3',
+			$result['audio']   = \dash\url::protocol(). '://'. \dash\url::root() .'.com/static/hafez/hafez'. $myPage. '.mp3';
 		}
 
 		bot::sendAudio($result);
