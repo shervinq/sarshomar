@@ -21,25 +21,29 @@ class detect
 
 	public static function mainmenu($_onlyMenu = false)
 	{
-		// define
-		$menu =
-		[
-			'keyboard' =>[],
-			'resize_keyboard' => true,
-		];
-
-		$menu['keyboard'][] = [T_("Survey List")];
-		// add about and contact link
-		$menu['keyboard'][] = [T_("About"), T_("Contact")];
-
-		// add sync
-		if(\dash\user::detail('mobile'))
+		$menu = ['remove_keyboard' => true];
+		// on private chat add keyboard
+		if(bot::isPrivate())
 		{
-			$menu['keyboard'][] = [T_("Website"). ' '. T_(\dash\option::config('site', 'title'))];
-		}
-		else
-		{
-			$menu['keyboard'][] = [T_("Sync with website")];
+			$menu =
+			[
+				'keyboard' =>[],
+				'resize_keyboard' => true,
+			];
+
+			$menu['keyboard'][] = [T_("Survey List")];
+			// add about and contact link
+			$menu['keyboard'][] = [T_("About"), T_("Contact")];
+
+			// add sync
+			if(\dash\user::detail('mobile'))
+			{
+				$menu['keyboard'][] = [T_("Website"). ' '. T_(\dash\option::config('site', 'title'))];
+			}
+			else
+			{
+				$menu['keyboard'][] = [T_("Sync with website")];
+			}
 		}
 
 		if($_onlyMenu)
