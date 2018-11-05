@@ -223,8 +223,8 @@ class questionSender
 
 	private static function single_choice($_question, &$_txt, &$_kbd, $_answer)
 	{
-		$_txt .= "\n\n";
-		$_txt .= '❇️ '. T_('Please choose your answer');
+		// $_txt .= "\n\n";
+		// $_txt .= '❇️ '. T_('Please choose your answer');
 
 		$surveyId   = null;
 		$questionId = null;
