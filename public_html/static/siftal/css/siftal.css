@@ -9229,8 +9229,6 @@ li.sortable-placeholder {
 .chart {
   direction: ltr;
   width: 100%;
-  display: block;
-  min-height: 90px;
   max-height: 600px;
   user-select: none; }
 
@@ -9276,6 +9274,9 @@ li.sortable-placeholder {
 .rtl .highcharts-tooltip > span b {
   display: inline-block;
   direction: ltr; }
+
+.rtl .highcharts-contextmenu {
+  text-align: right; }
 
 .chart .chartServiceLogo {
   y: calc(100% - 32px);
