@@ -87,7 +87,7 @@ class inline
 							],
 							[
 								[
-									'text'          => 	T_("Answer via bot"),
+									'text' => 	T_("Answer via bot"),
 									'url'  => bot::deepLink('survey_'. $_id)
 								],
 							],

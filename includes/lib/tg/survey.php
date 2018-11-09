@@ -184,7 +184,7 @@ class survey
 				[
 					[
 						'text' => T_("Answer via bot"),
-						'url'  => 'https://t.me/'. bot::$name. '?start=survey_'. $_surveyId,
+						'url'  => bot::deepLink('survey_'. $_surveyId)
 					],
 				];
 			}
@@ -411,7 +411,7 @@ class survey
 					[
 						[
 							'text' => T_("Answer via bot"),
-							'url'  => 'https://t.me/'. bot::$name. '?start=/survey_$_id',
+							'url'  => bot::deepLink('survey_'. $_id)
 						],
 					],
 				]
