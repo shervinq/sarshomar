@@ -101,7 +101,7 @@ class twigTransTerms
 	echo T_("Vote");                                                                  // Line 325
 	echo T_("Ratio");                                                                 // Line 326
 	echo T_("Total");                                                                 // Line 342
-	echo T_("Person");                                                                // Line 103
+	echo T_("Person");                                                                // Line 149
 	echo T_("Similar Questions");                                                     // Line 374
 	echo T_("Latest Questions");                                                      // Line 367
 	echo T_("There is no similar post");                                              // Line 375
@@ -521,7 +521,7 @@ class twigTransTerms
 	echo T_("There are no category exist!");                                          // Line 113
 
 	//--------------------------------------------------content_a\alllist\display.html
-	echo T_("Question");                                                              // Line 102
+	echo T_("Question");                                                              // Line 140
 	echo T_("Without question");                                                      // Line 36
 	echo T_("Response");                                                              // Line 39
 	echo T_("No responses");                                                          // Line 39
@@ -591,15 +591,15 @@ class twigTransTerms
 
 	//-------------------------------------------content_a\report\allquestion\chart.js
 	echo T_("Count");                                                                 // Line 24
-	echo T_("Complete survey");                                                       // Line 98
+	echo T_("Complete survey");                                                       // Line 144
 
 	//---------------------------------------content_a\report\allquestion\display.html
-	echo T_("Click to sort");                                                         // Line 125
-	echo T_("Answer");                                                                // Line 123
-	echo T_("Percent");                                                               // Line 186
-	echo T_("%");                                                                     // Line 143
-	echo T_("Sum");                                                                   // Line 141
-	echo T_("Answers");                                                               // Line 160
+	echo T_("Click to sort");                                                         // Line 163
+	echo T_("Answer");                                                                // Line 161
+	echo T_("Percent");                                                               // Line 224
+	echo T_("%");                                                                     // Line 181
+	echo T_("Sum");                                                                   // Line 179
+	echo T_("Answers");                                                               // Line 198
 
 	//-------------------------------------------content_a\report\answers\display.html
 	echo T_("User");                                                                  // Line 63
@@ -622,15 +622,12 @@ class twigTransTerms
 	echo T_("Group by answer");                                                       // Line 23
 	echo T_("Group by question");                                                     // Line 34
 
-	//---------------------------------------content_a\report\question\advancechart.js
-	echo T_("is");                                                                    // Line 74
-
 	//----------------------------------------------content_a\report\question\chart.js
 
 	//------------------------------------------content_a\report\question\display.html
 	echo T_("Run");                                                                   // Line 38
 	echo T_("Please select one item");                                                // Line 18
-	echo T_("Whitout question");                                                      // Line 105
+	echo T_("Whitout question");                                                      // Line 143
 
 	//--------------------------------------content_a\report\questionlist\display.html
 

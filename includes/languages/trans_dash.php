@@ -12,7 +12,7 @@ class twigTransTerms
 	echo T_("Postal code");                                                           // Line 91
 	echo T_("Phone");                                                                 // Line 198
 	echo T_("Mobile");                                                                // Line 24
-	echo T_("Edit");                                                                  // Line 316
+	echo T_("Edit");                                                                  // Line 319
 	echo T_("Firstname");                                                             // Line 152
 	echo T_("Lastname");                                                              // Line 161
 	echo T_("Name");                                                                  // Line 95
@@ -30,7 +30,7 @@ class twigTransTerms
 	echo T_("No");                                                                    // Line 232
 	echo T_("Is this a company's address?");                                          // Line 233
 	echo T_("Company name");                                                          // Line 240
-	echo T_("Status");                                                                // Line 140
+	echo T_("Status");                                                                // Line 143
 	echo T_("Select one item");                                                       // Line 250
 	echo T_("Enable");                                                                // Line 222
 	echo T_("Disable");                                                               // Line 223
@@ -54,7 +54,7 @@ class twigTransTerms
 	//-------------------------------------addons\content_account\billing\display.html
 	echo T_("Charge your account");                                                   // Line 13
 	echo T_("Choose a gateway and enter an amount to charge your account");           // Line 14
-	echo T_("Parsian");                                                               // Line 18
+	echo T_("Parsian");                                                               // Line 45
 	echo T_("Amount");                                                                // Line 61
 	echo T_("Checkout");                                                              // Line 62
 	echo T_("Promo code");                                                            // Line 43
@@ -280,10 +280,10 @@ class twigTransTerms
 	//-------------------------------------------------addons\content_cp\home\chart.js
 	echo T_("Website analytics");                                                     // Line 20
 	echo T_("Person");                                                                // Line 43
-	echo T_("Page view");                                                             // Line 90
-	echo T_("page");                                                                  // Line 94
-	echo T_("Visitor");                                                               // Line 99
-	echo T_("person");                                                                // Line 104
+	echo T_("Page view");                                                             // Line 103
+	echo T_("page");                                                                  // Line 107
+	echo T_("Visitor");                                                               // Line 112
+	echo T_("person");                                                                // Line 117
 
 	//---------------------------------------------addons\content_cp\home\display.html
 	echo T_("News");                                                                  // Line 15
@@ -311,12 +311,12 @@ class twigTransTerms
 	echo T_("User");                                                                  // Line 54
 	echo T_("User id");                                                               // Line 77
 	echo T_("User logs");                                                             // Line 83
-	echo T_("User Profile");                                                          // Line 293
+	echo T_("User Profile");                                                          // Line 296
 	echo T_("Search by user session id");                                             // Line 84
 	echo T_("Guest");                                                                 // Line 89
 	echo T_("Subdomain");                                                             // Line 103
 	echo T_("Notification");                                                          // Line 109
-	echo T_("Telegram");                                                              // Line 44
+	echo T_("Telegram");                                                              // Line 416
 	echo T_("Url");                                                                   // Line 113
 	echo T_("Send to");                                                               // Line 117
 	echo T_("Date created");                                                          // Line 136
@@ -397,9 +397,9 @@ class twigTransTerms
 	echo T_("Choose category of post");                                               // Line 155
 	echo T_("Add new category");                                                      // Line 165
 	echo T_("Click on special tags to use this depending on your website design");    // Line 183
-	echo T_("Tag");                                                                   // Line 365
+	echo T_("Tag");                                                                   // Line 368
 	echo T_("Add tag manually to link articles togethers");                           // Line 195
-	echo T_("Tag keywords...");                                                       // Line 375
+	echo T_("Tag keywords...");                                                       // Line 378
 	echo T_("Add tag");                                                               // Line 197
 	echo T_("Featured Image");                                                        // Line 205
 	echo T_("allowed extentions jpg, png. Max 1000Kb");                               // Line 208
@@ -662,10 +662,10 @@ class twigTransTerms
 
 	//-------------------------------------------------addons\content_su\home\chart.js
 	echo T_("Server live resource usage");                                            // Line 91
-	echo T_("percentage");                                                            // Line 173
-	echo T_("Disk usage");                                                            // Line 147
-	echo T_("CPU Usage");                                                             // Line 156
-	echo T_("Memory");                                                                // Line 167
+	echo T_("percentage");                                                            // Line 187
+	echo T_("Disk usage");                                                            // Line 161
+	echo T_("CPU Usage");                                                             // Line 170
+	echo T_("Memory");                                                                // Line 181
 
 	//---------------------------------------------addons\content_su\home\display.html
 	echo T_("Some code was changed!!!");                                              // Line 6
@@ -735,7 +735,7 @@ class twigTransTerms
 	echo T_("Meta");                                                                  // Line 63
 	echo T_("ID");                                                                    // Line 141
 	echo T_("Telegram chatid");                                                       // Line 79
-	echo T_("User last visits");                                                      // Line 295
+	echo T_("User last visits");                                                      // Line 298
 	echo T_("Without hook");                                                          // Line 106
 	echo T_("With keyboard");                                                         // Line 115
 	echo T_("Without keyboard");                                                      // Line 115
@@ -883,7 +883,7 @@ class twigTransTerms
 	//---------------------------------addons\content_support\ticket\show\display.html
 	echo T_("If your problem is solved or do not need to track, please close this ticket by press below bottom.");// Line 20
 	echo T_("You can open it anytime you need.");                                     // Line 31
-	echo T_("Close ticket");                                                          // Line 340
+	echo T_("Close ticket");                                                          // Line 343
 	echo T_("This ticket is closed.");                                                // Line 31
 	echo T_("Also you can delete it if you do not need it.");                         // Line 31
 	echo T_("Delete ticket");                                                         // Line 36
@@ -894,17 +894,20 @@ class twigTransTerms
 	echo T_("Un Solved ticket");                                                      // Line 74
 	echo T_("If your problem is solved, please set this ticket as solved");           // Line 78
 	echo T_("Solved ticket");                                                         // Line 83
-	echo T_("Save tag");                                                              // Line 95
-	echo T_("Show log");                                                              // Line 106
-	echo T_("Last seen");                                                             // Line 115
-	echo T_("Ticket No");                                                             // Line 141
-	echo T_("Last activity");                                                         // Line 146
-	echo T_("User tickets");                                                          // Line 292
-	echo T_("This visit detail");                                                     // Line 191
-	echo T_("Before create ticket");                                                  // Line 298
-	echo T_("View attachment");                                                       // Line 310
-	echo T_("Add tag manually to link tickets togethers");                            // Line 374
-	echo T_("Current Time");                                                          // Line 389
+	echo T_("Save tag");                                                              // Line 98
+	echo T_("Show log");                                                              // Line 109
+	echo T_("Last seen");                                                             // Line 118
+	echo T_("Ticket No");                                                             // Line 144
+	echo T_("Last activity");                                                         // Line 149
+	echo T_("User tickets");                                                          // Line 295
+	echo T_("This visit detail");                                                     // Line 194
+	echo T_("Before create ticket");                                                  // Line 301
+	echo T_("View attachment");                                                       // Line 313
+	echo T_("Add tag manually to link tickets togethers");                            // Line 377
+	echo T_("Current Time");                                                          // Line 392
+	echo T_("Notification procedures");                                               // Line 400
+	echo T_("Do you know you can connect your account with our Telegram bot");        // Line 427
+	echo T_("Just need to start bot in Telegram and sync your account via /sync.");   // Line 427
 
 	//----------------------------------addons\content_support\ticket\ticketTable.html
 	echo T_("Last active tickets");                                                   // Line 3
@@ -989,6 +992,41 @@ class twigTransTerms
 
 	//----------------------------------------addons\includes\html\inc_pagination.html
 	echo T_("Total records");                                                         // Line 4
+
+	//----------------------------------------------addons\includes\html\inc_spay.html
+	echo T_("Please choose you pos");                                                 // Line 4
+	echo T_("Saderat");                                                               // Line 9
+	echo T_("Mellat");                                                                // Line 15
+	echo T_("Tejarat");                                                               // Line 21
+	echo T_("Melli");                                                                 // Line 27
+	echo T_("Sepah");                                                                 // Line 33
+	echo T_("Keshavarzi");                                                            // Line 39
+	echo T_("Maskan");                                                                // Line 51
+	echo T_("Refah");                                                                 // Line 57
+	echo T_("Novin");                                                                 // Line 63
+	echo T_("Ansar");                                                                 // Line 69
+	echo T_("Pasargad");                                                              // Line 75
+	echo T_("Saman");                                                                 // Line 81
+	echo T_("Sina");                                                                  // Line 87
+	echo T_("Post");                                                                  // Line 93
+	echo T_("Ghavamin");                                                              // Line 99
+	echo T_("Taavon");                                                                // Line 105
+	echo T_("Shahr");                                                                 // Line 111
+	echo T_("Ayande");                                                                // Line 117
+	echo T_("Sarmayeh");                                                              // Line 123
+	echo T_("Day bank");                                                              // Line 129
+	echo T_("Hekmat");                                                                // Line 135
+	echo T_("Iranzamin");                                                             // Line 141
+	echo T_("Karafarin");                                                             // Line 147
+	echo T_("Gardeshgari");                                                           // Line 153
+	echo T_("Madan");                                                                 // Line 159
+	echo T_("Tsaderat");                                                              // Line 165
+	echo T_("Khavarmiyane");                                                          // Line 171
+	echo T_("Ivbb");                                                                  // Line 177
+	echo T_("Irkish");                                                                // Line 183
+	echo T_("Asanpardakht");                                                          // Line 189
+	echo T_("Zarinpal");                                                              // Line 195
+	echo T_("Payir");                                                                 // Line 201
 
  }
 }
