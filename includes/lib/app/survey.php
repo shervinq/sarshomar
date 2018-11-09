@@ -95,6 +95,9 @@ class survey
 					{
 						\dash\header::status(403, T_("This survey is not publish"));
 					}
+					// @check
+					// in tg must be make a msg for show in user This survey is not publish
+					// @javad
 					return false;
 				}
 			}
