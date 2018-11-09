@@ -4,6 +4,9 @@ namespace lib\app\tg;
 
 class survey
 {
+
+	public static $status = null;
+
 	public static function list()
 	{
 		$result            = '';
@@ -136,11 +139,15 @@ class survey
 			$msg = T_("Let's go to start answer survey");
 		}
 
-		if($survey['status'] !== 'publish')
+		if(isset($survey['status']))
 		{
-			$msg .= "\n". '⚠️⚠️⚠️ ';
-			$msg .= T_('This survey is not published yet!') . "\n";
-			$msg .= '❗️'. T_('Please change status of this survey to publish from Sarshomar website then try to share it via Telegram');
+			self::$status = $survey['status'];
+			if($survey['status'] !== 'publish')
+			{
+				$msg .= "\n". '⚠️⚠️⚠️ ';
+				$msg .= T_('This survey is not published yet!') . "\n";
+				$msg .= '❗️'. T_('Please change status of this survey to publish from Sarshomar website then try to share it via Telegram');
+			}
 		}
 
 		return $msg;

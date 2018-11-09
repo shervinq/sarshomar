@@ -145,7 +145,8 @@ class survey
 	{
 		bot::ok();
 
-		$surveyTxt = \lib\app\tg\survey::get($_surveyId);
+		$surveyTxt    = \lib\app\tg\survey::get($_surveyId);
+		$surveyStatus = \lib\app\tg\survey::$status;
 
 		if($surveyTxt)
 		{
@@ -177,6 +178,12 @@ class survey
 					]
 				]
 			];
+
+			if($surveyStatus !== 'publish')
+			{
+				// remove first keyboard to share survey if its not published
+				unset($result['reply_markup']['inline_keyboard'][0][0]);
+			}
 
 			if(!bot::isPrivate())
 			{
