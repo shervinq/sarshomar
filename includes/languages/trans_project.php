@@ -213,7 +213,7 @@ class twigTransTerms
 	echo T_("Learn More");                                                            // Line 32
 	echo T_("Terms of Service");                                                      // Line 34
 	echo T_("Privacy Policy");                                                        // Line 12
-	echo T_("Support");                                                               // Line 24
+	echo T_("Support");                                                               // Line 28
 	echo T_("Contact us");                                                            // Line 43
 	echo T_("Logo");                                                                  // Line 45
 	echo T_("Latest News");                                                           // Line 51
