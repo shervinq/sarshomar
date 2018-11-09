@@ -44,9 +44,12 @@ class step_answering
 		{
 			$_step = 1;
 
+			$msg = '☢️🆗 '. T_('You can use below command when tryto answering survey questions.'). "\n";
+			$msg .= '/cancel'. ' '.  T_('Cancel answer to this survey and exit from it'). "\n";
+			$msg .= '/skip'. ' '.  T_('Skip current question and get next one');
 			$initMsg =
 			[
-				'text' => T_("You can cancel answer operation anytime by send command /cancel or skip current question by send /skip"),
+				'text' => $msg,
 				'reply_markup' => ['remove_keyboard' => true]
 			];
 			bot::sendMessage($initMsg);
