@@ -167,6 +167,10 @@ class answer
 
 		$load_old_answer = \lib\db\answers::get($load_old_answer);
 
+		$countblock      = (isset($survey_detail['countblock']) && $survey_detail['countblock'])        ? intval($survey_detail['countblock'])      : 0;
+
+		$update_answer = [];
+
 		if(!$load_old_answer)
 		{
 			$insert_answer =
@@ -193,9 +197,6 @@ class answer
 			$skip_count      = (isset($load_old_answer['skip']) && $load_old_answer['skip'])           		? intval($load_old_answer['skip'])      	: 0;
 			$answertry_count = (isset($load_old_answer['answertry']) && $load_old_answer['answertry']) 		? intval($load_old_answer['answertry']) 	: 0;
 			$skiptry_count   = (isset($load_old_answer['skiptry']) && $load_old_answer['skiptry'])     		? intval($load_old_answer['skiptry'])   	: 0;
-			$countblock      = (isset($survey_detail['countblock']) && $survey_detail['countblock'])        ? intval($survey_detail['countblock'])      : 0;
-
-			$update_answer = [];
 
 			if($skip)
 			{
@@ -213,43 +214,39 @@ class answer
 			$update_answer['lastquestion'] = $question_id;
 			$update_answer['lastmodified'] = self::dateNow();
 
-			if(intval($step) === intval($countblock))
+		}
+
+		if(intval($step) === intval($countblock))
+		{
+			$check_require_is_answer = \lib\db\answers::required_question_is_answered($survey_id, \dash\user::id());
+			if($check_require_is_answer === true)
 			{
-				// if(isset($load_old_answer['complete']) && $load_old_answer['complete'])
-				// {
-				// 	// if before this request the question is completed not complete again
-				// }
-				// else
-				// {
-					// need to check all required question is answered
-					$check_require_is_answer = \lib\db\answers::required_question_is_answered($survey_id, \dash\user::id());
-					if($check_require_is_answer === true)
-					{
-						$update_answer['complete'] = 1;
-						$update_answer['enddate']  = self::dateNow();
-					}
-					else
-					{
-						$update_answer['complete'] = 0;
-						$update_answer['enddate']  = null;
-
-						\dash\temp::set('notAnsweredQuestion', $check_require_is_answer);
-
-						$msg = T_("You not answer to some required question"). ' '. T_("Your survey is not complete");
-
-						if(isset($check_require_is_answer[0]['sort']))
-						{
-							$msg = "<a href='". \dash\url::kingdom(). '/s/'. \dash\coding::encode($survey_id). '?step='. $check_require_is_answer[0]['sort']. "'>$msg</a>";
-						}
-
-						if(\dash\url::content() !== 'hook')
-						{
-							\dash\notif::warn($msg);
-						}
-					}
-				// }
+				$update_answer['complete'] = 1;
+				$update_answer['enddate']  = self::dateNow();
 			}
+			else
+			{
+				$update_answer['complete'] = 0;
+				$update_answer['enddate']  = null;
 
+				\dash\temp::set('notAnsweredQuestion', $check_require_is_answer);
+
+				$msg = T_("You not answer to some required question"). ' '. T_("Your survey is not complete");
+
+				if(isset($check_require_is_answer[0]['sort']))
+				{
+					$msg = "<a href='". \dash\url::kingdom(). '/s/'. \dash\coding::encode($survey_id). '?step='. $check_require_is_answer[0]['sort']. "'>$msg</a>";
+				}
+
+				if(\dash\url::content() !== 'hook')
+				{
+					\dash\notif::warn($msg);
+				}
+			}
+		}
+
+		if(!empty($update_answer))
+		{
 			\lib\db\answers::update($update_answer, $answer_id);
 		}
 
