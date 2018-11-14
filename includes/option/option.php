@@ -22,6 +22,7 @@ self::$config['site']['title']  = "Sarshomar";
 self::$config['site']['desc']   = "Focus on your question. Do not be too concerned about how to ask or analyze.";
 self::$config['site']['slogan'] = "Ask Anyone Anywhere";
 
+self::$config['botscout']                 = 'hIenwLNiGpPOoSk';
 
 // max upload file size
 // byte
