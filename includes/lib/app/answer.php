@@ -477,6 +477,12 @@ class answer
 						}
 					}
 
+					if(count($_answer) < $min || count($_answer) > $max)
+					{
+						\dash\notif::error(T_("Your can choose between :min and :max option", ['min' => \dash\utility\human::fitNumber($min), 'max' => \dash\utility\human::fitNumber($max)]), 'answer');
+						$valid = false;
+					}
+
 					$realAnswerTitle = [];
 
 					foreach ($_answer as $key => $value)
