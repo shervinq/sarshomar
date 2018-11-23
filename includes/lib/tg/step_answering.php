@@ -44,9 +44,9 @@ class step_answering
 		{
 			$_step = 1;
 
-			$msg = '☢️ '. T_('You can use below command when try to answering survey questions.'). "\n";
-			$msg .= '/cancel'. ' '.  T_('Cancel answer to this survey and exit from it'). "\n";
-			$msg .= '/skip'. ' '.  T_('Skip current question and get next one');
+			$msg = '☢️ '. T_('You can use below command when try to answering survey questions.'). "\n\n\n";
+			$msg .= '/cancel'. "\n".  T_('Cancel answer to this survey and exit from it'). "\n\n";
+			$msg .= '/skip'. "\n".  T_('Skip current question and get next one');
 			$initMsg =
 			[
 				'text' => $msg,
