@@ -3,17 +3,11 @@
 
 {%block pageContent%}
 {{block('pageSteps')}}
-<div class="f">
-	<div class="c pRa10">
+<div class="f justify-center">
+	<div class="c7 pRa10">
 		{{block('quTitle')}}
 	</div>
 
-	<div class="c">
-		{{block('quSetting')}}
-		{%if choiceDetail.choice%}
-			{{block('quChoice')}}
-		{%endif%}
-	</div>
 </div>
 
 {%endblock%}
