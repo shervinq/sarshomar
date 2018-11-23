@@ -28,9 +28,10 @@ class hafez
 				break;
 
 
+			case '/fal1':
 			case 'cb_hafez_say_something':
 				// if start with callback answer callback
-				if(bot::isCallback())
+				// if(bot::isCallback())
 				{
 					self::fal();
 				}
@@ -41,7 +42,7 @@ class hafez
 				// if start with callback answer callback
 				if(bot::isCallback())
 				{
-					self::falReader();
+					self::falReader($_cmd);
 				}
 				break;
 
@@ -85,12 +86,25 @@ class hafez
 		bot::ok();
 		bot::answerCallbackQuery(T_("Fal of Hafez"));
 
-		// get random fal from hafez
-
-		$text .= T_('Soon'). "\n";
-		$text .= ''. "\n";
-		$text .= ''. "\n";
-		$text .= ''. "\n";
+		$myFal  = \dash\utility\hafez::tg();
+		// add fal code
+		$text   = '🎲 '. T_('Fal of Hafez');
+		$myCode = null;
+		if(isset($myFal['code']))
+		{
+			$text   .= ' #'. $myFal['code']. "\n\n";
+			$myCode = $myFal['code'];
+		}
+		// add poem
+		if(isset($myFal['poemPretty']))
+		{
+			$text .= $myFal['poemPretty']. "\n\n";
+		}
+		// add mean
+		if(isset($myFal['meanPretty']))
+		{
+			$text .= "<b>". $myFal['meanPretty']. "</b>";
+		}
 
 		$result =
 		[
@@ -101,8 +115,8 @@ class hafez
 				[
 					[
 						[
-							'text' => T_("Lets go"),
-							'callback_data' => 'hafez_read_it 12',
+							'text' => T_("Read it for me"),
+							'callback_data' => 'hafez_read_it '. $myCode,
 						],
 					]
 				]
@@ -113,23 +127,26 @@ class hafez
 
 
 
-	private static function falReader()
+	private static function falReader($_cmd)
 	{
 		bot::ok();
 		bot::answerCallbackQuery(T_("Fal of Hafez"). ' 🎻');
 
+		$myCode = null;
+		if(isset($_cmd['optional']))
+		{
+			$myCode = $_cmd['optional'];
+		}
+
 		// get random fal from hafez
-		$myPage = 076;
-
-		$text .= '<b>'. T_('Fal of Hafez'). "</b>\n";
-		$text .= T_('Page'). ' '. $myPage. "\n";
-		// $text .= ''. "\n";
-
-		$myPage = str_pad((string)$myPage, 3, "0", STR_PAD_LEFT);
+		$myFalAddr = \dash\utility\hafez::file($myCode);
+		$text      .= '<b>'. T_('Fal of Hafez'). "</b>". ' #'. $myCode. "\n";
+		$text      .= T_('Page'). ' '. $myCode. "\n";
+		// $text   .= ''. "\n";
 		$result =
 		[
 			'caption'      => $text,
-			'audio'        => \dash\url::site().'/static/hafez/hafez'. $myPage. '.mp3',
+			'audio'        => $myFalAddr,
 			'reply_markup' =>
 			[
 				'inline_keyboard' =>
@@ -143,11 +160,6 @@ class hafez
 				]
 			]
 		];
-
-		if(\dash\url::isLocal())
-		{
-			$result['audio']   = \dash\url::protocol(). '://'. \dash\url::root() .'.com/static/hafez/hafez'. $myPage. '.mp3';
-		}
 
 		bot::sendAudio($result);
 	}
