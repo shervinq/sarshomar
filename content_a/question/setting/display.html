@@ -1,0 +1,77 @@
+{%extends display.question%}
+
+
+{%block pageContent%}
+{{block('pageSteps')}}
+<div class="f justify-center">
+
+	<div class="c7">
+		{{block('quSetting')}}
+	</div>
+</div>
+
+{%endblock%}
+
+
+
+
+
+
+{%block quTitle%}
+<div class="cbox">
+	<h3 class="txtC">{%trans "Question title"%}</h3>
+	<form method="post" autocomplete="off">
+		<input type="hidden" name="formType" value="title">
+		{{block('imedia')}}
+		{{block('ititle')}}
+		{{block('idesc')}}
+		<button class="btn primary block mT20">{%trans "Save question title"%}</button>
+	</form>
+</div>
+
+{%endblock%}
+
+
+
+{%block quSetting%}
+
+<div class="cbox">
+	<h3 class="txtC">{%trans "General setting"%}</h3>
+	<form method="post" autocomplete="off">
+		<input type="hidden" name="formType" value="setting">
+		{{block('irequire')}}
+		{%if choiceDetail.key%}
+			{{block(choiceDetail.key)}}
+		{%endif%}
+
+		<button class="btn primary block mT20">{%trans "Save setting"%}</button>
+	</form>
+</div>
+
+{%endblock%}
+
+
+{%block quChoice%}
+
+<div class="cbox mB10">
+	<form method="post" autocomplete="off" class="mB20">
+		<input type="hidden" name="formType" value="question">
+		{%if choiceDetail.upload_choice%}
+			{{block('imedia')}}
+		{%endif%}
+		{{block('ichoice')}}
+
+	</form>
+
+	{%for key, value in dataRow.choice%}
+		<div class="msg outline secondary">
+			{%if value.file%}
+				<img src="{{value.file}}" alt="{{value.title}}" class="w100" id="logo preview">
+			{%endif%}
+			{{value.title}}
+			<a href="{{url.pwd}}" class="badge danger floatL" data-ajaxify data-method='post' data-data='{"key" : "{{key}}", "formType": "question", "action" : "remove"}'>{%trans "Remove"%}</a>
+		</div>
+	{%endfor%}
+</div>
+
+{%endblock%}

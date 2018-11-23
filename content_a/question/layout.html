@@ -361,15 +361,38 @@
 
 
    <div class="c">
-    <a class="dcard {%if url.child == 'general'%}active{%endif%}" href='{{url.this}}/general?id={{requestGET.id}}&questionid={{requestGET.questionid}}{%if requestGET.type%}&type={{requestGET.type}}{%endif%}' data-shortkey="50ctrlshift" >
+    <a class="dcard {%if url.child == 'title'%}active{%endif%}" href='{{url.this}}/title?id={{requestGET.id}}&questionid={{requestGET.questionid}}{%if requestGET.type%}&type={{requestGET.type}}{%endif%}' data-shortkey="50ctrlshift" >
      <div class="statistic sm">
       <div class="value"><i class="sf-lightbulb-o"></i></div>
-      <div class="label">{%trans "Setting"%}  <b class="fc-blue">{%if dataRow.type_detail.title %}{{dataRow.type_detail.title}}{%endif%}</b><br><kbd class="mT5">Ctrl+Shift+2</kbd></div>
+      <div class="label">{%trans "Title"%} <kbd class="mT5">Ctrl+Shift+2</kbd></div>
      </div>
     </a>
    </div>
 
    {%if requestGET.questionid%}
+
+    <div class="c">
+    <a class="dcard {%if url.child == 'setting'%}active{%endif%}" href='{{url.this}}/setting?id={{requestGET.id}}&questionid={{requestGET.questionid}}{%if requestGET.type%}&type={{requestGET.type}}{%endif%}' data-shortkey="50ctrlshift" >
+     <div class="statistic sm">
+      <div class="value"><i class="sf-cogs"></i></div>
+      <div class="label">{%trans "Setting"%} <kbd class="mT5">Ctrl+Shift+2</kbd></div>
+     </div>
+    </a>
+   </div>
+
+   {%if choiceDetail.choice%}
+
+    <div class="c">
+    <a class="dcard {%if url.child == 'choice'%}active{%endif%}" href='{{url.this}}/choice?id={{requestGET.id}}&questionid={{requestGET.questionid}}{%if requestGET.type%}&type={{requestGET.type}}{%endif%}' data-shortkey="50ctrlshift" >
+     <div class="statistic sm">
+      <div class="value"><i class="sf-check"></i></div>
+      <div class="label">{%trans "Choise"%} <kbd class="mT5">Ctrl+Shift+2</kbd></div>
+     </div>
+    </a>
+   </div>
+
+   {%endif%}
+
     <div class="cauto">
     <a class="dcard" data-direct target="_blank" href='{{url.kingdom}}/s/{{surveyRow.id}}?step={{dataRow.sort}}' data-shortkey="51ctrlshift" >
      <div class="statistic orange">
