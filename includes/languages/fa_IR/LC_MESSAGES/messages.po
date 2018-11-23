@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Sarshomar - Persian\n"
-"POT-Creation-Date: 2018-11-22 16:51+0330\n"
-"PO-Revision-Date: 2018-11-22 16:51+0330\n"
+"POT-Creation-Date: 2018-11-23 19:41+0330\n"
+"PO-Revision-Date: 2018-11-23 19:42+0330\n"
 "Last-Translator: Javad <J.Evazzadeh@gmail.com>\n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -1376,10 +1376,6 @@ msgstr "خطای نوع درگاه"
 msgid "You have new message!"
 msgstr "شما پیام جدیدی دارید!"
 
-#: dash/addons/content_hook/smile/controller.php:55
-msgid "Goodbye"
-msgstr "خدانگهدار"
-
 #: dash/addons/content_su/backup/model.php:23
 msgid "Database of logs dose not exists"
 msgstr "پایگاه داده برای لاگ ها وجود ندارد"
@@ -2391,12 +2387,14 @@ msgid "Last Modified"
 msgstr "آخرین به‌روز رسانی"
 
 #: dash/addons/includes/languages/trans_dash.php:102 dash/lib/app.php:359
-#: dash/lib/app.php:360 sarshomar/includes/languages/trans_dash.php:480
+#: dash/lib/app.php:360 dash/lib/user.php:185
+#: sarshomar/includes/languages/trans_dash.php:480
 msgid "Mr"
 msgstr "آقای"
 
 #: dash/addons/includes/languages/trans_dash.php:103 dash/lib/app.php:364
-#: dash/lib/app.php:365 sarshomar/includes/languages/trans_dash.php:481
+#: dash/lib/app.php:365 dash/lib/user.php:189
+#: sarshomar/includes/languages/trans_dash.php:481
 msgid "Mrs"
 msgstr "خانم"
 
@@ -2831,7 +2829,7 @@ msgstr "هیچ فایل پشتیبانی یافت نشد"
 
 #: dash/addons/includes/languages/trans_dash.php:201
 #: sarshomar/includes/languages/trans_dash.php:246
-#: sarshomar/includes/lib/tg/hafez.php:125
+#: sarshomar/includes/lib/tg/hafez.php:144
 msgid "Page"
 msgstr "صفحه"
 
@@ -2939,7 +2937,7 @@ msgstr "تمامی بازدیدکنندگان حذف شده"
 msgid "Author"
 msgstr "نویسنده"
 
-#: dash/addons/includes/languages/trans_dash.php:227
+#: dash/addons/includes/languages/trans_dash.php:227 dash/lib/user.php:178
 #: sarshomar/includes/languages/trans_dash.php:265
 msgid "Without name"
 msgstr "بدون نام"
@@ -10022,6 +10020,27 @@ msgstr "سیستم"
 msgid "update git repository"
 msgstr "مخازن گیت پروژه را به روزرسانی کرد"
 
+#: dash/lib/app/log/caller/su/su_phpBug.php:8
+msgid "System have a php bug!!"
+msgstr "سیستم باگ داره!"
+
+#: dash/lib/app/log/caller/su/su_phpBug.php:12
+msgid "PHP bug!"
+msgstr "پی‌اچ‌پی باگ!"
+
+#: dash/lib/app/log/caller/su/su_phpBug.php:14
+#: dash/lib/app/log/caller/su/su_sqlError.php:15
+msgid "Bug"
+msgstr "باگ"
+
+#: dash/lib/app/log/caller/su/su_sqlError.php:9
+msgid "Database have error!!"
+msgstr "خطا در پایگاه‌داده!!"
+
+#: dash/lib/app/log/caller/su/su_sqlError.php:13
+msgid "Sql error!"
+msgstr "خطای دیتابیس!"
+
 #: dash/lib/app/log/caller/su/su_upgradeDataBase.php:10
 msgid "upgrade database to new version"
 msgstr "دیتابیس را به نسخه جدید به‌روزرسانی کرد"
@@ -10077,14 +10096,14 @@ msgstr "تیکت جدیدی اضافه کرد"
 #: dash/lib/app/log/caller/ticket/ticket_answerTicketAlert.php:12
 #: dash/lib/app/log/caller/ticket/ticket_answerTicketAlertSend.php:12
 #: dash/lib/app/log/caller/ticket/ticket_answerTicketAlertSend.php:54
-#: dash/lib/app/log/caller/ticket/ticket_answerTicketAlertSend.php:75
+#: dash/lib/app/log/caller/ticket/ticket_answerTicketAlertSend.php:76
 msgid "Regards"
 msgstr "با احترام"
 
 #: dash/lib/app/log/caller/ticket/ticket_answerTicketAlert.php:12
 #: dash/lib/app/log/caller/ticket/ticket_answerTicketAlertSend.php:12
 #: dash/lib/app/log/caller/ticket/ticket_answerTicketAlertSend.php:54
-#: dash/lib/app/log/caller/ticket/ticket_answerTicketAlertSend.php:75
+#: dash/lib/app/log/caller/ticket/ticket_answerTicketAlertSend.php:76
 msgid "Ticket :val answered"
 msgstr "تیکت :val پاسخ داده شد"
 
@@ -11020,7 +11039,7 @@ msgstr "ارسال بازخورد"
 
 #: dash/lib/social/telegram/commands/ermile.php:303
 #: dash/lib/social/telegram/commands/ermileInline.php:90
-#: sarshomar/includes/lib/tg/hafez.php:139
+#: sarshomar/includes/lib/tg/hafez.php:156
 msgid "Open :val website"
 msgstr "بازکردن وب‌سایت :val"
 
@@ -11431,6 +11450,10 @@ msgstr " و :min دقیقه"
 #: dash/lib/utility/ip.php:31
 msgid "Your ip is blocked"
 msgstr "آی‌پی شما بلاک شده است"
+
+#: dash/lib/utility/ip.php:31
+msgid "Please contact to administrator"
+msgstr "لطفا با مدیر سیستم تماس بگیرید"
 
 #: dash/lib/utility/payment/pay.php:43
 msgid "Invalid amount"
@@ -12303,7 +12326,6 @@ msgid "Changelog"
 msgstr "پیشرفت پروژه"
 
 #: sarshomar/includes/languages/trans_project.php:12
-#: sarshomar/includes/lib/tg/hafez.php:90
 msgid "Soon"
 msgstr "بزودی"
 
@@ -17604,18 +17626,18 @@ msgstr "ممنون از پاسخ به سوالات ما"
 msgid "Survey List"
 msgstr "لیست پرسشنامه‌ها"
 
-#: sarshomar/includes/lib/tg/hafez.php:72
+#: sarshomar/includes/lib/tg/hafez.php:73
 msgid "Read it"
 msgstr "بخوان"
 
-#: sarshomar/includes/lib/tg/hafez.php:86 sarshomar/includes/lib/tg/hafez.php:119
-#: sarshomar/includes/lib/tg/hafez.php:124
+#: sarshomar/includes/lib/tg/hafez.php:87 sarshomar/includes/lib/tg/hafez.php:91
+#: sarshomar/includes/lib/tg/hafez.php:133 sarshomar/includes/lib/tg/hafez.php:143
 msgid "Fal of Hafez"
 msgstr "فال حافظ"
 
-#: sarshomar/includes/lib/tg/hafez.php:104
-msgid "Lets go"
-msgstr "بزن بریم"
+#: sarshomar/includes/lib/tg/hafez.php:118
+msgid "Read it for me"
+msgstr "برام بخون"
 
 #: sarshomar/includes/lib/tg/inline.php:84 sarshomar/includes/lib/tg/survey.php:168
 msgid "Answer via site"
@@ -17699,26 +17721,26 @@ msgstr "انصراف از پاسخ‌دهی به پرسشنامه و خروج ا
 msgid "Skip current question and get next one"
 msgstr "رد کردن سوال جاری و درخواست سوال بعدی"
 
-#: sarshomar/includes/lib/tg/step_answering.php:130
+#: sarshomar/includes/lib/tg/step_answering.php:131
 #: sarshomar/includes/lib/tg/survey.php:128 sarshomar/includes/lib/tg/survey.php:243
 #: sarshomar/includes/lib/tg/survey.php:361
 msgid "Sarshomar website"
 msgstr "وب‌سایت سرشمار"
 
-#: sarshomar/includes/lib/tg/step_answering.php:139
+#: sarshomar/includes/lib/tg/step_answering.php:140
 msgid "How are you!"
 msgstr "حالتون چطوره!"
 
-#: sarshomar/includes/lib/tg/step_answering.php:156
-#: sarshomar/includes/lib/tg/step_answering.php:167
+#: sarshomar/includes/lib/tg/step_answering.php:157
+#: sarshomar/includes/lib/tg/step_answering.php:168
 msgid "Answer received"
 msgstr "پاسخ دریافت شد"
 
-#: sarshomar/includes/lib/tg/step_answering.php:161
+#: sarshomar/includes/lib/tg/step_answering.php:162
 msgid "Item :val selected"
 msgstr "گزینه :val ‌انتخاب شد"
 
-#: sarshomar/includes/lib/tg/step_answering.php:172
+#: sarshomar/includes/lib/tg/step_answering.php:173
 msgid "Your answer"
 msgstr "پاسخ شما"
 
@@ -17798,6 +17820,12 @@ msgid "Please start answer to survey in private message not in public!"
 msgstr ""
 "لطفا فرآیند پاسخ‌دهی به پرسشنامه را در پیام خصوصی با من انجام دهید نه در یک مکان "
 "عمومی!"
+
+#~ msgid "Goodbye"
+#~ msgstr "خدانگهدار"
+
+#~ msgid "Lets go"
+#~ msgstr "بزن بریم"
 
 #~ msgid "Address line 2"
 #~ msgstr "آدرس ۲"
@@ -18072,9 +18100,6 @@ msgstr ""
 
 #~ msgid "Labels"
 #~ msgstr "برچسب‌ها"
-
-#~ msgid "Bug"
-#~ msgstr "باگ"
 
 #~ msgid "Feature"
 #~ msgstr "ویژگی"
