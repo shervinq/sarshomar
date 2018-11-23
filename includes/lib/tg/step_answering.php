@@ -53,6 +53,7 @@ class step_answering
 				'reply_markup' => ['remove_keyboard' => true]
 			];
 			bot::sendMessage($initMsg);
+			sleep(2);
 		}
 		// on save reset try
 		step::checkFalseTry('reset');
