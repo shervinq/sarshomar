@@ -31,7 +31,7 @@ class hafez
 			case '/fal1':
 			case 'cb_hafez_say_something':
 				// if start with callback answer callback
-				// if(bot::isCallback())
+				if(bot::isCallback())
 				{
 					self::fal();
 				}
@@ -56,9 +56,12 @@ class hafez
 	{
 		bot::ok();
 
-		$text .= '<b>فال #حافظ</b>'. "\n";
-		$text .= ''. "\n";
-		$text .= ''. "\n";
+		$text .= '#افل_حافظ'. "\n";
+		$text .= 'میگن اول نیت کنید بعد فال بگیرید'. "\n";
+		$text .= 'هر وقت آماده بودید می‌تونید دکمه زیر رو بزنید تا فالتون رو تحویل بگیرید'. "\n\n";
+		$text .= 'ای حافظ شیرازی'. "\n";
+		$text .= 'تو محرم هر رازی'. "\n";
+		$text .= ' تو را به خدا و به شاخ نبات ات قسم می دهم که هر چه صلاح و مصلحت می بینی برایم آشکار و آرزوی مرا بر آورده سازی.'. "\n";
 		$text .= ''. "\n";
 
 		$result =
@@ -70,7 +73,7 @@ class hafez
 				[
 					[
 						[
-							'text' => T_("Read it"),
+							'text' => 'بریم حافظ جون',
 							'callback_data' => 'hafez_say_something',
 						],
 					]
