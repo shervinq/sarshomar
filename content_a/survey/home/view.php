@@ -31,11 +31,16 @@ class view
 			$dashboard_detail['month_detail'] = \dash\date::month_precent();
 
 			\dash\data::dashboardDetail($dashboard_detail);
+
+
+			$questionsData = \lib\app\question::block_survey($id);
+			\dash\data::questions($questionsData);
 		}
 		else
 		{
 			\dash\redirect::to(\dash\url::here());
 		}
+
 	}
 }
 ?>

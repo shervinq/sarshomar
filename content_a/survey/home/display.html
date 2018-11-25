@@ -6,31 +6,85 @@
 {%block pageContent%}
 
 <div class="f">
- <div class="c4 s4">{{block ("stSetting")}}</div>
- <div class="c4 s4">{{block ("stQuestion")}}</div>
- <div class="c4 s4">{{block ("stSort")}}</div>
+  <div class="c6">
+    <div class="f">
+     <div class="c4 s4">{{block ("stSetting")}}</div>
+     <div class="c4 s4">{{block ("stQuestion")}}</div>
+     <div class="c4 s4">{{block ("stSort")}}</div>
+    </div>
+
+
+    <div class="f">
+     <div class="c4 s4">{{block ("stLink")}}</div>
+     <div class="c4 s4">{{block ("stReport")}}</div>
+     <div class="c4 s4">{{block ("prDate")}}</div>
+    </div>
+    {%if false%}
+    <div class="f">
+      <div class="c9 s12">
+        {{block ("chart_primary")}}
+      </div>
+      <div class="c3 s12">
+        {{block ("stChartDetail")}}
+      </div>
+    </div>
+    {%endif%}
+  </div>
+  <div class="c6">
+        {{block ("bQuestions")}}
+  </div>
 </div>
 
 
-<div class="f">
- <div class="c4 s4">{{block ("stLink")}}</div>
- <div class="c4 s4">{{block ("stReport")}}</div>
- <div class="c4 s4">{{block ("prDate")}}</div>
-</div>
-{%if false%}
-<div class="f">
-  <div class="c9 s12">
-    {{block ("chart_primary")}}
-  </div>
-  <div class="c3 s12">
-    {{block ("stChartDetail")}}
-  </div>
-</div>
-{%endif%}
+
 
 
 
 {%endblock%}
+
+
+
+
+{%block bQuestions%}
+<div class="cbox fs10 mLR5">
+  <h3>
+    <span>{%trans "Survey Questions"%}</span>
+    <a class="floatRa badge primary" href='{{url.here}}/question/add?id={{requestGET.id}}'><i class="pRa5 sf-plus"></i>{%trans "Add new"%}</a>
+    <a class="floatRa badge secondary mRa5" href='{{url.here}}/sort?id={{requestGET.id}}'><i class="pRa5 sf-list-ol"></i>{%trans "Question Sorter"%}</a>
+  </h3>
+
+
+  {%for key, value in questions%}
+  <a href="{{url.here}}/question/general?id={{requestGET.id}}&questionid={{value.id}}" class="msg {%if value.require%}danger2{%else%}success2{%endif%} f">
+    <div class="cauto pRa10">{{(key + 1) | fitNumber}}</div>
+    <div class="cauto pRa10">
+      {%if value.require%}
+          <i title='{%trans "Required answer"%}' class="fs12 sf-lock"></i>
+      {%else%}
+          <i title='{%trans "Optional to answer"%}' class="fs12 sf-unlock"></i>
+      {%endif%}
+    </div>
+
+    <div class="c Ra10">
+        {%if value.title%}<div class="txtB">{{value.title}}</div>{%endif%}
+        {%if value.desc%}<div class="mT10">{{value.desc}}</div>{%endif%}
+        {%if not value.title and not value.desc%}<i>{%trans "Untitled"%}</i>{%endif%}
+    </div>
+
+    <div class="cauto pLa10 os"><small class="badge light">{{value.type_detail.title}}</small></div>
+  </a>
+  {%endfor%}
+
+
+</div>
+{%endblock%}
+
+
+
+
+
+
+
 
 
 
