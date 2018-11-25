@@ -137,7 +137,7 @@ class questionSender
 
 		if(isset($_questionData['media']['file']))
 		{
-			$bodyTxt .= "\n". "<a href='". $_questionData['media']['file']. "'>". T_("Image"). "</a>";
+			$bodyTxt .= "\n". "<a href='". $_questionData['media']['file']. "'>". T_("File"). "</a>";
 		}
 
 		// get user answer list
