@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Sarshomar - Persian\n"
-"POT-Creation-Date: 2018-11-25 16:23+0330\n"
-"PO-Revision-Date: 2018-11-25 16:23+0330\n"
+"POT-Creation-Date: 2018-11-25 16:42+0330\n"
+"PO-Revision-Date: 2018-11-25 16:42+0330\n"
 "Last-Translator: Javad <J.Evazzadeh@gmail.com>\n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -1246,12 +1246,12 @@ msgstr "با نام کاربری وارد :name شوید"
 msgid "We can not find your detail to signup"
 msgstr "ما اطلاعات شما را برای ثبت نام پیدا نکردیم"
 
-#: dash/addons/content_enter/verify/later/model.php:29
+#: dash/addons/content_enter/verify/later/model.php:36
 #: dash/addons/content_enter/verify/model.php:80
 msgid "We can not signup you"
 msgstr "ما نمی‌توانیم شما را ثبت‌نام کنیم"
 
-#: dash/addons/content_enter/verify/later/model.php:40
+#: dash/addons/content_enter/verify/later/model.php:47
 msgid "Invalid detail for signup!, Please try again"
 msgstr ""
 "ما اطلاعات اشتباهی از شما برای ثبت نام دریافت کرده ایم! لطفا مجددا تلاش کنید"
@@ -2829,7 +2829,6 @@ msgstr "هیچ فایل پشتیبانی یافت نشد"
 
 #: dash/addons/includes/languages/trans_dash.php:201
 #: dash/lib/social/telegram/commands/hafez.php:158
-#: dash/lib/utility/pagination.php:342 dash/lib/utility/pagination.php:377
 #: sarshomar/includes/languages/trans_dash.php:249
 msgid "Page"
 msgstr "صفحه"
@@ -11488,22 +11487,13 @@ msgstr "آی‌پی شما بلاک شده است"
 msgid "Please contact to administrator"
 msgstr "لطفا با مدیر سیستم تماس بگیرید"
 
-#: dash/lib/utility/pagination.php:349
-msgid "of"
-msgstr "از"
+#: dash/lib/utility/pagination.php:119
+msgid "page :current of :total"
+msgstr "صفحه :current از :total"
 
-#: dash/lib/utility/pagination.php:356
-msgid "Show record"
-msgstr "نمایش رکورد"
-
-#: dash/lib/utility/pagination.php:361
-#: sarshomar/includes/languages/trans_project.php:116
-msgid "to"
-msgstr "به"
-
-#: dash/lib/utility/pagination.php:371
-msgid "from"
-msgstr "از"
+#: dash/lib/utility/pagination.php:121
+msgid "Show record :min to :max of :total"
+msgstr "نمایش رکورد :min تا :max از :total"
 
 #: dash/lib/utility/payment/pay.php:43
 msgid "Invalid amount"
@@ -12693,6 +12683,10 @@ msgstr "تمام جامعه سرشمار"
 #: sarshomar/includes/languages/trans_project.php:115
 msgid "Poll timespan"
 msgstr "بازه زمانی نظرسنجی"
+
+#: sarshomar/includes/languages/trans_project.php:116
+msgid "to"
+msgstr "به"
 
 #: sarshomar/includes/languages/trans_project.php:117
 msgid "Not set"
@@ -17955,6 +17949,15 @@ msgid "Please start answer to survey in private message not in public!"
 msgstr ""
 "لطفا فرآیند پاسخ‌دهی به پرسشنامه را در پیام خصوصی با من انجام دهید نه در یک مکان "
 "عمومی!"
+
+#~ msgid "of"
+#~ msgstr "از"
+
+#~ msgid "Show record"
+#~ msgstr "نمایش رکورد"
+
+#~ msgid "from"
+#~ msgstr "از"
 
 #~ msgid "Choice"
 #~ msgstr "انتخاب"
