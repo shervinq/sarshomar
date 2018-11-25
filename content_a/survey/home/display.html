@@ -6,7 +6,7 @@
 {%block pageContent%}
 
 <div class="f">
-  <div class="c6">
+  <div class="c6 m12 s12">
     <div class="f">
      <div class="c4 s4">{{block ("stSetting")}}</div>
      <div class="c4 s4">{{block ("stQuestion")}}</div>
@@ -30,7 +30,7 @@
     </div>
     {%endif%}
   </div>
-  <div class="c6">
+  <div class="c6 m12 s12">
         {{block ("bQuestions")}}
   </div>
 </div>
@@ -56,7 +56,7 @@
 {%for key, value in questionList%}
   <a href="{{url.here}}/question/general?id={{requestGET.id}}&questionid={{value.id}}" class="msg {%if value.require%}danger2{%else%}success2{%endif%} f">
     <div class="cauto pRa10">{{(key + 1) | fitNumber}}</div>
-    <div class="cauto pRa10">
+    <div class="cauto pRa10 s0">
       {%if value.require%}
           <i title='{%trans "Required answer"%}' class="fs12 sf-lock"></i>
       {%else%}
@@ -66,7 +66,7 @@
 
     <div class="c Ra10">
         {%if value.title%}<div class="txtB">{{value.title}}</div>{%endif%}
-        {%if value.desc%}<div class="mT10">{{value.desc}}</div>{%endif%}
+        {%if value.desc%}<div class="mT10 s0">{{value.desc}}</div>{%endif%}
         {%if not value.title and not value.desc%}<i>{%trans "Untitled"%}</i>{%endif%}
     </div>
 
