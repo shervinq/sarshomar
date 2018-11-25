@@ -213,7 +213,7 @@ class twigTransTerms
 	echo T_("Learn More");                                                            // Line 32
 	echo T_("Terms of Service");                                                      // Line 34
 	echo T_("Privacy Policy");                                                        // Line 12
-	echo T_("Support");                                                               // Line 38
+	echo T_("Support");                                                               // Line 380
 	echo T_("Contact us");                                                            // Line 43
 	echo T_("Logo");                                                                  // Line 45
 	echo T_("Latest News");                                                           // Line 51
@@ -556,7 +556,7 @@ class twigTransTerms
 
 	//--------------------------------------------content_a\question\home\display.html
 	echo T_("Have Media");                                                            // Line 96
-	echo T_("Type");                                                                  // Line 357
+	echo T_("Type");                                                                  // Line 21
 	echo T_("Text");                                                                  // Line 22
 	echo T_("Require");                                                               // Line 71
 	echo T_("Operation");                                                             // Line 24
@@ -590,8 +590,10 @@ class twigTransTerms
 	echo T_("Is require");                                                            // Line 329
 	echo T_("Choise title");                                                          // Line 339
 	echo T_("Save");                                                                  // Line 198
-	echo T_("Choice");                                                                // Line 380
-	echo T_("Setting");                                                               // Line 136
+	echo T_("Question Type");                                                         // Line 357
+	echo T_("Question Title");                                                        // Line 367
+	echo T_("Question Options");                                                      // Line 380
+	echo T_("Question Settings");                                                     // Line 391
 	echo T_("Show preview");                                                          // Line 401
 	echo T_("Add");                                                                   // Line 194
 	echo T_("Download PDF");                                                          // Line 61
@@ -664,6 +666,7 @@ class twigTransTerms
 	echo T_("Your Survey");                                                           // Line 49
 	echo T_("Without welcome message");                                               // Line 61
 	echo T_("Without thank you message");                                             // Line 100
+	echo T_("Setting");                                                               // Line 136
 	echo T_("No user answer to this survey yet!");                                    // Line 206
 	echo T_("Answer chart");                                                          // Line 217
 
@@ -727,7 +730,7 @@ class twigTransTerms
 	echo T_("Total questions");                                                       // Line 355
 	echo T_("Completed");                                                             // Line 358
 	echo T_("Restart");                                                               // Line 367
-	echo T_("Edit Survey");                                                           // Line 373
+	echo T_("Back to survey dashboard");                                              // Line 373
 
 	//---------------------public_html\static\siftal\fonts\siftal\icons-reference.html
 
