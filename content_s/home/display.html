@@ -80,7 +80,8 @@
 
 
 {%block startBtn%}
- <a href="{{url.pwd}}" data-ajaxify data-data='{"start":"survey", "{{XKEY}}":"{{XVALUE}}"}' data-method='post' class="btn outline lg success block" data-shortkey="13">{%trans "Start"%} <kbd>Enter</kbd></a>
+ <a href="{{url.pwd}}" data-ajaxify data-data='{"start":"survey", "{{XKEY}}":"{{XVALUE}}"}' data-method='post' class="btn outline lg success block" data-shortkey="13">{%if surveyRow.setting.buttontitle%}{{surveyRow.setting.buttontitle}}{%else%}{%trans "Start"%}{%endif%} <kbd>Enter</kbd></a>
+
 {%endblock%}
 
 
