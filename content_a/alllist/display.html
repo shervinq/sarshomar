@@ -2,63 +2,82 @@
 
 
 
+
+{%block pageContent%}
+
+<table class="tbl1 v1">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>{%trans "Code"%}</th>
+      <th>{%trans "Title"%}</th>
+      <th>{%trans "Question"%}</th>
+      <th>{%trans "Answer"%}</th>
+      <th>{%trans "Status"%}</th>
+      <th>{%trans "Created on"%}</th>
+      <th>{%trans "Last update"%}</th>
+      <th>{%trans "Creator"%}</th>
+    </tr>
+  </thead>
+  <tbody>
+{%for key, value in dataTable%}
+{%set cardColor%}
+	{%if value.status == 'publish'%}blue{%elseif value.status == 'draft'%}green{%elseif value.status == 'deleted'%}red{%else%}black{%endif%}
+{%endset%}
+
+    <tr class="{%if value.status == 'publish'%}positive{%elseif value.status == 'draft'%}{%else%}negative{%endif%}">
+      <td>{{loop.index | fitNumber}}</td>
+      <td class="collapsing"><a href='{{url.here}}/survey?id={{value.id}}'>{{value.id}}</a></td>
+      <td>
+        <div class="txtB">{{value.title}}</div>
+        <div>{{value.desc}}</div>
+      </td>
+      <td class="collapsing">
+        {%if value.countblock%}
+          {{value.countblock | fitNumber}} <small>{%trans "Question"%}</small>
+        {%else%}
+          <small>{%trans "Without question"%}</small>
+        {%endif%}
+      </td>
+      <td class="collapsing">
+        {%if value.answer_count%}
+          {{value.answer_count | fitNumber}} <small>{%trans "Response"%}</small>
+        {%else%}
+          <small>{%trans "No responses"%}</small>
+        {%endif%}
+      </td>
+      <td class="collapsing fs08">{%set myStatus = value.status%}<a href="{{url.this}}?status={{value.status}}">{%if value.status == 'publish'%}<i class="sf-check mRa5 fc-green"></i>{%endif%}{%trans myStatus%}</a></td>
+      <td class="collapsing fs09">
+        <span title='{{value.datecreated | dt(true)}}'>{{value.datecreated | dt('human', 'year')}}</span>
+      </td>
+      <td class="collapsing fs09">
+        <span title='{{value.datemodified | dt(true)}}'>{{value.datemodified | dt('human', 'year')}}</span>
+      </td>
+      <td>-</td>
+    </tr>
+
+{%endfor%}
+  </tbody>
+</table>
+
+{%include display.pagination%}
+
+{{block('htmlSearchBox')}}
+
+{%endblock%}
+
+
+
+
 {%block htmlSearchBox%}
-<div class="cbox fs12">
+<div class="cbox fs10">
   <form method="get" action='{{url.this}}' data-action>
     <div class="input">
-      <input type="search" name="q" placeholder='{%trans "Search"%}' id="q" value="{{requestGET.q}}" autofocus autocomplete='off'>
+      <input type="search" name="q" placeholder='{%trans "Search"%}' id="q" value="{{requestGET.q}}" autocomplete='off'>
 
       <button class="addon btn ">{%trans "Search" %}</button>
     </div>
   </form>
 </div>
-{%endblock%}
-
-{%block pageContent%}
-{{block('htmlSearchBox')}}
-<div class='middle normal live f justify-center'>
-
-
-{%for key, value in dataTable%}
-
-{%set cardColor%}
-	{%if value.status == 'publish'%}blue{%elseif value.status == 'draft'%}green{%elseif value.status == 'deleted'%}red{%else%}black{%endif%}
-{%endset%}
-  <a href='{{url.here}}/survey?id={{value.id}}' class="vcard shadow c3 {{cardColor}} mA10 s6" data-live="{%if value.status == 'publish'%}on{%elseif value.status == 'draft'%}half{%else%}off{%endif%}" >
-    <div class="content title">
-      <div class="header">{{value.title}}</div>
-      <div class="meta">{{value.desc}}</div>
-    </div>
-    <div class="footer txtC">{%set myStatus = value.status%} {%trans myStatus%}</div>
-    <div class="footer f">
-      <div>
-        <i class="compact sf-question-circle"></i> <span>{%if value.countblock%} {{value.countblock | fitNumber}} {%trans "Question"%}{%else%}{%trans "Without question"%}{%endif%}</span>
-      </div>
-      <div>
-        <i class="compact sf-users"></i> <span>{%if value.answer_count%}{{value.answer_count | fitNumber}} {%trans "Response"%}{%else%}{%trans "No responses"%}{%endif%}</span>
-      </div>
-    </div>
-
-  </a>
-{%endfor%}
-
-</div>
-{%include display.pagination%}
-{%endblock%}
-
-
-
-{%block sidenav%}
-<li><a href="{{url.here}}"><i class='sf-tachometer'></i> <span>{% trans "Questionnaires" %}</span></a></li>
-<li>
-  <ul>
-{%for key, value in dataTable%}
-    <li><a href="{{url.here}}/survey?id={{value.id}}"><i class='floatRa mRa10 fc-mute sf-question-circle'></i> <span>{{value.title}}</span></a></li>
-{%endfor%}
-
-  </ul>
-</li>
-<li><a href="{{url.here}}/survey/add"><i class='sf-plus'></i> <span>{%trans "Add new survey"%}</span></a></li>
-
 {%endblock%}
 

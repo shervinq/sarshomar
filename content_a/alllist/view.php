@@ -16,7 +16,7 @@ class view
 		\dash\data::page_pictogram('tachometer');
 
 		$arg               = [];
-		$arg['limit'] = 20;
+		$arg['limit'] = 15;
 		$q = \dash\request::get('q');
 		$dataTable         = \lib\app\survey::list($q, $arg);
 		\dash\data::dataTable($dataTable);
