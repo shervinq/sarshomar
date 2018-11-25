@@ -48,10 +48,19 @@
 {%block bQuestions%}
 <div class="cbox fs10 mLR5">
   <h3>
-    <span>{%trans "Survey Questions"%}</span>
+    <span>{%trans "Your Survey"%}</span>
     <a class="floatRa badge primary" href='{{url.here}}/question/add?id={{requestGET.id}}'><i class="pRa5 sf-plus"></i>{%trans "Add new"%}</a>
     <a class="floatRa badge secondary mRa5" href='{{url.here}}/sort?id={{requestGET.id}}'><i class="pRa5 sf-list-ol"></i>{%trans "Question Sorter"%}</a>
   </h3>
+
+  <div class="msg info2 fs11">
+    <div class="txtB">
+      <h3 class="mB10-f"><a href="{{url.here}}/survey/welcome?id={{requestGET.id}}">{%trans "Welcome message"%}<span class="badge floatRa">{%trans "Edit"%}</span></a></h3>
+      {%if surveyRow.welcomemedia%}<i title='{%trans "Have Media"%}' class="fs12 sf-file-image-o mRa5"></i>{%endif%}
+      {{surveyRow.welcometitle}}
+    </div>
+    <div>{{surveyRow.welcomedesc | raw}}</div>
+  </div>
 
 {%for key, value in questionList%}
   <a href="{{url.here}}/question/general?id={{requestGET.id}}&questionid={{value.id}}" class="msg {%if value.require%}danger2{%else%}success2{%endif%} f">
@@ -78,7 +87,15 @@
   </a>
 {%endfor%}
 
+  <div class="msg info2 fs11">
+    <h3 class="mB10-f"><a href="{{url.here}}/survey/thankyou?id={{requestGET.id}}">{%trans "Thank you message"%}<span class="badge floatRa">{%trans "Edit"%}</span></a></h3>
 
+    <div class="txtB">
+      {%if surveyRow.thankyoumedia%}<i title='{%trans "Have Media"%}' class="fs12 sf-file-image-o mRa5"></i>{%endif%}
+      {{surveyRow.thankyoutitle}}
+    </div>
+    <div>{{surveyRow.thankyoudesc | raw}}</div>
+  </div>
 
 </div>
 {%endblock%}
