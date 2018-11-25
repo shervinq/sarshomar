@@ -2,13 +2,14 @@
 
 
 {%block sidenav%}
-<li><a href="{{url.here}}"><i class='sf-tachometer'></i> <span>{% trans "Questionnaires" %}</span></a></li>
+<li><a href="{{url.here}}" data-shortkey="118" data-shortkey-prevent data-shortkey-timeout='1000'><i class='sf-tachometer'></i> <span>{% trans "Questionnaires" %}</span><kbd class="floatRa fs08">F7</kbd></a></li>
 
 {%if surveyRow.id%}
 <li class="title">{{surveyRow.title}}</li>
 
-<li><a href="{{url.here}}/survey?id={{surveyRow.id}}"><i class='sf-gauge'></i> <span>{% trans "Dashboard" %}</span></a></li>
-<li><a href="{{url.here}}/question?id={{surveyRow.id}}"><i class='sf-list-ul'></i> <span>{% trans "Questions" %}</span></a></li>
+<li><a href="{{url.here}}/survey?id={{surveyRow.id}}" data-shortkey="115" data-shortkey-prevent data-shortkey-timeout='1000'><i class='sf-gauge'></i> <span>{% trans "Dashboard" %}</span><kbd class="floatRa fs08">F4</kbd></a></li>
+
+<li><a href="{{url.here}}/question?id={{surveyRow.id}}" data-shortkey="114" data-shortkey-prevent data-shortkey-timeout='1000'><i class='sf-list-ul'></i> <span>{% trans "Questions" %}</span><kbd class="floatRa fs08">F3</kbd></a></li>
 <li><a href="{{url.here}}/sort?id={{surveyRow.id}}"><i class='sf-refresh'></i> <span>{% trans "Question Sorter" %}</span></a></li>
 <li>
   <a href="{{url.here}}/survey/general?id={{surveyRow.id}}"><i class='sf-cog'></i> <span>{% trans "Settings" %}</span></a>
@@ -19,13 +20,14 @@
 
   </ul>
 </li>
-<li><a href="{{url.here}}/report?id={{surveyRow.id}}"><i class='sf-analytics-chart-graph'></i> <span>{% trans "Reports" %}</span></a></li>
-<li><a href="{{url.kingdom}}/s/{{surveyRow.id}}" data-direct><i class='sf-heart-o'></i> <span>{% trans "Live" %}</span></a></li>
+<li><a href="{{url.here}}/report?id={{surveyRow.id}}" data-shortkey="119" data-shortkey-prevent data-shortkey-timeout='1000'><i class='sf-analytics-chart-graph'></i> <span>{% trans "Reports" %}</span><kbd class="floatRa fs08">F8</kbd></a></li>
+
+<li><a href="{{url.kingdom}}/s/{{surveyRow.id}}" data-direct data-shortkey="113" data-shortkey-prevent data-shortkey-timeout='1000'><i class='sf-heart-o'></i> <span>{% trans "Live Preview" %}</span><kbd class="floatRa fs08">F2</kbd></a></li>
 
 
 {%endif%}
 
-<li><a data-direct href="{{url.kingdom}}/support"><i class='sf-life-ring'></i> <span>{% trans "Support" %}</span></a></li>
+<li><a data-direct href="{{url.kingdom}}/support" data-shortkey="112" data-shortkey-prevent data-shortkey-timeout='1000'><i class='sf-life-ring'></i> <span>{% trans "Support" %}</span><kbd class="floatRa fs08">F1</kbd></a></li>
 
 {%endblock%}
 
