@@ -27,7 +27,7 @@ class view
 			}
 
 			\dash\data::dataTable($dataTable);
-
+			\dash\data::questionList($dataTable);
 		}
 		else
 		{

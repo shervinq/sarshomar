@@ -34,7 +34,7 @@ class view
 
 
 			$questionsData = \lib\app\question::block_survey($id);
-			\dash\data::questions($questionsData);
+			\dash\data::questionList($questionsData);
 		}
 		else
 		{
