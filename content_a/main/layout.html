@@ -12,18 +12,18 @@
 <li><a href="{{url.here}}/question?id={{surveyRow.id}}" data-shortkey="114" data-shortkey-prevent data-shortkey-timeout='1000'><i class='sf-list-ul'></i> <span>{% trans "Questions" %}</span><kbd class="floatRa fs08">F3</kbd></a></li>
 <li>
 	<ul>
-		<li><a href="{{url.here}}/question/add?id={{surveyRow.id}}"><i class='floatRa mRa10 fc-mute sf-plus-circle'></i> <span>{% trans "Add new question" %}</span></a></li>
-		<li><a href="{{url.here}}/sort?id={{surveyRow.id}}"><i class='floatRa mRa10 fc-mute sf-refresh'></i> <span>{% trans "Question Sorter" %}</span></a></li>
+		<li><a href="{{url.here}}/question/add?id={{surveyRow.id}}">{% trans "Add new question" %}</a></li>
+		<li><a href="{{url.here}}/sort?id={{surveyRow.id}}">{% trans "Question Sorter" %}</a></li>
 	</ul>
 </li>
 
 <li>
   <a href="{{url.here}}/survey/general?id={{surveyRow.id}}"><i class='sf-cog'></i> <span>{% trans "Settings" %}</span></a>
   <ul>
-    {%if false%}<li><a href="{{url.here}}/survey/privacy?id={{surveyRow.id}}"><i class='floatRa mRa10 fc-mute sf-lock'></i> <span>{%trans "Privacy"%}</span></a></li>{%endif%}
-    <li><a href="{{url.here}}/survey/welcome?id={{surveyRow.id}}"><i class='floatRa mRa10 fc-mute sf-hourglass-start'></i> <span>{%trans "Welcome message"%}</span></a></li>
-    <li><a href="{{url.here}}/survey/thankyou?id={{surveyRow.id}}"><i class='floatRa mRa10 fc-mute sf-flag-checkered'></i> <span>{%trans "Thank you message"%}</span></a></li>
-    <li><a href="{{url.here}}/survey/status?id={{surveyRow.id}}"><i class='floatRa mRa10 fc-mute sf-publish'></i> <span>{%trans "Survey status"%}</span></a></li>
+    {%if false%}<li><a href="{{url.here}}/survey/privacy?id={{surveyRow.id}}">{%trans "Privacy"%}</a></li>{%endif%}
+    <li><a href="{{url.here}}/survey/welcome?id={{surveyRow.id}}">{%trans "Welcome message"%}</a></li>
+    <li><a href="{{url.here}}/survey/thankyou?id={{surveyRow.id}}">{%trans "Thank you message"%}</a></li>
+    <li><a href="{{url.here}}/survey/status?id={{surveyRow.id}}">{%trans "Survey status"%}</a></li>
 
   </ul>
 </li>
