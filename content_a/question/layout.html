@@ -424,14 +424,32 @@
 
 
 {%block imedia%}
+
 {%if dataRow.media.file%}
-  <div class="mediaBox mB10">
-    <img src="{{dataRow.media.file}}" alt="{{dataRow.title}}" id="logoPreview">
-  </div>
+   <div class="mediaBox mB10">
+
+{% set myExt = dataRow.media.file[(dataRow.media.file | length)-3:3] %}
+ {%if myExt == 'mp4' %}
+    <video class="block" controls>
+     <source src="{{dataRow.media.file}}" type="video/mp4">
+    </video>
+ {%elseif myExt == 'mp3' %}
+    <audio class="block" controls>
+     <source src="{{dataRow.media.file}}" type="audio/mp3">
+    </audio>
+ {%elseif myExt == 'png' or myExt == 'jpg' or myExt == 'jpeg' or myExt == 'gif'%}
+    <img src="{{dataRow.media.file}}" alt="{{myTitle.title}}">
+ {%elseif myExt == 'pdf' %}
+    <a class="btn primary outline block" href="{{dataRow.media.file}}">{%trans "Download PDF"%}</a>
+ {%else%}
+    <a class="btn primary outline block" href="{{dataRow.media.file}}">{%trans "Download File"%}</a>
+ {%endif%}
+   </div>
 {%endif%}
 
+
 <label for="media" class="block">{%trans "Image/Video"%}</label>
-<div class="input" title='{%trans "allowed extentions jpg, png. Max 1000Kb"%}'>
- <input type="file" accept="image/gif, image/jpeg, image/png" name="media" id="media" data-max="1000">
+<div class="input" title='{%trans "Max allowed size 1Mb"%}'>
+ <input type="file" name="media" id="media" data-max="1000">
 </div>
 {%endblock%}
