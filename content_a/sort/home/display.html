@@ -7,6 +7,15 @@
 <div class="cbox">
   <form method="post" >
 
+    <div class="msg info2 fs08">
+      <div class="txtB">
+        <h3 class="mB10-f"><a href="{{url.here}}/survey/welcome?id={{requestGET.id}}">{%trans "Welcome message"%}<span class="badge floatRa">{%trans "Edit"%}</span></a></h3>
+        {%if surveyRow.welcomemedia%}<i title='{%trans "Have Media"%}' class="fs12 sf-file-image-o mRa5"></i>{%endif%}
+        {{surveyRow.welcometitle}}
+      </div>
+      <div>{{surveyRow.welcomedesc | raw}}</div>
+    </div>
+
     <ul class="sortable">
 
 {%for key, value in questionList%}
@@ -39,6 +48,17 @@
 {%endfor%}
 
     </ul>
+
+    <div class="msg info2 fs08">
+      <h3 class="mB10-f"><a href="{{url.here}}/survey/thankyou?id={{requestGET.id}}">{%trans "Thank you message"%}<span class="badge floatRa">{%trans "Edit"%}</span></a></h3>
+
+      <div class="txtB">
+        {%if surveyRow.thankyoumedia%}<i title='{%trans "Have Media"%}' class="fs12 sf-file-image-o mRa5"></i>{%endif%}
+        {{surveyRow.thankyoutitle}}
+      </div>
+      <div>{{surveyRow.thankyoudesc | raw}}</div>
+    </div>
+
     <button class="btn success block mT25">{%trans "Save sort"%}</button>
   </form>
 
