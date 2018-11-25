@@ -65,7 +65,11 @@
     </div>
 
     <div class="c Ra10">
-        {%if value.title%}<div class="txtB">{{value.title}}</div>{%endif%}
+        <div class="txtB">
+          {%if value.media.file%}<i title='{%trans "Have Media"%}' class="fs12 sf-file-image-o mRa5"></i>{%endif%}
+          {{value.title}}
+        </div>
+
         {%if value.desc%}<div class="mT10 s0">{{value.desc}}</div>{%endif%}
         {%if not value.title and not value.desc%}<i>{%trans "Untitled"%}</i>{%endif%}
     </div>

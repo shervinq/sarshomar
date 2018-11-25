@@ -25,7 +25,10 @@
       <td class="collapsing txtB txtC">{{value.type_detail.title}}</td>
       <td>
         <a href="{{url.this}}/general?id={{requestGET.id}}&questionid={{value.id}}">
-        {%if value.title%}<div class="txtB">{{value.title}}</div>{%endif%}
+          <div class="txtB">
+            {%if value.media.file%}<i title='{%trans "Have Media"%}' class="fs12 sf-file-image-o mRa5"></i>{%endif%}
+            {{value.title}}
+          </div>
         {%if value.desc%}<div class="mT10 fs09 s0">{{value.desc}}</div>{%endif%}
         {%if not value.title and not value.desc%}<div>{%trans "Untitled"%}</div>{%endif%}
         </a>
