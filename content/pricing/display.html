@@ -1,0 +1,77 @@
+{%extends display.main%}
+
+
+{%block content%}
+<div class="main pad lg">
+  <div class="box">
+    <h2 class="sh large txtB">{{page.title}}</h2>
+  </div>
+
+  <div class="box in">
+
+    <p class="fs12">{%trans "We have no limit on our service."%} {%trans "Enjoy Sarshomar and if you find it as good service, you can donate as much as you want and we have no limit on your donation!"%}</p>
+
+    <p class="fs12">{%trans "This is new way."%} {%trans "We try to run this bussiness model and find pros and cons of it."%}</p>
+    <p class="fs12 msg info2">{%trans "We are develop Sarshomar in holidays and improve this project for our love not for money."%}</p>
+
+    <table class="tbl1 v1 txtC">
+      <thead>
+        <tr class="txtC">
+          <th></th>
+          <th>{%trans "Free"%}</th>
+          <th>{%trans "Enterprise"%}</th>
+        </tr>
+      </thead>
+      <tbody class="txtC">
+        <tr>
+          <td class="txtB">{%trans "Price"%}</td>
+          <td class="txtB">
+            <div class="mB25">{{"0" | fitNumber}}</div>
+            <div>
+              {%trans "You like it?"%}<br>
+              <a href="{{url.kingdom}}/account/billing"  data-direct>{%trans "Pay as much as you want!"%}</a></td>
+            </div>
+          <td><a href="{{url.kingdom}}/contact" class='btn outline success'>{%trans "Call us"%}</a></td>
+        </tr>
+
+        <tr>
+          <td colspan="4" class="txtLa primary2">{%trans "Data max limit"%}</td>
+        </tr>
+
+        <tr>
+          <td>{%trans "Max size of question media"%}</td>
+          <td>{%trans "1Mb"%}</td>
+          <td>{%trans "Unlimited"%}</td>
+        </tr>
+
+        <tr>
+          <td colspan="4" class="txtLa primary2">{%trans "Support"%}</td>
+        </tr>
+        <tr>
+          <td>{%trans "Technical Support"%}</td>
+          <td>✔️</td>
+          <td>✔️</td>
+        </tr>
+        <tr>
+          <td>{%trans "Ticket response time"%}</td>
+          <td colspan="2">{%trans "As soon as posible!"%}</td>
+        </tr>
+        <tr>
+          <td>{%trans "Request New fatures"%}</td>
+          <td colspan="2"><a href="{{url.kingdom}}/support">{%trans "Submit via new ticket"%}</a></td>
+        </tr>
+        <tr>
+          <td>{%trans "Emergency phone support"%}</td>
+          <td>❌</td>
+          <td>✔️</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="msg warn">{%trans "This pricing is valid until next change!"%} {%trans "Now enjoy your moments."%}</p>
+
+  </div>
+</div>
+
+{%endblock%}
+

@@ -5,26 +5,26 @@ class twigTransTerms
  {
 
 	//--------------------------------------------------content\changelog\display.html
-	echo T_("Changelog");                                                             // Line 36
 	echo T_("Date");                                                                  // Line 14
 	echo T_("Description");                                                           // Line 386
 	echo T_("We are Developers, please wait!");                                       // Line 22
 	echo T_("Soon");                                                                  // Line 26
-	echo T_("Telegram of version2 is fully connected to Sarshomar");                  // Line 32
-	echo T_("Version 2 of sarshomar is released");                                    // Line 37
-	echo T_("Rebuild version 2 of sarshomar is started");                             // Line 42
-	echo T_("Version 1 of sarshomar released");                                       // Line 47
-	echo T_("Delta version of sarshomar released");                                   // Line 52
-	echo T_("Gamma version of sarshomar released");                                   // Line 57
-	echo T_("Finally Sarshomar logo is accepted and we started branding");            // Line 62
-	echo T_("Sarshomar Logo");                                                        // Line 62
-	echo T_("Beta version of Sarshomar released");                                    // Line 67
-	echo T_("Alfa version of Sarshomar is ready");                                    // Line 72
-	echo T_("Demo version of Sarshomar released");                                    // Line 77
-	echo T_("Sarshomar is ready to start");                                           // Line 82
-	echo T_("The name of project selected as Sarshomar and <a href='https://sarshomar.com'>Sarshomar.com</a> and <a href='http://sarshomar.ir'>Sarshomar.ir</a> domains registered. ");// Line 87
-	echo T_("We were born to do Best!");                                              // Line 92
-	echo T_("Be patient...");                                                         // Line 97
+	echo T_("Improve design of admin panel to manage and create survey easily.");     // Line 32
+	echo T_("Telegram of version2 is fully connected to Sarshomar");                  // Line 37
+	echo T_("Version 2 of sarshomar is released");                                    // Line 42
+	echo T_("Rebuild version 2 of sarshomar is started");                             // Line 47
+	echo T_("Version 1 of sarshomar released");                                       // Line 52
+	echo T_("Delta version of sarshomar released");                                   // Line 57
+	echo T_("Gamma version of sarshomar released");                                   // Line 62
+	echo T_("Finally Sarshomar logo is accepted and we started branding");            // Line 67
+	echo T_("Sarshomar Logo");                                                        // Line 67
+	echo T_("Beta version of Sarshomar released");                                    // Line 72
+	echo T_("Alfa version of Sarshomar is ready");                                    // Line 77
+	echo T_("Demo version of Sarshomar released");                                    // Line 82
+	echo T_("Sarshomar is ready to start");                                           // Line 87
+	echo T_("The name of project selected as Sarshomar and <a href='https://sarshomar.com'>Sarshomar.com</a> and <a href='http://sarshomar.ir'>Sarshomar.ir</a> domains registered. ");// Line 92
+	echo T_("We were born to do Best!");                                              // Line 97
+	echo T_("Be patient...");                                                         // Line 102
 
 	//----------------------------------------------------content\contact\display.html
 	echo T_("Thank you for choosing us. We do our best to improve Sarshomar's quality. So, knowing your valuable comments about bugs and problems and more importantly your precious offers will help us in this way.");// Line 4
@@ -155,6 +155,32 @@ class twigTransTerms
 	echo T_("Pause");                                                                 // Line 781
 	echo T_("Draft");                                                                 // Line 61
 
+	//----------------------------------------------------content\pricing\display.html
+	echo T_("We have no limit on our service.");                                      // Line 12
+	echo T_("Enjoy Sarshomar and if you find it as good service, you can donate as much as you want and we have no limit on your donation!");// Line 12
+	echo T_("This is new way.");                                                      // Line 14
+	echo T_("We try to run this bussiness model and find pros and cons of it.");      // Line 14
+	echo T_("We are develop Sarshomar in holidays and improve this project for our love not for money.");// Line 15
+	echo T_("Free");                                                                  // Line 21
+	echo T_("Enterprise");                                                            // Line 22
+	echo T_("Price");                                                                 // Line 27
+	echo T_("You like it?");                                                          // Line 31
+	echo T_("Pay as much as you want!");                                              // Line 32
+	echo T_("Call us");                                                               // Line 34
+	echo T_("Data max limit");                                                        // Line 38
+	echo T_("Max size of question media");                                            // Line 42
+	echo T_("1Mb");                                                                   // Line 43
+	echo T_("Unlimited");                                                             // Line 44
+	echo T_("Support");                                                               // Line 380
+	echo T_("Technical Support");                                                     // Line 51
+	echo T_("Ticket response time");                                                  // Line 56
+	echo T_("As soon as posible!");                                                   // Line 57
+	echo T_("Request New fatures");                                                   // Line 60
+	echo T_("Submit via new ticket");                                                 // Line 61
+	echo T_("Emergency phone support");                                               // Line 64
+	echo T_("This pricing is valid until next change!");                              // Line 71
+	echo T_("Now enjoy your moments.");                                               // Line 71
+
 	//----------------------------------------------------content\referer\display.html
 	echo T_("Referral Program");                                                      // Line 12
 	echo T_("Nobody can tell the Sarshomar story better than our customers.");        // Line 6
@@ -213,7 +239,7 @@ class twigTransTerms
 	echo T_("Learn More");                                                            // Line 32
 	echo T_("Terms of Service");                                                      // Line 34
 	echo T_("Privacy Policy");                                                        // Line 12
-	echo T_("Support");                                                               // Line 380
+	echo T_("Changelog");                                                             // Line 36
 	echo T_("Contact us");                                                            // Line 43
 	echo T_("Logo");                                                                  // Line 45
 	echo T_("Latest News");                                                           // Line 51
