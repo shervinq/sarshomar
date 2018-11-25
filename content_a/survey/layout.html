@@ -341,14 +341,31 @@
 {%block iwelcomemessagefile%}
 
 {%if surveyRow.welcomemedia.file%}
-<div class="mediaBox mB20">
-  <img src="{{surveyRow.welcomemedia.file}}" alt="{{surveyRow.title}}" id="logoPreview">
-</div>
+   <div class="mediaBox mB20">
+
+{% set myExt = surveyRow.welcomemedia.file[(surveyRow.welcomemedia.file | length)-3:3] %}
+ {%if myExt == 'mp4' %}
+    <video class="block" controls>
+     <source src="{{surveyRow.welcomemedia.file}}" type="video/mp4">
+    </video>
+ {%elseif myExt == 'mp3' %}
+    <audio class="block" controls>
+     <source src="{{surveyRow.welcomemedia.file}}" type="audio/mp3">
+    </audio>
+ {%elseif myExt == 'png' or myExt == 'jpg' or myExt == 'jpeg' or myExt == 'gif'%}
+    <img src="{{surveyRow.welcomemedia.file}}" alt="{{myTitle.title}}">
+ {%elseif myExt == 'pdf' %}
+    <a class="btn primary outline block" href="{{surveyRow.welcomemedia.file}}">{%trans "Download PDF"%}</a>
+ {%else%}
+    <a class="btn primary outline block" href="{{surveyRow.welcomemedia.file}}">{%trans "Download File"%}</a>
+ {%endif%}
+   </div>
 {%endif%}
 
+
 <label for="welcomefile" class="block">{%trans "Welcome Image/Video"%}</label>
-<div class="input" title='{%trans "allowed extentions jpg, png. Max 1000Kb"%}'>
- <input type="file" accept="image/gif, image/jpeg, image/png" name="welcomefile" id="welcomefile" data-max="1000">
+<div class="input" title='{%trans "Max 1Mb"%}'>
+ <input type="file" name="welcomefile" id="welcomefile" data-max="1000">
  </label>
 </div>
 {%endblock%}
@@ -372,15 +389,33 @@
 
 {%block ithankyoufile%}
 
+
 {%if surveyRow.thankyoumedia.file%}
-<div class="mediaBox mB20">
-  <img src="{{surveyRow.thankyoumedia.file}}" alt="{{surveyRow.title}}" id="logoPreview">
-</div>
+   <div class="mediaBox mB20">
+
+{% set myExt = surveyRow.thankyoumedia.file[(surveyRow.thankyoumedia.file | length)-3:3] %}
+ {%if myExt == 'mp4' %}
+    <video class="block" controls>
+     <source src="{{surveyRow.thankyoumedia.file}}" type="video/mp4">
+    </video>
+ {%elseif myExt == 'mp3' %}
+    <audio class="block" controls>
+     <source src="{{surveyRow.thankyoumedia.file}}" type="audio/mp3">
+    </audio>
+ {%elseif myExt == 'png' or myExt == 'jpg' or myExt == 'jpeg' or myExt == 'gif'%}
+    <img src="{{surveyRow.thankyoumedia.file}}" alt="{{myTitle.title}}">
+ {%elseif myExt == 'pdf' %}
+    <a class="btn primary outline block" href="{{surveyRow.thankyoumedia.file}}">{%trans "Download PDF"%}</a>
+ {%else%}
+    <a class="btn primary outline block" href="{{surveyRow.thankyoumedia.file}}">{%trans "Download File"%}</a>
+ {%endif%}
+   </div>
 {%endif%}
 
+
 <label for="thankyoufile" class="block">{%trans "Thankyou Image/Video"%}</label>
-<div class="input" title='{%trans "allowed extentions jpg, png. Max 1000Kb"%}'>
- <input type="file" accept="image/gif, image/jpeg, image/png" name="thankyoufile" id="thankyoufile" data-max="1000">
+<div class="input" title='{%trans "Max 1Mb"%}'>
+ <input type="file" name="thankyoufile" id="thankyoufile" data-max="1000">
  </label>
 </div>
 {%endblock%}
