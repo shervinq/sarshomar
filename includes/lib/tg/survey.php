@@ -234,18 +234,18 @@ class survey
 			$result =
 			[
 				'text'         => $surveyTxt,
-				'reply_markup' =>
-				[
-					'inline_keyboard' =>
-					[
-						[
-							[
-								'text' => T_("Sarshomar website"),
-								'url'  => bot::website(),
-							],
-						]
-					]
-				]
+				// 'reply_markup' =>
+				// [
+				// 	'inline_keyboard' =>
+				// 	[
+				// 		[
+				// 			[
+				// 				'text' => T_("Sarshomar website"),
+				// 				'url'  => bot::website(),
+				// 			],
+				// 		]
+				// 	]
+				// ]
 			];
 
 			// if start with callback answer callback
