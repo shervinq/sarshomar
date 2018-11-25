@@ -198,13 +198,13 @@ class view
 			\dash\data::step_type('thankyou');
 		}
 
-		if(\dash\data::mySurvey() && $is_site)
-		{
-			// @reza
-			// show id he is creator
-			\dash\data::badge_link(\dash\url::kingdom(). '/a/survey?id='. \dash\url::module());
-			\dash\data::badge_text(T_('Back to survey dashboard'));
-		}
+		// if(\dash\data::mySurvey() && $is_site)
+		// {
+		// 	// @reza
+		// 	// show id he is creator
+		// 	\dash\data::badge_link(\dash\url::kingdom(). '/a/survey?id='. \dash\url::module());
+		// 	\dash\data::badge_text(T_('Back to survey dashboard'));
+		// }
 
 		if($is_site)
 		{

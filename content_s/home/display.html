@@ -370,8 +370,17 @@
 
 {%if mySurvey%}
 <li class="detail">
- <a href="{{url.kingdom}}/a/survey?id={{surveyRow.id}}" class="btn white hauto outline" data-direct>{%trans "Edit Survey"%}</a>
+ <a href="{{url.kingdom}}/a/survey?id={{surveyRow.id}}" class="btn white hauto outline" data-shortkey="120" data-shortkey-prevent data-shortkey-timeout='1000'>{%trans "Back to survey dashboard"%}<kbd class="floatRa fs08">F9</kbd></a>
 </li>
 {%endif%}
+
+
+{%if step.type == 'welcome' or step.type == 'thankyou'%}
+<li class="hr"></li>
+<li><a data-direct href="{{url.kingdom}}/support" data-shortkey="112" data-shortkey-prevent data-shortkey-timeout='1000'><i class='sf-life-ring'></i> <span>{% trans "Support" %}</span><kbd class="floatRa fs08">F1</kbd></a></li>
+{%else%}
+{%endif%}
+
+
 
 {%endblock%}
