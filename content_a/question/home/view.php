@@ -26,7 +26,7 @@ class view
 
 			$dataTable = \lib\app\question::block_survey($id);
 
-			\dash\data::dataTable($dataTable);
+			\dash\data::questionList($dataTable);
 
 		}
 		else

@@ -26,7 +26,6 @@ class view
 				\dash\redirect::to(\dash\url::here(). '/question/add?new=1&id='. \dash\request::get('id'));
 			}
 
-			\dash\data::dataTable($dataTable);
 			\dash\data::questionList($dataTable);
 		}
 		else
