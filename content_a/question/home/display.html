@@ -2,36 +2,35 @@
 
 
 
-
 {%block pageContent%}
 
 <table class="tbl1 v1 fs12">
   <thead>
     <tr>
-      <th>#</th>
-      <th class="txtC">{%trans "Edit"%}</th>
+      <th class="s0">#</th>
+      <th class="s0 txtC">{%trans "Edit"%}</th>
       <th class="txtC">{%trans "Type"%}</th>
       <th>{%trans "Title"%}</th>
-      <th class="txtC">{%trans "Require"%}</th>
-      <th class="txtC">{%trans "Operation"%}</th>
+      <th class="s0 txtC">{%trans "Require"%}</th>
+      <th class="txtC"><span class="s0">{%trans "Operation"%}</span></th>
     </tr>
   </thead>
   <tbody>
 {%for key, value in questionList%}
     <tr class="{%if value.require%}negative{%else%}positive{%endif%}">
-      <td class="collapsing">{{(key + 1) | fitNumber}}</td>
-      <td>
+      <td class="s0 collapsing">{{(key + 1) | fitNumber}}</td>
+      <td class="s0">
         <a href="{{url.this}}/general?id={{requestGET.id}}&questionid={{value.id}}" class="badge secondary">{%trans "Edit"%}</a>
       </td>
       <td class="collapsing txtB txtC">{{value.type_detail.title}}</td>
       <td>
         <a href="{{url.this}}/general?id={{requestGET.id}}&questionid={{value.id}}">
         {%if value.title%}<div class="txtB">{{value.title}}</div>{%endif%}
-        {%if value.desc%}<div class="mT10 fs09">{{value.desc}}</div>{%endif%}
+        {%if value.desc%}<div class="mT10 fs09 s0">{{value.desc}}</div>{%endif%}
         {%if not value.title and not value.desc%}<div>{%trans "Untitled"%}</div>{%endif%}
         </a>
       </td>
-      <td class="collapsing txtB txtC">
+      <td class="s0 collapsing txtB txtC">
         {%if value.require%}
           <i title='{%trans "Required answer"%}' class="fs12 sf-lock"></i>
         {%else%}
@@ -50,7 +49,6 @@
 <a class="msg success fs18 txtC block" href="{{url.this}}/add?id={{requestGET.id}}">
   <span class="sf-plus-circle fs14"></span> {%trans "Add new question"%}
 </a>
-
 
 {%endblock%}
 
