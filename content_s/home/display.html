@@ -128,7 +128,7 @@
 
 {%for key, value in question.choice%}
 
-  <button class="btn {%if question.setting.single_choice.choiceinline%}block {%else%} mR10{%endif%} mB5{%if value.title in myAnswerTitle%} success{%endif%}" id="r-{{key}}" name="answer" value="{{value.id}}" {%if haveKBD%} data-shortkey='{{loop.index + 48}}' {%endif%}>{%if value.title in myAnswerTitle%}<span class="sf-check-1 floatRa"></span> {%endif%}{{value.title}} {%if haveKBD%}<kbd class="floatLa">{{loop.index}}</kbd> {%endif%}</button>
+  <button class="btn {%if question.setting.single_choice.choiceinline%}block {%else%} mR10 mB10{%endif%} mB5{%if value.title in myAnswerTitle%} success{%endif%}" id="r-{{key}}" name="answer" value="{{value.id}}" {%if haveKBD%} data-shortkey='{{loop.index + 48}}' {%endif%}>{%if value.title in myAnswerTitle%}<span class="sf-check-1 floatRa mLa10"></span> {%endif%}{{value.title}} {%if haveKBD%}<kbd class="floatLa mRa10">{{loop.index}}</kbd> {%endif%}</button>
 {%endfor%}
 {%endblock%}
 
