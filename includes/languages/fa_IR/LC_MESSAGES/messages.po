@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Sarshomar - Persian\n"
-"POT-Creation-Date: 2018-11-25 14:22+0330\n"
-"PO-Revision-Date: 2018-11-25 14:41+0330\n"
+"POT-Creation-Date: 2018-11-25 14:59+0330\n"
+"PO-Revision-Date: 2018-11-25 15:02+0330\n"
 "Last-Translator: Javad <J.Evazzadeh@gmail.com>\n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -5617,7 +5617,7 @@ msgstr "پشتیبان گیری پایگاه داده"
 
 #: dash/addons/includes/languages/trans_dash.php:917
 #: sarshomar/includes/languages/trans_dash.php:632
-#: sarshomar/includes/languages/trans_project.php:721
+#: sarshomar/includes/languages/trans_project.php:720
 msgid "Back"
 msgstr "قبلی"
 
@@ -10012,7 +10012,7 @@ msgstr "یا برای امنیت بیشتر کلمه عبور خود را تغی
 #: dash/lib/app/log/caller/su/su_CentralizedGitUpdate.php:10
 #: dash/lib/app/log/caller/su/su_CentralizedGitUpdate.php:52
 msgid "CentralizedGitUpdate"
-msgstr ""
+msgstr "آپدیت مرکزی گیت"
 
 #: dash/lib/app/log/caller/su/su_CentralizedGitUpdate.php:15
 #: dash/lib/app/log/caller/su/su_dayEventReport.php:15
@@ -12244,7 +12244,7 @@ msgstr "بازگشت به لیست پاسخ‌ها"
 
 #: sarshomar/content_a/sort/home/view.php:10
 msgid "Change question order"
-msgstr ""
+msgstr "تغییر ترتیب سوالات"
 
 #: sarshomar/content_a/sort/home/view.php:11
 msgid "Check your survey question list and sort it"
@@ -12360,7 +12360,7 @@ msgstr "پرسش‌نامه"
 
 #: sarshomar/includes/languages/trans_dash.php:715
 msgid "Show archived"
-msgstr ""
+msgstr "نمایش بایگانی‌شده‌ها"
 
 #: sarshomar/includes/languages/trans_project.php:8
 msgid "Changelog"
@@ -14589,7 +14589,7 @@ msgstr ""
 
 #: sarshomar/includes/languages/trans_project.php:658
 msgid "In Telegram only title is show on load survey."
-msgstr "در تلگرام تنها عنوان در هنگام بارگذاری و انتخاب پرسشنامه نمایش داده می‌شود."
+msgstr "در تلگرام تنها عنوان هنگام بارگذاری و انتخاب پرسشنامه نمایش داده می‌شود."
 
 #: sarshomar/includes/languages/trans_project.php:661
 msgid "Price Variation"
@@ -14624,12 +14624,13 @@ msgid "Survey password"
 msgstr "گذرواژه پرسشنامه"
 
 #: sarshomar/includes/languages/trans_project.php:675
-msgid "Survey button title"
-msgstr "عنوان دکمه پرسشنامه"
+msgid "Survey start button text"
+msgstr "متن برای دکمه شروع پرسشنامه"
 
 #: sarshomar/includes/languages/trans_project.php:676
-msgid "Survey botton title"
-msgstr "عنوان دکمه پرسشنامه"
+#: sarshomar/includes/lib/tg/survey.php:174
+msgid "Start"
+msgstr "شروع"
 
 #: sarshomar/includes/languages/trans_project.php:678
 msgid "Expire"
@@ -14743,51 +14744,46 @@ msgid "I'm not willing to answer"
 msgstr "مایل به پاسخ‌دهی نیستم"
 
 #: sarshomar/includes/languages/trans_project.php:719
-#: sarshomar/includes/lib/tg/survey.php:174
-msgid "Start"
-msgstr "شروع"
-
-#: sarshomar/includes/languages/trans_project.php:720
 msgid "Save & Next"
 msgstr "ذخیره و بعدی"
 
-#: sarshomar/includes/languages/trans_project.php:722
+#: sarshomar/includes/languages/trans_project.php:721
 msgid "Between"
 msgstr "بین"
 
-#: sarshomar/includes/languages/trans_project.php:723
+#: sarshomar/includes/languages/trans_project.php:722
 msgid "Start Time"
 msgstr "زمان شروع"
 
-#: sarshomar/includes/languages/trans_project.php:724
+#: sarshomar/includes/languages/trans_project.php:723
 msgid "Spend Time"
 msgstr "زمان سپری شده"
 
-#: sarshomar/includes/languages/trans_project.php:725
+#: sarshomar/includes/languages/trans_project.php:724
 msgid "Remain Time"
 msgstr "زمان باقی‌مانده"
 
-#: sarshomar/includes/languages/trans_project.php:726
+#: sarshomar/includes/languages/trans_project.php:725
 msgid "End Time"
 msgstr "ساعت پایان"
 
-#: sarshomar/includes/languages/trans_project.php:727
+#: sarshomar/includes/languages/trans_project.php:726
 msgid "Current question"
 msgstr "سوال فعلی"
 
-#: sarshomar/includes/languages/trans_project.php:728
+#: sarshomar/includes/languages/trans_project.php:727
 msgid "Total questions"
 msgstr "مجموع سوالات"
 
-#: sarshomar/includes/languages/trans_project.php:729
+#: sarshomar/includes/languages/trans_project.php:728
 msgid "Completed"
 msgstr "تکمیل شده"
 
-#: sarshomar/includes/languages/trans_project.php:730
+#: sarshomar/includes/languages/trans_project.php:729
 msgid "Restart"
 msgstr "شروع مجدد"
 
-#: sarshomar/includes/languages/trans_project.php:731
+#: sarshomar/includes/languages/trans_project.php:730
 msgid "Edit Survey"
 msgstr "ویرایش پرسشنامه"
 
@@ -17931,6 +17927,12 @@ msgid "Please start answer to survey in private message not in public!"
 msgstr ""
 "لطفا فرآیند پاسخ‌دهی به پرسشنامه را در پیام خصوصی با من انجام دهید نه در یک مکان "
 "عمومی!"
+
+#~ msgid "Survey button title"
+#~ msgstr "عنوان دکمه پرسشنامه"
+
+#~ msgid "Survey botton title"
+#~ msgstr "عنوان دکمه پرسشنامه"
 
 #~ msgid "Save sort question"
 #~ msgstr "ذخیره ترتیب سوالات"

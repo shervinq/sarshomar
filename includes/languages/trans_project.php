@@ -80,7 +80,7 @@ class twigTransTerms
 
 	//--------------------------------------------------------content\poll\layout.html
 	echo T_("Unfortunately there is no title to show!");                              // Line 8
-	echo T_("Report");                                                                // Line 163
+	echo T_("Report");                                                                // Line 168
 	echo T_("Spam");                                                                  // Line 33
 	echo T_("Breaking The Law");                                                      // Line 34
 	echo T_("Privacy Issue");                                                         // Line 35
@@ -124,7 +124,7 @@ class twigTransTerms
 	echo T_("Submit");                                                                // Line 562
 	echo T_("Continue");                                                              // Line 599
 	echo T_("Refresh Chart");                                                         // Line 636
-	echo T_("Edit");                                                                  // Line 95
+	echo T_("Edit");                                                                  // Line 93
 	echo T_("VIP Value");                                                             // Line 653
 	echo T_("Select");                                                                // Line 661
 	echo T_("stop");                                                                  // Line 662
@@ -532,15 +532,15 @@ class twigTransTerms
 	echo T_("List of all survey");                                                    // Line 11
 
 	//------------------------------------------------------content_a\main\layout.html
-	echo T_("Questions");                                                             // Line 142
-	echo T_("Add new question");                                                      // Line 91
-	echo T_("Question Sorter");                                                       // Line 152
+	echo T_("Questions");                                                             // Line 147
+	echo T_("Add new question");                                                      // Line 89
+	echo T_("Question Sorter");                                                       // Line 157
 	echo T_("Settings");                                                              // Line 21
 	echo T_("Welcome message");                                                       // Line 159
 	echo T_("Thank you message");                                                     // Line 170
 	echo T_("Survey status");                                                         // Line 6
 	echo T_("Reports");                                                               // Line 30
-	echo T_("Live Preview");                                                          // Line 32
+	echo T_("Live Preview");                                                          // Line 126
 
 	//---------------------------------------------content_a\question\add\display.html
 	echo T_("Please select one type to continue");                                    // Line 8
@@ -555,14 +555,14 @@ class twigTransTerms
 	//-----------------------------------------content_a\question\general\display.html
 
 	//--------------------------------------------content_a\question\home\display.html
-	echo T_("Have Media");                                                            // Line 98
+	echo T_("Have Media");                                                            // Line 96
 	echo T_("Type");                                                                  // Line 357
 	echo T_("Text");                                                                  // Line 22
 	echo T_("Require");                                                               // Line 71
 	echo T_("Operation");                                                             // Line 24
-	echo T_("Untitled");                                                              // Line 84
-	echo T_("Required answer");                                                       // Line 71
-	echo T_("Optional to answer");                                                    // Line 73
+	echo T_("Untitled");                                                              // Line 82
+	echo T_("Required answer");                                                       // Line 69
+	echo T_("Optional to answer");                                                    // Line 71
 
 	//--------------------------------------------------content_a\question\layout.html
 	echo T_("Title");                                                                 // Line 5
@@ -591,8 +591,8 @@ class twigTransTerms
 	echo T_("Choise title");                                                          // Line 339
 	echo T_("Save");                                                                  // Line 198
 	echo T_("Choice");                                                                // Line 380
-	echo T_("Setting");                                                               // Line 131
-	echo T_("Show preview");                                                          // Line 121
+	echo T_("Setting");                                                               // Line 136
+	echo T_("Show preview");                                                          // Line 401
 	echo T_("Add");                                                                   // Line 194
 	echo T_("Download PDF");                                                          // Line 61
 	echo T_("Download File");                                                         // Line 63
@@ -661,19 +661,19 @@ class twigTransTerms
 	echo T_("Price Variation");                                                       // Line 42
 
 	//----------------------------------------------content_a\survey\home\display.html
-	echo T_("Your Survey");                                                           // Line 51
-	echo T_("Without welcome message");                                               // Line 63
-	echo T_("Without thank you message");                                             // Line 102
-	echo T_("No user answer to this survey yet!");                                    // Line 201
-	echo T_("Answer chart");                                                          // Line 212
+	echo T_("Your Survey");                                                           // Line 49
+	echo T_("Without welcome message");                                               // Line 61
+	echo T_("Without thank you message");                                             // Line 100
+	echo T_("No user answer to this survey yet!");                                    // Line 206
+	echo T_("Answer chart");                                                          // Line 217
 
 	//----------------------------------------------------content_a\survey\layout.html
 	echo T_("Survey title");                                                          // Line 7
 	echo T_("You can publish in another language");                                   // Line 15
 	echo T_("Language");                                                              // Line 16
 	echo T_("Survey password");                                                       // Line 32
-	echo T_("Survey button title");                                                   // Line 40
-	echo T_("Survey botton title");                                                   // Line 42
+	echo T_("Survey start button text");                                              // Line 42
+	echo T_("Start");                                                                 // Line 83
 	echo T_("Status");                                                                // Line 181
 	echo T_("Expire");                                                                // Line 66
 	echo T_("Deleted");                                                               // Line 71
@@ -716,7 +716,6 @@ class twigTransTerms
 	//-----------------------------------------------------content_s\home\display.html
 	echo T_("I want to delete my answer");                                            // Line 31
 	echo T_("I'm not willing to answer");                                             // Line 33
-	echo T_("Start");                                                                 // Line 83
 	echo T_("Save & Next");                                                           // Line 253
 	echo T_("Back");                                                                  // Line 262
 	echo T_("Between");                                                               // Line 281
