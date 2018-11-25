@@ -49,7 +49,7 @@
 <div class="cbox fs10 mLR5">
   <h3>
     <span>{%trans "Your Survey"%}</span>
-    <a class="floatRa badge primary" href='{{url.here}}/question/add?id={{requestGET.id}}'><i class="pRa5 sf-plus"></i>{%trans "Add new"%}</a>
+    <a class="floatRa badge primary" href='{{url.here}}/question/add?id={{requestGET.id}}'><i class="pRa5 sf-plus-circle"></i>{%trans "Add new question"%}</a>
     <a class="floatRa badge secondary mRa5" href='{{url.here}}/sort?id={{requestGET.id}}'><i class="pRa5 sf-list-ol"></i>{%trans "Question Sorter"%}</a>
   </h3>
 
@@ -60,6 +60,7 @@
       {{surveyRow.welcometitle}}
     </div>
     <div>{{surveyRow.welcomedesc | raw}}</div>
+    {%if not surveyRow.welcometitle and not surveyRow.welcomedesc%}<i>{%trans "Without welcome message"%}</i>{%endif%}
   </div>
 
 {%for key, value in questionList%}
@@ -86,6 +87,9 @@
     <div class="cauto pLa10 os"><small class="badge light">{{value.type_detail.title}}</small></div>
   </a>
 {%endfor%}
+  <a href="{{url.here}}/question/add?id={{requestGET.id}}" class="msg block">
+    <i class="sf-plus-circle fs14 mRa10"></i>{%trans "Add new question"%}
+  </a>
 
   <div class="msg info2 fs11">
     <h3 class="mB10-f"><a href="{{url.here}}/survey/thankyou?id={{requestGET.id}}">{%trans "Thank you message"%}<span class="badge floatRa">{%trans "Edit"%}</span></a></h3>
@@ -95,6 +99,7 @@
       {{surveyRow.thankyoutitle}}
     </div>
     <div>{{surveyRow.thankyoudesc | raw}}</div>
+    {%if not surveyRow.thankyoutitle and not surveyRow.thankyoudesc%}<i>{%trans "Without thank you message"%}</i>{%endif%}
   </div>
 
 </div>

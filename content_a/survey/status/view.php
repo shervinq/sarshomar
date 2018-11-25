@@ -11,7 +11,7 @@ class view
 
 		\dash\data::page_title(T_("Change status"). ' | '. \dash\data::surveyRow_title());
 		\dash\data::page_desc(T_("You can edit your survey status."));
-		\dash\data::page_pictogram('gauge');
+		\dash\data::page_pictogram('publish');
 
 
 		\dash\data::badge_link(\dash\url::this(). '?id='. \dash\request::get('id'));

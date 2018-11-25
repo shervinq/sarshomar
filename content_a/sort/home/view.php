@@ -6,8 +6,8 @@ class view
 {
 	public static function config()
 	{
-		\dash\data::page_pictogram('dzone');
-		\dash\data::page_title(T_("Save sort question"));
+		\dash\data::page_pictogram('refresh');
+		\dash\data::page_title(T_("Change question order"));
 		\dash\data::page_desc(T_("Check your survey question list and sort it"));
 
 		if(\dash\request::get('id'))
