@@ -521,15 +521,22 @@ class twigTransTerms
 	echo T_("There are no category exist!");                                          // Line 113
 
 	//--------------------------------------------------content_a\alllist\display.html
+	echo T_("Code");                                                                  // Line 12
+	echo T_("Title");                                                                 // Line 5
 	echo T_("Question");                                                              // Line 140
+	echo T_("Answer");                                                                // Line 161
+	echo T_("Status");                                                                // Line 181
+	echo T_("Created on");                                                            // Line 17
+	echo T_("Last update");                                                           // Line 18
+	echo T_("Creator");                                                               // Line 19
 	echo T_("Without question");                                                      // Line 36
 	echo T_("Response");                                                              // Line 39
 	echo T_("No responses");                                                          // Line 39
-	echo T_("Questionnaires");                                                        // Line 5
-	echo T_("Add new survey");                                                        // Line 61
 
 	//-----------------------------------------------------content_a\home\display.html
 	echo T_("List of all survey");                                                    // Line 11
+	echo T_("Add new survey");                                                        // Line 61
+	echo T_("Questionnaires");                                                        // Line 5
 
 	//------------------------------------------------------content_a\main\layout.html
 	echo T_("Questions");                                                             // Line 147
@@ -565,7 +572,6 @@ class twigTransTerms
 	echo T_("Optional to answer");                                                    // Line 71
 
 	//--------------------------------------------------content_a\question\layout.html
-	echo T_("Title");                                                                 // Line 5
 	echo T_("Placeholder");                                                           // Line 53
 	echo T_("Type here ...");                                                         // Line 283
 	echo T_("To change placeholder type here");                                       // Line 55
@@ -613,7 +619,6 @@ class twigTransTerms
 
 	//---------------------------------------content_a\report\allquestion\display.html
 	echo T_("Click to sort");                                                         // Line 163
-	echo T_("Answer");                                                                // Line 161
 	echo T_("Percent");                                                               // Line 224
 	echo T_("%");                                                                     // Line 181
 	echo T_("Sum");                                                                   // Line 179
@@ -677,7 +682,6 @@ class twigTransTerms
 	echo T_("Survey password");                                                       // Line 32
 	echo T_("Survey start button text");                                              // Line 42
 	echo T_("Start");                                                                 // Line 83
-	echo T_("Status");                                                                // Line 181
 	echo T_("Expire");                                                                // Line 66
 	echo T_("Deleted");                                                               // Line 71
 	echo T_("Private");                                                               // Line 87

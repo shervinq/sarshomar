@@ -1013,7 +1013,6 @@ class twigTransTerms
 	echo T_("Enable JavaScript in your browser or use one which supports it.");       // Line 145
 
 	//----------------------------------------addons\includes\html\inc_pagination.html
-	echo T_("Total records");                                                         // Line 4
 
 	//----------------------------------------------addons\includes\html\inc_spay.html
 	echo T_("Please choose you pos");                                                 // Line 4
