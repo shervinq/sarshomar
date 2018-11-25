@@ -351,20 +351,20 @@
   <div class="f">
 
    <div class="c">
-    <a class="dcard {%if url.child == 'type'%}active{%endif%}" href='{{url.this}}/type?id={{requestGET.id}}&questionid={{requestGET.questionid}}{%if requestGET.type%}&type={{requestGET.type}}{%endif%}' data-shortkey="49ctrlshift" >
+    <a class="dcard {%if url.child == 'type'%}active{%endif%}" href='{{url.this}}/type?id={{requestGET.id}}&questionid={{requestGET.questionid}}{%if requestGET.type%}&type={{requestGET.type}}{%endif%}' data-shortkey="84+49" >
      <div class="statistic sm">
-      <div class="value"><i class="sf-exchange"></i></div>
-      <div class="label">{%trans "Type"%}<br><kbd class="mT5">Ctrl+Shift+1</kbd></div>
+      <div class="value"><i class="sf-question-circle"></i></div>
+      <div class="label">{%trans "Question Type"%}<br><kbd class="mT5">t+1</kbd></div>
      </div>
     </a>
    </div>
 
 
    <div class="c">
-    <a class="dcard {%if url.child == 'title' or url.child == 'general'%}active{%endif%}" href='{{url.this}}/title?id={{requestGET.id}}&questionid={{requestGET.questionid}}{%if requestGET.type%}&type={{requestGET.type}}{%endif%}' data-shortkey="50ctrlshift" >
+    <a class="dcard {%if url.child == 'title' or url.child == 'general'%}active{%endif%}" href='{{url.this}}/title?id={{requestGET.id}}&questionid={{requestGET.questionid}}{%if requestGET.type%}&type={{requestGET.type}}{%endif%}' data-shortkey="84+50" >
      <div class="statistic sm">
       <div class="value"><i class="sf-lightbulb-o"></i></div>
-      <div class="label">{%trans "Title"%} <kbd class="mT5">Ctrl+Shift+2</kbd></div>
+      <div class="label">{%trans "Question Title"%}<br><kbd class="mT5">t+2</kbd></div>
      </div>
     </a>
    </div>
@@ -374,10 +374,10 @@
    {%if choiceDetail.choice%}
 
     <div class="c">
-    <a class="dcard {%if url.child == 'choice'%}active{%endif%}" href='{{url.this}}/choice?id={{requestGET.id}}&questionid={{requestGET.questionid}}{%if requestGET.type%}&type={{requestGET.type}}{%endif%}' data-shortkey="50ctrlshift" >
+    <a class="dcard {%if url.child == 'choice'%}active{%endif%}" href='{{url.this}}/choice?id={{requestGET.id}}&questionid={{requestGET.questionid}}{%if requestGET.type%}&type={{requestGET.type}}{%endif%}' data-shortkey="84+51" >
      <div class="statistic sm">
-      <div class="value"><i class="sf-check"></i></div>
-      <div class="label">{%trans "Choice"%} <kbd class="mT5">Ctrl+Shift+2</kbd></div>
+      <div class="value"><i class="sf-list"></i></div>
+      <div class="label">{%trans "Question Options"%}<br><kbd class="mT5">t+3</kbd></div>
      </div>
     </a>
    </div>
@@ -385,20 +385,20 @@
    {%endif%}
 
     <div class="c">
-    <a class="dcard {%if url.child == 'setting'%}active{%endif%}" href='{{url.this}}/setting?id={{requestGET.id}}&questionid={{requestGET.questionid}}{%if requestGET.type%}&type={{requestGET.type}}{%endif%}' data-shortkey="50ctrlshift" >
+    <a class="dcard {%if url.child == 'setting'%}active{%endif%}" href='{{url.this}}/setting?id={{requestGET.id}}&questionid={{requestGET.questionid}}{%if requestGET.type%}&type={{requestGET.type}}{%endif%}' data-shortkey="84+52" >
      <div class="statistic sm">
       <div class="value"><i class="sf-cogs"></i></div>
-      <div class="label">{%trans "Setting"%} <kbd class="mT5">Ctrl+Shift+2</kbd></div>
+      <div class="label">{%trans "Question Settings"%}<br><kbd class="mT5">t+4</kbd></div>
      </div>
     </a>
    </div>
 
 
     <div class="cauto">
-    <a class="dcard" data-direct target="_blank" href='{{url.kingdom}}/s/{{surveyRow.id}}?step={{dataRow.sort}}' data-shortkey="51ctrlshift" >
-     <div class="statistic orange">
+    <a class="dcard" data-direct target="_blank" href='{{url.kingdom}}/s/{{surveyRow.id}}?step={{dataRow.sort}}' data-shortkey="84+53" >
+     <div class="statistic sm orange">
       <div class="value"><i class="sf-link"></i></div>
-      <div class="label">{%trans "Show preview"%}</div>
+      <div class="label">{%trans "Show preview"%}<br><kbd class="mT5">t+5</kbd></div>
      </div>
     </a>
    </div>
