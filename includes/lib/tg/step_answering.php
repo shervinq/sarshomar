@@ -167,14 +167,14 @@ class step_answering
 				// answer callback result
 				bot::answerCallbackQuery('#'. $surveyStep. ' '. T_("Answer received"));
 
-				// send message of recieve on callback
-				$receiveMsg =
-				[
-					'text' => T_("Your answer"). "\n<b>". $_answer. '</b>',
-					'reply_markup' => ['remove_keyboard' => true],
-					'disable_notification' => true,
-				];
-				bot::sendMessage($receiveMsg);
+				// // send message of recieve on callback
+				// $receiveMsg =
+				// [
+				// 	'text' => T_("Your answer"). "\n<b>". $_answer. '</b>',
+				// 	'reply_markup' => ['remove_keyboard' => true],
+				// 	'disable_notification' => true,
+				// ];
+				// bot::sendMessage($receiveMsg);
 			}
 		}
 		if($_answer === '/skip')
