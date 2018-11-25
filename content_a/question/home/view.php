@@ -6,7 +6,7 @@ class view
 {
 	public static function config()
 	{
-		\dash\data::page_pictogram('dzone');
+		\dash\data::page_pictogram('list-ul');
 		\dash\data::page_title(T_("Question list"));
 		\dash\data::page_desc(T_("Check your survey question list"));
 
