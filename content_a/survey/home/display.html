@@ -6,19 +6,17 @@
 {%block pageContent%}
 
 <div class="f">
-  <div class="c6 m12 s12">
+  <div class="c6 s12">
     <div class="f">
-     <div class="c4 s4">{{block ("stSetting")}}</div>
-     <div class="c4 s4">{{block ("stQuestion")}}</div>
-     <div class="c4 s4">{{block ("stSort")}}</div>
+     <div class="c6">{{block ("stSetting")}}</div>
+     <div class="c6">{{block ("stReport")}}</div>
+     <div class="c12">{{block ("stCheckStatus")}}</div>
+     <div class="c6">{{block ("stQuestion")}}</div>
+     <div class="c6">{{block ("stSort")}}</div>
+     <div class="c12">{{block ("stLink")}}</div>
     </div>
 
 
-    <div class="f">
-     <div class="c4 s4">{{block ("stLink")}}</div>
-     <div class="c4 s4">{{block ("stReport")}}</div>
-     <div class="c4 s4">{{block ("prDate")}}</div>
-    </div>
     {%if false%}
     <div class="f">
       <div class="c9 s12">
@@ -30,7 +28,7 @@
     </div>
     {%endif%}
   </div>
-  <div class="c6 m12 s12">
+  <div class="c6 s12">
         {{block ("bQuestions")}}
   </div>
 </div>
@@ -111,14 +109,21 @@
 
 
 
-
+{%block stCheckStatus%}
+<a class="dcard {%if surveyRow.status == 'publish'%}success{%elseif surveyRow.status == 'deleted'%}danger{%else%}warn{%endif%}" href='{{url.this}}/status?id={{requestGET.id}}'>
+ <div class="statistic">
+  <div class="value"><i class="sf-publish"></i></div>
+  <div class="label">{%trans "Survey status"%} {%set myStatus = surveyRow.status%} <b>{%trans myStatus%}</b></div>
+ </div>
+</a>
+{%endblock%}
 
 
 {%block stLink%}
-<a class="dcard x2" data-direct href='{{url.kingdom}}/s/{{surveyRow.id}}'>
+<a class="dcard" href='{{url.kingdom}}/s/{{surveyRow.id}}'>
  <div class="statistic orange">
-  <div class="value"><i class="sf-link"></i></div>
-  <div class="label">{%trans "Show preview"%}</div>
+  <div class="value"><i class="sf-heart"></i></div>
+  <div class="label">{%trans "Live Preview"%}</div>
  </div>
 </a>
 {%endblock%}
@@ -137,8 +142,8 @@
 
 {%block stQuestion%}
 <a class="dcard x2" href='{{url.here}}/question?id={{requestGET.id}}'>
- <div class="statistic pink">
-  <div class="value"><i class="sf-list-ol"></i></div>
+ <div class="statistic">
+  <div class="value"><i class="sf-list-ul"></i></div>
   <div class="label">{%trans "Questions"%}</div>
  </div>
 </a>
@@ -147,8 +152,8 @@
 
 {%block stSort%}
 <a class="dcard x2" href='{{url.here}}/sort?id={{requestGET.id}}'>
- <div class="statistic yellow">
-  <div class="value"><i class="sf-flag-checkered"></i></div>
+ <div class="statistic">
+  <div class="value"><i class="sf-refresh"></i></div>
   <div class="label">{%trans "Question Sorter"%}</div>
  </div>
 </a>
@@ -159,7 +164,7 @@
 {%block stReport%}
 <a class="dcard x2" href='{{url.here}}/report?id={{requestGET.id}}'>
  <div class="statistic brown">
-  <div class="value"><i class="sf-chart"></i></div>
+  <div class="value"><i class="sf-analytics-chart-graph"></i></div>
   <div class="label">{%trans "Report"%}</div>
  </div>
 </a>
