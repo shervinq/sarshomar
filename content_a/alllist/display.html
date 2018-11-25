@@ -11,12 +11,12 @@
       <th>#</th>
       <th>{%trans "Code"%}</th>
       <th>{%trans "Title"%}</th>
-      <th>{%trans "Question"%}</th>
+      <th class="s0">{%trans "Question"%}</th>
       <th>{%trans "Answer"%}</th>
       <th>{%trans "Status"%}</th>
-      <th>{%trans "Created on"%}</th>
-      <th>{%trans "Last update"%}</th>
-      <th>{%trans "Creator"%}</th>
+      <th class="s0">{%trans "Created on"%}</th>
+      <th class="s0">{%trans "Last update"%}</th>
+      <th class="s0">{%trans "Creator"%}</th>
     </tr>
   </thead>
   <tbody>
@@ -30,9 +30,9 @@
       <td class="collapsing"><a href='{{url.here}}/survey?id={{value.id}}'>{{value.id}}</a></td>
       <td>
         <div class="txtB">{{value.title}}</div>
-        <div>{{value.desc}}</div>
+        <div class="s0">{{value.desc}}</div>
       </td>
-      <td class="collapsing">
+      <td class="s0 collapsing">
         {%if value.countblock%}
           {{value.countblock | fitNumber}} <small>{%trans "Question"%}</small>
         {%else%}
@@ -47,13 +47,13 @@
         {%endif%}
       </td>
       <td class="collapsing fs08">{%set myStatus = value.status%}<a href="{{url.this}}?status={{value.status}}">{%if value.status == 'publish'%}<i class="sf-check mRa5 fc-green"></i>{%endif%}{%trans myStatus%}</a></td>
-      <td class="collapsing fs09">
+      <td class="s0 collapsing fs09">
         <span title='{{value.datecreated | dt(true)}}'>{{value.datecreated | dt('human', 'year')}}</span>
       </td>
-      <td class="collapsing fs09">
+      <td class="s0 collapsing fs09">
         <span title='{{value.datemodified | dt(true)}}'>{{value.datemodified | dt('human', 'year')}}</span>
       </td>
-      <td>-</td>
+      <td class="s0 collapsing">-</td>
     </tr>
 
 {%endfor%}
