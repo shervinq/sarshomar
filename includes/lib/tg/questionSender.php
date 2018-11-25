@@ -91,20 +91,23 @@ class questionSender
 
 		// send message
 		$questionSended = bot::sendMessage($sendQData);
-		// get result of sended message
-		$qMessageId     = null;
-		$qChatId        = null;
-		if(isset($questionSended['result']['message_id']))
-		{
-			$qMessageId = $questionSended['result']['message_id'];
-		}
-		if(isset($questionSended['result']['chat']['id']))
-		{
-			$qChatId = $questionSended['result']['chat']['id'];
-		}
 
-		step::set('qMessageId', $qMessageId);
-		step::set('qChatId', $qChatId);
+		if($_questionData['type'] === 'multiple_choice')
+		{
+			// get result of sended message
+			$qMessageId     = null;
+			$qChatId        = null;
+			if(isset($questionSended['result']['message_id']))
+			{
+				$qMessageId = $questionSended['result']['message_id'];
+			}
+			if(isset($questionSended['result']['chat']['id']))
+			{
+				$qChatId = $questionSended['result']['chat']['id'];
+			}
+			step::set('qMessageId', $qMessageId);
+			step::set('qChatId', $qChatId);
+		}
 	}
 
 
