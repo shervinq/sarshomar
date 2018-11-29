@@ -176,13 +176,8 @@
 <div class="dcard x2">
  <div class="block">
   <div class="f">
-  {%if lang.current == 'fa'%}
-   <h5 class="c fc-mute">{{"now" | jdate('F')}}</h5>
-   <h4 class="cauto fc-info fs30 txtra">{{"now" | jdate('d')}}</h4>
-  {%else%}
-    <h5 class="c fc-mute">{{"now" | date('F')}}</h5>
-    <h4 class="cauto fc-info fs30 txtra">{{"now" | date('d')}}</h4>
-  {%endif%}
+    <h5 class="c fc-mute">{{"now" | dt('F')}}</h5>
+    <h4 class="cauto fc-info fs30 txtra">{{"now" | dt('d')}}</h4>
   </div>
   <div class="f">
    <div class="progress" data-percent='{{dashboardDetail.month_detail.left}}'>
