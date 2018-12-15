@@ -50,7 +50,7 @@ class inline
 			$surveyDesc = strip_tags($surveyDesc);
 		}
 
-		$welcomeMedia = \dash\url::site().'/static/images/logo.png';
+		$welcomeMedia = \dash\url::static(). '/images/logo.png';
 		// if(isset($_welcome['welcomemedia']['file']) && $_welcome['welcomemedia']['file'])
 		// {
 		// 	$welcomeMedia = $_welcome['welcomemedia']['file'];

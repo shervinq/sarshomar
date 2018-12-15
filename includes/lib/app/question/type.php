@@ -59,7 +59,7 @@ trait type
 		// 	'choicehelp'    => false,
 		//  'default_load'  => [],
 		// 	'desc'          => T_('Picture choice'),
-		// 	'logo'          => \dash\url::site(). '/static/images/question-type/sarshomar.png',
+		// 	'logo'          => \dash\url::static(). '/images/question-type/sarshomar.png',
 		// 	'upload_choice' => true,
 		// ];
 
@@ -72,7 +72,7 @@ trait type
 			'title'        => T_("Short answer"),
 			'placeholder'  => true,
 			'max'          => true,
-			'logo'         => \dash\url::site(). '/static/images/question-type/short_answer.png',
+			'logo'         => \dash\url::static(). '/images/question-type/short_answer.png',
 			'default_load' =>
 			[
 				'placeholder' => T_("Type here ..."),
@@ -88,7 +88,7 @@ trait type
 			'title'        => T_('Descriptive answer'),
 			'placeholder'  => true,
 			'max'          => true,
-			'logo'         => \dash\url::site(). '/static/images/question-type/descriptive_answer.png',
+			'logo'         => \dash\url::static(). '/images/question-type/descriptive_answer.png',
 			'default_load' =>
 			[
 				'max'     => 10000,
@@ -105,7 +105,7 @@ trait type
 			'min'          => true,
 			'max'          => true,
 			'chart'        => true,
-			'logo'         => \dash\url::site(). '/static/images/question-type/numeric.png',
+			'logo'         => \dash\url::static(). '/images/question-type/numeric.png',
 			'default_load' =>
 			[
 				'min'     => 0,
@@ -122,7 +122,7 @@ trait type
 			'choiceinline' => true,
 			'random'       => true,
 			'chart'        => true,
-			'logo'         => \dash\url::site(). '/static/images/question-type/single_choice.png',
+			'logo'         => \dash\url::static(). '/images/question-type/single_choice.png',
 			'default_load' =>
 			[
 
@@ -140,7 +140,7 @@ trait type
 			'min'          => true,
 			'max'          => true,
 			'choicehelp'   => true,
-			'logo'         => \dash\url::site(). '/static/images/question-type/multiple_choice.png',
+			'logo'         => \dash\url::static(). '/images/question-type/multiple_choice.png',
 			'default_load' =>
 			[
 				'min'        => 1,
@@ -157,7 +157,7 @@ trait type
 			'choice'       => true,
 			'chart'        => true,
 			'random'       => true,
-			'logo'         => \dash\url::site(). '/static/images/question-type/dropdown.png',
+			'logo'         => \dash\url::static(). '/images/question-type/dropdown.png',
 			'default_load' =>
 			[
 				'placeholder' => T_("Please choose one item"),
@@ -170,7 +170,7 @@ trait type
 			'key'          => 'date',
 			'placeholder'  => true,
 			'title'        => T_('Date'),
-			'logo'         => \dash\url::site(). '/static/images/question-type/date.png',
+			'logo'         => \dash\url::static(). '/images/question-type/date.png',
 			'default_load' =>
 			[
 				'placeholder' => \dash\utility\human::fitNumber("1369/10/09"),
@@ -182,7 +182,7 @@ trait type
 			'key'          => 'time',
 			'placeholder'  => true,
 			'title'        => T_('Time'),
-			'logo'         => \dash\url::site(). '/static/images/question-type/time.png',
+			'logo'         => \dash\url::static(). '/images/question-type/time.png',
 			'default_load' =>
 			[
 				'placeholder' => T_("Choose time"),
@@ -194,7 +194,7 @@ trait type
 		[
 			'key'          => 'mobile',
 			'title'        => T_('Mobile'),
-			'logo'         => \dash\url::site(). '/static/images/question-type/mobile.png',
+			'logo'         => \dash\url::static(). '/images/question-type/mobile.png',
 			'default_load' =>
 			[
 				'placeholder' => T_("Enter mobile"),
@@ -206,7 +206,7 @@ trait type
 			'key'          => 'email',
 			'placeholder'  => true,
 			'title'        => T_('Email'),
-			'logo'         => \dash\url::site(). '/static/images/question-type/email.png',
+			'logo'         => \dash\url::static(). '/images/question-type/email.png',
 			'default_load' =>
 			[
 				'placeholder' => T_("abc@youdomain.com"),
@@ -218,7 +218,7 @@ trait type
 			'key'          => 'website',
 			'placeholder'  => true,
 			'title'        => T_('Website'),
-			'logo'         => \dash\url::site(). '/static/images/question-type/website.png',
+			'logo'         => \dash\url::static(). '/images/question-type/website.png',
 			'default_load' =>
 			[
 				'placeholder' => T_("http://"),
@@ -232,7 +232,7 @@ trait type
 			'title'        => T_('Rating'),
 			'max'          => true,
 			'ratetype'     => true,
-			'logo'         => \dash\url::site(). '/static/images/question-type/rating.png',
+			'logo'         => \dash\url::static(). '/images/question-type/rating.png',
 			'default_load' =>
 			[
 				'max'      => 10,
@@ -250,7 +250,7 @@ trait type
 			'default'      => true,
 			'step'         => true,
 			'maxrange'     => 1000,
-			'logo'         => \dash\url::site(). '/static/images/question-type/rangeslider.png',
+			'logo'         => \dash\url::static(). '/images/question-type/rangeslider.png',
 			'default_load' =>
 			[
 				'min'     => 0,
