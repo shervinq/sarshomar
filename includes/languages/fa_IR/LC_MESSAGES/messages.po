@@ -5063,7 +5063,7 @@ msgstr "آدرس"
 #: dash/addons/includes/languages/trans_dash.php:756
 #: sarshomar/includes/languages/trans_dash.php:88
 msgid "Subject"
-msgstr "عنوان درس"
+msgstr "موضوع"
 
 #: dash/addons/includes/languages/trans_dash.php:757
 #: sarshomar/includes/languages/trans_dash.php:89
