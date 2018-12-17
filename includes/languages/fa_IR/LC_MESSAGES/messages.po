@@ -9725,7 +9725,7 @@ msgid ""
 " whit max connetcion :max_connections"
 msgstr ""
 ":url \n"
-" به همراه حد اکثر کانکشن :max_connections"
+" به همراه حداکثر کانکشن :max_connections"
 
 #: dash/addons/includes/languages/trans_static.php:1083
 msgid "Add transaction :title whit :plus plus and :minus minus to :user_id"
@@ -17648,7 +17648,7 @@ msgstr "مقدار حداکثر خارج از محدوده است"
 
 #: sarshomar/includes/lib/app/question.php:269
 msgid "Please set the max larger than min"
-msgstr "لطفا مقدار حد اقل را کمتر از مقدار حد اکثر تنظیم کنید"
+msgstr "لطفا مقدار حد اقل را کمتر از مقدار حداکثر تنظیم کنید"
 
 #: sarshomar/includes/lib/app/question.php:292
 msgid "Please set min choic larger than 0"
@@ -17660,11 +17660,11 @@ msgstr "حد اقل مقدار انتخاب گزینه‌ها باید کمتر 
 
 #: sarshomar/includes/lib/app/question.php:314
 msgid "Please set maximum rate between 1 and 10"
-msgstr "لطفا مقدار حد اکثر امتیازدهی را بین عدد ۱ و ۱۰ تنظیم کنید"
+msgstr "لطفا مقدار حداکثر امتیازدهی را بین عدد ۱ و ۱۰ تنظیم کنید"
 
 #: sarshomar/includes/lib/app/question.php:333
 msgid "Maximum choice must be less than choice count"
-msgstr "حد اکثر مقدار انتخاب گزینه‌ها باید کمتر از تعداد کل گزینه‌ها باشد"
+msgstr "حداکثر مقدار انتخاب گزینه‌ها باید کمتر از تعداد کل گزینه‌ها باشد"
 
 #: sarshomar/includes/lib/app/question.php:372
 msgid "Invalid choice sort of question"
@@ -17684,19 +17684,19 @@ msgstr "لطفا مقدار مرحله را به صورت عددی وارد کن
 
 #: sarshomar/includes/lib/app/question.php:459
 msgid "Please set min less than max"
-msgstr "لطفا مقدار حد اقل را کمتر از مقدار حد اکثر تنظیم کنید"
+msgstr "لطفا مقدار حد اقل را کمتر از مقدار حداکثر تنظیم کنید"
 
 #: sarshomar/includes/lib/app/question.php:465
 msgid "Please set min and max in range :range"
-msgstr "لطفا مقدار حد اقل و حد اکثر را در بازه عددی :range  وارد کنید"
+msgstr "لطفا مقدار حد اقل و حداکثر را در بازه عددی :range  وارد کنید"
 
 #: sarshomar/includes/lib/app/question.php:471
 msgid "Please set step less than max"
-msgstr "لطفا شماره مرحله را کوچکتر از مقدار حد اکثر وارد کنید"
+msgstr "لطفا شماره مرحله را کوچکتر از مقدار حداکثر وارد کنید"
 
 #: sarshomar/includes/lib/app/question.php:477
 msgid "Please set default less than max"
-msgstr "لطفا مقدار پیشفرض را کوچکتر از مقدار حد اکثر تنظیم کنید"
+msgstr "لطفا مقدار پیشفرض را کوچکتر از مقدار حداکثر تنظیم کنید"
 
 #: sarshomar/includes/lib/app/question.php:483
 msgid "Please set default larger than min"
@@ -18079,7 +18079,7 @@ msgstr ""
 #~ msgstr "خواهش میکنم"
 
 #~ msgid "Max number of experts"
-#~ msgstr "حد اکثر کارشناسان"
+#~ msgstr "حداکثر کارشناسان"
 
 #~ msgid "of"
 #~ msgstr "از"
@@ -18518,7 +18518,7 @@ msgstr ""
 #~ msgstr "مجموع"
 
 #~ msgid "Max size 5Mb"
-#~ msgstr "حد اکثر اندازه فایل ۵ مگابایت"
+#~ msgstr "حداکثر اندازه فایل ۵ مگابایت"
 
 #~ msgid "Opts!, Maybe your browser saved your password incorrectly."
 #~ msgstr "اوه! امیدواریم مرورگر شما پسوردتون رو اشتباه ذخیره کرده باشه."
