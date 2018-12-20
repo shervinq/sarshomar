@@ -463,7 +463,7 @@ class questionSender
 			'inline_keyboard' => []
 		];
 
-		for ($i=0; $i < $max; $i++)
+		for ($i=0; $i <= $max; $i++)
 		{
 			$itemTitle    = $value['title'];
 			$itemId       = $value['title'];
