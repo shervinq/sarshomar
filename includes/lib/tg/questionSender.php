@@ -24,8 +24,11 @@ class questionSender
 				break;
 
 			case 'numeric':
-			case 'rangeslider':
 				self::numeric($_questionData, $text, $reply_markup, $_answer);
+				break;
+
+			case 'rangeslider':
+				self::rangeslider($_questionData, $text, $reply_markup, $_answer);
 				break;
 
 			case 'date':
@@ -182,6 +185,24 @@ class questionSender
 		if(isset($_question['setting']['numeric']['max']))
 		{
 			$max = $_question['setting']['numeric']['max'];
+		}
+
+		$_txt .= "\n\n";
+		$_txt .= '❇️ '. T_('Please enter number between :min and :max', ['min' => $min, 'max' => $max]);
+	}
+
+
+	private static function rangeslider($_question, &$_txt, &$_kbd, $_answer)
+	{
+		$min = null;
+		$max = null;
+		if(isset($_question['setting']['rangeslider']['min']))
+		{
+			$min = $_question['setting']['rangeslider']['min'];
+		}
+		if(isset($_question['setting']['rangeslider']['max']))
+		{
+			$max = $_question['setting']['rangeslider']['max'];
 		}
 
 		$_txt .= "\n\n";
