@@ -247,6 +247,7 @@ class survey
 				// 	]
 				// ]
 			];
+			$result['reply_markup'] = \lib\tg\detect::mainmenu(true);
 
 			// if start with callback answer callback
 			if(bot::isCallback())
