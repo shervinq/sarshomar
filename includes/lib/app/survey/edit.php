@@ -78,7 +78,7 @@ trait edit
 			if(\dash\engine\process::status())
 			{
 				\dash\log::save_temp();
-				\dash\log::set('editSurvay', ['data' => $id, 'datalink' => \dash\coding::encode($id)]);
+				\dash\log::set('editSurvay', ['code' => $id, 'datalink' => \dash\coding::encode($id)]);
 				\dash\notif::ok(T_("Survay successfully updated"));
 			}
 		}

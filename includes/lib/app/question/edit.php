@@ -45,7 +45,7 @@ trait edit
 
 			if(\dash\engine\process::status())
 			{
-				\dash\log::set('editBlock', ['data' => $id, 'datalink' => \dash\coding::encode($id)]);
+				\dash\log::set('editBlock', ['code' => $id, 'datalink' => \dash\coding::encode($id)]);
 				\dash\notif::ok(T_("Question successfully updated"));
 			}
 		}
