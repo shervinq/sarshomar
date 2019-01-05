@@ -1,8 +1,8 @@
 <?php
 
-self::$config['zarinpal']['status']               = null;
-self::$config['zarinpal']['MerchantID']           = null;
-self::$config['zarinpal']['Description']          = null;
+self::$config['zarinpal']['status']               = true;
+self::$config['zarinpal']['MerchantID']           = '669de6b4-f744-11e6-9180-005056a205be';
+self::$config['zarinpal']['Description']          = "Sarshomar";
 self::$config['zarinpal']['CallbackURL']          = null;
 self::$config['zarinpal']['exchange']             = null;
 

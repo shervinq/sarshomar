@@ -32,6 +32,9 @@ self::$config['max_upload'] = 5 * 1024 * 1024; // 5 MB;
 // upload file on dl.sarshomar.com
 self::$config['upload_subdomain']  = 'dl';
 
+
+self::$config['default_payment']  = 'zarinpal';
+
 /**
 @ In the name Of Allah
 * The base configurations of the jibres.
