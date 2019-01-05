@@ -103,7 +103,7 @@ class twigTransTerms
 
 	//---------------------------content/template/static/benefits/question-charts.html
 	echo T_("Question Charts");                                                       // Line 80
-	echo T_("Sarshomar");                                                             // Line 730
+	echo T_("Sarshomar");                                                             // Line 52
 	echo T_("A question chart links a question to another.");                         // Line 17
 	echo T_("To do so, you can specify the desired options to create the link when defining the question.");// Line 17
 	echo T_("For example, as for the questions related to Bloodletting, you can only ask those users who have chosen the positive option for using Iranian traditional medicine.");// Line 19
@@ -467,86 +467,6 @@ class twigTransTerms
 	echo T_("This pricing is valid until next change!");                              // Line 71
 	echo T_("Now enjoy your moments.");                                               // Line 71
 
-	//--------------------------------------------------------content/poll/layout.html
-	echo T_("Unfortunately there is no title to show!");                              // Line 8
-	echo T_("Report");                                                                // Line 168
-	echo T_("Spam");                                                                  // Line 33
-	echo T_("Breaking The Law");                                                      // Line 34
-	echo T_("Privacy Issue");                                                         // Line 35
-	echo T_("Not Interested");                                                        // Line 36
-	echo T_("Simply enter to Sarshomar and participate in the poll and register your vote.");// Line 49
-	echo T_("Read More");                                                             // Line 211
-	echo T_("There is no option!");                                                   // Line 166
-	echo T_("Skip");                                                                  // Line 409
-	echo T_("Previous");                                                              // Line 182
-	echo T_("Save Answer");                                                           // Line 278
-	echo T_("You can select just two options.");                                      // Line 222
-	echo T_("I am not willing to answer");                                            // Line 269
-	echo T_("Ask Me");                                                                // Line 281
-	echo T_("There is no data to draw chart!");                                       // Line 298
-	echo T_("Rank");                                                                  // Line 323
-	echo T_("Item");                                                                  // Line 324
-	echo T_("Vote");                                                                  // Line 325
-	echo T_("Ratio");                                                                 // Line 326
-	echo T_("Total");                                                                 // Line 342
-	echo T_("Person");                                                                // Line 76
-	echo T_("Similar Questions");                                                     // Line 374
-	echo T_("Latest Questions");                                                      // Line 367
-	echo T_("There is no similar post");                                              // Line 375
-	echo T_("Status and period of publish");                                          // Line 395
-	echo T_("People voted to this poll");                                             // Line 402
-	echo T_("Skip/Votes");                                                            // Line 415
-	echo T_("Privacy");                                                               // Line 121
-	echo T_("Author");                                                                // Line 430
-	echo T_("Range");                                                                 // Line 437
-	echo T_("All society of Sarshomar");                                              // Line 439
-	echo T_("Poll timespan");                                                         // Line 444
-	echo T_("to");                                                                    // Line 447
-	echo T_("Not set");                                                               // Line 486
-	echo T_("Keyword");                                                               // Line 455
-	echo T_("Audiences of this poll");                                                // Line 471
-	echo T_("Tree");                                                                  // Line 490
-	echo T_("You've answered to this poll");                                          // Line 491
-	echo T_("There is nothing to display!");                                          // Line 535
-	echo T_("What is your opinion? Please rate this poll.");                          // Line 544
-	echo T_("Submit");                                                                // Line 562
-	echo T_("Continue");                                                              // Line 599
-	echo T_("Refresh Chart");                                                         // Line 636
-	echo T_("Edit");                                                                  // Line 53
-	echo T_("VIP Value");                                                             // Line 653
-	echo T_("Select");                                                                // Line 661
-	echo T_("stop");                                                                  // Line 662
-	echo T_("pause");                                                                 // Line 663
-	echo T_("trash");                                                                 // Line 664
-	echo T_("publish");                                                               // Line 688
-	echo T_("draft");                                                                 // Line 693
-	echo T_("enable");                                                                // Line 667
-	echo T_("disable");                                                               // Line 668
-	echo T_("deleted");                                                               // Line 669
-	echo T_("schedule");                                                              // Line 670
-	echo T_("expired");                                                               // Line 671
-	echo T_("awaiting");                                                              // Line 672
-	echo T_("filtered");                                                              // Line 673
-	echo T_("blocked");                                                               // Line 674
-	echo T_("spam");                                                                  // Line 675
-	echo T_("violence");                                                              // Line 676
-	echo T_("pornography");                                                           // Line 677
-	echo T_("other");                                                                 // Line 678
-	echo T_("People Voted");                                                          // Line 717
-	echo T_("You");                                                                   // Line 718
-	echo T_("People");                                                                // Line 732
-	echo T_("Lottery");                                                               // Line 739
-	echo T_("Publish");                                                               // Line 56
-	echo T_("Trash");                                                                 // Line 766
-	echo T_("Delete");                                                                // Line 771
-	echo T_("Stop");                                                                  // Line 776
-	echo T_("Pause");                                                                 // Line 781
-	echo T_("Draft");                                                                 // Line 61
-
-	//-------------------------------------------------------content/poll/display.html
-	echo T_("Description");                                                           // Line 386
-	echo T_("Comments");                                                              // Line 39
-
 	//-------------------------------------------------------content/home/display.html
 	echo T_("Sarshomar Knowledge");                                                   // Line 71
 	echo T_("vote");                                                                  // Line 82
@@ -561,6 +481,7 @@ class twigTransTerms
 
 	//--------------------------------------------------content/changelog/display.html
 	echo T_("Date");                                                                  // Line 14
+	echo T_("Description");                                                           // Line 386
 	echo T_("We are Developers, please wait!");                                       // Line 22
 	echo T_("Improve design of admin panel to manage and create survey easily.");     // Line 32
 	echo T_("Telegram of version2 is fully connected to Sarshomar");                  // Line 37
@@ -606,6 +527,7 @@ class twigTransTerms
 
 	//-------------------------------------------content_a/report/allquestion/chart.js
 	echo T_("Complete survey");                                                       // Line 144
+	echo T_("Person");                                                                // Line 76
 
 	//------------------------------------------content_a/report/question/display.html
 	echo T_("Run");                                                                   // Line 38
@@ -686,6 +608,7 @@ class twigTransTerms
 
 	//--------------------------------------------content_a/question/home/display.html
 	echo T_("Welcome message");                                                       // Line 12
+	echo T_("Edit");                                                                  // Line 53
 	echo T_("Have Media");                                                            // Line 56
 	echo T_("Type");                                                                  // Line 21
 	echo T_("Text");                                                                  // Line 22
@@ -704,6 +627,7 @@ class twigTransTerms
 	echo T_("Questions");                                                             // Line 147
 	echo T_("Question Sorter");                                                       // Line 157
 	echo T_("Settings");                                                              // Line 21
+	echo T_("Privacy");                                                               // Line 121
 	echo T_("Reports");                                                               // Line 30
 	echo T_("Live Preview");                                                          // Line 126
 
@@ -717,6 +641,8 @@ class twigTransTerms
 	echo T_("Language");                                                              // Line 16
 	echo T_("Survey password");                                                       // Line 32
 	echo T_("Survey start button text");                                              // Line 42
+	echo T_("Publish");                                                               // Line 56
+	echo T_("Draft");                                                                 // Line 61
 	echo T_("Expire");                                                                // Line 66
 	echo T_("Deleted");                                                               // Line 71
 	echo T_("Private");                                                               // Line 87
@@ -758,6 +684,7 @@ class twigTransTerms
 	echo T_("Without welcome message");                                               // Line 61
 	echo T_("Without thank you message");                                             // Line 100
 	echo T_("Setting");                                                               // Line 136
+	echo T_("Report");                                                                // Line 168
 	echo T_("No user answer to this survey yet!");                                    // Line 201
 	echo T_("Answer chart");                                                          // Line 212
 

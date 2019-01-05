@@ -16,7 +16,7 @@ class twigTransTerms
 	echo T_("Categries");                                                             // Line 19
 	echo T_("Tags");                                                                  // Line 72
 	echo T_("Pages");                                                                 // Line 58
-	echo T_("Help center");                                                           // Line 32
+	echo T_("Help center");                                                           // Line 43
 	echo T_("Help tags");                                                             // Line 48
 	echo T_("Support tags");                                                          // Line 58
 	echo T_("Comments");                                                              // Line 134
@@ -39,12 +39,12 @@ class twigTransTerms
 	echo T_("Slug used to create url");                                               // Line 33
 	echo T_("Write post ");                                                           // Line 39
 	echo T_("Allow change default publish date");                                     // Line 44
-	echo T_("Publish date");                                                          // Line 65
+	echo T_("Publish date");                                                          // Line 45
 	echo T_("Default is now");                                                        // Line 47
 	echo T_("Publish time");                                                          // Line 55
 	echo T_("Add to gallery");                                                        // Line 61
-	echo T_("To add image gallery drop file here or");                                // Line 62
-	echo T_("Maximum file size");                                                     // Line 68
+	echo T_("To add image gallery drop file here or");                                // Line 11
+	echo T_("Maximum file size");                                                     // Line 17
 	echo T_("Save");                                                                  // Line 13
 	echo T_("Status");                                                                // Line 62
 	echo T_("Publish");                                                               // Line 90
@@ -52,10 +52,10 @@ class twigTransTerms
 	echo T_("Deleted");                                                               // Line 211
 	echo T_("Comment");                                                               // Line 131
 	echo T_("You can publish in another language");                                   // Line 117
-	echo T_("Language");                                                              // Line 277
+	echo T_("Language");                                                              // Line 118
 	echo T_("Please select one item");                                                // Line 28
 	echo T_("Choose parent for this page to create related url as tree");             // Line 133
-	echo T_("Parent");                                                                // Line 76
+	echo T_("Parent");                                                                // Line 134
 	echo T_("Choose Parent");                                                         // Line 136
 	echo T_("Without Parent");                                                        // Line 137
 	echo T_("Choose category for posts is fix url of post relative and help people find it better.");// Line 153
@@ -89,10 +89,10 @@ class twigTransTerms
 	echo T_("Search with new keywords.");                                             // Line 105
 	echo T_("Hi!");                                                                   // Line 112
 	echo T_("Try to start with add new record!");                                     // Line 179
-	echo T_("All publish posts");                                                     // Line 126
+	echo T_("All publish posts");                                                     // Line 112
 	echo T_("Published");                                                             // Line 193
-	echo T_("All draft posts");                                                       // Line 135
-	echo T_("All trash posts");                                                       // Line 144
+	echo T_("All draft posts");                                                       // Line 121
+	echo T_("All trash posts");                                                       // Line 130
 
 	//---------------------------------------addons/content_cp/posts/edit/display.html
 	echo T_("Icon");                                                                  // Line 71
@@ -108,7 +108,8 @@ class twigTransTerms
 	echo T_("No backup was found");                                                   // Line 65
 
 	//----------------------------------------------addons/content_cp/cms/display.html
-	echo T_("Posts");                                                                 // Line 43
+	echo T_("Attachment");                                                            // Line 27
+	echo T_("Posts");                                                                 // Line 54
 	echo T_("Page");                                                                  // Line 34
 	echo T_("Category");                                                              // Line 23
 
@@ -239,6 +240,13 @@ class twigTransTerms
 	echo T_("Top Referrers");                                                         // Line 143
 
 	//-----------------------------------------addons/content_cp/visitor/home/chart.js
+
+	//----------------------------------------addons/content_cp/attachment/layout.html
+
+	//-----------------------------------addons/content_cp/attachment/add/display.html
+	echo T_("Add file");                                                              // Line 10
+
+	//----------------------------------addons/content_cp/attachment/home/display.html
 
 	//----------------------------------------addons/content_cp/mycontact/display.html
 	echo T_("Contact");                                                               // Line 14
@@ -472,7 +480,6 @@ class twigTransTerms
 	echo T_("Subject of your ticket");                                                // Line 11
 	echo T_("Set title will help us answer quickly");                                 // Line 11
 	echo T_("Please write your message");                                             // Line 17
-	echo T_("Attachment");                                                            // Line 27
 	echo T_("Max size");                                                              // Line 27
 	echo T_("Send notify about your answer to creator of ticket");                    // Line 36
 	echo T_("Via sms to");                                                            // Line 38
