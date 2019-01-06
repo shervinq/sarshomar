@@ -24,12 +24,12 @@
 
       <p>{%trans "After registration and user account confirmation, your will still have access to your saved participation. Furthermore, to appreciate your presence confirmation, Sarshomar will award you a bonus in your user account for taking that valuable measure."%} {%trans "Upon completing your registration, you will both receive a registration gift and, based on the activities done, Sarshomar's other allocated gifts and bonuses."%}</p>
 
+      {%if false%}
       {%if not login%}
       <div class="guest-box">
        <input type="checkbox" id="guest-button">
        <label class="try" for="guest-button">{%trans "I want to experience Sarshomar!"%}</label>
       </div>
-
       <div class="captcha-box" data-response='guest-button' data-response-hide>
        <h3>{%trans "Please enter shown numbers here"%}</h3>
        <div class="captcha-container">
@@ -40,6 +40,7 @@
         <div class="captcha">{{captcha}}</div>
        </div>
       </div>
+      {%endif%}
       {%endif%}
 
       {%if login%}

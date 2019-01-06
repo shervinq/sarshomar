@@ -17,8 +17,11 @@
       <p>به عنوان مهمان وارد شوید و از تمامی امکانات استفاده کنید؛ سوال بسازید، پاسخ دهید و در نظرسنجی‌ها شرکت کنید. پس از بررسی، اگر سرشمار را برترین یافتید، ثبت‌نام کنید.</p>
       <p class="em">{%trans "Unlike all other websites and services you have ever seen, you do not have to register in Sarshomar."%}</p>
       <p>تمام فعالیت‌های شما در وضعیت مهمان ذخیره می‌شوند ولی تاثیری روی نتایج ندارند، پس از ثبت‌نام و تایید حساب‌کاربری، سرشمار به پاس تثبیت حضورتان، هدیه‌ای را برای این اقدام ارزشمند در حساب‌کاربری شما لحاظ خواهد کرد.</p>
+       <img src="{{url.static}}/images/miniature/guest.png" alt='{%trans "Try Before Registering"%}' class="guest-img">
+
       <p>دلیل عدم انتشار سوالات ثبت شده و عدم اثرگذاری نتایج در حالت مهمان، جلوگیری از ایجاد نتایج غیرواقعی و انتشار سوالات نامناسب است.</p>
 
+     {%if false%}
       {%if not login%}
       <div class="guest-box">
        <input type="checkbox" id="guest-button">
@@ -43,8 +46,8 @@
        <a href="{{url.kingdom}}/benefits/multimedia-questions">{%trans "Multimedia Questions"%}</a>
       </div>
       {%endif%}
+     {%endif%}
      </div>
-
      {%if false%}
      <div class="content">
       <p>{%trans "Using the option Try Before Registering, you can be our guest user and investigate Sarshomar without being required to register. In case, you find us the best, you can proceed to register."%}</p>
