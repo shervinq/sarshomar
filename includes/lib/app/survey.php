@@ -59,7 +59,7 @@ class survey
 		{
 			if($load['lang'] !== \dash\language::current())
 			{
-				$new_url = \dash\url::kingdom();
+				$new_url = \dash\url::site();
 				$new_url .= '/'. $load['lang']. '/s/'. $_id;
 				if(\dash\url::child())
 				{
