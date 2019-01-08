@@ -4,6 +4,14 @@ namespace lib\db;
 
 class surveys
 {
+	public static function get_all_status()
+	{
+		$query = "SELECT COUNT(*) AS `count`, surveys.status AS `status` FROM surveys GROUP BY surveys.status";
+		$result =  \dash\db::get($query, ['status', 'count']);
+
+		return $result;
+	}
+
 
 	public static function update_countblock($_survery_id)
 	{

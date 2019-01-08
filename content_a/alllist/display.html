@@ -5,6 +5,7 @@
 
 {%block pageContent%}
 
+{{block('pageSteps')}}
 {{block('htmlSearchBox')}}
 <table class="tbl1 v1">
   <thead>
@@ -95,3 +96,24 @@
 </div>
 {%endblock%}
 
+
+
+
+{%block pageSteps%}
+
+
+ <div class="f">
+  {%for key, value in allStatus%}
+    <div class="c">
+      <a class="dcard x1" href="{{url.this}}?status={{key}}">
+       <div class="statistic">
+        <div class="value">{{value | fitNumber}}</div>
+        <div class="label">{%trans key%}</div>
+       </div>
+      </a>
+    </div>
+  {%endfor%}
+
+  </div>
+
+{%endblock%}

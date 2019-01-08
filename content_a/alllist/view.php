@@ -63,6 +63,9 @@ class view
 
 		}
 
+		$allStatus = \lib\db\surveys::get_all_status();
+		\dash\data::allStatus($allStatus);
+
 		// set dataFilter
 		$dataFilter = \dash\app\sort::createFilterMsg(\dash\request::get('q'), $filterArgs);
 		\dash\data::dataFilter($dataFilter);
