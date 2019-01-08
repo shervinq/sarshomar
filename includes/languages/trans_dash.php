@@ -524,7 +524,7 @@ class twigTransTerms
 	//----------------------------------addons/content_support/ticket/ticketTypes.html
 	echo T_("My tickets");                                                            // Line 7
 	echo T_("Manage tickets");                                                        // Line 16
-	echo T_("Manage all tickets");                                                    // Line 26
+	echo T_("Manage all tickets");                                                    // Line 27
 
 	//---------------------------------addons/content_support/ticket/home/display.html
 	echo T_("No ticket was found");                                                   // Line 79

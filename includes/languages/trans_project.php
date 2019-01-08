@@ -168,17 +168,17 @@ class twigTransTerms
 	echo T_("In this way, while answering the questions is possible for all, the results will be personal and displayed only for the user who has asked the question.");// Line 21
 
 	//-------------------------------------content/template/static/benefits/guest.html
-	echo T_("Unlike all other websites and services you have ever seen, you do not have to register in Sarshomar.");// Line 56
-	echo T_("Using the option Try Before Registering, you can be our guest user and investigate Sarshomar without being required to register. In case, you find us the best, you can proceed to register.");// Line 50
-	echo T_("When you are a guest user, you have all Sarshomar's qualities at your service to investigate.");// Line 62
-	echo T_("You can save your question or questionnaire as well as answer Sarshomar's questions.");// Line 62
-	echo T_("Your activities and participation, when you are a guest, will be saved and kept safe by us for a while; however, to share the question or to make the results received from you effective in opinion polls, you are required to register.");// Line 62
-	echo T_("The reason behind not sharing the questions and not putting into effect the received results from users while they are guest users is to prevent creating unreal results and sharing improper questions.");// Line 62
-	echo T_("After registration and user account confirmation, your will still have access to your saved participation. Furthermore, to appreciate your presence confirmation, Sarshomar will award you a bonus in your user account for taking that valuable measure.");// Line 66
-	echo T_("Upon completing your registration, you will both receive a registration gift and, based on the activities done, Sarshomar's other allocated gifts and bonuses.");// Line 66
-	echo T_("I want to experience Sarshomar!");                                       // Line 25
-	echo T_("Please enter shown numbers here");                                       // Line 29
-	echo T_("submit");                                                                // Line 33
+	echo T_("Unlike all other websites and services you have ever seen, you do not have to register in Sarshomar.");// Line 59
+	echo T_("Using the option Try Before Registering, you can be our guest user and investigate Sarshomar without being required to register. In case, you find us the best, you can proceed to register.");// Line 53
+	echo T_("When you are a guest user, you have all Sarshomar's qualities at your service to investigate.");// Line 65
+	echo T_("You can save your question or questionnaire as well as answer Sarshomar's questions.");// Line 65
+	echo T_("Your activities and participation, when you are a guest, will be saved and kept safe by us for a while; however, to share the question or to make the results received from you effective in opinion polls, you are required to register.");// Line 65
+	echo T_("The reason behind not sharing the questions and not putting into effect the received results from users while they are guest users is to prevent creating unreal results and sharing improper questions.");// Line 65
+	echo T_("After registration and user account confirmation, your will still have access to your saved participation. Furthermore, to appreciate your presence confirmation, Sarshomar will award you a bonus in your user account for taking that valuable measure.");// Line 69
+	echo T_("Upon completing your registration, you will both receive a registration gift and, based on the activities done, Sarshomar's other allocated gifts and bonuses.");// Line 69
+	echo T_("I want to experience Sarshomar!");                                       // Line 28
+	echo T_("Please enter shown numbers here");                                       // Line 32
+	echo T_("submit");                                                                // Line 36
 
 	//----------------------content/template/static/benefits/essay-type-questions.html
 	echo T_("Essay-type Questions");                                                  // Line 3
@@ -476,7 +476,7 @@ class twigTransTerms
 
 	//-------------------------------------------------------content/help/display.html
 	echo T_("Two minute tour");                                                       // Line 5
-	echo T_("Search");                                                                // Line 78
+	echo T_("Search");                                                                // Line 92
 	echo T_("Soon");                                                                  // Line 26
 
 	//--------------------------------------------------content/changelog/display.html
@@ -510,7 +510,7 @@ class twigTransTerms
 	echo T_("Answered");                                                              // Line 69
 	echo T_("Skipped");                                                               // Line 66
 	echo T_("Show detail");                                                           // Line 78
-	echo T_("Clear filters");                                                         // Line 87
+	echo T_("Clear filters");                                                         // Line 77
 	echo T_("Result not found!");                                                     // Line 86
 	echo T_("Search with new keywords.");                                             // Line 86
 	echo T_("No data was found!");                                                    // Line 93
@@ -518,7 +518,7 @@ class twigTransTerms
 	//---------------------------------------content_a/report/allquestion/display.html
 	echo T_("Untitled");                                                              // Line 42
 	echo T_("Click to sort");                                                         // Line 163
-	echo T_("Answer");                                                                // Line 15
+	echo T_("Answer");                                                                // Line 17
 	echo T_("Count");                                                                 // Line 24
 	echo T_("Percent");                                                               // Line 224
 	echo T_("%");                                                                     // Line 181
@@ -550,12 +550,13 @@ class twigTransTerms
 	echo T_("Check question Detail");                                                 // Line 67
 
 	//--------------------------------------------------content_a/alllist/display.html
-	echo T_("Code");                                                                  // Line 12
+	echo T_("Code");                                                                  // Line 14
 	echo T_("Title");                                                                 // Line 5
 	echo T_("Status");                                                                // Line 181
-	echo T_("Created on");                                                            // Line 17
-	echo T_("Last update");                                                           // Line 18
-	echo T_("Creator");                                                               // Line 19
+	echo T_("Created on");                                                            // Line 19
+	echo T_("Last update");                                                           // Line 20
+	echo T_("Have telegram");                                                         // Line 21
+	echo T_("Creator");                                                               // Line 22
 	echo T_("Without question");                                                      // Line 36
 	echo T_("Response");                                                              // Line 39
 	echo T_("No responses");                                                          // Line 39

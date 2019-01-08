@@ -39,12 +39,36 @@ class surveys
 
 	public static function search($_string = null, $_option = [])
 	{
+		if(isset($_option['join_creator']))
+		{
+			$default_option =
+			[
+				'search_field' => " (title LIKE '%__string__%' ) ",
+				'public_show_field' =>
+				"
+					surveys.*,
+					(SELECT COUNT(*) FROM answers WHERE answers.survey_id = surveys.id) AS `answer_count`,
+					users.gender AS `user_gender`,
+					users.firstname AS `user_firstname`,
+					users.lastname AS `user_lastname`,
+					users.displayname AS `user_displayname`,
+					users.chatid AS `user_chatid`
 
-		$default_option =
-		[
-			'search_field' => " (title LIKE '%__string__%' ) ",
-			'public_show_field' => " surveys.*, (SELECT COUNT(*) FROM answers WHERE answers.survey_id = surveys.id) AS `answer_count` ",
-		];
+
+				",
+				'master_join' => " INNER JOIN users ON users.id = surveys.user_id ",
+			];
+		}
+		else
+		{
+			$default_option =
+			[
+				'search_field' => " (title LIKE '%__string__%' ) ",
+				'public_show_field' => " surveys.*, (SELECT COUNT(*) FROM answers WHERE answers.survey_id = surveys.id) AS `answer_count` ",
+			];
+		}
+
+		unset($_option['join_creator']);
 
 		$_option = array_merge($default_option, $_option);
 		$result =  \dash\db\config::public_search('surveys', $_string, $_option);

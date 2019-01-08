@@ -5,24 +5,27 @@
 
 {%block pageContent%}
 
+{{block('htmlSearchBox')}}
 <table class="tbl1 v1">
   <thead>
     <tr>
-      <th>#</th>
+
+      <th data-sort="{{sortLink.id.sort}}"><a href="{{sortLink.id.link}}">#</a></th>
       <th>{%trans "Code"%}</th>
       <th>{%trans "Title"%}</th>
-      <th class="s0">{%trans "Question"%}</th>
-      <th>{%trans "Answer"%}</th>
-      <th>{%trans "Status"%}</th>
+      <th data-sort="{{sortLink.countblock.sort}}" class="s0"><a href="{{sortLink.countblock.link}}">{%trans "Question"%}</a></th>
+      <th data-sort="{{sortLink.answer_count.sort}}"><a href="{{sortLink.answer_count.link}}">{%trans "Answer"%}</a></th>
+      <th data-sort="{{sortLink.status.sort}}"><a href="{{sortLink.status.link}}">{%trans "Status"%}</a></th>
       <th class="s0">{%trans "Created on"%}</th>
       <th class="s0">{%trans "Last update"%}</th>
-      <th class="s0">{%trans "Creator"%}</th>
+      <th class="s0"><i class="sf-paper-plane" title='{%trans "Have telegram"%}'></i></th>
+      <th data-sort="{{sortLink.user_id.sort}}" class="s0"><a href="{{sortLink.user_id.link}}">{%trans "Creator"%}</a></th>
     </tr>
   </thead>
   <tbody>
 {%for key, value in dataTable%}
 {%set cardColor%}
-	{%if value.status == 'publish'%}blue{%elseif value.status == 'draft'%}green{%elseif value.status == 'deleted'%}red{%else%}black{%endif%}
+  {%if value.status == 'publish'%}blue{%elseif value.status == 'draft'%}green{%elseif value.status == 'deleted'%}red{%else%}black{%endif%}
 {%endset%}
 
     <tr class="{%if value.status == 'publish'%}positive{%elseif value.status == 'draft'%}{%else%}negative{%endif%}">
@@ -53,7 +56,13 @@
       <td class="s0 collapsing fs09">
         <span title='{{value.datemodified | dt(true)}}'>{{value.datemodified | dt('human', 'year')}}</span>
       </td>
-      <td class="s0 collapsing">-</td>
+      <td class="collapsing">
+        {%if value.user_chatid%} <i class="sf-paper-plane mLa5 fc-blue" ></i> {%endif%}
+      </td>
+      <td class="s0 collapsing">
+        <a href="{{url.this}}?user_id={{value.user_id}}">
+          {%if value.user_displayname%}{{value.user_displayname}}{%else%}{{value.user_firstname ~ ' ' ~ value.user_lastname}}{%endif%} </td>
+         </a>
     </tr>
 
 {%endfor%}
@@ -62,7 +71,12 @@
 
 {%include display.pagination%}
 
-{{block('htmlSearchBox')}}
+{%if requestGET%}
+<p class="f fs14 msg info2">
+  <span class="c">{{dataFilter | raw}}</span>
+  <a class="cauto" href="{{url.this}}">{%trans "Clear filters"%}</a>
+</p>
+{%endif%}
 
 {%endblock%}
 

@@ -585,7 +585,7 @@ class question
 			switch ($key)
 			{
 				case 'status':
-					continue;
+
 					break;
 
 				case 'id':
@@ -618,7 +618,7 @@ class question
 
 					if(!is_array($choice) || \dash\url::content() === 'a')
 					{
-						continue;
+						break;
 					}
 
 					$choice_sort  = 'save';

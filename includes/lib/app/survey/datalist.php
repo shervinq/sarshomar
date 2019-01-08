@@ -6,9 +6,11 @@ trait datalist
 
 	public static $sort_field =
 	[
-		'title',
+		'id',
 		'status',
-		'signup',
+		'user_id',
+		'countblock',
+		'answer_count'
 	];
 
 
@@ -28,8 +30,9 @@ trait datalist
 
 		$default_meta =
 		[
-			'sort'  => null,
-			'order' => null,
+			'sort'         => null,
+			'order'        => null,
+			'join_creator' => false,
 		];
 
 		if(!is_array($_args))
@@ -43,7 +46,6 @@ trait datalist
 		{
 			$_args['sort'] = null;
 		}
-
 
 		$result            = \lib\db\surveys::search($_string, $_args);
 		$temp              = [];
