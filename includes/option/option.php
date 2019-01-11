@@ -14,9 +14,10 @@ if(!defined('db_log_name'))
 }
 
 
-self::$url['root']              = 'sarshomar';
-self::$url['tld']               = 'com';
-self::$url['protocol']          = 'https';
+self::$url['protocol']       = 'https';
+self::$url['root']           = 'sarshomar';
+// self::$url['tld']            = 'com';
+
 
 self::$config['site']['title']  = "Sarshomar";
 self::$config['site']['desc']   = "Focus on your question. Do not be too concerned about how to ask or analyze.";
