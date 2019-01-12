@@ -1,5 +1,5 @@
 <nav class="socialbox sharebox">
- <a class="twitter" href="https://twitter.com/intent/tweet?url={{url.full}}&text={{page.title}}" data-direct>
+ <a class="twitter" href="https://twitter.com/intent/tweet?url={{url.pwd}}&text={{page.title}}" data-direct>
  	<span>{%trans "Twitter"%}</span>
   <span class="sf-twitter"></span>
  </a>
@@ -11,21 +11,21 @@
  </a>
  {%endif%}
 
- <a class="telegram" href="tg://msg_url?url={{url.full}}" data-direct>
+ <a class="telegram" href="tg://msg_url?url={{url.pwd}}" data-direct>
  	<span>{%trans "Telegram"%}</span>
   <span class="sf-paper-plane"></span>
  </a>
- <a class="gplus" href="https://plus.google.com/share?url={{url.full}}" data-direct>
+ <a class="gplus" href="https://plus.google.com/share?url={{url.pwd}}" data-direct>
  	<span>{%trans "Google Plus"%}</span>
   <span class="sf-google-plus"></span>
  </a>
- <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{url.full}}" data-direct>
+ <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{url.pwd}}" data-direct>
  	<span>{%trans "Facebook"%}</span>
   <span class="sf-facebook-official"></span>
  </a>
 
  {%if social.linkedin%}
- <a class="linkedin" href="http://www.linkedin.com/shareArticle?mini=true&url={{url.full}}&title={{page.title}}" data-direct>
+ <a class="linkedin" href="http://www.linkedin.com/shareArticle?mini=true&url={{url.pwd}}&title={{page.title}}" data-direct>
   <span>{%trans "LinkedIn"%}</span>
   <span class="sf-linkedin"></span>
  </a>
