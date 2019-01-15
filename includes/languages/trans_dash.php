@@ -21,10 +21,6 @@ class twigTransTerms
 	echo T_("Support tags");                                                          // Line 58
 	echo T_("Comments");                                                              // Line 134
 	echo T_("Support");                                                               // Line 51
-	echo T_("Powered by");                                                            // Line 57
-	echo T_("Some right reserved");                                                   // Line 57
-	echo T_("Ermile");                                                                // Line 57
-	echo T_("Version");                                                               // Line 57
 
 	//---------------------------------------------addons/content_cp/posts/layout.html
 	echo T_("Enter title here");                                                      // Line 4
@@ -69,12 +65,12 @@ class twigTransTerms
 	echo T_("Featured Image");                                                        // Line 205
 	echo T_("allowed extentions jpg, png. Max 1000Kb");                               // Line 208
 	echo T_("Gallery");                                                               // Line 223
-	echo T_("Click to download");                                                     // Line 55
+	echo T_("Click to download");                                                     // Line 66
 	echo T_("Video");                                                                 // Line 236
 	echo T_("MP3");                                                                   // Line 242
 	echo T_("PDF");                                                                   // Line 88
 	echo T_("Without preview");                                                       // Line 246
-	echo T_("Remove");                                                                // Line 32
+	echo T_("Remove");                                                                // Line 43
 
 	//----------------------------------------addons/content_cp/posts/add/display.html
 	echo T_("First save as draft and do all checks, then publish.");                  // Line 26
@@ -105,7 +101,7 @@ class twigTransTerms
 	echo T_("Backup now");                                                            // Line 34
 	echo T_("Sise");                                                                  // Line 36
 	echo T_("Download");                                                              // Line 88
-	echo T_("No backup was found");                                                   // Line 65
+	echo T_("No backup was found");                                                   // Line 76
 
 	//----------------------------------------------addons/content_cp/cms/display.html
 	echo T_("Attachment");                                                            // Line 27
@@ -174,7 +170,7 @@ class twigTransTerms
 	echo T_("Type");                                                                  // Line 164
 	echo T_("Description");                                                           // Line 51
 	echo T_("Used");                                                                  // Line 119
-	echo T_("Add");                                                                   // Line 25
+	echo T_("Add");                                                                   // Line 36
 	echo T_("Require");                                                               // Line 67
 	echo T_("Title is used to show on website");                                      // Line 180
 	echo T_("Used for url");                                                          // Line 186
@@ -286,7 +282,7 @@ class twigTransTerms
 	echo T_("Melli");                                                                 // Line 27
 	echo T_("Sepah");                                                                 // Line 33
 	echo T_("Keshavarzi");                                                            // Line 39
-	echo T_("Parsian");                                                               // Line 54
+	echo T_("Parsian");                                                               // Line 159
 	echo T_("Maskan");                                                                // Line 51
 	echo T_("Refah");                                                                 // Line 57
 	echo T_("Novin");                                                                 // Line 63
@@ -372,15 +368,19 @@ class twigTransTerms
 	//----------------------------------------addons/includes/html/inc_pagination.html
 	echo T_("Total");                                                                 // Line 22
 
-	//-----------------------------------addons/content_hook/pay/redirect/display.html
+	//--------------------------------------------------addons/content_pay/layout.html
+	echo T_("CP");                                                                    // Line 7
 
-	//---------------------------------------addons/content_hook/pay/home/display.html
+	//----------------------------------------addons/content_pay/redirect/display.html
+
+	//--------------------------------------------addons/content_pay/home/display.html
 	echo T_("Toman");                                                                 // Line 29
-	echo T_("Payed");                                                                 // Line 27
-	echo T_("Canceled");                                                              // Line 39
-	echo T_("Choose a gateway");                                                      // Line 52
-	echo T_("Pay");                                                                   // Line 98
+	echo T_("Choose a gateway");                                                      // Line 102
+	echo T_("Pay");                                                                   // Line 108
+	echo T_("Cancel");                                                                // Line 9
 	echo T_("Back");                                                                  // Line 6
+	echo T_("Track id");                                                              // Line 138
+	echo T_("Payment");                                                               // Line 146
 
 	//-----------------------------------------addons/content_enter/block/display.html
 	echo T_("You are blocked becauese of some reason!");                              // Line 7
@@ -569,7 +569,6 @@ class twigTransTerms
 	//-----------------------------------------addons/content_support/tag/display.html
 
 	//--------------------------------------------------addons/content_crm/layout.html
-	echo T_("CP");                                                                    // Line 7
 	echo T_("Add new user");                                                          // Line 19
 	echo T_("SMS");                                                                   // Line 111
 	echo T_("Quick send");                                                            // Line 35
@@ -744,7 +743,6 @@ class twigTransTerms
 	echo T_("Group send");                                                            // Line 36
 
 	//--------------------------------------addons/content_crm/sms/verify/display.html
-	echo T_("Cancel");                                                                // Line 9
 
 	//--------------------------------------addons/content_crm/email/send/display.html
 
@@ -974,6 +972,10 @@ class twigTransTerms
 	echo T_("Tools");                                                                 // Line 90
 	echo T_("Log");                                                                   // Line 105
 	echo T_("Translation tools");                                                     // Line 114
+	echo T_("Powered by");                                                            // Line 57
+	echo T_("Some right reserved");                                                   // Line 57
+	echo T_("Ermile");                                                                // Line 57
+	echo T_("Version");                                                               // Line 57
 
 	//------------------------------------------addons/content_su/cronjob/display.html
 	echo T_("Run cronjob for this service");                                          // Line 15
@@ -990,7 +992,7 @@ class twigTransTerms
 	echo T_("You have another database for logs");                                    // Line 38
 	echo T_("Click for create backup from log database");                             // Line 38
 	echo T_("Auto backup");                                                           // Line 51
-	echo T_("MB");                                                                    // Line 58
+	echo T_("MB");                                                                    // Line 69
 	echo T_("Start backup every");                                                    // Line 131
 	echo T_("Year");                                                                  // Line 133
 	echo T_("Month");                                                                 // Line 134
@@ -1071,7 +1073,7 @@ class twigTransTerms
 	//-----------------------------------addons/content_su/tg/sendmessage/display.html
 
 	//-----------------------------------------------addons/content_su/ip/display.html
-	echo T_("Add data to this file");                                                 // Line 21
+	echo T_("Add data to this file");                                                 // Line 32
 
 	//---------------------------------------------addons/content_su/nano/display.html
 

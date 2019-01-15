@@ -159,8 +159,8 @@
     <thead class="primary fs09">
       <tr>
         <th title='{%trans "Click to sort"%}' data-sort='{{sortLink.answer.order}}'><a href="{{sortLink.answer.link}}">{%trans "Answer"%}</a> </th>
-        <th class="txtC" title='{%trans "Click to sort"%}' data-sort='{{sortLink.value.order}}'><a href="{{sortLink.value.link}}">{%trans "Count"%}</a></th>
-        <th class="txtC" title='{%trans "Click to sort"%}' data-sort='{{sortLink.percent.order}}'><a href="{{sortLink.percent.link}}">{%trans "Percent"%}</a></th>
+        <th class="txtC" title='{%trans "Click to sort"%}' data-sort='{{sortLink.value.order}}'><a href="{{sortLink.value.link}}">{%trans "Frequency"%}</a></th>
+        <th class="txtC" title='{%trans "Click to sort"%}' data-sort='{{sortLink.percent.order}}'><a href="{{sortLink.percent.link}}">{%trans "Percent frequency"%}</a></th>
       </tr>
     </thead>
     <tbody>
@@ -220,8 +220,8 @@
         {%for key, value in advanceChart.question%}
         <th data-sort="{{sortLink[key]['sort']}}">{{value}}</th>
         {%endfor%}
-        <th data-sort="{{sortLink['count']['sort']}}">{%trans "Count"%}</th>
-        <th data-sort="{{sortLink['percent']['sort']}}">{%trans "Percent"%}</th>
+        <th data-sort="{{sortLink['count']['sort']}}">{%trans "Frequency"%}</th>
+        <th data-sort="{{sortLink['percent']['sort']}}">{%trans "Percent frequency"%}</th>
       </tr>
     </thead>
 

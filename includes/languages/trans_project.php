@@ -476,7 +476,7 @@ class twigTransTerms
 
 	//-------------------------------------------------------content/help/display.html
 	echo T_("Two minute tour");                                                       // Line 5
-	echo T_("Search");                                                                // Line 92
+	echo T_("Search");                                                                // Line 93
 	echo T_("Soon");                                                                  // Line 26
 
 	//--------------------------------------------------content/changelog/display.html
@@ -510,7 +510,7 @@ class twigTransTerms
 	echo T_("Answered");                                                              // Line 69
 	echo T_("Skipped");                                                               // Line 66
 	echo T_("Show detail");                                                           // Line 78
-	echo T_("Clear filters");                                                         // Line 77
+	echo T_("Clear filters");                                                         // Line 78
 	echo T_("Result not found!");                                                     // Line 86
 	echo T_("Search with new keywords.");                                             // Line 86
 	echo T_("No data was found!");                                                    // Line 93
@@ -518,7 +518,7 @@ class twigTransTerms
 	//---------------------------------------content_a/report/allquestion/display.html
 	echo T_("Untitled");                                                              // Line 42
 	echo T_("Click to sort");                                                         // Line 163
-	echo T_("Answer");                                                                // Line 17
+	echo T_("Answer");                                                                // Line 18
 	echo T_("Count");                                                                 // Line 24
 	echo T_("Percent");                                                               // Line 224
 	echo T_("%");                                                                     // Line 181
@@ -534,6 +534,8 @@ class twigTransTerms
 	echo T_("Question");                                                              // Line 36
 	echo T_("Please select one item");                                                // Line 18
 	echo T_("Whitout question");                                                      // Line 143
+	echo T_("Frequency");                                                             // Line 72
+	echo T_("Percent frequency");                                                     // Line 163
 
 	//----------------------------------------------content_a/report/question/chart.js
 
@@ -550,13 +552,13 @@ class twigTransTerms
 	echo T_("Check question Detail");                                                 // Line 67
 
 	//--------------------------------------------------content_a/alllist/display.html
-	echo T_("Code");                                                                  // Line 14
+	echo T_("Code");                                                                  // Line 15
 	echo T_("Title");                                                                 // Line 5
 	echo T_("Status");                                                                // Line 181
-	echo T_("Created on");                                                            // Line 19
-	echo T_("Last update");                                                           // Line 20
-	echo T_("Have telegram");                                                         // Line 21
-	echo T_("Creator");                                                               // Line 22
+	echo T_("Created on");                                                            // Line 20
+	echo T_("Last update");                                                           // Line 21
+	echo T_("Have telegram");                                                         // Line 22
+	echo T_("Creator");                                                               // Line 23
 	echo T_("Without question");                                                      // Line 36
 	echo T_("Response");                                                              // Line 39
 	echo T_("No responses");                                                          // Line 39

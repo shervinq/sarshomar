@@ -69,7 +69,7 @@ function highChart()
       },
       // tickInterval:1,
       title: {
-        text: '{%trans "Count"%}',
+        text: '{%trans "Frequency"%}',
         useHTML: Highcharts.hasBidiBug,
         style: {
           color: Highcharts.getOptions().colors[0]
