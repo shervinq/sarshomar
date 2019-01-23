@@ -520,7 +520,7 @@ class twigTransTerms
 	echo T_("Click to sort");                                                         // Line 163
 	echo T_("Answer");                                                                // Line 18
 	echo T_("Count");                                                                 // Line 24
-	echo T_("Percent");                                                               // Line 224
+	echo T_("Percent");                                                               // Line 87
 	echo T_("%");                                                                     // Line 181
 	echo T_("Sum");                                                                   // Line 179
 	echo T_("Answers");                                                               // Line 198
@@ -535,7 +535,7 @@ class twigTransTerms
 	echo T_("Please select one item");                                                // Line 18
 	echo T_("Whitout question");                                                      // Line 143
 	echo T_("Frequency");                                                             // Line 72
-	echo T_("Percent frequency");                                                     // Line 163
+	echo T_("Percent frequency");                                                     // Line 224
 
 	//----------------------------------------------content_a/report/question/chart.js
 
