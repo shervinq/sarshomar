@@ -346,7 +346,7 @@ class twigTransTerms
 	echo T_("Signup");                                                                // Line 181
 	echo T_("Set Password");                                                          // Line 188
 	echo T_("Recovery password");                                                     // Line 195
-	echo T_("Enter");                                                                 // Line 55
+	echo T_("Enter");                                                                 // Line 59
 	echo T_("Submit");                                                                // Line 171
 	echo T_("Enter with another methods");                                            // Line 228
 	echo T_("Log in with mobile");                                                    // Line 244
@@ -615,7 +615,7 @@ class twigTransTerms
 	echo T_("Remove chatid");                                                         // Line 39
 	echo T_("chatid");                                                                // Line 43
 	echo T_("Delete user");                                                           // Line 52
-	echo T_("Are you sure to delete this user?");                                     // Line 127
+	echo T_("Are you sure to delete this user?");                                     // Line 137
 	echo T_("Delete");                                                                // Line 253
 	echo T_("Default language");                                                      // Line 44
 	echo T_("Select one item");                                                       // Line 46
@@ -745,7 +745,8 @@ class twigTransTerms
 	echo T_("Log");                                                                   // Line 105
 	echo T_("Field");                                                                 // Line 26
 	echo T_("Decode");                                                                // Line 26
-	echo T_("Send SMS");                                                              // Line 52
+	echo T_("Copy mobile");                                                           // Line 52
+	echo T_("Send SMS");                                                              // Line 56
 
 	//---------------------------addons/content_crm/member/identification/display.html
 	echo T_("ID Cards");                                                              // Line 17
