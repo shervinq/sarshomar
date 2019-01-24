@@ -95,7 +95,7 @@ trait get
 		{
 			if(!\dash\permission::supervisor())
 			{
-				\dash\log::set('isNotYourSurvay', ['data' => $survey_id]);
+				\dash\log::set('isNotYourSurvay', ['code' => $survey_id]);
 				\dash\notif::error(T_("This is not your survey!"), 'survey_id');
 				return false;
 			}
