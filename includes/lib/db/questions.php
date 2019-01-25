@@ -79,8 +79,7 @@ class questions
 		$query =
 		"
 			SELECT
-				*,
-				(SELECT COUNT(*) FROM answerdetails WHERE answerdetails.question_id = questions.id) AS `count_answer`
+				*
 			FROM
 				questions
 			WHERE
@@ -97,7 +96,7 @@ class questions
 		{
 			foreach ($question_list as $key => $value)
 			{
-				if(isset($value['id']) && isset($value['type']) && in_array($value['type'], ['single_choice']))
+				if(isset($value['id']) && isset($value['type']) && in_array($value['type'], ['single_choice', 'multiple_choice']))
 				{
 					$ids[] = $value['id'];
 				}

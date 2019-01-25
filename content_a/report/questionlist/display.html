@@ -9,7 +9,7 @@
     <thead>
       <th>#</th>
       <th>{%trans "Question"%}</th>
-      <th>{%trans "Count answer"%}</th>
+
       <th>{%trans "Chart"%}</th>
 
     </thead>
@@ -17,7 +17,7 @@
       {%for key, value in questionList%}
         <tr>
           <td class="collapsing">{{(key + 1) | fitNumber}}</td>
-          <td class="collapsing">
+          <td class="">
             <a href="{{url.this}}/question?id={{requestGET.id}}&questionid={{value.id}}">
               <i class="sf-edit"></i>
               {%if value.title%}<b>{{value.title}}</b>{%endif%}
@@ -27,7 +27,6 @@
             </a>
               {%if value.type%}<b>{{value.type_detail.title}}</b>{%endif%}
           </td>
-          <td>{{value.count_answer | fitNumber}}</td>
 
           <td {%if value.inTableChart%} data-sparkline="{{value.inTableChart}} ; column" {%endif%}>-</td>
 
