@@ -8,8 +8,8 @@ class twigTransTerms
 	echo T_("Survey status");                                                         // Line 116
 	echo T_("I want to delete my answer");                                            // Line 31
 	echo T_("I'm not willing to answer");                                             // Line 33
-	echo T_("Download PDF");                                                          // Line 408
-	echo T_("Download File");                                                         // Line 410
+	echo T_("Download PDF");                                                          // Line 417
+	echo T_("Download File");                                                         // Line 419
 	echo T_("Require");                                                               // Line 5
 	echo T_("Start");                                                                 // Line 42
 	echo T_("Save & Next");                                                           // Line 253
@@ -481,7 +481,7 @@ class twigTransTerms
 
 	//--------------------------------------------------content/changelog/display.html
 	echo T_("Date");                                                                  // Line 14
-	echo T_("Description");                                                           // Line 386
+	echo T_("Description");                                                           // Line 395
 	echo T_("We are Developers, please wait!");                                       // Line 22
 	echo T_("Improve design of admin panel to manage and create survey easily.");     // Line 32
 	echo T_("Telegram of version2 is fully connected to Sarshomar");                  // Line 37
@@ -545,7 +545,6 @@ class twigTransTerms
 	//----------------------------------------------content_a/report/question/chart.js
 
 	//--------------------------------------content_a/report/questionlist/display.html
-	echo T_("Count answer");                                                          // Line 12
 	echo T_("Chart");                                                                 // Line 13
 
 	//----------------------------------------------content_a/report/home/display.html
@@ -592,13 +591,13 @@ class twigTransTerms
 	echo T_("Default");                                                               // Line 309
 	echo T_("Is require");                                                            // Line 329
 	echo T_("Choise title");                                                          // Line 339
-	echo T_("Save");                                                                  // Line 198
+	echo T_("Save");                                                                  // Line 207
 	echo T_("Question Type");                                                         // Line 357
 	echo T_("Question Title");                                                        // Line 367
 	echo T_("Question Options");                                                      // Line 380
 	echo T_("Question Settings");                                                     // Line 391
 	echo T_("Show preview");                                                          // Line 401
-	echo T_("Add");                                                                   // Line 194
+	echo T_("Add");                                                                   // Line 203
 	echo T_("Image/Video");                                                           // Line 451
 	echo T_("Max allowed size 1Mb");                                                  // Line 452
 
@@ -659,28 +658,33 @@ class twigTransTerms
 	echo T_("Public");                                                                // Line 92
 	echo T_("General");                                                               // Line 110
 	echo T_("Branding");                                                              // Line 131
-	echo T_("Translation");                                                           // Line 282
-	echo T_("Force user to login and continue");                                      // Line 206
-	echo T_("Enable branding");                                                       // Line 215
-	echo T_("Branding title");                                                        // Line 223
-	echo T_("Image/Video/File");                                                      // Line 248
-	echo T_("allowed extentions jpg, png. Max 1000Kb");                               // Line 249
-	echo T_("Branding url");                                                          // Line 257
-	echo T_("Redirect after complete");                                               // Line 264
-	echo T_("Like");                                                                  // Line 266
-	echo T_("Show progresbar");                                                       // Line 276
-	echo T_("Translation list");                                                      // Line 283
-	echo T_("Enable email");                                                          // Line 294
-	echo T_("Email title");                                                           // Line 302
-	echo T_("Email to");                                                              // Line 317
-	echo T_("Welcome message title");                                                 // Line 330
-	echo T_("Welcome Image/Video");                                                   // Line 366
-	echo T_("Max 1Mb");                                                               // Line 417
-	echo T_("Thankyou message title");                                                // Line 379
-	echo T_("Thankyou Image/Video");                                                  // Line 416
+	echo T_("Translation");                                                           // Line 291
+	echo T_("Duplicate");                                                             // Line 190
+	echo T_("Force user to login and continue");                                      // Line 215
+	echo T_("Enable branding");                                                       // Line 224
+	echo T_("Branding title");                                                        // Line 232
+	echo T_("Image/Video/File");                                                      // Line 257
+	echo T_("allowed extentions jpg, png. Max 1000Kb");                               // Line 258
+	echo T_("Branding url");                                                          // Line 266
+	echo T_("Redirect after complete");                                               // Line 273
+	echo T_("Like");                                                                  // Line 275
+	echo T_("Show progresbar");                                                       // Line 285
+	echo T_("Translation list");                                                      // Line 292
+	echo T_("Enable email");                                                          // Line 303
+	echo T_("Email title");                                                           // Line 311
+	echo T_("Email to");                                                              // Line 326
+	echo T_("Welcome message title");                                                 // Line 339
+	echo T_("Welcome Image/Video");                                                   // Line 375
+	echo T_("Max 1Mb");                                                               // Line 426
+	echo T_("Thankyou message title");                                                // Line 388
+	echo T_("Thankyou Image/Video");                                                  // Line 425
 
 	//------------------------------------------content_a/survey/thankyou/display.html
 	echo T_("This message is show to responder after finish answer");                 // Line 10
+
+	//-----------------------------------------content_a/survey/duplicate/display.html
+	echo T_("If you want to make a duplicate this survey ");                          // Line 9
+	echo T_("Click to make duplicate");                                               // Line 10
 
 	//--------------------------------------------content_a/survey/status/display.html
 	echo T_("responder can answer if survey is set as published.");                   // Line 11
