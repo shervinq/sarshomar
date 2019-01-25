@@ -2,8 +2,59 @@
 
 
 
-
 {%block pageContent%}
+
+<div class=" mB20">
+  <table class="tbl1 v6 fs12">
+    <thead>
+      <th>#</th>
+      <th>{%trans "Question"%}</th>
+      <th>{%trans "Count answer"%}</th>
+      <th>{%trans "Chart"%}</th>
+      <th>{%trans "Chart"%}</th>
+      <th>{%trans "Chart"%}</th>
+    </thead>
+    <tbody>
+      {%for key, value in questionList%}
+        <tr>
+          <td class="collapsing">{{(key + 1) | fitNumber}}</td>
+          <td class="collapsing">
+            <a href="{{url.this}}/question?id={{requestGET.id}}&questionid={{value.id}}">
+              <i class="sf-edit"></i>
+              {%if value.title%}<b>{{value.title}}</b>{%endif%}
+              {%if value.desc%}<b>{%if value.title%} | <small>{{value.desc}}</small>{%else%}{{value.desc}}{%endif%}</b>{%endif%}
+              {%if not value.title and not value.desc%}<i>{%trans "Untitled"%}</i>{%endif%}
+              <br>
+            </a>
+              {%if value.type%}<b>{{value.type_detail.title}}</b>{%endif%}
+          </td>
+          <td>{{(150 * key) | fitNumber}}</td>
+          <td data-sparkline="56, 12, 8, 25 "></td>
+          <td data-sparkline="68, 52, 80, 96 "></td>
+          <td data-sparkline="3, 26, -41, -30 ; column"></td>
+
+        </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+</div>
+
+
+
+
+{%endblock%}
+
+
+
+{%block foot_js%}
+<script type="text/javascript">
+  {%include 'content_a/report/questionlist/chart.js'%}
+</script>
+{%endblock%}
+
+
+
+{%block pageContent2%}
 
 <div class="cbox mB20">
 
