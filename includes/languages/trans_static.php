@@ -679,6 +679,11 @@ class TransStatic
 	echo T_("jewish");
 	echo T_("toman");
 
+	echo T_("Publish");
+	echo T_("publish");
+	echo T_("PUBLISH");
+
+
 	}
 }
 ?>

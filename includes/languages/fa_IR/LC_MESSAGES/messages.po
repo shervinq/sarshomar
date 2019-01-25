@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Sarshomar - Persian\n"
-"POT-Creation-Date: 2019-01-24 22:02+0330\n"
-"PO-Revision-Date: 2019-01-24 22:02+0330\n"
+"POT-Creation-Date: 2019-01-25 13:27+0330\n"
+"PO-Revision-Date: 2019-01-25 13:27+0330\n"
 "Last-Translator: Javad <J.Evazzadeh@gmail.com>\n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -3448,6 +3448,7 @@ msgstr "افزودن به گالری تصاویر"
 #: dash/addons/includes/languages/trans_dash.php:268
 #: sarshomar/includes/languages/trans_dash.php:46
 #: sarshomar/includes/languages/trans_project.php:647
+#: sarshomar/includes/languages/trans_static.php:682
 msgid "Publish"
 msgstr "انتشار"
 
@@ -17991,6 +17992,14 @@ msgstr "یهودیت"
 msgid "toman"
 msgstr "تومان"
 
+#: sarshomar/includes/languages/trans_static.php:683
+msgid "publish"
+msgstr "منتشر شده"
+
+#: sarshomar/includes/languages/trans_static.php:684
+msgid "PUBLISH"
+msgstr "انتشار"
+
 #: sarshomar/includes/lib/app/answer.php:22 sarshomar/includes/lib/app/answer.php:64
 msgid "Please login to conitinue"
 msgstr "لطفا برای ادامه مراحل وارد سیستم شوید"
@@ -18752,9 +18761,6 @@ msgstr ""
 
 #~ msgid "trash"
 #~ msgstr "زباله دان"
-
-#~ msgid "publish"
-#~ msgstr "منتشر شده"
 
 #~ msgid "schedule"
 #~ msgstr "زمان بندی شده"

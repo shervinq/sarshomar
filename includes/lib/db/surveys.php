@@ -51,7 +51,7 @@ class surveys
 		{
 			$default_option =
 			[
-				'search_field' => " (title LIKE '%__string__%' ) ",
+				'search_field' => " (surveys.title LIKE '%__string__%' ) ",
 				'public_show_field' =>
 				"
 					surveys.*,
