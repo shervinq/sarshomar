@@ -7,13 +7,23 @@
 <div class="chart x4 mB10" id="chartdiv"></div>
 
 <div class="f">
- <div class="c6 s12">{{block ("stAnswers")}}</div>
- <div class="c6 s12">{{block ("stQuestion")}}</div>
+ <div class="c4 s12">{{block ("stAnswers")}}</div>
+ <div class="c4 s12">{{block ("stQuestion")}}</div>
+ <div class="c4 s12">{{block ("stWordcloud")}}</div>
 </div>
 
 
 {%endblock%}
 
+
+{%block stWordcloud%}
+<a class="dcard x2" href='{{url.this}}/wordcloud?id={{requestGET.id}}'>
+ <div class="statistic blue">
+  <div class="value"><i class="sf-dzone"></i></div>
+  <div class="label">{%trans "Word cloud"%}</div>
+ </div>
+</a>
+{%endblock%}
 
 
 {%block stAnswers%}

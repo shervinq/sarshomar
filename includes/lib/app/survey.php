@@ -26,6 +26,87 @@ class survey
 		'thankyoudesc',
 	];
 
+	public static function word_cloud($_id)
+	{
+		$id = \dash\coding::decode($_id);
+		if(!$id)
+		{
+			return false;
+		}
+
+		$word         = [];
+		$word_survery = \lib\db\surveys::get(['id' => $id, 'limit' => 1]);
+
+		if(is_array($word_survery))
+		{
+			foreach ($word_survery as $key => $value)
+			{
+				if(in_array($key, ['title', 'brandingtitle', 'trans', 'welcometitle', 'welcomedesc', 'thankyoudesc', 'thankyoutitle']))
+				{
+					$word[] = self::remove_2_char($value);
+				}
+			}
+		}
+
+		$load_question = \lib\db\questions::get(['survey_id' => $id]);
+		if(is_array($load_question))
+		{
+			foreach ($load_question as $key => $value)
+			{
+				if(is_array($value))
+				{
+					foreach ($value as $k => $v)
+					{
+						if(in_array($k, ['title', 'desc']))
+						{
+							$word[] = self::remove_2_char($v);
+						}
+					}
+				}
+			}
+		}
+
+		$word = implode(' ', $word);
+		return $word;
+
+	}
+
+	private static function remove_2_char($_text)
+	{
+		$word = [];
+		$_text = strip_tags($_text);
+		$_text = str_replace('(', ' ', $_text);
+		$_text = str_replace(')', ' ', $_text);
+		$_text = str_replace(':', ' ', $_text);
+		$_text = str_replace(',', ' ', $_text);
+		$_text = str_replace('،', ' ', $_text);
+		$_text = str_replace('-', ' ', $_text);
+		$_text = str_replace('_', ' ', $_text);
+		$_text = str_replace('?', ' ', $_text);
+		$_text = str_replace('؟', ' ', $_text);
+		$_text = str_replace('.', ' ', $_text);
+		$_text = str_replace('=', ' ', $_text);
+		$_text = str_replace('
+', ' ', $_text);
+		$_text = str_replace('!', ' ', $_text);
+		$_text = str_replace('&nbsp;', ' ', $_text);
+
+		$split = explode(" ", $_text);
+
+		foreach ($split as $key => $value)
+		{
+			$value = trim($value);
+			if(mb_strlen($value) > 2 && !is_numeric($value))
+			{
+				$word[] = $value;
+			}
+		}
+
+		$word = implode(' ', $word);
+		$word = trim($word);
+		return $word;
+	}
+
 
 	public static function fire($_id, $_site = false)
 	{

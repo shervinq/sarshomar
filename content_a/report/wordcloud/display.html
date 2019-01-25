@@ -1,0 +1,23 @@
+{%extends display.question%}
+
+
+
+
+{%block pageContent%}
+<div class="cbox">
+  <div id="chartdiv"></div>
+</div>
+{%endblock%}
+
+
+
+{%block foot_js%}
+<script type="text/javascript">
+
+  {%include 'content_a/report/wordcloud/wordcloud.js'%}
+</script>
+<script type="text/javascript">
+  {%include 'content_a/report/wordcloud/chart.js'%}
+</script>
+{%endblock%}
+
