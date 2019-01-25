@@ -290,6 +290,12 @@ class survey
 			return false;
 		}
 
+		if(\dash\app::isset_request('status') && !$status)
+		{
+			\dash\notif::error(T_("Invalid status of survey"), 'status');
+			return false;
+		}
+
 		$branding      = \dash\app::request('branding') ? 1 : null;
 		$brandingtitle = \dash\app::request('brandingtitle');
 		$brandingdesc  = \dash\app::request('brandingdesc');
@@ -452,6 +458,47 @@ class survey
 		}
 
 		return $result;
+	}
+
+
+	public static function duplicate($_id)
+	{
+		$id = \dash\coding::decode($_id);
+		if(!$id)
+		{
+			\dash\notif::error(T_("Invalid id"));
+			return false;
+		}
+
+		$load = \lib\db\surveys::get(['id' => $id, 'limit' => 1]);
+		if(!isset($load['id']))
+		{
+			\dash\notif::error(T_("Invalid id"));
+			return false;
+		}
+
+		$title = isset($load['title']) ? $load['title'] : "";
+		$copy_title = $title. '-copy';
+
+		$load_copy = \lib\db\surveys::get(['title' => $copy_title, 'user_id' => $load['user_id'], 'limit' => 1]);
+		if(isset($load_copy['id']))
+		{
+			\dash\notif::error(T_("Please rename old duplicate survey to make duplicate it again"));
+			return false;
+		}
+
+		$ok = \lib\db\surveys::duplicate($id);
+		if($ok)
+		{
+			\dash\notif::ok(T_("The survey was duplicated"));
+			return true;
+		}
+		else
+		{
+			\dash\notif::ok(T_("Can not duplicate this survey"));
+			return true;
+		}
+
 	}
 
 }

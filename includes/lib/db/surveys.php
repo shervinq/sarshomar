@@ -90,5 +90,124 @@ class surveys
 		return \dash\db\config::public_get_count('surveys', ...func_get_args());
 	}
 
+
+	public static function duplicate($_id)
+	{
+		\dash\db::transaction();
+
+		$query =
+		"
+		INSERT INTO surveys
+		(
+		  `user_id`,
+		  `title`,
+		  `lang`,
+		  `password`,
+		  `privacy`,
+		  `status`,
+		  `branding`,
+		  `brandingtitle`,
+		  `brandingdesc`,
+		  `brandingmeta`,
+		  `redirect`,
+		  `progresbar`,
+		  `trans`,
+		  `countblock`,
+		  `email`,
+		  `emailto`,
+		  `emailtitle`,
+		  `emailmsg`,
+		  `welcometitle`,
+		  `welcomedesc`,
+		  `welcomemedia`,
+		  `thankyoutitle`,
+		  `thankyoudesc`,
+		  `thankyoumedia`,
+		  `desc`,
+		  `setting`
+		)
+		SELECT
+		  surveys.user_id,
+		  CONCAT(surveys.title, '-copy'),
+		  surveys.lang,
+		  surveys.password,
+		  surveys.privacy,
+		  surveys.status,
+		  surveys.branding,
+		  surveys.brandingtitle,
+		  surveys.brandingdesc,
+		  surveys.brandingmeta,
+		  surveys.redirect,
+		  surveys.progresbar,
+		  surveys.trans,
+		  surveys.countblock,
+		  surveys.email,
+		  surveys.emailto,
+		  surveys.emailtitle,
+		  surveys.emailmsg,
+		  surveys.welcometitle,
+		  surveys.welcomedesc,
+		  surveys.welcomemedia,
+		  surveys.thankyoutitle,
+		  surveys.thankyoudesc,
+		  surveys.thankyoumedia,
+		  surveys.desc,
+		  surveys.setting
+		 FROM
+		 	surveys
+		 WHERE surveys.id = $_id LIMIT 1;
+		";
+
+		\dash\db::query($query);
+		$new_id = \dash\db::insert_id();
+
+		if($new_id)
+		{
+			$query =
+			"
+			INSERT INTO questions
+			(
+				`survey_id`,
+				`title`,
+				`desc`,
+				`require`,
+				`type`,
+				`media`,
+				`maxchar`,
+				`sort`,
+				`setting`,
+				`choice`,
+				`status`
+			)
+			SELECT
+				$new_id,
+				questions.title,
+				questions.desc,
+				questions.require,
+				questions.type,
+				questions.media,
+				questions.maxchar,
+				questions.sort,
+				questions.setting,
+				questions.choice,
+				questions.status
+			FROM
+				questions
+			WHERE
+				questions.survey_id = $_id
+			";
+			$ok = \dash\db::query($query);
+			if($ok)
+			{
+				\dash\db::commit();
+				return true;
+			}
+
+		}
+
+		\dash\db::rollback();
+		return false;
+	}
+
 }
 ?>

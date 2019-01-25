@@ -1,0 +1,15 @@
+{%extends display.survey%}
+
+
+{%block pageContent%}
+{{block('pageSteps')}}
+<div class="f justify-center">
+	<div class="c6 s12">
+		<div class="cbox">
+				<p class="msg warn txtB txtC">{%trans "If you want to make a duplicate this survey "%}</p>
+				<div class="btn  block" data-confirm data-data='{"duplicate": 1}'>{%trans "Click to make duplicate"%}</div>
+
+		</div>
+	</div>
+</div>
+{%endblock%}
