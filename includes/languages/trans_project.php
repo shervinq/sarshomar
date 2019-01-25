@@ -529,6 +529,11 @@ class twigTransTerms
 	echo T_("Complete survey");                                                       // Line 144
 	echo T_("Person");                                                                // Line 76
 
+	//-----------------------------------------content_a/report/wordcloud/wordcloud.js
+
+	//---------------------------------------------content_a/report/wordcloud/chart.js
+	echo T_("Word cloud");                                                            // Line 23
+
 	//------------------------------------------content_a/report/question/display.html
 	echo T_("Run");                                                                   // Line 38
 	echo T_("Question");                                                              // Line 36
@@ -540,10 +545,12 @@ class twigTransTerms
 	//----------------------------------------------content_a/report/question/chart.js
 
 	//--------------------------------------content_a/report/questionlist/display.html
+	echo T_("Count answer");                                                          // Line 12
+	echo T_("Chart");                                                                 // Line 13
 
 	//----------------------------------------------content_a/report/home/display.html
-	echo T_("Group by answer");                                                       // Line 23
-	echo T_("Group by question");                                                     // Line 34
+	echo T_("Group by answer");                                                       // Line 33
+	echo T_("Group by question");                                                     // Line 44
 
 	//--------------------------------------------------content_a/report/home/chart.js
 	echo T_("Survey detail");                                                         // Line 19
