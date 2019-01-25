@@ -66,6 +66,79 @@ class questions
 	}
 
 
+	public static function get_sort_chart($_where)
+	{
+		$where = \dash\db\config::make_where($_where);
+		if(!$where)
+		{
+			return false;
+		}
+
+		$result = [];
+
+		$query =
+		"
+			SELECT
+				*,
+				(SELECT COUNT(*) FROM answerdetails WHERE answerdetails.question_id = questions.id) AS `count_answer`
+			FROM
+				questions
+			WHERE
+				$where
+			ORDER BY questions.sort ASC, questions.id ASC
+		";
+
+		$question_list = \dash\db::get($query);
+
+		$result['questions'] = $question_list;
+
+		$ids = [];
+		if(is_array($question_list))
+		{
+			foreach ($question_list as $key => $value)
+			{
+				if(isset($value['id']) && isset($value['type']) && in_array($value['type'], ['single_choice']))
+				{
+					$ids[] = $value['id'];
+				}
+			}
+		}
+
+
+		$ids = array_unique($ids);
+		$ids = array_filter($ids);
+		if($ids)
+		{
+			$ids = implode(',', $ids);
+
+			$query_answer =
+			"
+				SELECT
+					answerdetails.question_id,
+					answerdetails.answerterm_id,
+					MAX(answerterms.text) AS `text`,
+					COUNT(*) AS `count`
+				FROM
+					answerdetails
+				INNER JOIN questions ON questions.id = answerdetails.question_id
+				JOIN answerterms ON answerterms.id = answerdetails.answerterm_id
+				WHERE $where AND answerdetails.question_id IN ($ids)
+				GROUP BY
+				answerdetails.question_id, answerdetails.answerterm_id
+			";
+
+			$chart            = \dash\db::get($query_answer);
+			$result['answer'] = $chart;
+
+		}
+
+
+		return $result;
+
+
+	}
+
+
 	public static function insert()
 	{
 		\dash\db\config::public_insert('questions', ...func_get_args());

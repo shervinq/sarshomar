@@ -11,8 +11,7 @@
       <th>{%trans "Question"%}</th>
       <th>{%trans "Count answer"%}</th>
       <th>{%trans "Chart"%}</th>
-      <th>{%trans "Chart"%}</th>
-      <th>{%trans "Chart"%}</th>
+
     </thead>
     <tbody>
       {%for key, value in questionList%}
@@ -28,10 +27,9 @@
             </a>
               {%if value.type%}<b>{{value.type_detail.title}}</b>{%endif%}
           </td>
-          <td>{{(150 * key) | fitNumber}}</td>
-          <td data-sparkline="56, 12, 8, 25 "></td>
-          <td data-sparkline="68, 52, 80, 96 "></td>
-          <td data-sparkline="3, 26, -41, -30 ; column"></td>
+          <td>{{value.count_answer | fitNumber}}</td>
+
+          <td {%if value.inTableChart%} data-sparkline="{{value.inTableChart}} ; column" {%endif%}>-</td>
 
         </tr>
       {%endfor%}

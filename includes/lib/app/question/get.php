@@ -165,6 +165,69 @@ trait get
 	}
 
 
+	public static function block_survey_chart($_survey_id)
+	{
+		$survey_id = \dash\coding::decode($_survey_id);
+		if(!$survey_id)
+		{
+			\dash\notif::error(T_("Survay id not set"));
+			return false;
+		}
+
+		$result = \lib\db\questions::get_sort_chart(['questions.survey_id' => $survey_id, 'questions.status' => [" != ", " 'deleted' "] ]);
+
+		$new_result = [];
+
+		if(isset($result['questions']) && is_array($result['questions']))
+		{
+			if(isset($result['answer']) && is_array($result['answer']))
+			{
+				foreach ($result['questions'] as $key => $value)
+				{
+					$new_result[$key] = $value;
+					if($value['id'])
+					{
+						foreach ($result['answer'] as $key_answer => $value_answer)
+						{
+							if(isset($value_answer['question_id']) && $value_answer['question_id'] === $value['id'])
+							{
+								if(!isset($new_result[$key]['answer_chart']))
+								{
+									$new_result[$key]['answer_chart'] = [];
+								}
+
+								if(!isset($new_result[$key]['inTableChart']))
+								{
+									$new_result[$key]['inTableChart'] = [];
+								}
+
+								$new_result[$key]['inTableChart'][] = $value_answer['count'];
+								$new_result[$key]['answer_chart'][] = $value_answer;
+							}
+						}
+
+						if(isset($new_result[$key]['inTableChart']))
+						{
+							$new_result[$key]['inTableChart'] = implode(', ', $new_result[$key]['inTableChart']);
+						}
+
+					}
+				}
+			}
+			else
+			{
+				$new_result = $result['questions'];
+			}
+		}
+
+		if(is_array($new_result))
+		{
+			$new_result = array_map(['self', 'ready'], $new_result);
+		}
+
+		return $new_result;
+	}
+
 	public static function block_survey($_survey_id)
 	{
 		$survey_id = \dash\coding::decode($_survey_id);

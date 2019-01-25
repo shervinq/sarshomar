@@ -26,7 +26,7 @@ class view
 			{
 				$id = \dash\request::get('id');
 
-				$questionList = \lib\app\question::block_survey($id);
+				$questionList = \lib\app\question::block_survey_chart($id);
 
 				\dash\data::questionList($questionList);
 			}
