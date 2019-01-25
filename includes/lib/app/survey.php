@@ -75,6 +75,13 @@ class survey
 	{
 		$word = [];
 		$_text = strip_tags($_text);
+		$_text = str_replace('[', ' ', $_text);
+		$_text = str_replace(']', ' ', $_text);
+		$_text = str_replace('{', ' ', $_text);
+		$_text = str_replace('}', ' ', $_text);
+		$_text = str_replace('"', ' ', $_text);
+		$_text = str_replace('؛', ' ', $_text);
+		$_text = str_replace("'", ' ', $_text);
 		$_text = str_replace('(', ' ', $_text);
 		$_text = str_replace(')', ' ', $_text);
 		$_text = str_replace(':', ' ', $_text);
@@ -88,6 +95,8 @@ class survey
 		$_text = str_replace('=', ' ', $_text);
 		$_text = str_replace('
 ', ' ', $_text);
+
+		$_text = str_replace("\n", ' ', $_text);
 		$_text = str_replace('!', ' ', $_text);
 		$_text = str_replace('&nbsp;', ' ', $_text);
 
