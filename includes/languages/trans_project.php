@@ -27,7 +27,6 @@ class twigTransTerms
 	echo T_("Completed");                                                             // Line 358
 	echo T_("Restart");                                                               // Line 367
 	echo T_("Back to survey dashboard");                                              // Line 373
-	echo T_("Support");                                                               // Line 62
 
 	//---------------------public_html/static/siftal/fonts/siftal/icons-reference.html
 
@@ -55,6 +54,7 @@ class twigTransTerms
 	echo T_("Terms of Service");                                                      // Line 35
 	echo T_("Privacy Policy");                                                        // Line 12
 	echo T_("Changelog");                                                             // Line 37
+	echo T_("Support");                                                               // Line 48
 	echo T_("Contact us");                                                            // Line 44
 	echo T_("Logo");                                                                  // Line 46
 	echo T_("Latest News");                                                           // Line 52
