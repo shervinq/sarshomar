@@ -59,8 +59,8 @@ class surveys
 					users.gender AS `user_gender`,
 					users.firstname AS `user_firstname`,
 					users.lastname AS `user_lastname`,
-					users.displayname AS `user_displayname`,
-					users.chatid AS `user_chatid`
+					users.displayname AS `user_displayname`
+
 
 
 				",
