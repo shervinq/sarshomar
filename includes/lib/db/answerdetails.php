@@ -31,7 +31,7 @@ class answerdetails
 			",
 			'master_join'       =>
 			"
-				INNER JOIN answerterms ON answerterms.id = answerdetails.answerterm_id
+				LEFT JOIN answerterms ON answerterms.id = answerdetails.answerterm_id
 				INNER JOIN questions   ON questions.id   = answerdetails.question_id
 				INNER JOIN surveys     ON surveys.id     = questions.survey_id
 				INNER JOIN answers     ON answers.id     = answerdetails.answer_id

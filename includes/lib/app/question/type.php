@@ -232,6 +232,7 @@ trait type
 			'title'        => T_('Rating'),
 			'max'          => true,
 			'ratetype'     => true,
+			'chart'        => true,
 			'logo'         => \dash\url::static(). '/images/question-type/rating.png',
 			'default_load' =>
 			[
