@@ -13,7 +13,7 @@ trait get
 		}
 
 		$survey_id = \dash\coding::decode($_survey_id);
-		$question  = \lib\db\questions::get(['survey_id' => $survey_id]);
+		$question  = \lib\db\questions::get(['survey_id' => $survey_id], ['order' => "ORDER BY questions.sort ASC"]);
 		$answer    = \lib\db\answerdetails::get_join(['answerdetails.survey_id' => $survey_id], ['for_export' => true]);
 
 		if(!is_array($question))
