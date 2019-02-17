@@ -21,9 +21,10 @@ trait get
 			$question = [];
 		}
 
-		$question = array_combine(array_column($question, 'id'), $question);
 
+		$question = array_combine(array_column($question, 'id'), $question);
 		$question_key = array_keys($question);
+
 		$question_key = array_flip($question_key);
 		$question_key = array_map(function(){return null;}, $question_key);
 
@@ -33,14 +34,13 @@ trait get
 		{
 			$answer = [];
 		}
-
 		foreach ($answer as $key => $value)
 		{
 			if(!isset($result[$value['user_id']]))
 			{
 				$result[$value['user_id']]          = $question_key;
-				$result[$value['user_id']]['start'] = $value['startdate'] ? \dash\datetime::fit(strtotime($value['startdate']), 'full') : null;
-				$result[$value['user_id']]['end']   = $value['enddate'] ? \dash\datetime::fit(strtotime($value['enddate']), 'full') : null;
+				$result[$value['user_id']]['start'] = $value['startdate'] ? \dash\datetime::fit($value['startdate'], true, 'full') : null;
+				$result[$value['user_id']]['end']   = $value['enddate'] ? \dash\datetime::fit($value['enddate'], true, 'full') : null;
 			}
 
 			if(!isset($result[$value['user_id']][$value['question_id']]))
