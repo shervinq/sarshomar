@@ -9,7 +9,6 @@ class view
 		\dash\data::page_pictogram('list');
 		\dash\data::page_title(T_("Question list"));
 		\dash\data::page_desc(T_("List of your survey answers by select one question"));
-
 		$dataTable = '[]';
 
 		if(\dash\request::get('id'))
@@ -18,9 +17,7 @@ class view
 			\dash\data::badge_link(\dash\url::this(). '?id='. \dash\request::get('id'));
 			\dash\data::badge_text(T_('Back to report dashboard'));
 
-			\content_a\survey\view::load_survey();
-
-			\dash\data::page_title(\dash\data::page_title(). ' | '. \dash\data::surveyRow_title());
+			// \content_a\survey\view::load_survey();
 
 			if(!\dash\request::get('questionid'))
 			{
@@ -32,6 +29,9 @@ class view
 				\dash\data::badge_text(T_('Back to question list'));
 
 				$question_detail = \content_a\question\view::load_question();
+
+				\dash\data::page_title(\dash\data::page_title(). ' | '. \dash\data::surveyRow_title());
+
 				\dash\data::questionDetail($question_detail);
 				// if(isset($question_detail['title']))
 				// {

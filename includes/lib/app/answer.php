@@ -576,6 +576,7 @@ class answer
 				case 'id':
 				case 'user_id':
 				case 'survey_id':
+				case 'question_id':
 					$result[$key] = \dash\coding::encode($value);
 					break;
 

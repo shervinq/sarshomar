@@ -153,6 +153,7 @@ trait get
 
 		$get = \lib\db\questions::get(['id' => $id, 'limit' => 1]);
 
+
 		if(!$get)
 		{
 			\dash\notif::error(T_("Invalid question id"));

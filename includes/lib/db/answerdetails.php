@@ -18,6 +18,7 @@ class answerdetails
 			'for_export' => false,
 			'public_show_field' =>
 			"
+				questions.id AS `question_id`,
 				answers.startdate,
 				answers.enddate,
 				answers.lastmodified,
