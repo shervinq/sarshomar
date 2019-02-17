@@ -501,19 +501,19 @@ class twigTransTerms
 	echo T_("Be patient...");                                                         // Line 102
 
 	//-------------------------------------------content_a/report/answers/display.html
-	echo T_("User");                                                                  // Line 63
-	echo T_("Start Date");                                                            // Line 64
-	echo T_("End date");                                                              // Line 65
-	echo T_("Answer in");                                                             // Line 66
+	echo T_("Start Date");                                                            // Line 63
+	echo T_("End date");                                                              // Line 64
+	echo T_("Answer in");                                                             // Line 65
 	echo T_("Step");                                                                  // Line 315
-	echo T_("Complete");                                                              // Line 68
+	echo T_("Complete");                                                              // Line 67
+	echo T_("Detail");                                                                // Line 68
 	echo T_("Answered");                                                              // Line 69
-	echo T_("Skipped");                                                               // Line 66
-	echo T_("Show detail");                                                           // Line 78
+	echo T_("Skipped");                                                               // Line 68
+	echo T_("Show detail");                                                           // Line 87
 	echo T_("Clear filters");                                                         // Line 78
-	echo T_("Result not found!");                                                     // Line 86
-	echo T_("Search with new keywords.");                                             // Line 86
-	echo T_("No data was found!");                                                    // Line 93
+	echo T_("Result not found!");                                                     // Line 89
+	echo T_("Search with new keywords.");                                             // Line 89
+	echo T_("No data was found!");                                                    // Line 96
 
 	//---------------------------------------content_a/report/allquestion/display.html
 	echo T_("Untitled");                                                              // Line 42
@@ -555,7 +555,7 @@ class twigTransTerms
 	echo T_("Survey detail");                                                         // Line 19
 
 	//----------------------------------------------content_a/report/user/display.html
-	echo T_("Check question Detail");                                                 // Line 67
+	echo T_("Check question Detail");                                                 // Line 69
 
 	//--------------------------------------------------content_a/alllist/display.html
 	echo T_("Code");                                                                  // Line 15
