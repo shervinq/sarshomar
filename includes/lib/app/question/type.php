@@ -249,6 +249,7 @@ trait type
 			'label3'       => true,
 			'default'      => true,
 			'step'         => true,
+			'chart'        => true,
 			'maxrange'     => 1000,
 			'logo'         => \dash\url::static(). '/images/question-type/rangeslider.png',
 			'default_load' =>
