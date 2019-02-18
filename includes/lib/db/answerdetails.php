@@ -49,6 +49,7 @@ class answerdetails
 		{
 			$_option['public_show_field'] =
 			"
+				answers.id AS `answer_id`,
 				questions.id AS `question_id`,
 				questions.title AS `question_title`,
 				answerterms.text,

@@ -28,6 +28,7 @@ trait get
 		$question_key = array_flip($question_key);
 		$question_key = array_map(function(){return null;}, $question_key);
 
+
 		$result = [];
 
 		if(!is_array($answer))
@@ -39,17 +40,19 @@ trait get
 			if(!isset($result[$value['user_id']]))
 			{
 				$result[$value['user_id']]          = $question_key;
+				$result[$value['user_id']]['id']    = \dash\coding::encode($value['answer_id']);
 				$result[$value['user_id']]['start'] = $value['startdate'] ? \dash\datetime::fit($value['startdate'], true, 'full') : null;
 				$result[$value['user_id']]['end']   = $value['enddate'] ? \dash\datetime::fit($value['enddate'], true, 'full') : null;
 			}
 
 			if(!isset($result[$value['user_id']][$value['question_id']]))
 			{
-				$result[$value['user_id']][$value['question_id']] = null;
+				$result[$value['user_id']][$value['question_id']] = [];
 			}
 
-			$result[$value['user_id']][$value['question_id']] = $value['text'];
+			$result[$value['user_id']][$value['question_id']][] = $value['text'];
 		}
+
 
 		$final = [];
 
@@ -59,11 +62,11 @@ trait get
 			{
 				if(isset($question[$my_question_id]['title']))
 				{
-					$final[$key][$question[$my_question_id]['title']] = $text;
+					$final[$key][$question[$my_question_id]['title']] = is_array($text) ? implode(',', $text) : $text;
 				}
-				else
+				elseif(in_array($my_question_id, ['start', 'end', 'id']))
 				{
-					$final[$key][$my_question_id] = $text;
+					$final[$key][$my_question_id] = is_array($text) ? implode(',', $text) : $text;
 				}
 			}
 		}
