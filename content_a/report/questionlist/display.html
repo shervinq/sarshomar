@@ -4,13 +4,13 @@
 
 {%block pageContent%}
 
-<div class=" mB20">
+<div class="tblBox mB20">
   <table class="tbl1 v6 fs12">
     <thead>
       <th class="txtC">#</th>
-      <th class="txtC">{%trans "Type"%}</th>
+      <th class="txtC s0">{%trans "Type"%}</th>
       <th class="txtC">{%trans "Question"%}</th>
-      <th class="txtC">{%trans "Action"%}</th>
+      <th class="txtC">{%trans "Operation"%}</th>
 
 {%if false%}
       <th>{%trans "Chart"%}</th>
@@ -21,13 +21,12 @@
       {%for key, value in questionList%}
         <tr>
           <td class="collapsing txtC">{{(key + 1) | fitNumber}}</td>
-          <td class="collapsing txtC">{%if value.type%}<b>{{value.type_detail.title}}</b>{%endif%}</td>
+          <td class="collapsing txtC s0">{{value.type_detail.title}}</td>
           <td>
             <a href="{{url.here}}/question/general?id={{requestGET.id}}&questionid={{value.id}}">
-              <div class="txtB">{%if value.title%}{{value.title}}{%endif%} <span class="badge"><i class="compact pRa5 sf-edit"></i> {%trans "Edit"%}</span></div>
-
+              <div class="txtB"><span class="badge"><i class="compact pRa5 sf-edit"></i> {%trans "Edit"%}</span> {{value.title}}</div>
             </a>
-              <div class="fs08">{%if value.desc%}{{value.desc}}{%endif%}</div>
+              <div class="fs08 s0">{{value.desc}}</div>
               {%if not value.title and not value.desc%}<i>{%trans "Untitled"%}</i>{%endif%}
           </td>
           <td class="txtC">
