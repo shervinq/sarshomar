@@ -7,9 +7,9 @@
 <div class=" mB20">
   <table class="tbl1 v6 fs12">
     <thead>
-      <th>#</th>
-      <th>{%trans "Question"%}</th>
+      <th class="txtC">#</th>
       <th class="txtC">{%trans "Type"%}</th>
+      <th class="txtC">{%trans "Question"%}</th>
 
 {%if false%}
       <th>{%trans "Chart"%}</th>
@@ -19,12 +19,11 @@
     <tbody>
       {%for key, value in questionList%}
         <tr>
-          <td class="collapsing">{{(key + 1) | fitNumber}}</td>
-          <td class="txtC">{%if value.type%}<b>{{value.type_detail.title}}</b>{%endif%}</td>
+          <td class="collapsing txtC">{{(key + 1) | fitNumber}}</td>
+          <td class="collapsing txtC">{%if value.type%}<b>{{value.type_detail.title}}</b>{%endif%}</td>
           <td class="">
             <a href="{{url.this}}/question?id={{requestGET.id}}&questionid={{value.id}}">
-              <i class="sf-analytics-chart-graph"></i>
-              <div class="txtB">{%if value.title%}{{value.title}}{%endif%}</div>
+              <div class="txtB"><i class="sf-analytics-chart-graph pRa5"></i>{%if value.title%}{{value.title}}{%endif%}</div>
               <div>{%if value.desc%}{{value.desc}}{%endif%}</div>
 
               {%if not value.title and not value.desc%}<i>{%trans "Untitled"%}</i>{%endif%}
