@@ -7,7 +7,7 @@ class view
 	public static function config()
 	{
 		\dash\data::page_pictogram('list');
-		\dash\data::page_title(T_("Question list"));
+		\dash\data::page_title(T_("Answers group by questions"));
 		\dash\data::page_desc(T_("List of your survey answers by select one question"));
 
 		$dataTable = '[]';
