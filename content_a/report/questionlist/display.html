@@ -9,26 +9,32 @@
     <thead>
       <th>#</th>
       <th>{%trans "Question"%}</th>
+      <th class="txtC">{%trans "Type"%}</th>
 
+{%if false%}
       <th>{%trans "Chart"%}</th>
+{%endif%}
 
     </thead>
     <tbody>
       {%for key, value in questionList%}
         <tr>
           <td class="collapsing">{{(key + 1) | fitNumber}}</td>
+          <td class="txtC">{%if value.type%}<b>{{value.type_detail.title}}</b>{%endif%}</td>
           <td class="">
             <a href="{{url.this}}/question?id={{requestGET.id}}&questionid={{value.id}}">
-              <i class="sf-edit"></i>
-              {%if value.title%}<b>{{value.title}}</b>{%endif%}
-              {%if value.desc%}<b>{%if value.title%} | <small>{{value.desc}}</small>{%else%}{{value.desc}}{%endif%}</b>{%endif%}
+              <i class="sf-analytics-chart-graph"></i>
+              <div class="txtB">{%if value.title%}{{value.title}}{%endif%}</div>
+              <div>{%if value.desc%}{{value.desc}}{%endif%}</div>
+
               {%if not value.title and not value.desc%}<i>{%trans "Untitled"%}</i>{%endif%}
               <br>
             </a>
-              {%if value.type%}<b>{{value.type_detail.title}}</b>{%endif%}
           </td>
 
+{%if false%}
           <td {%if value.inTableChart%} data-sparkline="{{value.inTableChart}} ; column" {%endif%}>-</td>
+{%endif%}
 
         </tr>
       {%endfor%}
@@ -43,7 +49,7 @@
 
 
 
-{%block foot_js%}
+{%block foot_js2%}
 <script type="text/javascript">
   {%include 'content_a/report/questionlist/chart.js'%}
 </script>
