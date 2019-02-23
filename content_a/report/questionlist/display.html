@@ -10,6 +10,7 @@
       <th class="txtC">#</th>
       <th class="txtC">{%trans "Type"%}</th>
       <th class="txtC">{%trans "Question"%}</th>
+      <th class="txtC">{%trans "Action"%}</th>
 
 {%if false%}
       <th>{%trans "Chart"%}</th>
@@ -21,13 +22,13 @@
         <tr>
           <td class="collapsing txtC">{{(key + 1) | fitNumber}}</td>
           <td class="collapsing txtC">{%if value.type%}<b>{{value.type_detail.title}}</b>{%endif%}</td>
-          <td class="">
-            <a href="{{url.this}}/question?id={{requestGET.id}}&questionid={{value.id}}">
-              <div class="txtB"><i class="sf-analytics-chart-graph pRa5"></i>{%if value.title%}{{value.title}}{%endif%}</div>
-              <div>{%if value.desc%}{{value.desc}}{%endif%}</div>
-
+          <td>
+              <div class="txtB">{%if value.title%}{{value.title}}{%endif%}</div>
+              <div class="fs08">{%if value.desc%}{{value.desc}}{%endif%}</div>
               {%if not value.title and not value.desc%}<i>{%trans "Untitled"%}</i>{%endif%}
-              <br>
+          </td>
+          <td class="txtC">
+            <a class="badge" href="{{url.this}}/question?id={{requestGET.id}}&questionid={{value.id}}"><i class="compact pRa10 sf-analytics-chart-graph"></i> {%trans "Report"%}
             </a>
           </td>
 
