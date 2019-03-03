@@ -216,7 +216,8 @@ class answer
 
 		}
 
-		if(intval($step) === intval($countblock))
+
+		if(intval($step) === intval($countblock) || intval($countblock) === 1)
 		{
 			$check_require_is_answer = \lib\db\answers::required_question_is_answered($survey_id, \dash\user::id());
 			if($check_require_is_answer === true)
