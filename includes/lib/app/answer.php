@@ -158,6 +158,7 @@ class answer
 			}
 		}
 
+
 		$load_old_answer =
 		[
 			'user_id'   => \dash\user::id(),
@@ -488,11 +489,12 @@ class answer
 
 					foreach ($_answer as $key => $value)
 					{
-						$myKey = array_search($value, $choice_title);
-
-						if(isset($_question_detail['choice'][$myKey]) && array_key_exists('title', $_question_detail['choice'][$myKey]))
+						foreach ($_question_detail['choice'] as $id_answer => $choise_detail)
 						{
-							array_push($realAnswerTitle, $_question_detail['choice'][$myKey]['title']);
+							if(isset($choise_detail['id']) && intval($choise_detail['id']) === intval($value) && array_key_exists('title', $choise_detail))
+							{
+								array_push($realAnswerTitle, $_question_detail['choice'][$id_answer]['title']);
+							}
 						}
 					}
 
