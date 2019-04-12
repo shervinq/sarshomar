@@ -51,6 +51,9 @@ trait edit
 		if(!\dash\app::isset_request('thankyoudesc')) 		unset($args['thankyoudesc']);
 		if(!\dash\app::isset_request('thankyoumedia')) 		unset($args['thankyoumedia']);
 		if(!\dash\app::isset_request('desc'))		 		unset($args['desc']);
+		if(!\dash\app::isset_request('template'))		 		unset($args['template']);
+		if(!\dash\app::isset_request('startdate'))		 		unset($args['starttime']);
+		if(!\dash\app::isset_request('enddate'))		 		unset($args['endtime']);
 
 		if(!empty($args))
 		{

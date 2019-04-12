@@ -9,6 +9,8 @@
 			<form method="post" autocomplete="off">
 				<p class="msg info">{%trans "Template survey is a survey but no body can answer to this survey and you can copy for anything"%}</p>
 				{{block('iTemplateSurvey')}}
+				{{block('iStartdate')}}
+				{{block('iEnddate')}}
 
 
 
@@ -25,5 +27,41 @@
  <input type="checkbox" name="template" id="template" {%if surveyRow.template %}checked{%endif%}>
  <label for="template"></label>
  <label for="template">{%trans "Is template survey?"%}</label>
+</div>
+{%endblock%}
+
+{%block iStartdate%}
+
+<div class="f">
+	<div class="c6 s12 pRa5">
+	    <label for="startdate">{%trans "Start date"%}</label>
+	    <div class="input ltr">
+	      <input class="datepicker" type="text" name="startdate" id="startdate" placeholder='{{"now" | dt(false, "date")}}' value="{{surveyRow.starttime }}" data-view="day" autocomplete="off">
+	    </div>
+	</div>
+	<div class="c6 s12">
+	  <label for="starttime">{%trans "Start time"%}</label>
+	  <div class="input clockpicker ltr">
+	    <input type="text" name="starttime" id="starttime" placeholder='{{"now" | dt("false", "time") | fitNumber(false) | slice(0,5)}}' value='{%if surveyRow.starttime %}{{surveyRow.starttime | dt("false", "time") | slice(0,5)}}{%endif%}' autocomplete="off">
+	  </div>
+	</div>
+</div>
+
+{%endblock%}
+
+{%block iEnddate%}
+<div class="f">
+	<div class="c6 s12 pRa5">
+	    <label for="enddate">{%trans "End date"%}</label>
+	    <div class="input ltr">
+	      <input class="datepicker" type="text" name="enddate" id="enddate" placeholder='{{"now" | dt(false, "date")}}' value="{{surveyRow.endtime }}" data-view="day" autocomplete="off">
+	    </div>
+	</div>
+	<div class="c6 s12">
+	  <label for="endtime">{%trans "End time"%}</label>
+	  <div class="input clockpicker ltr">
+	    <input type="text" name="endtime" id="endtime" placeholder='{{"now" | dt("false", "time") | fitNumber(false) | slice(0,5)}}' value='{%if surveyRow.endtime %}{{surveyRow.endtime | dt("false", "time") | slice(0,5) }}{%endif%}' autocomplete="off">
+	  </div>
+	</div>
 </div>
 {%endblock%}

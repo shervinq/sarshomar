@@ -372,6 +372,92 @@ class survey
 		}
 
 
+		$startdate = \dash\app::request('startdate');
+		if($startdate)
+		{
+			$startdate = \dash\date::db($startdate);
+
+			if($startdate === false)
+			{
+				\dash\notif::error(T_("Invalid start date"), 'startdate');
+			}
+
+			$startdate = \dash\date::force_gregorian($startdate);
+			$startdate = \dash\date::db($startdate);
+		}
+
+		$enddate = \dash\app::request('enddate');
+		if($enddate)
+		{
+			$enddate = \dash\date::db($enddate);
+
+			if($enddate === false)
+			{
+				\dash\notif::error(T_("Invalid start date"), 'enddate');
+			}
+
+			$enddate = \dash\date::force_gregorian($enddate);
+			$enddate = \dash\date::db($enddate);
+		}
+
+
+		$starttime = \dash\app::request('starttime');
+		if($starttime)
+		{
+			$starttime = \dash\date::make_time($starttime);
+			if($starttime === false)
+			{
+				\dash\notif::error(T_("Invalid statrt time"), 'starttime');
+				return false;
+			}
+
+			if(!$starttime)
+			{
+				$starttime = date("H:i");
+			}
+		}
+
+
+		$endtime = \dash\app::request('endtime');
+		if($endtime)
+		{
+			$endtime = \dash\date::make_time($endtime);
+			if($endtime === false)
+			{
+				\dash\notif::error(T_("Invalid statrt time"), 'endtime');
+				return false;
+			}
+
+			if(!$endtime)
+			{
+				$endtime = date("H:i");
+			}
+		}
+
+		if($startdate && $starttime)
+		{
+			$startdate = $startdate . ' '. $starttime;
+		}
+
+		if($enddate && $endtime)
+		{
+			$enddate = $enddate . ' '. $endtime;
+		}
+
+		if($startdate && $enddate)
+		{
+			$datetime1 = new \DateTime($startdate);
+			$datetime2 = new \DateTime($enddate);
+
+			if($datetime1 >= $datetime2)
+			{
+
+				\dash\notif::error(T_("Start date must be less than end date!"), ['element' => ['startdate', 'enddate', 'starttime', 'endtime']]);
+				return false;
+			}
+		}
+
+
 		$desc     = \dash\app::request('desc');
 		$template = \dash\app::request('template') ? 1 : null;
 
@@ -399,6 +485,8 @@ class survey
 		$args['thankyoudesc']  = $thankyoudesc;
 		$args['thankyoumedia'] = $thankyoumedia;
 		$args['template']      = $template;
+		$args['starttime']     = $startdate;
+		$args['endtime']       = $enddate;
 
 		return $args;
 	}
