@@ -103,7 +103,7 @@
   <div class="f">
 
 
-   <div class="c">
+   <div class="c s6">
     <a class="dcard {%if url.child == 'general'%}active{%endif%}" href='{{url.this}}/general?id={{requestGET.id}}' data-shortkey="49ctrlshift" >
      <div class="statistic sm">
       <div class="value"><i class="sf-cog"></i></div>
@@ -114,7 +114,7 @@
 
 
    {%if false%}
-   <div class="c">
+   <div class="c s6">
     <a class="dcard {%if url.child == 'privacy'%}active{%endif%}" href='{{url.this}}/privacy?id={{requestGET.id}}' data-shortkey="50ctrlshift" >
      <div class="statistic sm">
       <div class="value"><i class="sf-lock"></i></div>
@@ -124,7 +124,7 @@
    </div>
 
 
-   <div class="c">
+   <div class="c s6">
     <a class="dcard {%if url.child == 'branding'%}active{%endif%}" href='{{url.this}}/branding?id={{requestGET.id}}' data-shortkey="51ctrlshift" >
      <div class="statistic sm">
       <div class="value"><i class="sf-medal"></i></div>
@@ -133,7 +133,7 @@
     </a>
    </div>
 
-    <div class="c">
+    <div class="c s6">
     <a class="dcard {%if url.child == 'trans'%}active{%endif%}" href='{{url.this}}/trans?id={{requestGET.id}}' data-shortkey="52ctrlshift" >
      <div class="statistic sm">
       <div class="value"><i class="sf-language"></i></div>
@@ -142,7 +142,7 @@
     </a>
    </div>
 
-   <div class="c">
+   <div class="c s6">
     <a class="dcard {%if url.child == 'email'%}active{%endif%}" href='{{url.this}}/email?id={{requestGET.id}}' data-shortkey="53ctrlshift" >
      <div class="statistic sm">
       <div class="value"><i class="sf-at"></i></div>
@@ -152,7 +152,7 @@
    </div>
    {%endif%}
 
-    <div class="c">
+    <div class="c s6">
     <a class="dcard {%if url.child == 'welcome'%}active{%endif%}" href='{{url.this}}/welcome?id={{requestGET.id}}' data-shortkey="52ctrlshift" >
      <div class="statistic sm">
       <div class="value"><i class="sf-hourglass-start"></i></div>
@@ -163,7 +163,7 @@
 
 
 
-    <div class="c">
+    <div class="c s6">
     <a class="dcard {%if url.child == 'thankyou'%}active{%endif%}" href='{{url.this}}/thankyou?id={{requestGET.id}}' data-shortkey="53ctrlshift" >
      <div class="statistic sm">
       <div class="value"><i class="sf-flag-checkered"></i></div>
@@ -174,11 +174,21 @@
 
 
 
-    <div class="c">
+    <div class="c s6">
     <a class="dcard {%if url.child == 'status'%}active{%endif%}" href='{{url.this}}/status?id={{requestGET.id}}' data-shortkey="54ctrlshift" >
      <div class="statistic sm">
       <div class="value"><i class="sf-publish"></i></div>
       <div class="label">{%trans "Status"%}<br><kbd class="mT5">Ctrl+Shift+5</kbd></div>
+     </div>
+    </a>
+   </div>
+
+
+   <div class="c s6">
+    <a class="dcard {%if url.child == 'security'%}active{%endif%}" href='{{url.this}}/security?id={{requestGET.id}}' data-shortkey="54ctrlshift" >
+     <div class="statistic sm">
+      <div class="value"><i class="sf-user-secret"></i></div>
+      <div class="label">{%trans "Security"%}<br><kbd class="mT5">Ctrl+Shift+5</kbd></div>
      </div>
     </a>
    </div>

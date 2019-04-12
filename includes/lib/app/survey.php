@@ -372,7 +372,8 @@ class survey
 		}
 
 
-		$desc  = \dash\app::request('desc');
+		$desc     = \dash\app::request('desc');
+		$template = \dash\app::request('template') ? 1 : null;
 
 		$args['desc']          = $desc;
 		$args['title']         = $title;
@@ -391,12 +392,13 @@ class survey
 		$args['emailtitle']    = $emailtitle;
 		$args['emailto']       = $emailto;
 		$args['emailmsg']      = $emailmsg;
-		$args['welcometitle'] = $welcometitle;
-		$args['welcomedesc']  = $welcomedesc;
-		$args['welcomemedia'] = $welcomemedia;
+		$args['welcometitle']  = $welcometitle;
+		$args['welcomedesc']   = $welcomedesc;
+		$args['welcomemedia']  = $welcomemedia;
 		$args['thankyoutitle'] = $thankyoutitle;
 		$args['thankyoudesc']  = $thankyoudesc;
 		$args['thankyoumedia'] = $thankyoumedia;
+		$args['template']      = $template;
 
 		return $args;
 	}
