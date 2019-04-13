@@ -1,4 +1,4 @@
-ALTER TABLE `surveys` ADD `template` BIT(1) NULL DEFAULT NULL;
+ALTER TABLE `surveys` ADD `fav` BIT(1) NULL DEFAULT NULL;
 ALTER TABLE `surveys` ADD `starttime` datetime NULL DEFAULT NULL;
 ALTER TABLE `surveys` ADD `endtime` datetime NULL DEFAULT NULL;
 ALTER TABLE `surveys` ADD `mobiles` mediumtext CHARACTER SET utf8mb4 NULL DEFAULT NULL;

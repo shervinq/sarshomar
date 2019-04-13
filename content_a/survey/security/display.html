@@ -8,7 +8,7 @@
 		<div class="cbox">
 			<form method="post" autocomplete="off">
 				<p class="msg info">{%trans "Template survey is a survey but no body can answer to this survey and you can copy for anything"%}</p>
-				{{block('iTemplateSurvey')}}
+				{{block('iFavSurvey')}}
 				{{block('iStartdate')}}
 				{{block('iEnddate')}}
 
@@ -23,11 +23,11 @@
 {%endblock%}
 
 
-{%block iTemplateSurvey%}
+{%block iFavSurvey%}
 <div class="switch1 mB10">
- <input type="checkbox" name="template" id="template" {%if surveyRow.template %}checked{%endif%}>
- <label for="template"></label>
- <label for="template">{%trans "Is template survey?"%}</label>
+ <input type="checkbox" name="fav" id="fav" {%if surveyRow.fav %}checked{%endif%}>
+ <label for="fav"></label>
+ <label for="fav">{%trans "Is fav survey?"%}</label>
 </div>
 {%endblock%}
 

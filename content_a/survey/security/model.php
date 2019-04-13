@@ -7,7 +7,7 @@ class model
 	public static function post()
 	{
 		$post              = [];
-		$post['template']  = \dash\request::post('template');
+		$post['fav']  = \dash\request::post('fav');
 
 		$post['startdate'] = \dash\request::post('startdate');
 		$post['enddate']   = \dash\request::post('enddate');

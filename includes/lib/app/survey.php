@@ -507,7 +507,7 @@ class survey
 
 
 		$desc     = \dash\app::request('desc');
-		$template = \dash\app::request('template') ? 1 : null;
+		$fav = \dash\app::request('fav') ? 1 : null;
 
 		$args['desc']          = $desc;
 		$args['title']         = $title;
@@ -532,7 +532,7 @@ class survey
 		$args['thankyoutitle'] = $thankyoutitle;
 		$args['thankyoudesc']  = $thankyoudesc;
 		$args['thankyoumedia'] = $thankyoumedia;
-		$args['template']      = $template;
+		$args['fav']      = $fav;
 		$args['starttime']     = $startdate;
 		$args['endtime']       = $enddate;
 
