@@ -27,6 +27,10 @@ class view
 
 	public static function load($_id, $_step, $_args = [])
 	{
+		\dash\data::surveyError(\dash\temp::get('survey_error'));
+		\dash\data::surveyErrorDesc(\dash\temp::get('survey_error_desc'));
+
+
 		$default_args =
 		[
 			'site' => false,

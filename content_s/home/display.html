@@ -2,10 +2,15 @@
 
 
 {%block pageContent%}
-{%if surveyRow.status != 'publish'%}
+{%if surveyError == 'status'%}
 <a href="{{url.kingdom}}/a/survey/status?id={{surveyRow.id}}" data-direct class="msg warn block fs14 txtC">{%trans "Survey status"%} {%set myStatus = surveyRow.status%} <b>{%trans myStatus%}</b></a>
 {%endif%}
 
+{%if surveyError == 'time'%}
+<a  class="msg warn block fs14 txtC">{{surveyErrorDesc}}</a>
+{%endif%}
+
+{%if not surveyError or mySurvey %}
 
 <div class="f justify-center">
  <div class="c8 x6 m9 s12 mB25">
@@ -37,6 +42,7 @@
 {%endif%}
  </div>
 </div>
+{%endif%}
 
 {%endblock%}
 

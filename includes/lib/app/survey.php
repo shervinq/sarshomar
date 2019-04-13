@@ -174,29 +174,77 @@ class survey
 			\dash\data::mySurvey(true);
 		}
 
-		if(!\dash\permission::supervisor())
+		if(isset($load['starttime']) || isset($load['endtime']))
 		{
-			// check user id and privacy and password
-			if($load['status'] !== 'publish')
+			$starttime = $load['starttime'];
+			$endtime   = $load['endtime'];
+
+			if($starttime)
 			{
-				if(!\dash\data::mySurvey())
+				$starttime = strtotime($starttime);
+				if($starttime > time())
 				{
-					if($_site)
+					\dash\temp::set('survey_error', 'time');
+					\dash\temp::set('survey_error_desc', T_("The survey will be available on :val", ['val' => \dash\datetime::fit(date("Y-m-d H:i", $starttime))]));
+					if(self::isReturnFalse())
 					{
-						\dash\header::status(403, T_("This survey is not publish"));
+						return false;
 					}
-					// @check
-					// in tg must be make a msg for show in user This survey is not publish
-					// @javad
-					return false;
+				}
+			}
+
+			if($endtime)
+			{
+				$endtime = strtotime($endtime);
+				if($endtime < time())
+				{
+					\dash\temp::set('survey_error', 'time');
+					\dash\temp::set('survey_error_desc', T_("This survey has been available by :val", ['val' => \dash\datetime::fit(date("Y-m-d H:i", $endtime))]));
+					if(self::isReturnFalse())
+					{
+						return false;
+					}
 				}
 			}
 		}
+
+
+		// check user id and privacy and password
+		if($load['status'] !== 'publish')
+		{
+			if(self::isReturnFalse())
+			{
+				if($_site)
+				{
+					\dash\temp::set('survey_error', 'status');
+					// \dash\header::status(403, T_("This survey is not publish"));
+				}
+				// @check
+				// in tg must be make a msg for show in user This survey is not publish
+				// @javad
+				return false;
+			}
+		}
+
+
 
 		\dash\data::surveyRow($load);
 		return $load;
 	}
 
+
+	// in some mode need to retrun false and someone needless to retrun false
+	private static function isReturnFalse()
+	{
+		if(!\dash\permission::supervisor())
+		{
+			if(!\dash\data::mySurvey())
+			{
+				return true;
+			}
+		}
+		return false;
+	}
 
 	public static function get($_id)
 	{
