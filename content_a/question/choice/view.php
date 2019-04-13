@@ -16,6 +16,11 @@ class view
 		\dash\data::badge_link(\dash\url::this(). '?id='. \dash\request::get('id'));
 		\dash\data::badge_text(T_('Back to question dashboard'));
 
+		if(!\dash\data::choiceDetail_choice())
+		{
+			\dash\header::status(403, T_("This question is not choiceable"));
+		}
+
 	}
 }
 ?>

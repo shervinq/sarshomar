@@ -263,6 +263,28 @@ trait type
 			],
 		];
 
+		$type['password'] =
+		[
+			'key'          => 'password',
+			'title'        => T_('Password question'),
+			// 'max'          => true,
+			// 'min'          => true,
+			// 'label3'       => true,
+			// 'default'      => true,
+			// 'step'         => true,
+			// 'chart'        => true,
+			// 'maxrange'     => 1000,
+			'logo'         => \dash\url::static(). '/images/question-type/short_answer.png',
+			'default_load' =>
+			[
+				// 'min'     => 0,
+				// 'max'     => 1E+10,
+				// 'step'    => 1,
+				// 'default' => 0,
+
+			],
+		];
+
 		// card_descign
 		// file_upload
 		return $type;

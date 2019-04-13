@@ -192,6 +192,11 @@ class view
 			\dash\data::skipBtn(false);
 		}
 
+		if(isset($question['type']) && $question['type'] === 'password')
+		{
+			\dash\data::skipBtn(false);
+		}
+
 		if($step_display === 'start' || $step_display === 'welcome')
 		{
 			\dash\data::step_type('welcome');

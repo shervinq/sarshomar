@@ -90,6 +90,13 @@
 
 {%endblock%}
 
+{%block password%}
+ <div class="input">
+  <input type="password" id="answer" name="answer" value="{{myAnswer[0].text}}" required placeholder='{%trans "Password"%} *' autofocus>
+  <button class="btn primary block mT20">{%trans "Go"%}</button>
+
+ </div>
+{%endblock%}
 
 
 

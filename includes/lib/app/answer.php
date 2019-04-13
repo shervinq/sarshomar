@@ -114,9 +114,18 @@ class answer
 			$answer = null;
 		}
 
+		if(isset($question_detail['type']) && $question_detail['type'] === 'password')
+		{
+			if($skip || !isset($answer))
+			{
+				\dash\notif::error(T_("Please fill the password"));
+				return false;
+			}
+		}
+
 		if(!$skip)
 		{
-			$validation = self::answer_validate($question_detail, $answer);
+			$validation = self::answer_validate($question_detail, $answer, $survey_detail);
 			if(!$validation)
 			{
 				return false;
@@ -358,7 +367,7 @@ class answer
 
 
 
-	public static function answer_validate($_question_detail, $_answer)
+	public static function answer_validate($_question_detail, $_answer, $_survey_detail = [])
 	{
 		$myType = null;
 
@@ -552,6 +561,18 @@ class answer
 				if($_answer && !filter_var($_answer, FILTER_VALIDATE_URL))
 				{
 					\dash\notif::error(T_("Invalid url"), 'answer');
+					$valid = false;
+				}
+				break;
+
+			case 'password':
+				if(isset($_survey_detail['password']) && $_survey_detail['password'] === $_answer)
+				{
+					$valid = true;
+				}
+				else
+				{
+					\dash\notif::error(T_("Invalid password"), 'answer');
 					$valid = false;
 				}
 				break;

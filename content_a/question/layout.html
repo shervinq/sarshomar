@@ -384,6 +384,8 @@
 
    {%endif%}
 
+   {%if dataRow.type == 'password'%}
+   {%else%}
     <div class="c">
     <a class="dcard {%if url.child == 'setting'%}active{%endif%}" href='{{url.this}}/setting?id={{requestGET.id}}&questionid={{requestGET.questionid}}{%if requestGET.type%}&type={{requestGET.type}}{%endif%}' data-shortkey="84+52" >
      <div class="statistic sm">
@@ -392,6 +394,8 @@
      </div>
     </a>
    </div>
+   {%endif%}
+
 
 
     <div class="cauto">
