@@ -12,6 +12,7 @@
 				{{block('iFavSurvey')}}
 				{{block('iStartdate')}}
 				{{block('iEnddate')}}
+				{{block('iTiming')}}
 				{{block('iHiddenField')}}
 				{{block('isave')}}
 			</form>
@@ -91,5 +92,24 @@
 <label for="hiddenfield">{%trans "Hidden field key"%}</label>
 <div class="input ltr">
   <input type="text" name="hiddenfield" id="hiddenfield" >
+</div>
+{%endblock%}
+
+
+{%block iTiming%}
+<div class="switch1 mB10">
+ <input type="checkbox" name="schedule" id="schedule" {%if surveyRow.setting.schedule.status %}checked{%endif%}>
+ <label for="schedule"></label>
+ <label for="schedule">{%trans "Enable time limit?"%}</label>
+</div>
+<div data-response='schedule' {%if surveyRow.setting.schedule.status%}{%else%}data-response-hide{%endif%}>
+	<label for="surveytime">{%trans "All survey time per second"%}<small>{%trans "The user must complete in this time"%}</small></label>
+	<div class="input ltr">
+	  <input type="text" name="surveytime" id="surveytime" value="{{surveyRow.setting.schedule.surveytime}}" >
+	</div>
+	<label for="questiontime">{%trans "Every question time per second"%}<small>{%trans "The user must complete one question in this time"%}</small></label>
+	<div class="input ltr">
+	  <input type="text" name="questiontime" id="questiontime"  value="{{surveyRow.setting.schedule.questiontime}}">
+	</div>
 </div>
 {%endblock%}

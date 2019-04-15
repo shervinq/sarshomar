@@ -475,6 +475,59 @@ class survey
 			$setting['redirectcaption'] = $redirectcaption;
 		}
 
+		if(\dash\app::isset_request('schedule'))
+		{
+			$schedule = \dash\app::request('schedule') ? true : false;
+			$surveytime = \dash\app::request('surveytime');
+			if($surveytime && !is_numeric($surveytime))
+			{
+				\dash\notif::error(T_("Redirect time must be a number"), 'surveytime');
+				return false;
+			}
+
+			if($surveytime === '')
+			{
+				$surveytime = null;
+			}
+			else
+			{
+				$surveytime = intval($surveytime);
+				$surveytime = abs($surveytime);
+				if($surveytime > 300)
+				{
+					\dash\notif::error(T_("Redirect time must be less than 300"), 'surveytime');
+					return false;
+				}
+			}
+
+			$questiontime = \dash\app::request('questiontime');
+			if($questiontime && !is_numeric($questiontime))
+			{
+				\dash\notif::error(T_("Redirect time must be a number"), 'questiontime');
+				return false;
+			}
+
+			if($questiontime === '')
+			{
+				$questiontime = null;
+			}
+			else
+			{
+				$questiontime = intval($questiontime);
+				$questiontime = abs($questiontime);
+				if($questiontime > 300)
+				{
+					\dash\notif::error(T_("Redirect time must be less than 300"), 'questiontime');
+					return false;
+				}
+			}
+
+			$setting['schedule']                 = [];
+			$setting['schedule']['status']       = $schedule;
+			$setting['schedule']['surveytime']   = $surveytime;
+			$setting['schedule']['questiontime'] = $questiontime;
+		}
+
 
 
 		if(!empty($setting))
