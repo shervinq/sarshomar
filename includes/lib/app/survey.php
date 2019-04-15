@@ -529,6 +529,45 @@ class survey
 		}
 
 
+		if(\dash\app::isset_request('selective'))
+		{
+			$selective = \dash\app::request('selective') ? true : false;
+			$selectivecount = \dash\app::request('selectivecount');
+			if($selectivecount && !is_numeric($selectivecount))
+			{
+				\dash\notif::error(T_("Redirect time must be a number"), 'selectivecount');
+				return false;
+			}
+
+			if($selectivecount === '')
+			{
+				$selectivecount = null;
+			}
+			else
+			{
+				$selectivecount = intval($selectivecount);
+				$selectivecount = abs($selectivecount);
+
+				if($selectivecount > 1000)
+				{
+					\dash\notif::error(T_("Redirect time must be less than 1000"), 'selectivecount');
+					return false;
+				}
+			}
+
+
+			$setting['selective']                   = [];
+			$setting['selective']['status']         = $selective;
+			$setting['selective']['selectivecount'] = $selectivecount;
+
+		}
+
+		if(\dash\app::isset_request('randomquestion'))
+		{
+			$setting['randomquestion']  = \dash\app::request('randomquestion') ? true : false;
+		}
+
+
 
 		if(!empty($setting))
 		{

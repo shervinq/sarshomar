@@ -6,15 +6,20 @@ class model
 {
 	public static function post()
 	{
-		$post                 = [];
-		$post['fav']          = \dash\request::post('fav');
-		$post['startdate']    = \dash\request::post('startdate');
-		$post['enddate']      = \dash\request::post('enddate');
-		$post['starttime']    = \dash\request::post('starttime');
-		$post['endtime']      = \dash\request::post('endtime');
-		$post['schedule']     = \dash\request::post('schedule');
-		$post['surveytime']   = \dash\request::post('surveytime');
-		$post['questiontime'] = \dash\request::post('questiontime');
+		$post                   = [];
+		$post['fav']            = \dash\request::post('fav');
+		$post['startdate']      = \dash\request::post('startdate');
+		$post['enddate']        = \dash\request::post('enddate');
+		$post['starttime']      = \dash\request::post('starttime');
+		$post['endtime']        = \dash\request::post('endtime');
+		$post['schedule']       = \dash\request::post('schedule');
+		$post['surveytime']     = \dash\request::post('surveytime');
+		$post['questiontime']   = \dash\request::post('questiontime');
+		$post['selective']      = \dash\request::post('selective');
+		$post['selectivecount'] = \dash\request::post('selectivecount');
+		$post['randomquestion'] = \dash\request::post('randomquestion');
+
+
 		// $post['referer']   = \dash\request::post('referer');
 
 		// $post['redirect'] = \dash\request::post('redirect') ? $_POST['redirect'] : null;
