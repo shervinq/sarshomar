@@ -247,7 +247,24 @@ class answer
 		$time_key = 'dateview_'. (string) $survey_id. '_'. (string) $step;
 		$dateview = \dash\session::get($time_key) && is_string(\dash\session::get($time_key)) ? \dash\session::get($time_key) : self::dateNow();
 
+		$old_answer_detail_args =
+		[
+			'user_id'     => \dash\user::id(),
+			'survey_id'   => $survey_id,
+			'answer_id'   => $answer_id,
+			'question_id' => $question_id,
+			'limit'       => 1,
+		];
+
+		$old_answer_detail = \lib\db\answerdetails::get($old_answer_detail_args);
+
+		if(isset($old_answer_detail['dateview']))
+		{
+			$dateview = $old_answer_detail['dateview'];
+		}
+
 		$check_schedule = self::check_schedule($survey_detail, $question_detail, $load_old_answer, $dateview);
+
 		if($check_schedule === 'surveytime')
 		{
 			// return true to continue process to another question
