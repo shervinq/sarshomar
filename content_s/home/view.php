@@ -33,7 +33,7 @@ class view
 
 		$default_args =
 		[
-			'site' => false,
+			'site' => true,
 		];
 
 		if(!is_array($_args))
@@ -94,9 +94,13 @@ class view
 							if($is_site)
 							{
 								\dash\header::status(403, $msg);
+								return false;
 							}
-							\dash\notif::error($msg);
-							return false;
+							else
+							{
+								\dash\notif::error($msg);
+								return false;
+							}
 						}
 					}
 				}

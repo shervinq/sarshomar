@@ -54,7 +54,7 @@ class model
 					if(!\dash\user::detail('verifymobile'))
 					{
 						$msg = T_("Plase verify your mobile to continue");
-						$msg .= ' <a href="'. \dash\url::kingdom(). '/enter/verify">'. T_("Click to verify"). '</a>';
+						$msg .= ' <a href="'. \dash\url::kingdom(). '/enter/verify?referer='.\dash\url::pwd(). '">'. T_("Click to verify"). '</a>';
 						\dash\notif::error($msg);
 						return false;
 					}

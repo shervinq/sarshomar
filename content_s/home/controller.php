@@ -7,7 +7,7 @@ class controller
 	{
 		$module = \dash\url::module();
 
-		\lib\app\tg\survey::get($module, \dash\request::get('step'));
+		// \lib\app\tg\survey::get($module, \dash\request::get('step'));
 
 		\lib\app\survey::fire($module, true);
 		\dash\open::get();
