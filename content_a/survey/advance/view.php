@@ -1,5 +1,5 @@
 <?php
-namespace content_a\survey\security;
+namespace content_a\survey\advance;
 
 
 class view

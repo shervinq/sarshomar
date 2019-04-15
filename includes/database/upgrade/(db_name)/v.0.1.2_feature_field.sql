@@ -7,5 +7,6 @@ ALTER TABLE `surveys` ADD `referer` varchar(2000) NULL DEFAULT NULL;
 ALTER TABLE `answers` ADD `respondercode` varchar(200) NULL DEFAULT NULL AFTER `user_id`;
 ALTER TABLE `answers` ADD `respondermobile` varchar(15) NULL DEFAULT NULL AFTER `user_id`;
 ALTER TABLE `answers` ADD `meta` mediumtext CHARACTER SET utf8mb4 NULL DEFAULT NULL;
+ALTER TABLE `answers` ADD `questions` text CHARACTER SET utf8mb4 NULL DEFAULT NULL;
 
 ALTER TABLE `questions` ADD `address` varchar(200) NULL DEFAULT NULL AFTER `id`;
