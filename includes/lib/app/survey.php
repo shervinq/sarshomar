@@ -360,6 +360,14 @@ class survey
 			return false;
 		}
 
+		if($redirect && !filter_var($redirect, FILTER_VALIDATE_URL))
+		{
+			\dash\notif::error(T_("This is not a valid url"), 'redirect');
+			return false;
+		}
+
+
+
 		$progresbar = \dash\app::request('progresbar') ? 1 : null;
 
 		$trans  = \dash\app::request('trans');
@@ -443,6 +451,17 @@ class survey
 		}
 
 
+		$redirectcaption = \dash\app::request('redirectcaption');
+		if($redirectcaption && mb_strlen($redirectcaption) >= 200)
+		{
+			\dash\notif::error(T_("Please fill redirect caption less than 200 character"), 'redirectcaption');
+			return false;
+		}
+
+		if($redirectcaption)
+		{
+			$setting['redirectcaption'] = $redirectcaption;
+		}
 
 
 
