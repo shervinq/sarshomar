@@ -393,14 +393,33 @@ class answer
 		}
 
 		// \dash\notif::ok(T_("Your answer was saved"));
-		if(intval($step) <= intval($countblock))
+		return self::analyze_step('answer', $step, $survey_detail);
+
+	}
+
+
+	public static function analyze_step($_type, $_step, $_survey_detail)
+	{
+		$countblock = (isset($_survey_detail['countblock']) && $_survey_detail['countblock']) ? intval($_survey_detail['countblock'])      : 0;
+		$new_step   = $_step;
+
+		if(intval($_step) <= intval($countblock))
 		{
-			return ['step' => intval($step) + 1];
+			if($_type === 'view')
+			{
+				$new_step = $_step;
+			}
+			elseif($_type === 'answer')
+			{
+				$new_step = intval($_step) + 1;
+			}
 		}
 		else
 		{
-			return ['step' => $countblock];
+			$new_step = $countblock;
 		}
+
+		return ['step' => $new_step];
 
 	}
 

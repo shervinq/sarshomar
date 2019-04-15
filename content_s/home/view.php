@@ -107,6 +107,18 @@ class view
 			}
 
 			$end_step  = \dash\data::surveyRow_countblock();
+			// analyze step
+			// in random mode or limited mode
+			$step = \lib\app\answer::analyze_step('view', $step, $survey);
+
+			if(isset($step['step']))
+			{
+				$step = $step['step'];
+			}
+			else
+			{
+				return false;
+			}
 
 			$question = \lib\app\question::get_by_step($_id, $step);
 
