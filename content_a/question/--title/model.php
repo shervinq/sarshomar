@@ -69,9 +69,10 @@ class model
 
 	public static function title()
 	{
-		$post            = [];
-		$post['title']   = \dash\request::post('title');
-		$post['desc']    = \dash\request::post('desc');
+		$post              = [];
+		$post['title']     = \dash\request::post('title');
+		$post['address']   = \dash\request::post('address');
+		$post['desc']      = \dash\request::post('desc');
 		$post['survey_id'] = \dash\request::get('id');
 
 		$file = \dash\app\file::upload_quick('media');
