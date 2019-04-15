@@ -12,6 +12,7 @@
 				{{block('iFavSurvey')}}
 				{{block('iStartdate')}}
 				{{block('iEnddate')}}
+				{{block('iHiddenField')}}
 				{{block('isave')}}
 			</form>
 		</div>
@@ -81,5 +82,14 @@
 	    <input type="text" name="endtime" id="endtime" placeholder='{{"now" | dt("false", "time") | fitNumber(false) | slice(0,5)}}' value='{%if surveyRow.endtime %}{{surveyRow.endtime | dt("false", "time") | slice(0,5) }}{%endif%}' autocomplete="off">
 	  </div>
 	</div>
+</div>
+{%endblock%}
+
+
+
+{%block iHiddenField2%}
+<label for="hiddenfield">{%trans "Hidden field key"%}</label>
+<div class="input ltr">
+  <input type="text" name="hiddenfield" id="hiddenfield" >
 </div>
 {%endblock%}
