@@ -24,6 +24,15 @@
 		<input type="hidden" name="formType" value="title">
 		{{block('imedia')}}
 		{{block('ititle')}}
+		{%if passwordQuestion%}
+		<div class="msg warn2 ">
+
+			<label for="password">{%trans "Password"%}</label>
+			<div class="input">
+			  <input type="text" name="password" id="password" placeholder='{%trans "Enter your password"%}' value="{{dataRow.setting.password.password}}" required  maxlength='200' minlength="1" pattern=".{1,200}" >
+			</div>
+		</div>
+		{%endif%}
 		{{block('idesc')}}
 		<button class="btn primary block mT20">{%trans "Save question title"%}</button>
 	</form>

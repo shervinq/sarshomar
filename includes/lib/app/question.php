@@ -22,6 +22,7 @@ class question
 		'media',
 		'setting',
 		'choice',
+		'password',
 	];
 
 
@@ -533,6 +534,24 @@ class question
 			$setting[$myType]['label3'] = $label3;
 		}
 
+		if($myType === 'password')
+		{
+			$password = \dash\app::request('password');
+
+			if(!isset($password) || is_null($password) || $password === '')
+			{
+				\dash\notif::error(T_("Please fill the password text"), 'password');
+				return false;
+			}
+
+			if(mb_strlen($password) > 200)
+			{
+				\dash\notif::error(T_("Please set password less than 200 character"), 'password');
+				return false;
+			}
+
+			$setting[$myType]['password'] = $password;
+		}
 
 
 

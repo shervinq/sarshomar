@@ -125,7 +125,7 @@ class answer
 
 		if(!$skip)
 		{
-			$validation = self::answer_validate($question_detail, $answer, $survey_detail);
+			$validation = self::answer_validate($question_detail, $answer);
 			if(!$validation)
 			{
 				return false;
@@ -367,7 +367,7 @@ class answer
 
 
 
-	public static function answer_validate($_question_detail, $_answer, $_survey_detail = [])
+	public static function answer_validate($_question_detail, $_answer)
 	{
 		$myType = null;
 
@@ -566,14 +566,21 @@ class answer
 				break;
 
 			case 'password':
-				if(isset($_survey_detail['password']) && $_survey_detail['password'] === $_answer)
+				if(isset($_question_detail['setting']['password']['password']))
 				{
-					$valid = true;
+					if($_question_detail['setting']['password']['password'] == $_answer)
+					{
+						$valid = true;
+					}
+					else
+					{
+						$valid = false;
+					}
 				}
-				else
+
+				if(!$valid)
 				{
 					\dash\notif::error(T_("Invalid password"), 'answer');
-					$valid = false;
 				}
 				break;
 		}

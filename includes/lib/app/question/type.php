@@ -266,7 +266,7 @@ trait type
 		$type['password'] =
 		[
 			'key'          => 'password',
-			'title'        => T_('Password question'),
+			'title'        => T_('Password'),
 			// 'max'          => true,
 			// 'min'          => true,
 			// 'label3'       => true,
