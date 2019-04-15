@@ -21,7 +21,14 @@ trait edit
 			return false;
 		}
 
-		$args = self::check($id);
+		$load = \lib\db\surveys::get(['id' => $id, 'user_id' => \dash\user::id(), 'limit' => 1]);
+		if(!isset($load['id']))
+		{
+			\dash\notif::error(T_("This is not your survey"));
+			return false;
+		}
+
+		$args = self::check($id, $load);
 
 		if($args === false || !\dash\engine\process::status())
 		{
@@ -54,6 +61,7 @@ trait edit
 		if(!\dash\app::isset_request('fav'))		 		unset($args['fav']);
 		if(!\dash\app::isset_request('startdate'))		 		unset($args['starttime']);
 		if(!\dash\app::isset_request('enddate'))		 		unset($args['endtime']);
+		if(!\dash\app::isset_request('mobiles'))		 		unset($args['mobiles']);
 
 		if(!empty($args))
 		{

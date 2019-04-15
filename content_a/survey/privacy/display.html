@@ -7,12 +7,37 @@
 	<div class="c6">
 		<div class="cbox">
 			<form method="post" autocomplete="off">
-				{{block('ipassword')}}
-				{{block('iprivacy')}}
+
 				{{block('iredirect')}}
+				{{block('iforcelogin')}}
+				{{block('iMobiles')}}
 				{{block('isave')}}
 			</form>
 		</div>
+	</div>
+</div>
+{%endblock%}
+
+
+{%block iMobiles%}
+<div data-response='forcelogin' {%if surveyRow.setting.forcelogin%}{%else%} data-response-hide {%endif%}>
+
+	{%if surveyRow.mobiles %}
+	<h5>{%trans "Restrict the mobile number of respondents"%}</h5>
+	{%else%}
+	<div class="switch1 mB10">
+	 <input type="checkbox" name="mobilescheck" id="havemobiles" {%if surveyRow.mobiles %}checked{%endif%}>
+	 <label for="havemobiles"></label>
+	 <label for="havemobiles">{%trans "Restrict the mobile number of respondents"%}</label>
+	</div>
+	{%endif%}
+
+	<div data-response='mobilescheck' {%if surveyRow.mobiles%}{%else%} data-response-hide {%endif%}>
+
+		<label for="mobiles">{%trans "Mobiles"%} <small>{%trans "Only those whose mobile numbers are listed below will be allowed to respond to this questionnaire" %}</small></label>
+
+		<textarea type name="mobiles" id="mobiles" rows="5" class="txt">{{surveyRow.mobiles}}</textarea>
+
 	</div>
 </div>
 {%endblock%}

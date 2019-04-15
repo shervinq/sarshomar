@@ -288,7 +288,7 @@ class survey
 	 *
 	 * @return     array|boolean  ( description_of_the_return_value )
 	 */
-	public static function check($_id = null)
+	public static function check($_id = null, $_load = [])
 	{
 
 		$title = \dash\app::request('title');
@@ -505,6 +505,12 @@ class survey
 			}
 		}
 
+		$mobiles = self::mobiles($_id, $_load);
+		if($mobiles !== false)
+		{
+			$args['mobiles']       = $mobiles;
+		}
+
 
 		$desc     = \dash\app::request('desc');
 		$fav = \dash\app::request('fav') ? 1 : null;
@@ -538,6 +544,62 @@ class survey
 
 		return $args;
 	}
+
+
+	private static function mobiles($_id, $_load)
+	{
+		$new = \dash\app::request('mobiles');
+		$old = null;
+		if(isset($_load['mobiles']))
+		{
+			$old = $_load['mobiles'];
+		}
+
+		$new = self::filterMobile($new);
+		$old = self::filterMobile($old);
+
+		if($new == $old)
+		{
+			return false;
+		}
+
+		if(!$old && !$new)
+		{
+			return false;
+		}
+
+		if(!$new)
+		{
+			return null;
+		}
+
+		$new = implode("\n", $new);
+		return $new;
+	}
+
+	private static function filterMobile($_data)
+	{
+		$_data = explode("\n", $_data);
+		$result = [];
+		foreach ($_data as $key => $value)
+		{
+			$temp = trim($value);
+			if(ctype_digit($temp))
+			{
+				$temp = \dash\utility\filter::mobile($temp);
+				if($temp)
+				{
+					$result[] = $temp;
+				}
+			}
+		}
+
+		$result = array_unique($result);
+		$result = array_filter($result);
+
+		return $result;
+	}
+
 
 
 	/**

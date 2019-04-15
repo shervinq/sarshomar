@@ -107,14 +107,6 @@
 
 
    {%if false%}
-   <div class="c s6">
-    <a class="dcard {%if url.child == 'privacy'%}active{%endif%}" href='{{url.this}}/privacy?id={{requestGET.id}}' data-shortkey="50ctrlshift" >
-     <div class="statistic sm">
-      <div class="value"><i class="sf-lock"></i></div>
-      <div class="label">{%trans "Privacy"%}<br><kbd class="mT5">Ctrl+Shift+2</kbd></div>
-     </div>
-    </a>
-   </div>
 
 
    <div class="c s6">
@@ -167,14 +159,16 @@
 
 
 
-    <div class="c s6">
-    <a class="dcard {%if url.child == 'status'%}active{%endif%}" href='{{url.this}}/status?id={{requestGET.id}}' data-shortkey="54ctrlshift" >
+
+   <div class="c s6">
+    <a class="dcard {%if url.child == 'privacy'%}active{%endif%}" href='{{url.this}}/privacy?id={{requestGET.id}}' data-shortkey="50ctrlshift" >
      <div class="statistic sm">
-      <div class="value"><i class="sf-publish"></i></div>
-      <div class="label">{%trans "Status"%}<br><kbd class="mT5">Ctrl+Shift+5</kbd></div>
+      <div class="value"><i class="sf-lock"></i></div>
+      <div class="label">{%trans "Privacy"%}<br><kbd class="mT5">Ctrl+Shift+2</kbd></div>
      </div>
     </a>
    </div>
+
 
 
    <div class="c s6">
@@ -182,6 +176,15 @@
      <div class="statistic sm">
       <div class="value"><i class="sf-user-secret"></i></div>
       <div class="label">{%trans "Security"%}<br><kbd class="mT5">Ctrl+Shift+5</kbd></div>
+     </div>
+    </a>
+   </div>
+
+    <div class="c s6">
+    <a class="dcard {%if url.child == 'status'%}active{%endif%}" href='{{url.this}}/status?id={{requestGET.id}}' data-shortkey="54ctrlshift" >
+     <div class="statistic sm">
+      <div class="value"><i class="sf-publish"></i></div>
+      <div class="label">{%trans "Status"%}<br><kbd class="mT5">Ctrl+Shift+5</kbd></div>
      </div>
     </a>
    </div>
