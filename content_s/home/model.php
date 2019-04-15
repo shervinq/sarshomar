@@ -87,8 +87,9 @@ class model
 			return false;
 		}
 
-		$step  = \dash\request::get('step');
-		$step  = intval($step) + 1;
+		$step = isset($result['step']) ? $result['step'] : null;
+		// $step  = \dash\request::get('step');
+		// $step  = intval($step) + 1;
 		$query = ['step' => $step];
 
 		\dash\redirect::to(\dash\url::this().'?'. http_build_query($query));

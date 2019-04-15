@@ -244,6 +244,27 @@ class answer
 
 		}
 
+		$time_key = 'dateview_'. (string) $survey_id. '_'. (string) $step;
+		$dateview = \dash\session::get($time_key) && is_string(\dash\session::get($time_key)) ? \dash\session::get($time_key) : self::dateNow();
+
+		$check_schedule = self::check_schedule($survey_detail, $question_detail, $load_old_answer, $dateview);
+		if($check_schedule === 'surveytime')
+		{
+			// return true to continue process to another question
+			return ['step' => $countblock + 1];
+		}
+		elseif($check_schedule === 'questiontime')
+		{
+			if(intval($step) < intval($countblock))
+			{
+				return ['step' => intval($step) + 1];
+			}
+			else
+			{
+				return ['step' => $countblock + 1];
+			}
+		}
+
 
 		if(intval($step) === intval($countblock) || intval($countblock) === 1)
 		{
@@ -287,8 +308,6 @@ class answer
 			'question_id' => $question_id,
 		];
 
-		$time_key = 'dateview_'. (string) $survey_id. '_'. (string) $step;
-		$dateview = \dash\session::get($time_key) && is_string(\dash\session::get($time_key)) ? \dash\session::get($time_key) : self::dateNow();
 
 		if(!$multiple_choice || $skip)
 		{
@@ -357,8 +376,62 @@ class answer
 		}
 
 		// \dash\notif::ok(T_("Your answer was saved"));
-		return true;
+		if(intval($step) <= intval($countblock))
+		{
+			return ['step' => intval($step) + 1];
+		}
+		else
+		{
+			return ['step' => $countblock];
+		}
 
+	}
+
+
+	private static function check_schedule($_survey_detail, $_question_detail, $_answer_detail, $_dateview)
+	{
+		// the user not answer to this survey yet
+		if(!$_answer_detail)
+		{
+			return false;
+		}
+
+		// check enable schedule timing of this survey
+		if(isset($_survey_detail['setting']['schedule']['status']) && $_survey_detail['setting']['schedule']['status'])
+		{
+			$surveytime   = isset($_survey_detail['setting']['schedule']['surveytime']) 	? $_survey_detail['setting']['schedule']['surveytime'] 	 : 0;
+			$questiontime = isset($_survey_detail['setting']['schedule']['questiontime']) 	? $_survey_detail['setting']['schedule']['questiontime'] : 0;
+			$surveytime   = intval($surveytime) * 60;
+			$questiontime = intval($questiontime) * 60;
+			$start_survey = null;
+			$now          = time();
+			$dateview     = strtotime($_dateview);
+
+			if(isset($_answer_detail['startdate']))
+			{
+				$start_survey = strtotime($_answer_detail['startdate']);
+			}
+
+			if($surveytime && $start_survey)
+			{
+				if($now - $start_survey > $surveytime)
+				{
+					\dash\notif::error(T_("Your answer time ended for this survey"));
+					return 'surveytime';
+				}
+			}
+
+			if($questiontime && $dateview)
+			{
+				if($now - $dateview > $questiontime)
+				{
+					\dash\notif::error(T_("Your answer time ended for this question"));
+					return 'questiontime';
+				}
+			}
+
+		}
+		return false;
 	}
 
 

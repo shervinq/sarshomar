@@ -192,6 +192,7 @@ class step_answering
 					// save answer
 					$userAnswerKeys = array_keys($multipleAnswers);
 					$saveResult = \lib\app\tg\survey::answer($surveyNo, $questionId, $userAnswerKeys);
+
 					// clean all detail
 					step::set('qMessageId', null);
 					step::set('qChatId', null);
@@ -219,6 +220,10 @@ class step_answering
 		{
 			// increase step of survey
 			$surveyStep++;
+			if(isset($saveResult['step']))
+			{
+				$surveyStep = $saveResult['step'];
+			}
 			// go to next message
 			step::goingto(1);
 

@@ -95,7 +95,7 @@ class survey
 		{
 			return false;
 		}
-		return true;
+		return $result;
 	}
 
 

@@ -70,7 +70,7 @@ class tg
 		$args           = [];
 		$args['answer'] = $_answer;
 		$result         = \lib\app\answer::add($_survey_id, $_question_id, $args);
-
+		return $result;
 	}
 
 
