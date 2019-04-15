@@ -12,6 +12,9 @@ class model
 		$post['forcelogin']   = \dash\request::post('forcelogin');
 		$post['mobiles']      = \dash\request::post('mobiles');
 		$post['mobilescheck'] = \dash\request::post('mobilescheck');
+		$post['autoredirect'] = \dash\request::post('autoredirect');
+		$post['redirecttime'] = \dash\request::post('redirecttime');
+
 
 		$result = \lib\app\survey::edit($post, \dash\request::get('id'));
 

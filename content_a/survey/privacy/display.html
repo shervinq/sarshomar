@@ -18,9 +18,27 @@
 </div>
 {%endblock%}
 
+{%block iredirect %}
+<label for="redirect">{%trans "Redirect after complete"%}</label>
+<div class="input">
+  <input type="url" name="redirect" id="redirect" placeholder='{%trans "Like"%} http://example.com' value="{{surveyRow.redirect}}"  maxlength='2000' minlength="1" pattern=".{1,2000}" >
+</div>
+<div class="switch1 mB10">
+ <input type="checkbox" name="autoredirect" id="autoredirect" {%if surveyRow.setting.autoredirect %}checked{%endif%}>
+ <label for="autoredirect"></label>
+ <label for="autoredirect">{%trans "Auto redirect"%}</label>
+</div>
+<div data-response='autoredirect' {%if surveyRow.setting.autoredirect%}{%else%} data-response-hide {%endif%}>
+	<div class="input mB10">
+	  <input type="number" name="redirecttime"  placeholder='{%trans "Redirect after time"%}' value="{{surveyRow.setting.redirecttime}}"  min='0' max="300" >
+	</div>
+</div>
+
+{% endblock %}
+
 
 {%block iMobiles%}
-<div data-response='forcelogin' {%if surveyRow.setting.forcelogin%}{%else%} data-response-hide {%endif%}>
+<div data-response='forcelogin' {%if surveyRow.setting.forcelogin%}{%else%} data-response-hide {%endif%} >
 
 	{%if surveyRow.mobiles %}
 	<h5>{%trans "Restrict the mobile number of respondents"%}</h5>

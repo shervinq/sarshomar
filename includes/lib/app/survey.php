@@ -413,6 +413,38 @@ class survey
 			$setting['forcelogin'] = \dash\app::request('forcelogin') ? true : false;
 		}
 
+		if(\dash\app::isset_request('autoredirect'))
+		{
+			$setting['autoredirect'] = \dash\app::request('autoredirect') ? true : false;
+			$redirecttime            = \dash\app::request('redirecttime');
+
+			if($redirecttime && !is_numeric($redirecttime))
+			{
+				\dash\notif::error(T_("Redirect time must be a number"), 'redirecttime');
+				return false;
+			}
+
+			if($redirecttime === '')
+			{
+				$redirecttime = null;
+			}
+			else
+			{
+				$redirecttime = intval($redirecttime);
+				$redirecttime = abs($redirecttime);
+				if($redirecttime > 300)
+				{
+					\dash\notif::error(T_("Redirect time must be less than 300"), 'redirecttime');
+					return false;
+				}
+			}
+
+			$setting['redirecttime'] = isset($redirecttime) ? $redirecttime : null;
+		}
+
+
+
+
 
 		if(!empty($setting))
 		{
