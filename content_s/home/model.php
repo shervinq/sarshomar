@@ -45,7 +45,24 @@ class model
 					\dash\db\sessions::set($user_id);
 					\dash\notif::direct();
 				}
-
+			}
+			else
+			{
+				$survay_setting = \dash\data::surveyRow();
+				if(isset($survay_setting['setting']['forcelogin']) && $survay_setting['setting']['forcelogin'])
+				{
+					if(!\dash\user::detail('verifymobile'))
+					{
+						$msg = T_("Plase verify your mobile to continue");
+						$msg .= ' <a href="'. \dash\url::kingdom(). '/enter/verify">'. T_("Click to verify"). '</a>';
+						\dash\notif::error($msg);
+						return false;
+					}
+				}
+				else
+				{
+					// no problem to user all user from this survey
+				}
 			}
 
 			$query = ['step' => 1];
