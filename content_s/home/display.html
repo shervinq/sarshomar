@@ -20,7 +20,21 @@
 {%if step.type == 'welcome' %}
 {{block('startBtn')}}
 {%elseif step.type == 'thankyou' %}
+
+{%if surveyRow.redirect%}
+ <a class="msg primary2 mB20 block txtC" href="{{surveyRow.redirect}}" data-direct><b>{%trans "End"%}</b></a>
+  {%if surveyRow.setting.autoredirect %}
+    <script type="text/javascript">
+      setTimeout(function(){ window.location = '{{surveyRow.redirect}}' ; }, {{surveyRow.setting.redirecttime * 1000}});
+    </script>
+  {%endif%}
+
+{%endif%}
+
+
  <a class="msg info2 mB0 block txtC" href="{{url.kingdom}}"><b>{{site.title}}</b> | {{site.desc}}</a>
+
+
 {%else%}
     <form method="post" autocomplete="off">
       <input type="hidden" name="questionid" value="{{question.id}}">
