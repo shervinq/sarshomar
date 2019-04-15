@@ -7,7 +7,6 @@
 	<div class="c6">
 		<div class="cbox">
 			<form method="post" autocomplete="off">
-
 				{{block('iredirect')}}
 				{{block('iforcelogin')}}
 				{{block('iMobiles')}}
@@ -21,7 +20,7 @@
 {%block iredirect %}
 <label for="redirect">{%trans "Redirect after complete"%}</label>
 <div class="input">
-  <input type="url" name="redirect" id="redirect" placeholder='{%trans "Like"%} http://example.com' value="{{surveyRow.redirect}}"  maxlength='2000' minlength="1" pattern=".{1,2000}" >
+  <input type="url" name="redirect" id="redirect" placeholder='{%trans "Simillar"%} http://example.com' value="{{surveyRow.redirect}}"  maxlength='2000' minlength="1" pattern=".{1,2000}" >
 </div>
 <label for="redirectcaption">{%trans "Redirect button caption"%}</label>
 <div class="input">

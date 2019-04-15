@@ -62,6 +62,7 @@ trait edit
 		if(!\dash\app::isset_request('startdate'))		 		unset($args['starttime']);
 		if(!\dash\app::isset_request('enddate'))		 		unset($args['endtime']);
 		if(!\dash\app::isset_request('mobiles'))		 		unset($args['mobiles']);
+		if(!\dash\app::isset_request('referer'))		 		unset($args['referer']);
 
 		if(!empty($args))
 		{

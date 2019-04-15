@@ -16,6 +16,7 @@ class survey
 	public static $raw_field =
 	[
 		'redirect',
+		'referer',
 		'brandingmeta',
 		'welcomemedia',
 		'thankyoumedia',
@@ -366,7 +367,18 @@ class survey
 			return false;
 		}
 
+		$referer = \dash\app::request('referer');
+		if($referer && mb_strlen($referer) >= 2000)
+		{
+			\dash\notif::error(T_("Please fill the survey referer less than 2000 character"), 'referer');
+			return false;
+		}
 
+		if($referer && !filter_var($referer, FILTER_VALIDATE_URL))
+		{
+			\dash\notif::error(T_("This is not a valid url"), 'referer');
+			return false;
+		}
 
 		$progresbar = \dash\app::request('progresbar') ? 1 : null;
 
@@ -589,7 +601,8 @@ class survey
 		$args['thankyoutitle'] = $thankyoutitle;
 		$args['thankyoudesc']  = $thankyoudesc;
 		$args['thankyoumedia'] = $thankyoumedia;
-		$args['fav']      = $fav;
+		$args['fav']           = $fav;
+		$args['referer']       = $referer;
 		$args['starttime']     = $startdate;
 		$args['endtime']       = $enddate;
 

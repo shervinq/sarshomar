@@ -8,11 +8,10 @@
 		<div class="cbox">
 			<form method="post" autocomplete="off">
 				<p class="msg info">{%trans "Template survey is a survey but no body can answer to this survey and you can copy for anything"%}</p>
+				{{block('iJustReferer')}}
 				{{block('iFavSurvey')}}
 				{{block('iStartdate')}}
 				{{block('iEnddate')}}
-
-
 				{{block('isave')}}
 			</form>
 		</div>
@@ -20,6 +19,12 @@
 </div>
 {%endblock%}
 
+{%block iJustReferer%}
+<label for="referer">{%trans "Just allow from this referer"%}</label>
+<div class="input">
+  <input type="url" name="referer" id="referer" placeholder='{%trans "Simmilar"%} http://yourdomain.com' value="{{surveyRow.referer}}"  maxlength='2000' minlength="1" pattern=".{1,2000}" >
+</div>
+{%endblock%}
 
 {%block iFavSurvey%}
 <div class="switch1 mB10">

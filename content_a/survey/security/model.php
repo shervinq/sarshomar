@@ -7,12 +7,13 @@ class model
 	public static function post()
 	{
 		$post              = [];
-		$post['fav']  = \dash\request::post('fav');
-
+		$post['fav']       = \dash\request::post('fav');
 		$post['startdate'] = \dash\request::post('startdate');
 		$post['enddate']   = \dash\request::post('enddate');
 		$post['starttime'] = \dash\request::post('starttime');
 		$post['endtime']   = \dash\request::post('endtime');
+		$post['referer']   = \dash\request::post('referer');
+
 		// $post['redirect'] = \dash\request::post('redirect') ? $_POST['redirect'] : null;
 		// $post['password'] = \dash\request::post('password');
 
