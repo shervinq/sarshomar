@@ -27,6 +27,13 @@ class view
 			$dataTable = \lib\app\question::block_survey($id);
 
 			\dash\data::questionList($dataTable);
+			if(is_array($dataTable))
+			{
+				$haveAddress = array_column($dataTable, 'address');
+				$haveAddress = array_filter($haveAddress);
+				$haveAddress = array_unique($haveAddress);
+				\dash\data::haveAddress($haveAddress);
+			}
 
 		}
 		else

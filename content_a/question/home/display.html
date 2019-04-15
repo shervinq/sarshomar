@@ -17,9 +17,12 @@
   <thead>
     <tr>
       <th class="">#</th>
-      <th class="s0 txtC">{%trans "Edit"%}</th>
+      <th class="s0 txtC collapsing">{%trans "Edit"%}</th>
+      {%if haveAddress%}
+      <th class="txtC">{%trans "Address"%}</th>
+      {%endif%}
       <th class="txtC">{%trans "Type"%}</th>
-      <th>{%trans "Text"%}</th>
+      <th>{%trans "Title"%}</th>
       <th class="s0 txtC">{%trans "Require"%}</th>
       <th class="txtC"><span class="s0">{%trans "Operation"%}</span></th>
     </tr>
@@ -32,6 +35,9 @@
       <td class="s0">
         <a href="{{url.this}}/general?id={{requestGET.id}}&questionid={{value.id}}" class="badge secondary">{%trans "Edit"%}</a>
       </td>
+      {%if haveAddress%}
+      <td class="collapsing"><code>{{value.address}}</code></td>
+      {%endif%}
       <td class="collapsing txtB txtC">{{value.type_detail.title}}</td>
       <td>
         <a href="{{url.this}}/general?id={{requestGET.id}}&questionid={{value.id}}">
