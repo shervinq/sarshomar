@@ -81,6 +81,26 @@ class view
 				}
 				return false;
 			}
+			else
+			{
+				if(isset($survey['setting']['forcelogin']) && $survey['setting']['forcelogin'])
+				{
+					if($survey['mobiles'])
+					{
+						$mobiles = explode("\n", $survey['mobiles']);
+						if(!in_array(\dash\user::detail('mobile'), $mobiles))
+						{
+							$msg = T_("This survey is restricted to some mobile phones and your mobile phone is not listed");
+							if($is_site)
+							{
+								\dash\header::status(403, $msg);
+							}
+							\dash\notif::error($msg);
+							return false;
+						}
+					}
+				}
+			}
 
 			$end_step  = \dash\data::surveyRow_countblock();
 

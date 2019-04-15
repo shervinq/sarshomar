@@ -87,6 +87,24 @@ class answer
 			return false;
 		}
 
+		if(isset($survey_detail['setting']) && is_string($survey_detail['setting']))
+		{
+			$survey_detail['setting'] = json_decode($survey_detail['setting'], true);
+		}
+
+		if(isset($survey_detail['setting']['forcelogin']) && $survey_detail['setting']['forcelogin'])
+		{
+			if($survey_detail['mobiles'])
+			{
+				$mobiles = explode("\n", $survey_detail['mobiles']);
+				if(!in_array(\dash\user::detail('mobile'), $mobiles))
+				{
+					\dash\notif::error(T_("This survey was limited to some mobile and your mobile is not in this list"));
+					return false;
+				}
+			}
+		}
+
 		$question_detail = \lib\db\questions::get(['survey_id' => $survey_id, 'id' => $question_id, 'limit' => 1]);
 
 		if(!$question_detail || !isset($question_detail['id']))
