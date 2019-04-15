@@ -38,6 +38,7 @@ trait edit
 		if(!\dash\app::isset_request('maxchar')) 	unset($args['maxchar']);
 		if(!\dash\app::isset_request('sort')) 		unset($args['sort']);
 		if(!\dash\app::isset_request('status')) 	unset($args['status']);
+		if(!\dash\app::isset_request('address')) 	unset($args['address']);
 
 		if(!empty($args))
 		{

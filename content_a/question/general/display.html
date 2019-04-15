@@ -16,6 +16,12 @@
 
 
 
+{%block iaddress%}
+<label for="address">{%trans "Address"%} <small>{%trans "To use the user answers of this question in another question"%}</small></label>
+<div class="input">
+  <input type="text" name="address" id="address" placeholder='{%trans "Question address / slug"%}'  value="{{dataRow.address}}"  maxlength='200' minlength="1" pattern=".{1,200}" >
+</div>
+{%endblock%}
 
 {%block quTitle%}
 <div class="cbox">
@@ -34,6 +40,7 @@
 		</div>
 		{%endif%}
 		{{block('idesc')}}
+		{{block('iaddress')}}
 		<button class="btn primary block mT20">{%trans "Save question title"%}</button>
 	</form>
 </div>

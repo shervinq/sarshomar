@@ -553,6 +553,21 @@ class question
 			$setting[$myType]['password'] = $password;
 		}
 
+		$address = \dash\app::request('address');
+		if($address && mb_strlen($address) > 200)
+		{
+			\dash\notif::error(T_("Please set address less than 200 character"), 'address');
+			return false;
+		}
+
+		if($address)
+		{
+			$address = self::check_question_address($address, $_id, $survey_id);
+			if($address === false)
+			{
+				return false;
+			}
+		}
 
 
 		if(!empty($setting))
@@ -568,8 +583,80 @@ class question
 		$args['type']      = $type;
 		$args['sort']      = $sort;
 		$args['status']    = $status;
+		$args['address']    = $address;
 
 		return $args;
+	}
+
+
+	private static function check_question_address($_address, $_id, $_survey_id)
+	{
+		$address = \dash\utility\convert::to_en_number($_address);
+
+		$address = preg_replace("/\_{2,}/", "_", $address);
+		$address = preg_replace("/\-{2,}/", "-", $address);
+
+
+		if(mb_strlen($address) > 200)
+		{
+			\dash\notif::error(T_("Please set the address less than 200 character"), 'address');
+			return false;
+		}
+
+		if(!preg_match("/^[A-Za-z0-9_\-]+$/", $address))
+		{
+			\dash\notif::error(T_("Only [A-Za-z0-9_-] can use in address"), 'address');
+			return false;
+		}
+
+		if(!preg_match("/[A-Za-z]+/", $address))
+		{
+			\dash\notif::error(T_("You must use a one character from [A-Za-z] in the address"), 'address');
+			return false;
+		}
+
+		if(is_numeric($address))
+		{
+			\dash\notif::error(T_("Address should contain a Latin letter"),'address');
+			return false;
+		}
+
+		if(is_numeric(substr($address, 0, 1)))
+		{
+			\dash\notif::error(T_("The address must begin with latin letters"),'address');
+			return false;
+		}
+
+		if(!preg_match("/^[A-Za-z0-9]+$/", $address))
+		{
+			\dash\notif::error(T_("Only [A-Za-z0-9] can use in address"), 'address', 'arguments');
+			return false;
+		}
+
+
+		$address = mb_strtolower($address);
+
+		if(in_array($address, ['score', 'name', 'survey', 'question','user_id', 'user', 'mobile']))
+		{
+			\dash\notif::error(T_("You can not choose this address"), 'address', 'arguments');
+			return false;
+		}
+
+		$check_duplicate_address = \lib\db\questions::get(['survey_id' => $_survey_id, 'address' => $address, 'limit' => 1]);
+		if(isset($check_duplicate_address['id']))
+		{
+			if(intval($check_duplicate_address['id']) === intval($_id))
+			{
+				// noproblem
+			}
+			else
+			{
+				\dash\notif::error(T_("Duplicate address"), 'address');
+				return false;
+			}
+
+		}
+		return $address;
 	}
 
 

@@ -361,7 +361,7 @@
 
 
    <div class="c">
-    <a class="dcard {%if url.child == 'title' or url.child == 'general'%}active{%endif%}" href='{{url.this}}/title?id={{requestGET.id}}&questionid={{requestGET.questionid}}{%if requestGET.type%}&type={{requestGET.type}}{%endif%}' data-shortkey="84+50" >
+    <a class="dcard {%if  url.child == 'general'%}active{%endif%}" href='{{url.this}}/general?id={{requestGET.id}}&questionid={{requestGET.questionid}}{%if requestGET.type%}&type={{requestGET.type}}{%endif%}' data-shortkey="84+50" >
      <div class="statistic sm">
       <div class="value"><i class="sf-lightbulb-o"></i></div>
       <div class="label">{%trans "Question Title"%}<br><kbd class="mT5">t+2</kbd></div>
