@@ -79,7 +79,7 @@ class answer
 			return false;
 		}
 
-		$survey_detail = \lib\db\surveys::get(['id' => $survey_id, 'limit' => 1]);
+		$survey_detail = \lib\app\survey::get($_survey_id);
 
 		if(!$survey_detail)
 		{
@@ -421,9 +421,21 @@ class answer
 
 	public static function analyze_question_step($_type, $_step, $_survey_detail, $_user_id)
 	{
-		if(!$_step || !is_numeric($_step) || !$_user_id || !is_numeric($_user_id) || !$_survey_detail)
+		if(!$_user_id || !is_numeric($_user_id) || !$_survey_detail)
 		{
 			return false;
+		}
+
+		if(!is_numeric($_step))
+		{
+			$_step = 0;
+		}
+
+		$_step           = intval($_step);
+
+		if($_step < 0)
+		{
+			$_step = 0;
 		}
 
 		$survey_id       = \dash\coding::decode($_survey_detail['id']);
@@ -459,7 +471,8 @@ class answer
 			$selectivecount = intval($setting['selective']['selectivecount']);
 		}
 
-		if(!$selectivecount && !$randomquestion && !$selective)
+		// if(!$selectivecount && !$randomquestion && !$selective)
+		if(1)
 		{
 			// simple survey
 			$countblock = (isset($_survey_detail['countblock']) && $_survey_detail['countblock']) ? intval($_survey_detail['countblock'])      : 0;
@@ -501,6 +514,7 @@ class answer
 				$thankyou = true;
 			}
 
+
 			if(!$thankyou)
 			{
 				if($_type === 'answer')
@@ -508,7 +522,13 @@ class answer
 					$new_step++;
 				}
 
-				$question_detail = \lib\app\question::get_by_step($survey_id, $new_step);
+				if(!$new_step)
+				{
+					$new_step = 1;
+				}
+
+				$question_detail = \lib\app\question::get_by_step(\dash\coding::encode($survey_id), $new_step);
+
 				if(isset($question_detail['id']))
 				{
 					$question_id = \dash\coding::decode($question_detail['id']);
@@ -524,6 +544,7 @@ class answer
 
 		$result =
 		[
+			'ok'              => true,
 			'step'            => $new_step,
 			'question_id'     => $question_id,
 			'question_detail' => $question_detail,
@@ -531,6 +552,7 @@ class answer
 			'wellcome'        => $wellcome,
 
 		];
+
 
 		return $result;
 	}

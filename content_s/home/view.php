@@ -112,6 +112,11 @@ class view
 			// in random mode or limited mode
 			$analyze_question_step = \lib\app\answer::analyze_question_step('view', $step, $survey, \dash\user::id());
 
+			if(!isset($analyze_question_step['ok']))
+			{
+				\dash\header::status(404, T_("Invalid question id"));
+			}
+
 
 			if(isset($analyze_question_step['step']) && intval($analyze_question_step['step']) !== intval($step))
 			{
@@ -127,16 +132,9 @@ class view
 				$question = $analyze_question_step['question_detail'];
 			}
 
-			if(!$question || !isset($question['type']))
+			if(isset($analyze_question_step['thankyou']) && $analyze_question_step['thankyou'])
 			{
-				if($analyze_question_step['thankyou'])
-				{
-					$step_display = 'thankyou';
-				}
-				else
-				{
-					\dash\header::status(404, T_("Invalid question id"));
-				}
+				$step_display = 'thankyou';
 			}
 
 			$myTitle['title'] = isset($question['title']) ? $question['title'] : null;
@@ -177,7 +175,7 @@ class view
 
 			if($step_display !== 'thankyou')
 			{
-				$step_display = $question['type'];
+				$step_display = isset($question['type']) ? $question['type'] : null;
 			}
 
 			if(isset($question['id']))
