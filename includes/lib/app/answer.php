@@ -482,88 +482,104 @@ class answer
 			$count_asked_question = [];
 		}
 
+		$must_step  = 1;
 
 		if(!$randomquestion)
 		{
 			// simple survey
-			$must_step  = 1;
 
 			if(isset($answer['step']) && $answer['step'])
 			{
 				$must_step = intval($answer['step']) + 1;
 			}
-		}
-		else
-		{
-			// randomquestion mode
-
-			// set limit of selective count
-			if($selectivecount)
+			if($_step <= $must_step)
 			{
-				if($count_asked_question >= $selectivecount)
+				// if allow review
+				if(true)
 				{
-					$thankyou = true;
+					$new_step = $_step;
+				}
+				else
+				{
+					$new_step = $must_step;
+				}
+			}
+			else
+			{
+				if($mySurvey)
+				{
+					$new_step = $_step;
+				}
+				else
+				{
+					$new_step = $must_step;
 				}
 			}
 
+
+			if($_step >= $countblock + 1)
+			{
+				$thankyou = true;
+			}
+
+
 			if(!$thankyou)
 			{
-				$new_step = [];
-			}
-		}
+				if($_type === 'answer')
+				{
+					$new_step++;
+				}
 
-		if($_step <= $must_step)
-		{
-			// if allow review
-			if(true)
-			{
-				$new_step = $_step;
-			}
-			else
-			{
-				$new_step = $must_step;
+				if(!$new_step)
+				{
+					$new_step = 1;
+				}
+
+				$question_detail = \lib\app\question::get_by_step(\dash\coding::encode($survey_id), $new_step);
+
+				if(isset($question_detail['id']))
+				{
+					$question_id = \dash\coding::decode($question_detail['id']);
+				}
 			}
 		}
 		else
 		{
-			if($mySurvey)
+
+			if(isset($answer['step']) && $answer['step'])
 			{
-				$new_step = $_step;
+				$must_step = intval($answer['step']) + 1;
 			}
-			else
+
+			if(!$must_step)
 			{
-				$new_step = $must_step;
+				$must_step = 1;
 			}
-		}
 
-		if($_step >= $countblock + 1)
-		{
-			$thankyou = true;
-		}
+			$new_step = $must_step;
 
-
-		if(!$thankyou)
-		{
 			if($_type === 'answer')
 			{
 				$new_step++;
 			}
 
-			if(!$new_step)
+
+			$random = [];
+			// randomquestion mode
+			for ($i = 1; $i <= $countblock ; $i++)
 			{
-				$new_step = 1;
+				$random[] = $i;
 			}
 
-			$question_detail = \lib\app\question::get_by_step(\dash\coding::encode($survey_id), $new_step);
+			$random_new_step = $random[array_rand($random)];
+
+			$question_detail = \lib\app\question::get_by_step(\dash\coding::encode($survey_id), $random_new_step);
 
 			if(isset($question_detail['id']))
 			{
 				$question_id = \dash\coding::decode($question_detail['id']);
 			}
-
 		}
-
-
 
 		$result =
 		[
