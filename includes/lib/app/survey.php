@@ -529,9 +529,8 @@ class survey
 		}
 
 
-		if(\dash\app::isset_request('selective'))
+		if(\dash\app::isset_request('selectivecount'))
 		{
-			$selective = \dash\app::request('selective') ? true : false;
 			$selectivecount = \dash\app::request('selectivecount');
 			if($selectivecount && !is_numeric($selectivecount))
 			{
@@ -555,10 +554,7 @@ class survey
 				}
 			}
 
-
-			$setting['selective']                   = [];
-			$setting['selective']['status']         = $selective;
-			$setting['selective']['selectivecount'] = $selectivecount;
+			$setting['selectivecount'] = $selectivecount;
 
 		}
 

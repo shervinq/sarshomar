@@ -41,7 +41,14 @@ class surveys
 
 	public static function get()
 	{
-		return \dash\db\config::public_get('surveys', ...func_get_args());
+		$result = \dash\db\cache::get_cache('surveys', func_get_args());
+		if(!$result)
+		{
+			$result = \dash\db\config::public_get('surveys', ...func_get_args());
+			\dash\db\cache::set_cache('surveys', func_get_args(), $result);
+		}
+		return $result;
+
 	}
 
 

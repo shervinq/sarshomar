@@ -11,7 +11,7 @@
 				{{block('iStartdate')}}
 				{{block('iEnddate')}}
 				{{block('iTiming')}}
-				{{block('iSelectQuestion')}}
+
 				{{block('iRandomQuestion')}}
 				{{block('iHiddenField')}}
 				{{block('isave')}}
@@ -43,17 +43,7 @@
  <label for="randomquestion"></label>
  <label for="randomquestion">{%trans "Load random question to responders?"%}</label>
 </div>
-{%endblock%}
-
-
-
-{%block iSelectQuestion%}
-<div class="switch1 mB10">
- <input type="checkbox" name="selective" id="selective" {%if surveyRow.setting.selective.status %}checked{%endif%}>
- <label for="selective"></label>
- <label for="selective">{%trans "Show selective question?"%}</label>
-</div>
-<div data-response='selective' {%if surveyRow.setting.selective.status%}{%else%}data-response-hide{%endif%}>
+<div data-response='randomquestion' {%if surveyRow.setting.randomquestion%}{%else%}data-response-hide{%endif%}>
 	<label for="selectivecount">{%trans "Count question"%}<small>{%trans "You can set limit of question to show in every responder"%}</small></label>
 	<div class="input ltr">
 	  <label class="addon">{%trans "Only show"%}</label>
@@ -62,6 +52,9 @@
 	</div>
 </div>
 {%endblock%}
+
+
+
 
 
 {%block ipassword %}

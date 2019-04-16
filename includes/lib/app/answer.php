@@ -444,9 +444,9 @@ class answer
 		$thankyou        = false;
 		$wellcome        = false;
 		$question_id     = false;
-		$selective       = false;
+
 		$randomquestion  = false;
-		$selectivecount  = null;
+		$selectivecount  = 0;
 		$mySurvey        = false;
 		$question_detail = [];
 
@@ -461,85 +461,108 @@ class answer
 			$randomquestion = true;
 		}
 
-		if(isset($setting['selective']['status']) && $setting['selective']['status'])
+		if(isset($setting['selectivecount']) && $setting['selectivecount'])
 		{
-			$selective = true;
+			$selectivecount = intval($setting['selectivecount']);
 		}
 
-		if(isset($setting['selective']['selectivecount']) && $setting['selective']['selectivecount'])
+		$countblock           = (isset($_survey_detail['countblock']) && $_survey_detail['countblock']) ? intval($_survey_detail['countblock'])      : 0;
+
+		$answer               = \lib\db\answers::get(['survey_id' => $survey_id, 'user_id' => $_user_id, 'limit' => 1]);
+
+		$count_asked_question = isset($answer['questions']) ? $answer['question'] : [];
+
+		if(is_string($count_asked_question))
 		{
-			$selectivecount = intval($setting['selective']['selectivecount']);
+			$count_asked_question = json_decode($count_asked_question, true);
 		}
 
-		// if(!$selectivecount && !$randomquestion && !$selective)
-		if(1)
+		if(!is_numeric($count_asked_question))
+		{
+			$count_asked_question = [];
+		}
+
+
+		if(!$randomquestion)
 		{
 			// simple survey
-			$countblock = (isset($_survey_detail['countblock']) && $_survey_detail['countblock']) ? intval($_survey_detail['countblock'])      : 0;
 			$must_step  = 1;
-
-			$answer = \lib\db\answers::get(['survey_id' => $survey_id, 'user_id' => $_user_id, 'limit' => 1]);
 
 			if(isset($answer['step']) && $answer['step'])
 			{
 				$must_step = intval($answer['step']) + 1;
 			}
+		}
+		else
+		{
+			// randomquestion mode
 
-			if($_step <= $must_step)
+			// set limit of selective count
+			if($selectivecount)
 			{
-				// if allow review
-				if(true)
+				if($count_asked_question >= $selectivecount)
 				{
-					$new_step = $_step;
-				}
-				else
-				{
-					$new_step = $must_step;
+					$thankyou = true;
 				}
 			}
-			else
-			{
-				if($mySurvey)
-				{
-					$new_step = $_step;
-				}
-				else
-				{
-					$new_step = $must_step;
-				}
-			}
-
-			if($_step >= $countblock + 1)
-			{
-				$thankyou = true;
-			}
-
 
 			if(!$thankyou)
 			{
-				if($_type === 'answer')
-				{
-					$new_step++;
-				}
+				$new_step = [];
+			}
+		}
 
-				if(!$new_step)
-				{
-					$new_step = 1;
-				}
-
-				$question_detail = \lib\app\question::get_by_step(\dash\coding::encode($survey_id), $new_step);
-
-				if(isset($question_detail['id']))
-				{
-					$question_id = \dash\coding::decode($question_detail['id']);
-				}
-
+		if($_step <= $must_step)
+		{
+			// if allow review
+			if(true)
+			{
+				$new_step = $_step;
+			}
+			else
+			{
+				$new_step = $must_step;
 			}
 		}
 		else
 		{
-			//
+			if($mySurvey)
+			{
+				$new_step = $_step;
+			}
+			else
+			{
+				$new_step = $must_step;
+			}
 		}
+
+		if($_step >= $countblock + 1)
+		{
+			$thankyou = true;
+		}
+
+
+		if(!$thankyou)
+		{
+			if($_type === 'answer')
+			{
+				$new_step++;
+			}
+
+			if(!$new_step)
+			{
+				$new_step = 1;
+			}
+
+			$question_detail = \lib\app\question::get_by_step(\dash\coding::encode($survey_id), $new_step);
+
+			if(isset($question_detail['id']))
+			{
+				$question_id = \dash\coding::decode($question_detail['id']);
+			}
+
+		}
+
 
 
 		$result =

@@ -15,7 +15,6 @@ class model
 		$post['schedule']       = \dash\request::post('schedule');
 		$post['surveytime']     = \dash\request::post('surveytime');
 		$post['questiontime']   = \dash\request::post('questiontime');
-		$post['selective']      = \dash\request::post('selective');
 		$post['selectivecount'] = \dash\request::post('selectivecount');
 		$post['randomquestion'] = \dash\request::post('randomquestion');
 
