@@ -14,6 +14,7 @@
      <div class="c6">{{block ("stQuestion")}}</div>
      <div class="c6">{{block ("stSort")}}</div>
      <div class="c12">{{block ("stLink")}}</div>
+     <div class="c12">{{block ("sharePage")}}</div>
     </div>
 
 
@@ -222,3 +223,26 @@
 
 </script>
 {%endblock%}
+
+
+{%block sharePage%}
+<nav class="sharePage1">
+
+  <a target="_blank" class="facebook btn" href="https://www.facebook.com/sharer.php?u={{url.kingdom}}/s/{{surveyRow.id}}"><span class="mRa5 sf-facebook-official"></span>{%trans "Share on Facebook"%}</a>
+
+  <a target="_blank" class="twitter btn" href="https://twitter.com/intent/tweet?url={{url.kingdom}}/s/{{surveyRow.id}}&text={{surveyRow.title | url_encode}}"><span class="mRa5 sf-twitter"></span>{%trans "Share on Twitter"%}</a>
+
+  <a target="_blank" class="linkedin btn" href="https://www.linkedin.com/shareArticle?mini=true&url={{url.kingdom}}/s/{{surveyRow.id}}&title={{surveyRow.title | url_encode}}&summary={{surveyRow.desc | url_encode}}&source={{site.title}}"><span class="mRa5 sf-linkedin-square"></span>{%trans "Share on LinkedIn"%}</a>
+
+  <a target="_blank" class="email btn" href="mailto:?body={{url.kingdom}}/s/{{surveyRow.id}}&subject={{surveyRow.title | url_encode}}"><span class="mRa5 sf-email-envelope"></span>{%trans "Send as Email"%}</a>
+
+  <a target="_blank" class="telegram btn" href="https://t.me/share/url?url={{url.kingdom}}/s/{{surveyRow.id}}&text={{surveyRow.title | url_encode}}"><span class="mRa5 sf-paper-plane"></span>{%trans "Share on Telegram"%}</a>
+
+  <a target="_blank" class="btn success" href="{{url.kingdom}}/s/{{surveyRow.id}}"><span class="mRa5 sf-receipt-shopping-streamline"></span>{%trans "Survey Link"%}</a>
+
+</nav>
+{%endblock%}
+
+
+
+
