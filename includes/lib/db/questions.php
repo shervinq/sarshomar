@@ -185,5 +185,11 @@ class questions
 		return \dash\db::query($query);
 	}
 
+
+	public static function get_by_id($_id)
+	{
+		return self::get(['id' => $_id, 'limit' => 1]);
+	}
+
 }
 ?>

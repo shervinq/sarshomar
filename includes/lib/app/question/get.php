@@ -9,12 +9,12 @@ trait get
 
 	public static function get_by_step($_survey_id, $_step)
 	{
-		$survey_id = \dash\coding::decode($_survey_id);
-		if(!$survey_id)
-		{
-			\dash\notif::error(T_("Survay id not set"), 'survey_id');
-			return false;
-		}
+		// $survey_id = \dash\coding::decode($_survey_id);
+		// if(!$survey_id)
+		// {
+		// 	\dash\notif::error(T_("Survay id not set"), 'survey_id');
+		// 	return false;
+		// }
 
 		if(!is_numeric($_step))
 		{
@@ -23,7 +23,7 @@ trait get
 		}
 
 		$_step = intval($_step);
-		$load = \lib\db\questions::get_sort(['survey_id' => $survey_id, 'status' => [' != ', " 'deleted' "]]);
+		$load = \lib\db\questions::get_sort(['survey_id' => $_survey_id, 'status' => [' != ', " 'deleted' "]]);
 
 		if(is_array($load))
 		{

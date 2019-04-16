@@ -66,7 +66,7 @@ class view
 
 		$step      = $_step;
 		$must_step = null;
-		$end_step  = null;
+		// $end_step  = null;
 
 		if($step && is_numeric($step))
 		{
@@ -107,24 +107,29 @@ class view
 			}
 
 			$end_step  = \dash\data::surveyRow_countblock();
+
 			// analyze step
 			// in random mode or limited mode
-			$step = \lib\app\answer::analyze_step('view', $step, $survey);
+			$analyze_question_step = \lib\app\answer::analyze_question_step('view', $step, $survey, \dash\user::id());
 
-			if(isset($step['step']))
+
+			if(isset($analyze_question_step['step']) && intval($analyze_question_step['step']) !== intval($step))
 			{
-				$step = $step['step'];
-			}
-			else
-			{
-				return false;
+				$get = \dash\request::get();
+				$get['step'] = $analyze_question_step['step'];
+				\dash\redirect::to(\dash\url::that(). '?'. http_build_query($get));
 			}
 
-			$question = \lib\app\question::get_by_step($_id, $step);
+			$question = [];
+
+			if(isset($analyze_question_step['question_detail']))
+			{
+				$question = $analyze_question_step['question_detail'];
+			}
 
 			if(!$question || !isset($question['type']))
 			{
-				if($step >= $end_step + 1)
+				if($analyze_question_step['thankyou'])
 				{
 					$step_display = 'thankyou';
 				}
@@ -142,31 +147,31 @@ class view
 
 			\dash\data::answerRow($answer);
 
-			$must_step = 1;
+			// $must_step = 1;
 
-			if(isset($answer['step']) && $answer['step'])
-			{
-				$must_step = intval($answer['step']) + 1;
-			}
+			// if(isset($answer['step']) && $answer['step'])
+			// {
+			// 	$must_step = intval($answer['step']) + 1;
+			// }
 
-			if($step === $must_step || $step < $must_step)
-			{
-				// no problem
-			}
-			else
-			{
-				if(!\dash\data::mySurvey())
-				{
-					if($is_site)
-					{
-						\dash\redirect::to(\dash\url::this(). '?step='. $must_step);
-					}
-					else
-					{
-						return ['must_step' => $must_step];
-					}
-				}
-			}
+			// if($step === $must_step || $step < $must_step)
+			// {
+			// 	// no problem
+			// }
+			// else
+			// {
+			// 	if(!\dash\data::mySurvey())
+			// 	{
+			// 		if($is_site)
+			// 		{
+			// 			\dash\redirect::to(\dash\url::this(). '?step='. $must_step);
+			// 		}
+			// 		else
+			// 		{
+			// 			return ['must_step' => $must_step];
+			// 		}
+			// 	}
+			// }
 
 			\dash\data::question($question);
 
@@ -219,8 +224,8 @@ class view
 		}
 
 		\dash\data::step_display($step_display);
-		\dash\data::step_end($end_step);
-		\dash\data::step_must($must_step);
+		// \dash\data::step_end($end_step);
+		// \dash\data::step_must($must_step);
 
 		\dash\data::skipBtn(true);
 		if(in_array($step_display, ['start', 'welcome', 'thankyou', 'thankyoudefault']))

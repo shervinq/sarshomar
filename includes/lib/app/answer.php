@@ -392,35 +392,147 @@ class answer
 			}
 		}
 
-		// \dash\notif::ok(T_("Your answer was saved"));
-		return self::analyze_step('answer', $step, $survey_detail);
+
+		return self::analyze_question_step('answer', $step, $survey_detail, \dash\user::id());
 
 	}
 
-
-	public static function analyze_step($_type, $_step, $_survey_detail)
+	private static function setting_detect($_survey_detail)
 	{
-		$countblock = (isset($_survey_detail['countblock']) && $_survey_detail['countblock']) ? intval($_survey_detail['countblock'])      : 0;
-		$new_step   = $_step;
+		$setting = [];
 
-		if(intval($_step) <= intval($countblock))
+		if(isset($_survey_detail['setting']) && is_string($_survey_detail['setting']))
 		{
-			if($_type === 'view')
+			$setting = json_decode($_survey_detail['setting'], true);
+		}
+		elseif(isset($_survey_detail['setting']) && is_array($_survey_detail['setting']))
+		{
+			$setting = $_survey_detail['setting'];
+		}
+
+		if(!is_array($setting))
+		{
+			$setting = [];
+		}
+
+		return $setting;
+	}
+
+
+	public static function analyze_question_step($_type, $_step, $_survey_detail, $_user_id)
+	{
+		if(!$_step || !is_numeric($_step) || !$_user_id || !is_numeric($_user_id) || !$_survey_detail)
+		{
+			return false;
+		}
+
+		$survey_id       = \dash\coding::decode($_survey_detail['id']);
+		$new_step        = null;
+		$setting         = self::setting_detect($_survey_detail);
+		$thankyou        = false;
+		$wellcome        = false;
+		$question_id     = false;
+		$selective       = false;
+		$randomquestion  = false;
+		$selectivecount  = null;
+		$mySurvey        = false;
+		$question_detail = [];
+
+
+		if(isset($_survey_detail['user_id']) && intval($_survey_detail['user_id']) === intval($_user_id))
+		{
+			$mySurvey = true;
+		}
+
+		if(isset($setting['randomquestion']) && $setting['randomquestion'])
+		{
+			$randomquestion = true;
+		}
+
+		if(isset($setting['selective']['status']) && $setting['selective']['status'])
+		{
+			$selective = true;
+		}
+
+		if(isset($setting['selective']['selectivecount']) && $setting['selective']['selectivecount'])
+		{
+			$selectivecount = intval($setting['selective']['selectivecount']);
+		}
+
+		if(!$selectivecount && !$randomquestion && !$selective)
+		{
+			// simple survey
+			$countblock = (isset($_survey_detail['countblock']) && $_survey_detail['countblock']) ? intval($_survey_detail['countblock'])      : 0;
+			$must_step  = 1;
+
+			$answer = \lib\db\answers::get(['survey_id' => $survey_id, 'user_id' => $_user_id, 'limit' => 1]);
+
+			if(isset($answer['step']) && $answer['step'])
 			{
-				$new_step = $_step;
+				$must_step = intval($answer['step']) + 1;
 			}
-			elseif($_type === 'answer')
+
+			if($_step <= $must_step)
 			{
-				$new_step = intval($_step) + 1;
+				// if allow review
+				if(true)
+				{
+					$new_step = $_step;
+				}
+				else
+				{
+					$new_step = $must_step;
+				}
+			}
+			else
+			{
+				if($mySurvey)
+				{
+					$new_step = $_step;
+				}
+				else
+				{
+					$new_step = $must_step;
+				}
+			}
+
+			if($_step >= $countblock + 1)
+			{
+				$thankyou = true;
+			}
+
+			if(!$thankyou)
+			{
+				if($_type === 'answer')
+				{
+					$new_step++;
+				}
+
+				$question_detail = \lib\app\question::get_by_step($survey_id, $new_step);
+				if(isset($question_detail['id']))
+				{
+					$question_id = \dash\coding::decode($question_detail['id']);
+				}
+
 			}
 		}
 		else
 		{
-			$new_step = $countblock;
+			//
 		}
 
-		return ['step' => $new_step];
 
+		$result =
+		[
+			'step'            => $new_step,
+			'question_id'     => $question_id,
+			'question_detail' => $question_detail,
+			'thankyou'        => $thankyou,
+			'wellcome'        => $wellcome,
+
+		];
+
+		return $result;
 	}
 
 
