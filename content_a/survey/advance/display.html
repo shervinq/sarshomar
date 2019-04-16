@@ -24,7 +24,7 @@
 {%block iJustReferer%}
 <label for="referer">{%trans "Just allow from this referer"%}</label>
 <div class="input">
-  <input type="url" name="referer" id="referer" placeholder='{%trans "Simmilar"%} http://yourdomain.com' value="{{surveyRow.referer}}"  maxlength='2000' minlength="1" pattern=".{1,2000}" >
+  <input type="url" name="referer" id="referer" placeholder='{%trans "Simillar"%} http://yourdomain.com' value="{{surveyRow.referer}}"  maxlength='2000' minlength="1" pattern=".{1,2000}" >
 </div>
 {%endblock%}
 
@@ -61,7 +61,7 @@
 <h4 data-kerkere=".surveyPassword" {%if surveyRow.password%}data-kerkere-icon='open'{%else%} data-kerkere-icon {%endif%}>{%trans "Enable survery passworrd"%}</h4>
 
 <div class="surveyPassword msg" {%if surveyRow.password%}{%else%} data-kerkere-content='hide' {%endif%}>
-<p>{%trans "A question like 'Password Question' will be added to the list of your questions. Put it anywhere on your question list"%}</p>
+
 <label for="password">{%trans "Survey password"%}</label>
 <div class="input">
   <input type="text" name="password" id="password" placeholder='{%trans "Survey password"%}' value="{{surveyRow.password}}"  maxlength='200' minlength="1" pattern=".{1,200}" >

@@ -606,7 +606,7 @@ class survey
 			$starttime = \dash\date::make_time($starttime);
 			if($starttime === false)
 			{
-				\dash\notif::error(T_("Invalid statrt time"), 'starttime');
+				\dash\notif::error(T_("Invalid start time"), 'starttime');
 				return false;
 			}
 
@@ -623,7 +623,7 @@ class survey
 			$endtime = \dash\date::make_time($endtime);
 			if($endtime === false)
 			{
-				\dash\notif::error(T_("Invalid statrt time"), 'endtime');
+				\dash\notif::error(T_("Invalid end time"), 'endtime');
 				return false;
 			}
 

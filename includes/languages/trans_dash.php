@@ -83,10 +83,10 @@ class twigTransTerms
 	echo T_("Search with new keywords.");                                             // Line 105
 	echo T_("Hi!");                                                                   // Line 112
 	echo T_("Try to start with add new record!");                                     // Line 131
-	echo T_("All publish posts");                                                     // Line 112
+	echo T_("All publish posts");                                                     // Line 117
 	echo T_("Published");                                                             // Line 65
-	echo T_("All draft posts");                                                       // Line 121
-	echo T_("All trash posts");                                                       // Line 130
+	echo T_("All draft posts");                                                       // Line 126
+	echo T_("All trash posts");                                                       // Line 135
 
 	//---------------------------------------addons/content_cp/posts/edit/display.html
 	echo T_("Icon");                                                                  // Line 45
@@ -248,20 +248,22 @@ class twigTransTerms
 	echo T_("Add file");                                                              // Line 10
 
 	//----------------------------------addons/content_cp/attachment/home/display.html
+	echo T_("File Name");                                                             // Line 58
+	echo T_("Size");                                                                  // Line 60
 
 	//----------------------------------------addons/content_cp/mycontact/display.html
 	echo T_("Contact");                                                               // Line 14
 	echo T_("Admin Contact");                                                         // Line 29
 
 	//---------------------------------------addons/content_api/v6/doc/60-android.html
-	echo T_("Get android detail");                                                    // Line 68
+	echo T_("Get android detail");                                                    // Line 71
 	echo T_("Get details like pages, language list, translations, and more.");        // Line 10
 	echo T_("cURL");                                                                  // Line 220
 	echo T_("example");                                                               // Line 37
 	echo T_("Response");                                                              // Line 238
 
 	//--------------------------------------addons/content_api/v6/doc/03-requests.html
-	echo T_("Requests");                                                              // Line 44
+	echo T_("Requests");                                                              // Line 45
 	echo T_("Any tool that is fluent in HTTP can communicate with the API simply by requesting the correct URI.");// Line 6
 	echo T_("Requests should be made using the HTTPS protocol so that traffic is encrypted.");// Line 6
 	echo T_("The interface responds to different methods depending on the action required.");// Line 6
@@ -290,7 +292,7 @@ class twigTransTerms
 	echo T_("It also contains metrics about the total number of objects found, pagination information, and the total content length.");// Line 69
 
 	//------------------------------------addons/content_api/v6/doc/40-user-login.html
-	echo T_("Login user");                                                            // Line 52
+	echo T_("Login user");                                                            // Line 53
 	echo T_("Login user and get new apikey for this user");                           // Line 8
 	echo T_("Required parameters");                                                   // Line 45
 	echo T_("on header");                                                             // Line 15
@@ -308,28 +310,29 @@ class twigTransTerms
 	echo T_("Min length");                                                            // Line 84
 
 	//-----------------------------------------addons/content_api/v6/doc/55-notif.html
-	echo T_("Get notification list");                                                 // Line 66
+	echo T_("Get notification list");                                                 // Line 69
 	echo T_("Get list of your notification");                                         // Line 8
 	echo T_("Your apikey");                                                           // Line 32
 	echo T_("Get from your account profile");                                         // Line 38
 	echo T_("Parameters");                                                            // Line 47
 	echo T_("If you want to set all notif of this user as read notif set this parameters as true");// Line 66
 	echo T_("Optional");                                                              // Line 210
-	echo T_("If user not read this notif, this response is null else see read date of this notif");// Line 106
+	echo T_("If user not read this notif, this response is null else see read date of this notif");// Line 107
 
 	//------------------------------------------addons/content_api/v6/doc/display.html
-	echo T_("API");                                                                   // Line 38
-	echo T_("Introduction");                                                          // Line 40
+	echo T_("API");                                                                   // Line 39
+	echo T_("Introduction");                                                          // Line 41
 	echo T_("Endpoints");                                                             // Line 3
 	echo T_("Responses");                                                             // Line 3
 	echo T_("Token");                                                                 // Line 8
 	echo T_("Sign Up User");                                                          // Line 5
 	echo T_("Verify user");                                                           // Line 5
-	echo T_("Get about");                                                             // Line 56
-	echo T_("Get mission");                                                           // Line 58
-	echo T_("Get vision");                                                            // Line 60
-	echo T_("Get contact");                                                           // Line 62
-	echo T_("Check new notification");                                                // Line 64
+	echo T_("Get language list");                                                     // Line 5
+	echo T_("Get about");                                                             // Line 59
+	echo T_("Get mission");                                                           // Line 61
+	echo T_("Get vision");                                                            // Line 63
+	echo T_("Get contact");                                                           // Line 65
+	echo T_("Check new notification");                                                // Line 67
 
 	//---------------------------------------addons/content_api/v6/doc/33-contact.html
 	echo T_("Get contact text");                                                      // Line 5
@@ -366,6 +369,8 @@ class twigTransTerms
 
 	//-----------------------------------------addons/content_api/v6/doc/30-about.html
 	echo T_("Get about text");                                                        // Line 5
+
+	//--------------------------------------addons/content_api/v6/doc/42-language.html
 
 	//-----------------------------------------addons/content_api/v6/doc/10-token.html
 	echo T_("Get Access Token");                                                      // Line 5
@@ -434,7 +439,7 @@ class twigTransTerms
 	echo T_("View your current location and navigate to parent of it");               // Line 179
 
 	//----------------------------------------------addons/includes/html/inc_spay.html
-	echo T_("Please choose you pos");                                                 // Line 4
+	echo T_("Please choose bank");                                                    // Line 4
 	echo T_("Saderat");                                                               // Line 9
 	echo T_("Mellat");                                                                // Line 15
 	echo T_("Tejarat");                                                               // Line 21
@@ -621,6 +626,8 @@ class twigTransTerms
 	echo T_("You must set a mobile or email to continue");                            // Line 7
 
 	//----------------------------------------addons/content_enter/google/display.html
+
+	//-----------------------------------------addons/content_support/faq/display.html
 
 	//----------------------------------------------addons/content_support/layout.html
 	echo T_("Support Dashboard");                                                     // Line 8
