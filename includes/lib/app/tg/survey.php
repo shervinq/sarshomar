@@ -51,9 +51,9 @@ class survey
 			else
 			{
 				$load_step = \content_s\home\view::load($_id, $_step, ['site' => false]);
-				if($load_step && is_array($load_step) && isset($load_step['must_step']) && $load_step['must_step'])
+				if($load_step && is_array($load_step) && isset($load_step['step']) && $load_step['step'])
 				{
-					$load_step = \content_s\home\view::load($_id, $load_step['must_step'], ['site' => false]);
+					$load_step = \content_s\home\view::load($_id, $load_step['step'], ['site' => false]);
 					return self::load_question();
 				}
 				elseif($load_step === true)
