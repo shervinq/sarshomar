@@ -11,6 +11,19 @@ class answerdetails
 	}
 
 
+	public static function get_user_score($_survey_id, $_user_id)
+	{
+		if(!$_user_id || !$_survey_id || !is_numeric($_survey_id) || !is_numeric($_user_id))
+		{
+			return false;
+		}
+
+		$query = "SELECT SUM(answerdetails.score) AS `score` FROM answerdetails WHERE answerdetails.survey_id = $_survey_id AND answerdetails.user_id = $_user_id";
+		$result = \dash\db::get($query, 'score', true);
+		return intval($result);
+	}
+
+
 	public static function get_join($_where, $_option = [])
 	{
 		$default_option =

@@ -771,6 +771,12 @@ class survey
 	 */
 	public static function ready($_data)
 	{
+		$survey_id = null;
+		if(isset($_data['id']))
+		{
+			$survey_id = $_data['id'];
+		}
+
 		$result = [];
 		foreach ($_data as $key => $value)
 		{
@@ -811,6 +817,20 @@ class survey
 				case 'thankyoumedia':
 				case 'setting':
 					$result[$key] = json_decode($value, true);
+					break;
+
+				case 'title':
+				case 'brandingtitle':
+				case 'brandingdesc':
+				case 'brandingmeta':
+				case 'emailtitle':
+				case 'emailmsg':
+				case 'welcometitle':
+				case 'welcomedesc':
+				case 'thankyoutitle':
+				case 'thankyoudesc':
+				case 'desc':
+					$result[$key] = \lib\app\answer::replace_user_score($value, $survey_id, \dash\user::id()) ;
 					break;
 
 				default:

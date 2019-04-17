@@ -705,6 +705,11 @@ class question
 			}
 		}
 
+		$survey_id = null;
+		if(isset($_data['survey_id']))
+		{
+			$survey_id = $_data['survey_id'];
+		}
 
 		$result = [];
 		foreach ($_data as $key => $value)
@@ -778,6 +783,11 @@ class question
 
 					$result[$key] = $choice;
 
+					break;
+
+				case 'title':
+				case 'desc':
+					$result[$key] = \lib\app\answer::replace_user_score($value, $survey_id, \dash\user::id()) ;
 					break;
 
 				default:

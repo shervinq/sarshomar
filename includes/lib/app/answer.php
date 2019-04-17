@@ -13,6 +13,28 @@ class answer
 	private static $answer_score       = 0;
 	private static $answer_score_multi = [];
 
+	private static $user_score = [];
+
+	public static function replace_user_score($_title, $_survey_id, $_user_id)
+	{
+		if(strpos($_title, '@score') !== false)
+		{
+			if(isset(self::$user_score[$_user_id. '_'. $_survey_id]))
+			{
+				$userScore = self::$user_score[$_user_id. '_'. $_survey_id];
+			}
+			else
+			{
+				$userScore = \lib\db\answerdetails::get_user_score($_survey_id, $_user_id);
+				self::$user_score[$_user_id. '_'. $_survey_id] = $userScore;
+
+			}
+
+			$_title = str_replace('@score', \dash\utility\human::fitNumber($userScore, false), $_title);
+		}
+
+		return $_title;
+	}
 
 	public static function dateNow()
 	{
