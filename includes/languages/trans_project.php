@@ -5,7 +5,7 @@ class twigTransTerms
  {
 
 	//-----------------------------------------------------content_s/home/display.html
-	echo T_("Survey status");                                                         // Line 116
+	echo T_("Survey status");                                                         // Line 125
 	echo T_("End");                                                                   // Line 25
 	echo T_("I want to delete my answer");                                            // Line 50
 	echo T_("I'm not willing to answer");                                             // Line 52
@@ -505,7 +505,7 @@ class twigTransTerms
 
 	//-------------------------------------------content_a/report/answers/display.html
 	echo T_("Start Date");                                                            // Line 63
-	echo T_("End date");                                                              // Line 94
+	echo T_("End date");                                                              // Line 116
 	echo T_("Answer in");                                                             // Line 65
 	echo T_("Step");                                                                  // Line 315
 	echo T_("Complete");                                                              // Line 67
@@ -552,7 +552,7 @@ class twigTransTerms
 	echo T_("Operation");                                                             // Line 27
 	echo T_("Chart");                                                                 // Line 16
 	echo T_("Edit");                                                                  // Line 53
-	echo T_("Report");                                                                // Line 168
+	echo T_("Report");                                                                // Line 177
 
 	//----------------------------------------------content_a/report/home/display.html
 	echo T_("Group by answer");                                                       // Line 33
@@ -634,18 +634,18 @@ class twigTransTerms
 	echo T_("Required answer");                                                       // Line 29
 	echo T_("Optional to answer");                                                    // Line 31
 	echo T_("Thank you message");                                                     // Line 53
-	echo T_("Add new question");                                                      // Line 89
+	echo T_("Add new question");                                                      // Line 98
 
 	//--------------------------------------------content_a/question/type/display.html
 
 	//------------------------------------------------------content_a/main/layout.html
 	echo T_("Questionnaires");                                                        // Line 52
-	echo T_("Questions");                                                             // Line 147
-	echo T_("Question Sorter");                                                       // Line 157
+	echo T_("Questions");                                                             // Line 156
+	echo T_("Question Sorter");                                                       // Line 166
 	echo T_("Settings");                                                              // Line 21
 	echo T_("Privacy");                                                               // Line 167
 	echo T_("Reports");                                                               // Line 30
-	echo T_("Live Preview");                                                          // Line 126
+	echo T_("Live Preview");                                                          // Line 135
 
 	//-------------------------------------------content_a/survey/welcome/display.html
 	echo T_("When responder want to start survey a welcome is show then they can start answer.");// Line 10
@@ -687,30 +687,36 @@ class twigTransTerms
 	//------------------------------------------content_a/survey/thankyou/display.html
 	echo T_("This message is show to responder after finish answer");                 // Line 10
 
+	//--------------------------------------------content_a/survey/review/display.html
+	echo T_("Without welcome message");                                               // Line 62
+	echo T_("Without thank you message");                                             // Line 109
+
 	//-----------------------------------------content_a/survey/duplicate/display.html
 	echo T_("If you want to make a duplicate this survey ");                          // Line 9
 	echo T_("Click to make duplicate");                                               // Line 10
 
 	//-------------------------------------------content_a/survey/advance/display.html
-	echo T_("Just allow from this referer");                                          // Line 25
+	echo T_("Just allow from this referer");                                          // Line 26
 	echo T_("Simillar");                                                              // Line 23
-	echo T_("Is fav survey?");                                                        // Line 35
-	echo T_("Load random question to responders?");                                   // Line 44
-	echo T_("Count question");                                                        // Line 47
-	echo T_("You can set limit of question to show in every responder");              // Line 47
-	echo T_("Only show");                                                             // Line 49
-	echo T_("Question(s) of all questions");                                          // Line 51
-	echo T_("Enable survery passworrd");                                              // Line 61
-	echo T_("Survey password");                                                       // Line 67
-	echo T_("Start date");                                                            // Line 76
-	echo T_("Start time");                                                            // Line 82
-	echo T_("End time");                                                              // Line 100
-	echo T_("Hidden field key");                                                      // Line 111
-	echo T_("Enable time limit?");                                                    // Line 122
-	echo T_("All survey time per second");                                            // Line 125
-	echo T_("The user must complete in this time");                                   // Line 125
-	echo T_("Every question time per second");                                        // Line 129
-	echo T_("The user must complete one question in this time");                      // Line 129
+	echo T_("Is fav survey?");                                                        // Line 36
+	echo T_("Load random question to responders?");                                   // Line 45
+	echo T_("Count question");                                                        // Line 48
+	echo T_("You can set limit of question to show in every responder");              // Line 48
+	echo T_("Only show");                                                             // Line 50
+	echo T_("Question(s) of all questions");                                          // Line 52
+	echo T_("Can not review user last question");                                     // Line 63
+	echo T_("User can not update her answer");                                        // Line 73
+	echo T_("Enable survery passworrd");                                              // Line 83
+	echo T_("Survey password");                                                       // Line 89
+	echo T_("Start date");                                                            // Line 98
+	echo T_("Start time");                                                            // Line 104
+	echo T_("End time");                                                              // Line 122
+	echo T_("Hidden field key");                                                      // Line 133
+	echo T_("Enable time limit?");                                                    // Line 144
+	echo T_("All survey time per second");                                            // Line 147
+	echo T_("The user must complete in this time");                                   // Line 147
+	echo T_("Every question time per second");                                        // Line 151
+	echo T_("The user must complete one question in this time");                      // Line 151
 
 	//--------------------------------------------content_a/survey/status/display.html
 	echo T_("responder can answer if survey is set as published.");                   // Line 11
@@ -720,12 +726,16 @@ class twigTransTerms
 	echo T_("In Telegram only title is show on load survey.");                        // Line 11
 
 	//----------------------------------------------content_a/survey/home/display.html
-	echo T_("Your Survey");                                                           // Line 49
-	echo T_("Without welcome message");                                               // Line 61
-	echo T_("Without thank you message");                                             // Line 100
-	echo T_("Setting");                                                               // Line 136
-	echo T_("No user answer to this survey yet!");                                    // Line 201
-	echo T_("Answer chart");                                                          // Line 212
+	echo T_("Your Survey");                                                           // Line 50
+	echo T_("Setting");                                                               // Line 145
+	echo T_("No user answer to this survey yet!");                                    // Line 210
+	echo T_("Answer chart");                                                          // Line 221
+	echo T_("Share on Facebook");                                                     // Line 239
+	echo T_("Share on Twitter");                                                      // Line 241
+	echo T_("Share on LinkedIn");                                                     // Line 243
+	echo T_("Send as Email");                                                         // Line 245
+	echo T_("Share on Telegram");                                                     // Line 247
+	echo T_("Survey Link");                                                           // Line 249
 
 	//--------------------------------------------------content_a/survey/home/chart.js
 	echo T_("Price Variation");                                                       // Line 42

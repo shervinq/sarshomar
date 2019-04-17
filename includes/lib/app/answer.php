@@ -294,21 +294,9 @@ class answer
 
 		$check_schedule = self::check_schedule($survey_detail, $question_detail, $load_old_answer, $dateview);
 
-		if($check_schedule === 'surveytime')
+		if($check_schedule)
 		{
-			// return true to continue process to another question
-			return ['step' => $countblock + 1];
-		}
-		elseif($check_schedule === 'questiontime')
-		{
-			if(intval($step) < intval($countblock))
-			{
-				return ['step' => intval($step) + 1];
-			}
-			else
-			{
-				return ['step' => $countblock + 1];
-			}
+			return self::analyze_question_step($check_schedule, $step, $survey_detail, \dash\user::id());
 		}
 
 
@@ -553,6 +541,47 @@ class answer
 		{
 			$count_asked_question = [];
 		}
+
+		if($_type === 'surveytime')
+		{
+			if($selectivecount)
+			{
+				return ['step' => $selectivecount + 1];
+			}
+			else
+			{
+				return ['step' => $countblock + 1];
+			}
+		}
+		elseif($_type === 'questiontime')
+		{
+			return ['step' => intval($_step) + 1];
+			// if($selectivecount)
+			// {
+			// 	if(intval($_step) < intval($selectivecount))
+			// 	{
+			// 	}
+			// 	else
+			// 	{
+			// 		return ['step' => $selectivecount + 1];
+			// 	}
+			// }
+			// else
+			// {
+			// 	if(intval($_step) < intval($countblock))
+			// 	{
+			// 		return ['step' => intval($_step) + 1];
+			// 	}
+			// 	else
+			// 	{
+			// 		return ['step' => $countblock + 1];
+			// 	}
+
+			// }
+		}
+
+
+
 
 		$must_step  = 1;
 
