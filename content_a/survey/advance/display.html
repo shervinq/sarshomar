@@ -13,6 +13,7 @@
 				{{block('iTiming')}}
 				{{block('iRandomQuestion')}}
 				{{block('iCanNotReview')}}
+				{{block('iCanNotUpdate')}}
 				{{block('iHiddenField')}}
 				{{block('isave')}}
 			</form>
@@ -59,9 +60,20 @@
 <div class="switch1 mB10">
  <input type="checkbox" name="cannotreview" id="cannotreview" {%if surveyRow.setting.cannotreview %}checked{%endif%}>
  <label for="cannotreview"></label>
- <label for="cannotreview">{%trans "Can not review user last question?"%}</label>
+ <label for="cannotreview">{%trans "Can not review user last question"%}</label>
 </div>
 {%endblock%}
+
+
+
+{%block iCanNotUpdate%}
+<div class="switch1 mB10">
+ <input type="checkbox" name="cannotupdateanswer" id="cannotupdateanswer" {%if surveyRow.setting.cannotupdateanswer %}checked{%endif%}>
+ <label for="cannotupdateanswer"></label>
+ <label for="cannotupdateanswer">{%trans "User can not update her answer"%}</label>
+</div>
+{%endblock%}
+
 
 
 

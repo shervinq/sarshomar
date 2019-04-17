@@ -6,18 +6,20 @@ class model
 {
 	public static function post()
 	{
-		$post                   = [];
-		$post['fav']            = \dash\request::post('fav');
-		$post['startdate']      = \dash\request::post('startdate');
-		$post['enddate']        = \dash\request::post('enddate');
-		$post['starttime']      = \dash\request::post('starttime');
-		$post['endtime']        = \dash\request::post('endtime');
-		$post['schedule']       = \dash\request::post('schedule');
-		$post['surveytime']     = \dash\request::post('surveytime');
-		$post['questiontime']   = \dash\request::post('questiontime');
-		$post['selectivecount'] = \dash\request::post('selectivecount');
-		$post['randomquestion'] = \dash\request::post('randomquestion');
-		$post['cannotreview']   = \dash\request::post('cannotreview');
+		$post                       = [];
+		$post['fav']                = \dash\request::post('fav');
+		$post['startdate']          = \dash\request::post('startdate');
+		$post['enddate']            = \dash\request::post('enddate');
+		$post['starttime']          = \dash\request::post('starttime');
+		$post['endtime']            = \dash\request::post('endtime');
+		$post['schedule']           = \dash\request::post('schedule');
+		$post['surveytime']         = \dash\request::post('surveytime');
+		$post['questiontime']       = \dash\request::post('questiontime');
+		$post['selectivecount']     = \dash\request::post('selectivecount');
+		$post['randomquestion']     = \dash\request::post('randomquestion');
+		$post['cannotreview']       = \dash\request::post('cannotreview');
+		$post['cannotupdateanswer'] = \dash\request::post('cannotupdateanswer');
+
 
 
 		// $post['referer']   = \dash\request::post('referer');
