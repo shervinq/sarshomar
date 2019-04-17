@@ -81,6 +81,14 @@
 
         {%if value.desc%}<div class="mT10 s0">{{value.desc}}</div>{%endif%}
         {%if not value.title and not value.desc%}<i>{%trans "Untitled"%}</i>{%endif%}
+
+{%if value.choice%}
+        <div class="answersItem">
+{%for qIndex, qItem in value.choice%}
+          <span class="badge light"><i class="compact mRa5 sf-check"></i>{{qItem.title}}</span>
+{%endfor%}
+        </div>
+{%endif%}
     </div>
 
     <div class="cauto pLa10 os"><small class="badge light">{{value.type_detail.title}}</small></div>
