@@ -23,6 +23,7 @@
       {%endif%}
       <th class="txtC">{%trans "Type"%}</th>
       <th>{%trans "Title"%}</th>
+      <th>{%trans "Choice"%}</th>
       <th class="s0 txtC">{%trans "Require"%}</th>
       <th class="txtC"><span class="s0">{%trans "Operation"%}</span></th>
     </tr>
@@ -48,6 +49,13 @@
         {%if value.desc%}<div class="mT10 fs09 s0">{{value.desc}}</div>{%endif%}
         {%if not value.title and not value.desc%}<div>{%trans "Untitled"%}</div>{%endif%}
         </a>
+      </td>
+      <td>
+        {%if value.type_detail.choice%}
+          {%for k, v in value.choice%}
+          <span class="btn  mT5 info2 outline" {%if v.title | length > 30%} title='{{v.title}}' {%endif%} >{{v.title | slice(0,30)}}{%if v.title | length > 30%}...{%endif%}{%if v.score%}<b title='{%trans "Score"%}' class="badge info mLa5">{{v.score | fitNumber}}</b>{%endif%}</span>
+          {%endfor%}
+        {%endif%}
       </td>
       <td class="s0 collapsing txtB txtC">
         {%if value.require%}
