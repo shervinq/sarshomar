@@ -47,6 +47,11 @@ class answer
 
 	public static function replace_question_answer($_title, $_survey_id, $_user_id)
 	{
+		if(strpos($_title, '@') === false)
+		{
+			return $_title;
+		}
+
 		if(!self::$question_address_loaded)
 		{
 			self::$question_address_loaded = true;
@@ -57,7 +62,7 @@ class answer
 		{
 			foreach (self::$question_address as $question_id => $address)
 			{
-				if(strpos($_title, $address) !== false)
+				if(strpos($_title, '@'.$address) !== false)
 				{
 					if(isset(self::$user_address_answer[$_user_id. '_'. $_survey_id]))
 					{
@@ -70,7 +75,7 @@ class answer
 
 					}
 
-					$_title = str_replace($address, $userAnswer, $_title);
+					$_title = str_replace('@'.$address, $userAnswer, $_title);
 				}
 			}
 		}
