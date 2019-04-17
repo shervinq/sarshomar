@@ -127,8 +127,9 @@ class model
 		else
 		{
 			$post                = [];
-			$post['survey_id']     = \dash\request::get('id');
+			$post['survey_id']   = \dash\request::get('id');
 			$post['choicetitle'] = \dash\request::post('choicetitle');
+			$post['choicescore'] = \dash\request::post('choicescore');
 			$post['add_choice']  = true;
 
 			$file = \dash\app\file::upload_quick('media');

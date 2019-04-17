@@ -130,6 +130,27 @@ class question
 			$choicetitle = substr($choicetitle, 0, 10000);
 		}
 
+
+		$choicescore  = \dash\app::request('choicescore');
+
+		if($choicescore && !is_numeric($choicescore))
+		{
+			\dash\notif::error(T_("Please set choice score as a number"), 'choicescore');
+			return false;
+		}
+
+		if($choicescore)
+		{
+			$choicescore = intval($choicescore);
+			if(abs($choicescore) > 1000)
+			{
+				\dash\notif::error(T_("Please set choice score between -1000 and 1000"), 'choicescore');
+				return false;
+			}
+		}
+
+
+
 		$choicefile          = \dash\app::request('choicefile');
 
 		if(\dash\app::isset_request('choicetitle') && $choicetitle !== '0' && !$choicetitle && !$choicefile)
@@ -170,6 +191,7 @@ class question
 			{
 				$new_choice          = [];
 				$new_choice['title'] = $choicetitle;
+				$new_choice['score'] = $choicescore;
 
 				if($choicefile)
 				{

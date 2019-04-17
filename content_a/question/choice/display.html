@@ -36,8 +36,11 @@
 			{%if value.file%}
 				<img src="{{value.file}}" alt="{{value.title}}" class="w100" id="logo preview">
 			{%endif%}
+
 			{{value.title}}
+			{%if value.score%}<span class=" badge mLR20 light fs09 ">{%trans "Score"%} {{value.score | fitNumber}}</span>{%endif%}
 			<a href="{{url.pwd}}" class="badge danger floatL" data-ajaxify data-method='post' data-data='{"key" : "{{key}}", "formType": "question", "action" : "remove"}'>{%trans "Remove"%}</a>
+
 		</div>
 	{%endfor%}
 </div>
@@ -47,10 +50,26 @@
 
 
 {%block ichoice %}
-<label for="choicetitle">{%trans "Title"%}</label>
-<div class="input">
-  <input type="text" name="choicetitle" id="choicetitle" placeholder='{%trans "Choise title"%}' autofocus {% if not choiceDetail.upload_choice %} required {%endif%} maxlength='200' minlength="1" pattern=".{1,200}" >
-  <button for="choicetitle" class="addon primary btn">{%trans "Save"%}</button>
+<div class="f">
+
+	<div class="c s12">
+		<label for="choicetitle">{%trans "Title"%}</label>
+		<div class="input">
+		  <input type="text" name="choicetitle" id="choicetitle" placeholder='{%trans "Choise title"%}' autofocus {% if not choiceDetail.upload_choice %} required {%endif%} maxlength='200' minlength="1" pattern=".{1,200}" >
+
+		</div>
+	</div>
+
+	<div class="c s12">
+		<div class="mLa5">
+
+			<label for="choicescore">{%trans "Score"%}</label>
+			<div class="input">
+			  <input type="number" name="choicescore" id="choicescore" placeholder='{%trans "Choise score"%}'  min='-1000' max="1000" >
+			  <button for="choicescore" class="addon primary btn">{%trans "Save"%}</button>
+			</div>
+		</div>
+	</div>
 </div>
 {% endblock %}
 
