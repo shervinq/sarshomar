@@ -105,6 +105,15 @@ class answer
 			}
 		}
 
+		$cannotupdateanswer = false;
+		if(isset($survey_detail['setting']['cannotupdateanswer']) && $survey_detail['setting']['cannotupdateanswer'])
+		{
+			$cannotupdateanswer = true;
+		}
+
+		$user_try_to_update = false;
+
+
 		$question_detail = \lib\db\questions::get(['survey_id' => $survey_id, 'id' => $question_id, 'limit' => 1]);
 
 		if(!$question_detail || !isset($question_detail['id']))
@@ -216,6 +225,7 @@ class answer
 		$countblock      = (isset($survey_detail['countblock']) && $survey_detail['countblock'])        ? intval($survey_detail['countblock'])      : 0;
 
 		$update_answer = [];
+		$force_update_answer = [];
 
 		if(!$load_old_answer)
 		{
@@ -238,7 +248,7 @@ class answer
 		else
 		{
 			$answer_id       = $load_old_answer['id'];
-
+			// $user_try_to_update = true;
 			$answer_count    = (isset($load_old_answer['answer']) && $load_old_answer['answer'])            ? intval($load_old_answer['answer'])    	: 0;
 			$skip_count      = (isset($load_old_answer['skip']) && $load_old_answer['skip'])           		? intval($load_old_answer['skip'])      	: 0;
 			$answertry_count = (isset($load_old_answer['answertry']) && $load_old_answer['answertry']) 		? intval($load_old_answer['answertry']) 	: 0;
@@ -257,6 +267,7 @@ class answer
 			}
 
 			$update_answer['step']         = $step;
+			$force_update_answer['step']   = $step;
 			$update_answer['lastquestion'] = $question_id;
 			$update_answer['lastmodified'] = self::dateNow();
 
@@ -330,9 +341,22 @@ class answer
 			}
 		}
 
+		$can_not_update_msg = T_("You can not update your answer");
+
 		if(!empty($update_answer))
 		{
-			\lib\db\answers::update($update_answer, $answer_id);
+			if(!$user_try_to_update)
+			{
+				\lib\db\answers::update($update_answer, $answer_id);
+			}
+			else
+			{
+				if(!empty($force_update_answer))
+				{
+					\lib\db\answers::update($force_update_answer, $answer_id);
+				}
+
+			}
 		}
 
 		$old_answer_detail_args =
@@ -357,7 +381,15 @@ class answer
 					'dateanswer'    => self::dateNow(),
 				];
 
-				\lib\db\answerdetails::update($update_answer_detail, $old_answer_detail['id']);
+				if(!$cannotupdateanswer)
+				{
+					\lib\db\answerdetails::update($update_answer_detail, $old_answer_detail['id']);
+				}
+				else
+				{
+					$user_try_to_update = true;
+
+				}
 			}
 			else
 			{
@@ -382,32 +414,45 @@ class answer
 		{
 			// mutli choise mode
 			$old_answer_detail = \lib\db\answerdetails::get($old_answer_detail_args);
-			if($old_answer_detail)
+			if($old_answer_detail && $cannotupdateanswer)
 			{
-				\lib\db\answerdetails::delete_where($old_answer_detail_args);
+				$user_try_to_update = true;
 			}
+			else
+			{
+				if($old_answer_detail)
+				{
+					\lib\db\answerdetails::delete_where($old_answer_detail_args);
+				}
 
-			// insert new answer detail
-			$multi_insert = [];
-			foreach ($answer as $key => $value)
-			{
-				$answer_term_id = \lib\db\answerterms::get_id($value, $question_detail['type']);
-				$multi_insert[] =
-				[
-					'user_id'       => \dash\user::id(),
-					'survey_id'     => $survey_id,
-					'answer_id'     => $answer_id,
-					'question_id'   => $question_id,
-					'answerterm_id' => $answer_term_id,
-					'dateview'      => $dateview,
-					'dateanswer'    => self::dateNow(),
-				];
-			}
+				// insert new answer detail
+				$multi_insert = [];
+				foreach ($answer as $key => $value)
+				{
+					$answer_term_id = \lib\db\answerterms::get_id($value, $question_detail['type']);
+					$multi_insert[] =
+					[
+						'user_id'       => \dash\user::id(),
+						'survey_id'     => $survey_id,
+						'answer_id'     => $answer_id,
+						'question_id'   => $question_id,
+						'answerterm_id' => $answer_term_id,
+						'dateview'      => $dateview,
+						'dateanswer'    => self::dateNow(),
+					];
+				}
 
-			if(!empty($multi_insert))
-			{
-				\lib\db\answerdetails::multi_insert($multi_insert);
+				if(!empty($multi_insert))
+				{
+					\lib\db\answerdetails::multi_insert($multi_insert);
+				}
 			}
+		}
+
+
+		if($user_try_to_update)
+		{
+			\dash\notif::warn($can_not_update_msg);
 		}
 
 		return self::analyze_question_step('answer', $step, $survey_detail, \dash\user::id());
@@ -454,18 +499,19 @@ class answer
 			$_step = 0;
 		}
 
-		$survey_id       = \dash\coding::decode($_survey_detail['id']);
-		$new_step        = null;
-		$setting         = self::setting_detect($_survey_detail);
-		$thankyou        = false;
-		$wellcome        = false;
-		$question_id     = false;
+		$survey_id          = \dash\coding::decode($_survey_detail['id']);
+		$new_step           = null;
+		$setting            = self::setting_detect($_survey_detail);
+		$thankyou           = false;
+		$wellcome           = false;
+		$question_id        = false;
 
-		$randomquestion  = false;
-		$selectivecount  = 0;
-		$mySurvey        = false;
-		$question_detail = [];
-
+		$randomquestion     = false;
+		$selectivecount     = 0;
+		$mySurvey           = false;
+		$question_detail    = [];
+		$cannotreview       = false;
+		$cannotupdateanswer = false;
 
 		if(isset($_survey_detail['user_id']) && intval($_survey_detail['user_id']) === intval($_user_id))
 		{
@@ -475,6 +521,16 @@ class answer
 		if(isset($setting['randomquestion']) && $setting['randomquestion'])
 		{
 			$randomquestion = true;
+		}
+
+		if(isset($setting['cannotreview']) && $setting['cannotreview'])
+		{
+			$cannotreview = true;
+		}
+
+		if(isset($setting['cannotupdateanswer']) && $setting['cannotupdateanswer'])
+		{
+			$cannotupdateanswer = true;
 		}
 
 		if(isset($setting['selectivecount']) && $setting['selectivecount'])
@@ -511,7 +567,7 @@ class answer
 			if($_step <= $must_step)
 			{
 				// if allow review
-				if(true)
+				if(!$cannotreview)
 				{
 					$new_step = $_step;
 				}
@@ -588,6 +644,13 @@ class answer
 				// need to load that question
 				$must_step = $count_asked_question[$_step]['load_step'];
 				$step_key  = $count_asked_question[$_step]['step'];
+				if(!$cannotreview)
+				{
+					$mytemp    = end($count_asked_question);
+					$must_step = $mytemp['load_step'];
+					$step_key  = $mytemp['step'];
+				}
+
 			}
 			else
 			{
@@ -631,7 +694,14 @@ class answer
 					}
 					else
 					{
-						$new_step = $_step;
+						if(!$cannotreview)
+						{
+							$new_step = $selectivecount + 1;
+						}
+						else
+						{
+							$new_step = $_step;
+						}
 					}
 				}
 				else
@@ -642,7 +712,14 @@ class answer
 					}
 					else
 					{
-						$new_step = $_step;
+						if(!$cannotreview)
+						{
+							$new_step = $countblock + 1;
+						}
+						else
+						{
+							$new_step = $_step;
+						}
 					}
 				}
 			}
