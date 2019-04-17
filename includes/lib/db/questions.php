@@ -23,6 +23,19 @@ class questions
 	}
 
 
+	public static function get_address($_survey_id)
+	{
+		if(!$_survey_id || !is_numeric($_survey_id))
+		{
+			return false;
+		}
+
+		$query = "SELECT questions.id AS `id`, questions.address AS `address` FROM questions WHERE questions.survey_id = $_survey_id AND questions.address IS NOT NULL ";
+		$result = \dash\db::get($query, ['id', 'address']);
+		return $result;
+	}
+
+
 	public static function save_sort($_sort)
 	{
 		$query = [];

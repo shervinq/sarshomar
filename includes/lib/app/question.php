@@ -747,12 +747,23 @@ class question
 					break;
 
 				case 'choice':
-					$result[$key] = json_decode($value, true);
-					$choice       = $result[$key];
+					$choice       = json_decode($value, true);
+					$result[$key] = $choice;
 
 					if(!is_array($choice) || \dash\url::content() === 'a')
 					{
 						break;
+					}
+
+					if(is_array($choice))
+					{
+						foreach ($choice as $xkey => $xvalue)
+						{
+							$title           = isset($xvalue['title']) ? $xvalue['title'] : null;
+							$title           = \lib\app\answer::replace_question_answer($title, $survey_id, \dash\user::id());
+							$xvalue['title'] = $title;
+							$choice[$xkey]   = $xvalue;
+						}
 					}
 
 					$choice_sort  = 'save';
@@ -788,6 +799,8 @@ class question
 				case 'title':
 				case 'desc':
 					$result[$key] = \lib\app\answer::replace_user_score($value, $survey_id, \dash\user::id()) ;
+					$result[$key] = \lib\app\answer::replace_question_answer($result[$key], $survey_id, \dash\user::id());
+
 					break;
 
 				default:

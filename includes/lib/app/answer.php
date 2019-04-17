@@ -15,6 +15,10 @@ class answer
 
 	private static $user_score = [];
 
+	private static $question_address_loaded = false;
+	private static $question_address = [];
+	private static $user_address_answer = [];
+
 	public static function replace_user_score($_title, $_survey_id, $_user_id)
 	{
 		if(strpos($_title, '@score') !== false)
@@ -35,6 +39,47 @@ class answer
 
 		return $_title;
 	}
+
+
+	private static function question_address($_survey_id)
+	{
+	}
+
+	public static function replace_question_answer($_title, $_survey_id, $_user_id)
+	{
+		if(!self::$question_address_loaded)
+		{
+			self::$question_address_loaded = true;
+			self::$question_address = \lib\db\questions::get_address($_survey_id);
+		}
+
+		if(!empty(self::$question_address))
+		{
+			foreach (self::$question_address as $question_id => $address)
+			{
+				if(strpos($_title, $address) !== false)
+				{
+					if(isset(self::$user_address_answer[$_user_id. '_'. $_survey_id]))
+					{
+						$userAnswer = self::$user_address_answer[$_user_id. '_'. $_survey_id];
+					}
+					else
+					{
+						$userAnswer = \lib\db\answerdetails::get_user_answer($_survey_id, $_user_id, $question_id);
+						self::$user_address_answer[$_user_id. '_'. $_survey_id] = $userAnswer;
+
+					}
+
+					$_title = str_replace($address, $userAnswer, $_title);
+				}
+			}
+		}
+
+
+		return $_title;
+	}
+
+
 
 	public static function dateNow()
 	{

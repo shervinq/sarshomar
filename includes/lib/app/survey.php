@@ -830,7 +830,8 @@ class survey
 				case 'thankyoutitle':
 				case 'thankyoudesc':
 				case 'desc':
-					$result[$key] = \lib\app\answer::replace_user_score($value, $survey_id, \dash\user::id()) ;
+					$result[$key] = \lib\app\answer::replace_user_score($value, $survey_id, \dash\user::id());
+					$result[$key] = \lib\app\answer::replace_question_answer($result[$key], $survey_id, \dash\user::id());
 					break;
 
 				default:

@@ -23,6 +23,25 @@ class answerdetails
 		return intval($result);
 	}
 
+	public static function get_user_answer($_survey_id, $_user_id, $_question_id)
+	{
+		if(!$_user_id || !$_survey_id || !is_numeric($_survey_id) || !is_numeric($_user_id) || !$_question_id || !is_numeric($_question_id))
+		{
+			return false;
+		}
+
+		$query =
+		"
+			SELECT answerterms.text AS `text` FROM answerterms
+			INNER JOIN answerdetails ON answerdetails.answerterm_id = answerterms.id
+			WHERE answerdetails.survey_id = $_survey_id AND answerdetails.user_id = $_user_id AND answerdetails.question_id = $_question_id
+		";
+
+		$result = \dash\db::get($query, 'text');
+		return implode(' , ', $result);
+
+	}
+
 
 	public static function get_join($_where, $_option = [])
 	{
