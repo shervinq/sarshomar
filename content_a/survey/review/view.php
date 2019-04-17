@@ -25,8 +25,8 @@ class view
 			\dash\data::badge_link(\dash\url::kingdom(). '/s/'. $id);
 			\dash\data::badge_text(T_('Preview'));
 
-			\dash\data::badge2_link(\dash\url::here());
-			\dash\data::badge2_text(T_('Back to survey list'));
+			\dash\data::badge2_link(\dash\url::this().'?id='. $id);
+			\dash\data::badge2_text(T_('Back to survey dashboard'));
 
 			$dashboard_detail['month_detail'] = \dash\date::month_precent();
 
