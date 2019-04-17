@@ -17,6 +17,7 @@ class model
 		$post['questiontime']   = \dash\request::post('questiontime');
 		$post['selectivecount'] = \dash\request::post('selectivecount');
 		$post['randomquestion'] = \dash\request::post('randomquestion');
+		$post['cannotreview']   = \dash\request::post('cannotreview');
 
 
 		// $post['referer']   = \dash\request::post('referer');

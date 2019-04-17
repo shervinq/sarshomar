@@ -11,8 +11,8 @@
 				{{block('iStartdate')}}
 				{{block('iEnddate')}}
 				{{block('iTiming')}}
-
 				{{block('iRandomQuestion')}}
+				{{block('iCanNotReview')}}
 				{{block('iHiddenField')}}
 				{{block('isave')}}
 			</form>
@@ -50,6 +50,16 @@
 	  <input type="text" name="selectivecount" id="selectivecount" value="{{surveyRow.setting.selectivecount}}" >
 	  <label class="addon">{%trans "Question(s) of all questions"%}</label>
 	</div>
+</div>
+{%endblock%}
+
+
+
+{%block iCanNotReview%}
+<div class="switch1 mB10">
+ <input type="checkbox" name="cannotreview" id="cannotreview" {%if surveyRow.setting.cannotreview %}checked{%endif%}>
+ <label for="cannotreview"></label>
+ <label for="cannotreview">{%trans "Can not review user last question?"%}</label>
 </div>
 {%endblock%}
 

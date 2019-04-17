@@ -564,6 +564,11 @@ class survey
 		}
 
 
+		if(\dash\app::isset_request('cannotreview'))
+		{
+			$setting['cannotreview']  = \dash\app::request('cannotreview') ? true : false;
+		}
+
 
 		if(!empty($setting))
 		{
