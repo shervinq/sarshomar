@@ -6,30 +6,31 @@ class twigTransTerms
 
 	//-----------------------------------------------------content_s/home/display.html
 	echo T_("Survey status");                                                         // Line 125
-	echo T_("End");                                                                   // Line 25
-	echo T_("I want to delete my answer");                                            // Line 50
-	echo T_("I'm not willing to answer");                                             // Line 52
+	echo T_("Survey is not avalible");                                                // Line 9
+	echo T_("End");                                                                   // Line 29
+	echo T_("I want to delete my answer");                                            // Line 54
+	echo T_("I'm not willing to answer");                                             // Line 56
 	echo T_("Download PDF");                                                          // Line 417
 	echo T_("Download File");                                                         // Line 419
 	echo T_("Require");                                                               // Line 5
 	echo T_("Start");                                                                 // Line 35
 	echo T_("Password");                                                              // Line 36
-	echo T_("Go");                                                                    // Line 110
-	echo T_("Save & Next");                                                           // Line 280
-	echo T_("Back");                                                                  // Line 289
-	echo T_("Next");                                                                  // Line 416
-	echo T_("Between");                                                               // Line 308
+	echo T_("Go");                                                                    // Line 114
+	echo T_("Save & Next");                                                           // Line 284
+	echo T_("Back");                                                                  // Line 293
+	echo T_("Next");                                                                  // Line 405
+	echo T_("Between");                                                               // Line 312
 	echo T_("and");                                                                   // Line 34
 	echo T_("Type here ...");                                                         // Line 55
-	echo T_("Start Time");                                                            // Line 362
-	echo T_("Spend Time");                                                            // Line 365
-	echo T_("Remain Time");                                                           // Line 369
-	echo T_("End Time");                                                              // Line 374
-	echo T_("Current question");                                                      // Line 379
-	echo T_("Total questions");                                                       // Line 382
-	echo T_("Completed");                                                             // Line 385
-	echo T_("Restart");                                                               // Line 394
-	echo T_("Back to survey dashboard");                                              // Line 400
+	echo T_("Start Time");                                                            // Line 366
+	echo T_("Spend Time");                                                            // Line 369
+	echo T_("Remain Time");                                                           // Line 373
+	echo T_("End Time");                                                              // Line 378
+	echo T_("Current question");                                                      // Line 383
+	echo T_("Total questions");                                                       // Line 386
+	echo T_("Completed");                                                             // Line 389
+	echo T_("Restart");                                                               // Line 398
+	echo T_("Back to survey dashboard");                                              // Line 404
 
 	//---------------------public_html/static/siftal/fonts/siftal/icons-reference.html
 
@@ -549,7 +550,7 @@ class twigTransTerms
 
 	//--------------------------------------content_a/report/questionlist/display.html
 	echo T_("Type");                                                                  // Line 24
-	echo T_("Operation");                                                             // Line 27
+	echo T_("Operation");                                                             // Line 28
 	echo T_("Chart");                                                                 // Line 16
 	echo T_("Edit");                                                                  // Line 53
 	echo T_("Report");                                                                // Line 177
@@ -576,16 +577,6 @@ class twigTransTerms
 	echo T_("Response");                                                              // Line 39
 	echo T_("No responses");                                                          // Line 39
 
-	//-----------------------------------------content_a/question/--title/display.html
-	echo T_("Question title");                                                        // Line 28
-	echo T_("Save question title");                                                   // Line 44
-	echo T_("Address");                                                               // Line 22
-	echo T_("To use the user answers of this question in another question");          // Line 20
-	echo T_("Question address / slug");                                               // Line 22
-	echo T_("General setting");                                                       // Line 55
-	echo T_("Save setting");                                                          // Line 63
-	echo T_("Remove");                                                                // Line 60
-
 	//--------------------------------------------------content_a/question/layout.html
 	echo T_("Placeholder");                                                           // Line 53
 	echo T_("To change placeholder type here");                                       // Line 55
@@ -607,30 +598,41 @@ class twigTransTerms
 	echo T_("For example: High");                                                     // Line 291
 	echo T_("Default");                                                               // Line 309
 	echo T_("Is require");                                                            // Line 329
-	echo T_("Choise title");                                                          // Line 339
-	echo T_("Save");                                                                  // Line 213
-	echo T_("Question Type");                                                         // Line 357
-	echo T_("Question Title");                                                        // Line 367
-	echo T_("Question Options");                                                      // Line 380
-	echo T_("Question Settings");                                                     // Line 393
-	echo T_("Show preview");                                                          // Line 405
+	echo T_("Question Type");                                                         // Line 346
+	echo T_("Question Title");                                                        // Line 356
+	echo T_("Question Options");                                                      // Line 369
+	echo T_("Question Settings");                                                     // Line 382
+	echo T_("Show preview");                                                          // Line 394
 	echo T_("Add");                                                                   // Line 209
-	echo T_("Image/Video");                                                           // Line 455
-	echo T_("Max allowed size 1Mb");                                                  // Line 456
+	echo T_("Save");                                                                  // Line 213
+	echo T_("Image/Video");                                                           // Line 444
+	echo T_("Max allowed size 1Mb");                                                  // Line 445
 
 	//-----------------------------------------content_a/question/setting/display.html
+	echo T_("General setting");                                                       // Line 21
+	echo T_("Save setting");                                                          // Line 29
 
 	//------------------------------------------content_a/question/choice/display.html
+	echo T_("Score");                                                                 // Line 56
+	echo T_("Remove");                                                                // Line 68
+	echo T_("Choise title");                                                          // Line 58
+	echo T_("Choise score");                                                          // Line 68
 
 	//---------------------------------------------content_a/question/add/display.html
 	echo T_("Please select one type to continue");                                    // Line 8
 
 	//-----------------------------------------content_a/question/general/display.html
+	echo T_("Address");                                                               // Line 22
+	echo T_("To use the user answers of this question in another question");          // Line 20
+	echo T_("Question address / slug");                                               // Line 22
+	echo T_("Question title");                                                        // Line 28
 	echo T_("Enter your password");                                                   // Line 38
+	echo T_("Save question title");                                                   // Line 44
 
 	//--------------------------------------------content_a/question/home/display.html
 	echo T_("Welcome message");                                                       // Line 12
 	echo T_("Have Media");                                                            // Line 56
+	echo T_("Choice");                                                                // Line 26
 	echo T_("Required answer");                                                       // Line 29
 	echo T_("Optional to answer");                                                    // Line 31
 	echo T_("Thank you message");                                                     // Line 53
