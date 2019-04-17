@@ -524,7 +524,15 @@ class answer
 			{
 				if($mySurvey)
 				{
-					$new_step = $_step;
+					// to not load larger step in mySurvey
+					if($_step > $countblock + 1)
+					{
+						$new_step = $must_step;
+					}
+					else
+					{
+						$new_step = $_step;
+					}
 				}
 				else
 				{
@@ -612,8 +620,21 @@ class answer
 
 			}
 
-			if(!$thankyou)
+			if($thankyou)
 			{
+				// to not load larger than countblock step
+				if($_step > $countblock + 1)
+				{
+					$new_step = $countblock + 1;
+				}
+				else
+				{
+					$new_step = $_step;
+				}
+			}
+			else
+			{
+
 				$new_step = $step_key;
 
 				if($_type === 'answer')
