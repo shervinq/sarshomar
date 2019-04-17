@@ -195,6 +195,24 @@ class answer
 
 		$load_old_answer = \lib\db\answers::get($load_old_answer);
 
+		// get step in random mode
+		if(isset($load_old_answer['questions']) && is_string($load_old_answer['questions']))
+		{
+			$questions_json = json_decode($load_old_answer['questions'], true);
+			if(is_array($questions_json))
+			{
+				foreach ($questions_json as $json_step => $value)
+				{
+					if(isset($value['question_id']) && intval($value['question_id']) === intval($question_id))
+					{
+						$step = $json_step;
+						break;
+					}
+				}
+			}
+		}
+
+
 		$countblock      = (isset($survey_detail['countblock']) && $survey_detail['countblock'])        ? intval($survey_detail['countblock'])      : 0;
 
 		$update_answer = [];
@@ -392,9 +410,7 @@ class answer
 			}
 		}
 
-
 		return self::analyze_question_step('answer', $step, $survey_detail, \dash\user::id());
-
 	}
 
 	private static function setting_detect($_survey_detail)
@@ -470,14 +486,14 @@ class answer
 
 		$answer               = \lib\db\answers::get(['survey_id' => $survey_id, 'user_id' => $_user_id, 'limit' => 1]);
 
-		$count_asked_question = isset($answer['questions']) ? $answer['question'] : [];
+		$count_asked_question = isset($answer['questions']) ? $answer['questions'] : [];
 
 		if(is_string($count_asked_question))
 		{
 			$count_asked_question = json_decode($count_asked_question, true);
 		}
 
-		if(!is_numeric($count_asked_question))
+		if(!is_array($count_asked_question))
 		{
 			$count_asked_question = [];
 		}
@@ -546,39 +562,101 @@ class answer
 		else
 		{
 
-			if(isset($answer['step']) && $answer['step'])
-			{
-				$must_step = intval($answer['step']) + 1;
-			}
-
-			if(!$must_step)
-			{
-				$must_step = 1;
-			}
-
-			$new_step = $must_step;
-
-			if($_type === 'answer')
-			{
-				$new_step++;
-			}
-
-
-			$random = [];
 			// randomquestion mode
-			for ($i = 1; $i <= $countblock ; $i++)
+			$not_random_question_again = array_column($count_asked_question, 'load_step');
+
+			$step_key                 = 1;
+			$must_step                = 1;
+
+			// first question
+			if(empty($count_asked_question))
 			{
-				$random[] = $i;
+				$must_step = rand(1, $countblock);
+				$step_key = 1;
+			}
+			elseif(isset($count_asked_question[$_step]['load_step']))
+			{
+				// this step is loaded before
+				// need to load that question
+				$must_step = $count_asked_question[$_step]['load_step'];
+				$step_key  = $count_asked_question[$_step]['step'];
+			}
+			else
+			{
+				// random new question
+				$random = [];
+
+				for ($i = 1; $i <= $countblock ; $i++)
+				{
+					// check to not loaded this question before
+					if(!in_array($i, $not_random_question_again))
+					{
+						$random[] = $i;
+					}
+				}
+
+				// no not loaded question
+				if(empty($random))
+				{
+					$thankyou = true;
+				}
+				else
+				{
+					// get the random key in array and get the step from random
+					$must_step = $random[array_rand($random)];
+
+					// the step is end of loaded step + 1
+					$step_key  = end($count_asked_question);
+					$step_key  = intval($step_key['step']) + 1;
+				}
+
 			}
 
-			$random_new_step = $random[array_rand($random)];
-
-			$question_detail = \lib\app\question::get_by_step(\dash\coding::encode($survey_id), $random_new_step);
-
-			if(isset($question_detail['id']))
+			if(!$thankyou)
 			{
-				$question_id = \dash\coding::decode($question_detail['id']);
+				$new_step = $step_key;
+
+				if($_type === 'answer')
+				{
+					$new_step++;
+				}
+				else
+				{
+
+					$question_detail = \lib\app\question::get_by_step(\dash\coding::encode($survey_id), $must_step);
+
+					if(isset($question_detail['id']))
+					{
+						$question_id = \dash\coding::decode($question_detail['id']);
+					}
+
+					$count_asked_question[$step_key] = ['step' => $step_key, 'load_step' => $must_step, 'question_id' => $question_id];
+
+					$count_asked_question_json = json_encode($count_asked_question, JSON_UNESCAPED_UNICODE);
+
+					if(isset($answer['id']))
+					{
+						\lib\db\answers::update(['questions' => $count_asked_question_json], $answer['id']);
+					}
+					else
+					{
+						$insert_answer =
+						[
+							'user_id'      => $_user_id,
+							'survey_id'    => $survey_id,
+							'startdate'    => self::dateNow(),
+							'step'         => 1,
+							'lastquestion' => $question_id,
+							'status'       => 'start',
+							'questions' => $count_asked_question_json,
+						];
+
+						\lib\db\answers::insert($insert_answer);
+					}
+				}
+
 			}
+
 		}
 
 		$result =
@@ -591,7 +669,6 @@ class answer
 			'wellcome'        => $wellcome,
 
 		];
-
 
 		return $result;
 	}
