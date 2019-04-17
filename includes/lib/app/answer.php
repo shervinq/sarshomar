@@ -9,6 +9,11 @@ class answer
 	use \lib\app\answer\datalist;
 	use \lib\app\answer\get;
 
+
+	private static $answer_score       = 0;
+	private static $answer_score_multi = [];
+
+
 	public static function dateNow()
 	{
 		return date("Y-m-d H:i:s");
@@ -149,6 +154,8 @@ class answer
 				return false;
 			}
 		}
+
+		self::$answer_score = 0;
 
 		if(!$skip)
 		{
@@ -367,6 +374,7 @@ class answer
 					'answerterm_id' => $answer_term_id,
 					'skip'          => $skip ? 1 : null,
 					'dateanswer'    => self::dateNow(),
+					'score'         => self::$answer_score,
 				];
 
 				if(!$cannotupdateanswer)
@@ -381,8 +389,6 @@ class answer
 			}
 			else
 			{
-				// @chekc telegram have not url module!!
-
 				$insert_answer_detail =
 				[
 					'user_id'       => \dash\user::id(),
@@ -393,6 +399,7 @@ class answer
 					'skip'          => $skip ? 1 : null,
 					'dateview'      => $dateview,
 					'dateanswer'    => self::dateNow(),
+					'score'         => self::$answer_score,
 				];
 
 				\lib\db\answerdetails::insert($insert_answer_detail);
@@ -427,6 +434,7 @@ class answer
 						'answerterm_id' => $answer_term_id,
 						'dateview'      => $dateview,
 						'dateanswer'    => self::dateNow(),
+						'score'         => isset(self::$answer_score_multi[$value]) ? self::$answer_score_multi[$value] : null,
 					];
 				}
 
@@ -918,7 +926,6 @@ class answer
 			$max = intval($_question_detail['setting'][$myType]['max']);
 		}
 
-
 		$valid = true;
 		switch ($_question_detail['type'])
 		{
@@ -988,6 +995,11 @@ class answer
 							{
 								\dash\temp::set('realAnswerTitle', $_question_detail['choice'][$myKey]['title']);
 							}
+
+							if(isset($_question_detail['choice'][$myKey]['score']))
+							{
+								self::$answer_score = intval($_question_detail['choice'][$myKey]['score']);
+							}
 						}
 					}
 				}
@@ -1021,6 +1033,11 @@ class answer
 							if(isset($choise_detail['id']) && intval($choise_detail['id']) === intval($value) && array_key_exists('title', $choise_detail))
 							{
 								array_push($realAnswerTitle, $_question_detail['choice'][$id_answer]['title']);
+							}
+
+							if(isset($_question_detail['choice'][$id_answer]['score']))
+							{
+								self::$answer_score_multi[$_question_detail['choice'][$id_answer]['title']] = intval($_question_detail['choice'][$id_answer]['score']);
 							}
 						}
 					}
@@ -1102,6 +1119,8 @@ class answer
 				}
 				break;
 		}
+
+
 
 		return $valid;
 	}
