@@ -333,17 +333,6 @@
 
 
 
-{%block ichoice %}
-<label for="choicetitle">{%trans "Title"%}</label>
-<div class="input">
-  <input type="text" name="choicetitle" id="choicetitle" placeholder='{%trans "Choise title"%}' autofocus {% if not choiceDetail.upload_choice %} required {%endif%} maxlength='200' minlength="1" pattern=".{1,200}" >
-  <button for="choicetitle" class="addon primary btn">{%trans "Save"%}</button>
-</div>
-{% endblock %}
-
-
-
-
 
 
 {%block pageSteps%}
