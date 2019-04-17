@@ -1,0 +1,97 @@
+{%extends display.survey%}
+
+
+
+
+{%block pageContent%}
+
+  {{block ("bQuestions")}}
+{%endblock%}
+
+
+
+
+{%block bQuestions%}
+<div class="cbox fs10">
+  <h3>
+    <a href="{{url.here}}/survey/welcome?id={{requestGET.id}}">{%trans "Welcome message"%} <span class="badge">{%trans "Edit"%}</span></a>
+    <a class="floatRa badge primary mRa5" href='{{url.here}}/question/add?id={{requestGET.id}}'><i class="pRa5 sf-plus-circle"></i>{%trans "Add new question"%}</a>
+    <a class="floatRa badge secondary mRa5" href='{{url.here}}/sort?id={{requestGET.id}}'><i class="pRa5 sf-list-ol"></i>{%trans "Question Sorter"%}</a>
+  </h3>
+
+  <div class="msg info2 fs11">
+    <div class="txtB">
+      {%if surveyRow.welcomemedia%}<i title='{%trans "Have Media"%}' class="fs12 sf-file-image-o mRa5"></i>{%endif%}
+      {{surveyRow.welcometitle}}
+    </div>
+    <div>{{surveyRow.welcomedesc | raw}}</div>
+    {%if not surveyRow.welcometitle and not surveyRow.welcomedesc%}<i>{%trans "Without welcome message"%}</i>{%endif%}
+  </div>
+</div>
+
+<div class="cbox fs10">
+{%for key, value in questionList%}
+  <a href="{{url.here}}/question/general?id={{requestGET.id}}&questionid={{value.id}}" class="msg {%if value.require%}danger2{%else%}success2{%endif%} f">
+    <div class="cauto pRa10">{{(key + 1) | fitNumber}}</div>
+    <div class="cauto pRa10 s0">
+      {%if value.require%}
+          <i title='{%trans "Required answer"%}' class="fs12 sf-lock"></i>
+      {%else%}
+          <i title='{%trans "Optional to answer"%}' class="fs12 sf-unlock"></i>
+      {%endif%}
+    </div>
+
+    <div class="c Ra10">
+        <div class="txtB">
+          {%if value.media.file%}<i title='{%trans "Have Media"%}' class="fs12 sf-file-image-o mRa5"></i>{%endif%}
+          {{value.title}}
+        </div>
+
+        {%if value.desc%}<div class="mT10 s0">{{value.desc}}</div>{%endif%}
+        {%if not value.title and not value.desc%}<i>{%trans "Untitled"%}</i>{%endif%}
+
+{%if value.choice%}
+        <div class="answersItem">
+{%for qIndex, qItem in value.choice%}
+          <span class="btn light mA5">
+            <i class="compact mRa5 sf-check"></i>
+            <span>{{qItem.title}}</span>
+          </span>
+{%endfor%}
+        </div>
+{%endif%}
+    </div>
+
+    <div class="cauto pLa10 os"><small class="badge light">{{value.type_detail.title}}</small></div>
+  </a>
+{%endfor%}
+</div>
+
+<div class="cbox fs10">
+  <h3>
+    <a href="{{url.here}}/survey/thankyou?id={{requestGET.id}}">{%trans "Thank you message"%} <span class="badge">{%trans "Edit"%}</span></a>
+    <a class="floatRa badge primary mRa5" href='{{url.here}}/question/add?id={{requestGET.id}}'><i class="pRa5 sf-plus-circle"></i>{%trans "Add new question"%}</a>
+    <a class="floatRa badge secondary mRa5" href='{{url.here}}/sort?id={{requestGET.id}}'><i class="pRa5 sf-list-ol"></i>{%trans "Question Sorter"%}</a>
+  </h3>
+
+  <div class="msg info2 fs11">
+    <div class="txtB">
+      {%if surveyRow.thankyoumedia%}<i title='{%trans "Have Media"%}' class="fs12 sf-file-image-o mRa5"></i>{%endif%}
+      {{surveyRow.thankyoutitle}}
+    </div>
+    <div>{{surveyRow.thankyoudesc | raw}}</div>
+    {%if not surveyRow.thankyoutitle and not surveyRow.thankyoudesc%}<i>{%trans "Without thank you message"%}</i>{%endif%}
+  </div>
+
+</div>
+{%endblock%}
+
+
+
+
+
+
+
+
+
+
