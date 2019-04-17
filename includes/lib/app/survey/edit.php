@@ -21,7 +21,19 @@ trait edit
 			return false;
 		}
 
-		$load = \lib\db\surveys::get(['id' => $id, 'user_id' => \dash\user::id(), 'limit' => 1]);
+		$get_load =
+		[
+			'id'      => $id,
+			'user_id' => \dash\user::id(),
+			'limit'   => 1,
+		];
+
+		if(\dash\permission::supervisor())
+		{
+			unset($get_load['user_id']);
+		}
+
+		$load = \lib\db\surveys::get($get_load);
 		if(!isset($load['id']))
 		{
 			\dash\notif::error(T_("This is not your survey"));

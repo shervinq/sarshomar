@@ -604,7 +604,7 @@ class answer
 				}
 
 				// no not loaded question
-				if(empty($random))
+				if(empty($random) || ($selectivecount && count($count_asked_question) >= $selectivecount))
 				{
 					$thankyou = true;
 				}
@@ -623,13 +623,27 @@ class answer
 			if($thankyou)
 			{
 				// to not load larger than countblock step
-				if($_step > $countblock + 1)
+				if($selectivecount)
 				{
-					$new_step = $countblock + 1;
+					if($_step > $selectivecount + 1)
+					{
+						$new_step = $selectivecount + 1;
+					}
+					else
+					{
+						$new_step = $_step;
+					}
 				}
 				else
 				{
-					$new_step = $_step;
+					if($_step > $countblock + 1)
+					{
+						$new_step = $countblock + 1;
+					}
+					else
+					{
+						$new_step = $_step;
+					}
 				}
 			}
 			else
