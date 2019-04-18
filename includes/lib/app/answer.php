@@ -21,6 +21,11 @@ class answer
 
 	public static function replace_user_score($_title, $_survey_id, $_user_id)
 	{
+		if(\dash\url::content() !== 's')
+		{
+			return $_title;
+		}
+
 		if(strpos($_title, '@score') !== false)
 		{
 			if(isset(self::$user_score[$_user_id. '_'. $_survey_id]))
@@ -47,6 +52,11 @@ class answer
 
 	public static function replace_question_answer($_title, $_survey_id, $_user_id)
 	{
+		if(\dash\url::content() !== 's')
+		{
+			return $_title;
+		}
+
 		if(strpos($_title, '@') === false)
 		{
 			return $_title;
