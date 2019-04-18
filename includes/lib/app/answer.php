@@ -9,16 +9,15 @@ class answer
 	use \lib\app\answer\datalist;
 	use \lib\app\answer\get;
 
-
-	private static $answer_score       = 0;
-	private static $answer_score_multi = [];
-
-	private static $user_score = [];
-
+	private static $answer_score            = 0;
+	private static $answer_score_multi      = [];
+	private static $user_score              = [];
 	private static $question_address_loaded = false;
-	private static $question_address = [];
-	private static $user_address_answer = [];
+	private static $question_address        = [];
+	private static $user_address_answer     = [];
 
+
+	// replace @score by user score value in somewhere
 	public static function replace_user_score($_title, $_survey_id, $_user_id)
 	{
 		if(\dash\url::content() !== 's')
@@ -46,18 +45,15 @@ class answer
 	}
 
 
-	private static function question_address($_survey_id)
-	{
-	}
-
+	// replace user question answer in somewhere
 	public static function replace_question_answer($_title, $_survey_id, $_user_id)
 	{
-		if(\dash\url::content() !== 's')
+		if(strpos($_title, '@') === false)
 		{
 			return $_title;
 		}
 
-		if(strpos($_title, '@') === false)
+		if(\dash\url::content() !== 's')
 		{
 			return $_title;
 		}
@@ -90,10 +86,8 @@ class answer
 			}
 		}
 
-
 		return $_title;
 	}
-
 
 
 	public static function dateNow()
@@ -144,14 +138,17 @@ class answer
 
 	}
 
+
 	public static function add($_survey_id, $_question_id, $_args)
 	{
+		// check user login
 		if(!\dash\user::id())
 		{
 			\dash\notif::error(T_("Please login to conitinue"));
 			return false;
 		}
 
+		// check survey id
 		$survey_id = \dash\coding::decode($_survey_id);
 		if(!$survey_id)
 		{
@@ -159,6 +156,7 @@ class answer
 			return false;
 		}
 
+		// check question id
 		$question_id = \dash\coding::decode($_question_id);
 		if(!$question_id)
 		{
@@ -166,6 +164,7 @@ class answer
 			return false;
 		}
 
+		// load survey
 		$survey_detail = \lib\app\survey::get($_survey_id);
 
 		if(!$survey_detail)
@@ -174,14 +173,16 @@ class answer
 			return false;
 		}
 
+		// load survey setting
 		if(isset($survey_detail['setting']) && is_string($survey_detail['setting']))
 		{
 			$survey_detail['setting'] = json_decode($survey_detail['setting'], true);
 		}
 
+		// check force login and mobile limited
 		if(isset($survey_detail['setting']['forcelogin']) && $survey_detail['setting']['forcelogin'])
 		{
-			if($survey_detail['mobiles'])
+			if(isset($survey_detail['mobiles']) && $survey_detail['mobiles'])
 			{
 				$mobiles = explode("\n", $survey_detail['mobiles']);
 				if(!in_array(\dash\user::detail('mobile'), $mobiles))
@@ -192,15 +193,17 @@ class answer
 			}
 		}
 
+		// can not update answer - get from setting
 		$cannotupdateanswer = false;
 		if(isset($survey_detail['setting']['cannotupdateanswer']) && $survey_detail['setting']['cannotupdateanswer'])
 		{
 			$cannotupdateanswer = true;
 		}
 
+		// if user try to update answer and the update answer is locked this var is true
 		$user_try_to_update = false;
 
-
+		// load question detail
 		$question_detail = \lib\db\questions::get(['survey_id' => $survey_id, 'id' => $question_id, 'limit' => 1]);
 
 		if(!$question_detail || !isset($question_detail['id']))
@@ -208,7 +211,9 @@ class answer
 			\dash\notif::error(T_("Invalid question id"));
 			return false;
 		}
-
+		// get the step from sort field
+		// in random mode this step must be get from answers.questions field
+		// @check @reza in result show to true result
 		$step = 1;
 		if(array_key_exists('sort', $question_detail))
 		{
@@ -219,8 +224,10 @@ class answer
 
 		$question_detail = \lib\app\question::ready($question_detail);
 
+		// set valiable
 		\dash\app::variable($_args);
 
+		// get answer and skip
 		$answer = \dash\app::request('answer');
 		$skip   = \dash\app::request('skip') ? true : false;
 		if($skip)
@@ -228,26 +235,28 @@ class answer
 			$answer = null;
 		}
 
+		// check required password question
 		if(isset($question_detail['type']) && $question_detail['type'] === 'password')
 		{
 			if($skip || !isset($answer))
 			{
-				\dash\notif::error(T_("Please fill the password"));
+				\dash\notif::error(T_("Please fill the password"), 'answer');
 				return false;
 			}
 		}
-
-		self::$answer_score = 0;
-
+		// if user not skip question check validate answer
 		if(!$skip)
 		{
 			$validation = self::answer_validate($question_detail, $answer);
+			// invalid answer must be return
+			// the notif of this error make in self::answer_validate() and in this place just return false
 			if(!$validation)
 			{
 				return false;
 			}
 		}
 
+		// check if this qustion is required and user not answered to it make an error
 		$require = self::check_require($question_detail, $answer, $skip);
 		if(!$require)
 		{
@@ -255,16 +264,17 @@ class answer
 			return false;
 		}
 
+		// get the real answer title
+		// this variable maked in self::answer_validate()
 		if(\dash\temp::get('realAnswerTitle'))
 		{
 			$answer = \dash\temp::get('realAnswerTitle');
 		}
 
-
-		$answer_term_id = null;
-
+		$answer_term_id  = null;
 		$multiple_choice = false;
 
+		// get the answer term id. not in multichoice mode
 		if(!$skip)
 		{
 			if(is_array($answer))
@@ -283,7 +293,7 @@ class answer
 			}
 		}
 
-
+		// get the old answer
 		$load_old_answer =
 		[
 			'user_id'   => \dash\user::id(),
@@ -296,24 +306,28 @@ class answer
 		// get step in random mode
 		if(isset($load_old_answer['questions']) && is_string($load_old_answer['questions']))
 		{
-			$questions_json = json_decode($load_old_answer['questions'], true);
-			if(is_array($questions_json))
+			// just if the random question is on
+			// maybe the user run survey and after answering set randomquestin is off!
+			if(isset($survey_detail['setting']['randomquestion']) && $survey_detail['setting']['randomquestion'])
 			{
-				foreach ($questions_json as $json_step => $value)
+				$questions_json = json_decode($load_old_answer['questions'], true);
+				if(is_array($questions_json))
 				{
-					if(isset($value['question_id']) && intval($value['question_id']) === intval($question_id))
+					foreach ($questions_json as $json_step => $value)
 					{
-						$step = $json_step;
-						break;
+						if(isset($value['question_id']) && intval($value['question_id']) === intval($question_id))
+						{
+							$step = $json_step;
+							break;
+						}
 					}
 				}
 			}
 		}
 
-
-		$countblock      = (isset($survey_detail['countblock']) && $survey_detail['countblock'])        ? intval($survey_detail['countblock'])      : 0;
-
-		$update_answer = [];
+		// get count block of this survey
+		$countblock          = (isset($survey_detail['countblock']) && $survey_detail['countblock']) ? intval($survey_detail['countblock']) : 0;
+		$update_answer       = [];
 		$force_update_answer = [];
 
 		if(!$load_old_answer)
@@ -336,8 +350,8 @@ class answer
 		}
 		else
 		{
+
 			$answer_id       = $load_old_answer['id'];
-			// $user_try_to_update = true;
 			$answer_count    = (isset($load_old_answer['answer']) && $load_old_answer['answer'])            ? intval($load_old_answer['answer'])    	: 0;
 			$skip_count      = (isset($load_old_answer['skip']) && $load_old_answer['skip'])           		? intval($load_old_answer['skip'])      	: 0;
 			$answertry_count = (isset($load_old_answer['answertry']) && $load_old_answer['answertry']) 		? intval($load_old_answer['answertry']) 	: 0;
@@ -361,10 +375,11 @@ class answer
 			$update_answer['lastmodified'] = self::dateNow();
 
 		}
-
+		// get date loaded set in session
 		$time_key = 'dateview_'. (string) $survey_id. '_'. (string) $step;
 		$dateview = \dash\session::get($time_key) && is_string(\dash\session::get($time_key)) ? \dash\session::get($time_key) : self::dateNow();
 
+		// get old answer detail
 		$old_answer_detail_args =
 		[
 			'user_id'     => \dash\user::id(),
@@ -381,6 +396,7 @@ class answer
 			$dateview = $old_answer_detail['dateview'];
 		}
 
+		// check schedule timing limit of answer to survey or question
 		$check_schedule = self::check_schedule($survey_detail, $question_detail, $load_old_answer, $dateview);
 
 		if($check_schedule)
@@ -417,8 +433,6 @@ class answer
 				}
 			}
 		}
-
-		$can_not_update_msg = T_("You can not update your answer");
 
 		if(!empty($update_answer))
 		{
@@ -527,10 +541,9 @@ class answer
 			}
 		}
 
-
-		if($user_try_to_update)
+		if($user_try_to_update && $cannotupdateanswer)
 		{
-			\dash\notif::warn($can_not_update_msg);
+			\dash\notif::warn(T_("You can not update your answer"));
 		}
 
 		return self::analyze_question_step('answer', $step, $survey_detail, \dash\user::id());
@@ -618,20 +631,7 @@ class answer
 
 		$countblock           = (isset($_survey_detail['countblock']) && $_survey_detail['countblock']) ? intval($_survey_detail['countblock'])      : 0;
 
-		$answer               = \lib\db\answers::get(['survey_id' => $survey_id, 'user_id' => $_user_id, 'limit' => 1]);
-
-		$count_asked_question = isset($answer['questions']) ? $answer['questions'] : [];
-
-		if(is_string($count_asked_question))
-		{
-			$count_asked_question = json_decode($count_asked_question, true);
-		}
-
-		if(!is_array($count_asked_question))
-		{
-			$count_asked_question = [];
-		}
-
+		// if the survey time is ended return to end step
 		if($_type === 'surveytime')
 		{
 			if($selectivecount)
@@ -645,32 +645,23 @@ class answer
 		}
 		elseif($_type === 'questiontime')
 		{
+			// if question time is ended return to next question
 			return ['step' => intval($_step) + 1];
-			// if($selectivecount)
-			// {
-			// 	if(intval($_step) < intval($selectivecount))
-			// 	{
-			// 	}
-			// 	else
-			// 	{
-			// 		return ['step' => $selectivecount + 1];
-			// 	}
-			// }
-			// else
-			// {
-			// 	if(intval($_step) < intval($countblock))
-			// 	{
-			// 		return ['step' => intval($_step) + 1];
-			// 	}
-			// 	else
-			// 	{
-			// 		return ['step' => $countblock + 1];
-			// 	}
-
-			// }
 		}
 
+		$answer               = \lib\db\answers::get(['survey_id' => $survey_id, 'user_id' => $_user_id, 'limit' => 1]);
 
+		$saved_asked_question = isset($answer['questions']) ? $answer['questions'] : [];
+
+		if(is_string($saved_asked_question))
+		{
+			$saved_asked_question = json_decode($saved_asked_question, true);
+		}
+
+		if(!is_array($saved_asked_question))
+		{
+			$saved_asked_question = [];
+		}
 
 
 		$must_step  = 1;
@@ -683,20 +674,29 @@ class answer
 			{
 				$must_step = intval($answer['step']) + 1;
 			}
+
 			if($_step <= $must_step)
 			{
-				// if allow review
-				if(!$cannotreview)
+				if($mySurvey)
 				{
 					$new_step = $_step;
 				}
 				else
 				{
-					$new_step = $must_step;
+					// if allow review
+					if(!$cannotreview)
+					{
+						$new_step = $_step;
+					}
+					else
+					{
+						$new_step = $must_step;
+					}
 				}
 			}
 			else
 			{
+				// the step is larger than must step
 				if($mySurvey)
 				{
 					// to not load larger step in mySurvey
@@ -716,7 +716,7 @@ class answer
 			}
 
 
-			if($_step >= $countblock + 1)
+			if($new_step >= $countblock + 1)
 			{
 				$thankyou = true;
 			}
@@ -728,17 +728,19 @@ class answer
 				{
 					$new_step++;
 				}
-
-				if(!$new_step)
+				else
 				{
-					$new_step = 1;
-				}
+					if(!$new_step)
+					{
+						$new_step = 1;
+					}
 
-				$question_detail = \lib\app\question::get_by_step(\dash\coding::encode($survey_id), $new_step);
+					$question_detail = \lib\app\question::get_by_step(\dash\coding::encode($survey_id), $new_step);
 
-				if(isset($question_detail['id']))
-				{
-					$question_id = \dash\coding::decode($question_detail['id']);
+					if(isset($question_detail['id']))
+					{
+						$question_id = \dash\coding::decode($question_detail['id']);
+					}
 				}
 			}
 		}
@@ -746,30 +748,39 @@ class answer
 		{
 
 			// randomquestion mode
-			$not_random_question_again = array_column($count_asked_question, 'load_step');
+			$not_random_question_again = array_column($saved_asked_question, 'load_step');
 
-			$step_key                 = 1;
-			$must_step                = 1;
+			$step_key                  = 1;
+			$must_step                 = 1;
+			$last_step                 = null;
+
+			if($saved_asked_question)
+			{
+				$mytemp    = end($saved_asked_question);
+				$last_step = $mytemp['step'];
+			}
 
 			// first question
-			if(empty($count_asked_question))
+			if(empty($saved_asked_question))
 			{
 				$must_step = rand(1, $countblock);
 				$step_key = 1;
 			}
-			elseif(isset($count_asked_question[$_step]['load_step']))
+			elseif(isset($saved_asked_question[$_step]['load_step']))
 			{
 				// this step is loaded before
 				// need to load that question
-				$must_step = $count_asked_question[$_step]['load_step'];
-				$step_key  = $count_asked_question[$_step]['step'];
-				if(!$cannotreview)
+				$must_step = $saved_asked_question[$_step]['load_step'];
+				$step_key  = $saved_asked_question[$_step]['step'];
+
+				// can not review
+				// return end step
+				if($cannotreview)
 				{
-					$mytemp    = end($count_asked_question);
+					$mytemp    = end($saved_asked_question);
 					$must_step = $mytemp['load_step'];
 					$step_key  = $mytemp['step'];
 				}
-
 			}
 			else
 			{
@@ -786,9 +797,12 @@ class answer
 				}
 
 				// no not loaded question
-				if(empty($random) || ($selectivecount && count($count_asked_question) >= $selectivecount))
+				if(empty($random) || ($selectivecount && count($saved_asked_question) >= $selectivecount))
 				{
 					$thankyou = true;
+					// the step is end of loaded step
+					$step_key  = end($saved_asked_question);
+					$step_key  = intval($step_key['step']);
 				}
 				else
 				{
@@ -796,7 +810,7 @@ class answer
 					$must_step = $random[array_rand($random)];
 
 					// the step is end of loaded step + 1
-					$step_key  = end($count_asked_question);
+					$step_key  = end($saved_asked_question);
 					$step_key  = intval($step_key['step']) + 1;
 				}
 
@@ -807,37 +821,41 @@ class answer
 				// to not load larger than countblock step
 				if($selectivecount)
 				{
-					if($_step > $selectivecount + 1)
+					// the step not found maybe 2000
+					if($step_key > $selectivecount + 1)
 					{
 						$new_step = $selectivecount + 1;
 					}
 					else
 					{
-						if(!$cannotreview)
+						// the step is exist in survey question
+						if($cannotreview)
 						{
 							$new_step = $selectivecount + 1;
 						}
 						else
 						{
-							$new_step = $_step;
+							// can review
+							$new_step = $step_key;
 						}
 					}
 				}
 				else
 				{
-					if($_step > $countblock + 1)
+					// no selective
+					if($step_key > $countblock + 1)
 					{
 						$new_step = $countblock + 1;
 					}
 					else
 					{
-						if(!$cannotreview)
+						if($cannotreview)
 						{
 							$new_step = $countblock + 1;
 						}
 						else
 						{
-							$new_step = $_step;
+							$new_step = $step_key;
 						}
 					}
 				}
@@ -853,6 +871,10 @@ class answer
 				}
 				else
 				{
+					if($cannotreview && $last_step <= $new_step)
+					{
+						$new_step = $last_step + 1;
+					}
 
 					$question_detail = \lib\app\question::get_by_step(\dash\coding::encode($survey_id), $must_step);
 
@@ -861,13 +883,13 @@ class answer
 						$question_id = \dash\coding::decode($question_detail['id']);
 					}
 
-					$count_asked_question[$step_key] = ['step' => $step_key, 'load_step' => $must_step, 'question_id' => $question_id];
+					$saved_asked_question[$step_key] = ['step' => $step_key, 'load_step' => $must_step, 'question_id' => $question_id];
 
-					$count_asked_question_json = json_encode($count_asked_question, JSON_UNESCAPED_UNICODE);
+					$saved_asked_question_json = json_encode($saved_asked_question, JSON_UNESCAPED_UNICODE);
 
 					if(isset($answer['id']))
 					{
-						\lib\db\answers::update(['questions' => $count_asked_question_json], $answer['id']);
+						\lib\db\answers::update(['questions' => $saved_asked_question_json], $answer['id']);
 					}
 					else
 					{
@@ -879,7 +901,7 @@ class answer
 							'step'         => 1,
 							'lastquestion' => $question_id,
 							'status'       => 'start',
-							'questions' => $count_asked_question_json,
+							'questions' => $saved_asked_question_json,
 						];
 
 						\lib\db\answers::insert($insert_answer);
