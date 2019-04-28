@@ -18,13 +18,16 @@
 </li>
 
 <li>
-  <a href="{{url.here}}/survey/general?id={{surveyRow.id}}"><i class='sf-cog'></i> <span>{% trans "Settings" %}</span></a>
-  <ul>
-    {%if false%}<li><a href="{{url.here}}/survey/privacy?id={{surveyRow.id}}">{%trans "Privacy"%}</a></li>{%endif%}
+  <a data-kerkere='[data-sideSettings]'><i class='sf-cog'></i> <span>{% trans "Settings" %}</span> <i class='sf-chevron-left floatRa'></i></a>
+
+  <ul data-sideSettings {%if url.child in ['general', 'welcome', 'thankyou', 'privacy', 'advance', 'status', 'duplicate']%}{%else%}data-kerkere-content='hide'{%endif%}>
+    <li><a href="{{url.here}}/survey/general?id={{surveyRow.id}}">{% trans "General Settings" %}</a></li>
     <li><a href="{{url.here}}/survey/welcome?id={{surveyRow.id}}">{%trans "Welcome message"%}</a></li>
     <li><a href="{{url.here}}/survey/thankyou?id={{surveyRow.id}}">{%trans "Thank you message"%}</a></li>
+    <li><a href="{{url.here}}/survey/privacy?id={{surveyRow.id}}">{%trans "Privacy"%}</a></li>
+    <li><a href="{{url.here}}/survey/advance?id={{surveyRow.id}}">{%trans "Advance"%}</a></li>
     <li><a href="{{url.here}}/survey/status?id={{surveyRow.id}}">{%trans "Survey status"%}</a></li>
-
+    <li><a href="{{url.here}}/survey/duplicate?id={{surveyRow.id}}">{%trans "Duplicate Survey"%}</a></li>
   </ul>
 </li>
 <li><a href="{{url.here}}/report?id={{surveyRow.id}}" data-shortkey="119" data-shortkey-prevent data-shortkey-timeout='1000'><i class='sf-analytics-chart-graph'></i> <span>{% trans "Reports" %}</span><kbd class="floatRa fs08">F8</kbd></a></li>
