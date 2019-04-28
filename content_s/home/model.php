@@ -66,7 +66,7 @@ class model
 			}
 
 			$query = ['step' => 1];
-			\dash\redirect::to(\dash\url::this().'?'. http_build_query($query));
+			\dash\redirect::to(\dash\url::that().'?'. http_build_query($query));
 			return;
 		}
 
@@ -92,7 +92,7 @@ class model
 		// $step  = intval($step) + 1;
 		$query = ['step' => $step];
 
-		\dash\redirect::to(\dash\url::this().'?'. http_build_query($query));
+		\dash\redirect::to(\dash\url::that().'?'. http_build_query($query));
 
 	}
 }

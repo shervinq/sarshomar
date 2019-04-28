@@ -14,6 +14,13 @@ class view
 			\dash\data::page_title($page_title);
 		}
 
+		\dash\data::userToggleSidebar(false);
+
+		if(\dash\url::child() === 'ex')
+		{
+			\dash\data::isEx(true);
+		}
+
 		\dash\data::page_desc(" ");
 		$page_desc = \dash\data::surveyRow_desc();
 		if($page_desc)
