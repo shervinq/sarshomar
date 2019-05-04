@@ -22,6 +22,7 @@ self::$social['telegram']['bot']        = 'SarshomarBot';
 self::$social['telegram']['token']      = '';
 self::$social['telegram']['hookFolder'] = 'Ermile';
 self::$social['telegram']['debug']      = true;
+self::$social['telegram']['tunnel']     = true;
 
 /**
 * FACEBOOK
