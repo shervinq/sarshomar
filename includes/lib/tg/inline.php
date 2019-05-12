@@ -78,24 +78,24 @@ class inline
 						'parse_mode'   => 'html'
 					],
 
-					'reply_markup' =>
-					[
-						'inline_keyboard' =>
-						[
-							[
-								[
-									'text' => T_("Answer via site"),
-									'url'  => \dash\url::base(). '/s/'. $_id,
-								],
-							],
-							[
-								[
-									'text' => 	T_("Answer via bot"),
-									'url'  => bot::deepLink('survey_'. $_id)
-								],
-							],
-						]
-					],
+					// 'reply_markup' =>
+					// [
+					// 	'inline_keyboard' =>
+					// 	[
+					// 		[
+					// 			[
+					// 				'text' => T_("Answer via site"),
+					// 				'url'  => \dash\url::base(). '/s/'. $_id,
+					// 			],
+					// 		],
+					// 		[
+					// 			[
+					// 				'text' => 	T_("Answer via bot"),
+					// 				'url'  => bot::deepLink('survey_'. $_id)
+					// 			],
+					// 		],
+					// 	]
+					// ],
 				]
 			]
 		];
