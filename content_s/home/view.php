@@ -19,6 +19,7 @@ class view
 		if(\dash\url::child() === 'ex')
 		{
 			\dash\data::isEx(true);
+			\dash\data::page_removeHeader(true);
 		}
 
 		\dash\data::page_desc(" ");

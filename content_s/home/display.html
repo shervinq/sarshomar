@@ -3,12 +3,6 @@
 
 {%block pageContent%}
 
-{%if isEx%}
-{%block headerBox%}
-{%endblock%}
-{%endif%}
-
-
 {%if surveyError == 'status' %}
 {%if surveyRow.status%}
 <a href="{{url.kingdom}}/a/survey/status?id={{surveyRow.id}}" data-direct class="msg warn block fs14 txtC">{%trans "Survey status"%} {%set myStatus = surveyRow.status%} <b>{%trans myStatus%}</b></a>
@@ -397,7 +391,7 @@
 </li>
 
 <li class="detail">
- <div class="progress" data-percent="{{askDetail.completed}}"><div class="bar"></div></div>
+ <div class="progress" data-per="{{askDetail.completed}}"><div class="bar"></div></div>
 </li>
 
 {%if false%}
