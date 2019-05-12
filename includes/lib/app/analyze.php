@@ -27,6 +27,19 @@ class analyze
 	}
 
 
+	private static function end_step($_selectivecount, $_countblock)
+	{
+		if($_selectivecount)
+		{
+			return ['step' => $_selectivecount + 1];
+		}
+		else
+		{
+			return ['step' => $_countblock + 1];
+		}
+	}
+
+
 	public static function question_step($_type, $_step, $_survey_detail, $_user_id)
 	{
 		if(!$_user_id || !is_numeric($_user_id) || !$_survey_detail)
@@ -41,72 +54,79 @@ class analyze
 
 		$_step           = intval($_step);
 
+		// step get from the url
+		// if user set manual step and this step is less than 0
+		// we set the step force on 0
 		if($_step < 0)
 		{
 			$_step = 0;
 		}
 
+		// survey detail
 		$survey_id          = \dash\coding::decode($_survey_detail['id']);
-		$new_step           = null;
-		$setting            = self::setting_detect($_survey_detail);
-		$thankyou           = false;
-		$wellcome           = false;
 		$question_id        = false;
+		$question_detail    = [];
 
+		// setting detail
+		$setting            = self::setting_detect($_survey_detail);
 		$randomquestion     = false;
 		$selectivecount     = 0;
-		$mySurvey           = false;
-		$question_detail    = [];
 		$cannotreview       = false;
 		$cannotupdateanswer = false;
 
+		// new step must be loaded to user
+		$new_step           = null;
+
+		// load thankyou message - end step
+		$thankyou           = false;
+
+		// load wellcome messate - first step
+		$wellcome           = false;
+
+
+		// set this survey is my survey
+		$mySurvey           = false;
 		if(isset($_survey_detail['user_id']) && intval($_survey_detail['user_id']) === intval($_user_id))
 		{
 			$mySurvey = true;
 		}
-
+		// if survey is random question set it
 		if(isset($setting['randomquestion']) && $setting['randomquestion'])
 		{
 			$randomquestion = true;
 		}
-
+		// set can not review question
 		if(isset($setting['cannotreview']) && $setting['cannotreview'])
 		{
 			$cannotreview = true;
 		}
-
+		// set can not update answer
 		if(isset($setting['cannotupdateanswer']) && $setting['cannotupdateanswer'])
 		{
 			$cannotupdateanswer = true;
 		}
-
+		// set selective count
 		if(isset($setting['selectivecount']) && $setting['selectivecount'])
 		{
 			$selectivecount = intval($setting['selectivecount']);
 		}
 
+		// load all question count in this survey
 		$countblock           = (isset($_survey_detail['countblock']) && $_survey_detail['countblock']) ? intval($_survey_detail['countblock'])      : 0;
 
 		// if the survey time is ended return to end step
 		if($_type === 'surveytime')
 		{
-			if($selectivecount)
-			{
-				return ['step' => $selectivecount + 1];
-			}
-			else
-			{
-				return ['step' => $countblock + 1];
-			}
+			return ['step' => self::end_step($selectivecount, $countblock)];
 		}
 		elseif($_type === 'questiontime')
 		{
 			// if question time is ended return to next question
 			return ['step' => intval($_step) + 1];
 		}
-
-		$answer               = \lib\db\answers::get(['survey_id' => $survey_id, 'user_id' => $_user_id, 'limit' => 1]);
-
+		// load answer of this user
+		$answer               = \lib\db\answers::get_user_answer($survey_id, $_user_id);
+		// load saved question
 		$saved_asked_question = isset($answer['questions']) ? $answer['questions'] : [];
 
 		if(is_string($saved_asked_question))
@@ -121,7 +141,7 @@ class analyze
 
 
 		$must_step  = 1;
-
+		// not random question mode
 		if(!$randomquestion)
 		{
 			// simple survey

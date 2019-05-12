@@ -4,6 +4,15 @@ namespace lib\db;
 
 class answers
 {
+
+	public static function get_user_answer($_survey_id, $_user_id)
+	{
+		$query  = "SELECT * FROM answers WHERE answers.survey_id = $_survey_id AND answers.user_id = $_user_id LIMIT 1";
+		$result = \dash\db::get($query, null, true);
+		return $result;
+	}
+
+
 	public static function required_question_is_answered($_survey_id, $_user_id)
 	{
 		if(!$_survey_id || !is_numeric($_survey_id) || !$_user_id || !is_numeric($_user_id))
