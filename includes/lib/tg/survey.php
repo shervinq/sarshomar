@@ -148,7 +148,7 @@ class survey
 		$surveyTxt    = \lib\app\tg\survey::get($_surveyId);
 		$surveyStatus = \lib\app\tg\survey::$status;
 
-		$surveyTxt    .= "\n". T_('Share'). ' 👇👇👇'. "\n";
+		$surveyTxt    .= "\n\n". T_('Start Link'). ' 👇👇👇'. "\n";
 		$surveyTxt    .= 'http://t.me/SarshomarBot?start=survey_'. $_surveyId;
 
 		if($surveyTxt)
