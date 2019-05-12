@@ -60,47 +60,65 @@ class inline
 		// get txt of survey welcome msg
 		$surveyTxt = \lib\app\tg\survey::get($_id);
 
-		$resultInline =
+		// $resultInline =
+		// [
+		// 	'inline_query_id' => hook::inline_query('id'),
+		// 	'results' =>
+		// 	[
+		// 		[
+		// 			'type'                  => 'article',
+		// 			'id'                    => '1',
+		// 			'title'                 => $surveyTitle,
+		// 			// 'description'           => $surveyDesc,
+		// 			// 'thumb_url'             => $welcomeMedia,
+		// 			// 'cache_time'            => 60,
+		// 			'input_message_content' =>
+		// 			[
+		// 				'message_text' => $surveyTxt,
+		// 				'parse_mode'   => 'html'
+		// 			],
+
+		// 			// 'reply_markup' =>
+		// 			// [
+		// 			// 	'inline_keyboard' =>
+		// 			// 	[
+		// 			// 		[
+		// 			// 			[
+		// 			// 				'text' => T_("Answer via site"),
+		// 			// 				'url'  => \dash\url::base(). '/s/'. $_id,
+		// 			// 			],
+		// 			// 		],
+		// 			// 		[
+		// 			// 			[
+		// 			// 				'text' => 	T_("Answer via bot"),
+		// 			// 				'url'  => bot::deepLink('survey_'. $_id)
+		// 			// 			],
+		// 			// 		],
+		// 			// 	]
+		// 			// ],
+		// 		]
+		// 	]
+		// ];
+
+		// bot::answerInlineQuery($resultInline);
+
+
+
+		$resultInlineTest =
 		[
-			'inline_query_id' => hook::inline_query('id'),
 			'results' =>
 			[
 				[
-					'type'                  => 'article',
-					'id'                    => '1',
-					'title'                 => $surveyTitle,
-					// 'description'           => $surveyDesc,
-					// 'thumb_url'             => $welcomeMedia,
-					// 'cache_time'            => 60,
-					'input_message_content' =>
-					[
-						'message_text' => $surveyTxt,
-						'parse_mode'   => 'html'
-					],
-
-					// 'reply_markup' =>
-					// [
-					// 	'inline_keyboard' =>
-					// 	[
-					// 		[
-					// 			[
-					// 				'text' => T_("Answer via site"),
-					// 				'url'  => \dash\url::base(). '/s/'. $_id,
-					// 			],
-					// 		],
-					// 		[
-					// 			[
-					// 				'text' => 	T_("Answer via bot"),
-					// 				'url'  => bot::deepLink('survey_'. $_id)
-					// 			],
-					// 		],
-					// 	]
-					// ],
+					'type'                  => 'photo',
+					'id'                    => '2',
+					'photo_url'             => $welcomeMedia,
+					'thumb_url'             => $welcomeMedia,
 				]
 			]
 		];
 
-		bot::answerInlineQuery($resultInline);
+		bot::InlineQueryResultPhoto($resultInlineTest);
+
 
 	}
 }
