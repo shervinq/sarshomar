@@ -2,6 +2,13 @@
 
 
 {%block pageContent%}
+
+{%if isEx%}
+{%block headerBox%}
+{%endblock%}
+{%endif%}
+
+
 {%if surveyError == 'status' %}
 {%if surveyRow.status%}
 <a href="{{url.kingdom}}/a/survey/status?id={{surveyRow.id}}" data-direct class="msg warn block fs14 txtC">{%trans "Survey status"%} {%set myStatus = surveyRow.status%} <b>{%trans myStatus%}</b></a>
