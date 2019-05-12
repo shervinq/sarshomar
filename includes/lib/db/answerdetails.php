@@ -65,6 +65,31 @@ class answerdetails
 
 	}
 
+	public static function get_export($_survey_id)
+	{
+		$query =
+		"
+			SELECT
+				answers.id AS `answer_id`,
+				questions.id AS `question_id`,
+				questions.title AS `question_title`,
+				answerterms.text,
+				answerdetails.user_id,
+				answers.startdate,
+				answers.enddate,
+				(SELECT SUM(mA.score) FROM answerdetails AS `mA` WHERE mA.survey_id = answerdetails.survey_id AND mA.user_id = answerdetails.user_id ) AS `score`
+			 FROM answerdetails
+				LEFT JOIN answerterms ON answerterms.id = answerdetails.answerterm_id
+				INNER JOIN questions   ON questions.id   = answerdetails.question_id
+				INNER JOIN surveys     ON surveys.id     = questions.survey_id
+				INNER JOIN answers     ON answers.id     = answerdetails.answer_id
+			 WHERE  answerdetails.survey_id = $_survey_id
+		";
+		$result = \dash\db::get($query);
+		return $result;
+
+	}
+
 
 	public static function get_join($_where, $_option = [])
 	{
@@ -110,7 +135,8 @@ class answerdetails
 				answerterms.text,
 				answerdetails.user_id,
 				answers.startdate,
-				answers.enddate
+				answers.enddate,
+				SUM(answerdetails.score) AS `sum`
 			";
 		}
 

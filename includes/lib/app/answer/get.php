@@ -14,7 +14,7 @@ trait get
 
 		$survey_id = \dash\coding::decode($_survey_id);
 		$question  = \lib\db\questions::get(['survey_id' => $survey_id, 'status' => ["!=", "'deleted'"]], ['order' => "ORDER BY questions.sort ASC"]);
-		$answer    = \lib\db\answerdetails::get_join(['answerdetails.survey_id' => $survey_id], ['for_export' => true]);
+		$answer    = \lib\db\answerdetails::get_export($survey_id);
 
 		if(!is_array($question))
 		{
@@ -43,6 +43,7 @@ trait get
 				$result[$value['user_id']]['id']    = \dash\coding::encode($value['answer_id']);
 				$result[$value['user_id']]['start'] = $value['startdate'] ? \dash\datetime::fit($value['startdate'], true, 'full') : null;
 				$result[$value['user_id']]['end']   = $value['enddate'] ? \dash\datetime::fit($value['enddate'], true, 'full') : null;
+				$result[$value['user_id']]['score'] = $value['score'] ? $value['score'] : null;
 			}
 
 			if(!isset($result[$value['user_id']][$value['question_id']]))
@@ -64,7 +65,7 @@ trait get
 				{
 					$final[$key][$question[$my_question_id]['title']] = is_array($text) ? implode(',', $text) : $text;
 				}
-				elseif(in_array($my_question_id, ['start', 'end', 'id']))
+				elseif(in_array($my_question_id, ['start', 'end', 'id', 'score']))
 				{
 					$final[$key][$my_question_id] = is_array($text) ? implode(',', $text) : $text;
 				}
