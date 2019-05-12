@@ -62,36 +62,38 @@ class inline
 		[
 			'results' =>
 			[
-				'type'                  => 'article',
-				'id'                    => 1001,
-				'title'                 => $surveyTitle,
-				'description'           => $surveyDesc,
-				'thumb_url'             => $welcomeMedia,
-				// 'cache_time'            => 60,
-				'input_message_content' =>
 				[
-					'message_text' => $surveyTxt,
-					'parse_mode'   => 'html'
-				],
-
-				'reply_markup' =>
-				[
-					'inline_keyboard' =>
+					'type'                  => 'article',
+					'id'                    => 1001,
+					'title'                 => $surveyTitle,
+					'description'           => $surveyDesc,
+					'thumb_url'             => $welcomeMedia,
+					// 'cache_time'            => 60,
+					'input_message_content' =>
 					[
+						'message_text' => $surveyTxt,
+						'parse_mode'   => 'html'
+					],
+
+					'reply_markup' =>
+					[
+						'inline_keyboard' =>
 						[
 							[
-								'text' => T_("Answer via site"),
-								'url'  => \dash\url::base(). '/s/'. $_id,
+								[
+									'text' => T_("Answer via site"),
+									'url'  => \dash\url::base(). '/s/'. $_id,
+								],
 							],
-						],
-						[
 							[
-								'text' => 	T_("Answer via bot"),
-								'url'  => bot::deepLink('survey_'. $_id)
+								[
+									'text' => 	T_("Answer via bot"),
+									'url'  => bot::deepLink('survey_'. $_id)
+								],
 							],
-						],
-					]
-				],
+						]
+					],
+				]
 			]
 		];
 
