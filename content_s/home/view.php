@@ -117,7 +117,7 @@ class view
 
 			// analyze step
 			// in random mode or limited mode
-			$analyze_question_step = \lib\app\answer::analyze_question_step('view', $step, $survey, \dash\user::id());
+			$analyze_question_step = \lib\app\analyze::question_step('view', $step, $survey, \dash\user::id());
 
 			if(!isset($analyze_question_step['ok']))
 			{
