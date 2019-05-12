@@ -4,6 +4,48 @@ namespace lib\db;
 
 class questions
 {
+	public static function count_required_question($_survey_id)
+	{
+		$query =
+		"
+			SELECT
+				COUNT(*) AS `count`
+			FROM questions
+			WHERE
+				questions.survey_id = $_survey_id AND
+				questions.require IS NOT NULL AND
+				questions.status != 'deleted'
+		";
+		$result = \dash\db::get($query, 'count', true);
+		return $result;
+	}
+
+	public static function random_question($_survey_id, $_user_id, $_ids = [])
+	{
+		$ids_query = null;
+		if($_ids)
+		{
+			$id = implode(',', $_ids);
+			$ids_query =  "AND questions.sort IN ($id) ";
+		}
+
+		$query =
+		"
+			SELECT
+				*
+			FROM questions
+
+			WHERE
+				questions.survey_id = $_survey_id AND
+				questions.require IS NULL
+				$ids_query
+			ORDER BY RAND()
+			LIMIT 1
+		";
+		$result = \dash\db::get($query, null, true);
+		return $result;
+	}
+
 	public static function is_my_question($_survey_id, $_question_id, $_user_id)
 	{
 		$query =

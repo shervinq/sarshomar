@@ -63,7 +63,9 @@ class analyze
 		}
 
 		// survey detail
-		$survey_id          = \dash\coding::decode($_survey_detail['id']);
+		$survey_code        = $_survey_detail['id'];
+		$survey_id          = \dash\coding::decode($survey_code);
+
 		$question_id        = false;
 		$question_detail    = [];
 
@@ -109,6 +111,7 @@ class analyze
 		if(isset($setting['selectivecount']) && $setting['selectivecount'])
 		{
 			$selectivecount = intval($setting['selectivecount']);
+			$selectivecount = $selectivecount + intval(\lib\db\questions::count_required_question($survey_id));
 		}
 
 		// load all question count in this survey
@@ -211,7 +214,7 @@ class analyze
 						$new_step = 1;
 					}
 
-					$question_detail = \lib\app\question::get_by_step(\dash\coding::encode($survey_id), $new_step);
+					$question_detail = \lib\app\question::get_by_step($survey_code, $new_step);
 
 					if(isset($question_detail['id']))
 					{
@@ -239,8 +242,23 @@ class analyze
 			// first question
 			if(empty($saved_asked_question))
 			{
-				$must_step = rand(1, $countblock);
-				$step_key = 1;
+				// load first question to check is it a require question or no
+				$question_detail = \lib\app\question::get_by_step($survey_code, 1);
+
+				if(isset($question_detail['require']) && $question_detail['require'])
+				{
+					$must_step = 1;
+					$step_key  = 1;
+				}
+				else
+				{
+					$one_not_require_question = \lib\db\questions::random_question($survey_id, $_user_id);
+					if(isset($one_not_require_question['sort']))
+					{
+						$must_step = $one_not_require_question['sort'];
+					}
+					$step_key = 1;
+				}
 			}
 			elseif(isset($saved_asked_question[$_step]['load_step']))
 			{
@@ -279,15 +297,43 @@ class analyze
 					// the step is end of loaded step
 					$step_key  = end($saved_asked_question);
 					$step_key  = intval($step_key['step']);
+
 				}
 				else
 				{
-					// get the random key in array and get the step from random
-					$must_step = $random[array_rand($random)];
-
-					// the step is end of loaded step + 1
+					// load default question to check not required
 					$step_key  = end($saved_asked_question);
 					$step_key  = intval($step_key['step']) + 1;
+					$question_detail = \lib\app\question::get_by_step($survey_code, $step_key);
+
+
+					// next level is a require question must be load every time
+					if(isset($question_detail['require']) && $question_detail['require'])
+					{
+						$must_step = $question_detail['sort'];
+						$step_key  = $step_key;
+					}
+					else
+					{
+						$one_not_require_question = \lib\db\questions::random_question($survey_id, $_user_id, $random);
+
+						if(isset($one_not_require_question['sort']))
+						{
+							$step_key  = end($saved_asked_question);
+							$step_key  = intval($step_key['step']) + 1;
+
+							$must_step = $one_not_require_question['sort'];
+						}
+						else
+						{
+							$thankyou = true;
+							// the step is end of loaded step
+							$step_key  = end($saved_asked_question);
+							$step_key  = intval($step_key['step']);
+						}
+
+					}
+
 				}
 
 			}
@@ -312,9 +358,10 @@ class analyze
 						else
 						{
 							// can review
-							$new_step = $step_key;
+							$new_step = $step_key + 1;
 						}
 					}
+
 				}
 				else
 				{
@@ -352,7 +399,7 @@ class analyze
 						$new_step = $last_step + 1;
 					}
 
-					$question_detail = \lib\app\question::get_by_step(\dash\coding::encode($survey_id), $must_step);
+					$question_detail = \lib\app\question::get_by_step($survey_code, $must_step);
 
 					if(isset($question_detail['id']))
 					{
