@@ -148,6 +148,9 @@ class survey
 		$surveyTxt    = \lib\app\tg\survey::get($_surveyId);
 		$surveyStatus = \lib\app\tg\survey::$status;
 
+		$surveyTxt    .= "\n". T_('Share'). ' 👇👇👇'. "\n";
+		$surveyTxt    .= 'http://t.me/SarshomarBot?start=survey_'. $_surveyId;
+
 		if($surveyTxt)
 		{
 			$result =
@@ -157,12 +160,12 @@ class survey
 				[
 					'inline_keyboard' =>
 					[
-						[
-							[
-								'text'          => 	T_("Share"),
-								'switch_inline_query' => $_surveyId,
-							],
-						],
+						// [
+						// 	[
+						// 		'text'          => 	T_("Share"),
+						// 		'switch_inline_query' => $_surveyId,
+						// 	],
+						// ],
 						[
 							[
 								'text' => T_("Answer via site"),
@@ -171,6 +174,7 @@ class survey
 						],
 						[
 							[
+								// change with custom term
 								'text'          => 	T_("Start"),
 								'callback_data' => 'survey_'. $_surveyId. ' start',
 							],
