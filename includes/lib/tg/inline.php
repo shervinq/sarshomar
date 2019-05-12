@@ -1,6 +1,8 @@
 <?php
 namespace lib\tg;
 use \dash\social\telegram\tg as bot;
+use \dash\social\telegram\hook;
+
 
 
 class inline
@@ -60,6 +62,7 @@ class inline
 
 		$resultInline =
 		[
+			'inline_query_id' => hook::inline_query('id'),
 			'results' =>
 			[
 				[
