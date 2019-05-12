@@ -27,7 +27,7 @@
 {%elseif step.type == 'thankyou' %}
 
 {%if surveyRow.redirect%}
- <a class="msg primary2 mB20 block txtC" href="{{surveyRow.redirect}}" data-direct><b>{%if surveyRow.setting.redirectcaption%}{{surveyRow.setting.redirectcaption}}{%else%}{%trans "End"%}{%endif%}</b></a>
+ <a class="msg primary2 mB20 block txtC" href="{{surveyRow.redirect}}" {%if isEx%} target="_blank" {%endif%} data-direct><b>{%if surveyRow.setting.redirectcaption%}{{surveyRow.setting.redirectcaption}}{%else%}{%trans "End"%}{%endif%}</b></a>
   {%if surveyRow.setting.autoredirect %}
     <script type="text/javascript">
       setTimeout(function(){ window.location = '{{surveyRow.redirect}}' ; }, {{surveyRow.setting.redirecttime * 1000}});
