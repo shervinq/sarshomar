@@ -128,9 +128,16 @@ class view
 
 			if(isset($analyze_question_step['step']) && intval($analyze_question_step['step']) !== intval($step))
 			{
-				$get = \dash\request::get();
-				$get['step'] = $analyze_question_step['step'];
-				\dash\redirect::to(\dash\url::that(). '?'. http_build_query($get));
+				if($is_site)
+				{
+					$get = \dash\request::get();
+					$get['step'] = $analyze_question_step['step'];
+					\dash\redirect::to(\dash\url::that(). '?'. http_build_query($get));
+				}
+				else
+				{
+					return ['step' => $analyze_question_step['step']];
+				}
 			}
 
 			$question = [];
