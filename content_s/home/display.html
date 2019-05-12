@@ -87,7 +87,7 @@
      <source src="{{myTitle.media}}" type="audio/mp3">
     </audio>
  {%elseif myExt == 'png' or myExt == 'jpg' or myExt == 'jpeg' or myExt == 'gif'%}
-    <img src="{{myTitle.media}}" alt="{{myTitle.title}}" {%if isEx%}style="max-height:250px;"{%endif}>
+    <img src="{{myTitle.media}}" alt="{{myTitle.title}}">
  {%elseif myExt == 'pdf' %}
     <a class="btn primary outline block" href="{{myTitle.media}}">{%trans "Download PDF"%}</a>
  {%else%}
