@@ -73,7 +73,7 @@
 
 {% set myExt = myTitle.media[(myTitle.media | length)-3:3] %}
  {%if myExt == 'mp4' %}
-    <video class="block" controls>
+    <video class="block" controls {%if isEx%}style="max-height:250px;"{%endif%}>
      <source src="{{myTitle.media}}" type="video/mp4">
     </video>
  {%elseif myExt == 'mp3' %}
@@ -81,11 +81,11 @@
      <source src="{{myTitle.media}}" type="audio/mp3">
     </audio>
  {%elseif myExt == 'png' or myExt == 'jpg' or myExt == 'jpeg' or myExt == 'gif'%}
-    <img src="{{myTitle.media}}" alt="{{myTitle.title}}">
+    <img src="{{myTitle.media}}" alt="{{myTitle.title}}" {%if isEx%}style="max-height:250px;"{%endif%}>
  {%elseif myExt == 'pdf' %}
-    <a class="btn primary outline block" href="{{myTitle.media}}">{%trans "Download PDF"%}</a>
+    <a class="btn primary block" href="{{myTitle.media}}">{%trans "Download PDF"%}</a>
  {%else%}
-    <a class="btn primary outline block" href="{{myTitle.media}}">{%trans "Download File"%}</a>
+    <a class="btn primary block" href="{{myTitle.media}}">{%trans "Download File"%}</a>
  {%endif%}
    </div>
 {%endif%}
