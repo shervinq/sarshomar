@@ -17,6 +17,18 @@ class answer
 	private static $user_address_answer     = [];
 
 
+	public static function user_score($_survey_id, $_user_id)
+	{
+		if(is_numeric($_user_id) && is_numeric($_survey_id))
+		{
+			$userScore = \lib\db\answerdetails::get_user_score($_survey_id, $_user_id);
+			return $userScore;
+		}
+
+		return null;
+	}
+
+
 	// replace @score by user score value in somewhere
 	public static function replace_user_score($_title, $_survey_id, $_user_id)
 	{
@@ -33,7 +45,7 @@ class answer
 			}
 			else
 			{
-				$userScore = \lib\db\answerdetails::get_user_score($_survey_id, $_user_id);
+				$userScore = self::user_score($_survey_id, $_user_id);
 				self::$user_score[$_user_id. '_'. $_survey_id] = $userScore;
 
 			}

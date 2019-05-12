@@ -24,6 +24,12 @@ class view
 			$dataTable = \lib\app\answer::get_user_answer(\dash\request::get('id'), $answer);
 
 			\dash\data::dataTable($dataTable);
+
+			if(isset($dataTable[0]['user_id']))
+			{
+				$user_score = \lib\app\answer::user_score(\dash\coding::decode(\dash\request::get('id')), \dash\coding::decode($dataTable[0]['user_id']));
+				\dash\data::userScore($user_score);
+			}
 		}
 		else
 		{

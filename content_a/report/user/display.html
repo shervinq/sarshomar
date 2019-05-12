@@ -72,7 +72,13 @@
     </tbody>
   </table>
 </div>
+
+{%if userScore%}
+<div class="msg info txtB txtC">{%trans "Score"%} <b class="fs14">{{userScore | fitNumber}}</b></div>
+{%endif%}
+
   {%include display.pagination%}
+
 {%endblock%}
 
 
