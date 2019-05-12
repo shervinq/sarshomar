@@ -117,7 +117,7 @@ class inline
 			]
 		];
 
-		bot::InlineQueryResultPhoto($resultInlineTest);
+		bot::answerInlineQuery($resultInlineTest);
 
 
 	}
