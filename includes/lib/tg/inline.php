@@ -67,10 +67,10 @@ class inline
 			[
 				[
 					'type'                  => 'article',
-					'id'                    => 10001,
+					'id'                    => '1',
 					'title'                 => $surveyTitle,
-					'description'           => $surveyDesc,
-					'thumb_url'             => $welcomeMedia,
+					// 'description'           => $surveyDesc,
+					// 'thumb_url'             => $welcomeMedia,
 					// 'cache_time'            => 60,
 					'input_message_content' =>
 					[
