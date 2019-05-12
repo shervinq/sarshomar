@@ -577,6 +577,23 @@ class survey
 
 		if(!empty($setting))
 		{
+			// load default and merge
+			$old_setting = [];
+			if($_id)
+			{
+				$old_setting = \lib\db\surveys::get_setting($_id);
+				if($old_setting && is_string($old_setting))
+				{
+					$old_setting = json_decode($old_setting, true);
+				}
+
+				if(!is_array($old_setting))
+				{
+					$old_setting = [];
+				}
+			}
+
+			$setting = array_merge($old_setting, $setting);
 			$args['setting'] = json_encode($setting, JSON_UNESCAPED_UNICODE);
 		}
 

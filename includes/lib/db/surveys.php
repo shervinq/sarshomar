@@ -4,6 +4,14 @@ namespace lib\db;
 
 class surveys
 {
+
+	public static function get_setting($_survery_id)
+	{
+		$query  = "SELECT surveys.setting FROM surveys WHERE surveys.id = $_survery_id LIMIT 1";
+		$result = \dash\db::get($query, 'setting', true);
+		return $result;
+	}
+
 	public static function get_all_status()
 	{
 		$query = "SELECT COUNT(*) AS `count`, surveys.status AS `status` FROM surveys GROUP BY surveys.status";
