@@ -880,21 +880,38 @@ class answer
 	 *
 	 * @param      <type>  $_data  The data
 	 */
-	public static function ready($_data)
+	public static function ready($_data, $_meta = [])
 	{
 		$result    = [];
 		$startdate = null;
 		$enddate   = null;
+
+		$score = [];
+		if(isset($_meta['score']) && is_array($_meta['score']))
+		{
+			$score = $_meta['score'];
+		}
 
 		foreach ($_data as $key => $value)
 		{
 			switch ($key)
 			{
 				case 'id':
-				case 'user_id':
 				case 'survey_id':
 				case 'question_id':
 					$result[$key] = \dash\coding::encode($value);
+					break;
+
+				case 'user_id':
+					$result[$key] = \dash\coding::encode($value);
+					if(isset($score[$value]['score']))
+					{
+						$result['score'] = $score[$value]['score'];
+					}
+					else
+					{
+						$result['score'] = null;
+					}
 					break;
 
 				case 'startdate':

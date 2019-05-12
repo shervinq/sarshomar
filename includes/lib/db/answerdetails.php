@@ -23,6 +23,29 @@ class answerdetails
 		return intval($result);
 	}
 
+
+	public static function get_users_score($_survey_id, $_user_ids)
+	{
+		$_user_ids = implode(',', $_user_ids);
+
+		$query =
+		"
+			SELECT
+				SUM(answerdetails.score) AS `score`,
+				answerdetails.user_id
+			FROM
+				answerdetails
+			WHERE
+				answerdetails.survey_id = $_survey_id AND
+				answerdetails.user_id IN ($_user_ids)
+			GROUP BY
+				answerdetails.user_id
+		";
+
+		$result = \dash\db::get($query);
+		return $result;
+	}
+
 	public static function get_user_answer($_survey_id, $_user_id, $_question_id)
 	{
 		if(!$_user_id || !$_survey_id || !is_numeric($_survey_id) || !is_numeric($_user_id) || !$_question_id || !is_numeric($_question_id))

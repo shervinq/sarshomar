@@ -49,11 +49,27 @@ trait datalist
 
 
 		$result            = \lib\db\answers::search($_string, $_args);
+
+		$score = null;
+		if(is_array($result) && isset($result[0]['survey_id']))
+		{
+			$user_id = array_column($result, 'user_id');
+			$user_id = array_filter($user_id);
+			$user_id = array_unique($user_id);
+			if($user_id)
+			{
+				$score = \lib\db\answerdetails::get_users_score($result[0]['survey_id'], $user_id);
+				if(is_array($score))
+				{
+					$score = array_combine(array_column($score, 'user_id'), $score);
+				}
+			}
+		}
 		$temp              = [];
 
 		foreach ($result as $key => $value)
 		{
-			$check = self::ready($value);
+			$check = self::ready($value, ['score' => $score]);
 			if($check)
 			{
 				$temp[] = $check;
