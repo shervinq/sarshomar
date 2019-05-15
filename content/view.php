@@ -13,6 +13,16 @@ class view
 		\dash\data::page_desc(\dash\data::site_desc(). ' '. T_("Equipped with an integrated platform, Sarshomar has made it possible for you to ask your questions via any means."));
 
 		\dash\data::bodyclass('unselectable');
+
+
+		if(\dash\permission::supervisor())
+		{
+			$questionAnsweredRow = \lib\app\report\question_answered::get(true);
+			\dash\data::questionAnsweredRow($questionAnsweredRow);
+		}
+
+		$questionAnswered = \lib\app\report\question_answered::get();
+		\dash\data::questionAnswered($questionAnswered);
 	}
 }
 ?>

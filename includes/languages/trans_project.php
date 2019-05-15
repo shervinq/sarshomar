@@ -6,31 +6,31 @@ class twigTransTerms
 
 	//-----------------------------------------------------content_s/home/display.html
 	echo T_("Survey status");                                                         // Line 125
-	echo T_("Survey is not avalible");                                                // Line 9
-	echo T_("End");                                                                   // Line 29
-	echo T_("I want to delete my answer");                                            // Line 54
-	echo T_("I'm not willing to answer");                                             // Line 56
+	echo T_("Survey is not avalible");                                                // Line 10
+	echo T_("End");                                                                   // Line 30
+	echo T_("I want to delete my answer");                                            // Line 55
+	echo T_("I'm not willing to answer");                                             // Line 57
 	echo T_("Download PDF");                                                          // Line 417
 	echo T_("Download File");                                                         // Line 419
 	echo T_("Require");                                                               // Line 5
 	echo T_("Start");                                                                 // Line 35
 	echo T_("Password");                                                              // Line 36
-	echo T_("Go");                                                                    // Line 114
-	echo T_("Save & Next");                                                           // Line 284
-	echo T_("Back");                                                                  // Line 293
+	echo T_("Go");                                                                    // Line 115
+	echo T_("Save & Next");                                                           // Line 285
+	echo T_("Back");                                                                  // Line 294
 	echo T_("Next");                                                                  // Line 405
-	echo T_("Between");                                                               // Line 312
+	echo T_("Between");                                                               // Line 313
 	echo T_("and");                                                                   // Line 34
 	echo T_("Type here ...");                                                         // Line 55
-	echo T_("Start Time");                                                            // Line 366
-	echo T_("Spend Time");                                                            // Line 369
-	echo T_("Remain Time");                                                           // Line 373
-	echo T_("End Time");                                                              // Line 378
-	echo T_("Current question");                                                      // Line 383
-	echo T_("Total questions");                                                       // Line 386
-	echo T_("Completed");                                                             // Line 389
-	echo T_("Restart");                                                               // Line 398
-	echo T_("Back to survey dashboard");                                              // Line 404
+	echo T_("Start Time");                                                            // Line 367
+	echo T_("Spend Time");                                                            // Line 370
+	echo T_("Remain Time");                                                           // Line 374
+	echo T_("End Time");                                                              // Line 379
+	echo T_("Current question");                                                      // Line 384
+	echo T_("Total questions");                                                       // Line 387
+	echo T_("Completed");                                                             // Line 390
+	echo T_("Restart");                                                               // Line 399
+	echo T_("Back to survey dashboard");                                              // Line 405
 
 	//---------------------public_html/static/siftal/fonts/siftal/icons-reference.html
 
@@ -60,8 +60,10 @@ class twigTransTerms
 	echo T_("Contact us");                                                            // Line 44
 	echo T_("Logo");                                                                  // Line 46
 	echo T_("Latest News");                                                           // Line 52
-	echo T_("Questions answered");                                                    // Line 65
-	echo T_("Proudly Made in IRAN");                                                  // Line 66
+	echo T_("Old");                                                                   // Line 66
+	echo T_("New");                                                                   // Line 66
+	echo T_("Questions answered");                                                    // Line 66
+	echo T_("Proudly Made in IRAN");                                                  // Line 67
 
 	//-----------------------------------------------content/template/inestimable.html
 	echo T_("Sarshomar Vision");                                                      // Line 13
@@ -507,15 +509,16 @@ class twigTransTerms
 	echo T_("End date");                                                              // Line 117
 	echo T_("Answer in");                                                             // Line 65
 	echo T_("Step");                                                                  // Line 315
-	echo T_("Complete");                                                              // Line 67
-	echo T_("Detail");                                                                // Line 68
-	echo T_("Answered");                                                              // Line 69
+	echo T_("Score");                                                                 // Line 56
+	echo T_("Complete");                                                              // Line 68
+	echo T_("Detail");                                                                // Line 69
+	echo T_("Answered");                                                              // Line 70
 	echo T_("Skipped");                                                               // Line 68
-	echo T_("Show detail");                                                           // Line 87
+	echo T_("Show detail");                                                           // Line 89
 	echo T_("Clear filters");                                                         // Line 78
-	echo T_("Result not found!");                                                     // Line 89
-	echo T_("Search with new keywords.");                                             // Line 89
-	echo T_("No data was found!");                                                    // Line 96
+	echo T_("Result not found!");                                                     // Line 95
+	echo T_("Search with new keywords.");                                             // Line 95
+	echo T_("No data was found!");                                                    // Line 102
 
 	//---------------------------------------content_a/report/allquestion/display.html
 	echo T_("Untitled");                                                              // Line 42
@@ -611,7 +614,6 @@ class twigTransTerms
 	echo T_("Save setting");                                                          // Line 29
 
 	//------------------------------------------content_a/question/choice/display.html
-	echo T_("Score");                                                                 // Line 56
 	echo T_("Remove");                                                                // Line 68
 	echo T_("Choise title");                                                          // Line 58
 	echo T_("Choise score");                                                          // Line 68

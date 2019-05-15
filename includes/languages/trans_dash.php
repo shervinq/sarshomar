@@ -167,13 +167,13 @@ class twigTransTerms
 	echo T_("Enable JavaScript in your browser or use one which supports it.");       // Line 107
 
 	//------------------------------------------addons/includes/html/display-dash.html
-	echo T_("Edit your profile");                                                     // Line 67
-	echo T_("Please login to save anything");                                         // Line 69
-	echo T_("Avatar of you");                                                         // Line 166
-	echo T_("Default Avatar");                                                        // Line 170
-	echo T_("Hello");                                                                 // Line 80
-	echo T_("Hello ");                                                                // Line 82
-	echo T_("dear GUEST!");                                                           // Line 82
+	echo T_("Edit your profile");                                                     // Line 71
+	echo T_("Please login to save anything");                                         // Line 73
+	echo T_("Avatar of you");                                                         // Line 170
+	echo T_("Default Avatar");                                                        // Line 174
+	echo T_("Hello");                                                                 // Line 84
+	echo T_("Hello ");                                                                // Line 86
+	echo T_("dear GUEST!");                                                           // Line 86
 	echo T_("Dashboard");                                                             // Line 46
 	echo T_("Quick Access");                                                          // Line 50
 	echo T_("Shortkey");                                                              // Line 76
@@ -182,16 +182,16 @@ class twigTransTerms
 	echo T_("Supervisor Panel");                                                      // Line 69
 	echo T_("My Account");                                                            // Line 73
 	echo T_("Help Center");                                                           // Line 76
-	echo T_("Click to toggle sidebar status");                                        // Line 126
-	echo T_("View website");                                                          // Line 144
-	echo T_("Your notifications");                                                    // Line 155
-	echo T_("Click to check your profile");                                           // Line 157
-	echo T_("Account");                                                               // Line 160
+	echo T_("Click to toggle sidebar status");                                        // Line 130
+	echo T_("View website");                                                          // Line 148
+	echo T_("Your notifications");                                                    // Line 159
+	echo T_("Click to check your profile");                                           // Line 161
+	echo T_("Account");                                                               // Line 164
 	echo T_("Logout");                                                                // Line 19
-	echo T_("You really want to go?");                                                // Line 162
-	echo T_("We are waiting for you to come back:)");                                 // Line 163
-	echo T_("Enter to have better experience");                                       // Line 174
-	echo T_("View your current location and navigate to parent of it");               // Line 185
+	echo T_("You really want to go?");                                                // Line 166
+	echo T_("We are waiting for you to come back:)");                                 // Line 167
+	echo T_("Enter to have better experience");                                       // Line 178
+	echo T_("View your current location and navigate to parent of it");               // Line 189
 
 	//----------------------------------------------addons/includes/html/inc_spay.html
 	echo T_("Please choose bank");                                                    // Line 4
