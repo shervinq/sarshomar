@@ -1,13 +1,4 @@
 <?php
-// chdir(__DIR__);
-// if(is_file('./dash/lib/engine/cronjob/run.php'))
-// {
-// 	require_once('./dash/lib/engine/cronjob/run.php');
-// }
-// elseif (is_file('../dash/lib/engine/cronjob/run.php'))
-// {
-// 	require_once('../dash/lib/engine/cronjob/run.php');
-// }
 
 class run
 {
@@ -42,7 +33,15 @@ class run
 	 */
 	public function requests()
 	{
-		$file = __DIR__. '/list.crontab.txt';
+		$file = __DIR__. '/includes/cronjob/';
+
+		if(!is_dir($file))
+		{
+			@mkdir($file, 0775, true);
+		}
+
+		$file .= 'token.me.json';
+
 		$list = [];
 
 		if(is_file($file))
@@ -72,15 +71,20 @@ class run
 		return $requests;
 	}
 
-	public function run()
+
+	public function exec()
 	{
-		foreach ($this->requests() as $key => $value)
+		$requests = $this->requests();
+
+		foreach ($requests as $key => $value)
 		{
 			$this->_curl($value);
 		}
 	}
 }
 
-(new run)->run();
+$cronjob = new run;
+$cronjob->exec();
+
 
 ?>
