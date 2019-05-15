@@ -417,7 +417,8 @@ class answer
 		}
 
 
-		if(intval($step) === intval($countblock) || intval($countblock) === 1)
+		// if(intval($step) === intval($countblock) || intval($countblock) === 1)
+		if(self::check_complete($step, $survey_detail, \dash\user::id()))
 		{
 			$check_require_is_answer = \lib\db\answers::required_question_is_answered($survey_id, \dash\user::id());
 			if($check_require_is_answer === true)
@@ -946,6 +947,14 @@ class answer
 		{
 			$result['answer_in'] = \dash\utility\human::time($enddate - $startdate, null, null, 'sec');
 		}
+
+		return $result;
+	}
+
+
+	private static function check_complete($_step, $_survey_detail, $_user_id)
+	{
+		$result = \lib\app\analyze::question_step('is_complete', $_step, $_survey_detail, $_user_id);
 
 		return $result;
 	}

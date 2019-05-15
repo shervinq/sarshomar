@@ -459,6 +459,12 @@ class survey
 				}
 			}
 
+			if(!is_null($redirecttime) && intval($redirecttime) < 3)
+			{
+				\dash\notif::warn(T_("Minimum of redirect time is 3 sec"));
+				$redirecttime = 3;
+			}
+
 			$setting['redirecttime'] = isset($redirecttime) ? $redirecttime : null;
 		}
 

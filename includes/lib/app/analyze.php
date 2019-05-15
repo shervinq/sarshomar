@@ -200,6 +200,18 @@ class analyze
 				$thankyou = true;
 			}
 
+			// just check is complete or no
+			if($_type === 'is_complete')
+			{
+				if($new_step >= $countblock)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
 
 			if(!$thankyou)
 			{
@@ -336,6 +348,18 @@ class analyze
 
 				}
 
+			}
+			// just check is complete or no
+			if($_type === 'is_complete')
+			{
+				if($selectivecount && count($saved_asked_question) >= $selectivecount - 1)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
 			}
 
 			if($thankyou)
