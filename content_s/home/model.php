@@ -25,7 +25,7 @@ class model
 
 		if(!self::check_xkey_xvalue())
 		{
-			\dash\notif::error(T_("Dont!"));
+			\dash\notif::error(T_("Your cookies may have been blocked"));
 			return false;
 		}
 
