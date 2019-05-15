@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Sarshomar - Persian\n"
-"POT-Creation-Date: 2019-05-15 10:08+0430\n"
-"PO-Revision-Date: 2019-05-15 10:09+0430\n"
+"POT-Creation-Date: 2019-05-15 11:31+0430\n"
+"PO-Revision-Date: 2019-05-15 11:32+0430\n"
 "Last-Translator: Javad <J.Evazzadeh@gmail.com>\n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -377,7 +377,7 @@ msgstr "موبایل تنظیم نشده است"
 #: dash/addons/content_api/v5/enter/controller.php:333
 #: dash/addons/content_api/v6/enter/enter.php:140
 #: dash/addons/content_enter/app/model.php:23 dash/lib/app/address.php:161
-#: dash/lib/app/user.php:271 sarshomar/includes/lib/app/answer.php:845
+#: dash/lib/app/user.php:271 sarshomar/includes/lib/app/answer.php:846
 msgid "Invalid mobile"
 msgstr "شماره‌ی تلفن همراه نامعتبر است"
 
@@ -705,8 +705,8 @@ msgstr "داشبورد سیستم مدیریت محتوا"
 #: dash/addons/content_support/message/edit/view.php:23
 #: dash/addons/content_support/ticket/show/view.php:47 dash/lib/app/posts.php:250
 #: sarshomar/includes/lib/app/question/edit.php:20
-#: sarshomar/includes/lib/app/survey.php:869
-#: sarshomar/includes/lib/app/survey.php:876
+#: sarshomar/includes/lib/app/survey.php:875
+#: sarshomar/includes/lib/app/survey.php:882
 #: sarshomar/includes/lib/app/survey/edit.php:20
 msgid "Invalid id"
 msgstr "شناسه نامعتبر"
@@ -1509,7 +1509,7 @@ msgstr "پیش ما برگردید!"
 #: dash/addons/content_enter/callback/controller.php:12
 #: dash/addons/includes/languages/trans_dash.php:397
 #: sarshomar/includes/languages/trans_dash.php:151
-#: sarshomar/includes/lib/app/answer.php:859
+#: sarshomar/includes/lib/app/answer.php:860
 msgid "Invalid url"
 msgstr "آدرس اشتباه"
 
@@ -12686,7 +12686,7 @@ msgstr "رشته تحصیلی نامعتبر"
 msgid "Invalid issue place"
 msgstr "محل صدور اشتباه"
 
-#: dash/lib/app/user.php:526 sarshomar/includes/lib/app/answer.php:835
+#: dash/lib/app/user.php:526 sarshomar/includes/lib/app/answer.php:836
 msgid "Invalid email"
 msgstr "رایانامه اشتباه است"
 
@@ -19802,54 +19802,54 @@ msgstr "لطفا برای ادامه، پاسخ خود را وارد کنید"
 msgid "No way to inset your answer"
 msgstr "هیچ راهی برای ثبت پاسخ شما وجود ندارد"
 
-#: sarshomar/includes/lib/app/answer.php:435
+#: sarshomar/includes/lib/app/answer.php:436
 msgid "You not answer to some required question"
 msgstr "شما به چند سوال الزامی پاسخ ندادید"
 
-#: sarshomar/includes/lib/app/answer.php:435
+#: sarshomar/includes/lib/app/answer.php:436
 msgid "Your survey is not complete"
 msgstr "این پرسشنامه تکمیل نشده است"
 
-#: sarshomar/includes/lib/app/answer.php:558
+#: sarshomar/includes/lib/app/answer.php:559
 msgid "You can not update your answer"
 msgstr "نمی‌توانید پاسخ خود را بروز کنید"
 
-#: sarshomar/includes/lib/app/answer.php:615
+#: sarshomar/includes/lib/app/answer.php:616
 msgid "Your answer time ended for this survey"
 msgstr "مدت زمان پاسخ شما به این پرسشنامه به پایان رسیده است"
 
-#: sarshomar/includes/lib/app/answer.php:624
+#: sarshomar/includes/lib/app/answer.php:625
 msgid "Your answer time ended for this question"
 msgstr "مدت زمان پاسخ شما به این سوال به پایان رسیده است"
 
-#: sarshomar/includes/lib/app/answer.php:697
+#: sarshomar/includes/lib/app/answer.php:698
 msgid "Invalid answer"
 msgstr "پاسخ اشتباه است"
 
-#: sarshomar/includes/lib/app/answer.php:704
-#: sarshomar/includes/lib/app/answer.php:725
+#: sarshomar/includes/lib/app/answer.php:705
+#: sarshomar/includes/lib/app/answer.php:726
 msgid "Your answer is out of range"
 msgstr "پاسخ شما خارج از محدوده کاراکتر مجاز است"
 
-#: sarshomar/includes/lib/app/answer.php:743
-#: sarshomar/includes/lib/app/answer.php:747
-#: sarshomar/includes/lib/app/answer.php:777
+#: sarshomar/includes/lib/app/answer.php:744
+#: sarshomar/includes/lib/app/answer.php:748
+#: sarshomar/includes/lib/app/answer.php:778
 msgid "This choice not found in choice list!"
 msgstr "این گزینه در لیست گزینه‌های این سوال یافت نشد!"
 
-#: sarshomar/includes/lib/app/answer.php:784
+#: sarshomar/includes/lib/app/answer.php:785
 msgid "Your can choose between :min and :max option"
 msgstr "شما می‌توانید بین :min تا :max گزینه را انتخاب کنید"
 
-#: sarshomar/includes/lib/app/answer.php:815
+#: sarshomar/includes/lib/app/answer.php:816
 msgid "Invalid date"
 msgstr "تاریخ نامعتبر است"
 
-#: sarshomar/includes/lib/app/answer.php:825
+#: sarshomar/includes/lib/app/answer.php:826
 msgid "Invalid time"
 msgstr "ساعت نامعتبر است"
 
-#: sarshomar/includes/lib/app/answer.php:879
+#: sarshomar/includes/lib/app/answer.php:880
 msgid "Invalid password"
 msgstr "گذرواژه نامعتبر است"
 
@@ -20190,53 +20190,57 @@ msgid "Please fill the survey emailto less than 500 character"
 msgstr "لطفا جزئیات مربوط به مقصد ایمیل پرسشنامه را کمتر از ۵۰۰ حرف وارد کنید"
 
 #: sarshomar/includes/lib/app/survey.php:443
-#: sarshomar/includes/lib/app/survey.php:484
-#: sarshomar/includes/lib/app/survey.php:506
-#: sarshomar/includes/lib/app/survey.php:537
+#: sarshomar/includes/lib/app/survey.php:490
+#: sarshomar/includes/lib/app/survey.php:512
+#: sarshomar/includes/lib/app/survey.php:543
 msgid "Redirect time must be a number"
 msgstr "مدت زمان تاخیر در بازگشت باید به صورت عددی وارد شود"
 
 #: sarshomar/includes/lib/app/survey.php:457
-#: sarshomar/includes/lib/app/survey.php:498
-#: sarshomar/includes/lib/app/survey.php:520
+#: sarshomar/includes/lib/app/survey.php:504
+#: sarshomar/includes/lib/app/survey.php:526
 msgid "Redirect time must be less than 300"
 msgstr "مدت زمان تاخیر در بازگشت باید زیر ۳۰۰ ثانیه باشد"
 
-#: sarshomar/includes/lib/app/survey.php:469
+#: sarshomar/includes/lib/app/survey.php:464
+msgid "Minimum of redirect time is 3 sec"
+msgstr "حداقل زمان برای انتقال خود کار ۳ ثانیه است"
+
+#: sarshomar/includes/lib/app/survey.php:475
 msgid "Please fill redirect caption less than 200 character"
 msgstr "لطفا برچسب دکمه بازگشت را کمتر از ۲۰۰ حرف وارد کنید"
 
-#: sarshomar/includes/lib/app/survey.php:552
+#: sarshomar/includes/lib/app/survey.php:558
 msgid "Redirect time must be less than 1000"
 msgstr "آدرس بازگشت باید کمتر از ۱۰۰۰ کاراکتر باشد"
 
-#: sarshomar/includes/lib/app/survey.php:608
-#: sarshomar/includes/lib/app/survey.php:622
+#: sarshomar/includes/lib/app/survey.php:614
+#: sarshomar/includes/lib/app/survey.php:628
 msgid "Invalid start date"
 msgstr "تاریخ شروع نادرست"
 
-#: sarshomar/includes/lib/app/survey.php:636
+#: sarshomar/includes/lib/app/survey.php:642
 msgid "Invalid start time"
 msgstr "ساعت شروع نامعتبر است"
 
-#: sarshomar/includes/lib/app/survey.php:653
+#: sarshomar/includes/lib/app/survey.php:659
 msgid "Invalid end time"
 msgstr "ساعت پایان نامعتر است"
 
-#: sarshomar/includes/lib/app/survey.php:681
+#: sarshomar/includes/lib/app/survey.php:687
 msgid "Start date must be less than end date!"
 msgstr "تاریخ شروع باید کوچک‌تر از تاریخ پایان باشد!"
 
-#: sarshomar/includes/lib/app/survey.php:886
+#: sarshomar/includes/lib/app/survey.php:892
 msgid "Please rename old duplicate survey to make duplicate it again"
 msgstr ""
 "لطفا پرسشنامه کپی شده را تغییر عنوان دهید تا بتوانید دوباره از آن کپی بگیرید"
 
-#: sarshomar/includes/lib/app/survey.php:893
+#: sarshomar/includes/lib/app/survey.php:899
 msgid "The survey was duplicated"
 msgstr "یک نسخه کپی از پرسشنامه تهیه شد"
 
-#: sarshomar/includes/lib/app/survey.php:898
+#: sarshomar/includes/lib/app/survey.php:904
 msgid "Can not duplicate this survey"
 msgstr "نمی‌توانیم از این پرسشنامه نسخه کپی تولید کنیم"
 
