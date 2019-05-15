@@ -56,7 +56,9 @@ class run
 
 		$token         = time(). '_Ermile_cronjob_'. (string) rand(1,999999). '_'. (string) rand(1,999999). '_'. (string) rand(1,999999);
 		$token         = md5($token);
+
 		$list['token'] = $token;
+		$list['date']  = date("Y-m-d H:i:s");
 
 		file_put_contents($file, json_encode($list, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
 
@@ -83,7 +85,7 @@ class run
 	}
 }
 
-$cronjob = new run;
+$cronjob = new \run;
 $cronjob->exec();
 
 
