@@ -88,7 +88,8 @@ class analyze
 
 		// set this survey is my survey
 		$mySurvey           = false;
-		if(isset($_survey_detail['user_id']) && intval($_survey_detail['user_id']) === intval($_user_id))
+
+		if(isset($_survey_detail['user_id']) && intval(\dash\coding::decode($_survey_detail['user_id'])) === intval($_user_id))
 		{
 			$mySurvey = true;
 		}
@@ -140,6 +141,40 @@ class analyze
 		if(!is_array($saved_asked_question))
 		{
 			$saved_asked_question = [];
+		}
+
+		if($mySurvey && $_type === 'view')
+		{
+
+			$new_step = $_step;
+			if($_step > $countblock)
+			{
+				$new_step = $_step;
+				$thankyou = true;
+			}
+
+
+			$question_detail = \lib\app\question::get_by_step($survey_code, $new_step);
+
+			if(isset($question_detail['id']))
+			{
+				$question_id = \dash\coding::decode($question_detail['id']);
+			}
+
+
+			$result =
+			[
+				'ok'              => true,
+				'step'            => $new_step,
+				'question_id'     => $question_id,
+				'question_detail' => $question_detail,
+				'thankyou'        => $thankyou,
+				'wellcome'        => $wellcome,
+
+			];
+
+			return $result;
+
 		}
 
 
