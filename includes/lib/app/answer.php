@@ -810,12 +810,18 @@ class answer
 
 			case 'date':
 				$_answer = \dash\utility\convert::to_en_number($_answer);
-				\dash\temp::set('realAnswerTitle',$_answer);
-				if(\dash\date::db($_answer) === false)
+
+				$_answer = \dash\date::db($_answer);
+
+				if($_answer === false)
 				{
 					\dash\notif::error(T_("Invalid date"), 'answer');
 					$valid = false;
 				}
+
+				$_answer = \dash\date::force_gregorian($_answer);
+
+				\dash\temp::set('realAnswerTitle',$_answer);
 				break;
 
 			case 'time':
