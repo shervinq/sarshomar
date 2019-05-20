@@ -125,7 +125,7 @@ trait type
 			'logo'         => \dash\url::static(). '/images/question-type/single_choice.png',
 			'default_load' =>
 			[
-
+				'choiceinline' => true,
 			],
 		];
 
