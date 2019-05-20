@@ -201,12 +201,17 @@ class question
 				$old_choice[] = $new_choice;
 			}
 
+			// refresh key
+			$newKey = 1;
+			$temp_choice = [];
 			foreach ($old_choice as $key => $value)
 			{
-				$old_choice[$key] = array_merge(['id' => $key + 1], $value);
+				$temp_choice[$newKey] = array_merge($value, ['id' => $newKey]);
+				$newKey++;
 			}
 
-			$choice         = json_encode($old_choice, JSON_UNESCAPED_UNICODE);
+			$choice         = json_encode($temp_choice, JSON_UNESCAPED_UNICODE);
+
 			$args['choice'] = $choice;
 		}
 

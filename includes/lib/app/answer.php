@@ -736,7 +736,6 @@ class answer
 					if(isset($_question_detail['choice']) && is_array($_question_detail['choice']))
 					{
 						$choice_title = array_column($_question_detail['choice'], 'id');
-
 						if(!in_array($_answer, $choice_title))
 						{
 							if(\dash\permission::supervisor())
@@ -751,16 +750,23 @@ class answer
 						}
 						else
 						{
-							$myKey = array_search($_answer, $choice_title);
-
-							if(isset($_question_detail['choice'][$myKey]) && array_key_exists('title', $_question_detail['choice'][$myKey]))
+							foreach ($_question_detail['choice'] as $answerList)
 							{
-								\dash\temp::set('realAnswerTitle', $_question_detail['choice'][$myKey]['title']);
-							}
+								if(isset($answerList['id']) && intval($_answer) === intval($answerList['id']))
+								{
+									$myKey = $answerList['id'];
 
-							if(isset($_question_detail['choice'][$myKey]['score']))
-							{
-								self::$answer_score = intval($_question_detail['choice'][$myKey]['score']);
+									if(array_key_exists('title', $answerList))
+									{
+										\dash\temp::set('realAnswerTitle', $answerList['title']);
+									}
+
+									if(array_key_exists('score', $answerList))
+									{
+										self::$answer_score = intval($answerList['score']);
+
+									}
+								}
 							}
 						}
 					}
