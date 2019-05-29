@@ -248,6 +248,17 @@ class answer
 			$answer = null;
 		}
 
+		$multiple_choice = false;
+		if(isset($question_detail['type']) && $question_detail['type'] === 'multiple_choice')
+		{
+			$multiple_choice = true;
+		}
+
+		if($multiple_choice && !is_array($answer))
+		{
+			$answer = [];
+		}
+
 		// check required password question
 		if(isset($question_detail['type']) && $question_detail['type'] === 'password')
 		{
@@ -287,16 +298,7 @@ class answer
 
 		$answer_term_id  = null;
 
-		$multiple_choice = false;
-		if(isset($question_detail['type']) && $question_detail['type'] === 'multiple_choice')
-		{
-			$multiple_choice = true;
-		}
 
-		if($multiple_choice && !is_array($answer))
-		{
-			$answer = [];
-		}
 
 		// get the answer term id. not in multichoice mode
 		if(!$skip)
