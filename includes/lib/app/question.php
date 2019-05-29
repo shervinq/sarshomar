@@ -189,6 +189,14 @@ class question
 			}
 			else
 			{
+				// check not duplicate choice title
+				$old_choice_title = array_column($old_choice, 'title');
+				if(in_array($choicetitle, $old_choice_title))
+				{
+					\dash\notif::error(T_("This title is exist in your options list"), 'choicetitle');
+					return false;
+				}
+
 				$new_choice          = [];
 				$new_choice['title'] = $choicetitle;
 				$new_choice['score'] = $choicescore;
