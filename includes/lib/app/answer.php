@@ -153,6 +153,7 @@ class answer
 
 	public static function add($_survey_id, $_question_id, $_args)
 	{
+
 		// check user login
 		if(!\dash\user::id())
 		{
@@ -268,6 +269,7 @@ class answer
 			}
 		}
 
+
 		// check if this qustion is required and user not answered to it make an error
 		$require = self::check_require($question_detail, $answer, $skip);
 		if(!$require)
@@ -284,15 +286,25 @@ class answer
 		}
 
 		$answer_term_id  = null;
+
 		$multiple_choice = false;
+		if(isset($question_detail['type']) && $question_detail['type'] === 'multiple_choice')
+		{
+			$multiple_choice = true;
+		}
+
+		if($multiple_choice && !is_array($answer))
+		{
+			$answer = [];
+		}
 
 		// get the answer term id. not in multichoice mode
 		if(!$skip)
 		{
-			if(is_array($answer))
-			{
-				$multiple_choice = true;
-			}
+			// if(is_array($answer))
+			// {
+			// 	$multiple_choice = true;
+			// }
 
 			if(($answer || $answer === '0') && !$multiple_choice)
 			{
