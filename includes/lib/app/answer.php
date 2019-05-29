@@ -786,12 +786,6 @@ class answer
 						}
 					}
 
-					if(count($_answer) < $min || count($_answer) > $max)
-					{
-						\dash\notif::error(T_("Your can choose between :min and :max option", ['min' => \dash\utility\human::fitNumber($min), 'max' => \dash\utility\human::fitNumber($max)]), 'answer');
-						$valid = false;
-					}
-
 					$realAnswerTitle = [];
 
 					foreach ($_answer as $key => $value)
@@ -811,6 +805,28 @@ class answer
 					}
 
 					\dash\temp::set('realAnswerTitle', $realAnswerTitle);
+
+					if($min && $max && intval($min) === intval($max))
+					{
+
+						if($min !== count($_answer))
+						{
+							\dash\notif::error(T_("Your can choose exactly :min option", ['min' => \dash\utility\human::fitNumber($min)]), 'answer');
+							$valid = false;
+						}
+
+					}
+					else
+					{
+
+						if(($min && count($_answer) < $min) || ($max && count($_answer) > $max))
+						{
+							\dash\notif::error(T_("Your can choose between :min and :max option", ['min' => \dash\utility\human::fitNumber($min), 'max' => \dash\utility\human::fitNumber($max)]), 'answer');
+							$valid = false;
+						}
+
+					}
+
 				}
 				break;
 
