@@ -65,8 +65,8 @@ trait add
 
 		if(\dash\engine\process::status())
 		{
-			\dash\log::set('addNewSurvay', ['code' => $survey_id, 'datalink' => \dash\coding::encode($survey_id)]);
-			\dash\notif::ok(T_("Survay successfuly added"));
+			\dash\log::set('addNewSurvey', ['code' => $survey_id, 'datalink' => \dash\coding::encode($survey_id)]);
+			\dash\notif::ok(T_("Survey successfuly added"));
 		}
 
 		$return['id'] = \dash\coding::encode($survey_id);

@@ -33,8 +33,8 @@ class model
 		{
 			if(!\dash\user::id())
 			{
-				$survay_setting = \dash\data::surveyRow();
-				if(isset($survay_setting['setting']['forcelogin']) && $survay_setting['setting']['forcelogin'])
+				$survey_setting = \dash\data::surveyRow();
+				if(isset($survey_setting['setting']['forcelogin']) && $survey_setting['setting']['forcelogin'])
 				{
 					\dash\redirect::to(\dash\url::kingdom(). '/enter?referer='. \dash\url::pwd());
 				}
@@ -48,8 +48,8 @@ class model
 			}
 			else
 			{
-				$survay_setting = \dash\data::surveyRow();
-				if(isset($survay_setting['setting']['forcelogin']) && $survay_setting['setting']['forcelogin'])
+				$survey_setting = \dash\data::surveyRow();
+				if(isset($survey_setting['setting']['forcelogin']) && $survey_setting['setting']['forcelogin'])
 				{
 					if(!\dash\user::detail('verifymobile'))
 					{

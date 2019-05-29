@@ -141,7 +141,7 @@ class survey
 		{
 			if($_site)
 			{
-				\dash\header::status(404, T_("Survay not found"));
+				\dash\header::status(404, T_("Survey not found"));
 			}
 			return false;
 		}
@@ -257,7 +257,7 @@ class survey
 		$id = \dash\coding::decode($_id);
 		if(!$id)
 		{
-			\dash\notif::error(T_("Survay id not set"));
+			\dash\notif::error(T_("Survey id not set"));
 			return false;
 		}
 
@@ -487,7 +487,7 @@ class survey
 			$surveytime = \dash\app::request('surveytime');
 			if($surveytime && !is_numeric($surveytime))
 			{
-				\dash\notif::error(T_("Redirect time must be a number"), 'surveytime');
+				\dash\notif::error(T_("Survey time must be a number"), 'surveytime');
 				return false;
 			}
 
@@ -499,9 +499,9 @@ class survey
 			{
 				$surveytime = intval($surveytime);
 				$surveytime = abs($surveytime);
-				if($surveytime > 300)
+				if($surveytime > 1E+9)
 				{
-					\dash\notif::error(T_("Redirect time must be less than 300"), 'surveytime');
+					\dash\notif::error(T_("Survey time is out of range"), 'surveytime');
 					return false;
 				}
 			}
@@ -509,7 +509,7 @@ class survey
 			$questiontime = \dash\app::request('questiontime');
 			if($questiontime && !is_numeric($questiontime))
 			{
-				\dash\notif::error(T_("Redirect time must be a number"), 'questiontime');
+				\dash\notif::error(T_("Question time must be a number"), 'questiontime');
 				return false;
 			}
 
@@ -521,9 +521,9 @@ class survey
 			{
 				$questiontime = intval($questiontime);
 				$questiontime = abs($questiontime);
-				if($questiontime > 300)
+				if($questiontime > 1E+9)
 				{
-					\dash\notif::error(T_("Redirect time must be less than 300"), 'questiontime');
+					\dash\notif::error(T_("Question time is out of range"), 'questiontime');
 					return false;
 				}
 			}
@@ -540,7 +540,7 @@ class survey
 			$selectivecount = \dash\app::request('selectivecount');
 			if($selectivecount && !is_numeric($selectivecount))
 			{
-				\dash\notif::error(T_("Redirect time must be a number"), 'selectivecount');
+				\dash\notif::error(T_("Selective count must be a number"), 'selectivecount');
 				return false;
 			}
 
@@ -555,7 +555,7 @@ class survey
 
 				if($selectivecount > 1000)
 				{
-					\dash\notif::error(T_("Redirect time must be less than 1000"), 'selectivecount');
+					\dash\notif::error(T_("Selective count must be less than 1000"), 'selectivecount');
 					return false;
 				}
 			}

@@ -40,7 +40,7 @@ class question
 		$survey_id = \dash\coding::decode($survey_id);
 		if(!$survey_id)
 		{
-			\dash\notif::error(T_("Survay id not set"), 'survey_id');
+			\dash\notif::error(T_("Survey id not set"), 'survey_id');
 			return false;
 		}
 
@@ -55,7 +55,7 @@ class question
 		{
 			if(!\dash\permission::supervisor())
 			{
-				\dash\log::set('isNotYourSurvay', ['code' => $survey_id]);
+				\dash\log::set('isNotYourSurvey', ['code' => $survey_id]);
 				\dash\notif::error(T_("This is not your survey!"), 'survey_id');
 				return false;
 			}

@@ -119,7 +119,7 @@ class answer
 		$survey_id = \dash\coding::decode($_survey_id);
 		if(!$survey_id)
 		{
-			\dash\notif::error(T_("Survay id not set"));
+			\dash\notif::error(T_("Survey id not set"));
 			return false;
 		}
 
@@ -164,7 +164,7 @@ class answer
 		$survey_id = \dash\coding::decode($_survey_id);
 		if(!$survey_id)
 		{
-			\dash\notif::error(T_("Survay id not set"));
+			\dash\notif::error(T_("Survey id not set"));
 			return false;
 		}
 

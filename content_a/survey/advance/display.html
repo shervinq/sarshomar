@@ -48,7 +48,7 @@
 	<label for="selectivecount">{%trans "Count question"%}<small>{%trans "You can set limit of question to show in every responder"%}</small></label>
 	<div class="input ltr">
 	  <label class="addon">{%trans "Only show"%}</label>
-	  <input type="text" name="selectivecount" id="selectivecount" value="{{surveyRow.setting.selectivecount}}" >
+	  <input type="number" max="10000" name="selectivecount" id="selectivecount" value="{{surveyRow.setting.selectivecount}}" >
 	  <label class="addon">{%trans "Question(s) of all questions"%}</label>
 	</div>
 	<div class="msg warn2">{%trans "These questions are selected from questions that you did not require. Required questions will be asked under any circumstances."%}</div>
@@ -147,11 +147,11 @@
 <div data-response='schedule' {%if surveyRow.setting.schedule.status%}{%else%}data-response-hide{%endif%}>
 	<label for="surveytime">{%trans "All survey time per second"%}<small>{%trans "The user must complete in this time"%}</small></label>
 	<div class="input ltr">
-	  <input type="text" name="surveytime" id="surveytime" value="{{surveyRow.setting.schedule.surveytime}}" >
+	  <input type="number" max="9999999" name="surveytime" id="surveytime" value="{{surveyRow.setting.schedule.surveytime}}" >
 	</div>
 	<label for="questiontime">{%trans "Every question time per second"%}<small>{%trans "The user must complete one question in this time"%}</small></label>
 	<div class="input ltr">
-	  <input type="text" name="questiontime" id="questiontime"  value="{{surveyRow.setting.schedule.questiontime}}">
+	  <input type="number" max="9999999" name="questiontime" id="questiontime"  value="{{surveyRow.setting.schedule.questiontime}}">
 	</div>
 </div>
 {%endblock%}

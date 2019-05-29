@@ -12,7 +12,7 @@ trait get
 		$survey_id = \dash\coding::decode($_survey_id);
 		if(!$survey_id)
 		{
-			\dash\notif::error(T_("Survay id not set"), 'survey_id');
+			\dash\notif::error(T_("Survey id not set"), 'survey_id');
 			return false;
 		}
 
@@ -45,7 +45,7 @@ trait get
 		$survey_id = \dash\coding::decode($_survey_id);
 		if(!$survey_id)
 		{
-			\dash\notif::error(T_("Survay id not set"), 'survey_id');
+			\dash\notif::error(T_("Survey id not set"), 'survey_id');
 			return false;
 		}
 
@@ -80,7 +80,7 @@ trait get
 		$survey_id = \dash\coding::decode($survey_id);
 		if(!$survey_id)
 		{
-			\dash\notif::error(T_("Survay id not set"), 'survey_id');
+			\dash\notif::error(T_("Survey id not set"), 'survey_id');
 			return false;
 		}
 
@@ -95,7 +95,7 @@ trait get
 		{
 			if(!\dash\permission::supervisor())
 			{
-				\dash\log::set('isNotYourSurvay', ['code' => $survey_id]);
+				\dash\log::set('isNotYourSurvey', ['code' => $survey_id]);
 				\dash\notif::error(T_("This is not your survey!"), 'survey_id');
 				return false;
 			}
@@ -146,7 +146,7 @@ trait get
 		$id = \dash\coding::decode($_id);
 		if(!$id)
 		{
-			\dash\notif::error(T_("Survay id not set"));
+			\dash\notif::error(T_("Survey id not set"));
 			return false;
 		}
 
@@ -171,7 +171,7 @@ trait get
 		$survey_id = \dash\coding::decode($_survey_id);
 		if(!$survey_id)
 		{
-			\dash\notif::error(T_("Survay id not set"));
+			\dash\notif::error(T_("Survey id not set"));
 			return false;
 		}
 
@@ -234,7 +234,7 @@ trait get
 		$survey_id = \dash\coding::decode($_survey_id);
 		if(!$survey_id)
 		{
-			\dash\notif::error(T_("Survay id not set"));
+			\dash\notif::error(T_("Survey id not set"));
 			return false;
 		}
 
