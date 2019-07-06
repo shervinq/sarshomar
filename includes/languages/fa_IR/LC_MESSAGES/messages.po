@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Sarshomar - Persian\n"
-"POT-Creation-Date: 2019-05-29 18:45+0430\n"
-"PO-Revision-Date: 2019-05-29 18:48+0430\n"
+"POT-Creation-Date: 2019-07-06 21:15+0430\n"
+"PO-Revision-Date: 2019-07-06 21:17+0430\n"
 "Last-Translator: Javad <J.Evazzadeh@gmail.com>\n"
 "Language-Team: \n"
 "Language: fa_IR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.2.1\n"
 "X-Poedit-Basepath: ../../../../..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -238,6 +238,7 @@ msgid "User id not found"
 msgstr "شناسه کاربر یافت نشد"
 
 #: dash/addons/content_account/profile/security/model.php:69
+#: dash/addons/content_api/v6/session/controller.php:94
 msgid "All other session terminated"
 msgstr "تمام دسترسی‌های دیگر مسدود شد"
 
@@ -248,12 +249,14 @@ msgid "Session terminated"
 msgstr "این روش ورود مسدود شد"
 
 #: dash/addons/content_account/profile/security/view.php:71
+#: dash/addons/content_api/v6/session/controller.php:69
 #: dash/addons/content_crm/member/security/view.php:76
 #: dash/addons/includes/languages/trans_static.php:346
 msgid "Windows"
 msgstr "ویندوز"
 
 #: dash/addons/content_account/profile/security/view.php:75
+#: dash/addons/content_api/v6/session/controller.php:73
 #: dash/addons/content_crm/member/security/view.php:80
 #: dash/addons/includes/languages/trans_static.php:347
 msgid "Linux"
@@ -377,7 +380,7 @@ msgstr "موبایل تنظیم نشده است"
 #: dash/addons/content_api/v5/enter/controller.php:333
 #: dash/addons/content_api/v6/enter/enter.php:140
 #: dash/addons/content_enter/app/model.php:23 dash/lib/app/address.php:161
-#: dash/lib/app/user.php:271 sarshomar/includes/lib/app/answer.php:858
+#: dash/lib/app/user.php:271 sarshomar/includes/lib/app/answer.php:888
 msgid "Invalid mobile"
 msgstr "شماره‌ی تلفن همراه نامعتبر است"
 
@@ -485,6 +488,7 @@ msgid "manufacturer"
 msgstr "کارخانه سازنده محصول"
 
 #: dash/addons/content_api/v6/android/user/add.php:114
+#: dash/addons/content_api/v6/app/controller.php:133
 #: dash/addons/includes/languages/trans_dash.php:928
 #: dash/addons/includes/languages/trans_static.php:108
 #: sarshomar/includes/languages/trans_dash.php:938
@@ -529,6 +533,169 @@ msgstr "دستگاه"
 msgid "brand"
 msgstr "نام تجاری"
 
+#: dash/addons/content_api/v6/app/controller.php:123
+msgid "This version is deprecated"
+msgstr "این نسخه منقضی شده است"
+
+#: dash/addons/content_api/v6/app/controller.php:124
+#: dash/addons/content_api/v6/app/controller.php:126
+msgid "To download new version of this app click blow link"
+msgstr "برای دانلود نسخه جدید بر روی لینک زیر کلیک کنید"
+
+#: dash/addons/content_api/v6/app/controller.php:125
+msgid "New version is released"
+msgstr "نسخه جدید منتشر شده است"
+
+#: dash/addons/content_api/v6/app/controller.php:134
+msgid "Change language"
+msgstr "تغییر زبان"
+
+#: dash/addons/content_api/v6/app/controller.php:135
+msgid "Close"
+msgstr "بستن"
+
+#: dash/addons/content_api/v6/app/controller.php:136
+#: dash/addons/includes/languages/trans_dash.php:540
+#: sarshomar/includes/languages/trans_dash.php:299
+#: sarshomar/includes/languages/trans_project.php:20
+msgid "Back"
+msgstr "قبلی"
+
+#: dash/addons/content_api/v6/app/controller.php:137
+#: dash/addons/includes/languages/trans_dash.php:498
+#: sarshomar/includes/languages/trans_dash.php:258
+#: sarshomar/includes/languages/trans_project.php:18
+msgid "Go"
+msgstr "برو"
+
+#: dash/addons/content_api/v6/app/controller.php:138
+#: dash/addons/content_enter/pass/recovery/model.php:29
+#: dash/addons/includes/languages/trans_dash.php:511
+#: dash/lib/app/log/caller/enter/enter_VerificationCode.php:16
+#: dash/lib/app/log/caller/enter/enter_apiverificationcode.php:16
+#: sarshomar/includes/languages/trans_dash.php:271
+#: sarshomar/includes/languages/trans_project.php:86
+msgid "Enter"
+msgstr "ورود"
+
+#: dash/addons/content_api/v6/app/controller.php:153
+#: dash/lib/social/telegram/commands/ermile.php:332
+#: dash/lib/social/telegram/commands/ermile.php:528
+#: dash/lib/social/telegram/commands/ermileInline.php:76
+#: sarshomar/includes/languages/trans_project.php:45
+#: sarshomar/includes/lib/tg/detect.php:35
+msgid "About"
+msgstr "درباره"
+
+#: dash/addons/content_api/v6/app/controller.php:160
+msgid "About this version"
+msgstr "دریاره این نسخه"
+
+#: dash/addons/content_api/v6/app/controller.php:166
+msgid "About us"
+msgstr "درباره ما"
+
+#: dash/addons/content_api/v6/app/controller.php:172
+#: sarshomar/includes/languages/trans_project.php:649
+msgid "Privacy"
+msgstr "حریم خصوصی"
+
+#: dash/addons/content_api/v6/app/controller.php:178
+#: dash/addons/content_cms/terms/view.php:10
+#: dash/addons/includes/languages/trans_static.php:96
+msgid "Terms"
+msgstr "عبارات"
+
+#: dash/addons/content_api/v6/app/controller.php:188
+#: dash/addons/includes/languages/trans_dash.php:253
+#: dash/lib/engine/static_files.php:26 dash/lib/engine/static_files.php:35
+#: dash/lib/engine/static_files.php:45 dash/lib/engine/static_files.php:52
+#: dash/lib/social/telegram/commands/ermile.php:528
+#: sarshomar/includes/languages/trans_dash.php:551
+#: sarshomar/includes/languages/trans_project.php:431
+#: sarshomar/includes/lib/tg/detect.php:35
+msgid "Contact"
+msgstr "تماس"
+
+#: dash/addons/content_api/v6/app/controller.php:197
+msgid "Vision"
+msgstr "چشم‌انداز"
+
+#: dash/addons/content_api/v6/app/controller.php:206
+msgid "Mission"
+msgstr "ماموریت"
+
+#: dash/addons/content_api/v6/app/controller.php:215
+#: dash/addons/includes/languages/trans_dash.php:127
+#: dash/lib/engine/static_files.php:25 dash/lib/engine/static_files.php:34
+#: dash/lib/social/telegram/commands/ermile.php:346
+#: dash/lib/social/telegram/commands/ermile.php:533
+#: sarshomar/includes/languages/trans_dash.php:423
+#: sarshomar/includes/lib/app/question/type.php:220
+#: sarshomar/includes/lib/tg/detect.php:40
+msgid "Website"
+msgstr "وب‌سایت"
+
+#: dash/addons/content_api/v6/app/controller.php:234
+#: sarshomar/includes/languages/trans_project.php:735
+msgid "Setting"
+msgstr "تنظیمات"
+
+#: dash/addons/content_api/v6/app/controller.php:242
+msgid "More"
+msgstr "بیشتر"
+
+#: dash/addons/content_api/v6/app/controller.php:250
+#: dash/addons/includes/languages/trans_static.php:74
+#: dash/lib/engine/twigAddons.php:236
+#: sarshomar/includes/languages/trans_project.php:44
+msgid "Home"
+msgstr "صفحه نخست"
+
+#: dash/addons/content_api/v6/app/controller.php:276
+#: dash/addons/content_api/v6/app/controller.php:298
+#: dash/addons/content_api/v6/app/controller.php:320
+#: dash/addons/includes/languages/trans_dash.php:501
+#: sarshomar/includes/languages/trans_dash.php:261
+#: sarshomar/includes/languages/trans_project.php:21
+msgid "Next"
+msgstr "بعدی"
+
+#: dash/addons/content_api/v6/app/controller.php:284
+msgid "Easy"
+msgstr "آسان"
+
+#: dash/addons/content_api/v6/app/controller.php:285
+msgid "Easy to use"
+msgstr "به سادگی قابل استفاده است"
+
+#: dash/addons/content_api/v6/app/controller.php:294
+#: dash/addons/content_api/v6/app/controller.php:316
+msgid "Prev"
+msgstr "قبلی"
+
+#: dash/addons/content_api/v6/app/controller.php:306
+msgid "Powerful"
+msgstr "پرقدرت"
+
+#: dash/addons/content_api/v6/app/controller.php:307
+msgid "Best application"
+msgstr "بهترین برنامه"
+
+#: dash/addons/content_api/v6/app/controller.php:328
+msgid "Enjoy"
+msgstr "لذت ببرید"
+
+#: dash/addons/content_api/v6/app/controller.php:329
+msgid "Welcome to our collection"
+msgstr "به جمع ما خوش‌آمدید"
+
+#: dash/addons/content_api/v6/app/controller.php:338
+#: sarshomar/includes/languages/trans_project.php:16
+#: sarshomar/includes/lib/tg/survey.php:178
+msgid "Start"
+msgstr "شروع"
+
 #: dash/addons/content_api/v6/doc/view.php:12
 msgid ":val API documentation v6"
 msgstr "نسخه ۶ مستندات رابط برنامه‌نویسی :val"
@@ -544,6 +711,36 @@ msgstr "کد اعتبارسنجی قبلا برای این کاربر ارسال
 #: dash/addons/content_api/v6/enter/enter.php:286
 msgid "Code is ok"
 msgstr "کد صحیح است"
+
+#: dash/addons/content_api/v6/profile/controller.php:45
+msgid "No field sended"
+msgstr "هیچ فیلدی ارسال نشده است"
+
+#: dash/addons/content_api/v6/session/controller.php:47
+msgid "No session founded"
+msgstr "هیچ نشست فعالی یافت نشد"
+
+#: dash/addons/content_api/v6/session/controller.php:113
+msgid "This Session was terminated"
+msgstr "این نشست مسدود شد"
+
+#: dash/addons/content_api/v6/session/controller.php:118
+msgid "This Session is not active"
+msgstr "این نشست فعال نیست"
+
+#: dash/addons/content_api/v6/session/controller.php:126
+msgid "This is not your session"
+msgstr "این نشست متعلق به شما نیست"
+
+#: dash/addons/content_api/v6/session/controller.php:132
+msgid "Session id not send or invalid"
+msgstr "شناسه نشست ارسال نشده است یا نادرست است"
+
+#: dash/addons/content_api/v6/session/controller.php:138
+#: dash/addons/content_su/transactions/add/model.php:80 dash/lib/app/posts.php:660
+#: sarshomar/content_a/question/view.php:44
+msgid "Invalid type"
+msgstr "نوع نامعتبر است"
 
 #: dash/addons/content_cms/attachment/add/model.php:17
 #: dash/addons/content_cms/posts/main/model.php:21
@@ -584,7 +781,7 @@ msgid "Also add or edit specefic post."
 msgstr "همچنین افزودن یا ویرایش پست خاص"
 
 #: dash/addons/content_cms/attachment/home/view.php:29
-#: dash/addons/content_cms/posts/home/view.php:33
+#: dash/addons/content_cms/posts/home/view.php:32
 #: dash/addons/includes/languages/trans_dash.php:17
 #: dash/addons/includes/languages/trans_static.php:95
 #: dash/addons/includes/languages/trans_static.php:980
@@ -593,17 +790,17 @@ msgid "Pages"
 msgstr "برگه‌ها"
 
 #: dash/addons/content_cms/attachment/home/view.php:30
-#: dash/addons/content_cms/posts/home/view.php:34
+#: dash/addons/content_cms/posts/home/view.php:33
 msgid "Check list of pages and to find your pages."
 msgstr "چک کردن لیست صفحات و پیدا کردن صفحات شما."
 
 #: dash/addons/content_cms/attachment/home/view.php:30
-#: dash/addons/content_cms/posts/home/view.php:34
+#: dash/addons/content_cms/posts/home/view.php:33
 msgid "Also add or edit specefic static page."
 msgstr "همچنین اضافه کنید یا ویرایش صفحه خاص استاتیک."
 
 #: dash/addons/content_cms/attachment/home/view.php:36
-#: dash/addons/content_cms/posts/home/view.php:40
+#: dash/addons/content_cms/posts/home/view.php:39
 #: dash/addons/includes/languages/trans_dash.php:427
 #: sarshomar/includes/languages/trans_dash.php:184
 #: sarshomar/includes/languages/trans_project.php:49
@@ -611,27 +808,27 @@ msgid "Help Center"
 msgstr "مرکز راهنمایی"
 
 #: dash/addons/content_cms/attachment/home/view.php:37
-#: dash/addons/content_cms/posts/home/view.php:41
+#: dash/addons/content_cms/posts/home/view.php:40
 msgid "Check list of article in help center."
 msgstr "بررسی لیست مقالات موجود در مرکز راهنمایی"
 
 #: dash/addons/content_cms/attachment/home/view.php:37
-#: dash/addons/content_cms/posts/home/view.php:41
-#: dash/addons/content_cms/posts/home/view.php:49
+#: dash/addons/content_cms/posts/home/view.php:40
+#: dash/addons/content_cms/posts/home/view.php:48
 msgid "Also add or edit specefic article."
 msgstr "هم‌چنین افزودن یا ویرایش مقاله خاص."
 
 #: dash/addons/content_cms/attachment/home/view.php:38
-#: dash/addons/content_cms/posts/add/view.php:51
+#: dash/addons/content_cms/posts/add/view.php:45
 #: dash/addons/content_cms/posts/edit/view.php:61
-#: dash/addons/content_cms/posts/home/view.php:42
+#: dash/addons/content_cms/posts/home/view.php:41
 msgid "Back to list of helps"
 msgstr "بازگشت به لیست مرکز راهنمایی"
 
 #: dash/addons/content_cms/attachment/home/view.php:54
 #: dash/addons/content_cms/comments/home/view.php:16
 #: dash/addons/content_cms/dayevent/view.php:13
-#: dash/addons/content_cms/posts/home/view.php:73
+#: dash/addons/content_cms/posts/home/view.php:87
 #: dash/addons/content_cms/terms/view.php:61
 #: dash/addons/content_crm/log/caller/view.php:13
 #: dash/addons/content_crm/log/home/view.php:13
@@ -646,13 +843,12 @@ msgid "Back to dashboard"
 msgstr "بازگشت به داشبورد"
 
 #: dash/addons/content_cms/attachment/home/view.php:60
-#: dash/addons/content_cms/posts/home/view.php:70
 msgid "Add new :val"
 msgstr "افزودن :val جدید"
 
 #: dash/addons/content_cms/attachment/home/view.php:67
 #: dash/addons/content_cms/comments/home/view.php:23
-#: dash/addons/content_cms/posts/home/view.php:80
+#: dash/addons/content_cms/posts/home/view.php:94
 #: dash/addons/content_cms/visitor/log/view.php:23
 #: dash/addons/content_crm/android/home/view.php:24
 #: dash/addons/content_crm/log/home/view.php:34
@@ -667,7 +863,7 @@ msgid "Search for :search"
 msgstr "جستجوی :search"
 
 #: dash/addons/content_cms/attachment/home/view.php:121
-#: dash/addons/content_cms/posts/home/view.php:150
+#: dash/addons/content_cms/posts/home/view.php:164
 #: dash/addons/includes/languages/trans_dash.php:43
 #: sarshomar/includes/languages/trans_dash.php:146
 #: sarshomar/includes/languages/trans_project.php:572
@@ -807,7 +1003,13 @@ msgstr ""
 msgid "Comment Dashboard"
 msgstr "داشبورد دیدگاه‌ها"
 
+#: dash/addons/content_cms/posts/add/controller.php:25
+#: dash/addons/content_cms/posts/home/controller.php:28
+msgid "The magazine manager for this system is not enable"
+msgstr ""
+
 #: dash/addons/content_cms/posts/add/view.php:22
+#: dash/addons/content_cms/posts/home/view.php:55
 msgid "Add new post"
 msgstr "افزودن نوشته جدید"
 
@@ -821,36 +1023,37 @@ msgstr "پست ها می توانند شامل کلیدی و دسته بندی �
 msgid "Back to list of posts"
 msgstr "بازگشت به لیست نوشته‌ها"
 
-#: dash/addons/content_cms/posts/add/view.php:37
+#: dash/addons/content_cms/posts/add/view.php:34
+#: dash/addons/content_cms/posts/home/view.php:35
 msgid "Add new page"
 msgstr "افزودن برگه جدید"
 
-#: dash/addons/content_cms/posts/add/view.php:38
+#: dash/addons/content_cms/posts/add/view.php:35
 msgid "Add new static page like about or honors"
 msgstr "اضافه کردن صفحه استاتیک جدید مانند درباره ما یا افتخارات"
 
-#: dash/addons/content_cms/posts/add/view.php:40
+#: dash/addons/content_cms/posts/add/view.php:36
 #: dash/addons/content_cms/posts/edit/view.php:50
 msgid "Back to list of pages"
 msgstr "بازگشت به لیست برگه‌ها"
 
-#: dash/addons/content_cms/posts/add/view.php:49
+#: dash/addons/content_cms/posts/add/view.php:43
 msgid "Add new help"
 msgstr "افزودن راهنمایی جدید"
 
-#: dash/addons/content_cms/posts/add/view.php:50
+#: dash/addons/content_cms/posts/add/view.php:44
 msgid "Add new article to help center or new faq."
 msgstr "افزودن سوال متداول یا مقاله‌ای جدید به مرکز راهنمایی."
 
-#: dash/addons/content_cms/posts/add/view.php:61
+#: dash/addons/content_cms/posts/add/view.php:52
 msgid "Add new maganize"
 msgstr "افزودن مجله"
 
-#: dash/addons/content_cms/posts/add/view.php:62
+#: dash/addons/content_cms/posts/add/view.php:53
 msgid "Add new article maganize."
 msgstr "افزودن مجله"
 
-#: dash/addons/content_cms/posts/add/view.php:63
+#: dash/addons/content_cms/posts/add/view.php:54
 msgid "Back to list of maganizes"
 msgstr "بازگشت به لیست مجلات"
 
@@ -890,25 +1093,34 @@ msgstr "بازگشت به لیست مجلات"
 msgid "Magazine can contain keyword and category with title and descriptions."
 msgstr "مجله‌ها می‌توانند شامل کلیدی و دسته بندی با عنوان و شرح باشند."
 
-#: dash/addons/content_cms/posts/home/view.php:48
+#: dash/addons/content_cms/posts/home/view.php:43
+msgid "Add new help center article"
+msgstr ""
+
+#: dash/addons/content_cms/posts/home/view.php:47
+#: dash/addons/content_mag/home/view.php:24 dash/addons/content_mag/view.php:9
 msgid "Magazine"
 msgstr "مجله"
 
-#: dash/addons/content_cms/posts/home/view.php:49
+#: dash/addons/content_cms/posts/home/view.php:48
 msgid "Check list of article in magazine."
 msgstr "بررسی لیست مقالات در مجله"
 
-#: dash/addons/content_cms/posts/home/view.php:50
+#: dash/addons/content_cms/posts/home/view.php:49
 msgid "Back to list of magazines"
 msgstr "بازگشت به لیست مجلات"
+
+#: dash/addons/content_cms/posts/home/view.php:51
+msgid "Add new magazine"
+msgstr "افزودن مجله جدید"
+
+#: dash/addons/content_cms/sitemap/model.php:12
+msgid "Sitemap successfully created"
+msgstr "نقشه سایت با موفقیت ایجاد شد"
 
 #: dash/addons/content_cms/sitemap/view.php:8
 msgid "Sitemap"
 msgstr "سایت‌مپ"
-
-#: dash/addons/content_cms/sitemap/view.php:190
-msgid "Create sitemap Successfully!"
-msgstr "بازسازی نقشه سایت با موفقیت انجام شد!"
 
 #: dash/addons/content_cms/terms/model.php:15
 msgid "Invalid term id"
@@ -937,11 +1149,6 @@ msgstr "ترم با موفقیت بروزرسانی شد"
 #: dash/addons/content_cms/terms/model.php:182
 msgid "Term successfully added"
 msgstr "عبارت با موفقیت اضافه شد"
-
-#: dash/addons/content_cms/terms/view.php:10
-#: dash/addons/includes/languages/trans_static.php:96
-msgid "Terms"
-msgstr "عبارات"
 
 #: dash/addons/content_cms/terms/view.php:11
 msgid "Check terms and filter by type or view and edit some terms"
@@ -1512,7 +1719,7 @@ msgstr "پیش ما برگردید!"
 #: dash/addons/content_enter/callback/controller.php:12
 #: dash/addons/includes/languages/trans_dash.php:397
 #: sarshomar/includes/languages/trans_dash.php:151
-#: sarshomar/includes/lib/app/answer.php:872
+#: sarshomar/includes/lib/app/answer.php:902
 msgid "Invalid url"
 msgstr "آدرس اشتباه"
 
@@ -1614,7 +1821,7 @@ msgstr "موبایل یافت نشد"
 #: dash/lib/app/parent/add.php:50 dash/lib/app/parent/add.php:59
 #: dash/lib/app/parent/delete.php:35 dash/lib/app/parent/delete.php:114
 #: dash/lib/app/parent/get.php:35 dash/lib/app/parent/get.php:44
-#: dash/lib/app/posts/add.php:37 dash/lib/app/term.php:357
+#: dash/lib/app/posts/add.php:37 dash/lib/app/term.php:367
 #: dash/lib/app/user/add.php:55 sarshomar/includes/lib/app/question/add.php:20
 #: sarshomar/includes/lib/app/survey/add.php:20
 msgid "User not found"
@@ -1697,15 +1904,6 @@ msgstr "لطفا گذرواژه خود را وارد کنید"
 #: dash/addons/content_enter/pass/model.php:36
 msgid "Invalid password, try again"
 msgstr "گذرواژه‌ی اشتباه، دوباره تلاش کنید"
-
-#: dash/addons/content_enter/pass/recovery/model.php:29
-#: dash/addons/includes/languages/trans_dash.php:511
-#: dash/lib/app/log/caller/enter/enter_VerificationCode.php:16
-#: dash/lib/app/log/caller/enter/enter_apiverificationcode.php:16
-#: sarshomar/includes/languages/trans_dash.php:271
-#: sarshomar/includes/languages/trans_project.php:86
-msgid "Enter"
-msgstr "ورود"
 
 #: dash/addons/content_enter/pass/view.php:10
 #: dash/addons/includes/languages/trans_dash.php:481
@@ -2032,6 +2230,10 @@ msgstr "شما پیام جدیدی دارید!"
 msgid "Goodbye"
 msgstr "خدانگهدار"
 
+#: dash/addons/content_mag/home/view.php:43
+msgid "Return to magazine list"
+msgstr "بازگشت به لیست مجلات"
+
 #: dash/addons/content_pay/home/view.php:9
 msgid "Pay detail"
 msgstr "جزئیات پرداخت"
@@ -2084,7 +2286,7 @@ msgid "Auto backup schedule saved"
 msgstr "اطلاعات پشتیبان گیری خودکار ذخیر شد"
 
 #: dash/addons/content_su/command/model.php:11
-#: sarshomar/includes/lib/app/answer.php:255
+#: sarshomar/includes/lib/app/answer.php:267
 msgid "Please fill the password"
 msgstr "لطفا گذرواژه را وارد کنید"
 
@@ -2298,11 +2500,6 @@ msgstr "موبایل نمی‌تواند خالی باشد"
 #: dash/addons/content_su/transactions/add/model.php:72
 msgid "Please select one of the type items"
 msgstr "لطفا یک نوع را انتخاب کنید"
-
-#: dash/addons/content_su/transactions/add/model.php:80 dash/lib/app/posts.php:660
-#: sarshomar/content_a/question/view.php:44
-msgid "Invalid type"
-msgstr "نوع نامعتبر است"
 
 #: dash/addons/content_su/transactions/add/model.php:87
 msgid "Please fill the minus or plus field"
@@ -3208,15 +3405,6 @@ msgstr "ساخته شده در"
 msgid "No record exist!"
 msgstr "هیچ داده ای وجود ندارد!"
 
-#: dash/addons/includes/languages/trans_dash.php:127
-#: dash/lib/social/telegram/commands/ermile.php:346
-#: dash/lib/social/telegram/commands/ermile.php:533
-#: sarshomar/includes/languages/trans_dash.php:423
-#: sarshomar/includes/lib/app/question/type.php:220
-#: sarshomar/includes/lib/tg/detect.php:40
-msgid "Website"
-msgstr "وب‌سایت"
-
 #: dash/addons/includes/languages/trans_dash.php:128
 #: sarshomar/includes/languages/trans_dash.php:424
 msgid "Submitted on"
@@ -3704,14 +3892,6 @@ msgstr "شخص"
 #: sarshomar/includes/languages/trans_dash.php:541
 msgid "Add file"
 msgstr "افزودن فایل"
-
-#: dash/addons/includes/languages/trans_dash.php:253
-#: dash/lib/social/telegram/commands/ermile.php:528
-#: sarshomar/includes/languages/trans_dash.php:551
-#: sarshomar/includes/languages/trans_project.php:431
-#: sarshomar/includes/lib/tg/detect.php:35
-msgid "Contact"
-msgstr "تماس"
 
 #: dash/addons/includes/languages/trans_dash.php:254
 #: sarshomar/includes/languages/trans_dash.php:552
@@ -4838,12 +5018,6 @@ msgstr "نام کاربری"
 msgid "Enter a valid username from 4 to 50 character"
 msgstr "نام‌کاربری معتبری بین ۴ تا ۵۰ کاراکتر وارد کنید"
 
-#: dash/addons/includes/languages/trans_dash.php:498
-#: sarshomar/includes/languages/trans_dash.php:258
-#: sarshomar/includes/languages/trans_project.php:18
-msgid "Go"
-msgstr "برو"
-
 #: dash/addons/includes/languages/trans_dash.php:499
 #: sarshomar/includes/languages/trans_dash.php:259
 msgid "Delete Account"
@@ -4853,12 +5027,6 @@ msgstr "حذف حساب‌کاربری"
 #: sarshomar/includes/languages/trans_dash.php:260
 msgid "Go and check it"
 msgstr "برو و چک کن"
-
-#: dash/addons/includes/languages/trans_dash.php:501
-#: sarshomar/includes/languages/trans_dash.php:261
-#: sarshomar/includes/languages/trans_project.php:21
-msgid "Next"
-msgstr "بعدی"
 
 #: dash/addons/includes/languages/trans_dash.php:502
 #: sarshomar/includes/languages/trans_dash.php:262
@@ -5001,12 +5169,6 @@ msgstr "درگاه پرداخت را انتخاب کنید"
 #: sarshomar/includes/languages/trans_dash.php:298
 msgid "Cancel"
 msgstr "انصراف"
-
-#: dash/addons/includes/languages/trans_dash.php:540
-#: sarshomar/includes/languages/trans_dash.php:299
-#: sarshomar/includes/languages/trans_project.php:20
-msgid "Back"
-msgstr "قبلی"
 
 #: dash/addons/includes/languages/trans_dash.php:541
 #: sarshomar/includes/languages/trans_dash.php:300
@@ -6084,6 +6246,8 @@ msgid "Enter a valid facebook from 3 to 40 character"
 msgstr "شناسه فیس‌بوک معتبری بین ۳ و ۴۰ حرف وارد کنید"
 
 #: dash/addons/includes/languages/trans_dash.php:840
+#: dash/lib/engine/static_files.php:27 dash/lib/engine/static_files.php:36
+#: dash/lib/engine/static_files.php:46
 #: sarshomar/includes/languages/trans_dash.php:850
 #: sarshomar/includes/languages/trans_project.php:92
 msgid "Twitter"
@@ -7621,7 +7785,7 @@ msgstr "پشتیبان گیری خودکار"
 
 #: dash/addons/includes/languages/trans_dash.php:1243
 #: dash/addons/includes/languages/trans_static.php:49 dash/lib/utility/human.php:104
-#: dash/lib/utility/upload.php:92 sarshomar/includes/languages/trans_dash.php:1254
+#: dash/lib/utility/upload.php:93 sarshomar/includes/languages/trans_dash.php:1254
 msgid "MB"
 msgstr "مگابایت"
 
@@ -7653,7 +7817,7 @@ msgstr "روز"
 
 #: dash/addons/includes/languages/trans_dash.php:1249
 #: dash/addons/includes/languages/trans_static.php:33 dash/lib/utility/human.php:31
-#: dash/lib/utility/human.php:145 sarshomar/includes/languages/trans_dash.php:1260
+#: dash/lib/utility/human.php:149 sarshomar/includes/languages/trans_dash.php:1260
 msgid "hour"
 msgstr "ساعت"
 
@@ -8120,6 +8284,7 @@ msgid "Ahmad Karimi"
 msgstr "احمد کریمی"
 
 #: dash/addons/includes/languages/trans_static.php:13
+#: dash/lib/engine/static_files.php:33
 msgid "Reza Mohiti"
 msgstr "رضا محیطی"
 
@@ -8186,7 +8351,7 @@ msgid "day"
 msgstr "روز"
 
 #: dash/addons/includes/languages/trans_static.php:34 dash/lib/utility/human.php:32
-#: dash/lib/utility/human.php:153
+#: dash/lib/utility/human.php:157
 msgid "minute"
 msgstr "دقیقه"
 
@@ -8216,7 +8381,7 @@ msgid "A few seconds ago"
 msgstr "چندثانیه پیش"
 
 #: dash/addons/includes/languages/trans_static.php:44
-#: dash/lib/utility/upload.php:113
+#: dash/lib/utility/upload.php:114
 msgid "item"
 msgstr "آیتم"
 
@@ -8225,29 +8390,29 @@ msgid "empty"
 msgstr "خالی"
 
 #: dash/addons/includes/languages/trans_static.php:46
-#: dash/lib/utility/upload.php:118
+#: dash/lib/utility/upload.php:119
 msgid "NaN"
 msgstr "-"
 
-#: dash/addons/includes/languages/trans_static.php:47 dash/lib/utility/upload.php:92
+#: dash/addons/includes/languages/trans_static.php:47 dash/lib/utility/upload.php:93
 msgid "Byte"
 msgstr "بایت"
 
 #: dash/addons/includes/languages/trans_static.php:48 dash/lib/utility/human.php:103
-#: dash/lib/utility/upload.php:92
+#: dash/lib/utility/upload.php:93
 msgid "KB"
 msgstr "کیلوبایت"
 
 #: dash/addons/includes/languages/trans_static.php:50 dash/lib/utility/human.php:105
-#: dash/lib/utility/upload.php:92
+#: dash/lib/utility/upload.php:93
 msgid "GB"
 msgstr "گیگابایت"
 
-#: dash/addons/includes/languages/trans_static.php:51 dash/lib/utility/upload.php:92
+#: dash/addons/includes/languages/trans_static.php:51 dash/lib/utility/upload.php:93
 msgid "TB"
 msgstr "ترابایت"
 
-#: dash/addons/includes/languages/trans_static.php:52 dash/lib/utility/upload.php:92
+#: dash/addons/includes/languages/trans_static.php:52 dash/lib/utility/upload.php:93
 msgid "PB"
 msgstr "پترابایت"
 
@@ -8338,12 +8503,6 @@ msgstr "ثبت نام"
 #: dash/addons/includes/languages/trans_static.php:73
 msgid "home"
 msgstr "خانه"
-
-#: dash/addons/includes/languages/trans_static.php:74
-#: dash/lib/engine/twigAddons.php:236
-#: sarshomar/includes/languages/trans_project.php:44
-msgid "Home"
-msgstr "صفحه نخست"
 
 #: dash/addons/includes/languages/trans_static.php:75
 msgid "homepage"
@@ -8673,7 +8832,7 @@ msgid "Duplicate - File exist"
 msgstr "تکراری - فایل وجود دارد"
 
 #: dash/addons/includes/languages/trans_static.php:185
-#: dash/lib/utility/upload.php:500
+#: dash/lib/utility/upload.php:501
 msgid "Fail on tranfering file"
 msgstr "خطا در انتقال فایل"
 
@@ -8889,6 +9048,7 @@ msgid "apikey"
 msgstr "کلید ای‌پی‌آی"
 
 #: dash/addons/includes/languages/trans_static.php:254
+#: dash/lib/engine/static_files.php:28
 msgid "Github"
 msgstr "گیت‌هاب"
 
@@ -12004,7 +12164,7 @@ msgstr "دیدگاه‌های این نوشته بسته است!"
 msgid "Title is out of range!"
 msgstr "عنوان خارج از محدوده است!"
 
-#: dash/lib/app/comment.php:303 dash/lib/app/term.php:187
+#: dash/lib/app/comment.php:303 dash/lib/app/term.php:197
 #: dash/lib/app/ticket.php:530
 msgid "Invalid parent"
 msgstr "شناسه والد اشتباه است"
@@ -12480,15 +12640,23 @@ msgstr "تنظیم دسته‌بندی برای دسترسی مناسب‌تر �
 msgid "Invalid slug"
 msgstr "نامک اشتباه است"
 
-#: dash/lib/app/posts.php:798
+#: dash/lib/app/posts.php:804
 msgid "Some :type is wrong"
 msgstr "برخی از :type اشتباه هستند"
+
+#: dash/lib/app/posts.php:1066
+msgid "Post not found"
+msgstr ""
+
+#: dash/lib/app/posts.php:1091
+msgid "The Featured Image removed"
+msgstr ""
 
 #: dash/lib/app/posts/add.php:78
 msgid "No way to insert post"
 msgstr "هیچ راهی برای افزودن پست وجود ندارد"
 
-#: dash/lib/app/posts/add.php:129
+#: dash/lib/app/posts/add.php:138
 msgid "Post successfuly added"
 msgstr "پست با موفقیت اضافه شد"
 
@@ -12500,7 +12668,7 @@ msgstr "شما دسترسی لازم را برای ویرایش این پست ن
 msgid "Invalid posts id"
 msgstr "شناسه پست اشتباه است"
 
-#: dash/lib/app/posts/edit.php:141
+#: dash/lib/app/posts/edit.php:148
 msgid "Post successfully updated"
 msgstr "پست با موفقیت به روز رسانی شد"
 
@@ -12556,39 +12724,39 @@ msgstr "لطفا نامک ترم را کمتر از ۱۵۰ حرف وارد کن�
 msgid "Please set the term desc less than 500 character"
 msgstr "لطفا توضیحات ترم را کمتر از ۱۵۰ حرف وارد کنید"
 
-#: dash/lib/app/term.php:146
-msgid "Please set the term type"
-msgstr "لطفا نوع ترم را مشخص کنید"
+#: dash/lib/app/term.php:150 dash/lib/app/term.php:156
+msgid "Invalid term type"
+msgstr ""
 
-#: dash/lib/app/term.php:155
+#: dash/lib/app/term.php:165
 msgid "Invalid status of term"
 msgstr "وضعیت ترم اشتباه است"
 
-#: dash/lib/app/term.php:172
+#: dash/lib/app/term.php:182
 msgid "Duplicate term"
 msgstr "عبارات تکراری"
 
-#: dash/lib/app/term.php:180
+#: dash/lib/app/term.php:190
 msgid "Please set the term excerpt less than 500 character"
 msgstr "لطفا چکیده عبارات را کمتر از ۵۰۰ حرف وارد کنید"
 
-#: dash/lib/app/term.php:203
+#: dash/lib/app/term.php:213
 msgid "Parent not found"
 msgstr "والد یافت نشد"
 
-#: dash/lib/app/term.php:209
+#: dash/lib/app/term.php:219
 msgid "Can not set the parent as yourself"
 msgstr "یک شیء‌ نمی تواند والد خودش باشد"
 
-#: dash/lib/app/term.php:214
+#: dash/lib/app/term.php:224
 msgid "The parent is not a :type"
 msgstr "والد یک :type نیست"
 
-#: dash/lib/app/term.php:381
+#: dash/lib/app/term.php:391
 msgid "No way to insert term"
 msgstr "هیچ راهی برای ثبت ترم وجود ندارد"
 
-#: dash/lib/app/term.php:471
+#: dash/lib/app/term.php:481
 msgid "Can not access to edit term"
 msgstr "دسترسی لازم برای ویرایش ترم وجود ندارد"
 
@@ -12697,7 +12865,7 @@ msgstr "رشته تحصیلی نامعتبر"
 msgid "Invalid issue place"
 msgstr "محل صدور اشتباه"
 
-#: dash/lib/app/user.php:526 sarshomar/includes/lib/app/answer.php:848
+#: dash/lib/app/user.php:526 sarshomar/includes/lib/app/answer.php:878
 msgid "Invalid email"
 msgstr "رایانامه اشتباه است"
 
@@ -12929,6 +13097,55 @@ msgstr "سلام، مستندات را بخوان و پروژه خودتو شر�
 #: dash/lib/engine/mvc.php:217
 msgid "We can't find the page you're looking for!"
 msgstr "ما صفحه‌ای که به‌دنبال آن هستید را نمی‌یابیم!"
+
+#: dash/lib/engine/static_files.php:12
+msgid "In The name of Allah"
+msgstr "به نام خدا"
+
+#: dash/lib/engine/static_files.php:14
+msgid "Proudly made in IRAN, powered by Dash."
+msgstr "با افتخار ساخت ایران، قدرت گرفته از دش."
+
+#: dash/lib/engine/static_files.php:17
+msgid ""
+"Ermile is built by a creative team of engineers, designers, researchers and "
+"others in many different sites across the globe. It is updated continuously, and "
+"built with more tools and technologies than we can shake a stick at. If you'd "
+"like to help us out, see ermile.com/careers."
+msgstr ""
+"ارمایل توسط تیمی خلاق از مهندسان، طراحان، محققان و سایرین ساخته شده است که روی "
+"سایت‌های مختلفی در سراسر دنیا کار می‌کنند. ما به‌صورت مداوم در حال بروزرسانی هستیم و "
+"از ابزارها و تکنولوژی‌های روز بهره می‌بریم. اگر مایل به کمک به ما هستید می‌توانید "
+"نگاهی به فرصت‌های شغلی ما در ermile.com/careers بیاندازید."
+
+#: dash/lib/engine/static_files.php:21
+msgid "TEAM"
+msgstr "تیم"
+
+#: dash/lib/engine/static_files.php:24
+msgid "Javad Evazzadeh Kakroudi"
+msgstr "جواد عوض‌زاده کاکرودی"
+
+#: dash/lib/engine/static_files.php:29 dash/lib/engine/static_files.php:37
+#: dash/lib/engine/static_files.php:47 dash/lib/engine/static_files.php:53
+msgid "Location"
+msgstr "مکان"
+
+#: dash/lib/engine/static_files.php:41
+msgid "THANKS"
+msgstr "سپاس‌گزاریم"
+
+#: dash/lib/engine/static_files.php:44
+msgid "Mohammad Hasan Salehi HajiAbadi"
+msgstr "محمد حسن صالحی حاجی آبادی"
+
+#: dash/lib/engine/static_files.php:51
+msgid "Saman Soltani"
+msgstr "سامان سلطانی"
+
+#: dash/lib/engine/static_files.php:57
+msgid "SITE"
+msgstr "سایت"
 
 #: dash/lib/engine/view.php:96
 msgid "As easy as ABC is our slogan!"
@@ -13343,14 +13560,6 @@ msgstr "برو به منوی اصلی"
 msgid "Sync with website"
 msgstr "اتصال به وب‌سایت"
 
-#: dash/lib/social/telegram/commands/ermile.php:332
-#: dash/lib/social/telegram/commands/ermile.php:528
-#: dash/lib/social/telegram/commands/ermileInline.php:76
-#: sarshomar/includes/languages/trans_project.php:45
-#: sarshomar/includes/lib/tg/detect.php:35
-msgid "About"
-msgstr "درباره"
-
 #: dash/lib/social/telegram/commands/ermile.php:335
 msgid "Get help commands"
 msgstr "دریافت راهنمایی دستورات"
@@ -13735,7 +13944,7 @@ msgstr "در آینده"
 msgid "bytes"
 msgstr "بایت"
 
-#: dash/lib/utility/human.php:148
+#: dash/lib/utility/human.php:152
 msgid ", :min minute"
 msgstr " و :min دقیقه"
 
@@ -14209,35 +14418,43 @@ msgstr "مقدار نامعتبر"
 msgid "Pay whith :bank"
 msgstr "پرداخت با :bank"
 
-#: dash/lib/utility/upload.php:262
+#: dash/lib/utility/sitemap.php:65
+msgid "File removed"
+msgstr "فایل حذف شد"
+
+#: dash/lib/utility/sitemap.php:105
+msgid "Link created"
+msgstr "لینک ساخته شد"
+
+#: dash/lib/utility/upload.php:263
 msgid "file successful uploaded"
 msgstr "فایل با موفقیت آپلود شد"
 
-#: dash/lib/utility/upload.php:267
+#: dash/lib/utility/upload.php:268
 msgid "Failed to transfer file while moving to temp"
 msgstr "خطا در انتقال فایل در زمان جابجایی به پوشه موقت"
 
-#: dash/lib/utility/upload.php:363
+#: dash/lib/utility/upload.php:364
 msgid "upload name not found"
 msgstr "نام آپلود یافت نشد"
 
-#: dash/lib/utility/upload.php:370
+#: dash/lib/utility/upload.php:371
 msgid "folder prefix not found"
 msgstr "پیشوند پوشه یافت نشد"
 
-#: dash/lib/utility/upload.php:377
+#: dash/lib/utility/upload.php:378
 msgid "user id not set"
 msgstr "کدکاربر ثبت نشد است"
 
-#: dash/lib/utility/upload.php:431
+#: dash/lib/utility/upload.php:432
 msgid "The size of file is larger than the upload space you have"
 msgstr "اندازه فایل بزرگتر از فضای آپلود شما است"
 
-#: dash/lib/utility/upload.php:476
+#: dash/lib/utility/upload.php:477
 msgid "File successful uploaded"
 msgstr "فایل با موفقیت آپلود شد"
 
-#: dash/lib/utility/upload.php:486
+#: dash/lib/utility/upload.php:487
 msgid "Fail on tranfering file, upload from path"
 msgstr "خطا در انتقال فایل، آپلود از آدرس"
 
@@ -14407,8 +14624,8 @@ msgid "This question is not settingable"
 msgstr "این سوال قابلیت تغییر تنظیمات را ندارد"
 
 #: sarshomar/content_a/question/view.php:21 sarshomar/content_s/home/view.php:125
-#: sarshomar/includes/lib/app/answer.php:175
-#: sarshomar/includes/lib/app/answer.php:223
+#: sarshomar/includes/lib/app/answer.php:176
+#: sarshomar/includes/lib/app/answer.php:224
 #: sarshomar/includes/lib/app/question/get.php:159
 msgid "Invalid question id"
 msgstr "شناسه سوال نامعتبر است"
@@ -14537,7 +14754,7 @@ msgstr "بررسی جزئیات پرسشنامه و رهگیری هرچیزی د
 
 #: sarshomar/content_a/survey/home/view.php:19
 #: sarshomar/content_a/survey/review/view.php:19
-#: sarshomar/content_a/survey/view.php:14 sarshomar/includes/lib/app/answer.php:184
+#: sarshomar/content_a/survey/view.php:14 sarshomar/includes/lib/app/answer.php:185
 #: sarshomar/includes/lib/app/answer/get.php:88
 #: sarshomar/includes/lib/app/answer/get.php:138
 #: sarshomar/includes/lib/app/answer/get.php:194
@@ -14731,11 +14948,6 @@ msgstr "دانلود پی‌دی‌اف"
 #: sarshomar/includes/languages/trans_project.php:14
 msgid "Download File"
 msgstr "دانلود فایل"
-
-#: sarshomar/includes/languages/trans_project.php:16
-#: sarshomar/includes/lib/tg/survey.php:178
-msgid "Start"
-msgstr "شروع"
 
 #: sarshomar/includes/languages/trans_project.php:19
 msgid "Save & Next"
@@ -16901,10 +17113,6 @@ msgstr "مرتب سازی سوالات"
 msgid "Settings"
 msgstr "تنظیمات"
 
-#: sarshomar/includes/languages/trans_project.php:649
-msgid "Privacy"
-msgstr "حریم خصوصی"
-
 #: sarshomar/includes/languages/trans_project.php:650
 msgid "Advance"
 msgstr "پیشرفته"
@@ -17155,10 +17363,6 @@ msgstr "در تلگرام تنها عنوان هنگام بارگذاری و ا�
 #: sarshomar/includes/languages/trans_project.php:734
 msgid "Your Survey"
 msgstr "پرسشنامه شما"
-
-#: sarshomar/includes/languages/trans_project.php:735
-msgid "Setting"
-msgstr "تنظیمات"
 
 #: sarshomar/includes/languages/trans_project.php:736
 msgid "No user answer to this survey yet!"
@@ -19834,12 +20038,12 @@ msgid "PUBLISH"
 msgstr "انتشار"
 
 #: sarshomar/includes/lib/app/answer.php:115
-#: sarshomar/includes/lib/app/answer.php:159
+#: sarshomar/includes/lib/app/answer.php:160
 msgid "Please login to conitinue"
 msgstr "لطفا برای ادامه مراحل وارد سیستم شوید"
 
 #: sarshomar/includes/lib/app/answer.php:122
-#: sarshomar/includes/lib/app/answer.php:167
+#: sarshomar/includes/lib/app/answer.php:168
 #: sarshomar/includes/lib/app/question.php:43
 #: sarshomar/includes/lib/app/question/get.php:15
 #: sarshomar/includes/lib/app/question/get.php:48
@@ -19855,68 +20059,72 @@ msgstr "شناسه پرسشنامه تنظیم نشده است"
 msgid "Question id not set"
 msgstr "شناسه سوال تنظیم نشده است"
 
-#: sarshomar/includes/lib/app/answer.php:202
+#: sarshomar/includes/lib/app/answer.php:203
 msgid "This survey was limited to some mobile and your mobile is not in this list"
 msgstr ""
 "این پرسشنامه به تعدادی شماره تلفن همراه اختصاص داده شده است و شماره تلفن همراه "
 "شما در این نیست نیست"
 
-#: sarshomar/includes/lib/app/answer.php:275
+#: sarshomar/includes/lib/app/answer.php:288
 msgid "Please fill this field to continue"
 msgstr "لطفا برای ادامه، پاسخ خود را وارد کنید"
 
-#: sarshomar/includes/lib/app/answer.php:302
+#: sarshomar/includes/lib/app/answer.php:316
 msgid "No way to inset your answer"
 msgstr "هیچ راهی برای ثبت پاسخ شما وجود ندارد"
 
-#: sarshomar/includes/lib/app/answer.php:436
+#: sarshomar/includes/lib/app/answer.php:450
 msgid "You not answer to some required question"
 msgstr "شما به چند سوال الزامی پاسخ ندادید"
 
-#: sarshomar/includes/lib/app/answer.php:436
+#: sarshomar/includes/lib/app/answer.php:450
 msgid "Your survey is not complete"
 msgstr "این پرسشنامه تکمیل نشده است"
 
-#: sarshomar/includes/lib/app/answer.php:559
+#: sarshomar/includes/lib/app/answer.php:573
 msgid "You can not update your answer"
 msgstr "نمی‌توانید پاسخ خود را بروز کنید"
 
-#: sarshomar/includes/lib/app/answer.php:616
+#: sarshomar/includes/lib/app/answer.php:630
 msgid "Your answer time ended for this survey"
 msgstr "مدت زمان پاسخ شما به این پرسشنامه به پایان رسیده است"
 
-#: sarshomar/includes/lib/app/answer.php:625
+#: sarshomar/includes/lib/app/answer.php:639
 msgid "Your answer time ended for this question"
 msgstr "مدت زمان پاسخ شما به این سوال به پایان رسیده است"
 
-#: sarshomar/includes/lib/app/answer.php:698
+#: sarshomar/includes/lib/app/answer.php:712
 msgid "Invalid answer"
 msgstr "پاسخ اشتباه است"
 
-#: sarshomar/includes/lib/app/answer.php:705
-#: sarshomar/includes/lib/app/answer.php:726
+#: sarshomar/includes/lib/app/answer.php:719
+#: sarshomar/includes/lib/app/answer.php:740
 msgid "Your answer is out of range"
 msgstr "پاسخ شما خارج از محدوده کاراکتر مجاز است"
 
-#: sarshomar/includes/lib/app/answer.php:743
-#: sarshomar/includes/lib/app/answer.php:747
-#: sarshomar/includes/lib/app/answer.php:784
+#: sarshomar/includes/lib/app/answer.php:757
+#: sarshomar/includes/lib/app/answer.php:761
+#: sarshomar/includes/lib/app/answer.php:798
 msgid "This choice not found in choice list!"
 msgstr "این گزینه در لیست گزینه‌های این سوال یافت نشد!"
 
-#: sarshomar/includes/lib/app/answer.php:791
+#: sarshomar/includes/lib/app/answer.php:828
+msgid "Your can choose exactly :min option"
+msgstr ""
+
+#: sarshomar/includes/lib/app/answer.php:838
 msgid "Your can choose between :min and :max option"
 msgstr "شما می‌توانید بین :min تا :max گزینه را انتخاب کنید"
 
-#: sarshomar/includes/lib/app/answer.php:824
+#: sarshomar/includes/lib/app/answer.php:854
 msgid "Invalid date"
 msgstr "تاریخ نامعتبر است"
 
-#: sarshomar/includes/lib/app/answer.php:838
+#: sarshomar/includes/lib/app/answer.php:868
 msgid "Invalid time"
 msgstr "ساعت نامعتبر است"
 
-#: sarshomar/includes/lib/app/answer.php:892
+#: sarshomar/includes/lib/app/answer.php:922
 msgid "Invalid password"
 msgstr "گذرواژه نامعتبر است"
 
@@ -19997,119 +20205,123 @@ msgstr "لطفا عنوان گزینه را تکمیل کنید"
 msgid "Invalid choice key for remove"
 msgstr "کلید اشتباهی برای حذف گزینه ارسال شده است"
 
-#: sarshomar/includes/lib/app/question.php:255
+#: sarshomar/includes/lib/app/question.php:196
+msgid "This title is exist in your options list"
+msgstr ""
+
+#: sarshomar/includes/lib/app/question.php:263
 msgid "Please fill min as a number"
 msgstr "لطفا حداقل را به صورت عددی وارد کنید"
 
-#: sarshomar/includes/lib/app/question.php:264
+#: sarshomar/includes/lib/app/question.php:272
 msgid "Min is out of range"
 msgstr "مقدار حداقل خارج از محدوده است"
 
-#: sarshomar/includes/lib/app/question.php:272
+#: sarshomar/includes/lib/app/question.php:280
 msgid "Please fill max as a number"
 msgstr "لطفا حداکثر را به صورت عددی وارد کنید"
 
-#: sarshomar/includes/lib/app/question.php:281
+#: sarshomar/includes/lib/app/question.php:289
 msgid "Max is out of range"
 msgstr "مقدار حداکثر خارج از محدوده است"
 
-#: sarshomar/includes/lib/app/question.php:297
+#: sarshomar/includes/lib/app/question.php:305
 msgid "Please set the max larger than min"
 msgstr "لطفا مقدار حد اقل را کمتر از مقدار حداکثر تنظیم کنید"
 
-#: sarshomar/includes/lib/app/question.php:320
+#: sarshomar/includes/lib/app/question.php:328
 msgid "Please set min choic larger than 0"
 msgstr "لطفا حداقل میزان انتخاب گزینه را بزرگتر از صفر تنظیم کنید"
 
-#: sarshomar/includes/lib/app/question.php:326
+#: sarshomar/includes/lib/app/question.php:334
 msgid "Minimum choice must be less than choice count"
 msgstr "حد اقل مقدار انتخاب گزینه‌ها باید کمتر از تعداد کل گزینه‌ها باشد"
 
-#: sarshomar/includes/lib/app/question.php:342
+#: sarshomar/includes/lib/app/question.php:350
 msgid "Please set maximum rate between 1 and 10"
 msgstr "لطفا مقدار حداکثر امتیازدهی را بین عدد ۱ و ۱۰ تنظیم کنید"
 
-#: sarshomar/includes/lib/app/question.php:361
+#: sarshomar/includes/lib/app/question.php:369
 msgid "Maximum choice must be less than choice count"
 msgstr "حداکثر مقدار انتخاب گزینه‌ها باید کمتر از تعداد کل گزینه‌ها باشد"
 
-#: sarshomar/includes/lib/app/question.php:400
+#: sarshomar/includes/lib/app/question.php:408
 msgid "Invalid choice sort of question"
 msgstr "مقدار نامعتبری برای مرتب سازی ارسال شده است"
 
-#: sarshomar/includes/lib/app/question.php:428
+#: sarshomar/includes/lib/app/question.php:436
 msgid "Invalid rate emoji"
 msgstr "شکلک ارسال شده نامعتبر است"
 
-#: sarshomar/includes/lib/app/question.php:440
+#: sarshomar/includes/lib/app/question.php:448
 msgid "Please set default as a number"
 msgstr "لطفا مقدار پیشفرض را به صورت عددی وارد کنید"
 
-#: sarshomar/includes/lib/app/question.php:458
+#: sarshomar/includes/lib/app/question.php:466
 msgid "Please set step as a number"
 msgstr "لطفا مقدار مرحله را به صورت عددی وارد کنید"
 
-#: sarshomar/includes/lib/app/question.php:487
+#: sarshomar/includes/lib/app/question.php:495
 msgid "Please set min less than max"
 msgstr "لطفا مقدار حد اقل را کمتر از مقدار حداکثر تنظیم کنید"
 
-#: sarshomar/includes/lib/app/question.php:493
+#: sarshomar/includes/lib/app/question.php:501
 msgid "Please set min and max in range :range"
 msgstr "لطفا مقدار حد اقل و حداکثر را در بازه عددی :range  وارد کنید"
 
-#: sarshomar/includes/lib/app/question.php:499
+#: sarshomar/includes/lib/app/question.php:507
 msgid "Please set step less than max"
 msgstr "لطفا شماره مرحله را کوچکتر از مقدار حداکثر وارد کنید"
 
-#: sarshomar/includes/lib/app/question.php:505
+#: sarshomar/includes/lib/app/question.php:513
 msgid "Please set default less than max"
 msgstr "لطفا مقدار پیشفرض را کوچکتر از مقدار حداکثر تنظیم کنید"
 
-#: sarshomar/includes/lib/app/question.php:511
+#: sarshomar/includes/lib/app/question.php:519
 msgid "Please set default larger than min"
 msgstr "لطفا مقدار پیشفرض را بزرگتر از مقدار حد اقل تنظیم کنید"
 
-#: sarshomar/includes/lib/app/question.php:570
+#: sarshomar/includes/lib/app/question.php:578
 msgid "Please fill the password text"
 msgstr "لطفا کلمه عبور را تنظیم کنید"
 
-#: sarshomar/includes/lib/app/question.php:576
+#: sarshomar/includes/lib/app/question.php:584
 msgid "Please set password less than 200 character"
 msgstr "لطفا کلمه عبور را کمتر از ۲۰۰ حرف وارد کنید"
 
-#: sarshomar/includes/lib/app/question.php:586
+#: sarshomar/includes/lib/app/question.php:594
 msgid "Please set address less than 200 character"
 msgstr "لطفا آدرس را کمتر از ۲۰۰ حرف وارد کنید"
 
-#: sarshomar/includes/lib/app/question.php:629
+#: sarshomar/includes/lib/app/question.php:637
 msgid "Please set the address less than 200 character"
 msgstr "لطفا آدرس را کمتر از ۲۰۰ حرف وارد کنید"
 
-#: sarshomar/includes/lib/app/question.php:635
+#: sarshomar/includes/lib/app/question.php:643
 msgid "Only [A-Za-z0-9_-] can use in address"
 msgstr "شما باید فقط از حروف و اعداد لاتین در آدرس استفاده کنید"
 
-#: sarshomar/includes/lib/app/question.php:641
+#: sarshomar/includes/lib/app/question.php:649
 msgid "You must use a one character from [A-Za-z] in the address"
 msgstr "شما باید حتما از یک حرف لاتین در آدرس استفاده کنید"
 
-#: sarshomar/includes/lib/app/question.php:647
+#: sarshomar/includes/lib/app/question.php:655
 msgid "Address should contain a Latin letter"
 msgstr "آدرس باید شامل حداقل یک حرف لاتین باشد"
 
-#: sarshomar/includes/lib/app/question.php:653
+#: sarshomar/includes/lib/app/question.php:661
 msgid "The address must begin with latin letters"
 msgstr "آدرس باید با حرف لاتین شروع شود"
 
-#: sarshomar/includes/lib/app/question.php:659
+#: sarshomar/includes/lib/app/question.php:667
 msgid "Only [A-Za-z0-9] can use in address"
 msgstr "شما باید فقط از حروف و اعداد لاتین در آدرس استفاده کنید"
 
-#: sarshomar/includes/lib/app/question.php:668
+#: sarshomar/includes/lib/app/question.php:676
 msgid "You can not choose this address"
 msgstr "شما نمی‌توانید این آدرس را انتخاب کنید"
 
-#: sarshomar/includes/lib/app/question.php:681
+#: sarshomar/includes/lib/app/question.php:689
 msgid "Duplicate address"
 msgstr "آدرس تکراری است"
 
@@ -20553,6 +20765,12 @@ msgid "Please start answer to survey in private message not in public!"
 msgstr ""
 "لطفا فرآیند پاسخ‌دهی به پرسشنامه را در پیام خصوصی با من انجام دهید نه در یک مکان "
 "عمومی!"
+
+#~ msgid "Create sitemap Successfully!"
+#~ msgstr "بازسازی نقشه سایت با موفقیت انجام شد!"
+
+#~ msgid "Please set the term type"
+#~ msgstr "لطفا نوع ترم را مشخص کنید"
 
 #~ msgid "Survay id not set"
 #~ msgstr "شناسه پرسشنامه وارد نشده است"
@@ -21562,9 +21780,6 @@ msgstr ""
 
 #~ msgid "Avatar"
 #~ msgstr "آواتار"
-
-#~ msgid "More"
-#~ msgstr "بیشتر"
 
 #~ msgid "System master controll"
 #~ msgstr "مدیریت فنی سیستم"
@@ -23530,9 +23745,6 @@ msgstr ""
 #~ msgid "Personal"
 #~ msgstr "شخصی"
 
-#~ msgid "Location"
-#~ msgstr "مکان"
-
 #~ msgid "Favorites"
 #~ msgstr "علاقمندی‌ها"
 
@@ -24188,9 +24400,6 @@ msgstr ""
 #~ msgid "View Profile"
 #~ msgstr "مشاهده صفحه‌شخصی"
 
-#~ msgid "Change language"
-#~ msgstr "تغییر زبان"
-
 #~ msgid "Dashboard menu"
 #~ msgstr "منوی پیشخوان"
 
@@ -24199,9 +24408,6 @@ msgstr ""
 
 #~ msgid "Send Feedback"
 #~ msgstr "ارسال بازخورد"
-
-#~ msgid "About us"
-#~ msgstr "درباره ما"
 
 #~ msgid "How does Sarshomar operate?"
 #~ msgstr "سرشمار چگونه عمل می‌کند؟"
@@ -26164,9 +26370,6 @@ msgstr ""
 #~ msgid "Valid Population"
 #~ msgstr "جامعه آماری معتبر"
 
-#~ msgid "Mission"
-#~ msgstr "ماموریت"
-
 #~ msgid "Referral"
 #~ msgstr "ارجاع‌دهی"
 
@@ -26175,9 +26378,6 @@ msgstr ""
 
 #~ msgid "Tour"
 #~ msgstr "تور"
-
-#~ msgid "Vision"
-#~ msgstr "چشم‌انداز"
 
 #~ msgid "Answer type not valid"
 #~ msgstr "نوع پاسخ معتبر نیست"
@@ -27440,9 +27640,6 @@ msgstr ""
 
 #~ msgid "Extract twig trans func in saloos addon"
 #~ msgstr "بیرون کشیدن متن های قابل ترجمه توئیگ از افزونه‌های سالوس"
-
-#~ msgid "Close"
-#~ msgstr "بستن"
 
 #~ msgid "Postal Code"
 #~ msgstr "کد پستی"
