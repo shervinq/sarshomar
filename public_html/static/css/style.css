@@ -831,6 +831,7 @@ body.rtl .poll-panel{right:16px;left:auto}
 .ltr .sharebox>a:not(:last-child){margin-right:.3em;margin-left:0}
 .sharebox>a span:first-child{display:none}
 .sharebox>a span:last-child{line-height:inherit}
+.sharebox>a [class^="sf-"]:before{vertical-align: baseline;}
 .sharebox>a.twitter:hover,.sharebox>a.twitter:focus{background-color:#1da1f2}
 .sharebox>a.rss:hover,.sharebox>a.rss:focus{background-color:#f26522}
 .sharebox>a.telegram:hover,.sharebox>a.telegram:focus{background-color:#0088cc}
