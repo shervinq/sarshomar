@@ -1,9 +1,12 @@
 {
   "name": "Sarshomar",
+  "description": "Sarshomar",
   "version": "3.0.0",
   "homepage": "https://Sarshomar.com",
+  "repository": "github:Ermile/sarshomar",
+  "license": "MIT",
   "dependencies": {
-    "siftal": "^6.9.0",
     "dash": "^18.0.0",
+    "siftal": "^6.9.0"
   }
 }
